@@ -117,6 +117,14 @@ aside.collapsed {
     margin-right: 10px;
 }
 
+a.brand-logo,
+a.brand-logo:visited,
+a.brand-logo:hover,
+a.brand-logo:active {
+    color: #fff;
+    text-decoration: none;
+}
+
 .search-container {
     padding: 15px;
 }
@@ -1314,7 +1322,8 @@ html.light .faq-item:hover {
         margin-bottom: 15px;
     }
 
-    .prose ul, .prose ol {
+    .prose ul,
+    .prose ol {
         padding-left: 10px;
     }
 
@@ -1533,7 +1542,11 @@ html.light .faq-item:hover {
 
 /* Print styles */
 @media print {
-    aside, header, .footer, .pane:first-child {
+
+    aside,
+    header,
+    .footer,
+    .pane:first-child {
         display: none !important;
     }
 

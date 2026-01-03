@@ -415,12 +415,183 @@
         }
 
         @media(max-width: 768px) {
+            .wrapper {
+                padding: 20px 15px;
+            }
+
+            .header-nav {
+                margin-bottom: 20px;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .back-link {
+                font-size: 0.8rem;
+                padding: 5px 10px;
+            }
+
+            .page-title {
+                margin-bottom: 25px;
+                padding-bottom: 20px;
+            }
+
             .page-title h1 {
-                font-size: 2rem;
+                font-size: 1.6rem;
+                line-height: 1.25;
+            }
+
+            .page-title p {
+                font-size: 0.9rem;
+                line-height: 1.5;
             }
 
             .blog-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .card-img-container {
+                height: 160px;
+            }
+
+            .card-body {
+                padding: 16px;
+            }
+
+            .card-title {
+                font-size: 1rem;
+            }
+
+            .card-excerpt {
+                font-size: 0.8rem;
+                margin-bottom: 15px;
+            }
+
+            .read-more {
+                padding: 8px 0;
+                font-size: 0.8rem;
+            }
+
+            .pagination-container {
+                padding: 15px;
+                gap: 8px;
+                margin: 30px auto;
+            }
+
+            .pagination-btn {
+                padding: 10px 14px;
+                font-size: 0.8rem;
+            }
+
+            .pagination-btn span {
+                display: none;
+            }
+
+            .pagination-number {
+                min-width: 38px;
+                height: 38px;
+                font-size: 0.85rem;
+            }
+
+            footer {
+                margin-top: 30px;
+                padding-top: 20px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media(max-width: 480px) {
+            .wrapper {
+                padding: 15px 12px;
+            }
+
+            .logo {
+                font-size: 1rem;
+                gap: 8px;
+            }
+
+            .logo i {
+                font-size: 0.9rem;
+            }
+
+            .back-link {
+                font-size: 0.75rem;
+            }
+
+            .page-title h1 {
+                font-size: 1.4rem;
+            }
+
+            .page-title p {
+                font-size: 0.85rem;
+            }
+
+            .card-img-container {
+                height: 140px;
+            }
+
+            .card-body {
+                padding: 14px;
+            }
+
+            .tags {
+                margin-bottom: 10px;
+            }
+
+            .tag {
+                font-size: 0.6rem;
+                padding: 2px 6px;
+            }
+
+            .card-title {
+                font-size: 0.95rem;
+                margin-bottom: 6px;
+            }
+
+            .card-excerpt {
+                font-size: 0.78rem;
+                line-height: 1.5;
+            }
+
+            .pagination-container {
+                padding: 10px 8px;
+                border-radius: 14px;
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+
+            .pagination-btn {
+                padding: 10px 12px;
+                font-size: 0.85rem;
+                border-radius: 8px;
+            }
+
+            /* Hide text, show only icon on small mobile */
+            .pagination-btn span {
+                display: none;
+            }
+
+            #paginationNumbers {
+                gap: 6px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .pagination-number {
+                min-width: 36px;
+                height: 36px;
+                font-size: 0.85rem;
+                border-radius: 8px;
+            }
+
+            .pagination-dots {
+                display: none;
+            }
+
+            footer {
+                font-size: 0.75rem;
             }
         }
     </style>
@@ -447,11 +618,11 @@
         <!-- Pagination -->
         <div class="pagination-container" id="paginationContainer">
             <button class="pagination-btn" id="prevBtn" onclick="changePage(-1)">
-                <i class="fas fa-chevron-left"></i> Previous
+                <i class="fas fa-chevron-left"></i> <span>Previous</span>
             </button>
             <div id="paginationNumbers"></div>
             <button class="pagination-btn" id="nextBtn" onclick="changePage(1)">
-                Next <i class="fas fa-chevron-right"></i>
+                <span>Next</span> <i class="fas fa-chevron-right"></i>
             </button>
         </div>
 

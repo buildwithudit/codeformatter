@@ -506,13 +506,58 @@
                 padding: 30px;
             }
         }
+    
+            /* Enhanced Mobile Content Styles */
+            @media (max-width: 480px) {
+                .prose h1 {
+                    font-size: 1.4rem !important;
+                    line-height: 1.25 !important;
+                    margin-bottom: 15px !important;
+                }
+                .prose h2 {
+                    font-size: 1.15rem !important;
+                    margin-top: 25px !important;
+                }
+                .prose h3 {
+                    font-size: 1rem !important;
+                }
+                .prose p {
+                    font-size: 0.9rem !important;
+                    line-height: 1.65 !important;
+                }
+                .prose li {
+                    font-size: 0.9rem !important;
+                    padding-left: 20px !important;
+                }
+                .prose ol li::before {
+                    font-size: 0.85rem !important;
+                }
+                .clean-card {
+                    padding: 20px !important;
+                }
+                .content-container {
+                    margin: 20px auto !important;
+                    padding: 0 10px !important;
+                }
+                .faq-item {
+                    padding: 15px !important;
+                }
+                .faq-item strong {
+                    font-size: 0.9rem !important;
+                }
+                .faq-item p {
+                    font-size: 0.85rem !important;
+                }
+            }
+    
+        a.brand-logo { color: inherit; text-decoration: none; }
     </style>
 </head>
 
 <body>
     <aside id="sidebar">
         <div class="brand">
-            <div class="brand-logo"><i class="fas fa-layer-group"></i> Code Formatter</div>
+            <a href="index.html" class="brand-logo"><i class="fas fa-layer-group"></i> Code Formatter</a>
         </div>
         <div class="search-container"><input type="text" class="search-input" placeholder="Search tools..."
                 onkeyup="filterTools(this)"></div>

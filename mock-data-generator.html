@@ -674,13 +674,15 @@
             border-top: 1px solid var(--border-color);
             z-index: 10;
         }
+    
+        a.brand-logo { color: inherit; text-decoration: none; }
     </style>
 </head>
 
 <body>
     <aside id="sidebar">
         <div class="brand">
-            <div class="brand-logo"><i class="fas fa-layer-group"></i> Code Formatter</div>
+            <a href="index.html" class="brand-logo"><i class="fas fa-layer-group"></i> Code Formatter</a>
         </div>
         <div class="search-container"><input type="text" class="search-input" placeholder="Search tools..."
                 onkeyup="filterTools(this)"></div>
