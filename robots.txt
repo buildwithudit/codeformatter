@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://codeformatter.in/sitemap.xml
+Sitemap: https://www.codeformatter.in/sitemap.xml
