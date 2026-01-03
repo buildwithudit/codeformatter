@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Free JS Minifier & Compressor - Minify JavaScript Online 2026 | Code Formatter</title>
+    <meta name="description"
+        content="Free online JavaScript minifier and compressor. Reduce file size up to 80% by removing whitespace and comments. Boost your website load speed instantly.">
+    <meta name="keywords"
+        content="js minifier, javascript minifier, compress javascript, minify js, js compressor, online js minifier, javascript optimizer, reduce js size, fast website">
+    <link rel="canonical" href="https://codeformats.com/js-minifier.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://codeformats.com/js-minifier.html">
+    <meta property="og:title" content="Free JS Minifier & Compressor - Optimize JavaScript Online">
+    <meta property="og:description"
+        content="Minify and compress your JavaScript code instantly. Improve page load times and performance.">
+    <meta property="og:image" content="https://codeformats.com/og-js-minifier.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free JS Minifier & Optimizer Online 2026">
+    <meta name="twitter:description" content="Compress JavaScript code efficiently. Free online tool for developers.">
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Terser for JS Minification -->
+    <script src="https://cdn.jsdelivr.net/npm/terser/dist/bundle.min.js"></script>
+
+    <style>
+        /* Dark Theme (Default) */
+        :root {
+            --bg-body: #0a0a0a;
+            --bg-panel: #171717;
+            --bg-input: rgba(0, 0, 0, 0.3);
+            --border-color: #262626;
+            --primary: #3b82f6;
+            --primary-glow: rgba(59, 130, 246, 0.25);
+            --secondary: #22d3ee;
+            --success: #22c55e;
+            --danger: #ef4444;
+            --text-main: #ededed;
+            --text-muted: #a1a1aa;
+            --text-heading: #ffffff;
+        }
+
+        /* Light Theme */
+        html.light {
+            --bg-body: #f8fafc;
+            --bg-panel: #ffffff;
+            --bg-input: #f1f5f9;
+            --border-color: #e2e8f0;
+            --primary: #4f46e5;
+            --primary-glow: rgba(79, 70, 229, 0.15);
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --text-heading: #0f172a;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        html.light body {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+        }
+
+        main {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        header {
+            background: var(--bg-panel);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 20;
+            flex-shrink: 0;
+        }
+
+        #scrollable-wrapper {
+            flex-grow: 1;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 80px;
+        }
+
+        .workspace {
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            height: 75vh;
+            min-height: 550px;
+            max-height: 750px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .pane {
+            flex: 1;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        html.light .pane {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .pane:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 30px var(--primary-glow);
+            transform: translateY(-2px);
+        }
+
+        .pane-header {
+            padding: 16px 20px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(34, 211, 238, 0.03) 100%);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        html.light .pane-header {
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.06) 0%, rgba(59, 130, 246, 0.03) 100%);
+        }
+
+        .pane-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pane-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .action-icon {
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.95rem;
+            padding: 6px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .action-icon:hover {
+            color: var(--primary);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .editor-container {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            padding: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: var(--text-main);
+            line-height: 1.7;
+            resize: none;
+        }
+
+        textarea:focus {
+            outline: none;
+        }
+
+        textarea::placeholder {
+            color: var(--text-muted);
+            opacity: 0.5;
+        }
+
+        /* Stats */
+        .editor-stats {
+            padding: 10px 20px;
+            background: var(--bg-input);
+            border-top: 1px solid var(--border-color);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .stat-item i {
+            color: var(--primary);
+        }
+
+        .savings-badge {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 800;
+        }
+
+        /* Content Section */
+        .content-container {
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .clean-card {
+            background: var(--bg-panel);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .clean-card::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            filter: blur(120px);
+            opacity: 0.12;
+            z-index: -1;
+        }
+
+        .prose h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin: 0 0 20px 0;
+            background: linear-gradient(180deg, var(--text-heading), var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .prose h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-top: 45px;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .prose h2::before {
+            content: '#';
+            color: var(--primary);
+            opacity: 0.4;
+            margin-right: 10px;
+        }
+
+        .prose h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-top: 30px;
+            margin-bottom: 12px;
+        }
+
+        .prose p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 18px;
+            font-size: 1.02rem;
+        }
+
+        .prose strong {
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .prose ul,
+        .prose ol {
+            margin-bottom: 24px;
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        .prose li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        .prose ul li::before {
+            content: "→";
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .prose ol {
+            counter-reset: list-counter;
+        }
+
+        .prose ol li {
+            counter-increment: list-counter;
+        }
+
+        .prose ol li::before {
+            content: counter(list-counter) ".";
+            color: var(--primary);
+            font-weight: 700;
+            position: absolute;
+            left: 0;
+        }
+
+        .prose code {
+            background: var(--bg-input);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--secondary);
+        }
+
+        .faq-item {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 22px 25px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .faq-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--primary);
+            transition: height 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary);
+            background: rgba(59, 130, 246, 0.02);
+            transform: translateX(5px);
+        }
+
+        html.light .faq-item:hover {
+            background: rgba(79, 70, 229, 0.03);
+        }
+
+        .faq-item:hover::before {
+            height: 100%;
+        }
+
+        .faq-item strong {
+            display: block;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            font-size: 1.02rem;
+        }
+
+        .faq-item p {
+            margin-bottom: 0;
+            font-size: 0.92rem;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--bg-panel);
+            border-top: 1px solid var(--border-color);
+            z-index: 30;
+            padding: 10px 20px;
+        }
+
+        @media (max-width: 768px) {
+            .workspace {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .pane {
+                min-height: 350px;
+            }
+
+            .clean-card {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <aside id="sidebar">
+        <div class="brand">
+            <div class="brand-logo"><i class="fas fa-layer-group"></i> Code Formatter</div>
+        </div>
+        <div class="search-container"><input type="text" class="search-input" placeholder="Search tools..."
+                onkeyup="filterTools(this)"></div>
+                        <nav class="menu" id="menuContainer">
+            <div class="nav-group-title">Code Formatters</div>
+            <a href="index.html" class="nav-item" data-id="json-fmt"><i class="fas fa-code"></i> JSON Formatter</a>
+            <a href="html-formatter.html" class="nav-item" data-id="html-fmt"><i class="fab fa-html5"></i> HTML Formatter</a>
+            <a href="css-formatter.html" class="nav-item" data-id="css-fmt"><i class="fab fa-css3-alt"></i> CSS Formatter</a>
+            <a href="js-formatter.html" class="nav-item" data-id="js-fmt"><i class="fab fa-js"></i> JS Formatter</a>
+            <a href="sql-formatter.html" class="nav-item" data-id="sql-fmt"><i class="fas fa-database"></i> SQL Formatter</a>
+            <a href="xml-formatter.html" class="nav-item" data-id="xml-fmt"><i class="fas fa-code"></i> XML Formatter</a>
+
+            <div class="nav-group-title">Image & Color Tools</div>
+            <a href="image-compressor.html" class="nav-item" data-id="img-compress"><i class="fas fa-image"></i> Image Compressor</a>
+            <a href="color-converter.html" class="nav-item" data-id="color-conv"><i class="fas fa-palette"></i> Color Converter</a>
+            <a href="qr-code-generator.html" class="nav-item" data-id="qr-gen"><i class="fas fa-qrcode"></i> QR Generator</a>
+
+            <div class="nav-group-title">Code Minifiers</div>
+            <a href="json-minifier.html" class="nav-item" data-id="json-min"><i class="fas fa-compress"></i> JSON Minifier</a>
+            <a href="html-minifier.html" class="nav-item" data-id="html-min"><i class="fas fa-compress-arrows-alt"></i> HTML Minifier</a>
+            <a href="css-minifier.html" class="nav-item" data-id="css-min"><i class="fas fa-compress-arrows-alt"></i> CSS Minifier</a>
+            <a href="js-minifier.html" class="nav-item" data-id="js-min"><i class="fas fa-file-archive"></i> JS Minifier</a>
+
+            <div class="nav-group-title">Data Converters</div>
+            <a href="json-to-csv.html" class="nav-item" data-id="json-csv"><i class="fas fa-table"></i> JSON to CSV</a>
+            <a href="csv-to-json.html" class="nav-item" data-id="csv-json"><i class="fas fa-file-csv"></i> CSV to JSON</a>
+            <a href="excel-to-html.html" class="nav-item" data-id="excel-html"><i class="fas fa-table"></i> Excel to HTML</a>
+            <a href="case-converter.html" class="nav-item" data-id="case-conv"><i class="fas fa-text-height"></i> Case Converter</a>
+
+            <div class="nav-group-title">Encoding & Security</div>
+            <a href="base64-tool.html" class="nav-item" data-id="base64"><i class="fas fa-lock"></i> Base64 Tool</a>
+            <a href="url-encoder.html" class="nav-item" data-id="url-enc"><i class="fas fa-link"></i> URL Encoder</a>
+            <a href="hash-generator.html" class="nav-item" data-id="hash-gen"><i class="fas fa-fingerprint"></i> Hash Generator</a>
+            <a href="jwt-decoder.html" class="nav-item" data-id="jwt-dec"><i class="fas fa-shield-alt"></i> JWT Decoder</a>
+
+            <div class="nav-group-title">CSS Generators</div>
+            <a href="glassmorphism-generator.html" class="nav-item" data-id="glass-morphism"><i class="fas fa-wind"></i> Glassmorphism</a>
+            <a href="smooth-shadow-generator.html" class="nav-item" data-id="shadow-gen"><i class="fas fa-layer-group"></i> Smooth Shadow</a>
+            <a href="px-to-rem.html" class="nav-item" data-id="px-rem"><i class="fas fa-ruler-combined"></i> PX to REM</a>
+            <a href="aspect-ratio-calculator.html" class="nav-item" data-id="aspect-ratio"><i class="fas fa-expand"></i> Aspect Ratio</a>
+
+            <div class="nav-group-title">Text & Data</div>
+            <a href="lorem-ipsum-generator.html" class="nav-item" data-id="lorem"><i class="fas fa-paragraph"></i> Lorem Ipsum</a>
+            <a href="mock-data-generator.html" class="nav-item" data-id="mock-data"><i class="fas fa-users"></i> Mock Data Gen</a>
+            <a href="diff-checker.html" class="nav-item" data-id="diff-check"><i class="fas fa-exchange-alt"></i> Diff Checker</a>
+
+            <div class="nav-group-title">Preview Tools</div>
+            <a href="html-viewer.html" class="nav-item" data-id="html-view"><i class="fas fa-eye"></i> HTML Viewer</a>
+            <a href="social-card-preview.html" class="nav-item" data-id="social-card"><i class="fas fa-share-alt"></i> Social Preview</a>
+        </nav>
+    </aside>
+    <div id="overlay" onclick="closeAllDrawers()"></div>
+
+    <main>
+        <header>
+            <div class="header-left"><i class="fas fa-bars menu-toggle-btn" onclick="handleMenuClick()"></i>
+                <div class="tool-info">
+                    <div id="toolTitle">JS Minifier</div>
+                    <p id="toolDesc">Compress and optimize your JavaScript code securely.</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="blog.html" class="nav-link">Blog</a>
+                <button class="theme-btn" onclick="toggleTheme()"><i class="fas fa-moon" id="themeIcon"></i></button>
+            </div>
+        </header>
+
+        <div id="scrollable-wrapper">
+            <section class="workspace" id="workspace">
+                <!-- Input Pane -->
+                <div class="pane">
+                    <div class="pane-header">
+                        <span class="pane-title"><i class="fab fa-js"></i> Input JavaScript</span>
+                        <div class="pane-actions">
+                            <i class="far fa-clipboard action-icon" onclick="pasteJS()" title="Paste"></i>
+                            <i class="far fa-trash-alt action-icon" onclick="clearJS()" title="Clear"></i>
+                        </div>
+                    </div>
+                    <div class="editor-container">
+                        <textarea id="inputJS" placeholder="Paste your JavaScript code here..." spellcheck="false"
+                            oninput="updateStats()">function helloLongVariableName(name) {
+    console.log("Hello, " + name + "!");
+    // This is a comment that will be removed
+    var unusedVariable = "I should be gone";
+    return true;
+}</textarea>
+                    </div>
+                    <div class="editor-stats">
+                        <div class="stat-item"><i class="fas fa-file-code"></i> <span id="inputSize">0 KB</span></div>
+                    </div>
+                </div>
+
+                <!-- Output Pane -->
+                <div class="pane">
+                    <div class="pane-header">
+                        <span class="pane-title"><i class="fas fa-compress-arrows-alt"></i> Minified JS <span
+                                id="savingsBadge" class="savings-badge">0% Saved</span></span>
+                        <div class="pane-actions">
+                            <i class="far fa-copy action-icon" onclick="copyOutput()" title="Copy Result"></i>
+                            <i class="fas fa-download action-icon" onclick="downloadJS()" title="Download"></i>
+                        </div>
+                    </div>
+                    <div class="editor-container">
+                        <textarea id="outputJS" readonly placeholder="Minified code will appear here..."></textarea>
+                    </div>
+                    <div class="editor-stats">
+                        <div class="stat-item"><i class="fas fa-file-contract"></i> <span id="outputSize">0 KB</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEO CONTENT SECTION -->
+            <div class="content-container">
+                <article class="clean-card prose">
+                    <h1>Free JavaScript Minifier & Compressor 2026</h1>
+
+                    <p>Welcome to <strong>Code Formatter JS Minifier</strong> – the ultimate tool to optimize your
+                        JavaScript code for production. In today's web environment, speed is everything. Every kilobyte
+                        of JavaScript your user has to download, parse, and execute delays your Time-to-Interactive
+                        (TTI). Our <strong>JavaScript Compressor</strong> efficiently strips away unnecessary
+                        characters—whitespace, newlines, comments, and block delimiters—without changing your code's
+                        functionality, making your scripts lean, mean, and fast.</p>
+
+                    <p>JavaScript minification is a standard step in modern deployment pipelines. While build tools like
+                        Webpack or Vite handle this automatically for large apps, there are countless scenarios—legacy
+                        projects, quick scripts, simple static sites—where you need a quick, reliable, and secure online
+                        minifier. Our tool uses industry-grade compression logic (Terser) directly in your browser to
+                        deliver maximum savings.</p>
+
+                    <h2>How Our JS Minifier Works</h2>
+                    <p>Getting production-ready code is effortless:</p>
+                    <ol>
+                        <li><strong>Paste Code:</strong> Drop your verbose development code into the left pane.</li>
+                        <li><strong>Click Minify:</strong> Press the "MINIFY" button. The tool analyzes your syntax tree
+                            and applies aggressive compression techniques.</li>
+                        <li><strong>Check Savings:</strong> Instantly see the file size reduction and the percentage
+                            saved in the "Savings Badge".</li>
+                        <li><strong>Deploy:</strong> Copy the minified output or download the `.min.js` file for your
+                            server.</li>
+                    </ol>
+
+                    <h2>Why You Must Minify JavaScript</h2>
+                    <p>The benefits of serving minified code are measurable and significant:</p>
+
+                    <h3>1. Faster Page Loads</h3>
+                    <p>JavaScript files are often the heaviest assets on a page. Reducing a 500KB library to 150KB means
+                        users on 4G networks can download it 3x faster, directly improving your logical First Contentful
+                        Paint (FCP).</p>
+
+                    <h3>2. Reduced Bandwidth Costs</h3>
+                    <p>If you pay for CDN bandwidth (AWS CloudFront, Netlify), shrinking your assets by 60-80% directly
+                        reduces your monthly infrastructure bill.</p>
+
+                    <h3>3. Faster Parsing</h3>
+                    <p>Browsers don't just download code; they have to parse and compile it. Minified code is faster for
+                        the JavaScript engine to tokenize, leading to quicker script execution start times.</p>
+
+                    <h3>4. Better SEO</h3>
+                    <p>Google's Core Web Vitals heavily penalize slow sites. By reducing asset size, you improve your
+                        page speed score, which is a direct ranking factor for search engines.</p>
+
+                    <h2>Key Features of Our Minifier</h2>
+                    <p>We've built this tool to be the best-in-class online solution:</p>
+                    <ul>
+                        <li><strong>Terser Engine:</strong> Powered by Terser, the gold standard for JavaScript
+                            parser/mangler/compressor toolkits. This ensures 100% safe but aggressive compression.</li>
+                        <li><strong>Dead Code Removal:</strong> Automatically detects and removes unreachable code
+                            (e.g., code after a `return` statement) to save even more space.</li>
+                        <li><strong>Variable Shortening (Mangling):</strong> intelligently renames long variable names
+                            like `userAuthenticationStatus` to single letters like `a` or `b` within local scopes.</li>
+                        <li><strong>Comment Stripping:</strong> Removes all single-line `//` and multi-line `/* */`
+                            comments, which are useful for devs but useless for browsers.</li>
+                        <li><strong>Client-Side Security:</strong> Your potentially proprietary algorithms never leave
+                            your machine. All compression happens locally in your browser memory.</li>
+                    </ul>
+
+                    <h2>Minification vs. Compression (Gzip)</h2>
+                    <p>It's important to understand the difference:</p>
+                    <ul>
+                        <li><strong>Minification (This Tool):</strong> Removes redundant characters from the source
+                            code. It is permanent and done before deployment.</li>
+                        <li><strong>Compression (Gzip/Brotli):</strong> Compresses the file stream during network
+                            transfer between server and browser.</li>
+                    </ul>
+                    <p><strong>Pro Tip:</strong> For maximum performance, you should do BOTH. Minify your JS first, then
+                        configure your server to Gzip the minified file.</p>
+
+                    <h2>Common Use Cases for Online Minification</h2>
+                    <ul>
+                        <li><strong>Inline Scripts:</strong> When adding valid javascript to a specific HTML page (e.g.,
+                            GTM tags, analytics snippets), minifying it first keeps your HTML clean.</li>
+                        <li><strong>One-off Scripts:</strong> For simple landing pages that don't use a build process,
+                            manually minifying your `script.js` is a quick win.</li>
+                        <li><strong>Bookmarklets:</strong> Creating browser bookmarklets requires code to be on a single
+                            line (URI encoded). Our minifier prepares code perfectly for this.</li>
+                    </ul>
+
+                    <h2>Frequently Asked Questions</h2>
+
+                    <div class="faq-item">
+                        <strong>Will minification break my code?</strong>
+                        <p>It shouldn't. The Terser engine is very robust. However, if your code relies on `eval()` or
+                            implicit global variables, variable renaming <em>could</em> cause issues. We recommend
+                            testing the minified code in a staging environment.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Can I reverse minification?</strong>
+                        <p>Not perfectly. You can formatting it (beautify) to make it readable again using our <a
+                                href="js-formatter.html">JS Formatter</a>, but the original variable names and comments
+                            are lost forever.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Does it support ES6/ESNext?</strong>
+                        <p>Yes. Our tool supports modern JavaScript syntax including arrow functions, classes, and
+                            async/await. It will minify them without transpiling them down to ES5.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>How much size can I save?</strong>
+                        <p>Typical savings range from 30% to 80%, depending on your coding style. Code with long
+                            variable names and many comments sees the biggest reduction.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Is it safe for production?</strong>
+                        <p>Yes. This uses the same underlying technology as production build tools like Webpack.
+                            Millions of websites run code minified by Terser every day.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>What about "Uglification"?</strong>
+                        <p>"Uglify" is just another term for minification + mangling (renaming variables). This tool
+                            does both to maximize space savings.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Does it remove `console.log`?</strong>
+                        <p>By default, yes/no (depending on our current config). Usually, it's good practice to remove
+                            console logs for production to keep the console clean for users.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Is there a file limit?</strong>
+                        <p>Since it runs in your browser, the limit is your available RAM. You can typically minify
+                            files up to 5-10MB without crashing the tab.</p>
+                    </div>
+
+                    <p style="text-align: center; margin-top: 3rem; color: var(--text-muted); font-size: 0.85rem;">
+                        Code Formatter © 2026. Professional developer tools built with privacy and performance in mind.
+                    </p>
+                </article>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-stats">
+                <div class="stat-item" id="footerStatus"><i class="fas fa-circle-notch"></i> Ready</div>
+                <div class="footer-links"><a href="./About.html">About</a> • <a href="./Privacy.html">Privacy</a> • <a
+                        href="./Contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-actions">
+                <button class="btn btn-sec" onclick="clearJS()"><i class="far fa-trash-alt"></i> CLEAR</button>
+                <button class="btn btn-pri" onclick="minifyJS()"><i class="fas fa-compress-arrows-alt"></i>
+                    MINIFY</button>
+            </div>
+        </footer>
+    </main>
+
+    <div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span>Action Completed</span></div>
+
+    <script>
+        const activeToolId = "js-min";
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateStats();
+        });
+
+        async function minifyJS() {
+            const input = document.getElementById('inputJS').value;
+            const output = document.getElementById('outputJS');
+            const status = document.getElementById('footerStatus');
+
+            if (!input.trim()) {
+                showToast('Please enter JavaScript to minify');
+                return;
+            }
+
+            try {
+                status.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Minifying...';
+
+                // Check if Terser is loaded
+                if (typeof Terser === 'undefined') {
+                    throw new Error('Terser engine not loaded. Please check your internet connection.');
+                }
+
+                // Minify
+                const result = await Terser.minify(input, {
+                    mangle: true,
+                    compress: true
+                });
+
+                if (result.error) {
+                    throw result.error;
+                }
+
+                output.value = result.code;
+
+                // Calculate Savings
+                const originalSize = new Blob([input]).size;
+                const minifiedSize = new Blob([result.code]).size;
+                const saved = Math.max(0, originalSize - minifiedSize);
+                const percentage = originalSize > 0 ? ((saved / originalSize) * 100).toFixed(1) : '0';
+
+                // Update UI
+                document.getElementById('savingsBadge').textContent = `${percentage}% Saved`;
+                document.getElementById('outputSize').textContent = `${(minifiedSize / 1024).toFixed(2)} KB`;
+
+                status.innerHTML = '<i class="fas fa-check-circle"></i> Minified Successfully';
+                showToast(`Js Minified! Saved ${percentage}%`);
+
+            } catch (error) {
+                console.error(error);
+                output.value = 'Error minifying JS: ' + (error.message || error);
+                status.innerHTML = '<i class="fas fa-exclamation-circle"></i> Error';
+                showToast('Error: Invalid JavaScript');
+            }
+        }
+
+        function updateStats() {
+            const text = document.getElementById('inputJS').value;
+            const size = new Blob([text]).size;
+            document.getElementById('inputSize').textContent = `${(size / 1024).toFixed(2)} KB`;
+        }
+
+        function pasteJS() {
+            navigator.clipboard.readText().then(text => {
+                document.getElementById('inputJS').value = text;
+                updateStats();
+                showToast('Code pasted!');
+            });
+        }
+
+        function clearJS() {
+            document.getElementById('inputJS').value = '';
+            document.getElementById('outputJS').value = '';
+            updateStats();
+            document.getElementById('savingsBadge').textContent = '0% Saved';
+            document.getElementById('outputSize').textContent = '0 KB';
+            document.getElementById('footerStatus').innerHTML = '<i class="fas fa-circle-notch"></i> Ready';
+            showToast('Cleared!');
+        }
+
+        function copyOutput() {
+            const output = document.getElementById('outputJS').value;
+            if (!output) {
+                showToast('Nothing to copy. Minify code first.');
+                return;
+            }
+            navigator.clipboard.writeText(output).then(() => {
+                showToast('Copied to clipboard!');
+            });
+        }
+
+        function downloadJS() {
+            const output = document.getElementById('outputJS').value;
+            if (!output) {
+                showToast('Nothing to download. Minify code first.');
+                return;
+            }
+            const blob = new Blob([output], { type: 'text/javascript' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'minified.js';
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast('Downloaded minified.js!');
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.querySelector('span').innerText = msg;
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 3000);
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

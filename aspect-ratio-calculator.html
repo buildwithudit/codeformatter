@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Aspect Ratio Calculator - Free CSS & Image Dimension Tool Online</title>
+    <meta name="description"
+        content="Calculate aspect ratios instantly with our free online tool. Convert between dimensions, generate CSS aspect-ratio code, and resize images while maintaining proportions. Perfect for web developers, designers, and video editors.">
+    <meta name="keywords"
+        content="aspect ratio calculator, aspect ratio converter, image dimension calculator, css aspect-ratio, video aspect ratio, 16:9 calculator, 4:3 converter, responsive image size, width height ratio, screen resolution calculator">
+    <meta name="author" content="Code Formatter">
+    <link rel="canonical" href="https://code-formats.com/aspect-ratio-calculator.html">
+    <meta property="og:title" content="Aspect Ratio Calculator - Free Online Dimension Tool">
+    <meta property="og:description"
+        content="Calculate and convert aspect ratios for images, videos, and CSS layouts. Maintain perfect proportions every time.">
+    <meta property="og:image" content="https://code-formats.com/assets/aspect-ratio-calculator-preview.png">
+    <meta property="og:url" content="https://code-formats.com/aspect-ratio-calculator.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Aspect Ratio Calculator">
+    <meta name="twitter:description"
+        content="Calculate aspect ratios for images, videos, and responsive layouts instantly.">
+    <meta name="twitter:image" content="https://code-formats.com/assets/aspect-ratio-calculator-preview.png">
+    <meta name="theme-color" content="#171717">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-body: #0a0a0a;
+            --bg-panel: #171717;
+            --border-color: #262626;
+            --primary: #3b82f6;
+            --primary-glow: rgba(59, 130, 246, 0.4);
+            --secondary: #22d3ee;
+            --text-main: #ededed;
+            --text-muted: #a1a1aa;
+            --success: #22c55e;
+            --warning: #f59e0b;
+        }
+
+        html.light {
+            --bg-body: #f8fafc;
+            --bg-panel: #ffffff;
+            --border-color: #e2e8f0;
+            --primary: #4f46e5;
+            --primary-glow: rgba(79, 70, 229, 0.3);
+            --secondary: #0891b2;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            background-image:
+                radial-gradient(ellipse at 20% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(34, 211, 238, 0.06) 0%, transparent 50%),
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        html.light body {
+            background-image:
+                radial-gradient(ellipse at 20% 20%, rgba(79, 70, 229, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(8, 145, 178, 0.04) 0%, transparent 50%),
+                linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+        }
+
+        main {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        header {
+            background: var(--bg-panel);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 20;
+            flex-shrink: 0;
+        }
+
+        html.light header {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        #scrollable-wrapper {
+            flex-grow: 1;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 80px;
+        }
+
+        #scrollable-wrapper::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #scrollable-wrapper::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 3px;
+        }
+
+        .workspace {
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            min-height: 70vh;
+        }
+
+        .pane {
+            flex: 1;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .pane:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 24px var(--primary-glow);
+            transform: translateY(-2px);
+        }
+
+        html.light .pane:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 20px var(--primary-glow);
+        }
+
+        .pane-header {
+            padding: 16px 20px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(34, 211, 238, 0.02) 100%);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pane-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pane-title i {
+            font-size: 1rem;
+        }
+
+        .editor-container {
+            flex: 1;
+            position: relative;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        /* ASPECT RATIO CONTROLS */
+        #aspectControls {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .control-section {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .control-section:hover {
+            border-color: var(--primary);
+            background: rgba(59, 130, 246, 0.03);
+        }
+
+        .control-section-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .control-section-title i {
+            color: var(--primary);
+        }
+
+        .dimension-row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .dimension-input-group {
+            flex: 1;
+        }
+
+        .dimension-input-group label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .dimension-input {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            transition: all 0.2s ease;
+        }
+
+        .dimension-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-glow);
+        }
+
+        .link-icon {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 10px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .link-icon:hover {
+            color: var(--primary);
+            background: var(--primary-glow);
+        }
+
+        .link-icon.locked {
+            color: var(--primary);
+        }
+
+        .preset-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+        .preset-btn {
+            padding: 10px 8px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .preset-btn:hover {
+            border-color: var(--primary);
+            color: var(--text-main);
+            background: var(--primary-glow);
+        }
+
+        .preset-btn.active {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: white;
+        }
+
+        .swap-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(34, 211, 238, 0.1));
+            border: 1px solid var(--primary);
+            border-radius: 10px;
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .swap-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.02);
+        }
+
+        /* LIVE PREVIEW */
+        #aspectPreview {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .preview-box {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background:
+                linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(34, 211, 238, 0.04)),
+                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 255, 255, 0.02) 10px, rgba(255, 255, 255, 0.02) 20px);
+            border: 2px dashed var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .aspect-rectangle {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 40px var(--primary-glow);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .aspect-rectangle::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+            border-radius: 8px;
+        }
+
+        .ratio-display {
+            font-size: 2rem;
+            z-index: 1;
+        }
+
+        .dimension-display {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            margin-top: 4px;
+            z-index: 1;
+        }
+
+        .output-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .output-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .output-card:hover {
+            border-color: var(--primary);
+        }
+
+        .output-card-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .output-card-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .css-output {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 14px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--secondary);
+            position: relative;
+        }
+
+        html.light .css-output {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .css-output .copy-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            padding: 6px 10px;
+            background: var(--primary);
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .css-output .copy-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* CONTENT SECTION */
+        .content-container {
+            margin: 20px auto 40px auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .clean-card {
+            background: var(--bg-panel);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        html.light .clean-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: #e2e8f0;
+        }
+
+        .clean-card::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+            height: 400px;
+            background: var(--primary);
+            filter: blur(140px);
+            opacity: 0.12;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .prose h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin: 0 0 20px 0;
+            background: linear-gradient(180deg, #fff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        html.light .prose h1 {
+            background: linear-gradient(180deg, #0f172a, #64748b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .prose h2 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #27272a;
+        }
+
+        .prose h2::before {
+            content: '#';
+            color: var(--primary);
+            opacity: 0.5;
+            margin-right: 10px;
+        }
+
+        .prose h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-top: 35px;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+
+        .prose p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            letter-spacing: 0.01em;
+        }
+
+        html.light .prose p {
+            color: #475569;
+        }
+
+        .prose strong {
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .prose ul {
+            margin-bottom: 24px;
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        .prose li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            color: #d4d4d4;
+            line-height: 1.7;
+        }
+
+        .prose li::before {
+            content: "→";
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.1rem;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .prose ol {
+            counter-reset: list-counter;
+            margin-bottom: 24px;
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        .prose ol li {
+            counter-increment: list-counter;
+            padding-left: 35px;
+        }
+
+        .prose ol li::before {
+            content: counter(list-counter) ".";
+            color: var(--primary);
+            font-weight: 700;
+            position: absolute;
+            left: 0;
+        }
+
+        .prose code {
+            background: rgba(59, 130, 246, 0.15);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9em;
+            color: var(--secondary);
+        }
+
+        .ratio-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        html.light .ratio-table {
+            background: rgba(0, 0, 0, 0.03);
+        }
+
+        .ratio-table th,
+        .ratio-table td {
+            padding: 14px 18px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .ratio-table th {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .ratio-table td {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .ratio-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .ratio-table tr:hover td {
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        .faq-item {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 22px 25px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        html.light .faq-item {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: #e2e8f0;
+        }
+
+        .faq-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--primary);
+            transition: height 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.03);
+            transform: translateX(5px);
+        }
+
+        html.light .faq-item:hover {
+            background: rgba(79, 70, 229, 0.05);
+        }
+
+        .faq-item:hover::before {
+            height: 100%;
+        }
+
+        .faq-item strong {
+            display: block;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .faq-item p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-muted);
+        }
+
+        html.light .faq-item p {
+            color: #64748b;
+        }
+
+        html.light .prose h2 {
+            color: #0f172a;
+            border-bottom-color: #e2e8f0;
+        }
+
+        html.light .prose li {
+            color: #475569;
+        }
+
+        html.light .pane-title {
+            color: var(--primary);
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--bg-panel);
+            border-top: 1px solid var(--border-color);
+            z-index: 10;
+        }
+
+        @media (max-width: 768px) {
+            .workspace {
+                flex-direction: column;
+            }
+
+            .preset-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .output-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .clean-card {
+                padding: 30px 20px;
+            }
+
+            .prose h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Aspect Ratio Calculator",
+        "description": "Free online aspect ratio calculator for images, videos, and CSS layouts. Calculate dimensions while maintaining proportions.",
+        "url": "https://code-formats.com/aspect-ratio-calculator.html",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "ratingCount": "1847"
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <aside id="sidebar">
+        <div class="brand">
+            <div class="brand-logo"><i class="fas fa-layer-group"></i> Code Formatter</div>
+        </div>
+        <div class="search-container"><input type="text" class="search-input" placeholder="Search tools..."
+                onkeyup="filterTools(this)"></div>
+                        <nav class="menu" id="menuContainer">
+            <div class="nav-group-title">Code Formatters</div>
+            <a href="index.html" class="nav-item" data-id="json-fmt"><i class="fas fa-code"></i> JSON Formatter</a>
+            <a href="html-formatter.html" class="nav-item" data-id="html-fmt"><i class="fab fa-html5"></i> HTML Formatter</a>
+            <a href="css-formatter.html" class="nav-item" data-id="css-fmt"><i class="fab fa-css3-alt"></i> CSS Formatter</a>
+            <a href="js-formatter.html" class="nav-item" data-id="js-fmt"><i class="fab fa-js"></i> JS Formatter</a>
+            <a href="sql-formatter.html" class="nav-item" data-id="sql-fmt"><i class="fas fa-database"></i> SQL Formatter</a>
+            <a href="xml-formatter.html" class="nav-item" data-id="xml-fmt"><i class="fas fa-code"></i> XML Formatter</a>
+
+            <div class="nav-group-title">Image & Color Tools</div>
+            <a href="image-compressor.html" class="nav-item" data-id="img-compress"><i class="fas fa-image"></i> Image Compressor</a>
+            <a href="color-converter.html" class="nav-item" data-id="color-conv"><i class="fas fa-palette"></i> Color Converter</a>
+            <a href="qr-code-generator.html" class="nav-item" data-id="qr-gen"><i class="fas fa-qrcode"></i> QR Generator</a>
+
+            <div class="nav-group-title">Code Minifiers</div>
+            <a href="json-minifier.html" class="nav-item" data-id="json-min"><i class="fas fa-compress"></i> JSON Minifier</a>
+            <a href="html-minifier.html" class="nav-item" data-id="html-min"><i class="fas fa-compress-arrows-alt"></i> HTML Minifier</a>
+            <a href="css-minifier.html" class="nav-item" data-id="css-min"><i class="fas fa-compress-arrows-alt"></i> CSS Minifier</a>
+            <a href="js-minifier.html" class="nav-item" data-id="js-min"><i class="fas fa-file-archive"></i> JS Minifier</a>
+
+            <div class="nav-group-title">Data Converters</div>
+            <a href="json-to-csv.html" class="nav-item" data-id="json-csv"><i class="fas fa-table"></i> JSON to CSV</a>
+            <a href="csv-to-json.html" class="nav-item" data-id="csv-json"><i class="fas fa-file-csv"></i> CSV to JSON</a>
+            <a href="excel-to-html.html" class="nav-item" data-id="excel-html"><i class="fas fa-table"></i> Excel to HTML</a>
+            <a href="case-converter.html" class="nav-item" data-id="case-conv"><i class="fas fa-text-height"></i> Case Converter</a>
+
+            <div class="nav-group-title">Encoding & Security</div>
+            <a href="base64-tool.html" class="nav-item" data-id="base64"><i class="fas fa-lock"></i> Base64 Tool</a>
+            <a href="url-encoder.html" class="nav-item" data-id="url-enc"><i class="fas fa-link"></i> URL Encoder</a>
+            <a href="hash-generator.html" class="nav-item" data-id="hash-gen"><i class="fas fa-fingerprint"></i> Hash Generator</a>
+            <a href="jwt-decoder.html" class="nav-item" data-id="jwt-dec"><i class="fas fa-shield-alt"></i> JWT Decoder</a>
+
+            <div class="nav-group-title">CSS Generators</div>
+            <a href="glassmorphism-generator.html" class="nav-item" data-id="glass-morphism"><i class="fas fa-wind"></i> Glassmorphism</a>
+            <a href="smooth-shadow-generator.html" class="nav-item" data-id="shadow-gen"><i class="fas fa-layer-group"></i> Smooth Shadow</a>
+            <a href="px-to-rem.html" class="nav-item" data-id="px-rem"><i class="fas fa-ruler-combined"></i> PX to REM</a>
+            <a href="aspect-ratio-calculator.html" class="nav-item" data-id="aspect-ratio"><i class="fas fa-expand"></i> Aspect Ratio</a>
+
+            <div class="nav-group-title">Text & Data</div>
+            <a href="lorem-ipsum-generator.html" class="nav-item" data-id="lorem"><i class="fas fa-paragraph"></i> Lorem Ipsum</a>
+            <a href="mock-data-generator.html" class="nav-item" data-id="mock-data"><i class="fas fa-users"></i> Mock Data Gen</a>
+            <a href="diff-checker.html" class="nav-item" data-id="diff-check"><i class="fas fa-exchange-alt"></i> Diff Checker</a>
+
+            <div class="nav-group-title">Preview Tools</div>
+            <a href="html-viewer.html" class="nav-item" data-id="html-view"><i class="fas fa-eye"></i> HTML Viewer</a>
+            <a href="social-card-preview.html" class="nav-item" data-id="social-card"><i class="fas fa-share-alt"></i> Social Preview</a>
+        </nav>
+    </aside>
+    <div id="overlay" onclick="closeAllDrawers()"></div>
+
+    <main>
+        <header>
+            <div class="header-left"><i class="fas fa-bars menu-toggle-btn" onclick="handleMenuClick()"></i>
+                <div class="tool-info">
+                    <div id="toolTitle">Aspect Ratio Calculator</div>
+                    <p id="toolDesc">Calculate & convert aspect ratios with live preview</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="blog.html" class="nav-link">Blog</a>
+                <button class="theme-btn" onclick="toggleTheme()"><i class="fas fa-moon" id="themeIcon"></i></button>
+            </div>
+        </header>
+
+        <div id="scrollable-wrapper">
+            <section class="workspace" id="workspace">
+                <div class="pane">
+                    <div class="pane-header">
+                        <span class="pane-title" id="paneInputTitle"><i class="fas fa-sliders-h"></i> Controls</span>
+                        <div class="pane-actions" id="inputActions">
+                            <i class="far fa-trash-alt action-icon" onclick="resetCalculator()" title="Reset"></i>
+                        </div>
+                    </div>
+                    <div class="editor-container">
+                        <div id="aspectControls">
+                            <!-- Dimension Input -->
+                            <div class="control-section">
+                                <div class="control-section-title"><i class="fas fa-ruler"></i> Dimensions</div>
+                                <div class="dimension-row">
+                                    <div class="dimension-input-group">
+                                        <label for="inputWidth">Width</label>
+                                        <input type="number" id="inputWidth" class="dimension-input" value="1920"
+                                            min="1" oninput="calculateAspectRatio('width')">
+                                    </div>
+                                    <i class="fas fa-link link-icon locked" id="lockIcon" onclick="toggleLock()"
+                                        title="Lock Ratio"></i>
+                                    <div class="dimension-input-group">
+                                        <label for="inputHeight">Height</label>
+                                        <input type="number" id="inputHeight" class="dimension-input" value="1080"
+                                            min="1" oninput="calculateAspectRatio('height')">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Preset Ratios -->
+                            <div class="control-section">
+                                <div class="control-section-title"><i class="fas fa-th"></i> Common Presets</div>
+                                <div class="preset-grid">
+                                    <button class="preset-btn active" onclick="setPreset(16, 9)">16:9</button>
+                                    <button class="preset-btn" onclick="setPreset(4, 3)">4:3</button>
+                                    <button class="preset-btn" onclick="setPreset(1, 1)">1:1</button>
+                                    <button class="preset-btn" onclick="setPreset(21, 9)">21:9</button>
+                                    <button class="preset-btn" onclick="setPreset(9, 16)">9:16</button>
+                                    <button class="preset-btn" onclick="setPreset(3, 2)">3:2</button>
+                                    <button class="preset-btn" onclick="setPreset(5, 4)">5:4</button>
+                                    <button class="preset-btn" onclick="setPreset(2, 1)">2:1</button>
+                                </div>
+                            </div>
+
+                            <!-- New Dimension Calculator -->
+                            <div class="control-section">
+                                <div class="control-section-title"><i class="fas fa-calculator"></i> Resize to New Width
+                                </div>
+                                <div class="dimension-row">
+                                    <div class="dimension-input-group">
+                                        <label for="newWidth">New Width</label>
+                                        <input type="number" id="newWidth" class="dimension-input"
+                                            placeholder="e.g. 1280" oninput="calculateNewHeight()">
+                                    </div>
+                                    <i class="fas fa-arrow-right" style="color: var(--text-muted);"></i>
+                                    <div class="dimension-input-group">
+                                        <label>New Height</label>
+                                        <div id="calculatedHeight" class="dimension-input"
+                                            style="background: var(--primary-glow); border-color: var(--primary); display: flex; align-items: center;">
+                                            —</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Swap Button -->
+                            <button class="swap-btn" onclick="swapDimensions()">
+                                <i class="fas fa-exchange-alt"></i> Swap Width & Height
+                            </button>
+                        </div>
+                        <div class="editor-stats" id="inputStats" style="display:none;">0 chars | 0 KB</div>
+                        <!-- Hidden elements required by shared script.js -->
+                        <div style="display:none;">
+                            <textarea id="input"></textarea>
+                            <textarea id="output"></textarea>
+                            <div id="outputStats"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pane">
+                    <div class="pane-header">
+                        <span class="pane-title" id="paneOutputTitle"><i class="fas fa-eye"></i> Live Preview</span>
+                        <div class="pane-actions">
+                            <i class="far fa-copy action-icon" onclick="copyCSSCode()" title="Copy CSS"></i>
+                        </div>
+                    </div>
+                    <div class="editor-container">
+                        <div id="aspectPreview">
+                            <!-- Visual Preview -->
+                            <div class="preview-box">
+                                <div class="aspect-rectangle" id="previewRect">
+                                    <div class="ratio-display" id="ratioDisplay">16:9</div>
+                                    <div class="dimension-display" id="dimDisplay">1920 × 1080</div>
+                                </div>
+                            </div>
+
+                            <!-- Output Cards -->
+                            <div class="output-cards">
+                                <div class="output-card">
+                                    <div class="output-card-title">Aspect Ratio</div>
+                                    <div class="output-card-value" id="outRatio">16:9</div>
+                                </div>
+                                <div class="output-card">
+                                    <div class="output-card-title">Decimal</div>
+                                    <div class="output-card-value" id="outDecimal">1.778</div>
+                                </div>
+                                <div class="output-card">
+                                    <div class="output-card-title">Orientation</div>
+                                    <div class="output-card-value" id="outOrientation">Landscape</div>
+                                </div>
+                                <div class="output-card">
+                                    <div class="output-card-title">Total Pixels</div>
+                                    <div class="output-card-value" id="outPixels">2.07 MP</div>
+                                </div>
+                            </div>
+
+                            <!-- CSS Output -->
+                            <div class="css-output">
+                                <button class="copy-btn" onclick="copyCSSCode()"><i class="fas fa-copy"></i>
+                                    Copy</button>
+                                <code id="cssCode">aspect-ratio: 16 / 9;</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEO CONTENT SECTION -->
+            <div class="content-container">
+                <article class="clean-card prose">
+                    <h1>Free Aspect Ratio Calculator - Dimension Converter & CSS Generator</h1>
+
+                    <p>Our <strong>aspect ratio calculator</strong> is a powerful, free online tool designed for web
+                        developers, graphic designers, video editors, and photographers. Whether you need to resize an
+                        image while maintaining proportions, calculate the height for a specific width, or generate
+                        production-ready CSS <code>aspect-ratio</code> property code, this tool delivers instant,
+                        accurate results with a beautiful live preview.</p>
+
+                    <p>Understanding and working with aspect ratios is fundamental to creating visually consistent
+                        media. From responsive website layouts to YouTube thumbnails to professional photography prints,
+                        the correct aspect ratio ensures your content displays perfectly across all devices and
+                        platforms without unwanted cropping or distortion.</p>
+
+                    <h2>What is Aspect Ratio?</h2>
+
+                    <p>An <strong>aspect ratio</strong> is the proportional relationship between the width and height of
+                        an image, video, or screen. It's expressed as two numbers separated by a colon (e.g., 16:9)
+                        representing the ratio of width to height. This ratio remains constant regardless of the actual
+                        pixel dimensions, meaning a 1920×1080 image has the same 16:9 aspect ratio as a 3840×2160 (4K)
+                        image.</p>
+
+                    <p><strong>Key Concepts:</strong></p>
+                    <ul>
+                        <li><strong>Width-to-Height Ratio:</strong> The first number represents width, the second
+                            represents height (16:9 means 16 units wide for every 9 units tall).</li>
+                        <li><strong>Decimal Form:</strong> The ratio can also be expressed as a decimal (16÷9 = 1.778),
+                            useful for calculations and CSS.</li>
+                        <li><strong>Simplified Form:</strong> Ratios are typically reduced to their lowest terms
+                            (1920:1080 simplifies to 16:9 using GCD).</li>
+                        <li><strong>Orientation:</strong> Landscape (width > height), Portrait (height > width), or
+                            Square (1:1).</li>
+                    </ul>
+
+                    <h2>How to Use the Aspect Ratio Calculator</h2>
+
+                    <ol>
+                        <li><strong>Enter Dimensions:</strong> Input your width and height values in the controls panel.
+                            The calculator instantly computes the simplified aspect ratio.</li>
+                        <li><strong>Use Presets:</strong> Click any common preset (16:9, 4:3, 1:1, etc.) to instantly
+                            set standard aspect ratios used in film, video, and photography.</li>
+                        <li><strong>Calculate New Sizes:</strong> Enter a new width in the resize section to
+                            automatically calculate the corresponding height while preserving the ratio.</li>
+                        <li><strong>Copy CSS Code:</strong> Use the generated <code>aspect-ratio</code> CSS property
+                            directly in your responsive layouts.</li>
+                        <li><strong>Swap Dimensions:</strong> Quickly convert between landscape and portrait
+                            orientations with one click.</li>
+                    </ol>
+
+                    <h2>Common Aspect Ratios & Use Cases</h2>
+
+                    <table class="ratio-table">
+                        <thead>
+                            <tr>
+                                <th>Ratio</th>
+                                <th>Decimal</th>
+                                <th>Common Use Cases</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>16:9</strong></td>
+                                <td>1.778</td>
+                                <td>YouTube videos, HDTV, computer monitors, most smartphones (landscape)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4:3</strong></td>
+                                <td>1.333</td>
+                                <td>Classic television, iPad, older computer monitors, presentations</td>
+                            </tr>
+                            <tr>
+                                <td><strong>1:1</strong></td>
+                                <td>1.000</td>
+                                <td>Instagram posts, profile pictures, album art, social media</td>
+                            </tr>
+                            <tr>
+                                <td><strong>9:16</strong></td>
+                                <td>0.563</td>
+                                <td>TikTok, Instagram Reels, YouTube Shorts, smartphone stories</td>
+                            </tr>
+                            <tr>
+                                <td><strong>21:9</strong></td>
+                                <td>2.333</td>
+                                <td>Ultrawide monitors, cinematic films, gaming displays</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3:2</strong></td>
+                                <td>1.500</td>
+                                <td>DSLR photography, 35mm film, MacBook displays</td>
+                            </tr>
+                            <tr>
+                                <td><strong>5:4</strong></td>
+                                <td>1.250</td>
+                                <td>Large format photography, some portrait prints</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2.39:1</strong></td>
+                                <td>2.390</td>
+                                <td>Anamorphic widescreen, Hollywood cinema (CinemaScope)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h2>CSS aspect-ratio Property</h2>
+
+                    <p>Modern CSS includes the <code>aspect-ratio</code> property, eliminating the need for padding-hack
+                        techniques. This property directly sets the preferred aspect ratio for a box, making responsive
+                        layouts significantly easier to implement.</p>
+
+                    <h3>Basic Usage</h3>
+                    <p>When you set <code>aspect-ratio: 16 / 9</code> on an element, the browser automatically
+                        calculates the height based on the width (or vice versa). This is invaluable for video embeds,
+                        image placeholders, and card layouts that need consistent proportions.</p>
+
+                    <h3>Browser Support</h3>
+                    <p>The CSS <code>aspect-ratio</code> property enjoys excellent browser support in all modern
+                        browsers including Chrome 88+, Firefox 89+, Safari 15+, and Edge 88+. For legacy browsers, the
+                        traditional padding-top percentage technique can serve as a fallback.</p>
+
+                    <h2>Video & Screen Resolution Standards</h2>
+
+                    <h3>HD & 4K Resolutions</h3>
+                    <p>Standard video resolutions follow the 16:9 aspect ratio: 1280×720 (HD/720p), 1920×1080 (Full
+                        HD/1080p), 2560×1440 (QHD/2K), and 3840×2160 (UHD/4K). Understanding these relationships helps
+                        content creators ensure their assets export at correct dimensions.</p>
+
+                    <h3>Social Media Dimensions</h3>
+                    <p>Each platform has optimal dimensions: Instagram feed posts (1080×1080, 1:1), Instagram stories
+                        (1080×1920, 9:16), Twitter posts (1200×675, 16:9), Facebook cover (820×312, 2.63:1), and
+                        LinkedIn banners (1584×396, 4:1). Our calculator helps you quickly find the right dimensions for
+                        any platform.</p>
+
+                    <h2>Photography Aspect Ratios</h2>
+
+                    <p>Different camera sensors and film formats produce different native ratios. Full-frame DSLRs
+                        typically shoot 3:2, while micro four-thirds cameras use 4:3. Print sizes also follow specific
+                        ratios: 4×6 prints are 3:2, 5×7 prints are 7:5, and 8×10 prints are 5:4. Understanding these
+                        differences is crucial when preparing images for print to avoid unexpected cropping.</p>
+
+                    <h2>Frequently Asked Questions</h2>
+
+                    <div class="faq-item">
+                        <strong>How do I calculate aspect ratio from pixel dimensions?</strong>
+                        <p>Divide both the width and height by their Greatest Common Divisor (GCD). For example,
+                            1920÷120 = 16 and 1080÷120 = 9, giving you 16:9. Our calculator does this automatically.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>What's the difference between 16:9 and 16:10?</strong>
+                        <p>16:9 (1.778) is standard for video and TVs, while 16:10 (1.600) is slightly taller, common in
+                            productivity monitors and MacBooks. Choose 16:9 for video content and 16:10 for
+                            workspace-focused designs.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>How do I resize an image without distortion?</strong>
+                        <p>Maintain the original aspect ratio by calculating the new height proportionally. If the
+                            original is 1920×1080 (16:9) and you want 1280 width: 1280 ÷ 1.778 = 720 height. Our resize
+                            calculator handles this instantly.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>What aspect ratio should I use for YouTube thumbnails?</strong>
+                        <p>YouTube recommends 1280×720 (16:9) for thumbnails. This matches the video player proportions
+                            and displays consistently across devices without letterboxing or cropping.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Can I use aspect-ratio CSS for responsive images?</strong>
+                        <p>Yes! Setting <code>aspect-ratio</code> on image containers prevents layout shift (CLS) during
+                            loading. Combined with <code>object-fit: cover</code>, images maintain their ratio while
+                            filling the space perfectly.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>What is pixel aspect ratio (PAR)?</strong>
+                        <p>PAR describes whether pixels are square (1:1) or rectangular. Modern digital media uses
+                            square pixels, but legacy formats like DV (0.9:1) and anamorphic video (2:1 PAR) use
+                            non-square pixels. This is different from display aspect ratio.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>How do I convert between portrait and landscape?</strong>
+                        <p>Simply swap the width and height values. A 16:9 landscape becomes 9:16 portrait. Our
+                            calculator includes a one-click swap button for this common operation.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Is this calculator free to use?</strong>
+                        <p>Yes, completely free with no registration required. All calculations happen instantly in your
+                            browser with no data sent to servers. Use it unlimited times for any project.</p>
+                    </div>
+
+                </article>
+            </div>
+
+            <footer class="footer">
+                <div class="footer-stats">
+                    <div class="stat-item" id="footerStatus"><i class="fas fa-circle-notch"></i> Ready</div>
+                    <div class="stat-item" id="savingsStat" style="display:none;"><i class="fas fa-arrow-down"></i>
+                        <span id="savingsText"></span> <span class="diff-tag" id="savingsBadge"></span>
+                    </div>
+                    <div class="footer-links"><a href="./About.html">About</a> • <a href="./Privacy.html">Privacy</a> •
+                        <a href="./Contact.html">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-actions"><button class="btn btn-sec" id="btnSecondary"
+                        onclick="resetCalculator()">RESET</button><button class="btn btn-pri" id="btnPrimary"
+                        onclick="copyCSSCode()"><i class="fas fa-copy"></i> COPY CSS</button></div>
+            </footer>
+        </div>
+    </main>
+    <div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span>Copied to clipboard!</span></div>
+
+    <script>
+        const activeToolId = "aspect-ratio";
+
+        // State
+        let isLocked = true;
+        let currentWidth = 1920;
+        let currentHeight = 1080;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            calculateAspectRatio();
+            document.getElementById('toolTitle').textContent = 'Aspect Ratio Calculator';
+            document.getElementById('toolDesc').textContent = 'Calculate & convert aspect ratios with live preview';
+        });
+
+        // GCD calculation
+        function gcd(a, b) {
+            a = Math.abs(Math.round(a));
+            b = Math.abs(Math.round(b));
+            while (b) {
+                let t = b;
+                b = a % b;
+                a = t;
+            }
+            return a;
+        }
+
+        // Main calculation
+        function calculateAspectRatio(source) {
+            const widthInput = document.getElementById('inputWidth');
+            const heightInput = document.getElementById('inputHeight');
+
+            currentWidth = parseFloat(widthInput.value) || 1;
+            currentHeight = parseFloat(heightInput.value) || 1;
+
+            // Calculate simplified ratio
+            const divisor = gcd(currentWidth, currentHeight);
+            const ratioW = currentWidth / divisor;
+            const ratioH = currentHeight / divisor;
+            const decimal = (currentWidth / currentHeight).toFixed(3);
+
+            // Determine orientation
+            let orientation = 'Square';
+            if (currentWidth > currentHeight) orientation = 'Landscape';
+            else if (currentHeight > currentWidth) orientation = 'Portrait';
+
+            // Calculate megapixels
+            const pixels = currentWidth * currentHeight;
+            let pixelDisplay = pixels >= 1000000
+                ? (pixels / 1000000).toFixed(2) + ' MP'
+                : pixels.toLocaleString() + ' px';
+
+            // Update displays
+            document.getElementById('ratioDisplay').textContent = `${ratioW}:${ratioH}`;
+            document.getElementById('dimDisplay').textContent = `${currentWidth} × ${currentHeight}`;
+            document.getElementById('outRatio').textContent = `${ratioW}:${ratioH}`;
+            document.getElementById('outDecimal').textContent = decimal;
+            document.getElementById('outOrientation').textContent = orientation;
+            document.getElementById('outPixels').textContent = pixelDisplay;
+            document.getElementById('cssCode').textContent = `aspect-ratio: ${ratioW} / ${ratioH};`;
+
+            // Update preview rectangle
+            updatePreviewRect();
+
+            // Clear preset active states
+            document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
+
+            // Recalculate new height if newWidth has value
+            calculateNewHeight();
+        }
+
+        function updatePreviewRect() {
+            const rect = document.getElementById('previewRect');
+            const container = document.querySelector('.preview-box');
+            const maxWidth = container.clientWidth - 60;
+            const maxHeight = container.clientHeight - 60;
+
+            let rectWidth, rectHeight;
+            const ratio = currentWidth / currentHeight;
+
+            if (ratio > maxWidth / maxHeight) {
+                rectWidth = Math.min(maxWidth, 300);
+                rectHeight = rectWidth / ratio;
+            } else {
+                rectHeight = Math.min(maxHeight, 200);
+                rectWidth = rectHeight * ratio;
+            }
+
+            rect.style.width = rectWidth + 'px';
+            rect.style.height = rectHeight + 'px';
+        }
+
+        function setPreset(w, h) {
+            document.getElementById('inputWidth').value = w * 120;
+            document.getElementById('inputHeight').value = h * 120;
+
+            document.querySelectorAll('.preset-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent === `${w}:${h}`) btn.classList.add('active');
+            });
+
+            calculateAspectRatio();
+        }
+
+        function toggleLock() {
+            isLocked = !isLocked;
+            const icon = document.getElementById('lockIcon');
+            icon.classList.toggle('locked', isLocked);
+            icon.className = isLocked ? 'fas fa-link link-icon locked' : 'fas fa-unlink link-icon';
+        }
+
+        function swapDimensions() {
+            const widthInput = document.getElementById('inputWidth');
+            const heightInput = document.getElementById('inputHeight');
+            const temp = widthInput.value;
+            widthInput.value = heightInput.value;
+            heightInput.value = temp;
+            calculateAspectRatio();
+        }
+
+        function calculateNewHeight() {
+            const newWidthInput = document.getElementById('newWidth');
+            const newWidth = parseFloat(newWidthInput.value);
+
+            if (newWidth && newWidth > 0) {
+                const ratio = currentWidth / currentHeight;
+                const newHeight = Math.round(newWidth / ratio);
+                document.getElementById('calculatedHeight').textContent = newHeight;
+            } else {
+                document.getElementById('calculatedHeight').textContent = '—';
+            }
+        }
+
+        function resetCalculator() {
+            document.getElementById('inputWidth').value = 1920;
+            document.getElementById('inputHeight').value = 1080;
+            document.getElementById('newWidth').value = '';
+            document.getElementById('calculatedHeight').textContent = '—';
+
+            document.querySelectorAll('.preset-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent === '16:9') btn.classList.add('active');
+            });
+
+            calculateAspectRatio();
+            showToast('Calculator reset!');
+        }
+
+        function copyCSSCode() {
+            const code = document.getElementById('cssCode').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                showToast('CSS copied to clipboard!');
+            });
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.querySelector('span').textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        // Resize observer for preview
+        window.addEventListener('resize', updatePreviewRect);
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <g fill="#6366F1">
+    <!-- Top layer -->
+    <path d="M12 2L3 7l9 5 9-5-9-5z"/>
+    <!-- Middle layer -->
+    <path d="M3 10l9 5 9-5v2l-9 5-9-5v-2z"/>
+    <!-- Bottom layer -->
+    <path d="M3 15l9 5 9-5v2l-9 5-9-5v-2z"/>
+  </g>
+</svg>

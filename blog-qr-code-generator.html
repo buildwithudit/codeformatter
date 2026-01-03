@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator: The Ultimate Tech Guide (2026)</title>
+    <meta name="description"
+        content="Master QR Code technology. Learn error correction levels, data capacity, vCards, Wi-Fi config, and dynamic QR implementations. Expert guide for developers.">
+    <meta name="keywords"
+        content="qr code generator, qr error correction, vcard qr code, wifi qr code, dynamic qr code, qr code capacity, 2d barcode technology">
+    <meta name="author" content="Udit Sharma">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="canonical" href="https://code-formats.vercel.app/blog-qr-code-generator">
+    <meta property="og:title" content="QR Code Generator: The Definitive Tech Guide">
+    <meta property="og:description"
+        content="More than just links. Unlock the full potential of 2D barcodes with our expert breakdown.">
+    <meta property="og:type" content="article">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --bg-body: #09090b;
+            --bg-card: rgba(24, 24, 27, 0.6);
+            --bg-code: #121214;
+            --border: #27272a;
+            --border-highlight: #3f3f46;
+            --primary: #818cf8;
+            --primary-glow: rgba(129, 140, 248, 0.15);
+            --text-main: #e4e4e7;
+            --text-muted: #a1a1aa;
+            --text-dim: #71717a;
+            --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-code: 'JetBrains Mono', monospace
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            background-color: var(--bg-body);
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: var(--text-main);
+            font-family: var(--font-ui);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden
+        }
+
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: transparent;
+            z-index: 1000
+        }
+
+        .progress-bar {
+            height: 3px;
+            background: var(--primary);
+            width: 0%;
+            box-shadow: 0 0 10px var(--primary);
+            transition: width .1s
+        }
+
+        .wrapper {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 40px 20px 120px 20px;
+            position: relative
+        }
+
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 15px
+        }
+
+        .nav-back {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: .85rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color .2s
+        }
+
+        .nav-back:hover {
+            color: #fff
+        }
+
+        .brand-logo {
+            font-weight: 700;
+            font-size: .9rem;
+            letter-spacing: -.5px
+        }
+
+        article h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -.03em;
+            line-height: 1.2;
+            margin: 0 0 15px 0;
+            background: linear-gradient(180deg, #fff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text
+        }
+
+        .meta-row {
+            display: flex;
+            gap: 20px;
+            font-size: .8rem;
+            color: var(--text-dim);
+            font-family: var(--font-code);
+            margin-bottom: 35px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px
+        }
+
+        .meta-row span {
+            display: flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .meta-row i {
+            color: var(--primary)
+        }
+
+        article p {
+            font-size: 1.05rem;
+            color: #d4d4d8;
+            margin-bottom: 20px
+        }
+
+        article h2 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: -.02em;
+            color: #fff;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border)
+        }
+
+        article h2::before {
+            content: '#';
+            color: var(--primary);
+            opacity: .4;
+            margin-right: 8px
+        }
+
+        article h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #fff;
+            margin-top: 35px;
+            margin-bottom: 12px
+        }
+
+        strong {
+            color: #fff;
+            font-weight: 700
+        }
+
+        ul,
+        ol {
+            margin-bottom: 24px;
+            padding-left: 20px;
+            color: var(--text-muted)
+        }
+
+        li {
+            margin-bottom: 8px
+        }
+
+        .toc {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 50px;
+            font-size: .9rem
+        }
+
+        .toc summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-muted);
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .toc summary:hover {
+            color: #fff
+        }
+
+        .toc ul {
+            margin: 15px 0 0 0;
+            padding-left: 0;
+            list-style: none
+        }
+
+        .toc li {
+            margin-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            padding-bottom: 8px
+        }
+
+        .toc a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: .2s;
+            display: block
+        }
+
+        .toc a:hover {
+            color: var(--primary);
+            padding-left: 5px
+        }
+
+        .code-wrapper {
+            position: relative;
+            margin: 30px 0;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg-code);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3)
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 15px;
+            background: #18181b;
+            border-bottom: 1px solid var(--border);
+            font-size: .75rem;
+            color: var(--text-dim);
+            font-family: var(--font-ui);
+            text-transform: uppercase;
+            font-weight: 600
+        }
+
+        pre {
+            margin: 0;
+            padding: 20px;
+            overflow-x: auto;
+            font-size: .85rem;
+            line-height: 1.6
+        }
+
+        code {
+            font-family: var(--font-code);
+            color: #a5b4fc
+        }
+
+        .token-prop {
+            color: #67e8f9
+        }
+
+        .token-val {
+            color: #fca5a5
+        }
+
+        .token-keyword {
+            color: #c792ea
+        }
+
+        .token-comment {
+            color: #52525b;
+            font-style: italic
+        }
+
+        p code {
+            background: #27272a;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: .85em;
+            color: #fff;
+            border: 1px solid #3f3f46
+        }
+
+        .callout {
+            background: rgba(129, 140, 248, 0.05);
+            border: 1px solid rgba(129, 140, 248, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start
+        }
+
+        .callout i {
+            color: var(--primary);
+            margin-top: 4px
+        }
+
+        .callout h4 {
+            margin: 0 0 5px 0;
+            font-size: 1rem;
+            color: #fff
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: .95rem;
+            color: var(--text-muted)
+        }
+
+        .sticky-cta {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 500px;
+            background: rgba(24, 24, 27, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-highlight);
+            padding: 10px 10px 10px 25px;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            z-index: 999;
+            animation: floatUp .8s cubic-bezier(0.16, 1, 0.3, 1) 2s backwards
+        }
+
+        .sticky-text {
+            font-size: .9rem;
+            font-weight: 500;
+            color: #fff
+        }
+
+        .sticky-text span {
+            color: var(--text-dim)
+        }
+
+        .cta-btn-primary {
+            background: linear-gradient(135deg, var(--primary), #6366f1);
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: .85rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px var(--primary-glow);
+            transition: transform .2s;
+            white-space: nowrap
+        }
+
+        .cta-btn-primary:hover {
+            transform: scale(1.05)
+        }
+
+        @keyframes floatUp {
+            from {
+                transform: translate(-50%, 100px);
+                opacity: 0
+            }
+
+            to {
+                transform: translate(-50%, 0);
+                opacity: 1
+            }
+        }
+
+        .tool-card {
+            background: linear-gradient(180deg, rgba(39, 39, 42, 0.4) 0%, rgba(24, 24, 27, 0.4) 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            margin: 50px 0;
+            position: relative;
+            overflow: hidden
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 150px;
+            background: var(--primary);
+            filter: blur(80px);
+            opacity: .25;
+            z-index: -1
+        }
+
+        .tool-card h3 {
+            margin: 0 0 15px 0;
+            color: #fff;
+            font-size: 1.4rem
+        }
+
+        .tool-card p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 25px
+        }
+
+        .faq-section {
+            margin-top: 60px
+        }
+
+        .faq-item {
+            background: rgba(24, 24, 27, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: all .2s
+        }
+
+        .faq-item:hover {
+            border-color: var(--border-highlight);
+            background: rgba(32, 32, 35, 0.7)
+        }
+
+        .faq-question {
+            padding: 18px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #fff;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none
+        }
+
+        .faq-question::-webkit-details-marker {
+            display: none
+        }
+
+        .faq-icon {
+            color: var(--primary);
+            font-size: 1.3rem;
+            font-weight: 300;
+            transition: transform .3s ease;
+            min-width: 20px;
+            text-align: center
+        }
+
+        .faq-item[open] .faq-icon {
+            transform: rotate(45deg)
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px 20px;
+            color: var(--text-muted);
+            font-size: .98rem;
+            line-height: 1.7;
+            animation: fadeIn .3s ease-in-out
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-5px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .faq-answer strong {
+            color: #fff
+        }
+
+        .faq-answer code {
+            background: rgba(129, 140, 248, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: .9em
+        }
+
+        footer {
+            margin-top: 80px;
+            text-align: center;
+            font-size: .85rem;
+            color: var(--text-dim);
+            border-top: 1px solid var(--border);
+            padding: 40px 0
+        }
+
+        @media(max-width:600px) {
+            .wrapper {
+                padding: 20px 15px 100px 15px
+            }
+
+            article h1 {
+                font-size: 2rem
+            }
+
+            .sticky-text {
+                font-size: .8rem
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="wrapper">
+        <nav class="nav-header">
+            <a href="blog.html" class="nav-back"><i class="fas fa-arrow-left"></i> All Articles</a>
+            <div class="brand-logo">Code Formatter</div>
+        </nav>
+        <article>
+            <h1>QR Code Generator: The Guide to 2D Barcodes (2026)</h1>
+            <div class="meta-row">
+                <span><i class="far fa-user-circle"></i> Udit Sharma</span>
+                <span><i class="far fa-calendar-alt"></i> Jan 2, 2026</span>
+                <span><i class="far fa-clock"></i> 13 Min Read</span>
+            </div>
+            <details class="toc" open>
+                <summary>Table of Contents</summary>
+                <ul>
+                    <li><a href="#intro">QR Codes: The Physical-Digital Bridge</a></li>
+                    <li><a href="#how-it-works">Anatomy of a QR Code</a></li>
+                    <li><a href="#error-correction">Error Correction Magic</a></li>
+                    <li><a href="#formats">Data Formats: Wi-Fi, vCard, & More</a></li>
+                    <li><a href="#dynamic">Static vs. Dynamic QR Codes</a></li>
+                    <li><a href="#best-practices">Scanning Reliability Best Practices</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </details>
+
+            <p id="intro"><strong>Quick Response (QR) codes</strong> have transformed from an automotive tracking tool
+                into the universal "hyperlink of the physical world." From restaurant menus to cryptocurrency payments,
+                these 2D matrix barcodes are ubiquitous in 2026.</p>
+
+            <p>But there is a deep technical layer beneath the black-and-white pixels. How do they work even when
+                damaged? How can they trigger a Wi-Fi connection without typing a password? This guide explores the
+                engineering, data capacity constraints, and best practices for generating robust QR codes that scan
+                instantly, every time.</p>
+
+            <h2 id="how-it-works">Anatomy of a QR Code</h2>
+
+            <p>A QR code isn't just random static. It has a strict architectural structure that scanners rely on to
+                orient, align, and decode the data.</p>
+
+            <h3>Key Structural Elements</h3>
+            <ul>
+                <li><strong>Finder Patterns:</strong> The three large squares in the corners. They tell the scanner
+                    "This is a QR code" and define its orientation.</li>
+                <li><strong>Alignment Patterns:</strong> Smaller squares inside the code that help scanners correct for
+                    distortion (e.g., scanning a curved bottle).</li>
+                <li><strong>Timing Patterns:</strong> Alternating black/white dotted lines connecting the finder
+                    patterns, defining the grid size.</li>
+                <li><strong>Quiet Zone:</strong> The mandatory white border around the code. Without it, scanners can't
+                    detect the edges.</li>
+            </ul>
+
+            <div class="callout">
+                <i class="fas fa-info-circle"></i>
+                <div class="callout-content">
+                    <h4>Fun Fact</h4>
+                    <p>QR codes were invented in 1994 by Denso Wave to track vehicle parts on assembly lines. They
+                        released the patent for free, sparking global adoption.</p>
+                </div>
+            </div>
+
+            <h2 id="error-correction">Error Correction Magic</h2>
+
+            <p>The true genius of QR codes is <strong>Reed-Solomon Error Correction</strong>. This allows a QR code to
+                be scanned even if part of it is ripped, covered, or drawn over. This is how brands can put logos in the
+                center of their QR codes.</p>
+
+            <h3>The 4 Correction Levels</h3>
+            <ul>
+                <li><strong>Level L (Low):</strong> Restores ~7% of data. (Cleanest look, lowest density).</li>
+                <li><strong>Level M (Medium):</strong> Restores ~15% of data. (Standard for most uses).</li>
+                <li><strong>Level Q (Quartile):</strong> Restores ~25% of data.</li>
+                <li><strong>Level H (High):</strong> Restores ~30% of data. (Required if adding a custom logo).</li>
+            </ul>
+
+            <div class="code-wrapper">
+                <div class="code-header">Trade-off Explaination</div>
+                <pre><code>Higher Error Correction = More Redundant Data = Denser QR Code
+Lower Error Correction = Less Redundant Data = Cleaner/Simpler QR Code
+
+<span class="token-comment">// If you are putting a logo in the middle:</span>
+<span class="token-comment">// Use Level H. The "logo" is technically "damage" to the scanner,</span>
+<span class="token-comment">// and the error correction reconstructs the missing data.</span></code></pre>
+            </div>
+
+            <h2 id="formats">Data Formats: More Than Just URLs</h2>
+
+            <p>While URSs are common, QR codes can encode structured data to trigger specific phone actions natively.
+            </p>
+
+            <h3>1. Wi-Fi Configuration</h3>
+            <p>Scan to join network automatically (no typing passwords!).</p>
+            <div class="code-wrapper">
+                <div class="code-header">Wi-Fi String Format</div>
+                <pre><code>WIFI:T:WPA;S:MyNetworkName;P:SecretPassword;;</code></pre>
+            </div>
+
+            <h3>2. vCard (Virtual Contact File)</h3>
+            <p>Scan to add a contact to phonebook.</p>
+            <div class="code-wrapper">
+                <div class="code-header">vCard Format</div>
+                <pre><code>BEGIN:VCARD
+VERSION:3.0
+N:Sharma;Udit
+TEL:555-123-4567
+EMAIL:udit@example.com
+END:VCARD</code></pre>
+            </div>
+
+            <h3>3. Crypto Addresses</h3>
+            <p>Bitcoin and Ethereum wallets rely heavily on QR codes for error-free address sharing.</p>
+            <div class="code-wrapper">
+                <div class="code-header">Bitcoin URI</div>
+                <pre><code>bitcoin:1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa?amount=0.01</code></pre>
+            </div>
+
+            <div class="tool-card">
+                <h3>Generate Custom QR Codes</h3>
+                <p>Create Wi-Fi, vCard, URL, and Text QR codes with custom colors and error correction levels instantly.
+                </p>
+                <a href="qr-code-generator.html" class="cta-btn-primary">Open Generator</a>
+            </div>
+
+            <h2 id="dynamic">Static vs. Dynamic QR Codes</h2>
+
+            <p>This is a critical distinction for marketing campaigns.</p>
+
+            <h3>Static QR Codes</h3>
+            <p>The data is hard-coded directly into the pattern.
+                <br><strong>Pros:</strong> Permanent, works offline, free, no expiration.
+                <br><strong>Cons:</strong> Cannot change destination URL after printing.
+            </p>
+
+            <h3>Dynamic QR Codes</h3>
+            <p>The QR code contains a short URL (e.g., <code>bit.ly/xyz</code>) that redirects to the final destination.
+                <br><strong>Pros:</strong> Edit destination anytime, track scan analytics (location, device, time).
+                <br><strong>Cons:</strong> Depends on redirect service (if they go down/paywall, code dies).
+            </p>
+
+            <h2 id="best-practices">Scanning Reliability Best Practices</h2>
+
+            <ul>
+                <li><strong>Contrast is King:</strong> Always use a dark foreground on a light background. Inverting
+                    colors (white QR on black background) often fails on older scanners.</li>
+                <li><strong>Quiet Zone:</strong> Maintain a whitespace border of at least 4 modules (dots) width around
+                    the code.</li>
+                <li><strong>Size Matters:</strong> Minimum recommended size is 2cm x 2cm (0.8in). Any smaller and phone
+                    cameras struggle to focus.</li>
+                <li><strong>Avoid Over-density:</strong> Shorten URLs before encoding. A 20-character URL creates a much
+                    simpler, easier-to-scan code than a 200-character URL.</li>
+            </ul>
+
+            <h2 id="faq">Frequently Asked Questions</h2>
+
+            <div class="faq-section">
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        Can QR codes expire?
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <strong>Static QR codes never expire</strong>—the data is physically there. <strong>Dynamic QR
+                            codes</strong> can expire if the service hosting the redirect link shuts down, changes their
+                        pricing, or deletes your account. Always use static codes for critical long-term use cases (like
+                        product packaging).
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        How much data can a QR code hold?
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        It depends on the version (size) and error correction level. The maximum capacity (Version 40,
+                        Level L) is roughly <strong>3KB</strong> (approx 7,000 numeric characters or 4,200 alphanumeric
+                        characters). However, practically, you should keep data under 300 characters for reliable
+                        scanning.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        Can I put a logo in my QR code?
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <strong>Yes, by using "Error Correction Level H".</strong> This redundancy allows up to 30% of
+                        the code to be unreadable (covered by a logo) while typically still scanning successfully. Keep
+                        the logo size under 20% of the total area to be safe, and ensure it doesn't cover the corner
+                        finder patterns.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        Are QR codes secure?
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <strong>The code itself is neutral, but the content can be malicious.</strong> "Quishing" (QR
+                        Phishing) involves stickers placed over legitimate QRs (e.g., on parking meters) leading to fake
+                        payment sites. Users cannot read the URL before scanning. Modern scanner apps try to preview the
+                        URL for safety, but diligence is required.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        Why won't my QR code scan?
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        Common culprits: (1) <strong>Low contrast</strong> (e.g., light gray on white). (2)
+                        <strong>Inverted colors</strong> (white code on dark background). (3) <strong>Too dense</strong>
+                        (too much data, making dots tiny). (4) <strong>Shiny material</strong> (reflections blind the
+                        camera). (5) <strong>Missing quiet zone</strong> (border).
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        What is a Micro QR Code?
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        A smaller variant of standard QR with only one finder pattern. It's designed for tiny
+                        applications (like circuit boards) where space is premium. It holds much less data (max ~35
+                        characters) and isn't supported by all consumer barcode scanner apps.
+                    </div>
+                </details>
+            </div>
+
+        </article>
+
+        <footer>&copy; 2026 Code Formatter by <strong>Udit Sharma</strong>. All rights reserved.</footer>
+    </div>
+
+    <div class="sticky-cta">
+        <div class="sticky-text">Create Free QR Codes <span>Instant</span></div>
+        <a href="qr-code-generator.html" class="cta-btn-primary">Open Generator</a>
+    </div>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+    </script>
+</body>
+
+</html>

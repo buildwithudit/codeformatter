@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Free PX to REM Converter - CSS Unit Calculator 2026 | Code Formatter</title>
+    <meta name="description"
+        content="Free online PX to REM converter tool. Instantly convert pixels to rem and rem to pixels with custom base font size. Essential for responsive CSS design.">
+    <meta name="keywords"
+        content="px to rem, rem to px, pixel to rem converter, css unit converter, rem calculator, px rem conversion, responsive typography, css units, font size converter, rem vs px, css sizing, web design units">
+    <link rel="canonical" href="https://codeformats.com/px-to-rem.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://codeformats.com/px-to-rem.html">
+    <meta property="og:title" content="Free PX to REM Converter - CSS Unit Calculator 2026">
+    <meta property="og:description"
+        content="Convert pixels to rem and rem to pixels instantly. Essential tool for responsive web design.">
+    <meta property="og:image" content="https://codeformats.com/og-px-to-rem.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free PX to REM Converter - CSS Unit Calculator 2026">
+    <meta name="twitter:description"
+        content="Convert PX to REM instantly with our free tool. Perfect for responsive CSS design.">
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        /* Dark Theme (Default) */
+        :root {
+            --bg-body: #0a0a0a;
+            --bg-panel: #171717;
+            --bg-input: rgba(0, 0, 0, 0.3);
+            --border-color: #262626;
+            --primary: #3b82f6;
+            --primary-glow: rgba(59, 130, 246, 0.25);
+            --secondary: #22d3ee;
+            --success: #22c55e;
+            --text-main: #ededed;
+            --text-muted: #a1a1aa;
+            --text-heading: #ffffff;
+        }
+
+        /* Light Theme */
+        html.light {
+            --bg-body: #f8fafc;
+            --bg-panel: #ffffff;
+            --bg-input: #f1f5f9;
+            --border-color: #e2e8f0;
+            --primary: #4f46e5;
+            --primary-glow: rgba(79, 70, 229, 0.15);
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --text-heading: #0f172a;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        html.light body {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+        }
+
+        main {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        header {
+            background: var(--bg-panel);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 20;
+            flex-shrink: 0;
+        }
+
+        #scrollable-wrapper {
+            flex-grow: 1;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 80px;
+        }
+
+        .workspace {
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            height: 75vh;
+            min-height: 500px;
+            max-height: 700px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .pane {
+            flex: 1;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        html.light .pane {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .pane:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 30px var(--primary-glow);
+            transform: translateY(-2px);
+        }
+
+        .pane-header {
+            padding: 16px 20px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(34, 211, 238, 0.03) 100%);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        html.light .pane-header {
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.06) 0%, rgba(59, 130, 246, 0.03) 100%);
+        }
+
+        .pane-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pane-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .action-icon {
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.95rem;
+            padding: 6px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .action-icon:hover {
+            color: var(--primary);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .converter-container {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            overflow-y: auto;
+        }
+
+        /* Converter Inputs */
+        .converter-group {
+            background: var(--bg-input);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .converter-group:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 20px var(--primary-glow);
+        }
+
+        .converter-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .converter-label i {
+            color: var(--primary);
+        }
+
+        .converter-input {
+            width: 100%;
+            background: var(--bg-panel);
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            padding: 16px 20px;
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-main);
+            text-align: center;
+            transition: all 0.25s ease;
+        }
+
+        .converter-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px var(--primary-glow);
+        }
+
+        .converter-input::placeholder {
+            color: var(--text-muted);
+            opacity: 0.5;
+        }
+
+        .unit-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            background: var(--primary);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 20px;
+            margin-left: 8px;
+            text-transform: uppercase;
+        }
+
+        /* Base Font Size Control */
+        .base-control {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(34, 211, 238, 0.05) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        html.light .base-control {
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.08) 0%, rgba(59, 130, 246, 0.04) 100%);
+            border-color: rgba(79, 70, 229, 0.2);
+        }
+
+        .base-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .base-label i {
+            color: var(--secondary);
+        }
+
+        .base-input {
+            width: 100px;
+            background: var(--bg-panel);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px 16px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-main);
+            text-align: center;
+        }
+
+        .base-input:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        /* Swap Button */
+        .swap-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 40px;
+            min-height: 40px;
+            background: var(--primary);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 auto;
+            box-shadow: 0 4px 15px var(--primary-glow);
+        }
+
+        .swap-btn:hover {
+            transform: rotate(180deg) scale(1.1);
+            box-shadow: 0 8px 25px var(--primary-glow);
+        }
+
+        /* Quick Reference Table */
+        .reference-table {
+            background: var(--bg-input);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .reference-header {
+            padding: 14px 20px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, transparent 100%);
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+
+        .reference-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .reference-row:last-child {
+            border-bottom: none;
+        }
+
+        .reference-row:hover {
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        .reference-px {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .reference-rem {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Content Section */
+        .content-container {
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .clean-card {
+            background: var(--bg-panel);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .clean-card::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            filter: blur(120px);
+            opacity: 0.12;
+            z-index: -1;
+        }
+
+        .prose h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin: 0 0 20px 0;
+            background: linear-gradient(180deg, var(--text-heading), var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .prose h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-top: 45px;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .prose h2::before {
+            content: '#';
+            color: var(--primary);
+            opacity: 0.4;
+            margin-right: 10px;
+        }
+
+        .prose h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-top: 30px;
+            margin-bottom: 12px;
+        }
+
+        .prose p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 18px;
+            font-size: 1.02rem;
+        }
+
+        .prose strong {
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .prose ul,
+        .prose ol {
+            margin-bottom: 24px;
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        .prose li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        .prose ul li::before {
+            content: "→";
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .prose ol {
+            counter-reset: list-counter;
+        }
+
+        .prose ol li {
+            counter-increment: list-counter;
+        }
+
+        .prose ol li::before {
+            content: counter(list-counter) ".";
+            color: var(--primary);
+            font-weight: 700;
+            position: absolute;
+            left: 0;
+        }
+
+        .prose code {
+            background: var(--bg-input);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--secondary);
+        }
+
+        .faq-item {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 22px 25px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .faq-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--primary);
+            transition: height 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary);
+            background: rgba(59, 130, 246, 0.02);
+            transform: translateX(5px);
+        }
+
+        .faq-item:hover::before {
+            height: 100%;
+        }
+
+        .faq-item strong {
+            display: block;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            font-size: 1.02rem;
+        }
+
+        .faq-item p {
+            margin-bottom: 0;
+            font-size: 0.92rem;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--bg-panel);
+            border-top: 1px solid var(--border-color);
+            z-index: 30;
+            padding: 10px 20px;
+        }
+
+        @media (max-width: 768px) {
+            .workspace {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .pane {
+                min-height: 400px;
+            }
+
+            .clean-card {
+                padding: 30px;
+            }
+
+            .converter-input {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <aside id="sidebar">
+        <div class="brand">
+            <div class="brand-logo"><i class="fas fa-layer-group"></i> Code Formatter</div>
+        </div>
+        <div class="search-container"><input type="text" class="search-input" placeholder="Search tools..."
+                onkeyup="filterTools(this)"></div>
+                        <nav class="menu" id="menuContainer">
+            <div class="nav-group-title">Code Formatters</div>
+            <a href="index.html" class="nav-item" data-id="json-fmt"><i class="fas fa-code"></i> JSON Formatter</a>
+            <a href="html-formatter.html" class="nav-item" data-id="html-fmt"><i class="fab fa-html5"></i> HTML Formatter</a>
+            <a href="css-formatter.html" class="nav-item" data-id="css-fmt"><i class="fab fa-css3-alt"></i> CSS Formatter</a>
+            <a href="js-formatter.html" class="nav-item" data-id="js-fmt"><i class="fab fa-js"></i> JS Formatter</a>
+            <a href="sql-formatter.html" class="nav-item" data-id="sql-fmt"><i class="fas fa-database"></i> SQL Formatter</a>
+            <a href="xml-formatter.html" class="nav-item" data-id="xml-fmt"><i class="fas fa-code"></i> XML Formatter</a>
+
+            <div class="nav-group-title">Image & Color Tools</div>
+            <a href="image-compressor.html" class="nav-item" data-id="img-compress"><i class="fas fa-image"></i> Image Compressor</a>
+            <a href="color-converter.html" class="nav-item" data-id="color-conv"><i class="fas fa-palette"></i> Color Converter</a>
+            <a href="qr-code-generator.html" class="nav-item" data-id="qr-gen"><i class="fas fa-qrcode"></i> QR Generator</a>
+
+            <div class="nav-group-title">Code Minifiers</div>
+            <a href="json-minifier.html" class="nav-item" data-id="json-min"><i class="fas fa-compress"></i> JSON Minifier</a>
+            <a href="html-minifier.html" class="nav-item" data-id="html-min"><i class="fas fa-compress-arrows-alt"></i> HTML Minifier</a>
+            <a href="css-minifier.html" class="nav-item" data-id="css-min"><i class="fas fa-compress-arrows-alt"></i> CSS Minifier</a>
+            <a href="js-minifier.html" class="nav-item" data-id="js-min"><i class="fas fa-file-archive"></i> JS Minifier</a>
+
+            <div class="nav-group-title">Data Converters</div>
+            <a href="json-to-csv.html" class="nav-item" data-id="json-csv"><i class="fas fa-table"></i> JSON to CSV</a>
+            <a href="csv-to-json.html" class="nav-item" data-id="csv-json"><i class="fas fa-file-csv"></i> CSV to JSON</a>
+            <a href="excel-to-html.html" class="nav-item" data-id="excel-html"><i class="fas fa-table"></i> Excel to HTML</a>
+            <a href="case-converter.html" class="nav-item" data-id="case-conv"><i class="fas fa-text-height"></i> Case Converter</a>
+
+            <div class="nav-group-title">Encoding & Security</div>
+            <a href="base64-tool.html" class="nav-item" data-id="base64"><i class="fas fa-lock"></i> Base64 Tool</a>
+            <a href="url-encoder.html" class="nav-item" data-id="url-enc"><i class="fas fa-link"></i> URL Encoder</a>
+            <a href="hash-generator.html" class="nav-item" data-id="hash-gen"><i class="fas fa-fingerprint"></i> Hash Generator</a>
+            <a href="jwt-decoder.html" class="nav-item" data-id="jwt-dec"><i class="fas fa-shield-alt"></i> JWT Decoder</a>
+
+            <div class="nav-group-title">CSS Generators</div>
+            <a href="glassmorphism-generator.html" class="nav-item" data-id="glass-morphism"><i class="fas fa-wind"></i> Glassmorphism</a>
+            <a href="smooth-shadow-generator.html" class="nav-item" data-id="shadow-gen"><i class="fas fa-layer-group"></i> Smooth Shadow</a>
+            <a href="px-to-rem.html" class="nav-item" data-id="px-rem"><i class="fas fa-ruler-combined"></i> PX to REM</a>
+            <a href="aspect-ratio-calculator.html" class="nav-item" data-id="aspect-ratio"><i class="fas fa-expand"></i> Aspect Ratio</a>
+
+            <div class="nav-group-title">Text & Data</div>
+            <a href="lorem-ipsum-generator.html" class="nav-item" data-id="lorem"><i class="fas fa-paragraph"></i> Lorem Ipsum</a>
+            <a href="mock-data-generator.html" class="nav-item" data-id="mock-data"><i class="fas fa-users"></i> Mock Data Gen</a>
+            <a href="diff-checker.html" class="nav-item" data-id="diff-check"><i class="fas fa-exchange-alt"></i> Diff Checker</a>
+
+            <div class="nav-group-title">Preview Tools</div>
+            <a href="html-viewer.html" class="nav-item" data-id="html-view"><i class="fas fa-eye"></i> HTML Viewer</a>
+            <a href="social-card-preview.html" class="nav-item" data-id="social-card"><i class="fas fa-share-alt"></i> Social Preview</a>
+        </nav>
+    </aside>
+    <div id="overlay" onclick="closeAllDrawers()"></div>
+
+    <main>
+        <header>
+            <div class="header-left"><i class="fas fa-bars menu-toggle-btn" onclick="handleMenuClick()"></i>
+                <div class="tool-info">
+                    <div id="toolTitle">PX to REM Converter</div>
+                    <p id="toolDesc">Convert pixels to rem units and vice versa instantly.</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="blog.html" class="nav-link">Blog</a>
+                <button class="theme-btn" onclick="toggleTheme()"><i class="fas fa-moon" id="themeIcon"></i></button>
+            </div>
+        </header>
+
+        <div id="scrollable-wrapper">
+            <section class="workspace" id="workspace">
+                <!-- Input Pane (PX to REM) -->
+                <div class="pane">
+                    <div class="pane-header">
+                        <span class="pane-title"><i class="fas fa-ruler"></i> Pixel Value</span>
+                        <div class="pane-actions">
+                            <i class="far fa-trash-alt action-icon" onclick="clearPx()" title="Clear"></i>
+                        </div>
+                    </div>
+                    <div class="converter-container">
+                        <div class="converter-group">
+                            <div class="converter-label"><i class="fas fa-arrows-alt-h"></i> Enter Pixels <span
+                                    class="unit-badge">PX</span></div>
+                            <input type="number" class="converter-input" id="pxInput" placeholder="16" value="16"
+                                oninput="convertPxToRem()">
+                        </div>
+
+                        <button class="swap-btn" onclick="swapValues()" title="Swap Values">
+                            <i class="fas fa-exchange-alt"></i>
+                        </button>
+
+                        <div class="base-control">
+                            <div class="base-label"><i class="fas fa-text-height"></i> Base Font Size</div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="number" class="base-input" id="baseSize" value="16" min="1"
+                                    oninput="convertAll()">
+                                <span style="color: var(--text-muted); font-weight: 600;">px</span>
+                            </div>
+                        </div>
+
+                        <!-- Quick Reference -->
+                        <div class="reference-table">
+                            <div class="reference-header"><i class="fas fa-table"></i> Quick Reference</div>
+                            <div class="reference-row" onclick="setPx(12)">
+                                <span class="reference-px">12px</span>
+                                <span class="reference-rem" id="ref12">0.75rem</span>
+                            </div>
+                            <div class="reference-row" onclick="setPx(14)">
+                                <span class="reference-px">14px</span>
+                                <span class="reference-rem" id="ref14">0.875rem</span>
+                            </div>
+                            <div class="reference-row" onclick="setPx(16)">
+                                <span class="reference-px">16px</span>
+                                <span class="reference-rem" id="ref16">1rem</span>
+                            </div>
+                            <div class="reference-row" onclick="setPx(18)">
+                                <span class="reference-px">18px</span>
+                                <span class="reference-rem" id="ref18">1.125rem</span>
+                            </div>
+                            <div class="reference-row" onclick="setPx(24)">
+                                <span class="reference-px">24px</span>
+                                <span class="reference-rem" id="ref24">1.5rem</span>
+                            </div>
+                            <div class="reference-row" onclick="setPx(32)">
+                                <span class="reference-px">32px</span>
+                                <span class="reference-rem" id="ref32">2rem</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Output Pane (REM Result) -->
+                <div class="pane">
+                    <div class="pane-header">
+                        <span class="pane-title"><i class="fas fa-check-circle"></i> REM Value</span>
+                        <div class="pane-actions">
+                            <i class="far fa-copy action-icon" onclick="copyRem()" title="Copy REM"></i>
+                        </div>
+                    </div>
+                    <div class="converter-container">
+                        <div class="converter-group">
+                            <div class="converter-label"><i class="fas fa-arrows-alt-h"></i> Result <span
+                                    class="unit-badge" style="background: var(--secondary);">REM</span></div>
+                            <input type="number" class="converter-input" id="remInput" placeholder="1" value="1"
+                                oninput="convertRemToPx()" step="0.001">
+                        </div>
+
+                        <div
+                            style="text-align: center; padding: 20px; background: var(--bg-input); border-radius: 12px; border: 1px solid var(--border-color);">
+                            <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px;">CSS Output
+                            </div>
+                            <code id="cssOutput"
+                                style="font-size: 1.5rem; font-weight: 700; color: var(--secondary);">font-size: 1rem;</code>
+                        </div>
+
+                        <!-- Formula Display -->
+                        <div
+                            style="background: var(--bg-input); border-radius: 12px; padding: 20px; border: 1px solid var(--border-color);">
+                            <div
+                                style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 12px;">
+                                <i class="fas fa-calculator"></i> Formula
+                            </div>
+                            <div
+                                style="font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; color: var(--text-main);">
+                                <span id="formulaDisplay">16px ÷ 16 = 1rem</span>
+                            </div>
+                        </div>
+
+                        <!-- Copy Buttons -->
+                        <div style="display: flex; gap: 12px;">
+                            <button class="btn btn-sec" onclick="copyPx()" style="flex: 1; justify-content: center;"><i
+                                    class="far fa-copy"></i> Copy PX</button>
+                            <button class="btn btn-pri" onclick="copyRem()" style="flex: 1; justify-content: center;"><i
+                                    class="far fa-copy"></i> Copy REM</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEO CONTENT SECTION -->
+            <div class="content-container">
+                <article class="clean-card prose">
+                    <h1>Free PX to REM Converter - CSS Unit Calculator 2026</h1>
+
+                    <p>Welcome to <strong>Code Formatter PX to REM Converter</strong> – the fastest, most intuitive
+                        online
+                        tool for converting between pixel and rem CSS units. Our professional-grade calculator instantly
+                        transforms <strong>pixels to rem</strong> and <strong>rem to pixels</strong> with support for
+                        custom base font sizes. Whether you're building responsive websites, implementing accessible
+                        typography, or modernizing legacy CSS, our converter makes unit translation effortless.</p>
+
+                    <p>In modern web development, <strong>rem units</strong> have become the gold standard for scalable,
+                        accessible design. Unlike fixed pixels, rem values scale proportionally with the user's browser
+                        settings, ensuring your typography remains readable for users who adjust their default font
+                        size. Our converter helps you bridge the gap between pixel-based designs and rem-based
+                        implementations.</p>
+
+                    <h2>How to Use Our PX to REM Converter</h2>
+                    <p>Converting CSS units has never been simpler. Our real-time calculator provides instant results:
+                    </p>
+                    <ol>
+                        <li><strong>Enter Your Pixel Value:</strong> Type the pixel measurement from your design file
+                            (Figma, Sketch, Photoshop) into the left "Pixel Value" input field.</li>
+                        <li><strong>Adjust Base Font Size:</strong> If your project uses a non-standard base font size,
+                            update the "Base Font Size" field (default is 16px, the browser standard).</li>
+                        <li><strong>Get Instant Results:</strong> The converted rem value appears immediately in the
+                            right pane, along with ready-to-use CSS code.</li>
+                        <li><strong>Copy and Use:</strong> Click "Copy REM" to grab the value for your stylesheet, or
+                            copy the complete CSS property.</li>
+                    </ol>
+
+                    <h2>Understanding PX vs REM Units</h2>
+                    <p>Choosing the right CSS unit is crucial for building accessible, responsive websites:</p>
+
+                    <h3>Pixels (PX)</h3>
+                    <p>Pixels are <strong>absolute units</strong> that always render at the same physical size
+                        regardless of context. While predictable, they don't scale when users adjust their browser's
+                        default font size, potentially causing accessibility issues for users with visual impairments
+                        who rely on larger text settings.</p>
+
+                    <h3>Root EM (REM)</h3>
+                    <p>REM stands for "root em" and is a <strong>relative unit</strong> based on the root element's font
+                        size (typically the <code>&lt;html&gt;</code> element). By default, browsers set this to 16px.
+                        When a user changes their browser's font size setting, all rem-based measurements scale
+                        proportionally, maintaining your design's proportions while respecting user preferences.</p>
+
+                    <h2>The Conversion Formula</h2>
+                    <p>The mathematical relationship between pixels and rem is straightforward:</p>
+                    <ul>
+                        <li><strong>PX to REM:</strong> <code>rem = px ÷ base-font-size</code></li>
+                        <li><strong>REM to PX:</strong> <code>px = rem × base-font-size</code></li>
+                    </ul>
+                    <p>With a standard 16px base: 24px ÷ 16 = 1.5rem, and 2rem × 16 = 32px.</p>
+
+                    <h2>Common PX to REM Conversions</h2>
+                    <p>Reference these frequently used conversions (assuming 16px base):</p>
+                    <ul>
+                        <li><strong>12px = 0.75rem</strong> – Small text, captions</li>
+                        <li><strong>14px = 0.875rem</strong> – Body text alternative</li>
+                        <li><strong>16px = 1rem</strong> – Default body text</li>
+                        <li><strong>18px = 1.125rem</strong> – Slightly larger body text</li>
+                        <li><strong>20px = 1.25rem</strong> – Subheadings</li>
+                        <li><strong>24px = 1.5rem</strong> – H3 headings</li>
+                        <li><strong>32px = 2rem</strong> – H2 headings</li>
+                        <li><strong>48px = 3rem</strong> – H1 headings</li>
+                    </ul>
+
+                    <h2>Why Use REM for Responsive Design?</h2>
+                    <p>Adopting rem units offers significant advantages for modern web development:</p>
+                    <ul>
+                        <li><strong>Accessibility Compliance:</strong> Respects user font size preferences, meeting
+                            WCAG 2.1 guidelines for resizable text.</li>
+                        <li><strong>Consistent Scaling:</strong> Change the root font size once to scale your entire
+                            site proportionally.</li>
+                        <li><strong>Easier Maintenance:</strong> Adjust global typography by modifying a single CSS
+                            variable.</li>
+                        <li><strong>Responsive Typography:</strong> Combine with media queries to adjust base size at
+                            different breakpoints.</li>
+                        <li><strong>Design System Friendly:</strong> Creates predictable, proportional spacing and
+                            sizing throughout your design system.</li>
+                    </ul>
+
+                    <h2>Frequently Asked Questions</h2>
+
+                    <div class="faq-item">
+                        <strong>What base font size should I use?</strong>
+                        <p>The browser default of 16px is recommended for most projects. This is what users expect and
+                            what accessibility guidelines assume. Only change it if you have a specific design
+                            requirement.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Should I use REM for everything?</strong>
+                        <p>Use rem for font sizes, spacing, and layout dimensions that should scale with text. Use
+                            pixels for borders, shadows, and decorative elements where you want fixed sizes. Media
+                            queries typically stay in pixels.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>What's the difference between EM and REM?</strong>
+                        <p>EM is relative to the parent element's font size, which can lead to compounding issues with
+                            nested elements. REM is always relative to the root element, providing more predictable
+                            behavior across your entire site.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>How do I set a custom base font size?</strong>
+                        <p>Add <code>html { font-size: 18px; }</code> to your CSS to change the base. Some developers
+                            use <code>font-size: 62.5%</code> (10px) for easier math, making 1.6rem equal to 16px.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Will REM work in all browsers?</strong>
+                        <p>Yes! REM units have excellent browser support, working in all modern browsers and back to
+                            IE9.
+                            There are no compatibility concerns for any current web project.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>How do I convert an entire CSS file to REM?</strong>
+                        <p>Use our converter to calculate individual values, or use PostCSS plugins like
+                            "postcss-pxtorem" to automate the conversion during your build process.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Is 0.0625rem the same as 1px?</strong>
+                        <p>With a 16px base, yes: 1 ÷ 16 = 0.0625. However, for very small values like borders, using
+                            pixels directly (1px) is often clearer and more intentional in your code.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Can I use CSS variables with REM?</strong>
+                        <p>Absolutely! Defining <code>--spacing-sm: 0.5rem</code> in your CSS custom properties creates
+                            a powerful, scalable design token system that adapts to user preferences.</p>
+                    </div>
+
+                    <p style="text-align: center; margin-top: 3rem; color: var(--text-muted); font-size: 0.85rem;">
+                        Code Formatter © 2026. Professional developer tools built with privacy and performance in mind.
+                    </p>
+                </article>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-stats">
+                <div class="stat-item" id="footerStatus"><i class="fas fa-circle-notch"></i> Ready</div>
+                <div class="footer-links"><a href="./About.html">About</a> • <a href="./Privacy.html">Privacy</a> • <a
+                        href="./Contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-actions">
+                <button class="btn btn-sec" onclick="resetValues()"><i class="fas fa-undo"></i> RESET</button>
+                <button class="btn btn-pri" onclick="copyRem()"><i class="far fa-copy"></i> COPY REM</button>
+            </div>
+        </footer>
+    </main>
+
+    <div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span>Action Completed</span></div>
+
+    <script>
+        const activeToolId = "px-rem";
+
+        document.addEventListener('DOMContentLoaded', () => {
+            convertPxToRem();
+            updateReference();
+        });
+
+        function convertPxToRem() {
+            const px = parseFloat(document.getElementById('pxInput').value) || 0;
+            const base = parseFloat(document.getElementById('baseSize').value) || 16;
+            const rem = px / base;
+
+            document.getElementById('remInput').value = parseFloat(rem.toFixed(4));
+            document.getElementById('cssOutput').textContent = `font-size: ${rem.toFixed(4)}rem;`;
+            document.getElementById('formulaDisplay').textContent = `${px}px ÷ ${base} = ${rem.toFixed(4)}rem`;
+            updateReference();
+        }
+
+        function convertRemToPx() {
+            const rem = parseFloat(document.getElementById('remInput').value) || 0;
+            const base = parseFloat(document.getElementById('baseSize').value) || 16;
+            const px = rem * base;
+
+            document.getElementById('pxInput').value = parseFloat(px.toFixed(2));
+            document.getElementById('cssOutput').textContent = `font-size: ${rem}rem;`;
+            document.getElementById('formulaDisplay').textContent = `${rem}rem × ${base} = ${px.toFixed(2)}px`;
+        }
+
+        function convertAll() {
+            convertPxToRem();
+            updateReference();
+        }
+
+        function updateReference() {
+            const base = parseFloat(document.getElementById('baseSize').value) || 16;
+            document.getElementById('ref12').textContent = (12 / base).toFixed(4) + 'rem';
+            document.getElementById('ref14').textContent = (14 / base).toFixed(4) + 'rem';
+            document.getElementById('ref16').textContent = (16 / base).toFixed(4) + 'rem';
+            document.getElementById('ref18').textContent = (18 / base).toFixed(4) + 'rem';
+            document.getElementById('ref24').textContent = (24 / base).toFixed(4) + 'rem';
+            document.getElementById('ref32').textContent = (32 / base).toFixed(4) + 'rem';
+        }
+
+        function setPx(value) {
+            document.getElementById('pxInput').value = value;
+            convertPxToRem();
+            showToast(`Set to ${value}px`);
+        }
+
+        function swapValues() {
+            const px = document.getElementById('pxInput').value;
+            const rem = document.getElementById('remInput').value;
+            document.getElementById('pxInput').value = rem;
+            document.getElementById('remInput').value = px;
+            convertPxToRem();
+            showToast('Values swapped!');
+        }
+
+        function clearPx() {
+            document.getElementById('pxInput').value = '';
+            document.getElementById('remInput').value = '';
+            document.getElementById('cssOutput').textContent = 'font-size: 0rem;';
+            document.getElementById('formulaDisplay').textContent = '0px ÷ 16 = 0rem';
+            showToast('Cleared!');
+        }
+
+        function resetValues() {
+            document.getElementById('pxInput').value = 16;
+            document.getElementById('remInput').value = 1;
+            document.getElementById('baseSize').value = 16;
+            convertPxToRem();
+            showToast('Reset to defaults!');
+        }
+
+        function copyPx() {
+            const px = document.getElementById('pxInput').value + 'px';
+            navigator.clipboard.writeText(px).then(() => showToast('Copied: ' + px));
+        }
+
+        function copyRem() {
+            const rem = document.getElementById('remInput').value + 'rem';
+            navigator.clipboard.writeText(rem).then(() => showToast('Copied: ' + rem));
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.querySelector('span').innerText = msg;
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 3000);
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

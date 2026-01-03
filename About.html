@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Code Formatter | Built by Udit Sharma</title>
+    <meta name="description"
+        content="Meet Udit Sharma, the developer behind Code Formatter. The #1 privacy-focused JSON Formatter, Minifier, and SEO tools suite. Fast, secure, and ad-free.">
+    <meta name="keywords"
+        content="Udit Sharma, Code Formatter, JSON Formatter, Privacy Focused Tools, UI Developer, SEO Tools">
+    <meta name="author" content="Udit Sharma">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=JetBrains+Mono:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-body: #050505;
+            --bg-glass: rgba(20, 20, 23, 0.4);
+            --bg-card: #0a0a0c;
+            --border: #27272a;
+            --border-glow: rgba(99, 102, 241, 0.2);
+            --primary: #3b82f6;
+            --primary-gradient: linear-gradient(135deg, #6366f1 0%, #3b82f6 100%);
+            --text-main: #ffffff;
+            --text-muted: #a1a1aa;
+
+            /* TIGHTER SPACING VARIABLES */
+            --spacing-lg: 30px;
+            /* Reduced from 60px */
+            --spacing-md: 15px;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.08), transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.08), transparent 40%);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            /* Slightly tighter line height */
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .wrapper {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            /* Reduced top/bottom padding */
+        }
+
+        /* --- NAVIGATION --- */
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 20px;
+            /* Reduced margin */
+            font-size: 0.9rem;
+            transition: 0.3s ease;
+        }
+
+        .nav-back:hover {
+            color: #fff;
+            transform: translateX(-3px);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero-section {
+            margin-bottom: 30px;
+        }
+
+        /* Reduced from 60px */
+
+        h1 {
+            font-size: 2.5rem;
+            /* Slightly smaller for compactness */
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin: 0 0 10px 0;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            line-height: 1.5;
+        }
+
+        /* --- FOUNDER CARD (UDIT SHARMA) --- */
+        .founder-card {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid var(--border);
+            padding: 25px;
+            /* Reduced padding from 40px */
+            border-radius: 16px;
+            margin-bottom: var(--spacing-lg);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .founder-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        .avatar-placeholder {
+            width: 80px;
+            height: 80px;
+            /* Smaller avatar */
+            border-radius: 50%;
+            background: var(--primary-gradient);
+            display: grid;
+            place-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .founder-info h2 {
+            margin: 0 0 4px 0;
+            font-size: 1.4rem;
+        }
+
+        .founder-role {
+            color: var(--primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .founder-bio {
+            font-size: 0.95rem;
+            color: #d4d4d8;
+            margin: 0;
+        }
+
+        .seo-text p strong {
+            color: var(--text-main);
+        }
+
+        /* --- CONTENT BLOCKS --- */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            /* Reduced gap */
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .feature-box {
+            background: rgba(20, 20, 23, 0.4);
+            border: 1px solid var(--border);
+            padding: 20px;
+            /* Reduced padding */
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+        }
+
+        .feature-box h3 {
+            margin: 0 0 8px 0;
+            color: #fff;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .feature-box p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .feature-box i {
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        /* --- SEO TEXT SECTION --- */
+        .seo-text {
+            border-top: 1px solid var(--border);
+            padding-top: 30px;
+        }
+
+        .seo-text h2 {
+            color: #fff;
+            font-size: 1.4rem;
+            margin: 0 0 15px 0;
+        }
+
+        .seo-text p {
+            margin-bottom: 15px;
+            color: #a1a1aa;
+            font-size: 0.95rem;
+        }
+
+        .seo-list {
+            color: var(--text-muted);
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .seo-list li {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            display: flex;
+            gap: 10px;
+        }
+
+        .seo-list li i {
+            color: var(--primary);
+            margin-top: 4px;
+        }
+
+        footer {
+            margin-top: 40px;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        @media(max-width: 768px) {
+            .founder-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <a href="index.html" class="nav-back"><i class="fas fa-arrow-left"></i> Back to Tools</a>
+
+        <header class="hero-section">
+            <h1>Code Formatter</h1>
+            <div class="subtitle">The privacy-first developer toolkit designed for speed, accuracy, and zero
+                distractions.</div>
+        </header>
+
+        <section class="founder-card">
+            <div class="avatar-placeholder">US</div>
+            <div class="founder-info">
+                <h2>Udit Sharma</h2>
+                <span class="founder-role">Creator & UI Developer</span>
+                <p class="founder-bio">
+                    "I built Code Formatter to kill slow, ad-heavy tools. My goal? Provide developers and marketers
+                    with
+                    clean, fast, and secure tools. No tracking. No nonsense."
+                </p>
+            </div>
+        </section>
+
+        <div class="content-grid">
+            <div class="feature-box">
+                <h3><i class="fas fa-shield-alt"></i> 100% Privacy Focused</h3>
+                <p>We process everything locally in your browser. Your code never hits our server.</p>
+            </div>
+            <div class="feature-box">
+                <h3><i class="fas fa-bolt"></i> Blazing Fast</h3>
+                <p>Optimized JavaScript libraries handle large datasets instantly without reloading.</p>
+            </div>
+        </div>
+
+        <article class="seo-text">
+            <h2>Why Code Formatter is the #1 Choice for Developers</h2>
+            <p>
+                In web development and digital marketing, efficiency is everything. <strong>Udit Sharma</strong>
+                recognized a gap: tools were either too complex or filled with ads. <em>Code Formatter</em> bridges
+                this
+                gap by providing a comprehensive suite of over 30+ developer tools in one privacy-focused platform.
+            </p>
+
+            <h2>Comprehensive Developer Tools Suite</h2>
+            <p>
+                Code Formatter is your all-in-one solution for modern web development. Whether you're working with
+                <strong>JSON data</strong>, formatting <strong>HTML and XML</strong>, optimizing <strong>JavaScript and
+                    CSS</strong>, or need specialized converters and utilities, we've got you covered. Our platform
+                includes powerful <strong>JSON tools</strong> like JSON Formatter, JSON Minifier, JSON to CSV converter,
+                and Mock Data Generator for testing purposes. These tools help developers visualize complex data
+                structures, reduce file sizes, and streamline their workflow.
+            </p>
+
+            <p>
+                For front-end developers, our <strong>HTML/XML tools</strong> including HTML Formatter, HTML Minifier,
+                HTML Viewer, and XML Formatter ensure your markup is clean, optimized, and readable. The <strong>JS/CSS
+                    section</strong> offers JS Formatter, JS Minifier, CSS Formatter, and CSS Minifier to help you write
+                production-ready code that loads faster and improves your website's SEO performance. Every millisecond
+                counts in page speed, and our minification tools help you achieve optimal performance.
+            </p>
+
+            <h2>Advanced Converters and Utilities</h2>
+            <p>
+                Our <strong>converter tools</strong> save hours of manual work. Convert Excel to HTML tables instantly,
+                transform CSV data to JSON format, or beautify SQL queries with our SQL Formatter. The <strong>Utils
+                    section</strong> includes essential developer tools like Base64 Tool for encoding/decoding, URL
+                Encoder for safe URL parameters, QR Generator for creating QR codes, Hash Generator for security
+                purposes, and Lorem Ipsum generator for placeholder text.
+            </p>
+
+            <p>
+                For designers and UI developers, we offer specialized <strong>Design/UI tools</strong> including Smooth
+                Shadow generator for modern CSS shadows, Glassmorphism generator for trendy glass effects, Color
+                Converter for switching between HEX, RGB, and HSL formats, and Aspect Ratio calculator for responsive
+                designs. Our <strong>Image Compressor</strong> helps optimize images without losing quality, crucial for
+                website performance and SEO rankings.
+            </p>
+
+            <h2>Developer-Focused Advanced Tools</h2>
+            <p>
+                The <strong>DEV tools section</strong> includes Diff Checker for comparing code changes, JWT Decoder for
+                debugging authentication tokens, PX to REM converter for responsive typography, and Case Converter for
+                transforming text between different naming conventions. We also offer <strong>FAX to REM
+                    converter</strong> and <strong>Social Preview</strong> tool in our Media/Creator section to help you
+                optimize social media sharing cards.
+            </p>
+
+            <h2>Privacy, Speed, and Zero Distractions</h2>
+            <p>
+                What sets Code Formatter apart is our commitment to <strong>100% privacy</strong>. All processing
+                happens locally in your browser - your code, data, and sensitive information never touch our servers.
+                This makes it perfect for handling proprietary code, API keys, or confidential data. Combined with
+                <strong>blazing-fast performance</strong>, no ads, and no tracking, Code Formatter delivers a
+                distraction-free experience that lets you focus on what matters: building great software.
+            </p>
+
+            <p>
+                Whether you're a full-stack developer, front-end specialist, backend engineer, designer, or digital
+                marketer, Code Formatter provides the essential toolkit you need to work efficiently. Join thousands of
+                developers who have made Code Formatter their go-to platform for formatting, minifying, converting, and
+                optimizing code. Experience the difference of clean UI/UX principles combined with powerful
+                functionality - all in one place, all for free, and always respecting your privacy.
+            </p>
+        </article>
+
+        <footer>
+            &copy; 2026 Code Formatter by <strong>Udit Sharma</strong>. All rights reserved.
+        </footer>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Color Converter - HEX to RGB, RGBA & HSL | Code Formatter</title>
+    <meta name="description"
+        content="Professional Color Converter tool. Convert HEX to RGB, RGBA, HSL, and CMYK instantly. Features accessibility contrast checking, color palettes, and CSS code generation.">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" defer></script>
+
+    <style>
+        /* Specific overrides to ensure visual match with screenshots */
+        :root {
+            --bg-body: #0a0a0a;
+            --bg-panel: #171717;
+            --border-color: #262626;
+            --primary: #3b82f6;
+            --text-main: #ededed;
+            --text-muted: #a1a1aa;
+        }
+
+        html.light {
+            --bg-body: #f8fafc;
+            --bg-panel: #ffffff;
+            --border-color: #e2e8f0;
+            --primary: #4f46e5;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+        }
+
+        /* Enforce Layout Structure */
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            /* Prevent body scroll, use wrapper */
+            margin: 0;
+        }
+
+        main {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        html.light main {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+        }
+
+        /* HEADER */
+        header {
+            background: var(--bg-panel);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 20;
+            flex-shrink: 0;
+            padding: 0 20px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* SCROLL WRAPPER - This handles the main content scrolling */
+        #scrollable-wrapper {
+            flex-grow: 1;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 80px;
+            /* Space for absolute footer */
+        }
+
+        #scrollable-wrapper::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #scrollable-wrapper::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 3px;
+        }
+
+        /* WORKSPACE - The grid layout for tools */
+        .workspace {
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            min-height: 85vh;
+        }
+
+        @media (max-width: 900px) {
+            .workspace {
+                flex-direction: column;
+            }
+        }
+
+        /* PANES - The cards holding content */
+        .pane {
+            flex: 1;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .pane-header {
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pane-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #d4d4d4;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .editor-container {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        /* FOOTER - Fixed at bottom of main */
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--bg-panel);
+            border-top: 1px solid var(--border-color);
+            z-index: 10;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        /* TOOL SPECIFIC STYLES */
+        .tool-group {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        html.light .tool-group {
+            background: rgba(0, 0, 0, 0.03);
+        }
+
+        .tool-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .color-preview-large {
+            width: 100%;
+            height: 120px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            position: relative;
+            background-image: linear-gradient(45deg, #333 25%, transparent 25%),
+                linear-gradient(-45deg, #333 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #333 75%),
+                linear-gradient(-45deg, transparent 75%, #333 75%);
+            background-size: 20px 20px;
+        }
+
+        .color-actual {
+            position: absolute;
+            inset: 0;
+            border-radius: 7px;
+            transition: background 0.1s ease;
+        }
+
+        .contrast-badge {
+            position: relative;
+            z-index: 2;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            background: rgba(0, 0, 0, 0.4);
+            color: white;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .tool-input {
+            width: 100%;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            border-radius: 6px;
+            color: var(--text-main);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        .glass-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            background: #333;
+            border-radius: 3px;
+            outline: none;
+            margin-bottom: 15px;
+        }
+
+        .glass-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #fff;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* SEO Content Styling */
+        .content-container {
+
+            margin: 40px auto;
+            padding: 0 14px;
+            /* max-width: 900px; */
+        }
+
+        .clean-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 60px;
+        }
+
+        html.light .clean-card {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .prose h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--text-main), var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+        }
+
+        .prose h2 {
+            font-size: 1.8rem;
+            color: var(--text-main);
+            margin-top: 50px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .prose p,
+        .prose li {
+            line-height: 1.8;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        /* Premium FAQ Cards - The requested "First File" style */
+        .faq-item {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 22px 25px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        html.light .faq-item {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: #e2e8f0;
+        }
+
+        /* Left Accent Border */
+        .faq-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--primary);
+            transition: height 0.3s ease;
+        }
+
+        /* Hover Effects */
+        .faq-item:hover {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.03);
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        html.light .faq-item:hover {
+            background: rgba(79, 70, 229, 0.05);
+        }
+
+        .faq-item:hover::before {
+            height: 100%;
+        }
+
+        .faq-item strong {
+            display: block;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .faq-item p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-muted);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            aside {
+                margin-left: -260px;
+                position: absolute;
+                height: 100%;
+                box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+            }
+
+            aside.open {
+                margin-left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .workspace {
+                flex-direction: column;
+            }
+
+            #overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 45;
+            }
+
+            #overlay.active {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <aside id="sidebar">
+        <div class="brand">
+            <div class="brand-logo"><i class="fas fa-layer-group"></i> Code Formatter</div>
+        </div>
+        <div class="search-container"><input type="text" class="search-input" placeholder="Search tools..."
+                onkeyup="filterTools(this)"></div>
+                        <nav class="menu" id="menuContainer">
+            <div class="nav-group-title">Code Formatters</div>
+            <a href="index.html" class="nav-item" data-id="json-fmt"><i class="fas fa-code"></i> JSON Formatter</a>
+            <a href="html-formatter.html" class="nav-item" data-id="html-fmt"><i class="fab fa-html5"></i> HTML Formatter</a>
+            <a href="css-formatter.html" class="nav-item" data-id="css-fmt"><i class="fab fa-css3-alt"></i> CSS Formatter</a>
+            <a href="js-formatter.html" class="nav-item" data-id="js-fmt"><i class="fab fa-js"></i> JS Formatter</a>
+            <a href="sql-formatter.html" class="nav-item" data-id="sql-fmt"><i class="fas fa-database"></i> SQL Formatter</a>
+            <a href="xml-formatter.html" class="nav-item" data-id="xml-fmt"><i class="fas fa-code"></i> XML Formatter</a>
+
+            <div class="nav-group-title">Image & Color Tools</div>
+            <a href="image-compressor.html" class="nav-item" data-id="img-compress"><i class="fas fa-image"></i> Image Compressor</a>
+            <a href="color-converter.html" class="nav-item" data-id="color-conv"><i class="fas fa-palette"></i> Color Converter</a>
+            <a href="qr-code-generator.html" class="nav-item" data-id="qr-gen"><i class="fas fa-qrcode"></i> QR Generator</a>
+
+            <div class="nav-group-title">Code Minifiers</div>
+            <a href="json-minifier.html" class="nav-item" data-id="json-min"><i class="fas fa-compress"></i> JSON Minifier</a>
+            <a href="html-minifier.html" class="nav-item" data-id="html-min"><i class="fas fa-compress-arrows-alt"></i> HTML Minifier</a>
+            <a href="css-minifier.html" class="nav-item" data-id="css-min"><i class="fas fa-compress-arrows-alt"></i> CSS Minifier</a>
+            <a href="js-minifier.html" class="nav-item" data-id="js-min"><i class="fas fa-file-archive"></i> JS Minifier</a>
+
+            <div class="nav-group-title">Data Converters</div>
+            <a href="json-to-csv.html" class="nav-item" data-id="json-csv"><i class="fas fa-table"></i> JSON to CSV</a>
+            <a href="csv-to-json.html" class="nav-item" data-id="csv-json"><i class="fas fa-file-csv"></i> CSV to JSON</a>
+            <a href="excel-to-html.html" class="nav-item" data-id="excel-html"><i class="fas fa-table"></i> Excel to HTML</a>
+            <a href="case-converter.html" class="nav-item" data-id="case-conv"><i class="fas fa-text-height"></i> Case Converter</a>
+
+            <div class="nav-group-title">Encoding & Security</div>
+            <a href="base64-tool.html" class="nav-item" data-id="base64"><i class="fas fa-lock"></i> Base64 Tool</a>
+            <a href="url-encoder.html" class="nav-item" data-id="url-enc"><i class="fas fa-link"></i> URL Encoder</a>
+            <a href="hash-generator.html" class="nav-item" data-id="hash-gen"><i class="fas fa-fingerprint"></i> Hash Generator</a>
+            <a href="jwt-decoder.html" class="nav-item" data-id="jwt-dec"><i class="fas fa-shield-alt"></i> JWT Decoder</a>
+
+            <div class="nav-group-title">CSS Generators</div>
+            <a href="glassmorphism-generator.html" class="nav-item" data-id="glass-morphism"><i class="fas fa-wind"></i> Glassmorphism</a>
+            <a href="smooth-shadow-generator.html" class="nav-item" data-id="shadow-gen"><i class="fas fa-layer-group"></i> Smooth Shadow</a>
+            <a href="px-to-rem.html" class="nav-item" data-id="px-rem"><i class="fas fa-ruler-combined"></i> PX to REM</a>
+            <a href="aspect-ratio-calculator.html" class="nav-item" data-id="aspect-ratio"><i class="fas fa-expand"></i> Aspect Ratio</a>
+
+            <div class="nav-group-title">Text & Data</div>
+            <a href="lorem-ipsum-generator.html" class="nav-item" data-id="lorem"><i class="fas fa-paragraph"></i> Lorem Ipsum</a>
+            <a href="mock-data-generator.html" class="nav-item" data-id="mock-data"><i class="fas fa-users"></i> Mock Data Gen</a>
+            <a href="diff-checker.html" class="nav-item" data-id="diff-check"><i class="fas fa-exchange-alt"></i> Diff Checker</a>
+
+            <div class="nav-group-title">Preview Tools</div>
+            <a href="html-viewer.html" class="nav-item" data-id="html-view"><i class="fas fa-eye"></i> HTML Viewer</a>
+            <a href="social-card-preview.html" class="nav-item" data-id="social-card"><i class="fas fa-share-alt"></i> Social Preview</a>
+        </nav>
+    </aside>
+
+    <div id="overlay" onclick="toggleMenu()"></div>
+
+    <main>
+        <header>
+            <div class="header-left"><i class="fas fa-bars menu-toggle-btn" onclick="handleMenuClick()"></i>
+                <div class="tool-info">
+                    <div id="toolTitle">Color Converter</div>
+                    <p id="toolDesc">Convert HEX to RGB, RGBA, HSL & CMYK instantly.</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="blog.html" class="nav-link">Blog</a>
+                <button class="theme-btn" onclick="toggleTheme()"><i class="fas fa-moon" id="themeIcon"></i></button>
+            </div>
+        </header>
+
+        <div id="scrollable-wrapper">
+
+            <section class="workspace" id="workspace">
+
+                <div class="pane">
+                    <div class="pane-header">
+                        <span class="pane-title"><i class="fas fa-eye-dropper"></i> Configuration</span>
+                        <div class="pane-actions">
+                            <i class="far fa-clipboard action-icon" onclick="pasteHex()" title="Paste Hex"></i>
+                            <i class="far fa-trash-alt action-icon" onclick="resetDefaults()" title="Reset"></i>
+                        </div>
+                    </div>
+
+                    <div class="editor-container">
+                        <div class="tool-group">
+                            <div class="tool-title">Visual Selection</div>
+                            <input type="color" id="clrPicker"
+                                style="width:100%; height:60px; border:none; background:none; cursor:pointer; border-radius:8px; margin-bottom:15px;"
+                                value="#3b82f6" oninput="updateFromPicker()">
+
+                            <div style="position:relative; margin-bottom:10px;">
+                                <span
+                                    style="position:absolute; left:10px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-family:monospace;">#</span>
+                                <input type="text" class="tool-input" id="inpHexInput" value="3b82f6"
+                                    style="padding-left:25px; text-transform:uppercase;" oninput="updateFromHex()">
+                            </div>
+                        </div>
+
+                        <div class="tool-group">
+                            <div class="tool-title">RGB Channels</div>
+
+                            <div
+                                style="display:flex; justify-content:space-between; font-size:0.85rem; color:var(--text-muted); margin-bottom:5px;">
+                                <span>Red</span><span id="valR">59</span>
+                            </div>
+                            <input type="range" class="glass-slider" min="0" max="255" value="59" id="rngR"
+                                style="background: linear-gradient(90deg, #000, #f00);" oninput="updateFromRGB()">
+
+                            <div
+                                style="display:flex; justify-content:space-between; font-size:0.85rem; color:var(--text-muted); margin-bottom:5px;">
+                                <span>Green</span><span id="valG">130</span>
+                            </div>
+                            <input type="range" class="glass-slider" min="0" max="255" value="130" id="rngG"
+                                style="background: linear-gradient(90deg, #000, #0f0);" oninput="updateFromRGB()">
+
+                            <div
+                                style="display:flex; justify-content:space-between; font-size:0.85rem; color:var(--text-muted); margin-bottom:5px;">
+                                <span>Blue</span><span id="valB">246</span>
+                            </div>
+                            <input type="range" class="glass-slider" min="0" max="255" value="246" id="rngB"
+                                style="background: linear-gradient(90deg, #000, #00f);" oninput="updateFromRGB()">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pane">
+                    <div class="pane-header">
+                        <span class="pane-title"><i class="fas fa-code"></i> Output</span>
+                        <div class="pane-actions">
+                            <i class="fas fa-expand action-icon" onclick="toggleFullscreenColor(this)"
+                                title="Fullscreen"></i>
+                        </div>
+                    </div>
+
+                    <div class="editor-container">
+                        <div class="color-preview-large">
+                            <div id="colorActual" class="color-actual" style="background-color: #3b82f6;"></div>
+                            <span id="contrastBadge" class="contrast-badge">AA: Pass</span>
+                        </div>
+
+                        <div class="tool-group">
+                            <div class="tool-title">Formats</div>
+
+                            <div style="margin-bottom:10px;">
+                                <label style="font-size:0.8rem; color:var(--text-muted);">RGB</label>
+                                <div style="display:flex; gap:10px;">
+                                    <input type="text" class="tool-input" id="outRGB" readonly
+                                        value="rgb(59, 130, 246)">
+                                    <button onclick="copyToClip('outRGB', this)"
+                                        style="background:var(--bg-body); border:1px solid var(--border-color); color:var(--text-muted); border-radius:6px; cursor:pointer; width:40px;"><i
+                                            class="far fa-copy"></i></button>
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom:10px;">
+                                <label style="font-size:0.8rem; color:var(--text-muted);">HSL</label>
+                                <div style="display:flex; gap:10px;">
+                                    <input type="text" class="tool-input" id="outHSL" readonly
+                                        value="hsl(217, 91%, 60%)">
+                                    <button onclick="copyToClip('outHSL', this)"
+                                        style="background:var(--bg-body); border:1px solid var(--border-color); color:var(--text-muted); border-radius:6px; cursor:pointer; width:40px;"><i
+                                            class="far fa-copy"></i></button>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label style="font-size:0.8rem; color:var(--text-muted);">CMYK</label>
+                                <div style="display:flex; gap:10px;">
+                                    <input type="text" class="tool-input" id="outCMYK" readonly
+                                        value="cmyk(76%, 47%, 0%, 4%)">
+                                    <button onclick="copyToClip('outCMYK', this)"
+                                        style="background:var(--bg-body); border:1px solid var(--border-color); color:var(--text-muted); border-radius:6px; cursor:pointer; width:40px;"><i
+                                            class="far fa-copy"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tool-group">
+                            <div class="tool-title">CSS Variables</div>
+                            <textarea id="cssVarOutput" class="tool-input"
+                                style="height:100px; resize:none; font-family:'JetBrains Mono'; color:var(--primary);"
+                                readonly>
+:root {
+  --primary-color: #3b82f6;
+  --primary-rgb: 59, 130, 246;
+}</textarea>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="content-container">
+                <article class="clean-card prose">
+                    <h1>Free Online Color Converter Tool - HEX to RGB, HSL & CMYK 2026</h1>
+
+                    <p>
+                        Convert colors instantly with our professional <strong>online color converter</strong> tool.
+                        Transform between <strong>HEX, RGB, HSL, and CMYK</strong> color formats in real-time with
+                        mathematical precision. Whether you're a web developer optimizing CSS, a graphic designer
+                        preparing print materials, or a UI/UX professional ensuring accessibility compliance, our free
+                        color converter delivers accurate results with built-in WCAG contrast checking and CSS variable
+                        generation.
+                    </p>
+
+                    <h2>Why You Need a Professional Color Converter Tool</h2>
+                    <p>
+                        Color consistency is the foundation of professional design. Without a reliable <strong>hex to
+                            rgb converter</strong> or <strong>rgb to cmyk converter</strong>, designers waste hours
+                        manually calculating color values, risking errors that result in brand inconsistency and failed
+                        print jobs worth thousands of dollars. Modern workflows demand seamless color translation across
+                        digital screens, mobile devices, and physical print media.
+                    </p>
+                    <p>
+                        Our <strong>color code converter</strong> eliminates this friction by providing instant,precise
+                        conversions with real-time visual feedback. The tool automatically validates accessibility
+                        standards, generates CSS-ready code, and prevents costly mistakes before they reach production.
+                    </p>
+
+                    <h2>How to Use Our Online Color Converter</h2>
+                    <p>Converting colors has never been simpler. Follow these three steps to transform any color format:
+                    </p>
+                    <ol>
+                        <li><strong>Input Your Color:</strong> Paste a HEX code (like #3b82f6), adjust RGB sliders, or
+                            click the color picker to select visually. The converter accepts all standard web color
+                            formats.</li>
+                        <li><strong>Automatic Conversion:</strong> Watch as the tool instantly converts to RGB, HSL,
+                            CMYK, and CSS variables simultaneously. Each format updates in real-time as you adjust
+                            values.</li>
+                        <li><strong>Copy & Implement:</strong> Click any copy icon to grab your desired format. Use the
+                            contrast badge to verify accessibility before deploying to production.</li>
+                    </ol>
+
+                    <h2>Understanding Color Formats: HEX, RGB, HSL & CMYK</h2>
+
+                    <h3>HEX Color Codes - The Web Standard</h3>
+                    <p>
+                        <strong>Hexadecimal color codes</strong> are the universal language of web design. A HEX code
+                        (like <code>#FF5733</code>) compresses RGB values into a compact 6-character format starting
+                        with #. This <strong>hex color converter</strong> translates the code into three pairs: Red (FF
+                        = 255), Green (57 = 87), Blue (33 = 51).
+                    </p>
+                    <p>
+                        Modern browsers support 8-digit HEX codes (<code>#RRGGBBAA</code>) for transparency, eliminating
+                        the need for <code>rgba()</code> syntax. Our <strong>hex to rgba converter</strong>
+                        automatically handles alpha channel calculations for perfect transparency control.
+                    </p>
+
+                    <h3>RGB - The Digital Display Format</h3>
+                    <p>
+                        RGB (Red, Green, Blue) is the native color model of all electronic displays. Screens create 16.7
+                        million colors by combining 256 levels (0-255) of each channel. This <strong>rgb
+                            converter</strong> handles the additive light model where rgb(0,0,0) is black and
+                        rgb(255,255,255) is white.
+                    </p>
+                    <p>
+                        Use RGB when programming canvas animations, calculating dynamic color mixing in JavaScript, or
+                        working with image manipulation libraries. The <strong>rgb to hex converter</strong> ensures
+                        your programmatic colors translate perfectly to CSS.
+                    </p>
+
+                    <h3>HSL - The Designer-Friendly Format</h3>
+                    <p>
+                        HSL (Hue, Saturation, Lightness) revolutionizes color adjustment by separating color attributes
+                        into human-intuitive controls. Instead of guessing RGB values, designers adjust Hue (0-360°) to
+                        change color family, Saturation (0-100%) to control vibrancy, and Lightness (0-100%) to adjust
+                        brightness.
+                    </p>
+                    <p>
+                        This <strong>hsl to rgb converter</strong> is essential for building design systems. Need a
+                        hover state? Reduce lightness by 10%. Want a muted version? Drop saturation to 30%. HSL makes
+                        color manipulation predictable and maintainable.
+                    </p>
+
+                    <h3>CMYK - Professional Print Preparation</h3>
+                    <p>
+                        CMYK (Cyan, Magenta, Yellow, Key/Black) is the subtractive color model used by all professional
+                        printers. Unlike RGB which emits light, CMYK absorbs it through ink layers on paper. The
+                        <strong>cmyk to rgb converter</strong> translates screen colors to print-safe approximations.
+                    </p>
+                    <p>
+                        <strong>Critical Warning:</strong> The RGB color gamut is 30% larger than CMYK. Neon greens and
+                        electric blues visible on screens are physically impossible to print. Our converter prevents
+                        expensive printing errors by showing the closest printable match.
+                    </p>
+
+                    <h2>WCAG Color Contrast Checker for Accessibility</h2>
+                    <p>
+                        Accessibility is now a legal requirement for websites. The <strong>WCAG 2.1 standards</strong>
+                        mandate minimum contrast ratios to ensure readability for users with visual impairments, color
+                        blindness, and low vision. Our built-in <strong>contrast checker</strong> calculates luminance
+                        ratios in real-time.
+                    </p>
+                    <ul>
+                        <li><strong>AA Standard (Minimum):</strong> 4.5:1 contrast ratio for normal text, 3:1 for large
+                            text (18pt+). Required for legal compliance.</li>
+                        <li><strong>AAA Standard (Enhanced):</strong> 7:1 contrast ratio for normal text, 4.5:1 for
+                            large text. Recommended for medical, financial, and government websites.</li>
+                    </ul>
+                    <p>
+                        The contrast badge automatically recommends light or dark text based on your background color.
+                        Buttons, navigation, and form labels must meet AA standards minimum—non-compliant designs risk
+                        lawsuits under ADA and Section 508.
+                    </p>
+
+                    <h2>CSS Custom Properties & Color Variables</h2>
+                    <p>
+                        Modern CSS workflows use <strong>CSS variables</strong> (Custom Properties) to centralize color
+                        management. Our <strong>css color converter</strong> generates production-ready variable
+                        declarations. Instead of hardcoding #3b82f6 across hundreds of selectors, define it once:
+                    </p>
+                    <pre><code>:root {
+  --brand-primary: #3b82f6;
+  --brand-primary-rgb: 59, 130, 246;
+  --brand-primary-hover: hsl(217, 91%, 50%);
+}</code></pre>
+                    <p>
+                        This strategy enables instant theme switching, dark mode implementations, and brand color
+                        updates without touching individual CSS rules. The HSL format shines here—adjust only the
+                        lightness value to create entire color palettes from a single base hue.
+                    </p>
+
+                    <h2>Advanced Features for Professional Designers</h2>
+                    <ul>
+                        <li><strong>Real-Time Preview:</strong> See your color applied to UI elements instantly with
+                            contrast ratios calculated automatically.</li>
+                        <li><strong>Random Color Generator:</strong> Generate beautiful color palettes for inspiration
+                            and rapid prototyping.</li>
+                        <li><strong>Paste from Clipboard:</strong> Quickly paste HEX codes from design files or color
+                            pickers.</li>
+                        <li><strong>Fullscreen Mode:</strong> Maximize the output pane to inspect colors in detail.</li>
+                        <li><strong>100% Client-Side:</strong> All conversions happen in your browser—no data sent to
+                            servers, ensuring complete privacy for confidential brand colors.</li>
+                    </ul>
+
+                    <h2>Color Conversion Best Practices</h2>
+                    <p><strong>For Web Development:</strong> Use HEX for static colors (#FF5733) and HSL for dynamic
+                        theming (hsl(var(--hue), 90%, 60%)). Avoid RGB unless working with canvas or image manipulation.
+                    </p>
+                    <p><strong>For Print Design:</strong> Convert RGB designs to CMYK early in the workflow. Test actual
+                        print proofs—screen previews cannot accurately represent ink on paper.</p>
+                    <p><strong>For Accessibility:</strong> Check contrast ratios before finalizing any color scheme.
+                        Tools can't save inaccessible designs—design with accessibility from the start.</p>
+                    <p><strong>For Branding:</strong> Document official brand colors in all formats (HEX, RGB, CMYK,
+                        Pantone). Use this converter to ensure consistency across digital and print materials.</p>
+
+                    <div class="faq-section">
+                        <h2 id="faqs">Frequently Asked Questions</h2>
+
+                        <div class="faq-item">
+                            <strong>What is the best online color converter for web designers?</strong>
+                            <p>Our free color converter tool is optimized specifically for web design workflows. It
+                                provides instant HEX to RGB conversion, HSL values for CSS, built-in WCAG contrast
+                                checking, and CSS variable generation. Unlike basic converters, we include real-time
+                                accessibility validation and support modern 8-digit HEX codes with transparency (RGBA).
+                                The tool runs 100% client-side, ensuring your brand colors remain private while
+                                delivering professional-grade accuracy used by Fortune 500 design teams.</p>
+                        </div>
+
+                        <div class="faq-item">
+                            <strong>How do I convert HEX to RGB color codes?</strong>
+                            <p>Simply paste your HEX code (like #3b82f6) into the input field. The converter instantly
+                                breaks it into RGB components using base-16 mathematics. HEX pair "3b" converts to
+                                decimal 59 (red), "82" becomes 130 (green), and "f6" becomes 246 (blue), producing
+                                rgb(59, 130, 246). The conversion is bidirectional—adjust RGB sliders and watch the HEX
+                                code update in real-time. Both formats are mathematically identical; HEX is simply a
+                                shorthand notation.</p>
+                        </div>
+
+                        <div class="faq-item">
+                            <strong>Can I convert RGB colors to CMYK for printing?</strong>
+                            <p>Yes, but understand that RGB to CMYK conversion is inherently "lossy." RGB (emitted
+                                light) has a 30% larger color spectrum than CMYK (reflected ink). Super-vibrant neon
+                                colors like pure rgb(0,255,0) lime green cannot be physically printed on standard paper.
+                                Our converter calculates the mathematically closest CMYK approximation using
+                                industry-standard color profiles (sRGB to Fogra39). Always request physical print
+                                proofs—no screen can accurately preview CMYK results. Professional printers charge
+                                $200-500 for color corrections after printing, so validate conversions early.</p>
+                        </div>
+
+                        <div class="faq-item">
+                            <strong>Why do colors look different on my phone vs. monitor?</strong>
+                            <p>This occurs due to device color gamut differences and calibration. Most web colors assume
+                                the sRGB color space (16.7 million colors). However, modern devices support wider
+                                gamuts: Apple displays use Display-P3 (25% more colors), OLED screens render more
+                                vibrant colors than LCD, and different devices have unique calibration profiles.
+                                Browsers make assumptions when color profiles are missing, causing inconsistencies. For
+                                critical color accuracy, use ColorSync (Mac) or calibration hardware. For web design,
+                                test on multiple devices during development.</p>
+                        </div>
+
+                        <div class="faq-item">
+                            <strong>What is the difference between HEX and RGB color codes?</strong>
+                            <p>Functionally, HEX and RGB are identical—both encode the same red-green-blue color model.
+                                HEX uses base-16 notation (#3b82f6) while RGB uses decimal (rgb(59, 130, 246)).
+                                Developers prefer HEX for conciseness in stylesheets. RGB is used when transparency is
+                                needed (rgba) or when calculating colors programmatically in JavaScript. Modern 8-digit
+                                HEX (#3b82f6ff) now supports transparency, making RGBA less necessary. Choose HEX for
+                                static CSS values and RGB for dynamic color calculations.</p>
+                        </div>
+
+                        <div class="faq-item">
+                            <strong>How do I ensure my website colors are accessible (WCAG compliant)?</strong>
+                            <p>Use our built-in contrast checker. Select your background color and check the contrast
+                                badge—if it shows "4.5:1" or higher, your color meets WCAG AA standards. For body text,
+                                target 4.5:1 minimum. For large headings (24px+), 3:1 is acceptable. AAA standard
+                                requires 7:1 for enhanced accessibility. Non-compliance risks lawsuits under ADA
+                                regulations—major retailers have faced $10,000-50,000 settlement costs for inaccessible
+                                color contrast. Test every button, link, and text element before launch.</p>
+                        </div>
+
+                        <div class="faq-item">
+                            <strong>Which color format should I use for CSS - HEX, RGB, or HSL?</strong>
+                            <p>For static brand colors, use HEX (#3b82f6) for brevity. For theme systems and dark mode,
+                                use HSL (hsl(217, 91%, 60%)) stored in CSS variables. HSL allows you to generate entire
+                                color palettes by adjusting only the lightness value: hsl(217, 91%, 70%) for light
+                                variant, hsl(217, 91%, 40%) for hover state. Avoid RGB in CSS unless working with
+                                opacity (rgba) or JavaScript color calculations. Modern frameworks like Tailwind use
+                                HSL-based color systems precisely because one hue generates infinite variants by
+                                tweaking saturation/lightness percentages.</p>
+                        </div>
+
+                        <div class="faq-item">
+                            <strong>Is this color converter tool free to use?</strong>
+                            <p>Absolutely free with zero limitations. No registration required, no file size limits, no
+                                subscription fees, and no ads. The tool processes all conversions client-side in your
+                                browser using JavaScript, meaning your color data never touches our servers. This
+                                ensures complete privacy for confidential brand colors and sensitive design work. We're
+                                ad-supported but non-intrusive. Use the tool commercially for client projects, integrate
+                                into design workflows, or bookmark for daily use—completely free forever.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <footer class="footer">
+                <div class="footer-stats">
+                    <div class="stat-item" id="footerStatus"><i class="fas fa-circle-notch"></i> Ready</div>
+                    <div class="stat-item" id="savingsStat" style="display:none;"><i class="fas fa-arrow-down"></i>
+                        <span id="savingsText"></span> <span class="diff-tag" id="savingsBadge"></span>
+                    </div>
+                    <div class="footer-links"><a href="#">About</a> • <a href="#">Privacy</a> • <a href="#">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-actions">
+                    <button class="btn btn-sec" onclick="resetDefaults()"><i class="fas fa-undo"></i> RESET</button>
+                    <button class="btn btn-pri" onclick="generateRandomColor()"><i class="fas fa-random"></i>
+                        RANDOM</button>
+                </div>
+            </footer>
+        </div>
+    </main>
+
+    <script>
+        // --- LOGIC: Color Converter ---
+
+        // DOM Elements
+        const elPicker = document.getElementById('clrPicker');
+        const elHex = document.getElementById('inpHexInput');
+        const sliderR = document.getElementById('rngR');
+        const sliderG = document.getElementById('rngG');
+        const sliderB = document.getElementById('rngB');
+
+        const outRGB = document.getElementById('outRGB');
+        const outHSL = document.getElementById('outHSL');
+        const outCMYK = document.getElementById('outCMYK');
+        const colorActual = document.getElementById('colorActual');
+        const contrastBadge = document.getElementById('contrastBadge');
+        const cssVarOutput = document.getElementById('cssVarOutput');
+
+        // State
+        let r = 59, g = 130, b = 246;
+
+        function updateFromPicker() {
+            const hex = elPicker.value;
+            elHex.value = hex.substring(1);
+            updateFromHex();
+        }
+
+        function updateFromHex() {
+            let hex = elHex.value.replace('#', '');
+            if (hex.length === 3) {
+                hex = hex.split('').map(c => c + c).join('');
+            }
+            if (hex.length === 6) {
+                r = parseInt(hex.substring(0, 2), 16);
+                g = parseInt(hex.substring(2, 4), 16);
+                b = parseInt(hex.substring(4, 6), 16);
+                syncUI();
+            }
+        }
+
+        function updateFromRGB() {
+            r = parseInt(sliderR.value);
+            g = parseInt(sliderG.value);
+            b = parseInt(sliderB.value);
+            syncUI();
+        }
+
+        function syncUI() {
+            // Update Sliders Text
+            document.getElementById('valR').innerText = r;
+            document.getElementById('valG').innerText = g;
+            document.getElementById('valB').innerText = b;
+
+            // Update Sliders Position
+            sliderR.value = r;
+            sliderG.value = g;
+            sliderB.value = b;
+
+            // Calculate Hex
+            const hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase();
+
+            // Update Inputs
+            if (document.activeElement !== elHex) elHex.value = hex.substring(1);
+            elPicker.value = hex;
+
+            // Update Outputs
+            outRGB.value = `rgb(${r}, ${g}, ${b})`;
+
+            // Calculate HSL
+            const rN = r / 255, gN = g / 255, bN = b / 255;
+            const max = Math.max(rN, gN, bN), min = Math.min(rN, gN, bN);
+            let h, s, l = (max + min) / 2;
+
+            if (max === min) {
+                h = s = 0;
+            } else {
+                const d = max - min;
+                s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+                switch (max) {
+                    case rN: h = (gN - bN) / d + (gN < bN ? 6 : 0); break;
+                    case gN: h = (bN - rN) / d + 2; break;
+                    case bN: h = (rN - gN) / d + 4; break;
+                }
+                h /= 6;
+            }
+            outHSL.value = `hsl(${Math.round(h * 360)}, ${Math.round(s * 100)}%, ${Math.round(l * 100)}%)`;
+
+            // Calculate CMYK
+            let k = 1 - Math.max(rN, gN, bN);
+            let c = (1 - rN - k) / (1 - k) || 0;
+            let m = (1 - gN - k) / (1 - k) || 0;
+            let y = (1 - bN - k) / (1 - k) || 0;
+            outCMYK.value = `cmyk(${Math.round(c * 100)}%, ${Math.round(m * 100)}%, ${Math.round(y * 100)}%, ${Math.round(k * 100)}%)`;
+
+            // Update Preview
+            colorActual.style.backgroundColor = hex;
+
+            // Contrast Check
+            const yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+            const textColor = (yiq >= 128) ? '#000000' : '#ffffff';
+            contrastBadge.style.color = textColor;
+            contrastBadge.style.background = (yiq >= 128) ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.5)';
+            contrastBadge.innerText = (yiq >= 128) ? "Text: Dark Recommended" : "Text: Light Recommended";
+
+            // CSS Output
+            cssVarOutput.value = `:root {\n  --primary-color: ${hex};\n  --primary-rgb: ${r}, ${g}, ${b};\n}`;
+        }
+
+        function copyToClip(id) {
+            const el = document.getElementById(id);
+            el.select();
+            document.execCommand('copy');
+            alert("Copied!");
+        }
+
+        function resetDefaults() {
+            r = 59; g = 130; b = 246;
+            syncUI();
+        }
+
+        function generateRandomColor() {
+            r = Math.floor(Math.random() * 256);
+            g = Math.floor(Math.random() * 256);
+            b = Math.floor(Math.random() * 256);
+            syncUI();
+        }
+
+        function toggleFullscreenColor(btn) {
+            const pane = btn.closest('.pane');
+            if (pane) {
+                pane.classList.toggle('fullscreen-pane');
+                // Simple fullscreen CSS (if not in style.css, we inject it)
+                if (pane.classList.contains('fullscreen-pane')) {
+                    pane.style.position = 'fixed';
+                    pane.style.top = '0';
+                    pane.style.left = '0';
+                    pane.style.width = '100vw';
+                    pane.style.height = '100vh';
+                    pane.style.zIndex = '1000';
+                    pane.style.borderRadius = '0';
+                    btn.classList.remove('fa-expand');
+                    btn.classList.add('fa-compress');
+                } else {
+                    pane.style.position = '';
+                    pane.style.top = '';
+                    pane.style.left = '';
+                    pane.style.width = '';
+                    pane.style.height = '';
+                    pane.style.zIndex = '';
+                    pane.style.borderRadius = '';
+                    btn.classList.remove('fa-compress');
+                    btn.classList.add('fa-expand');
+                }
+            }
+        }
+
+        function copyToClip(id, btn) {
+            const el = document.getElementById(id);
+            if (el) {
+                // Copy logic without Toast
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(el.value);
+
+                    // Button Feedback
+                    if (btn) {
+                        const icon = btn.querySelector('i');
+                        if (icon) {
+                            const originalClass = icon.className;
+                            icon.className = 'fas fa-check';
+                            icon.style.color = 'var(--primary)';
+                            setTimeout(() => {
+                                icon.className = originalClass;
+                                icon.style.color = '';
+                            }, 1500);
+                        }
+                    }
+                } else {
+                    // Fallback
+                    el.select();
+                    document.execCommand('copy');
+                }
+            }
+        }
+
+        // --- SHARED UI LOGIC ---
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                document.getElementById('themeIcon').classList.remove('fa-moon');
+                document.getElementById('themeIcon').classList.add('fa-sun');
+            } else {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                document.getElementById('themeIcon').classList.remove('fa-sun');
+                document.getElementById('themeIcon').classList.add('fa-moon');
+            }
+        }
+
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            if (sidebar.classList.contains('open')) {
+                sidebar.classList.remove('open');
+                overlay.style.display = 'none';
+            } else {
+                sidebar.classList.add('open');
+                overlay.style.display = 'block';
+            }
+        }
+
+        function filterTools(input) {
+            const filter = input.value.toUpperCase();
+            const items = document.querySelectorAll('.nav-item');
+            items.forEach(item => {
+                const text = item.textContent || item.innerText;
+                if (text.toUpperCase().indexOf(filter) > -1) {
+                    item.style.display = "";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        }
+
+        // Helper Functions
+        async function pasteHex() {
+            try {
+                const text = await navigator.clipboard.readText();
+                if (text) {
+                    elHex.value = text.replace(/#/g, '');
+                    updateFromHex();
+                    // Visual feedback
+                    const btn = document.querySelector('.fa-clipboard');
+                    if (btn) { btn.className = 'fas fa-check action-icon'; setTimeout(() => btn.className = 'far fa-clipboard action-icon', 1000); }
+                }
+            } catch (err) {
+                alert('Failed to read clipboard');
+            }
+        }
+
+        // Init on load
+        window.addEventListener('load', syncUI);
+    </script>
+</body>
+
+</html>

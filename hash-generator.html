@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Free Online Hash Generator - MD5, SHA256, SHA512 | Code Formatter</title>
+    <meta name="description"
+        content="Free online Hash Generator. Convert text to MD5, SHA-1, SHA-256, SHA-512, SHA-3, and RIPEMD-160 hashes instantly. Secure, client-side encryption tool.">
+    <meta name="keywords"
+        content="hash generator, online hash calculator, md5 generator, sha256 generator, sha512 hash, text to hash, encryption tool, fingerprint generator, checksum calculator">
+    <link rel="canonical" href="https://codeformats.com/hash-generator.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://codeformats.com/hash-generator.html">
+    <meta property="og:title" content="Free Hash Generator - MD5, SHA-256, SHA-512">
+    <meta property="og:description"
+        content="Generate cryptographic hashes instantly. Supports MD5, SHA-1, SHA-2, SHA-3 and more. Secure client-side processing.">
+    <meta property="og:image" content="https://codeformats.com/og-hash-generator.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Hash Generator Online 2026">
+    <meta name="twitter:description"
+        content="Calculate cryptographic hashes for text strings securely in your browser.">
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Crypto JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+    <style>
+        /* Dark Theme (Default) */
+        :root {
+            --bg-body: #0a0a0a;
+            --bg-panel: #171717;
+            --bg-input: rgba(0, 0, 0, 0.3);
+            --border-color: #262626;
+            --primary: #3b82f6;
+            --primary-glow: rgba(59, 130, 246, 0.25);
+            --secondary: #22d3ee;
+            --success: #22c55e;
+            --danger: #ef4444;
+            --text-main: #ededed;
+            --text-muted: #a1a1aa;
+            --text-heading: #ffffff;
+        }
+
+        /* Light Theme */
+        html.light {
+            --bg-body: #f8fafc;
+            --bg-panel: #ffffff;
+            --bg-input: #f1f5f9;
+            --border-color: #e2e8f0;
+            --primary: #4f46e5;
+            --primary-glow: rgba(79, 70, 229, 0.15);
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --text-heading: #0f172a;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        html.light body {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+        }
+
+        main {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        header {
+            background: var(--bg-panel);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 20;
+            flex-shrink: 0;
+        }
+
+        #scrollable-wrapper {
+            flex-grow: 1;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 80px;
+        }
+
+        .workspace {
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            height: 75vh;
+            min-height: 550px;
+            max-height: 750px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .pane {
+            flex: 1;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+
+        html.light .pane {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .pane:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 30px var(--primary-glow);
+            transform: translateY(-2px);
+        }
+
+        .pane-header {
+            padding: 16px 20px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(34, 211, 238, 0.03) 100%);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        html.light .pane-header {
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.06) 0%, rgba(59, 130, 246, 0.03) 100%);
+        }
+
+        .pane-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pane-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .action-icon {
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.95rem;
+            padding: 6px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .action-icon:hover {
+            color: var(--primary);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        /* Custom Dropdown in Pane Action */
+        select.algo-select {
+            background: var(--bg-input);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            outline: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .editor-container {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            padding: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: var(--text-main);
+            line-height: 1.7;
+            resize: none;
+        }
+
+        textarea:focus {
+            outline: none;
+        }
+
+        textarea::placeholder {
+            color: var(--text-muted);
+            opacity: 0.5;
+        }
+
+        /* Checkbox option */
+        .option-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        /* Stats */
+        .editor-stats {
+            padding: 10px 20px;
+            background: var(--bg-input);
+            border-top: 1px solid var(--border-color);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .stat-item i {
+            color: var(--primary);
+        }
+
+        /* Content Section */
+        .content-container {
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .clean-card {
+            background: var(--bg-panel);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .clean-card::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            filter: blur(120px);
+            opacity: 0.12;
+            z-index: -1;
+        }
+
+        .prose h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin: 0 0 20px 0;
+            background: linear-gradient(180deg, var(--text-heading), var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .prose h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-top: 45px;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .prose h2::before {
+            content: '#';
+            color: var(--primary);
+            opacity: 0.4;
+            margin-right: 10px;
+        }
+
+        .prose h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-top: 30px;
+            margin-bottom: 12px;
+        }
+
+        .prose p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 18px;
+            font-size: 1.02rem;
+        }
+
+        .prose strong {
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .prose ul,
+        .prose ol {
+            margin-bottom: 24px;
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        .prose li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        .prose ul li::before {
+            content: "→";
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .prose ol {
+            counter-reset: list-counter;
+        }
+
+        .prose ol li {
+            counter-increment: list-counter;
+        }
+
+        .prose ol li::before {
+            content: counter(list-counter) ".";
+            color: var(--primary);
+            font-weight: 700;
+            position: absolute;
+            left: 0;
+        }
+
+        .prose code {
+            background: var(--bg-input);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--secondary);
+        }
+
+        .faq-item {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 22px 25px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .faq-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--primary);
+            transition: height 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary);
+            background: rgba(59, 130, 246, 0.02);
+            transform: translateX(5px);
+        }
+
+        html.light .faq-item:hover {
+            background: rgba(79, 70, 229, 0.03);
+        }
+
+        .faq-item:hover::before {
+            height: 100%;
+        }
+
+        .faq-item strong {
+            display: block;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            font-size: 1.02rem;
+        }
+
+        .faq-item p {
+            margin-bottom: 0;
+            font-size: 0.92rem;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--bg-panel);
+            border-top: 1px solid var(--border-color);
+            z-index: 30;
+            padding: 10px 20px;
+        }
+
+        @media (max-width: 768px) {
+            .workspace {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .pane {
+                min-height: 350px;
+            }
+
+            .clean-card {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <aside id="sidebar">
+        <div class="brand">
+            <div class="brand-logo"><i class="fas fa-layer-group"></i> Code Formatter</div>
+        </div>
+        <div class="search-container"><input type="text" class="search-input" placeholder="Search tools..."
+                onkeyup="filterTools(this)"></div>
+                        <nav class="menu" id="menuContainer">
+            <div class="nav-group-title">Code Formatters</div>
+            <a href="index.html" class="nav-item" data-id="json-fmt"><i class="fas fa-code"></i> JSON Formatter</a>
+            <a href="html-formatter.html" class="nav-item" data-id="html-fmt"><i class="fab fa-html5"></i> HTML Formatter</a>
+            <a href="css-formatter.html" class="nav-item" data-id="css-fmt"><i class="fab fa-css3-alt"></i> CSS Formatter</a>
+            <a href="js-formatter.html" class="nav-item" data-id="js-fmt"><i class="fab fa-js"></i> JS Formatter</a>
+            <a href="sql-formatter.html" class="nav-item" data-id="sql-fmt"><i class="fas fa-database"></i> SQL Formatter</a>
+            <a href="xml-formatter.html" class="nav-item" data-id="xml-fmt"><i class="fas fa-code"></i> XML Formatter</a>
+
+            <div class="nav-group-title">Image & Color Tools</div>
+            <a href="image-compressor.html" class="nav-item" data-id="img-compress"><i class="fas fa-image"></i> Image Compressor</a>
+            <a href="color-converter.html" class="nav-item" data-id="color-conv"><i class="fas fa-palette"></i> Color Converter</a>
+            <a href="qr-code-generator.html" class="nav-item" data-id="qr-gen"><i class="fas fa-qrcode"></i> QR Generator</a>
+
+            <div class="nav-group-title">Code Minifiers</div>
+            <a href="json-minifier.html" class="nav-item" data-id="json-min"><i class="fas fa-compress"></i> JSON Minifier</a>
+            <a href="html-minifier.html" class="nav-item" data-id="html-min"><i class="fas fa-compress-arrows-alt"></i> HTML Minifier</a>
+            <a href="css-minifier.html" class="nav-item" data-id="css-min"><i class="fas fa-compress-arrows-alt"></i> CSS Minifier</a>
+            <a href="js-minifier.html" class="nav-item" data-id="js-min"><i class="fas fa-file-archive"></i> JS Minifier</a>
+
+            <div class="nav-group-title">Data Converters</div>
+            <a href="json-to-csv.html" class="nav-item" data-id="json-csv"><i class="fas fa-table"></i> JSON to CSV</a>
+            <a href="csv-to-json.html" class="nav-item" data-id="csv-json"><i class="fas fa-file-csv"></i> CSV to JSON</a>
+            <a href="excel-to-html.html" class="nav-item" data-id="excel-html"><i class="fas fa-table"></i> Excel to HTML</a>
+            <a href="case-converter.html" class="nav-item" data-id="case-conv"><i class="fas fa-text-height"></i> Case Converter</a>
+
+            <div class="nav-group-title">Encoding & Security</div>
+            <a href="base64-tool.html" class="nav-item" data-id="base64"><i class="fas fa-lock"></i> Base64 Tool</a>
+            <a href="url-encoder.html" class="nav-item" data-id="url-enc"><i class="fas fa-link"></i> URL Encoder</a>
+            <a href="hash-generator.html" class="nav-item" data-id="hash-gen"><i class="fas fa-fingerprint"></i> Hash Generator</a>
+            <a href="jwt-decoder.html" class="nav-item" data-id="jwt-dec"><i class="fas fa-shield-alt"></i> JWT Decoder</a>
+
+            <div class="nav-group-title">CSS Generators</div>
+            <a href="glassmorphism-generator.html" class="nav-item" data-id="glass-morphism"><i class="fas fa-wind"></i> Glassmorphism</a>
+            <a href="smooth-shadow-generator.html" class="nav-item" data-id="shadow-gen"><i class="fas fa-layer-group"></i> Smooth Shadow</a>
+            <a href="px-to-rem.html" class="nav-item" data-id="px-rem"><i class="fas fa-ruler-combined"></i> PX to REM</a>
+            <a href="aspect-ratio-calculator.html" class="nav-item" data-id="aspect-ratio"><i class="fas fa-expand"></i> Aspect Ratio</a>
+
+            <div class="nav-group-title">Text & Data</div>
+            <a href="lorem-ipsum-generator.html" class="nav-item" data-id="lorem"><i class="fas fa-paragraph"></i> Lorem Ipsum</a>
+            <a href="mock-data-generator.html" class="nav-item" data-id="mock-data"><i class="fas fa-users"></i> Mock Data Gen</a>
+            <a href="diff-checker.html" class="nav-item" data-id="diff-check"><i class="fas fa-exchange-alt"></i> Diff Checker</a>
+
+            <div class="nav-group-title">Preview Tools</div>
+            <a href="html-viewer.html" class="nav-item" data-id="html-view"><i class="fas fa-eye"></i> HTML Viewer</a>
+            <a href="social-card-preview.html" class="nav-item" data-id="social-card"><i class="fas fa-share-alt"></i> Social Preview</a>
+        </nav>
+    </aside>
+    <div id="overlay" onclick="closeAllDrawers()"></div>
+
+    <main>
+        <header>
+            <div class="header-left"><i class="fas fa-bars menu-toggle-btn" onclick="handleMenuClick()"></i>
+                <div class="tool-info">
+                    <div id="toolTitle">Hash Generator</div>
+                    <p id="toolDesc">Compute MD5, SHA-1, SHA-256 and other cryptographic hashes instantly.</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="blog.html" class="nav-link">Blog</a>
+                <button class="theme-btn" onclick="toggleTheme()"><i class="fas fa-moon" id="themeIcon"></i></button>
+            </div>
+        </header>
+
+        <div id="scrollable-wrapper">
+            <section class="workspace" id="workspace">
+                <!-- Input Pane -->
+                <div class="pane">
+                    <div class="pane-header">
+                        <span class="pane-title"><i class="fas fa-keyboard"></i> Input Text</span>
+                        <div class="pane-actions">
+                            <label class="option-group">
+                                <input type="checkbox" id="chkUppercase" onchange="processHash()"> Uppercase
+                            </label>
+                            <i class="far fa-clipboard action-icon" onclick="pasteInput()" title="Paste"></i>
+                            <i class="far fa-trash-alt action-icon" onclick="clearAll()" title="Clear"></i>
+                        </div>
+                    </div>
+                    <div class="editor-container">
+                        <textarea id="inputText" placeholder="Type text here to hash..." spellcheck="false"
+                            oninput="processHash()"></textarea>
+                    </div>
+                    <div class="editor-stats">
+                        <div class="stat-item"><i class="fas fa-text-width"></i> <span id="inputLen">0 chars</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Output Pane -->
+                <div class="pane">
+                    <div class="pane-header">
+                        <span class="pane-title"><i class="fas fa-fingerprint"></i> <span id="outputLabel">SHA-256
+                                Output</span></span>
+                        <div class="pane-actions">
+                            <select id="algoSelect" class="algo-select" onchange="processHash()">
+                                <option value="SHA256" selected>SHA-256</option>
+                                <option value="MD5">MD5</option>
+                                <option value="SHA1">SHA-1</option>
+                                <option value="SHA512">SHA-512</option>
+                                <option value="SHA3">SHA-3 (512)</option>
+                                <option value="RIPEMD160">RIPEMD-160</option>
+                            </select>
+                            <i class="far fa-copy action-icon" onclick="copyOutput()" title="Copy Result"></i>
+                        </div>
+                    </div>
+                    <div class="editor-container">
+                        <textarea id="outputText" readonly placeholder="Hash will appear here..."></textarea>
+                    </div>
+                    <div class="editor-stats">
+                        <div class="stat-item"><i class="fas fa-info-circle"></i> <span id="statusText">Ready</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEO CONTENT SECTION -->
+            <div class="content-container">
+                <article class="clean-card prose">
+                    <h1>Free Online Digest & Hash Generator 2026</h1>
+
+                    <p>Welcome to <strong>Code Formatter Hash Generator</strong> – a powerful client-side cryptography
+                        tool capable of computing hashes for any string using popular algorithms like MD5, SHA-1,
+                        SHA-256, SHA-512, and more. Hash functions are the backbone of modern data security, used for
+                        password verification, file integrity checks, and digital signatures.</p>
+
+                    <p>This tool runs entirely in your browser using standard cryptographic libraries (`CryptoJS`). This
+                        means your data is processed locally on your device and <strong>never sent to any
+                            server</strong>, ensuring complete privacy for your sensitive strings.</p>
+
+                    <h2>Supported Algorithms</h2>
+
+                    <h3>SHA-256 (Secure Hash Algorithm 256-bit)</h3>
+                    <p>The industry standard for security. Used in SSL certificates, Bitcoin transactions, and many
+                        modern authentication systems. It produces a 64-character hexadecimal string. It is currently
+                        considered robust against collision attacks.</p>
+
+                    <h3>MD5 (Message Digest Algorithm 5)</h3>
+                    <p>Produces a 128-bit hash value. While fast and widely used for checksums (verifying file
+                        integrity), it is <strong>no longer secure</strong> for password storage due to vulnerabilities
+                        to collision attacks. It's still useful for non-cryptographic purposes.</p>
+
+                    <h3>SHA-1</h3>
+                    <p>The predecessor to SHA-2. Produces a 160-bit hash. deprecated by major browsers and certificate
+                        authorities. Like MD5, it's efficient for simple checksums but should be avoided for
+                        high-security applications initiated after 2010.</p>
+
+                    <h3>SHA-512 & SHA-3</h3>
+                    <p>SHA-512 belongs to the SHA-2 family but with larger block sizes, suitable for 64-bit processors.
+                        SHA-3 is the latest member of the Secure Hash Algorithm family, internally different from MD5
+                        and SHA-1/2 (Keccak based), offering a backup if SHA-2 is ever compromised.</p>
+
+                    <h2>How to Use This Tool</h2>
+                    <ol>
+                        <li><strong>Enter Text:</strong> Type or paste your string into the Input box.</li>
+                        <li><strong>Select Algorithm:</strong> Choose your desired hash function from the dropdown in
+                            the Output pane (Default: SHA-256).</li>
+                        <li><strong>Customize:</strong> Toggle "Uppercase" if you need the hex string in CAPS.</li>
+                        <li><strong>Copy:</strong> Click the copy icon to grab the result instantly.</li>
+                    </ol>
+
+                    <h2>Common Use Cases</h2>
+
+                    <h3>1. Verifying File Integrity</h3>
+                    <p>When downloading software, developers often provide a SHA-256 checksum. You can hash the text
+                        content or file name to verify it matches the source.</p>
+
+                    <h3>2. Password Storage Concepts</h3>
+                    <p>Developers use hashing to store passwords. Instead of saving "password123", they save
+                        `ef92b778...`. When a user logs in, the system hashes their input and compares it to the stored
+                        hash.</p>
+
+                    <h3>3. Digital Fingerprinting</h3>
+                    <p>Hashing creates a unique "fingerprint" of data. Even changing a single comma in a large document
+                        results in a completely different hash.</p>
+
+                    <h2>Frequently Asked Questions</h2>
+
+                    <div class="faq-item">
+                        <strong>Is this tool safe for passwords?</strong>
+                        <p>Yes, because it runs locally. However, for a production app, you should <strong>salt</strong>
+                            your passwords (add random data before hashing) and use slow algorithms like bcrypt or
+                            Argon2, not simple SHA-256, to prevent rainbow table attacks.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Can I decrypt a hash?</strong>
+                        <p>No. Hashes are <strong>one-way functions</strong>. You cannot mathematically reverse a hash
+                            to get the original text. You can only brute-force it (guess inputs until one matches).</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>What is a collision?</strong>
+                        <p>A collision happens when two different inputs produce the exact same hash. MD5 and SHA-1 have
+                            known collision vulnerabilities. SHA-256 is currently strictly collision-resistant.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Why do some hashes look like `e3b0c44...`?</strong>
+                        <p>That specifically `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` is the
+                            SHA-256 hash of an <strong>empty string</strong>.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Does this support file hashing?</strong>
+                        <p>Currently, this tool is optimized for text strings. Hashing large files requires different
+                            memory management techniques (streaming) to avoid crashing your browser.</p>
+                    </div>
+
+                    <p style="text-align: center; margin-top: 3rem; color: var(--text-muted); font-size: 0.85rem;">
+                        Code Formatter © 2026. Professional developer tools built with privacy and performance in mind.
+                    </p>
+                </article>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-stats">
+                <div class="stat-item" id="footerStatus"><i class="fas fa-circle-notch"></i> Ready</div>
+                <div class="footer-links"><a href="./About.html">About</a> • <a href="./Privacy.html">Privacy</a> • <a
+                        href="./Contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-actions">
+                <button class="btn btn-sec" onclick="clearAll()"><i class="far fa-trash-alt"></i> CLEAR</button>
+            </div>
+        </footer>
+    </main>
+
+    <div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span>Action Completed</span></div>
+
+    <script>
+        const activeToolId = "hash-gen";
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Init
+        });
+
+        function processHash() {
+            const input = document.getElementById('inputText').value;
+            const algo = document.getElementById('algoSelect').value;
+            const output = document.getElementById('outputText');
+            const status = document.getElementById('statusText');
+            const toUpper = document.getElementById('chkUppercase').checked;
+
+            document.getElementById('inputLen').innerText = input.length + ' chars';
+            document.getElementById('outputLabel').innerText = document.getElementById('algoSelect').options[document.getElementById('algoSelect').selectedIndex].text + ' Output';
+
+            if (!input) {
+                output.value = '';
+                status.innerText = 'Ready';
+                status.style.color = 'var(--text-muted)';
+                return;
+            }
+
+            try {
+                let hash = '';
+
+                // Using CryptoJS
+                if (typeof CryptoJS === 'undefined') {
+                    throw new Error('CryptoJS library not loaded.');
+                }
+
+                switch (algo) {
+                    case 'MD5':
+                        hash = CryptoJS.MD5(input).toString();
+                        break;
+                    case 'SHA1':
+                        hash = CryptoJS.SHA1(input).toString();
+                        break;
+                    case 'SHA256':
+                        hash = CryptoJS.SHA256(input).toString();
+                        break;
+                    case 'SHA512':
+                        hash = CryptoJS.SHA512(input).toString();
+                        break;
+                    case 'SHA3':
+                        hash = CryptoJS.SHA3(input, { outputLength: 512 }).toString();
+                        break;
+                    case 'RIPEMD160':
+                        hash = CryptoJS.RIPEMD160(input).toString();
+                        break;
+                    default:
+                        hash = CryptoJS.SHA256(input).toString();
+                }
+
+                if (toUpper) {
+                    hash = hash.toUpperCase();
+                }
+
+                output.value = hash;
+                status.innerText = `${hash.length * 4} bits generated`; // Approx for hex (1 char = 4 bits)
+                status.style.color = 'var(--success)';
+
+            } catch (error) {
+                console.error(error);
+                output.value = 'Error: ' + error.message;
+                status.innerText = 'Hashing Error';
+                status.style.color = 'var(--danger)';
+            }
+        }
+
+        function pasteInput() {
+            navigator.clipboard.readText().then(text => {
+                document.getElementById('inputText').value = text;
+                processHash();
+                showToast('Pasted from clipboard!');
+            });
+        }
+
+        function clearAll() {
+            document.getElementById('inputText').value = '';
+            document.getElementById('outputText').value = '';
+            document.getElementById('inputLen').innerText = '0 chars';
+            document.getElementById('statusText').innerText = 'Ready';
+            showToast('Cleared!');
+        }
+
+        function copyOutput() {
+            const output = document.getElementById('outputText').value;
+            if (!output || output.startsWith('Error')) {
+                showToast('Nothing to copy.');
+                return;
+            }
+            navigator.clipboard.writeText(output).then(() => {
+                showToast('Copied to clipboard!');
+            });
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.querySelector('span').innerText = msg;
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 3000);
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

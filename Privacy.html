@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Privacy Policy | Code Formatter - 100% Client-Side Secure</title>
+    <meta name="description"
+        content="Our Privacy Promise: Your code never leaves your browser. All JSON formatting and minification happens locally. Verified by Udit Sharma.">
+    <meta name="keywords" content="Privacy Policy, Secure JSON Formatter, Client Side Tools, No Tracking, Udit Sharma">
+    <meta name="author" content="Udit Sharma">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=JetBrains+Mono:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "PrivacyPolicy",
+      "name": "Privacy Policy - Code Formatter",
+      "author": { "@type": "Person", "name": "Udit Sharma" },
+      "datePublished": "2026-01-01",
+      "description": "Policy confirming that all data processing is client-side and secure."
+    }
+    </script>
+
+    <style>
+        /* --- COPYING YOUR EXACT CSS FOR CONSISTENCY --- */
+        :root {
+            --bg-body: #050505;
+            --bg-glass: rgba(20, 20, 23, 0.4);
+            --bg-card: #0a0a0c;
+            --border: #27272a;
+            --primary: #6366f1;
+            --primary-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            --success: #10b981;
+            /* Added for Trust Signals */
+            --text-main: #ffffff;
+            --text-muted: #a1a1aa;
+            --spacing-lg: 30px;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.08), transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.05), transparent 40%);
+            /* Subtle Green hint for security */
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .wrapper {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            transition: 0.3s ease;
+        }
+
+        .nav-back:hover {
+            color: #fff;
+            transform: translateX(-3px);
+        }
+
+        .hero-section {
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin: 0 0 10px 0;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+        }
+
+        /* TRUST CARD (Similar style to Founder Card) */
+        .trust-card {
+            background: linear-gradient(180deg, rgba(16, 185, 129, 0.05) 0%, rgba(20, 20, 23, 0.4) 100%);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--success);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .trust-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--success);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+
+        .trust-text {
+            color: #d4d4d8;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        /* SECTIONS */
+        .policy-section {
+            margin-bottom: 40px;
+            border-top: 1px solid var(--border);
+            padding-top: 30px;
+        }
+
+        h2 {
+            color: #fff;
+            font-size: 1.4rem;
+            margin: 0 0 15px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: #a1a1aa;
+            font-size: 0.95rem;
+        }
+
+        /* GRID FOR FEATURES */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .feature-box {
+            background: rgba(20, 20, 23, 0.4);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+        }
+
+        .feature-box h3 {
+            margin: 0 0 8px 0;
+            color: #fff;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .feature-box p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .feature-box i {
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        footer {
+            margin-top: 40px;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        @media(max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <a href="index.html" class="nav-back"><i class="fas fa-arrow-left"></i> Back to Tools</a>
+
+        <header class="hero-section">
+            <h1>Privacy Policy</h1>
+            <div class="subtitle">Last Updated: January 2026</div>
+        </header>
+
+        <div class="trust-card">
+            <div class="trust-title"><i class="fas fa-lock"></i> The "Plain English" Promise</div>
+            <p class="trust-text">
+                <strong>We do not want your data.</strong> Everything you paste here (JSON, Code, Text) stays on your
+                device. It is processed by your browser's CPU and never transmitted to our servers.
+            </p>
+        </div>
+
+        <div class="policy-section">
+            <h2>1. How We Process Data</h2>
+            <p>Code Formatter is a <strong>Client-Side Application</strong>. This is the safest architecture for
+                developer
+                tools because:</p>
+
+            <div class="content-grid">
+                <div class="feature-box">
+                    <h3><i class="fas fa-microchip"></i> Local Processing</h3>
+                    <p>Calculations happen on your machine. No API calls send your code out.</p>
+                </div>
+                <div class="feature-box">
+                    <h3><i class="fas fa-history"></i> No Logs</h3>
+                    <p>Since we don't have a backend database for input, we literally cannot log your data.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="policy-section">
+            <h2>2. Cookies & Local Storage</h2>
+            <p>We use zero tracking pixels. However, to improve your UI experience, we use your browser's <strong>Local
+                    Storage</strong> for:</p>
+            <ul style="color:var(--text-muted); list-style:none; padding:0;">
+                <li style="margin-bottom:8px;"><i class="fas fa-check"
+                        style="color:var(--primary); margin-right:8px;"></i> <strong>Theme Preference:</strong>
+                    Remembering if you like Dark Mode.</li>
+                <li style="margin-bottom:8px;"><i class="fas fa-check"
+                        style="color:var(--primary); margin-right:8px;"></i> <strong>Tool Selection:</strong> Keeping
+                    your last used tool active.</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2>3. Contact & Security</h2>
+            <p>If you have any concerns about the security implementation of this site, you can reach out directly to
+                the developer, <strong>Udit Sharma</strong>.</p>
+        </div>
+
+        <footer>
+            &copy; 2026 Code Formatter by <strong>Udit Sharma</strong>. Secure by Design.
+        </footer>
+    </div>
+
+</body>
+
+</html>

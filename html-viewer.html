@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Free HTML Viewer & Real-time Editor - Test HTML Code Online 2026 | Code Formatter</title>
+    <meta name="description"
+        content="Free online HTML viewer and real-time editor. Test and preview HTML, CSS, and JavaScript code instantly in your browser. 100% client-side sandbox.">
+    <meta name="keywords"
+        content="html viewer, html editor, online html editor, test html code, run html online, live html preview, html sandbox, web code playground, preview html file">
+    <link rel="canonical" href="https://codeformats.com/html-viewer.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://codeformats.com/html-viewer.html">
+    <meta property="og:title" content="Free HTML Viewer & Real-time Editor Online 2026">
+    <meta property="og:description"
+        content="Test and mock up HTML code instantly with our free real-time viewer and playground.">
+    <meta property="og:image" content="https://codeformats.com/og-html-viewer.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free HTML Viewer & Live Editor Online 2026">
+    <meta name="twitter:description" content="Instant HTML preview and testing playground for developers.">
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        /* Dark Theme (Default) */
+        :root {
+            --bg-body: #0a0a0a;
+            --bg-panel: #171717;
+            --bg-input: rgba(0, 0, 0, 0.3);
+            --border-color: #262626;
+            --primary: #3b82f6;
+            --primary-glow: rgba(59, 130, 246, 0.25);
+            --secondary: #22d3ee;
+            --success: #22c55e;
+            --text-main: #ededed;
+            --text-muted: #a1a1aa;
+            --text-heading: #ffffff;
+        }
+
+        /* Light Theme */
+        html.light {
+            --bg-body: #f8fafc;
+            --bg-panel: #ffffff;
+            --bg-input: #f1f5f9;
+            --border-color: #e2e8f0;
+            --primary: #4f46e5;
+            --primary-glow: rgba(79, 70, 229, 0.15);
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --text-heading: #0f172a;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        html.light body {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+        }
+
+        main {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        header {
+            background: var(--bg-panel);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 20;
+            flex-shrink: 0;
+        }
+
+        #scrollable-wrapper {
+            flex-grow: 1;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 80px;
+        }
+
+        .workspace {
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            height: 75vh;
+            min-height: 550px;
+            max-height: 750px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .pane {
+            flex: 1;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        html.light .pane {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .pane:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 30px var(--primary-glow);
+            transform: translateY(-2px);
+        }
+
+        .pane-header {
+            padding: 16px 20px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(34, 211, 238, 0.03) 100%);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        html.light .pane-header {
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.06) 0%, rgba(59, 130, 246, 0.03) 100%);
+        }
+
+        .pane-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pane-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .action-icon {
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.95rem;
+            padding: 6px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .action-icon:hover {
+            color: var(--primary);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .editor-container {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-input);
+        }
+
+        textarea {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            padding: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: var(--text-main);
+            line-height: 1.7;
+            resize: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        textarea:focus {
+            outline: none;
+        }
+
+        textarea::placeholder {
+            color: var(--text-muted);
+            opacity: 0.5;
+        }
+
+        #previewFrame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #ffffff;
+            /* Always white preview unless HTML sets color */
+            display: block;
+        }
+
+        /* Stats */
+        .editor-stats {
+            padding: 10px 20px;
+            background: var(--bg-input);
+            border-top: 1px solid var(--border-color);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .stat-item i {
+            color: var(--primary);
+        }
+
+        .live-badge {
+            background: var(--success);
+            color: #000;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Content Section */
+        .content-container {
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .clean-card {
+            background: var(--bg-panel);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .clean-card::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            filter: blur(120px);
+            opacity: 0.12;
+            z-index: -1;
+        }
+
+        .prose h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin: 0 0 20px 0;
+            background: linear-gradient(180deg, var(--text-heading), var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .prose h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-top: 45px;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .prose h2::before {
+            content: '#';
+            color: var(--primary);
+            opacity: 0.4;
+            margin-right: 10px;
+        }
+
+        .prose h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-top: 30px;
+            margin-bottom: 12px;
+        }
+
+        .prose p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 18px;
+            font-size: 1.02rem;
+        }
+
+        .prose strong {
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .prose ul,
+        .prose ol {
+            margin-bottom: 24px;
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        .prose li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        .prose ul li::before {
+            content: "→";
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .prose ol {
+            counter-reset: list-counter;
+        }
+
+        .prose ol li {
+            counter-increment: list-counter;
+        }
+
+        .prose ol li::before {
+            content: counter(list-counter) ".";
+            color: var(--primary);
+            font-weight: 700;
+            position: absolute;
+            left: 0;
+        }
+
+        .prose code {
+            background: var(--bg-input);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--secondary);
+        }
+
+        .faq-item {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 22px 25px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .faq-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--primary);
+            transition: height 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary);
+            background: rgba(59, 130, 246, 0.02);
+            transform: translateX(5px);
+        }
+
+        html.light .faq-item:hover {
+            background: rgba(79, 70, 229, 0.03);
+        }
+
+        .faq-item:hover::before {
+            height: 100%;
+        }
+
+        .faq-item strong {
+            display: block;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            font-size: 1.02rem;
+        }
+
+        .faq-item p {
+            margin-bottom: 0;
+            font-size: 0.92rem;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--bg-panel);
+            border-top: 1px solid var(--border-color);
+            z-index: 30;
+            padding: 10px 20px;
+        }
+
+        @media (max-width: 768px) {
+            .workspace {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .pane {
+                min-height: 350px;
+            }
+
+            .clean-card {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <aside id="sidebar">
+        <div class="brand">
+            <div class="brand-logo"><i class="fas fa-layer-group"></i> Code Formatter</div>
+        </div>
+        <div class="search-container"><input type="text" class="search-input" placeholder="Search tools..."
+                onkeyup="filterTools(this)"></div>
+                        <nav class="menu" id="menuContainer">
+            <div class="nav-group-title">Code Formatters</div>
+            <a href="index.html" class="nav-item" data-id="json-fmt"><i class="fas fa-code"></i> JSON Formatter</a>
+            <a href="html-formatter.html" class="nav-item" data-id="html-fmt"><i class="fab fa-html5"></i> HTML Formatter</a>
+            <a href="css-formatter.html" class="nav-item" data-id="css-fmt"><i class="fab fa-css3-alt"></i> CSS Formatter</a>
+            <a href="js-formatter.html" class="nav-item" data-id="js-fmt"><i class="fab fa-js"></i> JS Formatter</a>
+            <a href="sql-formatter.html" class="nav-item" data-id="sql-fmt"><i class="fas fa-database"></i> SQL Formatter</a>
+            <a href="xml-formatter.html" class="nav-item" data-id="xml-fmt"><i class="fas fa-code"></i> XML Formatter</a>
+
+            <div class="nav-group-title">Image & Color Tools</div>
+            <a href="image-compressor.html" class="nav-item" data-id="img-compress"><i class="fas fa-image"></i> Image Compressor</a>
+            <a href="color-converter.html" class="nav-item" data-id="color-conv"><i class="fas fa-palette"></i> Color Converter</a>
+            <a href="qr-code-generator.html" class="nav-item" data-id="qr-gen"><i class="fas fa-qrcode"></i> QR Generator</a>
+
+            <div class="nav-group-title">Code Minifiers</div>
+            <a href="json-minifier.html" class="nav-item" data-id="json-min"><i class="fas fa-compress"></i> JSON Minifier</a>
+            <a href="html-minifier.html" class="nav-item" data-id="html-min"><i class="fas fa-compress-arrows-alt"></i> HTML Minifier</a>
+            <a href="css-minifier.html" class="nav-item" data-id="css-min"><i class="fas fa-compress-arrows-alt"></i> CSS Minifier</a>
+            <a href="js-minifier.html" class="nav-item" data-id="js-min"><i class="fas fa-file-archive"></i> JS Minifier</a>
+
+            <div class="nav-group-title">Data Converters</div>
+            <a href="json-to-csv.html" class="nav-item" data-id="json-csv"><i class="fas fa-table"></i> JSON to CSV</a>
+            <a href="csv-to-json.html" class="nav-item" data-id="csv-json"><i class="fas fa-file-csv"></i> CSV to JSON</a>
+            <a href="excel-to-html.html" class="nav-item" data-id="excel-html"><i class="fas fa-table"></i> Excel to HTML</a>
+            <a href="case-converter.html" class="nav-item" data-id="case-conv"><i class="fas fa-text-height"></i> Case Converter</a>
+
+            <div class="nav-group-title">Encoding & Security</div>
+            <a href="base64-tool.html" class="nav-item" data-id="base64"><i class="fas fa-lock"></i> Base64 Tool</a>
+            <a href="url-encoder.html" class="nav-item" data-id="url-enc"><i class="fas fa-link"></i> URL Encoder</a>
+            <a href="hash-generator.html" class="nav-item" data-id="hash-gen"><i class="fas fa-fingerprint"></i> Hash Generator</a>
+            <a href="jwt-decoder.html" class="nav-item" data-id="jwt-dec"><i class="fas fa-shield-alt"></i> JWT Decoder</a>
+
+            <div class="nav-group-title">CSS Generators</div>
+            <a href="glassmorphism-generator.html" class="nav-item" data-id="glass-morphism"><i class="fas fa-wind"></i> Glassmorphism</a>
+            <a href="smooth-shadow-generator.html" class="nav-item" data-id="shadow-gen"><i class="fas fa-layer-group"></i> Smooth Shadow</a>
+            <a href="px-to-rem.html" class="nav-item" data-id="px-rem"><i class="fas fa-ruler-combined"></i> PX to REM</a>
+            <a href="aspect-ratio-calculator.html" class="nav-item" data-id="aspect-ratio"><i class="fas fa-expand"></i> Aspect Ratio</a>
+
+            <div class="nav-group-title">Text & Data</div>
+            <a href="lorem-ipsum-generator.html" class="nav-item" data-id="lorem"><i class="fas fa-paragraph"></i> Lorem Ipsum</a>
+            <a href="mock-data-generator.html" class="nav-item" data-id="mock-data"><i class="fas fa-users"></i> Mock Data Gen</a>
+            <a href="diff-checker.html" class="nav-item" data-id="diff-check"><i class="fas fa-exchange-alt"></i> Diff Checker</a>
+
+            <div class="nav-group-title">Preview Tools</div>
+            <a href="html-viewer.html" class="nav-item" data-id="html-view"><i class="fas fa-eye"></i> HTML Viewer</a>
+            <a href="social-card-preview.html" class="nav-item" data-id="social-card"><i class="fas fa-share-alt"></i> Social Preview</a>
+        </nav>
+    </aside>
+    <div id="overlay" onclick="closeAllDrawers()"></div>
+
+    <main>
+        <header>
+            <div class="header-left"><i class="fas fa-bars menu-toggle-btn" onclick="handleMenuClick()"></i>
+                <div class="tool-info">
+                    <div id="toolTitle">HTML Viewer</div>
+                    <p id="toolDesc">Write/paste HTML code and see real-time preview instantly.</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="blog.html" class="nav-link">Blog</a>
+                <button class="theme-btn" onclick="toggleTheme()"><i class="fas fa-moon" id="themeIcon"></i></button>
+            </div>
+        </header>
+
+        <div id="scrollable-wrapper">
+            <section class="workspace" id="workspace">
+                <!-- Input Pane -->
+                <div class="pane">
+                    <div class="pane-header">
+                        <span class="pane-title"><i class="fas fa-code"></i> HTML Source</span>
+                        <div class="pane-actions">
+                            <i class="far fa-clipboard action-icon" onclick="pasteHTML()" title="Paste"></i>
+                            <i class="far fa-trash-alt action-icon" onclick="clearHTML()" title="Clear"></i>
+                        </div>
+                    </div>
+                    <div class="editor-container">
+                        <textarea id="inputHTML" placeholder="Write or paste your HTML here..." spellcheck="false"
+                            oninput="updatePreview()"><!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+  body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #f0f2f5; }
+  .card { background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; }
+  h1 { color: #3b82f6; margin-top: 0; }
+  button { background: #3b82f6; color: white; border: none; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer; transition: 0.2s; }
+  button:hover { background: #2563eb; transform: scale(1.05); }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>Hello, World!</h1>
+    <p>This is a live HTML preview.</p>
+    <button onclick="alert('It works!')">Click Me</button>
+  </div>
+</body>
+</html></textarea>
+                    </div>
+                    <div class="editor-stats">
+                        <div class="stat-item"><i class="fas fa-file-code"></i> <span id="sizeCount">0 KB</span></div>
+                    </div>
+                </div>
+
+                <!-- Preview Pane -->
+                <div class="pane">
+                    <div class="pane-header">
+                        <span class="pane-title">
+                            <i class="fas fa-eye"></i> Live Preview
+                            <span class="live-badge">LIVE</span>
+                        </span>
+                        <div class="pane-actions">
+                            <i class="fas fa-external-link-alt action-icon" onclick="openNewTab()"
+                                title="Open in New Tab"></i>
+                        </div>
+                    </div>
+                    <div class="editor-container" style="background: white;">
+                        <iframe id="previewFrame" sandbox="allow-scripts allow-modals allow-same-origin"></iframe>
+                    </div>
+                    <div class="editor-stats">
+                        <div class="stat-item"><i class="fas fa-check-circle"></i> Rendering in real-time</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEO CONTENT SECTION -->
+            <div class="content-container">
+                <article class="clean-card prose">
+                    <h1>Free HTML Viewer & Real-time Live Editor 2026</h1>
+
+                    <p>Welcome to the <strong>Code Formatter HTML Viewer</strong> – the ultimate browser-based sandbox
+                        for
+                        testing, previewing, and debugging <strong>HTML, CSS, and JavaScript</strong> code in real-time.
+                        Whether you're a seasoned developer prototyping a component, a student learning web
+                        technologies, or a content editor checking html snippets, our viewer provides an instant,
+                        secure, and accurate preview of your code exactly as it renders in the browser.</p>
+
+                    <p>Unlike simple text editors, our <strong>live HTML playground</strong> renders your code instantly
+                        as you type. This immediate feedback loop is crucial for modern web development, allowing you to
+                        experiment with layouts, styles, and interactions without the hassle of saving files and
+                        refreshing browser tabs. It works entirely client-side, ensuring your code remains private and
+                        secure.</p>
+
+                    <h2>How to Use the Online HTML Viewer</h2>
+                    <p>Testing your web code takes just three simple steps:</p>
+                    <ol>
+                        <li><strong>Write or Paste Code:</strong> Enter your HTML, CSS (in <code>&lt;style&gt;</code>
+                            tags), and JavaScript (in <code>&lt;script&gt;</code> tags) into the <strong>HTML
+                                Source</strong> editor on the left.</li>
+                        <li><strong>Watch the Preview:</strong> As you type, the <strong>Live Preview</strong> pane on
+                            the right automatically updates to show the result. No need to click "Run" or refresh pages.
+                        </li>
+                        <li><strong>Interact and Debug:</strong> Click buttons, test hover effects, and interact with
+                            your code in the preview pane just like a real website. Use "Open in New Tab" for a
+                            full-screen view.</li>
+                    </ol>
+
+                    <h2>Key Features of Our HTML Editor</h2>
+                    <p>We've designed this tool to be the perfect lightweight playground for web code:</p>
+                    <ul>
+                        <li><strong>Instant Live Preview:</strong> Zero-latency rendering updates your preview pane with
+                            every keystroke, perfect for fine-tuning CSS or layout adjustments.</li>
+                        <li><strong>Full Client-Side Execution:</strong> Your code runs directly in your browser's
+                            engine. It never touches our servers, guaranteeing 100% privacy and security for your
+                            projects.</li>
+                        <li><strong>Support for CSS & JavaScript:</strong> Don't just view static HTML. Include internal
+                            <code>&lt;style&gt;</code> and <code>&lt;script&gt;</code> blocks to test full component
+                            functionality and interactivity.
+                        </li>
+                        <li><strong>Isolated Sandbox:</strong> The preview runs in a sandboxed iframe, ensuring that
+                            your test code doesn't conflict with the tool's interface or pose security risks.</li>
+                        <li><strong>Responsive Testing:</strong> Because the preview pane is resizable (by resizing your
+                            browser window or using browser dev tools), you can easily test responsiveness.</li>
+                    </ul>
+
+                    <h2>Who Needs an Online HTML Viewer?</h2>
+                    <p>This tool serves a wide range of use cases in the web development ecosystem:</p>
+
+                    <h3>Web Developers</h3>
+                    <p>Quickly prototype UI components, debug messy HTML snippets, or test CSS flexbox/grid layouts in
+                        isolation before integrating them into a larger project codebase.</p>
+
+                    <h3>Students & Educators</h3>
+                    <p>The best way to learn HTML is by doing. Students can type tags and immediately see what they do,
+                        reinforcing concepts like block vs. inline elements, box models, and dominance hierarchies.</p>
+
+                    <h3>Email Marketers</h3>
+                    <p>Test HTML email templates to ensure tables and inline styles render correctly before loading them
+                        into your campaign manager.</p>
+
+                    <h3>CMS Content Editors</h3>
+                    <p>Verify HTML snippets intended for WordPress widgets, Shopify liquid files, or other CMS platforms
+                        to ensure they don't break your site layout.</p>
+
+                    <h2>Understanding the Basics: HTML, CSS, and JS</h2>
+                    <p>Our viewer supports the three core technologies of the web together:</p>
+
+                    <h3>HTML (Structure)</h3>
+                    <p>HyperText Markup Language provides the skeleton. Use tags like <code>&lt;h1&gt;</code>,
+                        <code>&lt;div&gt;</code>, and <code>&lt;span&gt;</code> to structure content. Our viewer renders
+                        semantic HTML5 correctly.
+                    </p>
+
+                    <h3>CSS (Presentation)</h3>
+                    <p>Cascading Style Sheets control the look. Add a <code>&lt;style&gt;</code> block in your HTML to
+                        define colors, fonts, and layouts. The live preview is perfect for tweaking values like
+                        `margin`, `padding`, and `box-shadow`.</p>
+
+                    <h3>JavaScript (Behavior)</h3>
+                    <p>JS adds interactivity. Include a <code>&lt;script&gt;</code> block to add logic, event listeners
+                        (clicks, inputs), and dynamic content updates. Our sandbox allows standard JS execution for
+                        testing logic.</p>
+
+                    <h2>Best Practices for Using the Playground</h2>
+                    <ul>
+                        <li><strong>Use Internal Styles:</strong> Since you're working in a single file environment,
+                            place CSS in <code>&lt;style&gt;</code> tags in the <code>&lt;head&gt;</code> or body.</li>
+                        <li><strong>External Resources:</strong> You can link to external libraries (like Bootstrap,
+                            Tailwind via CDN, or FontAwesome) using <code>&lt;link&gt;</code> or
+                            <code>&lt;script&gt;</code> tags to test frameworks.
+                        </li>
+                        <li><strong>Console Debugging:</strong> If writing JavaScript, use your browser's Developer
+                            Tools (F12) Console to see `console.log()` outputs from the preview iframe.</li>
+                    </ul>
+
+                    <h2>Frequently Asked Questions</h2>
+
+                    <div class="faq-item">
+                        <strong>Is my code saved on your server?</strong>
+                        <p>No. The HTML Viewer works entirely in your browser (client-side). Your code is never sent to
+                            or stored on our servers, ensuring complete data privacy.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Can I use external CSS or JavaScript libraries?</strong>
+                        <p>Yes! You can include external resources like Bootstrap, jQuery, or Tailwind CSS by adding the
+                            appropriate CDN links (<code>&lt;link&gt;</code> or <code>&lt;script src="..."&gt;</code>)
+                            in your code.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Why isn't my JavaScript running?</strong>
+                        <p>Ensure your JS is inside <code>&lt;script&gt;</code> tags. Also, check your browser console
+                            (F12) for syntax errors. The sandbox allows scripts, but some restrictively blocked browser
+                            APIs might not work.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Can I test responsive designs?</strong>
+                        <p>Yes. The simplest way is to resize your browser window. The preview pane behaves like a
+                            responsive viewport, adjusting content based on the available width.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Does it support HTML5 and ES6+ features?</strong>
+                        <p>Yes, the viewer supports whatever features your current web browser supports. If you are
+                            using a modern browser (Chrome, Edge, Firefox), you can use the latest HTML5 tags and Modern
+                            JavaScript features.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>How do I view the result in full screen?</strong>
+                        <p>Click the "External Link" icon in the Live Preview pane header. This opens a new tab
+                            containing only your rendered code, free from the editor interface.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Can I render local images?</strong>
+                        <p>Due to browser security restrictions, you cannot directly link to files on your hard drive
+                            (e.g., `C:/images/pic.jpg`). Use online image URLs (like placeholder.com) or Base64 encoded
+                            images instead.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Is there a limit to code size?</strong>
+                        <p>Practically, no. You can paste thousands of lines of code. However, extremely large/complex
+                            scripts might slow down the real-time rendering on slower devices.</p>
+                    </div>
+
+                    <p style="text-align: center; margin-top: 3rem; color: var(--text-muted); font-size: 0.85rem;">
+                        Code Formatter © 2026. Professional developer tools built with privacy and performance in mind.
+                    </p>
+                </article>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-stats">
+                <div class="stat-item" id="footerStatus"><i class="fas fa-circle-notch"></i> Ready</div>
+                <div class="footer-links"><a href="./About.html">About</a> • <a href="./Privacy.html">Privacy</a> • <a
+                        href="./Contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-actions">
+                <button class="btn btn-sec" onclick="clearHTML()"><i class="far fa-trash-alt"></i> CLEAR</button>
+            </div>
+        </footer>
+    </main>
+
+    <div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span>Action Completed</span></div>
+
+    <script>
+        const activeToolId = "html-view";
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updatePreview();
+        });
+
+        function updatePreview() {
+            const input = document.getElementById('inputHTML').value;
+            const iframe = document.getElementById('previewFrame');
+            const size = new Blob([input]).size;
+
+            // Update stats
+            document.getElementById('sizeCount').textContent = `${(size / 1024).toFixed(2)} KB`;
+
+            // Simple update for the iframe
+            const doc = iframe.contentDocument || iframe.contentWindow.document;
+            doc.open();
+            doc.write(input);
+            doc.close();
+        }
+
+        function pasteHTML() {
+            navigator.clipboard.readText().then(text => {
+                document.getElementById('inputHTML').value = text;
+                updatePreview();
+                showToast('HTML pasted!');
+            });
+        }
+
+        function clearHTML() {
+            document.getElementById('inputHTML').value = '';
+            updatePreview();
+            showToast('Cleared!');
+        }
+
+        function openNewTab() {
+            const input = document.getElementById('inputHTML').value;
+            if (!input.trim()) return;
+
+            const newWindow = window.open();
+            newWindow.document.write(input);
+            newWindow.document.close();
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.querySelector('span').innerText = msg;
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 3000);
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

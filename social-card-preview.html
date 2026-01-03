@@ -1,0 +1,1639 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Social Media Card Preview Tool - Open Graph & Twitter Generator</title>
+    <meta name="description"
+        content="Free Social Media Card Preview Tool. Generate and preview Open Graph (Facebook, LinkedIn) and Twitter Cards instantly. Optimize your social sharing meta tags for better CTR.">
+    <meta name="keywords"
+        content="social card preview, open graph generator, twitter card validator, meta tag generator, seo tool, social media optimization, og image preview, link preview tool">
+    <meta name="author" content="Code Formatter">
+    <link rel="canonical" href="https://codeformats.com/social-card-preview.html">
+    <meta property="og:title" content="Social Media Card Preview Tool - Open Graph & Twitter Generator">
+    <meta property="og:description"
+        content="Preview how your content looks on Facebook, Twitter, LinkedIn, and Discord. Generate optimized Open Graph and Twitter Card meta tags instantly.">
+    <meta property="og:image" content="https://codeformats.com/images/social-preview.jpg">
+    <meta property="og:url" content="https://codeformats.com/social-card-preview.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Social Media Card Preview tool">
+    <meta name="twitter:description" content="Generate and preview Open Graph and Twitter Cards instantly.">
+    <meta name="twitter:image" content="https://codeformats.com/images/social-preview.jpg">
+    <meta name="theme-color" content="#171717">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        /* Base styles cloned from aspect-ratio-calculator.html */
+        :root {
+            --bg-body: #0a0a0a;
+            --bg-panel: #171717;
+            --border-color: #262626;
+            --primary: #3b82f6;
+            --primary-glow: rgba(59, 130, 246, 0.4);
+            --secondary: #22d3ee;
+            --text-main: #ededed;
+            --text-muted: #a1a1aa;
+            --success: #22c55e;
+            --warning: #f59e0b;
+        }
+
+        html.light {
+            --bg-body: #f8fafc;
+            --bg-panel: #ffffff;
+            --border-color: #e2e8f0;
+            --primary: #4f46e5;
+            --primary-glow: rgba(79, 70, 229, 0.3);
+            --secondary: #0891b2;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            background-image:
+                radial-gradient(ellipse at 20% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(34, 211, 238, 0.06) 0%, transparent 50%),
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        html.light body {
+            background-image:
+                radial-gradient(ellipse at 20% 20%, rgba(79, 70, 229, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(8, 145, 178, 0.04) 0%, transparent 50%),
+                linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+        }
+
+        main {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        header {
+            background: var(--bg-panel);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 20;
+            flex-shrink: 0;
+        }
+
+        html.light header {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        #scrollable-wrapper {
+            flex-grow: 1;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 80px;
+            display: block;
+            /* Changed from flex to block to match index.html standard flow */
+        }
+
+        #scrollable-wrapper::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #scrollable-wrapper::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 3px;
+        }
+
+        .workspace {
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            height: 75vh;
+            min-height: 600px;
+            max-height: 800px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .pane {
+            flex: 1;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            min-height: 100%;
+        }
+
+        .pane:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 24px var(--primary-glow);
+            transform: translateY(-2px);
+        }
+
+        html.light .pane:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 20px var(--primary-glow);
+        }
+
+        .pane-header {
+            padding: 16px 20px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(34, 211, 238, 0.02) 100%);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+            /* Keep header fixed */
+        }
+
+        .pane-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pane-title i {
+            font-size: 1rem;
+        }
+
+        .editor-container {
+            flex: 1;
+            position: relative;
+            padding: 20px;
+            overflow-y: auto;
+            /* ENABLE INTERNAL SCROLLING */
+        }
+
+        .editor-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .editor-container::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 3px;
+        }
+
+        /* Social Card Logic Specific Controls */
+        .control-section {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .control-section:hover {
+            border-color: var(--primary);
+            background: rgba(59, 130, 246, 0.03);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        html.light .control-section {
+            background: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            border-color: rgba(0, 0, 0, 0.06);
+            backdrop-filter: blur(5px);
+        }
+
+        html.light .control-section:hover {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            border-color: var(--primary);
+        }
+
+        .control-section-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .input-field,
+        .textarea-field {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            margin-bottom: 12px;
+        }
+
+        .input-field:focus,
+        .textarea-field:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-glow);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        html.light .input-field,
+        html.light .textarea-field {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+            color: #0f172a;
+        }
+
+        html.light .input-field:focus,
+        html.light .textarea-field:focus {
+            background: #fff;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+        }
+
+        .textarea-field {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .generate-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--primary) 0%, #2563eb 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            margin-top: 20px;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Preview Area */
+        .preview-tabs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1px;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        /* Premium Preview Container */
+        .preview-container {
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            border-radius: 20px;
+            padding: 0;
+            background: linear-gradient(145deg, rgba(23, 23, 23, 0.9) 0%, rgba(10, 10, 10, 0.95) 100%);
+            margin-bottom: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .preview-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(59, 130, 246, 0.03) 0%, transparent 30%);
+            pointer-events: none;
+        }
+
+        /* Facebook/OG Preview - Modern Dark Card */
+        .og-preview-card {
+            border-radius: 16px;
+            background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%);
+            max-width: 100%;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .og-image {
+            width: 100%;
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            background-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+        }
+
+        .og-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(transparent, rgba(26, 26, 46, 0.9));
+        }
+
+        .og-text {
+            padding: 16px 18px;
+            background: transparent;
+            border-top: none;
+        }
+
+        .og-domain {
+            font-size: 11px;
+            color: var(--secondary);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .og-domain::before {
+            content: '●';
+            font-size: 6px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .og-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+            line-height: 1.4;
+            max-height: 44px;
+            overflow: hidden;
+        }
+
+        .og-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.5;
+            max-height: 40px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Twitter Preview - Modern Dark Card */
+        .tw-preview-card {
+            border-radius: 16px;
+            background: linear-gradient(145deg, #0f0f23 0%, #1a1a3e 100%);
+            max-width: 100%;
+            margin: 0;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(29, 161, 242, 0.15);
+        }
+
+        .tw-image {
+            width: 100%;
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            background-color: linear-gradient(135deg, #1da1f2 0%, #0d8ed9 100%);
+            position: relative;
+        }
+
+        .tw-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: linear-gradient(transparent, rgba(15, 15, 35, 0.95));
+        }
+
+        .tw-text {
+            padding: 16px 18px;
+        }
+
+        .tw-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+
+        .tw-desc {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .tw-domain {
+            font-size: 12px;
+            color: rgba(29, 161, 242, 0.9);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+        }
+
+        .tw-domain i {
+            font-size: 10px;
+        }
+
+        /* Meta Code Box - Premium */
+        .meta-code-box {
+            background: linear-gradient(145deg, rgba(0, 0, 0, 0.6), rgba(23, 23, 23, 0.5));
+            border: 1px solid rgba(34, 211, 238, 0.2);
+            border-radius: 16px;
+            padding: 24px 20px 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--secondary);
+            position: relative;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+
+        .meta-code-box::before {
+            content: '< > META TAGS';
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 6px 14px;
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.2), rgba(59, 130, 246, 0.15));
+            color: var(--secondary);
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            border-radius: 0 0 10px 0;
+        }
+
+        html.light .meta-code-box {
+            background: rgba(255, 255, 255, 0.85);
+            border-color: rgba(8, 145, 178, 0.2);
+            color: #0f172a;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        html.light .meta-code-box::before {
+            background: linear-gradient(135deg, rgba(8, 145, 178, 0.1), rgba(79, 70, 229, 0.1));
+            color: var(--primary);
+        }
+
+        .meta-code {
+            white-space: pre-wrap;
+            line-height: 1.7;
+            padding-top: 10px;
+        }
+
+        .meta-code-box .copy-btn {
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            padding: 8px 14px;
+            background: linear-gradient(135deg, var(--secondary), #0891b2);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .meta-code-box .copy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(34, 211, 238, 0.35);
+        }
+
+        /* CONTENT SECTION Styles Note: Moved below workspace */
+        .content-container {
+            margin: 20px auto 40px auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .clean-card {
+            background: var(--bg-panel);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        html.light .clean-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: #e2e8f0;
+        }
+
+        .clean-card::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+            height: 400px;
+            background: var(--primary);
+            filter: blur(140px);
+            opacity: 0.12;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .prose h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin: 0 0 20px 0;
+            background: linear-gradient(180deg, #fff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        html.light .prose h1 {
+            background: linear-gradient(180deg, #0f172a, #64748b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .prose h2 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #27272a;
+        }
+
+        .prose h2::before {
+            content: '#';
+            color: var(--primary);
+            opacity: 0.5;
+            margin-right: 10px;
+        }
+
+        .prose h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-top: 35px;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+
+        .prose p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            letter-spacing: 0.01em;
+        }
+
+        html.light .prose p {
+            color: #475569;
+        }
+
+        html.light .prose h2 {
+            color: #0f172a;
+            border-bottom-color: #e2e8f0;
+        }
+
+        .prose ul,
+        .prose ol {
+            margin-bottom: 24px;
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        .prose li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            color: #d4d4d4;
+            line-height: 1.7;
+        }
+
+        .prose li::before {
+            content: "→";
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.1rem;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        html.light .prose li {
+            color: #475569;
+        }
+
+        .faq-item {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 22px 25px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        html.light .faq-item {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: #e2e8f0;
+        }
+
+        .faq-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--primary);
+            transition: height 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary);
+            background: rgba(59, 130, 246, 0.03);
+            transform: translateX(5px);
+        }
+
+        .faq-item:hover::before {
+            height: 100%;
+        }
+
+        .faq-item strong {
+            display: block;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .workspace {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .pane {
+                height: auto;
+            }
+
+            .clean-card {
+                padding: 30px 20px;
+            }
+
+            .prose h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* FOOTER CLONED EXACTLY */
+        .footer {
+            /* Positioned normally in scroll flow now, OR absolute if workspace is fixed? */
+            /* User complained about scroll. If we use window scroll, footer is at bottom. */
+            background: var(--bg-panel);
+            border-top: 1px solid var(--border-color);
+            padding: 15px 20px;
+        }
+
+        .footer-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .stat-item {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-item i {
+            color: var(--success);
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin: 0 5px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 6px;
+            padding: 8px 16px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-sec {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-sec:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+        }
+
+        .btn-pri {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-pri:hover {
+            background: #2563eb;
+            box-shadow: 0 4px 12px var(--primary-glow);
+        }
+
+        /* Force Social Controls Visible */
+        #socialControls {
+            display: block !important;
+        }
+
+        /* Premium Controls Styling */
+        .control-section {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(34, 211, 238, 0.02) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .control-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .control-section:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .control-section:hover::before {
+            opacity: 1;
+        }
+
+        .control-section-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .control-section-title i {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .control-label {
+            display: flex !important;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px !important;
+            color: var(--text-muted);
+            font-size: 0.85rem !important;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .input-field,
+        .textarea-field {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 14px 16px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.25s ease;
+            margin-bottom: 16px;
+        }
+
+        .input-field:hover,
+        .textarea-field:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .input-field:focus,
+        .textarea-field:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(59, 130, 246, 0.1);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15), 0 4px 12px rgba(59, 130, 246, 0.1);
+        }
+
+        .input-field::placeholder,
+        .textarea-field::placeholder {
+            color: var(--text-muted);
+            opacity: 0.6;
+        }
+
+        .textarea-field {
+            resize: vertical;
+            min-height: 100px;
+            line-height: 1.6;
+        }
+
+        .generate-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--primary) 0%, #2563eb 50%, var(--secondary) 100%);
+            background-size: 200% 200%;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.35);
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .generate-btn:hover {
+            background-position: 100% 100%;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.45);
+        }
+
+        .generate-btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Premium Preview Area */
+        .preview-tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 25px;
+            border-bottom: none;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 6px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 12px 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.25s ease;
+            border-radius: 8px;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .tab-btn.active {
+            color: white;
+            background: linear-gradient(135deg, var(--primary), #2563eb);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .tab-btn.active::after {
+            display: none;
+        }
+
+        .preview-container {
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 25px;
+            background: linear-gradient(145deg, rgba(10, 10, 10, 0.8) 0%, rgba(23, 23, 23, 0.6) 100%);
+            margin-bottom: 25px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        /* Meta Code Box Enhancement */
+        .meta-code-box {
+            background: linear-gradient(145deg, rgba(0, 0, 0, 0.5), rgba(23, 23, 23, 0.4));
+            border: 1px solid rgba(34, 211, 238, 0.2);
+            border-radius: 14px;
+            padding: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--secondary);
+            position: relative;
+            margin-top: 25px;
+            overflow: hidden;
+        }
+
+        .meta-code-box::before {
+            content: 'META TAGS';
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 4px 12px;
+            background: rgba(34, 211, 238, 0.15);
+            color: var(--secondary);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-radius: 0 0 8px 0;
+        }
+
+        .meta-code-box .copy-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 8px 14px;
+            background: linear-gradient(135deg, var(--secondary), #0891b2);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .meta-code-box .copy-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(34, 211, 238, 0.3);
+        }
+
+        .meta-code {
+            white-space: pre-wrap;
+            line-height: 1.7;
+            padding-top: 15px;
+        }
+
+        /* CRITICAL FIXES FOR CONTROLS & LAYOUT */
+        #socialControls,
+        .control-section {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            height: auto !important;
+        }
+
+        .input-field,
+        .textarea-field,
+        .control-label,
+        .generate-btn {
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        #scrollable-wrapper {
+            padding-bottom: 120px !important;
+            /* Ensure content clears footer */
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Social Media Card Preview Tool",
+      "description": "Visualize and generate Open Graph and Twitter Card tags.",
+      "url": "https://codeformats.com/social-card-preview.html",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "All",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+</head>
+
+<body>
+    <aside id="sidebar">
+        <div class="brand">
+            <div class="brand-logo"><i class="fas fa-layer-group"></i> Code Formatter</div>
+        </div>
+        <div class="search-container"><input type="text" class="search-input" placeholder="Search tools..."
+                onkeyup="filterTools(this)"></div>
+                        <nav class="menu" id="menuContainer">
+            <div class="nav-group-title">Code Formatters</div>
+            <a href="index.html" class="nav-item" data-id="json-fmt"><i class="fas fa-code"></i> JSON Formatter</a>
+            <a href="html-formatter.html" class="nav-item" data-id="html-fmt"><i class="fab fa-html5"></i> HTML Formatter</a>
+            <a href="css-formatter.html" class="nav-item" data-id="css-fmt"><i class="fab fa-css3-alt"></i> CSS Formatter</a>
+            <a href="js-formatter.html" class="nav-item" data-id="js-fmt"><i class="fab fa-js"></i> JS Formatter</a>
+            <a href="sql-formatter.html" class="nav-item" data-id="sql-fmt"><i class="fas fa-database"></i> SQL Formatter</a>
+            <a href="xml-formatter.html" class="nav-item" data-id="xml-fmt"><i class="fas fa-code"></i> XML Formatter</a>
+
+            <div class="nav-group-title">Image & Color Tools</div>
+            <a href="image-compressor.html" class="nav-item" data-id="img-compress"><i class="fas fa-image"></i> Image Compressor</a>
+            <a href="color-converter.html" class="nav-item" data-id="color-conv"><i class="fas fa-palette"></i> Color Converter</a>
+            <a href="qr-code-generator.html" class="nav-item" data-id="qr-gen"><i class="fas fa-qrcode"></i> QR Generator</a>
+
+            <div class="nav-group-title">Code Minifiers</div>
+            <a href="json-minifier.html" class="nav-item" data-id="json-min"><i class="fas fa-compress"></i> JSON Minifier</a>
+            <a href="html-minifier.html" class="nav-item" data-id="html-min"><i class="fas fa-compress-arrows-alt"></i> HTML Minifier</a>
+            <a href="css-minifier.html" class="nav-item" data-id="css-min"><i class="fas fa-compress-arrows-alt"></i> CSS Minifier</a>
+            <a href="js-minifier.html" class="nav-item" data-id="js-min"><i class="fas fa-file-archive"></i> JS Minifier</a>
+
+            <div class="nav-group-title">Data Converters</div>
+            <a href="json-to-csv.html" class="nav-item" data-id="json-csv"><i class="fas fa-table"></i> JSON to CSV</a>
+            <a href="csv-to-json.html" class="nav-item" data-id="csv-json"><i class="fas fa-file-csv"></i> CSV to JSON</a>
+            <a href="excel-to-html.html" class="nav-item" data-id="excel-html"><i class="fas fa-table"></i> Excel to HTML</a>
+            <a href="case-converter.html" class="nav-item" data-id="case-conv"><i class="fas fa-text-height"></i> Case Converter</a>
+
+            <div class="nav-group-title">Encoding & Security</div>
+            <a href="base64-tool.html" class="nav-item" data-id="base64"><i class="fas fa-lock"></i> Base64 Tool</a>
+            <a href="url-encoder.html" class="nav-item" data-id="url-enc"><i class="fas fa-link"></i> URL Encoder</a>
+            <a href="hash-generator.html" class="nav-item" data-id="hash-gen"><i class="fas fa-fingerprint"></i> Hash Generator</a>
+            <a href="jwt-decoder.html" class="nav-item" data-id="jwt-dec"><i class="fas fa-shield-alt"></i> JWT Decoder</a>
+
+            <div class="nav-group-title">CSS Generators</div>
+            <a href="glassmorphism-generator.html" class="nav-item" data-id="glass-morphism"><i class="fas fa-wind"></i> Glassmorphism</a>
+            <a href="smooth-shadow-generator.html" class="nav-item" data-id="shadow-gen"><i class="fas fa-layer-group"></i> Smooth Shadow</a>
+            <a href="px-to-rem.html" class="nav-item" data-id="px-rem"><i class="fas fa-ruler-combined"></i> PX to REM</a>
+            <a href="aspect-ratio-calculator.html" class="nav-item" data-id="aspect-ratio"><i class="fas fa-expand"></i> Aspect Ratio</a>
+
+            <div class="nav-group-title">Text & Data</div>
+            <a href="lorem-ipsum-generator.html" class="nav-item" data-id="lorem"><i class="fas fa-paragraph"></i> Lorem Ipsum</a>
+            <a href="mock-data-generator.html" class="nav-item" data-id="mock-data"><i class="fas fa-users"></i> Mock Data Gen</a>
+            <a href="diff-checker.html" class="nav-item" data-id="diff-check"><i class="fas fa-exchange-alt"></i> Diff Checker</a>
+
+            <div class="nav-group-title">Preview Tools</div>
+            <a href="html-viewer.html" class="nav-item" data-id="html-view"><i class="fas fa-eye"></i> HTML Viewer</a>
+            <a href="social-card-preview.html" class="nav-item" data-id="social-card"><i class="fas fa-share-alt"></i> Social Preview</a>
+        </nav>
+    </aside>
+    <div id="overlay" onclick="closeAllDrawers()"></div>
+
+    <main>
+        <header>
+            <div class="header-left"><i class="fas fa-bars menu-toggle-btn" onclick="handleMenuClick()"></i>
+                <div class="tool-info">
+                    <h1 id="toolTitle">Social Media Preview</h1>
+                    <p id="toolDesc">Validate Open Graph & Twitter Card Meta Tags</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="blog.html" class="nav-link">Blog</a>
+                <button class="theme-btn" onclick="toggleTheme()"><i class="fas fa-moon" id="themeIcon"></i></button>
+            </div>
+        </header>
+
+        <div id="scrollable-wrapper">
+            <section class="workspace" id="workspace">
+                <div class="pane">
+                    <div class="pane-header">
+                        <span class="pane-title" id="paneInputTitle"><i class="fas fa-sliders-h"></i> Controls</span>
+                        <div class="pane-actions" id="inputActions">
+                            <i class="fas fa-sync-alt action-icon" onclick="updatePreview()" title="Refresh"></i>
+                        </div>
+                    </div>
+                    <div class="editor-container">
+                        <div id="socialControls">
+                            <div class="control-section">
+                                <div class="control-section-title"><i class="fas fa-heading"></i> Card Details</div>
+
+                                <label class="control-label"
+                                    style="display:block; margin-bottom:5px; color:var(--text-muted); font-size:0.8rem;">Webpage
+                                    Title</label>
+                                <input type="text" id="ogTitle" class="input-field"
+                                    placeholder="e.g., Amazing Blog Post | MySite"
+                                    value="Amazing Guide to Aspect Ratios">
+
+                                <label class="control-label"
+                                    style="display:block; margin-bottom:5px; margin-top:15px; color:var(--text-muted); font-size:0.8rem;">Description</label>
+                                <textarea id="ogDesc" class="textarea-field"
+                                    placeholder="A brief summary...">Learn everything you need to know about aspect ratios, CSS implementation, and responsive design best practices.</textarea>
+
+                                <label class="control-label"
+                                    style="display:block; margin-bottom:5px; margin-top:15px; color:var(--text-muted); font-size:0.8rem;">Image
+                                    URL</label>
+                                <input type="text" id="ogImg" class="input-field"
+                                    placeholder="https://example.com/image.jpg"
+                                    value="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80">
+
+                                <label class="control-label"
+                                    style="display:block; margin-bottom:5px; margin-top:15px; color:var(--text-muted); font-size:0.8rem;">Website
+                                    URL</label>
+                                <input type="text" id="ogUrl" class="input-field" placeholder="https://example.com/page"
+                                    value="https://codeformats.com/aspect-ratio-calculator">
+
+                                <button class="generate-btn" onclick="updatePreview()">Generate Preview</button>
+                            </div>
+                        </div>
+
+                        <div class="editor-stats" id="inputStats" style="display:none;">0 chars | 0 KB</div>
+                        <!-- Hidden elements required by shared script.js -->
+                        <div style="display:none;">
+                            <textarea id="input"></textarea>
+                            <textarea id="output"></textarea>
+                            <div id="outputStats"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pane">
+                    <div class="pane-header">
+                        <span class="pane-title" id="paneOutputTitle"><i class="fas fa-eye"></i> Live Preview</span>
+                        <div class="pane-actions">
+                            <i class="far fa-copy action-icon" onclick="copyMetaTags()" title="Copy Meta Tags"></i>
+                        </div>
+                    </div>
+                    <div class="editor-container">
+                        <!-- Preview Tabs -->
+                        <div class="preview-tabs">
+                            <button class="tab-btn active" onclick="setTab('og')" id="btnTabOg">Open Graph</button>
+                            <button class="tab-btn" onclick="setTab('tw')" id="btnTabTw">Twitter Card</button>
+                        </div>
+
+                        <!-- VS Code style visual output required by script.js? No, but we keep this structure -->
+                        <div id="socialPreview">
+                            <!-- Open Graph Preview -->
+                            <div class="preview-container" id="ogPreview">
+                                <div class="og-preview-card">
+                                    <div class="og-image" id="viewOgImage"></div>
+                                    <div class="og-text">
+                                        <div class="og-domain" id="viewOgDomain">CODEFORMATS.COM</div>
+                                        <div class="og-title" id="viewOgTitle">Amazing Guide to Aspect Ratios</div>
+                                        <div class="og-desc" id="viewOgDesc">Learn everything you need to know about
+                                            aspect ratios...</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Twitter Preview -->
+                            <div class="preview-container" id="twPreview" style="display:none;">
+                                <div class="tw-preview-card">
+                                    <div class="tw-image" id="viewTwImage"></div>
+                                    <div class="tw-text">
+                                        <div class="tw-title" id="viewTwTitle">Amazing Guide to Aspect Ratios</div>
+                                        <div class="tw-desc" id="viewTwDesc">Learn everything you need to know about
+                                            aspect ratios...</div>
+                                        <div class="tw-domain" id="viewTwDomain"><i class="fas fa-link"
+                                                style="font-size:12px;"></i> codeformats.com</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="meta-code-box">
+                                <button class="copy-btn" onclick="copyMetaTags()">COPY</button>
+                                <div class="meta-code" id="metaOutput"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEO CONTENT SECTION -->
+            <div class="content-container">
+                <article class="clean-card prose">
+                    <h1>Free Social Media Card Preview & Meta Tag Generator 2026</h1>
+
+                    <p>Welcome to <strong>Code Formatter Social Card Preview</strong> – the most powerful, free online
+                        tool for visualizing and generating <strong>Open Graph</strong> and <strong>Twitter
+                            Card</strong> meta tags. Our professional-grade preview engine shows you exactly how your
+                        content will appear when shared on Facebook, Twitter, LinkedIn, Discord, Slack, and WhatsApp
+                        before you publish. Stop guessing and start optimizing your social media presence with
+                        production-ready meta tags generated instantly with 100% client-side processing.</p>
+
+                    <p>Research consistently shows that <strong>posts with rich media previews receive 40-50% higher
+                            click-through rates</strong> compared to plain text links. In today's competitive digital
+                        landscape, every click matters – whether you're promoting a blog post, launching a product, or
+                        sharing company updates. Properly configured social cards transform ordinary links into
+                        compelling visual advertisements for your content.</p>
+
+                    <h2>How to Use Our Social Card Preview Tool</h2>
+                    <p>Creating perfect social media previews has never been easier. Our intuitive tool guides you
+                        through the entire process with just a few simple steps:</p>
+                    <ol>
+                        <li><strong>Enter Your Content Details:</strong> Fill in the title, description, image URL, and
+                            website URL in the controls panel on the left. Our real-time validation ensures your inputs
+                            meet platform requirements.</li>
+                        <li><strong>Preview Across Platforms:</strong> Toggle between Open Graph (Facebook, LinkedIn)
+                            and Twitter Card previews using the tabs to see exactly how your content will display on
+                            each platform.</li>
+                        <li><strong>Generate Production-Ready Code:</strong> The meta tags panel automatically generates
+                            properly formatted HTML code ready to paste directly into your webpage's
+                            <code>&lt;head&gt;</code> section.
+                        </li>
+                        <li><strong>Copy and Deploy:</strong> Click the "Copy Tags" button to copy all meta tags to your
+                            clipboard, then add them to your website's HTML for instant social optimization.</li>
+                    </ol>
+
+                    <h2>Powerful Features Built for Marketers & Developers</h2>
+                    <p>We created Code Formatter Social Preview because we were frustrated with slow, limited, and
+                        confusing social card tools. Here's what makes our tool stand out:</p>
+                    <ul>
+                        <li><strong>Real-Time Visual Preview:</strong> See instant updates as you type. No waiting for
+                            page refreshes or server processing – watch your card transform live.</li>
+                        <li><strong>100% Client-Side Processing:</strong> Your data never leaves your browser. All
+                            preview generation happens locally, ensuring complete privacy for sensitive campaigns.</li>
+                        <li><strong>Multi-Platform Support:</strong> Preview both Open Graph (Facebook, LinkedIn) and
+                            Twitter Card formats. Switch between platforms with a single click.</li>
+                        <li><strong>Production-Ready Code:</strong> Our generated meta tags follow best practices and
+                            include all essential properties for maximum compatibility.</li>
+                        <li><strong>Modern Dark Mode UI:</strong> Beautiful, eye-friendly interface designed for
+                            extended work sessions. Toggle between dark and light themes.</li>
+                        <li><strong>Mobile-Responsive:</strong> Create and preview social cards from any device –
+                            desktop, tablet, or smartphone.</li>
+                    </ul>
+
+                    <h2>Common Use Cases for Social Card Optimization</h2>
+                    <p>Our social card preview tool serves numerous practical purposes across various marketing and
+                        development scenarios:</p>
+
+                    <h3>Content Marketing & Blogging</h3>
+                    <p>Blog posts with optimized social cards generate significantly more engagement when shared. Use
+                        our tool to craft compelling preview images and descriptions that entice readers to click
+                        through from their social feeds.</p>
+
+                    <h3>E-Commerce Product Launches</h3>
+                    <p>Product pages with rich social previews convert better. Display your product image, price point,
+                        and key benefits directly in the social card to pre-qualify interested buyers before they even
+                        visit your site.</p>
+
+                    <h3>Landing Page Optimization</h3>
+                    <p>Marketing landing pages need perfect social previews for paid social campaigns and organic
+                        sharing. Preview exactly how your landing page will appear in social feeds to maximize ad
+                        effectiveness.</p>
+
+                    <h3>Developer & SEO Implementation</h3>
+                    <p>Developers implementing Open Graph and Twitter Card tags can validate their markup before
+                        deployment. Catch issues early and ensure your meta tags render correctly across all platforms.
+                    </p>
+
+                    <h2>What are Social Media Cards?</h2>
+                    <p>Social media cards are the rich snippets that appear when a URL is shared on social platforms.
+                        Unlike plain text links, these cards display a preview image, title, and description, making
+                        your content significantly more attractive and engaging in a user's feed.</p>
+
+                    <h3>Key Benefits</h3>
+                    <ul>
+                        <li><strong>Higher Click-Through Rates (CTR):</strong> Rich media snippets can increase clicks
+                            by up to 40%.</li>
+                        <li><strong>Brand Professionalism:</strong> Consistent branding across platforms builds trust.
+                        </li>
+                        <li><strong>Control:</strong> You decide exactly which image and text represent your content,
+                            rather than letting the platform guess.</li>
+                    </ul>
+
+                    <h2>Supported Protocols</h2>
+
+                    <h3>1. Open Graph Protocol (OG)</h3>
+                    <p>Originally created by Facebook, Open Graph is now the universal standard for link previews. It is
+                        supported by Facebook, LinkedIn, Pinterest, Discord, Slack, and WhatsApp.</p>
+                    <p>Essential tags include:</p>
+                    <ul>
+                        <li><code>og:title</code>: The headline of your content.</li>
+                        <li><code>og:description</code>: A brief summary (2-4 sentences).</li>
+                        <li><code>og:image</code>: Large preview image (Recommended: 1200x630px).</li>
+                        <li><code>og:url</code>: Canonical URL of the page.</li>
+                    </ul>
+
+                    <h3>2. Twitter Cards</h3>
+                    <p>Twitter has its own proprietary system but falls back to Open Graph if Twitter tags are missing.
+                        Using explicit Twitter Card tags allows for more customization, such as the "Summary Card with
+                        Large Image" format.</p>
+
+                    <h2>Frequently Asked Questions</h2>
+
+                    <div class="faq-item">
+                        <strong>My image isn't showing up on Facebook?</strong>
+                        <p>Facebook aggressively caches link previews. If you've updated your tags but see the old
+                            version, use the <a href="https://developers.facebook.com/tools/debug/" target="_blank"
+                                style="color:var(--primary)">Facebook Sharing Debugger</a> to scrape your URL again.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>What is the best image size for social cards?</strong>
+                        <p>The gold standard is <strong>1200 x 630 pixels</strong>. This aspect ratio (1.91:1) works
+                            perfectly for Facebook, LinkedIn, and Twitter large cards. Keep important visual elements
+                            centered to avoid cropping on smaller mobile screens.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Why is my text being cut off?</strong>
+                        <p>Platforms have character limits for titles and descriptions. Keep your title under 60
+                            characters and description under 200 characters to ensure the full message is visible
+                            without truncation.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Does this affect SEO rankings?</strong>
+                        <p>Indirectly, yes. While Google doesn't use OG tags for ranking, social cards drive more
+                            traffic and engagement from social media. Higher traffic signals can positively influence
+                            your overall search performance.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Can I use different images for Twitter and Facebook?</strong>
+                        <p>Yes! You can specify separate meta tags for each platform. Use <code>og:image</code> for
+                            Facebook/LinkedIn and <code>twitter:image</code> for Twitter. This allows you to optimize
+                            each image for the specific platform's recommended dimensions and style.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>How do I test my social cards before publishing?</strong>
+                        <p>Use our preview tool above! For final validation, use platform-specific debuggers:
+                            <a href="https://developers.facebook.com/tools/debug/" target="_blank"
+                                style="color:var(--primary)">Facebook Debugger</a>,
+                            <a href="https://cards-dev.twitter.com/validator" target="_blank"
+                                style="color:var(--primary)">Twitter Card Validator</a>, and
+                            <a href="https://www.linkedin.com/post-inspector/" target="_blank"
+                                style="color:var(--primary)">LinkedIn Post Inspector</a>.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Why should I use absolute URLs for images?</strong>
+                        <p>Social platforms crawl your page from their servers, not from your browser. Relative paths
+                            like <code>/images/photo.jpg</code> won't work because the crawler doesn't know your domain.
+                            Always use full URLs like <code>https://example.com/images/photo.jpg</code>.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>What happens if I don't add social meta tags?</strong>
+                        <p>Platforms will attempt to generate a preview automatically by scraping your page content.
+                            This often results in ugly previews with wrong images (like a logo or random photo),
+                            truncated titles, or missing descriptions. Taking control with proper meta tags ensures
+                            your content looks professional when shared.</p>
+                    </div>
+
+                    <h2>Best Practices for Social Media Cards</h2>
+
+                    <h3>Image Optimization Tips</h3>
+                    <ul>
+                        <li><strong>Use high-contrast images:</strong> Thumbnails are small, so bold colors and clear
+                            subjects work best.</li>
+                        <li><strong>Add text overlays carefully:</strong> Keep any text large and minimal - it should be
+                            readable at thumbnail size.</li>
+                        <li><strong>Test on mobile:</strong> Most social media consumption happens on phones where cards
+                            appear smaller.</li>
+                        <li><strong>Avoid excessive borders:</strong> Some platforms add their own borders, which can
+                            clash with yours.</li>
+                    </ul>
+
+                    <h3>Writing Effective Titles & Descriptions</h3>
+                    <ul>
+                        <li><strong>Front-load keywords:</strong> Put the most important words first since truncation
+                            happens at the end.</li>
+                        <li><strong>Use action words:</strong> "Learn", "Discover", "Get" encourage clicks more than
+                            passive language.</li>
+                        <li><strong>Include numbers when relevant:</strong> "7 Tips" or "2024 Guide" perform better than
+                            vague titles.</li>
+                        <li><strong>Match user intent:</strong> Your description should promise what the user will
+                            actually get.</li>
+                    </ul>
+
+                    <h3>Platform-Specific Considerations</h3>
+                    <p>Each platform has subtle differences:</p>
+                    <ul>
+                        <li><strong>Facebook:</strong> Prefers 1.91:1 aspect ratio images, supports up to 300 character
+                            descriptions.</li>
+                        <li><strong>Twitter:</strong> Offers "Summary" (square) and "Summary Large Image" (wide) card
+                            types.</li>
+                        <li><strong>LinkedIn:</strong> Uses Open Graph tags, best results with images at least 1200px
+                            wide.</li>
+                        <li><strong>Discord/Slack:</strong> Both read OG tags excellently; they show the most
+                            information from your meta tags.</li>
+                    </ul>
+
+                    <p style="text-align: center; margin-top: 3rem; color: #525252; font-size: 0.85rem;">
+                        Code Formatter © 2026. Professional developer tools built with privacy and performance in mind.
+                    </p>
+                </article>
+            </div>
+
+            <footer class="footer">
+                <div class="footer-stats">
+                    <div class="stat-item" id="footerStatus"><i class="fas fa-circle-notch"></i> Ready</div>
+                    <div class="footer-links"><a href="./About.html">About</a> • <a href="./Privacy.html">Privacy</a> •
+                        <a href="./Contact.html">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-actions">
+                    <button class="btn btn-sec"
+                        onclick="document.getElementById('ogTitle').value=''; updatePreview();">RESET</button>
+                    <button class="btn btn-pri" onclick="copyMetaTags()"><i class="fas fa-copy"></i> COPY TAGS</button>
+                </div>
+            </footer>
+        </div>
+    </main>
+    <div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span>Copied to clipboard!</span></div>
+
+    <script>
+        const activeToolId = "social-card";
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Force controls to be visible
+            const controls = document.getElementById('socialControls');
+            if (controls) controls.style.display = 'block';
+
+            updatePreview();
+        });
+
+        function setTab(mode) {
+            document.getElementById('btnTabOg').classList.remove('active');
+            document.getElementById('btnTabTw').classList.remove('active');
+
+            if (mode === 'og') {
+                document.getElementById('btnTabOg').classList.add('active');
+                document.getElementById('ogPreview').style.display = 'block';
+                document.getElementById('twPreview').style.display = 'none';
+            } else {
+                document.getElementById('btnTabTw').classList.add('active');
+                document.getElementById('ogPreview').style.display = 'none';
+                document.getElementById('twPreview').style.display = 'block';
+            }
+        }
+
+        function updatePreview() {
+            const title = document.getElementById('ogTitle').value || "Your Title Here";
+            const desc = document.getElementById('ogDesc').value || "Your description goes here...";
+            const img = document.getElementById('ogImg').value;
+            const url = document.getElementById('ogUrl').value || "example.com";
+
+            let domain = "EXAMPLE.COM";
+            try {
+                if (url.startsWith('http')) {
+                    domain = new URL(url).hostname.toUpperCase();
+                } else {
+                    domain = url.toUpperCase();
+                }
+            } catch (e) { }
+
+            // Update OG
+            document.getElementById('viewOgTitle').innerText = title;
+            document.getElementById('viewOgDesc').innerText = desc;
+            document.getElementById('viewOgDomain').innerText = domain;
+            if (img) {
+                document.getElementById('viewOgImage').style.backgroundImage = `url('${img}')`;
+                document.getElementById('viewOgImage').style.backgroundColor = 'transparent';
+            }
+
+            // Update Twitter
+            document.getElementById('viewTwTitle').innerText = title;
+            document.getElementById('viewTwDesc').innerText = desc;
+            document.getElementById('viewTwDomain').innerHTML = `<i class="fas fa-link" style="font-size:12px;"></i> ${domain.toLowerCase()}`;
+            if (img) {
+                document.getElementById('viewTwImage').style.backgroundImage = `url('${img}')`;
+                document.getElementById('viewTwImage').style.backgroundColor = 'transparent';
+            }
+
+            // Generate Code
+            const meta = `<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="${url}">
+<meta property="og:title" content="${title}">
+<meta property="og:description" content="${desc}">
+<meta property="og:image" content="${img}">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="${url}">
+<meta property="twitter:title" content="${title}">
+<meta property="twitter:description" content="${desc}">
+<meta property="twitter:image" content="${img}">`;
+
+            document.getElementById('metaOutput').innerText = meta;
+        }
+
+        function copyMetaTags() {
+            const code = document.getElementById('metaOutput').innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                showToast('Meta tags copied!');
+            });
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.querySelector('span').innerText = msg;
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 3000);
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

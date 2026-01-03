@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Glassmorphism CSS Generator - Free Online Frosted Glass Effect Tool</title>
+    <meta name="description"
+        content="Generate beautiful glassmorphism CSS effects instantly. Free online tool to create frosted glass blur, transparency, and border styles for modern UI design. Includes dark/light mode support.">
+    <meta name="keywords"
+        content="glassmorphism generator, css glass effect, frosted glass css, backdrop-filter tool, css blur generator, ui design tools, web design resources, glassmorphism css code">
+    <meta name="author" content="Code Formatter">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="canonical" href="https://code-formats.com/glassmorphism-generator.html">
+    <meta property="og:title" content="Glassmorphism CSS Generator - Free Online Tool">
+    <meta property="og:description"
+        content="Create premium frosted glass effects for your website. Adjustable blur, transparency, and colors with instant CSS code generation.">
+    <meta property="og:image" content="https://code-formats.com/assets/glassmorphism-generator-preview.png">
+    <meta property="og:url" content="https://code-formats.com/glassmorphism-generator.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Glassmorphism CSS Generator">
+    <meta name="twitter:description" content="Generate beautiful frosted glass CSS effects instantly.">
+    <meta name="twitter:image" content="https://code-formats.com/assets/glassmorphism-generator-preview.png">
+    <meta name="theme-color" content="#171717">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <script src="https://unpkg.com/prettier@3.0.3/standalone.js" defer></script>
+    <script src="https://unpkg.com/prettier@3.0.3/plugins/babel.js" defer></script>
+    <script src="https://unpkg.com/prettier@3.0.3/plugins/estree.js" defer></script>
+    <script src="https://unpkg.com/prettier@3.0.3/plugins/html.js" defer></script>
+    <script src="https://unpkg.com/prettier@3.0.3/plugins/postcss.js" defer></script>
+    <script src="https://unpkg.com/prettier@3.0.3/plugins/yaml.js" defer></script>
+    <script src="https://unpkg.com/prettier@3.0.3/plugins/typescript.js" defer></script>
+    <script src="https://unpkg.com/sql-formatter@12.2.0/dist/sql-formatter.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.1.0/diff.min.js" defer></script>
+
+    <style>
+        :root {
+            --bg-body: #0a0a0a;
+            --bg-panel: #171717;
+            --border-color: #262626;
+            --primary: #3b82f6;
+            --text-main: #ededed;
+            --text-muted: #a1a1aa;
+        }
+
+        html.light {
+            --bg-body: #f8fafc;
+            --bg-panel: #ffffff;
+            --border-color: #e2e8f0;
+            --primary: #4f46e5;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        html.light body {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+        }
+
+        main {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        header {
+            background: var(--bg-panel);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 20;
+            flex-shrink: 0;
+        }
+
+        html.light header {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        #scrollable-wrapper {
+            flex-grow: 1;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 80px;
+        }
+
+        #scrollable-wrapper::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #scrollable-wrapper::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 3px;
+        }
+
+        .workspace {
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            min-height: 75vh;
+            width: 100%;
+            max-width: 100%;
+            /* Ensure full width */
+        }
+
+        .pane {
+            flex: 1;
+            background: rgba(23, 23, 23, 0.6);
+            /* Semi-transparent for glass effect */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .pane:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+        }
+
+        html.light .pane {
+            background: rgba(255, 255, 255, 0.65);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        html.light .pane:hover {
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .pane-header {
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pane-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #d4d4d4;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .editor-container {
+            flex: 1;
+            position: relative;
+        }
+
+        /* Adjust Preview Height via CSS override if possible, or leave for JS */
+        .glass-preview-wrapper {
+            height: 300px !important;
+            /* Force smaller height */
+        }
+
+        #glassPreview {
+            transform: scale(0.9);
+            /* Scale down content slightly */
+        }
+
+        /* SEO Content Card Glass Effect */
+        .clean-card {
+            background: rgba(23, 23, 23, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        html.light .clean-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-color: #e2e8f0;
+        }
+
+        .clean-card::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            filter: blur(120px);
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .prose h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin: 0 0 20px 0;
+            background: linear-gradient(180deg, #fff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        html.light .prose h1 {
+            background: linear-gradient(180deg, #0f172a, #64748b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .prose h2 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #27272a;
+        }
+
+        .prose h2::before {
+            content: '#';
+            color: var(--primary);
+            opacity: 0.4;
+            margin-right: 10px;
+        }
+
+        .prose h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-top: 35px;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+
+        .prose p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            letter-spacing: 0.01em;
+        }
+
+        html.light .prose p {
+            color: #475569;
+        }
+
+        .prose strong {
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .prose ul {
+            margin-bottom: 24px;
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        .prose li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            color: #d4d4d4;
+            line-height: 1.7;
+        }
+
+        .prose li::before {
+            content: "→";
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.1rem;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .prose ol {
+            counter-reset: list-counter;
+            margin-bottom: 24px;
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        .prose ol li {
+            counter-increment: list-counter;
+            padding-left: 35px;
+        }
+
+        .prose ol li::before {
+            content: counter(list-counter) ".";
+            color: var(--primary);
+            font-weight: 700;
+            position: absolute;
+            left: 0;
+        }
+
+        .faq-item {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 22px 25px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        html.light .faq-item {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: #e2e8f0;
+        }
+
+        .faq-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--primary);
+            transition: height 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.03);
+            transform: translateX(5px);
+        }
+
+        html.light .faq-item:hover {
+            background: rgba(79, 70, 229, 0.05);
+        }
+
+        .faq-item:hover::before {
+            height: 100%;
+        }
+
+        .faq-item strong {
+            display: block;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .faq-item p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-muted);
+        }
+
+        html.light .faq-item p {
+            color: #64748b;
+        }
+
+        html.light .prose h2 {
+            color: #0f172a;
+            border-bottom-color: #e2e8f0;
+        }
+
+        html.light .prose li {
+            color: #475569;
+        }
+
+        html.light .pane-title {
+            color: #475569;
+        }
+
+        html.light textarea {
+            color: #0f172a;
+        }
+
+        html.light .pane-header {
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--bg-panel);
+            border-top: 1px solid var(--border-color);
+            z-index: 10;
+        }
+    </style>
+
+<body>
+    <aside id="sidebar">
+        <div class="brand">
+            <div class="brand-logo"><i class="fas fa-layer-group"></i> Code Formatter</div>
+        </div>
+        <div class="search-container"><input type="text" class="search-input" placeholder="Search tools..."
+                onkeyup="filterTools(this)"></div>
+                        <nav class="menu" id="menuContainer">
+            <div class="nav-group-title">Code Formatters</div>
+            <a href="index.html" class="nav-item" data-id="json-fmt"><i class="fas fa-code"></i> JSON Formatter</a>
+            <a href="html-formatter.html" class="nav-item" data-id="html-fmt"><i class="fab fa-html5"></i> HTML Formatter</a>
+            <a href="css-formatter.html" class="nav-item" data-id="css-fmt"><i class="fab fa-css3-alt"></i> CSS Formatter</a>
+            <a href="js-formatter.html" class="nav-item" data-id="js-fmt"><i class="fab fa-js"></i> JS Formatter</a>
+            <a href="sql-formatter.html" class="nav-item" data-id="sql-fmt"><i class="fas fa-database"></i> SQL Formatter</a>
+            <a href="xml-formatter.html" class="nav-item" data-id="xml-fmt"><i class="fas fa-code"></i> XML Formatter</a>
+
+            <div class="nav-group-title">Image & Color Tools</div>
+            <a href="image-compressor.html" class="nav-item" data-id="img-compress"><i class="fas fa-image"></i> Image Compressor</a>
+            <a href="color-converter.html" class="nav-item" data-id="color-conv"><i class="fas fa-palette"></i> Color Converter</a>
+            <a href="qr-code-generator.html" class="nav-item" data-id="qr-gen"><i class="fas fa-qrcode"></i> QR Generator</a>
+
+            <div class="nav-group-title">Code Minifiers</div>
+            <a href="json-minifier.html" class="nav-item" data-id="json-min"><i class="fas fa-compress"></i> JSON Minifier</a>
+            <a href="html-minifier.html" class="nav-item" data-id="html-min"><i class="fas fa-compress-arrows-alt"></i> HTML Minifier</a>
+            <a href="css-minifier.html" class="nav-item" data-id="css-min"><i class="fas fa-compress-arrows-alt"></i> CSS Minifier</a>
+            <a href="js-minifier.html" class="nav-item" data-id="js-min"><i class="fas fa-file-archive"></i> JS Minifier</a>
+
+            <div class="nav-group-title">Data Converters</div>
+            <a href="json-to-csv.html" class="nav-item" data-id="json-csv"><i class="fas fa-table"></i> JSON to CSV</a>
+            <a href="csv-to-json.html" class="nav-item" data-id="csv-json"><i class="fas fa-file-csv"></i> CSV to JSON</a>
+            <a href="excel-to-html.html" class="nav-item" data-id="excel-html"><i class="fas fa-table"></i> Excel to HTML</a>
+            <a href="case-converter.html" class="nav-item" data-id="case-conv"><i class="fas fa-text-height"></i> Case Converter</a>
+
+            <div class="nav-group-title">Encoding & Security</div>
+            <a href="base64-tool.html" class="nav-item" data-id="base64"><i class="fas fa-lock"></i> Base64 Tool</a>
+            <a href="url-encoder.html" class="nav-item" data-id="url-enc"><i class="fas fa-link"></i> URL Encoder</a>
+            <a href="hash-generator.html" class="nav-item" data-id="hash-gen"><i class="fas fa-fingerprint"></i> Hash Generator</a>
+            <a href="jwt-decoder.html" class="nav-item" data-id="jwt-dec"><i class="fas fa-shield-alt"></i> JWT Decoder</a>
+
+            <div class="nav-group-title">CSS Generators</div>
+            <a href="glassmorphism-generator.html" class="nav-item" data-id="glass-morphism"><i class="fas fa-wind"></i> Glassmorphism</a>
+            <a href="smooth-shadow-generator.html" class="nav-item" data-id="shadow-gen"><i class="fas fa-layer-group"></i> Smooth Shadow</a>
+            <a href="px-to-rem.html" class="nav-item" data-id="px-rem"><i class="fas fa-ruler-combined"></i> PX to REM</a>
+            <a href="aspect-ratio-calculator.html" class="nav-item" data-id="aspect-ratio"><i class="fas fa-expand"></i> Aspect Ratio</a>
+
+            <div class="nav-group-title">Text & Data</div>
+            <a href="lorem-ipsum-generator.html" class="nav-item" data-id="lorem"><i class="fas fa-paragraph"></i> Lorem Ipsum</a>
+            <a href="mock-data-generator.html" class="nav-item" data-id="mock-data"><i class="fas fa-users"></i> Mock Data Gen</a>
+            <a href="diff-checker.html" class="nav-item" data-id="diff-check"><i class="fas fa-exchange-alt"></i> Diff Checker</a>
+
+            <div class="nav-group-title">Preview Tools</div>
+            <a href="html-viewer.html" class="nav-item" data-id="html-view"><i class="fas fa-eye"></i> HTML Viewer</a>
+            <a href="social-card-preview.html" class="nav-item" data-id="social-card"><i class="fas fa-share-alt"></i> Social Preview</a>
+        </nav>
+    </aside>
+    <div id="overlay" onclick="closeAllDrawers()"></div>
+
+    <main>
+        <header>
+            <div class="header-left"><i class="fas fa-bars menu-toggle-btn" onclick="handleMenuClick()"></i>
+                <div class="tool-info">
+                    <div id="toolTitle">Loading...</div>
+                    <p id="toolDesc">...</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="blog.html" class="nav-link">Blog</a>
+                <button class="theme-btn" onclick="toggleTheme()"><i class="fas fa-moon" id="themeIcon"></i></button>
+            </div>
+        </header>
+
+
+
+        <div id="scrollable-wrapper">
+            <section class="workspace" id="workspace">
+                <div class="pane">
+                    <div class="pane-header"><span class="pane-title" id="paneInputTitle">Input / Controls</span>
+                        <div class="pane-actions" id="inputActions"><i class="far fa-clipboard action-icon"
+                                onclick="pasteInput()" title="Paste"></i><i class="far fa-trash-alt action-icon"
+                                onclick="clearAll()" title="Clear"></i></div>
+                    </div>
+                    <div class="editor-container">
+                        <textarea id="input" placeholder=""></textarea>
+
+                        <div id="mockControls">
+                            <div class="tool-group">
+                                <div class="tool-title">Generate Fake JSON</div><label
+                                    style="font-size:0.8rem">Rows:</label><input type="number" id="mockRows"
+                                    class="tool-input" value="10" min="1" max="1000">
+                                <div class="checkbox-group"><label><input type="checkbox" id="mockId" checked>
+                                        ID</label><label><input type="checkbox" id="mockName" checked>
+                                        Name</label><label><input type="checkbox" id="mockEmail" checked>
+                                        Email</label><label><input type="checkbox" id="mockPhone">
+                                        Phone</label><label><input type="checkbox" id="mockAvatar" checked>
+                                        Avatar</label><label><input type="checkbox" id="mockRole"> Role</label></div>
+                            </div><button class="btn btn-pri" onclick="generateMockData()"
+                                style="width:100%; justify-content:center;">Generate JSON</button>
+                        </div>
+
+                        <div id="imageControls">
+                            <div class="drop-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
+                                <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                                <p>Click or Drag Image Here</p><input type="file" id="fileInput"
+                                    accept="image/png, image/jpeg, image/webp" hidden
+                                    onchange="handleImageUpload(this)">
+                            </div>
+                            <div class="tool-group">
+                                <div class="tool-title">Compression Settings</div>
+                                <div class="slider-row"><span>Quality</span><span id="valQuality">80%</span></div><input
+                                    type="range" class="glass-slider" min="0.1" max="1" step="0.05" value="0.8"
+                                    id="rngQuality" oninput="processImage()">
+                                <div class="slider-row" style="margin-top:10px;"><span>Max Width</span><span
+                                        id="valWidth">Original</span></div><input type="number" class="tool-input"
+                                    id="numWidth" placeholder="e.g. 1920 (Leave empty for original)"
+                                    oninput="processImage()">
+                                <div class="slider-row" style="margin-top:10px;"><span>Output Format</span></div><select
+                                    id="selFormat" class="tool-input" onchange="processImage()">
+                                    <option value="image/webp">WebP (Best Compression)</option>
+                                    <option value="image/jpeg">JPEG</option>
+                                    <option value="image/png">PNG</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div id="socialControls">
+                            <div class="tool-group">
+                                <div class="tool-title">Social Card Info</div><input type="text" id="ogTitle"
+                                    class="tool-input" placeholder="Title" value="My Awesome Site"><textarea id="ogDesc"
+                                    class="tool-input" placeholder="Description..."
+                                    style="height:60px;">Check out this link.</textarea><input type="text" id="ogImg"
+                                    class="tool-input" placeholder="Image URL..."
+                                    value="https://via.placeholder.com/600"><input type="text" id="ogUrl"
+                                    class="tool-input" placeholder="Website URL..." value="https://example.com">
+                            </div><button class="btn btn-pri" onclick="generateSocialCard()"
+                                style="width:100%; justify-content:center;">Preview & Generate</button>
+                        </div>
+
+                        <div id="shadowControls">
+                            <div class="tool-group">
+                                <div class="tool-title">Smooth Shadow Settings</div>
+                                <div class="slider-row"><span>Intensity</span><span id="valIntensity">0.5</span></div>
+                                <input type="range" class="glass-slider" min="0" max="1" step="0.01" value="0.5"
+                                    id="rngIntensity" oninput="updateShadow()">
+                                <div class="slider-row" style="margin-top:10px;"><span>Vertical Distance</span><span
+                                        id="valY">100px</span></div><input type="range" class="glass-slider" min="0"
+                                    max="200" value="100" id="rngY" oninput="updateShadow()">
+                                <div class="slider-row" style="margin-top:10px;"><span>Blur Strength</span><span
+                                        id="valBlur">80px</span></div><input type="range" class="glass-slider" min="0"
+                                    max="200" value="80" id="rngBlur" oninput="updateShadow()">
+                            </div>
+                        </div>
+
+                        <div id="glassControls">
+                            <div class="glass-controls">
+                                <div class="glass-control-group">
+                                    <label>Blur <span id="valGlassBlur">16px</span></label>
+                                    <input type="range" class="glass-slider" id="rngGlassBlur" min="0" max="40"
+                                        value="16" oninput="updateGlass()">
+                                </div>
+                                <div class="glass-control-group">
+                                    <label>Transparency <span id="valGlassOpacity">0.2</span></label>
+                                    <input type="range" class="glass-slider" id="rngGlassOpacity" min="0" max="1"
+                                        step="0.01" value="0.2" oninput="updateGlass()">
+                                </div>
+                                <div class="glass-control-group">
+                                    <label>Saturation <span id="valGlassSaturate">100%</span></label>
+                                    <input type="range" class="glass-slider" id="rngGlassSaturate" min="0" max="200"
+                                        value="100" oninput="updateGlass()">
+                                </div>
+                                <div class="glass-control-group">
+                                    <label>Color Tint</label>
+                                    <div style="display:flex; gap:10px; align-items:center;">
+                                        <input type="color" id="colGlassTint" value="#ffffff"
+                                            style="width:50px; height:40px; border:1px solid #333; border-radius:6px; background:none; cursor:pointer;"
+                                            oninput="updateGlass()">
+                                        <label
+                                            style="display:flex; align-items:center; gap:8px; font-weight:normal; margin:0; cursor:pointer;">
+                                            <input type="checkbox" id="chkGlassOutline" checked
+                                                onchange="updateGlass()"> White Border
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="editor-stats" id="inputStats">0 chars | 0 KB</div>
+                    </div>
+                </div>
+
+                <div class="pane">
+                    <div class="pane-header"><span class="pane-title" id="paneOutputTitle">Output</span>
+                        <div class="pane-actions">
+                            <div id="viewToggles"
+                                style="display:none; gap:10px; margin-right:10px; font-size:0.8rem; align-items:center;">
+                                <span style="cursor:pointer; opacity:0.6" onclick="switchView('code')"
+                                    id="toggleCode">Code</span><span
+                                    style="width:1px; height:12px; background:var(--border)"></span><span
+                                    style="cursor:pointer; font-weight:bold; color:var(--primary)"
+                                    onclick="switchView('visual')" id="toggleVisual">Visual</span>
+                            </div>
+                            <i class="fas fa-expand action-icon" onclick="toggleFullscreen()" title="Fullscreen"></i><i
+                                class="far fa-copy action-icon" onclick="copyOutput()" title="Copy Result"></i><i
+                                class="fas fa-download action-icon" onclick="downloadOutput()" title="Download"></i>
+                        </div>
+                    </div>
+                    <div class="editor-container">
+                        <textarea id="output" readonly placeholder="Result will appear here..."></textarea>
+                        <div id="visualOutput"></div>
+                        <div id="imagePreview">
+                            <div class="img-preview-container">
+                                <div class="img-card">
+                                    <div class="tool-title">Original</div><i id="iconOriginal"
+                                        class="fas fa-image img-placeholder-icon"></i><img id="imgOriginal" src=""
+                                        alt="Original">
+                                    <div class="img-meta" id="metaOriginal">Waiting for image...</div>
+                                </div>
+                                <div style="font-size:1.5rem; color:var(--text-muted);"><i
+                                        class="fas fa-arrow-down"></i>
+                                </div>
+                                <div class="img-card" style="border-color:var(--primary);">
+                                    <div class="tool-title" style="color:var(--primary)">Compressed / Converted</div><i
+                                        id="iconCompressed" class="fas fa-bolt img-placeholder-icon"
+                                        style="color:var(--primary)"></i><img id="imgCompressed" src=""
+                                        alt="Compressed">
+                                    <div class="img-meta"><span id="metaCompressed">-</span><span id="badgeSaved"
+                                            class="badge-save">0% Saved</span></div>
+                                </div><button class="btn btn-pri" onclick="downloadImage()"
+                                    style="margin:0 auto; width: fit-content;"><i class="fas fa-download"></i> Download
+                                    Image</button>
+                            </div>
+                        </div>
+                        <iframe id="iframePreview" sandbox="allow-scripts"></iframe>
+                        <div class="editor-stats" id="outputStats" style="display:none;">0 KB</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEO CONTENT SECTION -->
+            <div class="content-container">
+                <article class="clean-card prose">
+                    <h1>Free Glassmorphism CSS Generator - Create Frosted Glass Effects Online</h1>
+
+                    <p>Glassmorphism is a dominant trend in modern UI design, characterized by translucency, vivid
+                        background blurring (frosted glass), and subtle borders. Our free generator allows you to create
+                        production-ready CSS code for glassmorphic elements, with realtime preview and adjustable
+                        parameters for blur, transparency, and color.</p>
+
+                    <h2>What is Glassmorphism?</h2>
+                    <p>Glassmorphism (or "frosted glass") is a design style that mimics the look of translucent glass.
+                        It creates a sense of depth and hierarchy by blurring the background behind an element while
+                        maintaining legibility of the content on top. This effect is widely used by Apple (macOS Big
+                        Sur, iOS), Microsoft (Fluent Design), and modern web applications.</p>
+
+                    <p><strong>Key Characteristics:</strong></p>
+                    <ul>
+                        <li><strong>Translucency:</strong> Backgrounds are semi-transparent, allowing underlying
+                            elements to show through subtly.</li>
+                        <li><strong>Background Blur:</strong> The defining feature - heavy blurring of the backdrop
+                            using CSS <code>backdrop-filter</code>.</li>
+                        <li><strong>Vivid Colors:</strong> Works best on colorful, gradient backgrounds that emphasize
+                            the blur effect.</li>
+                        <li><strong>Light Borders:</strong> Subtle, semi-transparent white borders (1px) mimic the edge
+                            of a glass pane.</li>
+                    </ul>
+
+                    <h2>How to Generate Glassmorphism CSS</h2>
+                    <ol>
+                        <li><strong>Adjust Blur:</strong> Control the intensity of the frosted effect (0px to 40px).
+                            Higher blur creates a more "frosted" look, while lower blur is more transparent.</li>
+                        <li><strong>Set Transparency:</strong> Define the opacity of the glass layer (0.0 to 1.0). A
+                            value between 0.1 and 0.3 usually yields the best glass effect.</li>
+                        <li><strong>Choose Color:</strong> Select the base tint (white or black) to create light or
+                            smoked glass effects.</li>
+                        <li><strong>Copy Code:</strong> Instantly get the CSS code, including the crucial
+                            <code>backdrop-filter</code> property and fallbacks.
+                        </li>
+                    </ol>
+
+                    <h2>The CSS Behind the Effect: <code>backdrop-filter</code></h2>
+                    <p>The magic of glassmorphism relies on a single CSS property:
+                        <code>backdrop-filter: blur(10px);</code>. Unlike standard <code>filter: blur()</code> which
+                        blurs the element itself, <code>backdrop-filter</code> applies the effect to everything
+                        <em>behind</em> the element.
+                    </p>
+
+                    <h3>Code Example</h3>
+                    <pre><code class="language-css">.glass-card {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}</code></pre>
+
+                    <h2>Design Best Practices</h2>
+
+                    <h3>1. Use Colorful Backgrounds</h3>
+                    <p>Glassmorphism fails on flat, solid-color backgrounds because the blur has nothing to "smear." Use
+                        vibrant gradients, abstract shapes, or high-quality photos as your page background to make the
+                        glass effect pop.</p>
+
+                    <h3>2. Layering and Depth</h3>
+                    <p>Create visual hierarchy by stacking glass elements. A modal on top of a card on top of a
+                        background creates a deep, 3D interface. Ensure adequate spacing and shadow usage to
+                        differentiate layers.</p>
+
+                    <h3>3. Accessibility Considerations</h3>
+                    <p>Translucent backgrounds can readability issues. Always ensure sufficient contrast for text
+                        content. Use darker options for text (rgba(0,0,0,0.8)) or consider a solid background fallback
+                        for browsers that don't support backdrop-filter.</p>
+
+                    <h3>4. Border Handling</h3>
+                    <p>The 1px semi-transparent border is crucial. It defines the edges of your glass pane, especially
+                        when the background color is similar to the glass tint. Use
+                        <code>border: 1px solid rgba(255, 255, 255, 0.3);</code> for best results.
+                    </p>
+
+                    <h2>Browser Support & Performance</h2>
+                    <p>The <code>backdrop-filter</code> property is supported by all modern browsers (Chrome, Edge,
+                        Safari, Opera). Firefox supports it by default in recent versions (since v103). For older
+                        browsers, the background will simply appear semi-transparent without the blur, which is a
+                        graceful degradation.</p>
+
+                    <p><strong>Performance Note:</strong> Heavy use of backdrop-filter can be GPU-intensive, especially
+                        on large areas or mobile devices. Use it judiciously for cards, headers, and modals rather than
+                        full-page overlays.</p>
+
+                    <h2>Common Use Cases</h2>
+
+                    <h3>Dashboards</h3>
+                    <p>Glassmorphism works excellently for dashboard widgets, separating data panels from the background
+                        map or visualization while keeping the interface feeling lightweight and airy.</p>
+
+                    <h3>Mobile UI</h3>
+                    <p>iOS control center and notification panels famously use this effect. It provides context (you can
+                        see where you are) while focusing attention on the controls.</p>
+
+                    <h3>Login Screens</h3>
+                    <p>A centered glass login form over a beautiful branded background image creates a stunning, modern
+                        entry point for your application.</p>
+
+                    <h2>Frequently Asked Questions</h2>
+
+                    <div class="faq-item">
+                        <strong>Why isn't the blur showing up?</strong>
+                        <p>Ensure you are using `backdrop-filter`, not `filter`. also, make sure the background of your
+                            element is not fully opaque. Set `background-color` to an rgba value with alpha less than 1
+                            (e.g., `rgba(255, 255, 255, 0.2)`).</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Does it work on Firefox?</strong>
+                        <p>Yes, as of Firefox 103 (2022), `backdrop-filter` is supported by default. No flags needed.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>How do I make "Dark Glass"?</strong>
+                        <p>Instead of a white base (rgba(255,255,255,x)), use black (rgba(0,0,0,x)). A value like
+                            `rgba(0, 0, 0, 0.4)` with a blur of 10px creates a sleek "smoked glass" effect perfect for
+                            dark modes.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Can I combine this with shadows?</strong>
+                        <p>Yes! A subtle box-shadow (`0 4px 6px rgba(0,0,0,0.1)`) adds to the 3D effect, lifting the
+                            glass pane off the background. Avoid harsh shadows, as real glass casts diffuse / colored
+                            shadows.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Is usage free?</strong>
+                        <p>Yes, our tool is 100% free and client-side. The code generated works in any CSS project.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>How to add a rainbow border?</strong>
+                        <p>You can use `background-clip: padding-box, border-box` tricks or psudeo-elements, but
+                            standard glassmorphism usually sticks to simple white/black borders to mimic physical edges.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>What is the ideal opacity?</strong>
+                        <p>We recommend starting around 0.25 (25%). Too high, and it looks like solid plastic. Too low,
+                            and it's barely visible.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Does this support Tailwind CSS?</strong>
+                        <p>Yes! Tailwind has utilities like `backdrop-blur-md`, `bg-white/30`, and `border-white/20`
+                            that perfectly map to these CSS properties.</p>
+                    </div>
+
+                </article>
+            </div>
+
+            <footer class="footer">
+                <div class="footer-stats">
+                    <div class="stat-item" id="footerStatus"><i class="fas fa-circle-notch"></i> Ready</div>
+                    <div class="stat-item" id="savingsStat" style="display:none;"><i class="fas fa-arrow-down"></i>
+                        <span id="savingsText"></span> <span class="diff-tag" id="savingsBadge"></span>
+                    </div>
+                    <div class="footer-links"><a href="./About.html">About</a> • <a href="./Privacy.html">Privacy</a> •
+                        <a href="./Contact.html">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-actions"><button class="btn btn-sec" id="btnSecondary"
+                        onclick="runAction('secondary')">MINIFY</button><button class="btn btn-pri" id="btnPrimary"
+                        onclick="runAction('primary')"><i class="fas fa-play"></i> RUN</button></div>
+            </footer>
+        </div>
+    </main>
+    <div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span>Action Completed</span></div>
+
+    <style>
+        /* Specific Glassmorphism Tool Styles */
+        .glass-controls-premium {
+            padding: 25px;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: all 0.3s ease;
+        }
+
+        html.light .glass-controls-premium {
+            background: rgba(255, 255, 255, 0.75);
+            border-color: rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .control-group-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .control-value {
+            color: var(--primary);
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(59, 130, 246, 0.1);
+            padding: 2px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        html.light .control-value {
+            background: rgba(79, 70, 229, 0.1);
+            color: var(--primary);
+            border-color: rgba(79, 70, 229, 0.2);
+        }
+
+        /* Custom Range Slider */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+            margin-top: -8px;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+            transition: transform 0.1s;
+        }
+
+        input[type=range]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 6px;
+            cursor: pointer;
+            background: linear-gradient(to right, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.5));
+            border-radius: 3px;
+        }
+
+        html.light input[type=range]::-webkit-slider-runnable-track {
+            background: linear-gradient(to right, #e2e8f0, #cbd5e1);
+        }
+
+
+
+        /* Color Input */
+        .color-input-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+        }
+
+        input[type="color"] {
+            -webkit-appearance: none;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            overflow: hidden;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        input[type="color"]::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+
+        input[type="color"]::-webkit-color-swatch {
+            border: none;
+            border-radius: 50%;
+        }
+
+        /* Checkbox */
+        .checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .checkbox-wrapper input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* Animation for Preview Background */
+        @keyframes move-bg {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes float-blob {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            33% {
+                transform: translate(30px, -50px) rotate(120deg);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) rotate(240deg);
+            }
+
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+            }
+        }
+
+        .preview-bg-animated {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: move-bg 15s ease infinite;
+            z-index: 0;
+        }
+
+        .glass-label {
+            font-weight: 600;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+        }
+
+        html.light .glass-label {
+            color: var(--text-muted);
+        }
+    </style>
+
+    <script>
+        const activeToolId = "glass-morphism";
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Hide the default textarea for this tool
+            const inputTextarea = document.getElementById('input');
+            if (inputTextarea) inputTextarea.style.display = 'none';
+
+            // Show and populate the glass controls
+            const glassControls = document.getElementById('glassControls');
+            if (glassControls) {
+                glassControls.style.display = 'block';
+                glassControls.innerHTML = `
+                    <div class="glass-controls-premium" style="padding:20px;">
+                        <div class="control-item" style="margin-bottom:20px;">
+                            <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                                <label class="glass-label"><i class="fas fa-magic" style="margin-right:8px;"></i>Blur Strength</label>
+                                <span id="valGlassBlur" class="control-value">16px</span>
+                            </div>
+                            <input type="range" id="rngGlassBlur" min="0" max="40" value="16" oninput="updateGlassMorphism()" style="width:100%;">
+                        </div>
+                        <div class="control-item" style="margin-bottom:20px;">
+                            <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                                <label class="glass-label"><i class="fas fa-adjust" style="margin-right:8px;"></i>Transparency</label>
+                                <span id="valGlassOpacity" class="control-value">0.25</span>
+                            </div>
+                            <input type="range" id="rngGlassOpacity" min="0" max="1" step="0.01" value="0.25" oninput="updateGlassMorphism()" style="width:100%;">
+                        </div>
+                        <div class="control-item"">
+                            <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                                <label class="glass-label"><i class="fas fa-tint" style="margin-right:8px;"></i>Saturation</label>
+                                <span id="valGlassSaturate" class="control-value">120%</span>
+                            </div>
+                            <input type="range" id="rngGlassSaturate" min="0" max="200" value="120" oninput="updateGlassMorphism()" style="width:100%;">
+                        </div>
+                        <div style="display:flex; align-items:center; gap:15px; margin-top:15px;">
+                            <div style="flex:1; display:flex; align-items:center; background:rgba(0,0,0,0.2); padding:10px 15px; border-radius:8px;">
+                                <input type="color" id="colGlassTint" value="#ffffff" oninput="updateGlassMorphism()" style="width:35px; height:35px; border:none; background:none; cursor:pointer;">
+                                <span class="glass-label" style="margin-left:12px;">Glass Tint</span>
+                            </div>
+                            <label class="glass-label" style="cursor:pointer;">
+                                <input type="checkbox" id="chkGlassOutline" checked onchange="updateGlassMorphism()" style="width:18px; height:18px; accent-color:var(--primary);">
+                                <span style="margin-left:8px;">Border</span>
+                            </label>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Create the visual preview
+            const visualOutput = document.getElementById('visualOutput');
+            if (visualOutput) {
+                visualOutput.style.display = 'block';
+                visualOutput.innerHTML = `
+                    <div style="width:100%; height:240px; display:flex; justify-content:center; align-items:center; position:relative; overflow:hidden; border-radius:12px; border:1px solid var(--border-color);">
+                        <div class="preview-bg-animated"></div>
+                        <div style="position:absolute; width:150px; height:150px; background:#ff00cc; border-radius:50%; top:10%; left:10%; filter:blur(40px); opacity:0.6; animation:float-blob 8s infinite ease-in-out;"></div>
+                        <div style="position:absolute; width:180px; height:180px; background:#00ccff; border-radius:50%; bottom:10%; right:10%; filter:blur(40px); opacity:0.6; animation:float-blob 12s infinite ease-in-out reverse;"></div>
+                        <div style="position:absolute; width:160px; height:90px; background:rgba(255,255,255,0.1); backdrop-filter:blur(5px); border:1px solid rgba(255,255,255,0.1); border-radius:16px; transform:translate(-35px,-25px) rotate(-5deg); z-index:5;"></div>
+                        <div id="glassPreview" style="width:220px; height:130px; border-radius:16px; display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; z-index:10; transition:all 0.15s ease; color:#fff;">
+                            <i class="fas fa-layer-group" style="font-size:1.8rem; margin-bottom:10px; opacity:0.9;"></i>
+                            <div style="font-size:1.2rem; font-weight:800;">Glass UI</div>
+                            <div style="font-size:0.75rem; opacity:0.8;">Premium Effect</div>
+                        </div>
+                    </div>
+                    <button class="btn btn-pri" onclick="copyGlassCSS()" style="width:100%; margin-top:15px; justify-content:center;">
+                        <i class="fas fa-copy"></i> Copy CSS Code
+                    </button>
+                `;
+            }
+
+            // Show view toggles
+            const viewToggles = document.getElementById('viewToggles');
+            if (viewToggles) viewToggles.style.display = 'flex';
+
+            // Initial update
+            setTimeout(updateGlassMorphism, 100);
+        });
+
+        function updateGlassMorphism() {
+            try {
+                const blur = document.getElementById('rngGlassBlur').value;
+                const opacity = document.getElementById('rngGlassOpacity').value;
+                const saturate = document.getElementById('rngGlassSaturate').value;
+                const color = document.getElementById('colGlassTint').value;
+                const hasBorder = document.getElementById('chkGlassOutline').checked;
+
+                // Update labels
+                document.getElementById('valGlassBlur').innerText = blur + 'px';
+                document.getElementById('valGlassOpacity').innerText = opacity;
+                document.getElementById('valGlassSaturate').innerText = saturate + '%';
+
+                // Parse color
+                let r = 255, g = 255, b = 255;
+                if (color.length === 7) {
+                    r = parseInt(color.slice(1, 3), 16);
+                    g = parseInt(color.slice(3, 5), 16);
+                    b = parseInt(color.slice(5, 7), 16);
+                }
+                const rgba = 'rgba(' + r + ', ' + g + ', ' + b + ', ' + opacity + ')';
+                const brightness = Math.round(((r * 299) + (g * 587) + (b * 114)) / 1000);
+                const isLight = brightness > 125;
+                const borderColor = isLight ? 'rgba(255, 255, 255, 0.4)' : 'rgba(255, 255, 255, 0.15)';
+
+                // Apply to preview
+                const preview = document.getElementById('glassPreview');
+                if (preview) {
+                    preview.style.background = rgba;
+                    preview.style.backdropFilter = 'blur(' + blur + 'px) saturate(' + saturate + '%)';
+                    preview.style.webkitBackdropFilter = 'blur(' + blur + 'px) saturate(' + saturate + '%)';
+                    preview.style.border = hasBorder ? '1px solid ' + borderColor : 'none';
+                    preview.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.37)';
+                    preview.style.color = (isLight && opacity > 0.5) ? '#000' : '#fff';
+                }
+
+                // Generate CSS code
+                const css = '.glass-card {\n' +
+                    '  background: ' + rgba + ';\n' +
+                    '  backdrop-filter: blur(' + blur + 'px) saturate(' + saturate + '%);\n' +
+                    '  -webkit-backdrop-filter: blur(' + blur + 'px) saturate(' + saturate + '%);\n' +
+                    '  border-radius: 16px;\n' +
+                    '  border: ' + (hasBorder ? '1px solid ' + borderColor : 'none') + ';\n' +
+                    '  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);\n' +
+                    '}';
+
+                const output = document.getElementById('output');
+                if (output) output.value = css;
+            } catch (e) {
+                console.error('Glass update error:', e);
+            }
+        }
+
+        function copyGlassCSS() {
+            const output = document.getElementById('output');
+            if (output) {
+                output.select();
+                document.execCommand('copy');
+                const toast = document.getElementById('toast');
+                if (toast) {
+                    toast.classList.add('show');
+                    setTimeout(function () { toast.classList.remove('show'); }, 2000);
+                }
+            }
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

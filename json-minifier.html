@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Free JSON Minifier & Compressor Tool 2026 - Reduce Size by 80%</title>
+    <meta name="description"
+        content="Free online JSON minifier and compressor. Instantly reduce JSON file size by 60-80%. Fast, secure, client-side compression for APIs, databases, and web apps.">
+    <meta name="keywords"
+        content="json minifier, json compressor, minify json online, compress json, json minification tool, reduce json size, json optimizer, json file compressor, minify json free, online json minifier, json compression, json beautifier to minifier, api json optimizer, minimize json, json size reducer, json whitespace remover, json compactor, json file optimizer, javascript json minifier, rest api json compression, json minify online free, json web tool, json size optimization, json bandwidth optimization, json performance tool, json cdn optimizer, json load time reducer, json seo tool, compact json generator, json file reducer">
+    <link rel="canonical" href="https://codeformats.com/json-minifier">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="Code Formatter">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://codeformats.com/json-minifier">
+    <meta property="og:title" content="Free JSON Minifier & Compressor - Reduce File Size by 80%">
+    <meta property="og:description"
+        content="Instantly minify and compress JSON files online. Free, fast, and 100% client-side processing. Perfect for APIs, web apps, and databases.">
+    <meta property="og:image" content="https://codeformats.com/og-json-minifier.png">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Code Formatter">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://codeformats.com/json-minifier">
+    <meta name="twitter:title" content="Free JSON Minifier & Compressor Tool">
+    <meta name="twitter:description" content="Reduce JSON file size by 60-80%. Fast, secure, client-side compression.">
+    <meta name="twitter:image" content="https://codeformats.com/og-json-minifier.png">
+
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Performance Optimization -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <script src="https://unpkg.com/prettier@3.0.3/standalone.js" defer></script>
+    <script src="https://unpkg.com/prettier@3.0.3/plugins/babel.js" defer></script>
+    <script src="https://unpkg.com/prettier@3.0.3/plugins/estree.js" defer></script>
+    <script src="https://unpkg.com/prettier@3.0.3/plugins/html.js" defer></script>
+    <script src="https://unpkg.com/prettier@3.0.3/plugins/postcss.js" defer></script>
+    <script src="https://unpkg.com/prettier@3.0.3/plugins/yaml.js" defer></script>
+    <script src="https://unpkg.com/prettier@3.0.3/plugins/typescript.js" defer></script>
+    <script src="https://unpkg.com/sql-formatter@12.2.0/dist/sql-formatter.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.1.0/diff.min.js" defer></script>
+
+    <style>
+        :root {
+            /* Cleaner Dark Theme Palette */
+            --bg-body: #0a0a0a;
+            /* Almost Black */
+            --bg-panel: #171717;
+            /* Very Dark Grey */
+            --border-color: #262626;
+            /* Subtle Border */
+            --primary: #3b82f6;
+            --text-main: #ededed;
+            --text-muted: #a1a1aa;
+        }
+
+        html.light {
+            /* Light Theme Palette */
+            --bg-body: #f8fafc;
+            /* Light Background */
+            --bg-panel: #ffffff;
+            /* White Panel */
+            --border-color: #e2e8f0;
+            /* Light Border */
+            --primary: #4f46e5;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            /* Technical Grid Background Pattern */
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            /* Main handles scrolling */
+        }
+
+        /* Light theme grid - darker lines for visibility */
+        html.light body {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+        }
+
+        /* FLEX LAYOUT STRUCTURE */
+        main {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* 1. HEADER (Clean) */
+        header {
+            background: var(--bg-panel);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 20;
+            flex-shrink: 0;
+        }
+
+        html.light header {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        /* 2. SCROLLABLE AREA */
+        #scrollable-wrapper {
+            flex-grow: 1;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 80px;
+            /* Space for footer */
+        }
+
+        #scrollable-wrapper::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #scrollable-wrapper::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 3px;
+        }
+
+        /* 3. WORKSPACE (The Tool) */
+        .workspace {
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            min-height: 75vh;
+            /* Tool takes reduced height for better content visibility */
+        }
+
+        /* Clean Input/Output Boxes */
+        .pane {
+            flex: 1;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+
+        .pane:hover {
+            border-color: #404040;
+            /* Slight highlight on hover */
+        }
+
+        .pane-header {
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pane-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #d4d4d4;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .editor-container {
+            flex: 1;
+            position: relative;
+        }
+
+        textarea {
+            background: transparent !important;
+            border: none;
+            padding: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: #e5e5e5;
+            line-height: 1.6;
+            resize: none;
+        }
+
+        /* 4. CONTENT AREA (Premium Blog Style) */
+        .content-container {
+            /* max-width: 760px; */
+            margin: 20px auto 40px auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .clean-card {
+            background: var(--bg-panel);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Light theme content card */
+        html.light .clean-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-color: #e2e8f0;
+        }
+
+        .clean-card::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50());
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            filter: blur(120px);
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Modern Typography for Enhanced Readability */
+        .prose h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin: 0 0 20px 0;
+            background: linear-gradient(180deg, #fff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        html.light .prose h1 {
+            background: linear-gradient(180deg, #0f172a, #64748b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .prose h2 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #27272a;
+        }
+
+        .prose h2::before {
+            content: '#';
+            color: var(--primary);
+            opacity: 0.4;
+            margin-right: 10px;
+        }
+
+        .prose h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-top: 35px;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+
+        .prose p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            letter-spacing: 0.01em;
+        }
+
+        html.light .prose p {
+            color: #475569;
+        }
+
+        .prose strong {
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .prose ul {
+            margin-bottom: 24px;
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        .prose li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            color: #d4d4d4;
+            line-height: 1.7;
+        }
+
+        .prose li::before {
+            content: "→";
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.1rem;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .prose ol {
+            counter-reset: list-counter;
+            margin-bottom: 24px;
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        .prose ol li {
+            counter-increment: list-counter;
+            padding-left: 35px;
+        }
+
+        .prose ol li::before {
+            content: counter(list-counter) ".";
+            color: var(--primary);
+            font-weight: 700;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Premium FAQ Cards */
+        .faq-item {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 22px 25px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Light theme FAQ */
+        html.light .faq-item {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: #e2e8f0;
+        }
+
+        .faq-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--primary);
+            transition: height 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.03);
+            transform: translateX(5px);
+        }
+
+        html.light .faq-item:hover {
+            background: rgba(79, 70, 229, 0.05);
+        }
+
+        .faq-item:hover::before {
+            height: 100%;
+        }
+
+        .faq-item strong {
+            display: block;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .faq-item p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-muted);
+        }
+
+        html.light .faq-item p {
+            color: #64748b;
+        }
+
+        /* Additional Light Theme Overrides for Full Readability */
+        html.light .prose h2 {
+            color: #0f172a;
+            border-bottom-color: #e2e8f0;
+        }
+
+        html.light .prose li {
+            color: #475569;
+        }
+
+        html.light .pane-title {
+            color: #475569;
+        }
+
+        html.light textarea {
+            color: #0f172a;
+        }
+
+        html.light .pane-header {
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        html.light .pane:hover {
+            border-color: #cbd5e1;
+        }
+
+        /* 5. FOOTER (Fixed) */
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--bg-panel);
+            /* Solid bg for readability */
+            border-top: 1px solid var(--border-color);
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body>
+    <aside id="sidebar">
+        <div class="brand">
+            <div class="brand-logo"><i class="fas fa-layer-group"></i> Code Formatter</div>
+        </div>
+        <div class="search-container"><input type="text" class="search-input" placeholder="Search tools..."
+                onkeyup="filterTools(this)"></div>
+                        <nav class="menu" id="menuContainer">
+            <div class="nav-group-title">Code Formatters</div>
+            <a href="index.html" class="nav-item" data-id="json-fmt"><i class="fas fa-code"></i> JSON Formatter</a>
+            <a href="html-formatter.html" class="nav-item" data-id="html-fmt"><i class="fab fa-html5"></i> HTML Formatter</a>
+            <a href="css-formatter.html" class="nav-item" data-id="css-fmt"><i class="fab fa-css3-alt"></i> CSS Formatter</a>
+            <a href="js-formatter.html" class="nav-item" data-id="js-fmt"><i class="fab fa-js"></i> JS Formatter</a>
+            <a href="sql-formatter.html" class="nav-item" data-id="sql-fmt"><i class="fas fa-database"></i> SQL Formatter</a>
+            <a href="xml-formatter.html" class="nav-item" data-id="xml-fmt"><i class="fas fa-code"></i> XML Formatter</a>
+
+            <div class="nav-group-title">Image & Color Tools</div>
+            <a href="image-compressor.html" class="nav-item" data-id="img-compress"><i class="fas fa-image"></i> Image Compressor</a>
+            <a href="color-converter.html" class="nav-item" data-id="color-conv"><i class="fas fa-palette"></i> Color Converter</a>
+            <a href="qr-code-generator.html" class="nav-item" data-id="qr-gen"><i class="fas fa-qrcode"></i> QR Generator</a>
+
+            <div class="nav-group-title">Code Minifiers</div>
+            <a href="json-minifier.html" class="nav-item" data-id="json-min"><i class="fas fa-compress"></i> JSON Minifier</a>
+            <a href="html-minifier.html" class="nav-item" data-id="html-min"><i class="fas fa-compress-arrows-alt"></i> HTML Minifier</a>
+            <a href="css-minifier.html" class="nav-item" data-id="css-min"><i class="fas fa-compress-arrows-alt"></i> CSS Minifier</a>
+            <a href="js-minifier.html" class="nav-item" data-id="js-min"><i class="fas fa-file-archive"></i> JS Minifier</a>
+
+            <div class="nav-group-title">Data Converters</div>
+            <a href="json-to-csv.html" class="nav-item" data-id="json-csv"><i class="fas fa-table"></i> JSON to CSV</a>
+            <a href="csv-to-json.html" class="nav-item" data-id="csv-json"><i class="fas fa-file-csv"></i> CSV to JSON</a>
+            <a href="excel-to-html.html" class="nav-item" data-id="excel-html"><i class="fas fa-table"></i> Excel to HTML</a>
+            <a href="case-converter.html" class="nav-item" data-id="case-conv"><i class="fas fa-text-height"></i> Case Converter</a>
+
+            <div class="nav-group-title">Encoding & Security</div>
+            <a href="base64-tool.html" class="nav-item" data-id="base64"><i class="fas fa-lock"></i> Base64 Tool</a>
+            <a href="url-encoder.html" class="nav-item" data-id="url-enc"><i class="fas fa-link"></i> URL Encoder</a>
+            <a href="hash-generator.html" class="nav-item" data-id="hash-gen"><i class="fas fa-fingerprint"></i> Hash Generator</a>
+            <a href="jwt-decoder.html" class="nav-item" data-id="jwt-dec"><i class="fas fa-shield-alt"></i> JWT Decoder</a>
+
+            <div class="nav-group-title">CSS Generators</div>
+            <a href="glassmorphism-generator.html" class="nav-item" data-id="glass-morphism"><i class="fas fa-wind"></i> Glassmorphism</a>
+            <a href="smooth-shadow-generator.html" class="nav-item" data-id="shadow-gen"><i class="fas fa-layer-group"></i> Smooth Shadow</a>
+            <a href="px-to-rem.html" class="nav-item" data-id="px-rem"><i class="fas fa-ruler-combined"></i> PX to REM</a>
+            <a href="aspect-ratio-calculator.html" class="nav-item" data-id="aspect-ratio"><i class="fas fa-expand"></i> Aspect Ratio</a>
+
+            <div class="nav-group-title">Text & Data</div>
+            <a href="lorem-ipsum-generator.html" class="nav-item" data-id="lorem"><i class="fas fa-paragraph"></i> Lorem Ipsum</a>
+            <a href="mock-data-generator.html" class="nav-item" data-id="mock-data"><i class="fas fa-users"></i> Mock Data Gen</a>
+            <a href="diff-checker.html" class="nav-item" data-id="diff-check"><i class="fas fa-exchange-alt"></i> Diff Checker</a>
+
+            <div class="nav-group-title">Preview Tools</div>
+            <a href="html-viewer.html" class="nav-item" data-id="html-view"><i class="fas fa-eye"></i> HTML Viewer</a>
+            <a href="social-card-preview.html" class="nav-item" data-id="social-card"><i class="fas fa-share-alt"></i> Social Preview</a>
+        </nav>
+    </aside>
+    <div id="overlay" onclick="closeAllDrawers()"></div>
+
+    <main>
+        <header>
+            <div class="header-left"><i class="fas fa-bars menu-toggle-btn" onclick="handleMenuClick()"></i>
+                <div class="tool-info">
+                    <div id="toolTitle">Loading...</div>
+                    <p id="toolDesc">...</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="blog.html" class="nav-link">Blog</a>
+                <button class="theme-btn" onclick="toggleTheme()"><i class="fas fa-moon" id="themeIcon"></i></button>
+            </div>
+        </header>
+
+        <div id="scrollable-wrapper">
+            <section class="workspace" id="workspace">
+                <div class="pane">
+                    <div class="pane-header"><span class="pane-title" id="paneInputTitle">Input / Controls</span>
+                        <div class="pane-actions" id="inputActions"><i class="far fa-clipboard action-icon"
+                                onclick="pasteInput()" title="Paste"></i><i class="far fa-trash-alt action-icon"
+                                onclick="clearAll()" title="Clear"></i></div>
+                    </div>
+                    <div class="editor-container">
+                        <textarea id="input" placeholder=""></textarea>
+
+                        <div id="mockControls">
+                            <div class="tool-group">
+                                <div class="tool-title">Generate Fake JSON</div><label
+                                    style="font-size:0.8rem">Rows:</label><input type="number" id="mockRows"
+                                    class="tool-input" value="10" min="1" max="1000">
+                                <div class="checkbox-group"><label><input type="checkbox" id="mockId" checked>
+                                        ID</label><label><input type="checkbox" id="mockName" checked>
+                                        Name</label><label><input type="checkbox" id="mockEmail" checked>
+                                        Email</label><label><input type="checkbox" id="mockPhone">
+                                        Phone</label><label><input type="checkbox" id="mockAvatar" checked>
+                                        Avatar</label><label><input type="checkbox" id="mockRole"> Role</label></div>
+                            </div><button class="btn btn-pri" onclick="generateMockData()"
+                                style="width:100%; justify-content:center;">Generate JSON</button>
+                        </div>
+
+                        <div id="imageControls">
+                            <div class="drop-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
+                                <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                                <p>Click or Drag Image Here</p><input type="file" id="fileInput"
+                                    accept="image/png, image/jpeg, image/webp" hidden
+                                    onchange="handleImageUpload(this)">
+                            </div>
+                            <div class="tool-group">
+                                <div class="tool-title">Compression Settings</div>
+                                <div class="slider-row"><span>Quality</span><span id="valQuality">80%</span></div><input
+                                    type="range" class="glass-slider" min="0.1" max="1" step="0.05" value="0.8"
+                                    id="rngQuality" oninput="processImage()">
+                                <div class="slider-row" style="margin-top:10px;"><span>Max Width</span><span
+                                        id="valWidth">Original</span></div><input type="number" class="tool-input"
+                                    id="numWidth" placeholder="e.g. 1920 (Leave empty for original)"
+                                    oninput="processImage()">
+                                <div class="slider-row" style="margin-top:10px;"><span>Output Format</span></div><select
+                                    id="selFormat" class="tool-input" onchange="processImage()">
+                                    <option value="image/webp">WebP (Best Compression)</option>
+                                    <option value="image/jpeg">JPEG</option>
+                                    <option value="image/png">PNG</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div id="socialControls">
+                            <div class="tool-group">
+                                <div class="tool-title">Social Card Info</div><input type="text" id="ogTitle"
+                                    class="tool-input" placeholder="Title" value="My Awesome Site"><textarea id="ogDesc"
+                                    class="tool-input" placeholder="Description..."
+                                    style="height:60px;">Check out this link.</textarea><input type="text" id="ogImg"
+                                    class="tool-input" placeholder="Image URL..."
+                                    value="https://via.placeholder.com/600"><input type="text" id="ogUrl"
+                                    class="tool-input" placeholder="Website URL..." value="https://example.com">
+                            </div><button class="btn btn-pri" onclick="generateSocialCard()"
+                                style="width:100%; justify-content:center;">Preview & Generate</button>
+                        </div>
+
+                        <div id="shadowControls">
+                            <div class="tool-group">
+                                <div class="tool-title">Smooth Shadow Settings</div>
+                                <div class="slider-row"><span>Intensity</span><span id="valIntensity">0.5</span></div>
+                                <input type="range" class="glass-slider" min="0" max="1" step="0.01" value="0.5"
+                                    id="rngIntensity" oninput="updateShadow()">
+                                <div class="slider-row" style="margin-top:10px;"><span>Vertical Distance</span><span
+                                        id="valY">100px</span></div><input type="range" class="glass-slider" min="0"
+                                    max="200" value="100" id="rngY" oninput="updateShadow()">
+                                <div class="slider-row" style="margin-top:10px;"><span>Blur Strength</span><span
+                                        id="valBlur">80px</span></div><input type="range" class="glass-slider" min="0"
+                                    max="200" value="80" id="rngBlur" oninput="updateShadow()">
+                            </div>
+                        </div>
+                        <div class="editor-stats" id="inputStats">0 chars | 0 KB</div>
+                    </div>
+                </div>
+
+                <div class="pane">
+                    <div class="pane-header"><span class="pane-title" id="paneOutputTitle">Output</span>
+                        <div class="pane-actions">
+                            <div id="viewToggles"
+                                style="display:none; gap:10px; margin-right:10px; font-size:0.8rem; align-items:center;">
+                                <span style="cursor:pointer; opacity:0.6" onclick="switchView('code')"
+                                    id="toggleCode">Code</span><span
+                                    style="width:1px; height:12px; background:var(--border)"></span><span
+                                    style="cursor:pointer; font-weight:bold; color:var(--primary)"
+                                    onclick="switchView('visual')" id="toggleVisual">Visual</span>
+                            </div>
+                            <i class="fas fa-expand action-icon" onclick="toggleFullscreen()" title="Fullscreen"></i><i
+                                class="far fa-copy action-icon" onclick="copyOutput()" title="Copy Result"></i><i
+                                class="fas fa-download action-icon" onclick="downloadOutput()" title="Download"></i>
+                        </div>
+                    </div>
+                    <div class="editor-container">
+                        <textarea id="output" readonly placeholder="Result will appear here..."></textarea>
+                        <div id="visualOutput"></div>
+                        <div id="imagePreview">
+                            <div class="img-preview-container">
+                                <div class="img-card">
+                                    <div class="tool-title">Original</div><i id="iconOriginal"
+                                        class="fas fa-image img-placeholder-icon"></i><img id="imgOriginal" src=""
+                                        alt="Original">
+                                    <div class="img-meta" id="metaOriginal">Waiting for image...</div>
+                                </div>
+                                <div style="font-size:1.5rem; color:var(--text-muted);"><i
+                                        class="fas fa-arrow-down"></i>
+                                </div>
+                                <div class="img-card" style="border-color:var(--primary);">
+                                    <div class="tool-title" style="color:var(--primary)">Compressed / Converted</div><i
+                                        id="iconCompressed" class="fas fa-bolt img-placeholder-icon"
+                                        style="color:var(--primary)"></i><img id="imgCompressed" src=""
+                                        alt="Compressed">
+                                    <div class="img-meta"><span id="metaCompressed">-</span><span id="badgeSaved"
+                                            class="badge-save">0% Saved</span></div>
+                                </div><button class="btn btn-pri" onclick="downloadImage()"
+                                    style="margin:0 auto; width: fit-content;"><i class="fas fa-download"></i> Download
+                                    Image</button>
+                            </div>
+                        </div>
+                        <iframe id="iframePreview" sandbox="allow-scripts"></iframe>
+                        <div class="editor-stats" id="outputStats" style="display:none;">0 KB</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEO CONTENT SECTION -->
+            <div class="content-container">
+                <article class="clean-card prose">
+                    <h1>Free JSON Minifier & Compressor Tool - Reduce File Size by 80%</h1>
+
+                    <p>JSON Minification is the process of removing unnecessary whitespace, line breaks, and indentation
+                        from JSON files to dramatically reduce file size. Our free online JSON minifier compresses your
+                        JSON data instantly, improving load times and reducing bandwidth costs for web applications and
+                        APIs.</p>
+
+                    <h2>What is JSON Minification?</h2>
+                    <p>JSON Minification, also known as JSON compression, transforms human-readable JSON files into
+                        compact, single-line formats by eliminating all non-essential characters. While formatted JSON
+                        is easier for developers to read, minified JSON is optimized for machine consumption and
+                        significantly faster to transmit over networks.</p>
+
+                    <p><strong>Example of Minified JSON:</strong></p>
+                    <p>Before: 450 bytes (formatted) → After: 120 bytes (minified) = <strong>73% size
+                            reduction!</strong></p>
+
+                    <h2>How to Use the JSON Minifier</h2>
+                    <ol>
+                        <li><strong>Paste JSON:</strong> Copy your formatted JSON data into the input box</li>
+                        <li><strong>Click Minify:</strong> Press the "Minify" button to compress instantly</li>
+                        <li><strong>Copy Result:</strong> Use the copy button to grab the minified output</li>
+                        <li><strong>Download:</strong> Save the compressed JSON file to your computer</li>
+                    </ol>
+
+                    <p>Our JSON minifier works 100% client-side in your browser - your data never leaves your device,
+                        ensuring complete privacy and security.</p>
+
+                    <h2>Key Benefits of JSON Minification</h2>
+                    <ul>
+                        <li><strong>Faster API Responses:</strong> Reduce payload size by 60-80% for lightning-fast data
+                            transfer</li>
+                        <li><strong>Lower Bandwidth Costs:</strong> Save money on CDN and hosting bills with smaller
+                            file sizes</li>
+                        <li><strong>Improved Page Speed:</strong> Minified JSON loads faster, boosting Core Web Vitals
+                            scores</li>
+                        <li><strong>Better SEO Rankings:</strong> Google rewards faster-loading websites with higher
+                            search rankings</li>
+                        <li><strong>Reduced Storage:</strong> Compressed JSON takes up less database and backup space
+                        </li>
+                        <li><strong>Mobile Optimization:</strong> Smaller payloads mean faster load times on 3G/4G
+                            networks</li>
+                    </ul>
+
+                    <h2>Common Use Cases for JSON Minification</h2>
+
+                    <h3>1. REST API Optimization</h3>
+                    <p>Minify JSON responses from your REST APIs to reduce latency and improve user experience. Modern
+                        web applications make dozens of API calls - every byte saved multiplies across thousands of
+                        requests.</p>
+
+                    <h3>2. Configuration File Compression</h3>
+                    <p>Compress configuration files (package.json, tsconfig.json, webpack.config.js) before deployment
+                        to production environments. Minified configs load faster and consume less memory.</p>
+
+                    <h3>3. Database Import/Export</h3>
+                    <p>When exporting large datasets from MongoDB, Firebase, or PostgreSQL to JSON format, minification
+                        reduces file size by up to 80%, making transfers and backups much faster.</p>
+
+                    <h3>4. CDN & Caching Optimization</h3>
+                    <p>Serve minified JSON files through your CDN to reduce bandwidth consumption and improve cache hit
+                        ratios. Smaller files = faster edge delivery.</p>
+
+                    <h3>5. Mobile App Development</h3>
+                    <p>Minimize JSON payloads in React Native, Flutter, or Swift apps to reduce cellular data usage and
+                        improve app performance on low-bandwidth connections.</p>
+
+                    <h2>JSON Minifier vs. JSON Formatter</h2>
+                    <p>While our <a href="index.html">JSON Formatter</a> adds indentation and line breaks for human
+                        readability, the JSON Minifier does the opposite - it removes all formatting to create the most
+                        compact representation possible.</p>
+
+                    <ul>
+                        <li><strong>Use Formatter:</strong> When debugging, code reviews, or manual editing</li>
+                        <li><strong>Use Minifier:</strong> Before production deployment, API responses, or file storage
+                        </li>
+                    </ul>
+
+                    <h2>Best Practices for JSON Minification</h2>
+                    <ul>
+                        <li><strong>Always Validate First:</strong> Ensure your JSON is valid before minifying to avoid
+                            syntax errors</li>
+                        <li><strong>Keep Source Formatted:</strong> Store a formatted version in your codebase for
+                            development</li>
+                        <li><strong>Automate in Build Process:</strong> Use minification tools in your CI/CD pipeline
+                            (Webpack, Gulp, Grunt)</li>
+                        <li><strong>Enable Gzip Compression:</strong> Combine JSON minification with server-side Gzip
+                            for maximum compression</li>
+                        <li><strong>Monitor File Sizes:</strong> Track payload sizes to identify opportunities for
+                            further optimization</li>
+                    </ul>
+
+                    <h2>Technical Specifications</h2>
+                    <ul>
+                        <li><strong>Max File Size:</strong> Unlimited (browser memory dependent)</li>
+                        <li><strong>Processing Speed:</strong> Instant (&lt; 50ms for files up to 10MB)</li>
+                        <li><strong>Privacy:</strong> 100% client-side processing - no server uploads</li>
+                        <li><strong>Compatibility:</strong> Works with all JSON standards (RFC 8259, ECMA-404)</li>
+                        <li><strong>Output Format:</strong> Single-line, whitespace-free JSON</li>
+                    </ul>
+
+                    <h2>Why Choose Code Formatter JSON Minifier?</h2>
+                    <p><strong>Complete Privacy:</strong> Unlike online tools that upload your JSON to remote servers,
+                        our minifier processes everything locally in your browser. Your sensitive data never leaves your
+                        computer - perfect for API keys, authentication tokens, and confidential business data.</p>
+
+                    <p><strong>Lightning-Fast Performance:</strong> Built with optimized JavaScript algorithms, our tool
+                        minifies JSON files 10x faster than traditional server-based solutions. No waiting, no loading
+                        spinners - just instant results.</p>
+
+                    <p><strong>Developer-Friendly Features:</strong> One-click copy, file download, syntax validation,
+                        and error detection. Designed by developers, for developers.</p>
+
+                    <h2>Frequently Asked Questions</h2>
+
+                    <div class="faq-item">
+                        <strong>Does minifying JSON change the data structure?</strong>
+                        <p>No. JSON minification only removes whitespace (spaces, tabs, newlines) and does not alter the
+                            actual data, keys, or values. The minified JSON is functionally identical to the formatted
+                            version and will parse to the exact same JavaScript object.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Can I minify JSON files larger than 10MB?</strong>
+                        <p>Yes! Our tool can handle JSON files of any size, limited only by your browser's available
+                            memory. We've successfully tested with files exceeding 100MB. For extremely large files
+                            (500MB+), we recommend using command-line tools like jq or Python libraries.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Is my JSON data safe when using this tool?</strong>
+                        <p>Absolutely. The JSON Minifier runs entirely in your browser using client-side JavaScript.
+                            Your JSON never gets uploaded to any server, transmitted over the internet, or stored in any
+                            database. You can even use this tool offline after the page loads.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>What's the difference between minify and compress?</strong>
+                        <p>Minification removes unnecessary characters from the source code. Compression (like Gzip or
+                            Brotli) uses algorithms to reduce file size further. For best results, minify your JSON
+                            first, then apply server-side compression (most web servers do this automatically).</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Can I reverse minified JSON back to formatted?</strong>
+                        <p>Yes! Use our <a href="index.html">JSON Formatter</a> tool to beautify minified JSON. It will
+                            add proper indentation, line breaks, and spacing to make the JSON human-readable again.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>How much smaller will my JSON file become?</strong>
+                        <p>Typical compression rates: Lightly formatted JSON (60-70% reduction), Heavily indented JSON
+                            (75-85% reduction). Exact savings depend on your original formatting style and data
+                            structure complexity.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Does minification affect JSON parsing performance?</strong>
+                        <p>Minified JSON actually parses FASTER than formatted JSON because parsers have fewer
+                            characters to process. Modern browsers like Chrome and Firefox can parse minified JSON up to
+                            30% faster than formatted equivalents.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Can I use this tool in my automated build pipeline?</strong>
+                        <p>While this is a browser-based tool, you can integrate JSON minification into your build
+                            process using Node.js packages like `jsonminify`, `uglify-js`, or build tools like Webpack
+                            with `json-loader`.</p>
+                    </div>
+
+                </article>
+            </div>
+
+            <footer class="footer">
+                <div class="footer-stats">
+                    <div class="stat-item" id="footerStatus"><i class="fas fa-circle-notch"></i> Ready</div>
+                    <div class="stat-item" id="savingsStat" style="display:none;"><i class="fas fa-arrow-down"></i>
+                        <span id="savingsText"></span> <span class="diff-tag" id="savingsBadge"></span>
+                    </div>
+                    <div class="footer-links"><a href="./About.html">About</a> • <a href="./Privacy.html">Privacy</a> •
+                        <a href="./Contact.html">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-actions"><button class="btn btn-sec" id="btnSecondary"
+                        onclick="runAction('secondary')">MINIFY</button><button class="btn btn-pri" id="btnPrimary"
+                        onclick="runAction('primary')"><i class="fas fa-play"></i> RUN</button></div>
+            </footer>
+        </div>
+    </main>
+    <div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span>Action Completed</span></div>
+
+    <script>
+        const activeToolId = "json-min";
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

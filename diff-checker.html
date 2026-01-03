@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Free Online Diff Checker - Compare Text & Code Instantly 2026 | Code Formatter</title>
+    <meta name="description"
+        content="Free online diff checker tool to compare text, code, and files. Highlight differences between two texts instantly with line-by-line comparison. 100% client-side, secure, and fast.">
+    <meta name="keywords"
+        content="diff checker, compare text, text comparison, code diff, online diff tool, file comparison, compare code, text diff, find differences, compare files online, diff viewer, side by side comparison, code comparison tool, git diff, compare strings">
+    <link rel="canonical" href="https://codeformats.com/diff-checker.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://codeformats.com/diff-checker.html">
+    <meta property="og:title" content="Free Online Diff Checker - Compare Text & Code 2026">
+    <meta property="og:description"
+        content="Compare text and code instantly with our free diff checker. Highlight differences line-by-line with 100% client-side processing.">
+    <meta property="og:image" content="https://codeformats.com/og-diff-checker.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Online Diff Checker - Compare Text & Code 2026">
+    <meta name="twitter:description"
+        content="Compare text and code instantly with our free diff checker. 100% secure, client-side processing.">
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.1.0/diff.min.js" defer></script>
+
+    <style>
+        :root {
+            --bg-body: #0a0a0a;
+            --bg-panel: #171717;
+            --border-color: #262626;
+            --primary: #3b82f6;
+            --primary-glow: rgba(59, 130, 246, 0.25);
+            --secondary: #22d3ee;
+            --success: #22c55e;
+            --text-main: #ededed;
+            --text-muted: #a1a1aa;
+        }
+
+        html.light {
+            --bg-body: #f8fafc;
+            --bg-panel: #ffffff;
+            --border-color: #e2e8f0;
+            --primary: #4f46e5;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        main {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        header {
+            background: var(--bg-panel);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 20;
+            flex-shrink: 0;
+        }
+
+        #scrollable-wrapper {
+            flex-grow: 1;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 80px;
+        }
+
+        #scrollable-wrapper::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #scrollable-wrapper::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 3px;
+        }
+
+        .workspace {
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            height: 75vh;
+            min-height: 550px;
+            max-height: 750px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .pane {
+            flex: 1;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        html.light .pane {
+            background: rgba(255, 255, 255, 0.75);
+            border-color: rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .pane:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 30px var(--primary-glow);
+            transform: translateY(-2px);
+        }
+
+        .pane-header {
+            padding: 16px 20px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(34, 211, 238, 0.03) 100%);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .pane-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pane-title i {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .pane-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .action-icon {
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.95rem;
+            padding: 6px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .action-icon:hover {
+            color: var(--primary);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .editor-container {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            padding: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: var(--text-main);
+            line-height: 1.7;
+            resize: none;
+        }
+
+        textarea:focus {
+            outline: none;
+        }
+
+        textarea::placeholder {
+            color: var(--text-muted);
+            opacity: 0.5;
+        }
+
+        html.light textarea {
+            color: #0f172a;
+        }
+
+        /* Diff Output Styling */
+        #diffOutput {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            padding: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            line-height: 1.8;
+            color: var(--text-main);
+        }
+
+        html.light #diffOutput {
+            color: #1e293b;
+        }
+
+        .diff-line {
+            padding: 4px 12px;
+            border-radius: 4px;
+            margin: 2px 0;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .diff-add {
+            background: rgba(34, 197, 94, 0.15);
+            border-left: 3px solid #22c55e;
+            color: #4ade80;
+        }
+
+        .diff-remove {
+            background: rgba(239, 68, 68, 0.15);
+            border-left: 3px solid #ef4444;
+            color: #f87171;
+        }
+
+        .diff-equal {
+            color: var(--text-muted);
+            opacity: 0.7;
+        }
+
+        html.light .diff-add {
+            background: rgba(34, 197, 94, 0.15);
+            color: #15803d;
+            border-left-color: #15803d;
+        }
+
+        html.light .diff-remove {
+            background: rgba(239, 68, 68, 0.15);
+            color: #b91c1c;
+            border-left-color: #b91c1c;
+        }
+
+        html.light .diff-equal {
+            color: #475569;
+        }
+
+        /* Stats Badge */
+        .diff-stats {
+            display: flex;
+            gap: 15px;
+            padding: 12px 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-top: 1px solid var(--border-color);
+            font-size: 0.8rem;
+        }
+
+        .stat-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .stat-add {
+            background: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+        }
+
+        .stat-remove {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+        }
+
+        .stat-equal {
+            background: rgba(82, 82, 91, 0.3);
+            color: var(--text-muted);
+        }
+
+        /* Content Section */
+        .content-container {
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .clean-card {
+            background: var(--bg-panel);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        html.light .clean-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .clean-card::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            filter: blur(120px);
+            opacity: 0.12;
+            z-index: -1;
+        }
+
+        .prose h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin: 0 0 20px 0;
+            background: linear-gradient(180deg, #fff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        html.light .prose h1 {
+            background: linear-gradient(180deg, #1e293b, #475569);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .prose h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-top: 45px;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #27272a;
+        }
+
+        .prose h2::before {
+            content: '#';
+            color: var(--primary);
+            opacity: 0.4;
+            margin-right: 10px;
+        }
+
+        .prose h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-top: 30px;
+            margin-bottom: 12px;
+        }
+
+        .prose p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 18px;
+            font-size: 1.02rem;
+        }
+
+        html.light .prose p,
+        html.light .prose li {
+            color: #334155;
+        }
+
+        html.light .prose h2 {
+            color: #1e293b;
+            border-bottom-color: #cbd5e1;
+        }
+
+        html.light .prose strong {
+            color: #0f172a;
+        }
+
+        .prose strong {
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .prose ul {
+            margin-bottom: 24px;
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        .prose li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            color: #d4d4d4;
+            line-height: 1.7;
+        }
+
+        .prose li::before {
+            content: "→";
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .prose ol {
+            counter-reset: list-counter;
+            margin-bottom: 24px;
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        .prose ol li {
+            counter-increment: list-counter;
+            padding-left: 35px;
+        }
+
+        .prose ol li::before {
+            content: counter(list-counter) ".";
+            color: var(--primary);
+            font-weight: 700;
+            position: absolute;
+            left: 0;
+        }
+
+
+
+        html.light .faq-item {
+            background: rgba(255, 255, 255, 0.6);
+            border-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-item {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 22px 25px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .faq-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--primary);
+            transition: height 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.02);
+            transform: translateX(5px);
+        }
+
+        .faq-item:hover::before {
+            height: 100%;
+        }
+
+        .faq-item strong {
+            display: block;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            font-size: 1.02rem;
+        }
+
+        .faq-item p {
+            margin-bottom: 0;
+            font-size: 0.92rem;
+            line-height: 1.7;
+            color: var(--text-muted);
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--bg-panel);
+            border-top: 1px solid var(--border-color);
+            z-index: 30;
+            padding: 10px 20px;
+        }
+
+        @media (max-width: 768px) {
+            .workspace {
+                flex-direction: column;
+                height: auto;
+                min-height: auto;
+            }
+
+            .pane {
+                height: 350px;
+            }
+
+            .clean-card {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <aside id="sidebar">
+        <div class="brand">
+            <div class="brand-logo"><i class="fas fa-layer-group"></i> Code Formatter</div>
+        </div>
+        <div class="search-container"><input type="text" class="search-input" placeholder="Search tools..."
+                onkeyup="filterTools(this)"></div>
+                        <nav class="menu" id="menuContainer">
+            <div class="nav-group-title">Code Formatters</div>
+            <a href="index.html" class="nav-item" data-id="json-fmt"><i class="fas fa-code"></i> JSON Formatter</a>
+            <a href="html-formatter.html" class="nav-item" data-id="html-fmt"><i class="fab fa-html5"></i> HTML Formatter</a>
+            <a href="css-formatter.html" class="nav-item" data-id="css-fmt"><i class="fab fa-css3-alt"></i> CSS Formatter</a>
+            <a href="js-formatter.html" class="nav-item" data-id="js-fmt"><i class="fab fa-js"></i> JS Formatter</a>
+            <a href="sql-formatter.html" class="nav-item" data-id="sql-fmt"><i class="fas fa-database"></i> SQL Formatter</a>
+            <a href="xml-formatter.html" class="nav-item" data-id="xml-fmt"><i class="fas fa-code"></i> XML Formatter</a>
+
+            <div class="nav-group-title">Image & Color Tools</div>
+            <a href="image-compressor.html" class="nav-item" data-id="img-compress"><i class="fas fa-image"></i> Image Compressor</a>
+            <a href="color-converter.html" class="nav-item" data-id="color-conv"><i class="fas fa-palette"></i> Color Converter</a>
+            <a href="qr-code-generator.html" class="nav-item" data-id="qr-gen"><i class="fas fa-qrcode"></i> QR Generator</a>
+
+            <div class="nav-group-title">Code Minifiers</div>
+            <a href="json-minifier.html" class="nav-item" data-id="json-min"><i class="fas fa-compress"></i> JSON Minifier</a>
+            <a href="html-minifier.html" class="nav-item" data-id="html-min"><i class="fas fa-compress-arrows-alt"></i> HTML Minifier</a>
+            <a href="css-minifier.html" class="nav-item" data-id="css-min"><i class="fas fa-compress-arrows-alt"></i> CSS Minifier</a>
+            <a href="js-minifier.html" class="nav-item" data-id="js-min"><i class="fas fa-file-archive"></i> JS Minifier</a>
+
+            <div class="nav-group-title">Data Converters</div>
+            <a href="json-to-csv.html" class="nav-item" data-id="json-csv"><i class="fas fa-table"></i> JSON to CSV</a>
+            <a href="csv-to-json.html" class="nav-item" data-id="csv-json"><i class="fas fa-file-csv"></i> CSV to JSON</a>
+            <a href="excel-to-html.html" class="nav-item" data-id="excel-html"><i class="fas fa-table"></i> Excel to HTML</a>
+            <a href="case-converter.html" class="nav-item" data-id="case-conv"><i class="fas fa-text-height"></i> Case Converter</a>
+
+            <div class="nav-group-title">Encoding & Security</div>
+            <a href="base64-tool.html" class="nav-item" data-id="base64"><i class="fas fa-lock"></i> Base64 Tool</a>
+            <a href="url-encoder.html" class="nav-item" data-id="url-enc"><i class="fas fa-link"></i> URL Encoder</a>
+            <a href="hash-generator.html" class="nav-item" data-id="hash-gen"><i class="fas fa-fingerprint"></i> Hash Generator</a>
+            <a href="jwt-decoder.html" class="nav-item" data-id="jwt-dec"><i class="fas fa-shield-alt"></i> JWT Decoder</a>
+
+            <div class="nav-group-title">CSS Generators</div>
+            <a href="glassmorphism-generator.html" class="nav-item" data-id="glass-morphism"><i class="fas fa-wind"></i> Glassmorphism</a>
+            <a href="smooth-shadow-generator.html" class="nav-item" data-id="shadow-gen"><i class="fas fa-layer-group"></i> Smooth Shadow</a>
+            <a href="px-to-rem.html" class="nav-item" data-id="px-rem"><i class="fas fa-ruler-combined"></i> PX to REM</a>
+            <a href="aspect-ratio-calculator.html" class="nav-item" data-id="aspect-ratio"><i class="fas fa-expand"></i> Aspect Ratio</a>
+
+            <div class="nav-group-title">Text & Data</div>
+            <a href="lorem-ipsum-generator.html" class="nav-item" data-id="lorem"><i class="fas fa-paragraph"></i> Lorem Ipsum</a>
+            <a href="mock-data-generator.html" class="nav-item" data-id="mock-data"><i class="fas fa-users"></i> Mock Data Gen</a>
+            <a href="diff-checker.html" class="nav-item" data-id="diff-check"><i class="fas fa-exchange-alt"></i> Diff Checker</a>
+
+            <div class="nav-group-title">Preview Tools</div>
+            <a href="html-viewer.html" class="nav-item" data-id="html-view"><i class="fas fa-eye"></i> HTML Viewer</a>
+            <a href="social-card-preview.html" class="nav-item" data-id="social-card"><i class="fas fa-share-alt"></i> Social Preview</a>
+        </nav>
+    </aside>
+    <div id="overlay" onclick="closeAllDrawers()"></div>
+
+    <main>
+        <header>
+            <div class="header-left"><i class="fas fa-bars menu-toggle-btn" onclick="handleMenuClick()"></i>
+                <div class="tool-info">
+                    <div id="toolTitle">Diff Checker</div>
+                    <p id="toolDesc">Compare two texts and find differences instantly.</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="blog.html" class="nav-link">Blog</a>
+                <button class="theme-btn" onclick="toggleTheme()"><i class="fas fa-moon" id="themeIcon"></i></button>
+            </div>
+        </header>
+
+        <div id="scrollable-wrapper">
+            <section class="workspace" id="workspace">
+                <!-- Original Text Pane -->
+                <div class="pane">
+                    <div class="pane-header">
+                        <span class="pane-title"><i class="fas fa-file-alt"></i> Original Text</span>
+                        <div class="pane-actions">
+                            <i class="far fa-clipboard action-icon" onclick="pasteOriginal()" title="Paste"></i>
+                            <i class="far fa-trash-alt action-icon" onclick="clearOriginal()" title="Clear"></i>
+                        </div>
+                    </div>
+                    <div class="editor-container">
+                        <textarea id="originalText" placeholder="Paste your original text here...">The quick brown fox jumps over the lazy dog.
+This is the second line.
+And here is the third line of text.</textarea>
+                    </div>
+                </div>
+
+                <!-- Modified Text Pane -->
+                <div class="pane">
+                    <div class="pane-header">
+                        <span class="pane-title"><i class="fas fa-edit"></i> Modified Text</span>
+                        <div class="pane-actions">
+                            <i class="far fa-clipboard action-icon" onclick="pasteModified()" title="Paste"></i>
+                            <i class="far fa-trash-alt action-icon" onclick="clearModified()" title="Clear"></i>
+                        </div>
+                    </div>
+                    <div class="editor-container">
+                        <textarea id="modifiedText" placeholder="Paste your modified text here...">The quick brown cat jumps over the lazy dog.
+This is the second line with changes.
+And here is a new fourth line.</textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Diff Result Section -->
+            <section style="padding: 0 20px 20px 20px;">
+                <div class="pane" style="height: auto; min-height: 200px;">
+                    <div class="pane-header">
+                        <span class="pane-title"><i class="fas fa-check-double"></i> Comparison Result</span>
+                        <div class="pane-actions">
+                            <i class="far fa-copy action-icon" onclick="copyDiff()" title="Copy Result"></i>
+                        </div>
+                    </div>
+                    <div id="diffOutput" style="min-height: 150px; max-height: 300px;">
+                        <p style="color: var(--text-muted); text-align: center; padding: 40px;">
+                            Click "Compare" to see the differences between your texts.
+                        </p>
+                    </div>
+                    <div class="diff-stats" id="diffStats" style="display: none;">
+                        <span class="stat-badge stat-add"><i class="fas fa-plus"></i> <span id="addCount">0</span>
+                            Added</span>
+                        <span class="stat-badge stat-remove"><i class="fas fa-minus"></i> <span
+                                id="removeCount">0</span>
+                            Removed</span>
+                        <span class="stat-badge stat-equal"><i class="fas fa-equals"></i> <span id="equalCount">0</span>
+                            Unchanged</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEO CONTENT SECTION -->
+            <div class="content-container">
+                <article class="clean-card prose">
+                    <h1>Free Online Diff Checker - Compare Text & Code Instantly 2026</h1>
+
+                    <p>Welcome to <strong>Code Formatter Diff Checker</strong> – the fastest, most secure online tool
+                        for
+                        comparing text, code, and documents. Our professional-grade <strong>text comparison
+                            tool</strong>
+                        highlights differences between two texts instantly with line-by-line precision. Whether you're
+                        reviewing code changes, comparing document versions, or checking for plagiarism, our
+                        <strong>diff checker</strong> provides clear, color-coded results with 100% client-side
+                        processing
+                        for complete privacy.
+                    </p>
+
+                    <p>In software development and content management, comparing text versions is essential. Our tool
+                        shows
+                        you exactly what was <span style="color: #4ade80;">added</span>, <span
+                            style="color: #f87171;">removed</span>, or unchanged between two text blocks, making it
+                        invaluable for code reviews, documentation updates, and content verification tasks.</p>
+
+                    <h2>How to Use Our Diff Checker Tool</h2>
+                    <p>Comparing texts has never been easier. Our intuitive interface guides you through the process:
+                    </p>
+                    <ol>
+                        <li><strong>Paste Original Text:</strong> Enter your original content in the left "Original
+                            Text"
+                            pane. This serves as your baseline for comparison.</li>
+                        <li><strong>Paste Modified Text:</strong> Enter the modified or updated version in the right
+                            "Modified Text" pane.</li>
+                        <li><strong>Click Compare:</strong> Press the "COMPARE" button in the footer to instantly
+                            generate
+                            a detailed diff report showing all changes.</li>
+                        <li><strong>Review Results:</strong> Examine the color-coded output – green lines indicate
+                            additions, red lines show deletions, and unchanged content appears in gray.</li>
+                    </ol>
+
+                    <h2>Powerful Features for Developers & Writers</h2>
+                    <p>We built Code Formatter Diff Checker to solve real problems developers and content creators face
+                        daily:</p>
+                    <ul>
+                        <li><strong>100% Client-Side Processing:</strong> Your sensitive code and documents never leave
+                            your browser. All comparison happens locally, ensuring complete privacy and security.</li>
+                        <li><strong>Line-by-Line Comparison:</strong> Our algorithm analyzes text at the line level,
+                            clearly showing which specific lines were modified between versions.</li>
+                        <li><strong>Instant Results:</strong> No server round-trips or loading delays. See differences
+                            immediately as you compare, even for large documents.</li>
+                        <li><strong>Color-Coded Output:</strong> Green highlights for additions, red for deletions, and
+                            subtle gray for unchanged content makes visual scanning effortless.</li>
+                        <li><strong>Statistics Dashboard:</strong> Quickly see summary counts of added, removed, and
+                            unchanged lines to gauge the scope of changes at a glance.</li>
+                        <li><strong>Copy & Share Results:</strong> Easily copy the diff output for sharing in pull
+                            request
+                            comments, documentation, or team communications.</li>
+                    </ul>
+
+                    <h2>Common Use Cases for Text Comparison</h2>
+                    <p>Our diff checker serves numerous practical purposes across development and content workflows:</p>
+
+                    <h3>Code Review & Version Control</h3>
+                    <p>When reviewing pull requests or comparing Git commits, our diff checker provides a clean,
+                        readable
+                        view of code changes. Perfect for spotting bugs introduced in updates, understanding refactoring
+                        changes, or reviewing team contributions before merging.</p>
+
+                    <h3>Document Version Comparison</h3>
+                    <p>Legal documents, contracts, and business proposals often go through multiple revisions. Our tool
+                        helps you track exactly what changed between versions, ensuring no important edits go unnoticed
+                        during approval processes.</p>
+
+                    <h3>Content Editing & Proofreading</h3>
+                    <p>Writers and editors can compare original manuscripts with edited versions to see all changes made
+                        during the editing process. This transparency helps maintain author voice while tracking
+                        editorial
+                        improvements.</p>
+
+                    <h3>Configuration File Debugging</h3>
+                    <p>When troubleshooting deployment issues, comparing working and broken configuration files quickly
+                        reveals the problematic changes. Our diff tool makes identifying misconfigured settings fast and
+                        straightforward.</p>
+
+                    <h2>Understanding Diff Output</h2>
+                    <p>Our diff checker uses industry-standard conventions for displaying changes:</p>
+                    <ul>
+                        <li><strong style="color: #4ade80;">Green Lines (+ Added):</strong> Content that exists in the
+                            modified version but not in the original. These are new additions.</li>
+                        <li><strong style="color: #f87171;">Red Lines (- Removed):</strong> Content that exists in the
+                            original but was deleted in the modified version.</li>
+                        <li><strong style="color: #a1a1aa;">Gray Lines (Unchanged):</strong> Content that remains
+                            identical
+                            in both versions, providing context around changes.</li>
+                    </ul>
+
+                    <h2>Why Choose Code Formatter Diff Checker?</h2>
+                    <p>Among the many online diff tools available, Code Formatter stands out for its commitment to
+                        <strong>privacy, speed, and usability</strong>. We don't store your data on servers, inject ads,
+                        or
+                        require account registration. Our tool works entirely in your browser, meaning your sensitive
+                        code
+                        and documents remain completely confidential.
+                    </p>
+
+                    <h2>Frequently Asked Questions</h2>
+
+                    <div class="faq-item">
+                        <strong>Is my data secure when using this diff checker?</strong>
+                        <p>Absolutely. All text comparison happens 100% in your browser using JavaScript. Your code and
+                            documents are never uploaded to any server. We don't log, store, or have access to any
+                            content
+                            you paste into the tool.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Can I compare code files from different programming languages?</strong>
+                        <p>Yes! Our diff checker works with any plain text content regardless of programming language.
+                            It
+                            compares JavaScript, Python, HTML, CSS, JSON, SQL, and any other text-based files with equal
+                            precision.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Is there a size limit for text comparison?</strong>
+                        <p>Since processing happens locally in your browser, there's no server-imposed limit. The
+                            practical
+                            limit depends on your device's memory. Most modern computers handle files up to several
+                            megabytes without issues.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>How is this different from Git diff?</strong>
+                        <p>Git diff is integrated into version control workflows and shows changes between commits. Our
+                            tool is standalone and works with any two text blocks – you don't need Git or any version
+                            control system. It's perfect for quick comparisons without repository setup.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Can I compare Word documents or PDFs?</strong>
+                        <p>Our tool currently works with plain text. For Word or PDF files, you'll need to copy the text
+                            content and paste it into the comparison panes. We're working on adding direct file upload
+                            support in future updates.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Does the diff checker ignore whitespace differences?</strong>
+                        <p>Currently, our tool treats whitespace as significant content. Spaces, tabs, and line breaks
+                            are
+                            all compared. This is important for code where indentation matters. We may add a whitespace
+                            ignore option in future versions.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Can I use this tool offline?</strong>
+                        <p>Yes! After the initial page load, the diff checker works completely offline. All comparison
+                            logic runs in your browser, making it perfect for secure environments without internet
+                            access.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>How do I share diff results with my team?</strong>
+                        <p>Use the copy button on the comparison result pane to copy the formatted diff output. You can
+                            paste this into Slack, email, GitHub comments, or any communication tool. The color coding
+                            may
+                            not transfer, but the +/- prefixes clearly indicate changes.</p>
+                    </div>
+
+                    <p style="text-align: center; margin-top: 3rem; color: #525252; font-size: 0.85rem;">
+                        Code Formatter © 2026. Professional developer tools built with privacy and performance in mind.
+                    </p>
+                </article>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-stats">
+                <div class="stat-item" id="footerStatus"><i class="fas fa-circle-notch"></i> Ready</div>
+                <div class="footer-links"><a href="./About.html">About</a> • <a href="./Privacy.html">Privacy</a> • <a
+                        href="./Contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-actions">
+                <button class="btn btn-sec" onclick="swapTexts()"><i class="fas fa-exchange-alt"></i> SWAP</button>
+                <button class="btn btn-pri" onclick="compareDiff()"><i class="fas fa-check-double"></i> COMPARE</button>
+            </div>
+        </footer>
+    </main>
+
+    <div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span>Action Completed</span></div>
+
+    <script>
+        const activeToolId = "diff-check";
+
+        function compareDiff() {
+            const original = document.getElementById('originalText').value;
+            const modified = document.getElementById('modifiedText').value;
+            const output = document.getElementById('diffOutput');
+            const stats = document.getElementById('diffStats');
+
+            if (!original.trim() && !modified.trim()) {
+                output.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 40px;">Please enter text in both panes to compare.</p>';
+                stats.style.display = 'none';
+                return;
+            }
+
+            // Use jsdiff library
+            const diff = Diff.diffLines(original, modified);
+
+            let html = '';
+            let addCount = 0, removeCount = 0, equalCount = 0;
+
+            diff.forEach(part => {
+                const lines = part.value.split('\n').filter(line => line !== '');
+                lines.forEach(line => {
+                    if (part.added) {
+                        html += `<div class="diff-line diff-add">+ ${escapeHtml(line)}</div>`;
+                        addCount++;
+                    } else if (part.removed) {
+                        html += `<div class="diff-line diff-remove">- ${escapeHtml(line)}</div>`;
+                        removeCount++;
+                    } else {
+                        html += `<div class="diff-line diff-equal">  ${escapeHtml(line)}</div>`;
+                        equalCount++;
+                    }
+                });
+            });
+
+            output.innerHTML = html || '<p style="color: var(--text-muted); text-align: center; padding: 40px;">No differences found. The texts are identical.</p>';
+
+            document.getElementById('addCount').textContent = addCount;
+            document.getElementById('removeCount').textContent = removeCount;
+            document.getElementById('equalCount').textContent = equalCount;
+            stats.style.display = (addCount + removeCount + equalCount > 0) ? 'flex' : 'none';
+
+            showToast('Comparison complete!');
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function swapTexts() {
+            const original = document.getElementById('originalText');
+            const modified = document.getElementById('modifiedText');
+            const temp = original.value;
+            original.value = modified.value;
+            modified.value = temp;
+            showToast('Texts swapped!');
+        }
+
+        function pasteOriginal() {
+            navigator.clipboard.readText().then(text => {
+                document.getElementById('originalText').value = text;
+                showToast('Pasted to Original!');
+            });
+        }
+
+        function pasteModified() {
+            navigator.clipboard.readText().then(text => {
+                document.getElementById('modifiedText').value = text;
+                showToast('Pasted to Modified!');
+            });
+        }
+
+        function clearOriginal() {
+            document.getElementById('originalText').value = '';
+            showToast('Original cleared!');
+        }
+
+        function clearModified() {
+            document.getElementById('modifiedText').value = '';
+            showToast('Modified cleared!');
+        }
+
+        function copyDiff() {
+            const output = document.getElementById('diffOutput').innerText;
+            navigator.clipboard.writeText(output).then(() => {
+                showToast('Diff copied to clipboard!');
+            });
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.querySelector('span').innerText = msg;
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 3000);
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

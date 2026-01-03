@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Udit Sharma | Code Formats Support</title>
+    <meta name="description"
+        content="Direct support for Code Formats. Contact Udit Sharma for bug reports, feature requests, or UI/UX collaborations.">
+    <meta name="author" content="Udit Sharma">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=JetBrains+Mono:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Udit Sharma",
+        "jobTitle": "UI Developer",
+        "url": "https://yourdomain.com/contact.html"
+      }
+    }
+    </script>
+
+    <style>
+        /* --- SAME CSS VARIABLES --- */
+        :root {
+            --bg-body: #050505;
+            --bg-card: #0a0a0c;
+            --border: #27272a;
+            --primary: #6366f1;
+            --primary-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            --text-main: #ffffff;
+            --text-muted: #a1a1aa;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            background-image:
+                radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.05), transparent 50%),
+                /* Center Glow */
+                radial-gradient(circle at 10% 90%, rgba(139, 92, 246, 0.05), transparent 40%);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* CARD STYLE MATCHING ABOUT.HTML FOUNDER CARD */
+        .contact-container {
+            width: 100%;
+            max-width: 480px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        /* Top Color Line */
+        .contact-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 0 0 10px 0;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        /* ACTION BOX */
+        .email-box {
+            background: #000;
+            border: 1px dashed var(--border);
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 30px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .email-box:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .nav-back {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: 0.2s;
+            border-bottom: 1px solid transparent;
+        }
+
+        .nav-back:hover {
+            color: #fff;
+            border-bottom-color: var(--primary);
+        }
+
+        /* TOAST ANIMATION */
+        .copy-toast {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-20px);
+            background: #10b981;
+            color: #fff;
+            font-size: 0.8rem;
+            padding: 5px 12px;
+            border-radius: 20px;
+            opacity: 0;
+            transition: 0.3s;
+            pointer-events: none;
+            font-weight: 600;
+        }
+
+        .copy-toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="contact-container">
+        <div class="copy-toast" id="toastMsg">Email Copied!</div>
+
+        <h1>Let's Connect</h1>
+        <p>Found a bug or have an idea for a new tool? <br>Direct line to <strong>Udit Sharma</strong>.</p>
+
+        <div class="email-box" onclick="copyEmail()">
+            <i class="far fa-envelope"></i> sharmaudit262@gmail.com
+        </div>
+
+        <a href="index.html" class="nav-back">← Back to Tools</a>
+    </div>
+
+    <script>
+        function copyEmail() {
+            navigator.clipboard.writeText("hello@codeformats.com");
+            const toast = document.getElementById('toastMsg');
+            const box = document.querySelector('.email-box');
+
+            // Visual Feedback
+            toast.classList.add('show');
+            box.style.borderColor = "#10b981";
+            box.style.color = "#10b981";
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+                box.style.borderColor = "";
+                box.style.color = "";
+            }, 2000);
+        }
+    </script>
+</body>
+
+</html>
