@@ -1057,3 +1057,496 @@ html.light .faq-item:hover {
     gap: 10px;
     margin-bottom: 15px;
 }
+
+/* ============================================
+   MOBILE & TABLET RESPONSIVE STYLES
+   ============================================ */
+
+/* Tablet Portrait (768px - 900px) */
+@media (max-width: 900px) and (min-width: 769px) {
+    .workspace {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .pane {
+        min-height: 300px;
+    }
+
+    .content-container {
+        padding: 0 15px;
+    }
+
+    .clean-card {
+        padding: 30px;
+    }
+
+    .prose h1 {
+        font-size: 1.8rem;
+    }
+
+    .prose h2 {
+        font-size: 1.4rem;
+    }
+}
+
+/* Large Mobile (480px - 768px) */
+@media (max-width: 768px) {
+    body {
+        font-size: 13px;
+    }
+
+    .workspace {
+        grid-template-columns: 1fr;
+        grid-template-rows: minmax(250px, 1fr) minmax(250px, 1fr);
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .pane {
+        min-height: 250px;
+    }
+
+    header {
+        padding: 0 10px;
+        height: 55px;
+    }
+
+    #toolTitle {
+        font-size: 1rem;
+    }
+
+    .tool-info p {
+        display: none;
+    }
+
+    .content-container {
+        padding: 0 10px;
+        max-width: 100%;
+    }
+
+    .clean-card {
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .prose h1 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .prose h2 {
+        font-size: 1.25rem;
+        margin-top: 30px;
+    }
+
+    .prose h3 {
+        font-size: 1.1rem;
+    }
+
+    .prose p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+
+    .prose li {
+        padding-left: 20px;
+        margin-bottom: 8px;
+    }
+
+    .faq-item {
+        padding: 15px;
+        margin-bottom: 12px;
+    }
+
+    .faq-item strong {
+        font-size: 0.95rem;
+    }
+
+    .faq-item p {
+        font-size: 0.85rem;
+    }
+
+    .footer {
+        padding: 12px;
+        height: auto;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .footer-actions {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        flex: 1;
+        min-width: 45%;
+        justify-content: center;
+        padding: 12px 16px;
+        font-size: 0.75rem;
+    }
+
+    .footer-links {
+        margin-left: 0;
+        padding-left: 0;
+        border-left: none;
+        width: 100%;
+        text-align: center;
+        padding-top: 10px;
+        border-top: 1px solid var(--border);
+    }
+
+    .footer-stats {
+        display: none;
+    }
+
+    textarea {
+        font-size: 12px;
+        padding: 12px;
+    }
+
+    .pane-header {
+        padding: 8px 12px;
+    }
+
+    .pane-title {
+        font-size: 0.7rem;
+    }
+
+    .action-icon {
+        font-size: 1rem;
+        padding: 5px;
+    }
+
+    .tool-group {
+        padding: 12px;
+    }
+
+    .drop-zone {
+        padding: 25px;
+    }
+}
+
+/* Small Mobile (< 480px) */
+@media (max-width: 480px) {
+    body {
+        font-size: 12px;
+    }
+
+    :root {
+        --header-h: 50px;
+    }
+
+    .workspace {
+        padding: 8px;
+        gap: 8px;
+        grid-template-rows: minmax(200px, 1fr) minmax(200px, 1fr);
+    }
+
+    .pane {
+        min-height: 200px;
+        border-radius: 6px;
+    }
+
+    header {
+        height: 50px;
+        padding: 0 8px;
+    }
+
+    #toolTitle {
+        font-size: 0.9rem;
+    }
+
+    .menu-toggle-btn {
+        font-size: 1.2rem;
+        padding: 10px;
+    }
+
+    .theme-btn {
+        width: 32px;
+        height: 32px;
+    }
+
+    .nav-link {
+        font-size: 0.8rem;
+    }
+
+    .header-right {
+        gap: 10px;
+    }
+
+    .content-container {
+        padding: 0 8px;
+        margin: 15px auto 30px auto;
+    }
+
+    .clean-card {
+        padding: 15px;
+        border-radius: 6px;
+    }
+
+    .prose h1 {
+        font-size: 1.3rem;
+        line-height: 1.3;
+    }
+
+    .prose h2 {
+        font-size: 1.15rem;
+        margin-top: 25px;
+        padding-bottom: 8px;
+    }
+
+    .prose h2::before {
+        display: none;
+    }
+
+    .prose h3 {
+        font-size: 1rem;
+        margin-top: 20px;
+    }
+
+    .prose p {
+        font-size: 0.9rem;
+        line-height: 1.65;
+        margin-bottom: 15px;
+    }
+
+    .prose ul, .prose ol {
+        padding-left: 10px;
+    }
+
+    .prose li {
+        padding-left: 18px;
+        font-size: 0.9rem;
+        margin-bottom: 6px;
+    }
+
+    .prose li::before {
+        font-size: 0.9rem;
+    }
+
+    .faq-item {
+        padding: 12px;
+        margin-bottom: 10px;
+        border-radius: 6px;
+    }
+
+    .faq-item strong {
+        font-size: 0.9rem;
+        margin-bottom: 6px;
+    }
+
+    .faq-item p {
+        font-size: 0.8rem;
+        line-height: 1.6;
+    }
+
+    .footer {
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .footer-actions {
+        gap: 8px;
+    }
+
+    .btn {
+        padding: 10px 12px;
+        font-size: 0.7rem;
+        letter-spacing: 0.3px;
+    }
+
+    .btn i {
+        font-size: 0.8rem;
+    }
+
+    .footer-links {
+        font-size: 0.75rem;
+        gap: 10px;
+    }
+
+    .footer-links a {
+        font-size: 0.75rem;
+    }
+
+    textarea {
+        font-size: 11px;
+        padding: 10px;
+        line-height: 1.5;
+    }
+
+    .pane-header {
+        padding: 6px 10px;
+    }
+
+    .pane-title {
+        font-size: 0.65rem;
+    }
+
+    .pane-actions {
+        gap: 8px;
+    }
+
+    .action-icon {
+        font-size: 0.9rem;
+    }
+
+    .editor-stats {
+        font-size: 0.6rem;
+        padding: 3px 8px;
+    }
+
+    .tool-group {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .tool-title {
+        font-size: 0.8rem;
+    }
+
+    .tool-input {
+        padding: 6px;
+        font-size: 0.85rem;
+    }
+
+    .checkbox-group {
+        gap: 10px;
+    }
+
+    .checkbox-group label {
+        font-size: 0.8rem;
+    }
+
+    .drop-zone {
+        padding: 20px;
+    }
+
+    .drop-zone p {
+        font-size: 0.85rem;
+    }
+
+    .slider-row {
+        font-size: 0.75rem;
+    }
+
+    .toast {
+        bottom: 15px;
+        right: 15px;
+        left: 15px;
+        padding: 10px 16px;
+        font-size: 0.85rem;
+    }
+
+    /* Sidebar mobile adjustments */
+    aside {
+        width: 85vw;
+        max-width: 300px;
+    }
+
+    .brand {
+        height: 50px;
+        font-size: 1rem;
+        padding: 0 15px;
+    }
+
+    .search-container {
+        padding: 10px;
+    }
+
+    .search-input {
+        padding: 8px 10px;
+        font-size: 0.8rem;
+    }
+
+    .nav-group-title {
+        padding: 12px 15px 6px;
+        font-size: 0.7rem;
+    }
+
+    .nav-item {
+        padding: 10px 15px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Touch-friendly improvements for all mobile */
+@media (hover: none) and (pointer: coarse) {
+    .btn {
+        min-height: 44px;
+    }
+
+    .action-icon {
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-item {
+        min-height: 44px;
+    }
+
+    .theme-btn {
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .menu-toggle-btn {
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 900px) and (orientation: landscape) {
+    .workspace {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+    }
+
+    .pane {
+        min-height: 200px;
+    }
+
+    .footer {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .footer-actions {
+        width: auto;
+    }
+
+    .btn {
+        flex: none;
+    }
+}
+
+/* Print styles */
+@media print {
+    aside, header, .footer, .pane:first-child {
+        display: none !important;
+    }
+
+    .workspace {
+        display: block;
+    }
+
+    .pane {
+        border: 1px solid #ccc;
+        page-break-inside: avoid;
+    }
+
+    .content-container {
+        max-width: 100%;
+    }
+}
