@@ -759,6 +759,11 @@
         let currentMode = 'encode'; // or 'decode'
 
         document.addEventListener('DOMContentLoaded', () => {
+            // Highlighting Logic Injected
+            if (typeof activeToolId !== 'undefined') {
+                const navItem = document.querySelector('.nav-item[data-id="' + activeToolId + '"]');
+                if (navItem) navItem.classList.add('active');
+            }
             // Init
         });
 
@@ -871,4 +876,5 @@
 </body>
 
 </html>
+
 

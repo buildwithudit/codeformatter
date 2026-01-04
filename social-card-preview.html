@@ -1593,6 +1593,11 @@
         const activeToolId = "social-card";
 
         document.addEventListener('DOMContentLoaded', () => {
+            // Highlighting Logic Injected
+            if (typeof activeToolId !== 'undefined') {
+                const navItem = document.querySelector('.nav-item[data-id="' + activeToolId + '"]');
+                if (navItem) navItem.classList.add('active');
+            }
             // Force controls to be visible
             const controls = document.getElementById('socialControls');
             if (controls) controls.style.display = 'block';
@@ -1684,4 +1689,5 @@
 </body>
 
 </html>
+
 

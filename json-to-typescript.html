@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -26,6 +26,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
+        :root {
+            --bg-body: #0a0a0a;
+            --bg-panel: #171717;
+            --border-color: #262626;
+            --primary: #3b82f6;
+            --text-main: #ededed;
+            --text-muted: #a1a1aa;
+        }
+
         .tab-selector {
             display: flex;
             gap: 5px;
@@ -53,7 +62,7 @@
 
         /* 1. HEADER (Clean) */
         header {
-            /* background: var(--bg-panel); */
+            background: var(--bg-panel);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-color);
             z-index: 20;
@@ -141,6 +150,7 @@
                 Formatter</a>
             <a href="xml-formatter.html" class="nav-item" data-id="xml-fmt"><i class="fas fa-code"></i> XML
                 Formatter</a>
+
             <div class="nav-group-title">Image & Color Tools</div>
             <a href="image-compressor.html" class="nav-item" data-id="img-compress"><i class="fas fa-image"></i> Image
                 Compressor</a>
@@ -148,6 +158,7 @@
                 Converter</a>
             <a href="qr-code-generator.html" class="nav-item" data-id="qr-gen"><i class="fas fa-qrcode"></i> QR
                 Generator</a>
+
             <div class="nav-group-title">Code Minifiers</div>
             <a href="json-minifier.html" class="nav-item" data-id="json-min"><i class="fas fa-compress"></i> JSON
                 Minifier</a>
@@ -157,14 +168,18 @@
                 CSS Minifier</a>
             <a href="js-minifier.html" class="nav-item" data-id="js-min"><i class="fas fa-file-archive"></i> JS
                 Minifier</a>
+
             <div class="nav-group-title">Data Converters</div>
             <a href="json-to-csv.html" class="nav-item" data-id="json-csv"><i class="fas fa-table"></i> JSON to CSV</a>
             <a href="csv-to-json.html" class="nav-item" data-id="csv-json"><i class="fas fa-file-csv"></i> CSV to
                 JSON</a>
             <a href="json-to-typescript.html" class="nav-item active" data-id="json-ts"><i class="fas fa-file-code"></i>
                 JSON to TypeScript</a>
+            <a href="excel-to-html.html" class="nav-item" data-id="excel-html"><i class="fas fa-table"></i> Excel to
+                HTML</a>
             <a href="case-converter.html" class="nav-item" data-id="case-conv"><i class="fas fa-text-height"></i> Case
                 Converter</a>
+
             <div class="nav-group-title">Encoding & Security</div>
             <a href="base64-tool.html" class="nav-item" data-id="base64"><i class="fas fa-lock"></i> Base64 Tool</a>
             <a href="url-encoder.html" class="nav-item" data-id="url-enc"><i class="fas fa-link"></i> URL Encoder</a>
@@ -172,6 +187,7 @@
                 Generator</a>
             <a href="jwt-decoder.html" class="nav-item" data-id="jwt-dec"><i class="fas fa-shield-alt"></i> JWT
                 Decoder</a>
+
             <div class="nav-group-title">CSS Generators</div>
             <a href="glassmorphism-generator.html" class="nav-item" data-id="glass-morphism"><i class="fas fa-wind"></i>
                 Glassmorphism</a>
@@ -181,6 +197,7 @@
                 REM</a>
             <a href="aspect-ratio-calculator.html" class="nav-item" data-id="aspect-ratio"><i class="fas fa-expand"></i>
                 Aspect Ratio</a>
+
             <div class="nav-group-title">Text & Data</div>
             <a href="lorem-ipsum-generator.html" class="nav-item" data-id="lorem"><i class="fas fa-paragraph"></i> Lorem
                 Ipsum</a>
@@ -188,6 +205,7 @@
                 Data Gen</a>
             <a href="diff-checker.html" class="nav-item" data-id="diff-check"><i class="fas fa-exchange-alt"></i> Diff
                 Checker</a>
+
             <div class="nav-group-title">Preview Tools</div>
             <a href="html-viewer.html" class="nav-item" data-id="html-view"><i class="fas fa-eye"></i> HTML Viewer</a>
             <a href="social-card-preview.html" class="nav-item" data-id="social-card"><i class="fas fa-share-alt"></i>

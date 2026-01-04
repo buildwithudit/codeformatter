@@ -1243,6 +1243,11 @@
 
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
+            // Highlighting Logic Injected
+            if (typeof activeToolId !== 'undefined') {
+                const navItem = document.querySelector('.nav-item[data-id="' + activeToolId + '"]');
+                if (navItem) navItem.classList.add('active');
+            }
             calculateAspectRatio();
             document.getElementById('toolTitle').textContent = 'Aspect Ratio Calculator';
             document.getElementById('toolDesc').textContent = 'Calculate & convert aspect ratios with live preview';
@@ -1402,4 +1407,5 @@
 </body>
 
 </html>
+
 
