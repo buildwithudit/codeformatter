@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>JSON Tree View - Interactive JSON Explorer & Navigator Tool | Code Formatter</title>
+    <meta name="description"
+        content="Visualize and navigate complex JSON structures with our interactive tree view. Search, filter, and explore JSON hierarchies with ease. 100% client-side processing.">
+    <meta name="keywords"
+        content="json tree view, json explorer, json navigator, json hierarchy viewer, json tree structure, visual json, json browser, interactive json, json path viewer">
+    <link rel="canonical" href="https://www.codeformatter.in/json-tree-viewer.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://codeformatter.in/json-tree-viewer.html">
+    <meta property="og:title" content="JSON Tree View - Interactive JSON Explorer Tool">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#6366f1">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #treeView {
+            font-family: var(--font-code);
+            font-size: 13px;
+            line-height: 1.6;
+            padding: 20px;
+            user-select: text;
+        }
+
+        .tree-node {
+            position: relative;
+            padding-left: 20px;
+            margin: 2px 0;
+            transition: all 0.2s ease;
+        }
+
+        .tree-node:hover {
+            background: rgba(99, 102, 241, 0.05);
+            border-radius: 4px;
+        }
+
+        .tree-line {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+
+        .tree-expand {
+            cursor: pointer;
+            color: var(--primary);
+            font-size: 11px;
+            width: 14px;
+            text-align: center;
+            user-select: none;
+            transition: transform 0.2s ease;
+        }
+
+        .tree-expand:hover {
+            transform: scale(1.2);
+        }
+
+        .tree-expand.collapsed::before {
+            content: '▶';
+        }
+
+        .tree-expand.expanded::before {
+            content: '▼';
+        }
+
+        .tree-key {
+            color: #d2a8ff;
+            font-weight: 500;
+        }
+
+        .tree-string {
+            color: #a5d6ff;
+        }
+
+        .tree-number {
+            color: #ff9f89;
+        }
+
+        .tree-boolean {
+            color: #569cd6;
+            font-weight: 600;
+        }
+
+        .tree-null {
+            color: #a1a1aa;
+            font-style: italic;
+        }
+
+        .tree-bracket {
+            color: var(--text-muted);
+        }
+
+        .tree-count {
+            color: var(--text-muted);
+            font-size: 11px;
+            margin-left: 6px;
+        }
+
+        .tree-children {
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        header {
+
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            /* z-index: 20; */
+            flex-shrink: 0;
+        }
+
+        .tree-children.collapsed {
+            display: none;
+        }
+
+        .copy-path-btn {
+            opacity: 0;
+            margin-left: 8px;
+            padding: 2px 8px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tree-line:hover .copy-path-btn {
+            opacity: 1;
+        }
+
+        .copy-path-btn:hover {
+            background: var(--primary-hover);
+            transform: scale(1.05);
+        }
+
+        .search-container {
+            padding: 15px;
+            background: var(--bg-sidebar);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 200px;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            padding: 8px 12px;
+            border-radius: 6px;
+            color: var(--text-main);
+            font-size: 13px;
+        }
+
+        .search-input:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .search-controls {
+            display: flex;
+            gap: 6px;
+        }
+
+        .search-btn {
+            padding: 8px 12px;
+            background: var(--bg-pane);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+
+        .search-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .search-info {
+            color: var(--text-muted);
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        .highlight {
+            background: rgba(251, 191, 36, 0.3);
+            border-radius: 2px;
+            padding: 1px 2px;
+        }
+
+        .highlight.active {
+            background: rgba(251, 191, 36, 0.6);
+            box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.4);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tree-node {
+            animation: fadeIn 0.2s ease;
+        }
+
+        /* Fixed pane heights to prevent excessive scrolling */
+        .pane {
+            height: 600px;
+            max-height: 600px;
+        }
+
+        .editor-container {
+            overflow-y: auto;
+        }
+
+        .editor-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .editor-container::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 3px;
+        }
+
+        .editor-container::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        @media (max-width:768px) {
+            .workspace {
+                flex-direction: column;
+                min-height: auto;
+            }
+
+            .pane {
+                height: 400px;
+                max-height: 400px;
+            }
+
+            .clean-card {
+                padding: 25px;
+            }
+
+            .search-container {
+                padding: 10px;
+            }
+
+            .search-input {
+                font-size: 12px;
+                padding: 6px 10px;
+            }
+
+            .search-btn {
+                padding: 6px 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <aside id="sidebar">
+        <div class="brand"><a href="index.html" class="brand-logo"><i class="fas fa-layer-group"></i> Code Formatter</a>
+        </div>
+        <div class="search-container"><input type="text" class="search-input" placeholder="Search tools..."
+                onkeyup="filterTools(this)"></div>
+        <nav class="menu" id="menuContainer">
+            <div class="nav-group-title">Code Formatters</div>
+            <a href="index.html" class="nav-item" data-id="json-fmt"><i class="fas fa-code"></i> JSON Formatter</a>
+            <a href="json-tree-viewer.html" class="nav-item active" data-id="json-tree"><i class="fas fa-sitemap"></i>
+                JSON Tree View</a>
+            <a href="html-formatter.html" class="nav-item" data-id="html-fmt"><i class="fab fa-html5"></i> HTML
+                Formatter</a>
+            <a href="css-formatter.html" class="nav-item" data-id="css-fmt"><i class="fab fa-css3-alt"></i> CSS
+                Formatter</a>
+            <a href="js-formatter.html" class="nav-item" data-id="js-fmt"><i class="fab fa-js"></i> JS Formatter</a>
+            <a href="sql-formatter.html" class="nav-item" data-id="sql-fmt"><i class="fas fa-database"></i> SQL
+                Formatter</a>
+            <a href="xml-formatter.html" class="nav-item" data-id="xml-fmt"><i class="fas fa-code"></i> XML
+                Formatter</a>
+            <div class="nav-group-title">Image & Color Tools</div>
+            <a href="image-compressor.html" class="nav-item" data-id="img-compress"><i class="fas fa-image"></i> Image
+                Compressor</a>
+            <a href="color-converter.html" class="nav-item" data-id="color-conv"><i class="fas fa-palette"></i> Color
+                Converter</a>
+            <a href="qr-code-generator.html" class="nav-item" data-id="qr-gen"><i class="fas fa-qrcode"></i> QR
+                Generator</a>
+            <div class="nav-group-title">Code Minifiers</div>
+            <a href="json-minifier.html" class="nav-item" data-id="json-min"><i class="fas fa-compress"></i> JSON
+                Minifier</a>
+            <a href="html-minifier.html" class="nav-item" data-id="html-min"><i class="fas fa-compress-arrows-alt"></i>
+                HTML Minifier</a>
+            <a href="css-minifier.html" class="nav-item" data-id="css-min"><i class="fas fa-compress-arrows-alt"></i>
+                CSS Minifier</a>
+            <a href="js-minifier.html" class="nav-item" data-id="js-min"><i class="fas fa-file-archive"></i> JS
+                Minifier</a>
+            <div class="nav-group-title">Data Converters</div>
+            <a href="json-to-csv.html" class="nav-item" data-id="json-csv"><i class="fas fa-table"></i> JSON to CSV</a>
+            <a href="csv-to-json.html" class="nav-item" data-id="csv-json"><i class="fas fa-file-csv"></i> CSV to
+                JSON</a>
+            <a href="excel-to-html.html" class="nav-item" data-id="excel-html"><i class="fas fa-table"></i> Excel to
+                HTML</a>
+            <a href="case-converter.html" class="nav-item" data-id="case-conv"><i class="fas fa-text-height"></i> Case
+                Converter</a>
+            <div class="nav-group-title">Encoding & Security</div>
+            <a href="base64-tool.html" class="nav-item" data-id="base64"><i class="fas fa-lock"></i> Base64 Tool</a>
+            <a href="url-encoder.html" class="nav-item" data-id="url-enc"><i class="fas fa-link"></i> URL Encoder</a>
+            <a href="hash-generator.html" class="nav-item" data-id="hash-gen"><i class="fas fa-fingerprint"></i> Hash
+                Generator</a>
+            <a href="jwt-decoder.html" class="nav-item" data-id="jwt-dec"><i class="fas fa-shield-alt"></i> JWT
+                Decoder</a>
+            <div class="nav-group-title">CSS Generators</div>
+            <a href="glassmorphism-generator.html" class="nav-item" data-id="glass-morphism"><i class="fas fa-wind"></i>
+                Glassmorphism</a>
+            <a href="smooth-shadow-generator.html" class="nav-item" data-id="shadow-gen"><i
+                    class="fas fa-layer-group"></i> Smooth Shadow</a>
+            <a href="px-to-rem.html" class="nav-item" data-id="px-rem"><i class="fas fa-ruler-combined"></i> PX to
+                REM</a>
+            <a href="aspect-ratio-calculator.html" class="nav-item" data-id="aspect-ratio"><i class="fas fa-expand"></i>
+                Aspect Ratio</a>
+            <div class="nav-group-title">Text & Data</div>
+            <a href="lorem-ipsum-generator.html" class="nav-item" data-id="lorem"><i class="fas fa-paragraph"></i> Lorem
+                Ipsum</a>
+            <a href="mock-data-generator.html" class="nav-item" data-id="mock-data"><i class="fas fa-users"></i> Mock
+                Data Gen</a>
+            <a href="diff-checker.html" class="nav-item" data-id="diff-check"><i class="fas fa-exchange-alt"></i> Diff
+                Checker</a>
+            <div class="nav-group-title">Preview Tools</div>
+            <a href="html-viewer.html" class="nav-item" data-id="html-view"><i class="fas fa-eye"></i> HTML Viewer</a>
+            <a href="social-card-preview.html" class="nav-item" data-id="social-card"><i class="fas fa-share-alt"></i>
+                Social Preview</a>
+        </nav>
+    </aside>
+    <div id="overlay" onclick="closeAllDrawers()"></div>
+    <main>
+        <header>
+            <div class="header-left"><i class="fas fa-bars menu-toggle-btn" onclick="handleMenuClick()"></i>
+                <div class="tool-info">
+                    <div id="toolTitle">JSON Tree View</div>
+                    <p id="toolDesc">Explore, Search & Navigate JSON Hierarchies.</p>
+                </div>
+            </div>
+            <div class="header-right"><a href="blog.html" class="nav-link">Blog</a><button class="theme-btn"
+                    onclick="toggleTheme()"><i class="fas fa-moon" id="themeIcon"></i></button></div>
+        </header>
+        <div id="scrollable-wrapper">
+            <section class="workspace" id="workspace">
+                <div class="pane">
+                    <div class="pane-header"><span class="pane-title"><i class="fas fa-code"></i> Input</span>
+                        <div class="pane-actions"><i class="far fa-clipboard action-icon" onclick="pasteInput()"
+                                title="Paste"></i><i class="far fa-trash-alt action-icon" onclick="clearAll()"
+                                title="Clear"></i></div>
+                    </div>
+                    <div class="editor-container"><textarea id="input" placeholder="Paste your JSON here..."></textarea>
+                        <div class="editor-stats" id="inputStats">0 chars | 0 KB</div>
+                    </div>
+                </div>
+                <div class="pane">
+                    <div class="pane-header"><span class="pane-title"><i class="fas fa-sitemap"></i> Tree View</span>
+                        <div class="pane-actions"><i class="fas fa-expand-alt action-icon" onclick="expandAll()"
+                                title="Expand All"></i><i class="fas fa-compress-alt action-icon"
+                                onclick="collapseAll()" title="Collapse All"></i><i class="far fa-copy action-icon"
+                                onclick="copyTree()" title="Copy Tree"></i></div>
+                    </div>
+                    <div class="editor-container">
+                        <div class="search-container"><input type="text" class="search-input" id="searchInput"
+                                placeholder="Search in JSON..." onkeyup="searchTree(event)">
+                            <div class="search-controls"><button class="search-btn" onclick="previousMatch()"
+                                    title="Previous"><i class="fas fa-chevron-up"></i></button><button
+                                    class="search-btn" onclick="nextMatch()" title="Next"><i
+                                        class="fas fa-chevron-down"></i></button></div>
+                            <div class="search-info" id="searchInfo"></div>
+                        </div>
+                        <div id="treeView" style="overflow-y:auto;height:calc(100% - 60px);background:var(--bg-input);">
+                            <div style="color:var(--text-muted);text-align:center;padding:40px;font-size:14px;">
+                                <i class="fas fa-sitemap" style="font-size:48px;margin-bottom:20px;opacity:0.3;"></i>
+                                <div>Paste JSON in the input pane to visualize tree structure</div>
+                                <button class="btn btn-pri" style="margin:20px auto;" onclick="loadSampleJSON()"><i
+                                        class="fas fa-file-code"></i> Load Sample JSON</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="content-container">
+                <article class="clean-card prose">
+                    <h1>JSON Tree View - Visualize and Navigate Complex JSON Structures</h1>
+                    <p>Welcome to our <strong>JSON Tree View Tool</strong> - the most intuitive way to visualize,
+                        explore, and navigate complex JSON data structures. Whether you're debugging API responses,
+                        analyzing configuration files, or exploring deeply nested JSON objects, our interactive tree
+                        viewer makes it effortless to understand hierarchical data at a glance.</p>
+                    <h2>What is JSON Tree View?</h2>
+                    <p><strong>JSON Tree View</strong> is an interactive visualization tool that transforms flat JSON
+                        text into a hierarchical tree structure. Unlike traditional JSON formatters that simply add
+                        indentation, tree view provides collapsible nodes, visual hierarchy indicators, and interactive
+                        exploration capabilities that make working with complex JSON data dramatically easier.</p>
+                    <p>When working with modern web APIs, you often encounter JSON responses containing hundreds or even
+                        thousands of lines with deeply nested objects and arrays. Reading through minified or even
+                        formatted JSON can be overwhelming. That's where our JSON Tree Explorer shines - it presents
+                        your data as an expandable/collapsible tree structure, letting you focus on specific parts while
+                        hiding irrelevant sections.</p>
+                    <h2>Key Features of Our JSON Tree Viewer</h2>
+                    <ul>
+                        <li><strong>Interactive Expand/Collapse:</strong> Click on any object or array to expand or
+                            collapse its children, making it easy to hide complex nested structures and focus on what
+                            matters</li>
+                        <li><strong>Real-Time Search:</strong> Instantly search through keys and values with live
+                            highlighting and automatic parent node expansion to show matching results</li>
+                        <li><strong>JSONPath Copy:</strong> Hover over any node to see a "Copy Path" button that gives
+                            you the exact JSONPath to access that value programmatically</li>
+                        <li><strong>Color-Coded Values:</strong> Different data types (strings, numbers, booleans, null)
+                            are color-coded for instant recognition</li>
+                        <li><strong>Node Statistics:</strong> See the count of items in arrays and object key counts at
+                            a glance</li>
+                        <li><strong>100% Client-Side:</strong> Your sensitive JSON data never leaves your browser - all
+                            processing happens locally for complete privacy</li>
+                        <li><strong>Fast Performance:</strong> Handles large JSON files (50MB+) without browser
+                            slowdowns thanks to efficient rendering algorithms</li>
+                    </ul>
+                    <h2>How to Use the JSON Tree Viewer</h2>
+                    <p>Using our JSON Tree View tool is simple and intuitive:</p>
+                    <ol>
+                        <li><strong>Paste Your JSON:</strong> Copy any JSON data and paste it into the left input pane.
+                            The tool accepts minified, formatted, or even slightly malformed JSON</li>
+                        <li><strong>View the Tree:</strong> The right pane instantly renders your JSON as an interactive
+                            tree structure with collapsible nodes</li>
+                        <li><strong>Explore Interactively:</strong> Click the arrows (▶ ▼) to expand or collapse nodes.
+                            Hover over nodes to see the copy JSONPath button</li>
+                        <li><strong>Search and Navigate:</strong> Use the search box to find specific keys or values.
+                            The tree automatically expands to show matches</li>
+                        <li><strong>Copy Paths:</strong> Click "Copy Path" on any node to get the JSONPath expression
+                            for accessing that data in your code</li>
+                    </ol>
+                    <h2>Common Use Cases for JSON Tree View</h2>
+                    <h3>API Response Analysis</h3>
+                    <p>When debugging REST APIs, responses can contain massive JSON objects with complex nesting. Our
+                        tree viewer lets you quickly collapse irrelevant sections and drill down to specific fields
+                        you're investigating. The JSONPath copy feature is invaluable for writing code to extract
+                        specific data points.</p>
+                    <h3>Configuration File Exploration</h3>
+                    <p>Modern applications use JSON configuration files (package.json, tsconfig.json, etc.) that can
+                        become quite complex. Tree view makes it easy to navigate through sections, understand
+                        structure, and locate specific configuration options without scrolling through hundreds of
+                        lines.</p>
+                    <h3>Database Document Review</h3>
+                    <p>NoSQL databases like MongoDB and Firebase store data as JSON documents. When reviewing exported
+                        documents or query results, tree view helps you understand document structure and relationships
+                        between fields intuitively.</p>
+                    <h3>Schema Design and Validation</h3>
+                    <p>When designing JSON schemas or validating data structures, seeing your JSON as a tree makes it
+                        easier to spot inconsistencies, missing fields, or incorrect nesting levels.</p>
+                    <h2>Why Choose Our JSON Tree Viewer Over Others?</h2>
+                    <ul>
+                        <li><strong>Privacy-First Design:</strong> Unlike online tools that upload your JSON to servers,
+                            we process everything client-side in your browser</li>
+                        <li><strong>Lightning Fast:</strong> Optimized rendering engine handles even 50MB+ JSON files
+                            smoothly</li>
+                        <li><strong>Developer-Friendly:</strong> Features like JSONPath copying and keyboard shortcuts
+                            make it perfect for professional developers</li>
+                        <li><strong>Modern UI:</strong> Clean, dark-mode-friendly interface that's easy on the eyes
+                            during long debugging sessions</li>
+                        <li><strong>Free Forever:</strong> No ads, no registration, no premium tiers - just a great tool
+                            accessible to everyone</li>
+                        <li><strong>Responsive Design:</strong> Works perfectly on desktop, tablet, and mobile devices
+                        </li>
+                    </ul>
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="faq-item"><strong>Can I use this with very large JSON files?</strong>
+                        <p>Yes! Our tool is optimized to handle large JSON files (50MB+) efficiently. The tree structure
+                            allows you to collapse sections you're not interested in, keeping the UI responsive even
+                            with massive datasets.</p>
+                    </div>
+                    <div class="faq-item"><strong>Is my JSON data secure?</strong>
+                        <p>Absolutely. All JSON processing happens 100% client-side in your browser using JavaScript.
+                            Your data never gets uploaded to any server, ensuring complete privacy and security.</p>
+                    </div>
+                    <div class="faq-item"><strong>What is JSONPath and how do I use it?</strong>
+                        <p>JSONPath is a query language for JSON, similar to XPath for XML. When you click "Copy Path"
+                            on a node, you get an expression like <code>data.users[0].name</code> that you can use in
+                            your code to access that specific value.</p>
+                    </div>
+                    <div class="faq-item"><strong>Can I search for specific values in my JSON?</strong>
+                        <p>Yes! Use the search box above the tree view to search for any key or value. The tool will
+                            highlight all matches and automatically expand parent nodes to show results. Use the up/down
+                            arrows to navigate between matches.</p>
+                    </div>
+                    <div class="faq-item"><strong>Does it work with invalid JSON?</strong>
+                        <p>The tool requires valid JSON to generate the tree view. If your JSON has syntax errors,
+                            you'll see an error message. You can use our JSON Formatter tool first to validate and fix
+                            any syntax issues.</p>
+                    </div>
+                    <p style="text-align:center;margin-top:3rem;color:#525252;font-size:0.85rem;">Code Formatter © 2026.
+                        Professional developer tools built with privacy and performance in mind.</p>
+                </article>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="footer-stats">
+                <div class="stat-item" id="nodeCount"><i class="fas fa-sitemap"></i> Nodes: 0</div>
+                <div class="stat-item" id="depthInfo"><i class="fas fa-layer-group"></i> Depth: 0</div>
+                <div class="footer-links"><a href="./about.html">About</a> • <a href="./privacy.html">Privacy</a> • <a
+                        href="./contact.html">Contact</a></div>
+            </div>
+            <div class="footer-actions">
+                <button class="btn btn-sec" onclick="clearAll()"><i class="far fa-trash-alt"></i> CLEAR</button>
+                <button class="btn btn-pri" onclick="loadSampleJSON()"><i class="fas fa-file-code"></i> SAMPLE</button>
+            </div>
+        </footer>
+    </main>
+    <div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMessage">Action completed!</span>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        let jsonData = null, searchMatches = [], currentMatchIndex = -1; function loadSampleJSON() { const sample = { "users": [{ "id": 1, "name": "John Doe", "email": "john@example.com", "age": 30, "isActive": true, "role": "developer", "skills": ["JavaScript", "React", "Node.js"], "address": { "street": "123 Main St", "city": "New York", "country": "USA", "zipCode": "10001" } }, { "id": 2, "name": "Jane Smith", "email": "jane@example.com", "age": 28, "isActive": false, "role": "designer", "skills": ["Figma", "Sketch", "UI/UX"], "address": { "street": "456 Park Ave", "city": "Los Angeles", "country": "USA", "zipCode": "90001" } }], "metadata": { "total": 2, "page": 1, "limit": 10, "hasMore": false } }; document.getElementById('input').value = JSON.stringify(sample, null, 2); processJSON() }
+        document.getElementById('input').addEventListener('input', processJSON); function processJSON() { const input = document.getElementById('input').value.trim(), treeView = document.getElementById('treeView'); if (!input) { treeView.innerHTML = '<div style="color:var(--text-muted);text-align:center;padding:40px;font-size:14px;"><i class="fas fa-sitemap" style="font-size:48px;margin-bottom:20px;opacity:0.3;"></i><div>Paste JSON in the input pane to visualize tree structure</div><button class="btn btn-pri" style="margin-top:20px;" onclick="loadSampleJSON()"><i class="fas fa-file-code"></i> Load Sample JSON</button></div>'; updateStats(0, 0); return } try { jsonData = JSON.parse(input); const { html, nodeCount, maxDepth } = buildTree(jsonData); treeView.innerHTML = html; updateStats(nodeCount, maxDepth); updateInputStats() } catch (error) { treeView.innerHTML = `<div style="color:var(--error);padding:20px;"><i class="fas fa-exclamation-triangle"></i> Invalid JSON: ${error.message}</div>`; updateStats(0, 0) } }
+        function buildTree(data, path = 'root', depth = 0) { let html = '', nodeCount = 0, maxDepth = depth; if (Array.isArray(data)) { html += '<div class="tree-node" data-path="' + path + '"><div class="tree-line"><span class="tree-expand expanded" onclick="toggleNode(this)"></span><span class="tree-bracket">[</span><span class="tree-count">' + data.length + ' items</span><button class="copy-path-btn" onclick="copyPath(\'' + path + '\')">Copy Path</button></div><div class="tree-children">'; data.forEach((item, index) => { const itemPath = path + '[' + index + ']', result = buildTree(item, itemPath, depth + 1); html += result.html; nodeCount += result.nodeCount; maxDepth = Math.max(maxDepth, result.maxDepth) }); html += '</div><div class="tree-line"><span class="tree-bracket">]</span></div></div>'; nodeCount++ } else if (typeof data === 'object' && data !== null) { const keys = Object.keys(data); html += '<div class="tree-node" data-path="' + path + '"><div class="tree-line"><span class="tree-expand expanded" onclick="toggleNode(this)"></span><span class="tree-bracket">{</span><span class="tree-count">' + keys.length + ' keys</span><button class="copy-path-btn" onclick="copyPath(\'' + path + '\')">Copy Path</button></div><div class="tree-children">'; keys.forEach(key => { const value = data[key], keyPath = path === 'root' ? key : path + '.' + key; if (typeof value === 'object' && value !== null) { const result = buildTree(value, keyPath, depth + 1), prefix = '<span class="tree-key">"' + key + '"</span>: '; html += result.html.replace('<div class="tree-line">', '<div class="tree-line">' + prefix); nodeCount += result.nodeCount; maxDepth = Math.max(maxDepth, result.maxDepth) } else { html += renderLeafNode(key, value, keyPath); nodeCount++ } }); html += '</div><div class="tree-line"><span class="tree-bracket">}</span></div></div>'; nodeCount++ } return { html, nodeCount, maxDepth } }
+        function renderLeafNode(key, value, path) { let valueHtml = '', className = ''; if (typeof value === 'string') { valueHtml = '"' + value + '"'; className = 'tree-string' } else if (typeof value === 'number') { valueHtml = value; className = 'tree-number' } else if (typeof value === 'boolean') { valueHtml = value; className = 'tree-boolean' } else if (value === null) { valueHtml = 'null'; className = 'tree-null' } return '<div class="tree-node" data-path="' + path + '"><div class="tree-line"><span style="width:14px;"></span><span class="tree-key">"' + key + '"</span>: <span class="' + className + '">' + valueHtml + '</span><button class="copy-path-btn" onclick="copyPath(\'' + path + '\')">Copy Path</button></div></div>' }
+        function toggleNode(element) { const parent = element.closest('.tree-node'), children = parent.querySelector('.tree-children'); if (element.classList.contains('expanded')) { element.classList.remove('expanded'); element.classList.add('collapsed'); children.classList.add('collapsed') } else { element.classList.remove('collapsed'); element.classList.add('expanded'); children.classList.remove('collapsed') } }
+        function expandAll() { document.querySelectorAll('.tree-expand').forEach(el => { el.classList.remove('collapsed'); el.classList.add('expanded') }); document.querySelectorAll('.tree-children').forEach(el => { el.classList.remove('collapsed') }) }
+        function collapseAll() { document.querySelectorAll('.tree-expand').forEach(el => { el.classList.remove('expanded'); el.classList.add('collapsed') }); document.querySelectorAll('.tree-children').forEach(el => { el.classList.add('collapsed') }) }
+        function copyPath(path) { navigator.clipboard.writeText(path); showToast('Path copied: ' + path) }
+        function copyTree() { const tree = document.getElementById('treeView').innerText; navigator.clipboard.writeText(tree); showToast('Tree copied to clipboard!') }
+        function searchTree(event) { const query = event.target.value.trim().toLowerCase(), treeView = document.getElementById('treeView'); document.querySelectorAll('.highlight').forEach(el => { const parent = el.parentNode; parent.replaceChild(document.createTextNode(el.textContent), el); parent.normalize() }); searchMatches = []; currentMatchIndex = -1; if (!query) { document.getElementById('searchInfo').textContent = ''; return } const walkNode = node => { if (node.nodeType === Node.TEXT_NODE) { const text = node.textContent, lowerText = text.toLowerCase(); let index = lowerText.indexOf(query); if (index !== -1) { const parent = node.parentNode, frag = document.createDocumentFragment(); let lastIndex = 0; while (index !== -1) { if (index > lastIndex) frag.appendChild(document.createTextNode(text.substring(lastIndex, index))); const highlight = document.createElement('span'); highlight.className = 'highlight'; highlight.textContent = text.substring(index, index + query.length); frag.appendChild(highlight); searchMatches.push(highlight); lastIndex = index + query.length; index = lowerText.indexOf(query, lastIndex) } if (lastIndex < text.length) frag.appendChild(document.createTextNode(text.substring(lastIndex))); parent.replaceChild(frag, node) } } else if (node.nodeType === Node.ELEMENT_NODE && !node.classList.contains('search-container')) { Array.from(node.childNodes).forEach(walkNode) } }; walkNode(treeView); if (searchMatches.length > 0) { currentMatchIndex = 0; updateSearchHighlight(); expandParentsOfMatches() } document.getElementById('searchInfo').textContent = searchMatches.length > 0 ? searchMatches.length + ' matches' : 'No matches' }
+        function nextMatch() { if (searchMatches.length === 0) return; currentMatchIndex = (currentMatchIndex + 1) % searchMatches.length; updateSearchHighlight() }
+        function previousMatch() { if (searchMatches.length === 0) return; currentMatchIndex = (currentMatchIndex - 1 + searchMatches.length) % searchMatches.length; updateSearchHighlight() }
+        function updateSearchHighlight() { searchMatches.forEach((el, i) => { if (i === currentMatchIndex) { el.classList.add('active'); el.scrollIntoView({ behavior: 'smooth', block: 'center' }) } else el.classList.remove('active') }); document.getElementById('searchInfo').textContent = (currentMatchIndex + 1) + ' of ' + searchMatches.length }
+        function expandParentsOfMatches() { searchMatches.forEach(match => { let parent = match.closest('.tree-node'); while (parent) { const expander = parent.querySelector(':scope > .tree-line > .tree-expand'), children = parent.querySelector(':scope > .tree-children'); if (expander && children) { expander.classList.remove('collapsed'); expander.classList.add('expanded'); children.classList.remove('collapsed') } parent = parent.parentElement.closest('.tree-node') } }) }
+        function updateStats(nodeCount, depth) { document.getElementById('nodeCount').innerHTML = '<i class="fas fa-sitemap"></i> Nodes: ' + nodeCount; document.getElementById('depthInfo').innerHTML = '<i class="fas fa-layer-group"></i> Depth: ' + depth }
+        function updateInputStats() { const input = document.getElementById('input').value, chars = input.length, kb = (new Blob([input]).size / 1024).toFixed(2); document.getElementById('inputStats').textContent = chars + ' chars | ' + kb + ' KB' }
+        async function pasteInput() { try { const text = await navigator.clipboard.readText(); document.getElementById('input').value = text; processJSON(); showToast('Pasted from clipboard!') } catch (err) { showToast('Failed to paste: ' + err.message, true) } }
+        function clearAll() { document.getElementById('input').value = ''; document.getElementById('searchInput').value = ''; processJSON() }
+        function showToast(message, isError = false) { const toast = document.getElementById('toast'), toastMessage = document.getElementById('toastMessage'); toastMessage.textContent = message; if (isError) toast.classList.add('error'); else toast.classList.remove('error'); toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 3000) }
+        document.getElementById('input').addEventListener('input', updateInputStats); const activeToolId = "json-tree";
+    </script>
+</body>
+
+</html>

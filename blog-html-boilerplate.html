@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -502,11 +502,48 @@
         /* --- FOOTER --- */
         footer {
             margin-top: 80px;
+            padding: 30px 0;
+            border-top: 1px solid var(--border);
+            background: rgba(24, 24, 27, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px)
+        }
+
+        .footer-content {
             text-align: center;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 20px
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 15px;
+            flex-wrap: wrap
+        }
+
+        .footer-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+            transform: translateY(-2px)
+        }
+
+        .footer-copyright {
             font-size: 0.85rem;
             color: var(--text-dim);
-            border-top: 1px solid var(--border);
-            padding: 40px 0;
+            margin: 0
         }
 
         @media(max-width: 600px) {
@@ -862,130 +899,18 @@ export default defineConfig({
                     <li><strong>`<section>`:</strong> For thematic groupings (e.g., "Features" section).</li>
                     <li><strong>`<nav>`:</strong> For navigation menus.</li>
                     <li><strong>`<aside>`:</strong> For sidebars or tangentially related content.</li>
-                    <li><strong>`<header>` / `<footer>`:</strong> Page/section headers and footers.</li>
-                </ul>
-
-                <div class="code-wrapper">
-                    <div class="code-header">Semantic HTML5 Structure</div>
-                    <pre><code><span class="token-tag">&lt;body&gt;</span>
-  <span class="token-tag">&lt;header&gt;</span>
-    <span class="token-tag">&lt;nav&gt;</span>
-      <span class="token-tag">&lt;ul&gt;</span>
-        <span class="token-tag">&lt;li&gt;</span><span class="token-tag">&lt;a</span> <span class="token-attr">href</span>=<span class="token-val">"/"</span><span class="token-tag">&gt;</span>Home<span class="token-tag">&lt;/a&gt;</span><span class="token-tag">&lt;/li&gt;</span>
-      <span class="token-tag">&lt;/ul&gt;</span>
-    <span class="token-tag">&lt;/nav&gt;</span>
-  <span class="token-tag">&lt;/header&gt;</span>
-  
-  <span class="token-tag">&lt;main&gt;</span>
-    <span class="token-tag">&lt;article&gt;</span>
-      <span class="token-tag">&lt;h1&gt;</span>Blog Post Title<span class="token-tag">&lt;/h1&gt;</span>
-      <span class="token-tag">&lt;p&gt;</span>Content...<span class="token-tag">&lt;/p&gt;</span>
-    <span class="token-tag">&lt;/article&gt;</span>
-  <span class="token-tag">&lt;/main&gt;</span>
-  
-  <span class="token-tag">&lt;footer&gt;</span>
-    <span class="token-tag">&lt;p&gt;</span>&copy; 2026 Your Company<span class="token-tag">&lt;/p&gt;</span>
-  <span class="token-tag">&lt;/footer&gt;</span>
-<span class="token-tag">&lt;/body&gt;</span></code></pre>
-                </div>
-
-                <p>**Why this matters:** Googlebot uses semantic tags to understand page structure. A blog post inside `
-                <article>` signals "this is standalone content" vs. a `<div>`, which signals nothing.</p>
-
-                        <h2>Frequently Asked Questions (FAQs)</h2>
-
-                        <h3><strong>Q: How do I test if my Open Graph tags are working?</strong></h3>
-                        <p><strong>A:</strong> Use **Facebook Sharing Debugger**
-                            (`developers.facebook.com/tools/debug`). Paste your URL, click "Debug," and it shows exactly
-                            how your OG tags render. If tags don't appear, check: (1) OG tags are in `
-
-                            <head>`, not `
-
-                            <body>`, (2) `og:image` uses absolute URL (not relative path like `/image.jpg`), (3) Image
-                                is publicly accessible (not behind authentication). After fixing, click "Scrape Again"
-                                to clear Facebook's cache. For Twitter, use `cards-dev.twitter.com/validator`.
-                        </p>
-
-                        <h3><strong>Q: What's the ideal meta description length in 2026?</strong></h3>
-                        <p><strong>A:</strong> **155-160 characters maximum**. Google truncates descriptions longer than
-                            ~160 chars with "..." in search results. A 2025 Moz study found that descriptions between
-                            150-160 characters had 12% higher CTR than shorter ones (which looked incomplete) or longer
-                            ones (which got cut off mid-sentence). Focus on: (1) Include primary keyword, (2) Compelling
-                            value proposition, (3) End with a call-to-action. Don't stuff keywords—Google penalizes
-                            over-optimization.</p>
-
-                        <h3><strong>Q: Do I really need all three favicon types (SVG, ICO, Apple Touch)?</strong></h3>
-                        <p><strong>A:</strong> **For professional sites, yes**. Here's why: (1) **SVG icon**: Modern
-                            browsers (Chrome, Firefox, Safari) render it at any size + supports dark mode variants. (2)
-                            **ICO**: Fallback for Internet Explorer and old Android browsers. (3) **Apple Touch Icon
-                            (180x180 PNG)**: When iOS users "Add to Home Screen," this is the icon shown. Without it,
-                            iOS generates an ugly screenshot thumbnail. If you're targeting mobile users, Apple Touch
-                            Icon is non-negotiable. Most favicon generators (like realfavicongenerator.net) create all
-                            formats at once.</p>
-
-                        <h3><strong>Q: Why is the `lang` attribute important?</strong></h3>
-                        <p><strong>A:</strong> The `<html lang="en">` tag tells: (1) **Screen readers** what language to
-                            use for pronunciation (critical for accessibility), (2) **Search engines** what language
-                            your content is in (helps with geo-targeting and ranking in regional search), (3)
-                            **Browsers** when to offer translation. If you're building a multilingual site, use
-                            `lang="en"` for English pages, `lang="es"` for Spanish, etc. For dynamic sites, set `lang`
-                            programmatically based on route/locale. Missing or incorrect `lang` fails WCAG accessibility
-                            standard 3.1.1.</p>
-
-                        <h3><strong>Q: Is JSON-LD structured data actually necessary?</strong></h3>
-                        <p><strong>A:</strong> **Necessary? No. Highly beneficial? Yes**. JSON-LD enables **rich
-                            snippets** in Google search: star ratings, FAQ dropdowns, breadcrumbs, product prices, event
-                            dates. A 2024 Search Engine Journal study found that pages with structured data get **30%
-                            more clicks** than non-structured pages in the same position. Priority schema types: (1)
-                            **Article** (for blogs), (2) **Product** (for e-commerce), (3) **FAQPage** (for support
-                            content), (4) **Organization** (for brand visibility). Use Google's Rich Results Test to
-                            verify eligibility.</p>
-
-                        <h3><strong>Q: Should viewport be `width=device-width` or `width=device-width,
-                                initial-scale=1.0`?</strong></h3>
-                        <p><strong>A:</strong> **Always include `initial-scale=1.0`**. Here's why: `width=device-width`
-                            alone tells the browser the viewport width matches device width, but on some mobile browsers
-                            (older iOS Safari), the default zoom isn't 1:1—it might be zoomed in or out. Adding
-                            `initial-scale=1.0` ensures the page loads at 100% zoom (1:1 ratio). For accessibility, also
-                            add `maximum-scale=1.0` ONLY if you're building a banking/financial app where zooming could
-                            expose sensitive data. Otherwise, never restrict zooming—it fails WCAG 1.4.4 (users must be
-                            able to zoom 200%).</p>
-
-                        <h2>Conclusion</h2>
-                        <p>HTML is the skeleton of your website. If the skeleton is broken, the beautiful CSS skin
-                            doesn't matter.
-                            Save this boilerplate and use it as the foundation for every project to ensure you never
-                            miss a critical
-                            SEO signal again.</p>
-
-                        <p>The difference between a "hobby project" and a "production app" is attention to these
-                            invisible details. Open Graph tags determine whether your link gets clicked on social media.
-                            JSON-LD determines whether Google shows rich snippets. Viewport meta determines whether your
-                            site looks professional on mobile.</p>
-
-                        <p>Copy this boilerplate. Customize the meta tags for your project. Test with the validation
-                            tools mentioned above. Deploy with confidence knowing you've covered every SEO and
-                            accessibility base.</p>
-
-                        <p>Remember: <strong>The best HTML is invisible—it just works, everywhere, for
-                                everyone.</strong></p>
-
-                </article>
-
-                <div class="related-grid">
-                    <a href="blog-json-fix.html" class="related-card">
-                        <h3>JSON Syntax Guide</h3>
-                        <p>How to fix common JSON formatting errors.</p>
-                    </a>
-                    <a href="blog-technical-seo.html" class="related-card">
-                        <h3>Technical SEO</h3>
-                        <p>Advanced indexing guide for React apps.</p>
-                    </a>
-                </div>
-
-                <footer>
-                    &copy; 2026 Code Formatter. Built by Udit Sharma.
-                </footer>
+                    <li><strong>`<header>` / `<footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+                <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+            </div>
+            <p class="footer-copyright"> 2026 Code Formatter. All rights reserved.</p>
+        </div>
+    </footer>
             </div>
 
             <div class="sticky-cta">

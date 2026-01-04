@@ -125,6 +125,13 @@ a.brand-logo:active {
     text-decoration: none;
 }
 
+html.light a.brand-logo,
+html.light a.brand-logo:visited,
+html.light a.brand-logo:hover,
+html.light a.brand-logo:active {
+    color: #0a0a0a;
+}
+
 .search-container {
     padding: 15px;
 }

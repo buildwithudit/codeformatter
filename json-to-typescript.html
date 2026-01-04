@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>JSON to TypeScript & Zod Schema Generator Tool | Code Formatter</title>
+    <meta name="description"
+        content="Convert JSON to TypeScript interfaces and Zod validation schemas instantly. Free tool with intelligent type inference, runtime validation, and production-ready code generation.">
+    <meta name="keywords"
+        content="json to typescript, json to zod, typescript generator, zod schema, type inference, runtime validation, typescript interfaces, zod validation, convert json to types, typescript type generator, zod schema generator, json typescript converter online, free typescript generator">
+    <link rel="canonical" href="https://www.codeformatter.in/json-to-typescript.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://codeformatter.in/json-to-typescript.html">
+    <meta property="og:title" content="JSON to TypeScript & Zod Schema Generator | Free Online Tool">
+    <meta property="og:description"
+        content="Convert JSON to TypeScript interfaces and Zod schemas instantly. 100% client-side processing for complete privacy.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="JSON to TypeScript & Zod Generator">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#6366f1">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .tab-selector {
+            display: flex;
+            gap: 5px;
+        }
+
+        .tab-btn {
+            padding: 8px 16px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* 1. HEADER (Clean) */
+        header {
+            /* background: var(--bg-panel); */
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 20;
+            flex-shrink: 0;
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: var(--primary);
+        }
+
+        .output-code {
+            white-space: pre;
+            font-family: var(--font-code);
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--text-main);
+            padding: 15px;
+            background: var(--bg-input);
+            height: 100%;
+            overflow: auto;
+        }
+
+        .pane {
+            height: 550px;
+            max-height: 550px;
+        }
+
+        .editor-container {
+            overflow-y: auto;
+        }
+
+        @media (max-width: 768px) {
+            .pane {
+                height: 350px;
+                max-height: 350px;
+            }
+        }
+    </style>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "JSON to TypeScript & Zod Generator",
+        "description": "Convert JSON data to TypeScript interfaces and Zod validation schemas instantly with intelligent type inference.",
+        "url": "https://www.codeformatter.in/json-to-typescript.html",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "JSON to TypeScript conversion",
+            "JSON to Zod schema generation",
+            "Intelligent type inference",
+            "Nested object handling",
+            "Array type detection",
+            "100% client-side processing"
+        ]
+    }
+    </script>
+</head>
+
+<body>
+    <aside id="sidebar">
+        <div class="brand"><a href="index.html" class="brand-logo"><i class="fas fa-layer-group"></i> Code Formatter</a>
+        </div>
+        <div class="search-container"><input type="text" class="search-input" placeholder="Search tools..."
+                onkeyup="filterTools(this)"></div>
+        <nav class="menu" id="menuContainer">
+            <div class="nav-group-title">Code Formatters</div>
+            <a href="index.html" class="nav-item" data-id="json-fmt"><i class="fas fa-code"></i> JSON Formatter</a>
+            <a href="json-tree-viewer.html" class="nav-item" data-id="json-tree"><i class="fas fa-sitemap"></i> JSON
+                Tree View</a>
+            <a href="html-formatter.html" class="nav-item" data-id="html-fmt"><i class="fab fa-html5"></i> HTML
+                Formatter</a>
+            <a href="css-formatter.html" class="nav-item" data-id="css-fmt"><i class="fab fa-css3-alt"></i> CSS
+                Formatter</a>
+            <a href="js-formatter.html" class="nav-item" data-id="js-fmt"><i class="fab fa-js"></i> JS Formatter</a>
+            <a href="sql-formatter.html" class="nav-item" data-id="sql-fmt"><i class="fas fa-database"></i> SQL
+                Formatter</a>
+            <a href="xml-formatter.html" class="nav-item" data-id="xml-fmt"><i class="fas fa-code"></i> XML
+                Formatter</a>
+            <div class="nav-group-title">Image & Color Tools</div>
+            <a href="image-compressor.html" class="nav-item" data-id="img-compress"><i class="fas fa-image"></i> Image
+                Compressor</a>
+            <a href="color-converter.html" class="nav-item" data-id="color-conv"><i class="fas fa-palette"></i> Color
+                Converter</a>
+            <a href="qr-code-generator.html" class="nav-item" data-id="qr-gen"><i class="fas fa-qrcode"></i> QR
+                Generator</a>
+            <div class="nav-group-title">Code Minifiers</div>
+            <a href="json-minifier.html" class="nav-item" data-id="json-min"><i class="fas fa-compress"></i> JSON
+                Minifier</a>
+            <a href="html-minifier.html" class="nav-item" data-id="html-min"><i class="fas fa-compress-arrows-alt"></i>
+                HTML Minifier</a>
+            <a href="css-minifier.html" class="nav-item" data-id="css-min"><i class="fas fa-compress-arrows-alt"></i>
+                CSS Minifier</a>
+            <a href="js-minifier.html" class="nav-item" data-id="js-min"><i class="fas fa-file-archive"></i> JS
+                Minifier</a>
+            <div class="nav-group-title">Data Converters</div>
+            <a href="json-to-csv.html" class="nav-item" data-id="json-csv"><i class="fas fa-table"></i> JSON to CSV</a>
+            <a href="csv-to-json.html" class="nav-item" data-id="csv-json"><i class="fas fa-file-csv"></i> CSV to
+                JSON</a>
+            <a href="json-to-typescript.html" class="nav-item active" data-id="json-ts"><i class="fas fa-file-code"></i>
+                JSON to TypeScript</a>
+            <a href="case-converter.html" class="nav-item" data-id="case-conv"><i class="fas fa-text-height"></i> Case
+                Converter</a>
+            <div class="nav-group-title">Encoding & Security</div>
+            <a href="base64-tool.html" class="nav-item" data-id="base64"><i class="fas fa-lock"></i> Base64 Tool</a>
+            <a href="url-encoder.html" class="nav-item" data-id="url-enc"><i class="fas fa-link"></i> URL Encoder</a>
+            <a href="hash-generator.html" class="nav-item" data-id="hash-gen"><i class="fas fa-fingerprint"></i> Hash
+                Generator</a>
+            <a href="jwt-decoder.html" class="nav-item" data-id="jwt-dec"><i class="fas fa-shield-alt"></i> JWT
+                Decoder</a>
+            <div class="nav-group-title">CSS Generators</div>
+            <a href="glassmorphism-generator.html" class="nav-item" data-id="glass-morphism"><i class="fas fa-wind"></i>
+                Glassmorphism</a>
+            <a href="smooth-shadow-generator.html" class="nav-item" data-id="shadow-gen"><i
+                    class="fas fa-layer-group"></i> Smooth Shadow</a>
+            <a href="px-to-rem.html" class="nav-item" data-id="px-rem"><i class="fas fa-ruler-combined"></i> PX to
+                REM</a>
+            <a href="aspect-ratio-calculator.html" class="nav-item" data-id="aspect-ratio"><i class="fas fa-expand"></i>
+                Aspect Ratio</a>
+            <div class="nav-group-title">Text & Data</div>
+            <a href="lorem-ipsum-generator.html" class="nav-item" data-id="lorem"><i class="fas fa-paragraph"></i> Lorem
+                Ipsum</a>
+            <a href="mock-data-generator.html" class="nav-item" data-id="mock-data"><i class="fas fa-users"></i> Mock
+                Data Gen</a>
+            <a href="diff-checker.html" class="nav-item" data-id="diff-check"><i class="fas fa-exchange-alt"></i> Diff
+                Checker</a>
+            <div class="nav-group-title">Preview Tools</div>
+            <a href="html-viewer.html" class="nav-item" data-id="html-view"><i class="fas fa-eye"></i> HTML Viewer</a>
+            <a href="social-card-preview.html" class="nav-item" data-id="social-card"><i class="fas fa-share-alt"></i>
+                Social Preview</a>
+        </nav>
+    </aside>
+    <div id="overlay" onclick="closeAllDrawers()"></div>
+    <main>
+        <header>
+            <div class="header-left"><i class="fas fa-bars menu-toggle-btn" onclick="handleMenuClick()"></i>
+                <div class="tool-info">
+                    <div id="toolTitle">JSON to TypeScript</div>
+                    <p id="toolDesc">Generate TypeScript Interfaces & Zod Schemas from JSON.</p>
+                </div>
+            </div>
+            <div class="header-right"><a href="blog.html" class="nav-link">Blog</a><button class="theme-btn"
+                    onclick="toggleTheme()"><i class="fas fa-moon" id="themeIcon"></i></button></div>
+        </header>
+        <div id="scrollable-wrapper">
+            <section class="workspace" id="workspace">
+                <div class="pane">
+                    <div class="pane-header">
+                        <span class="pane-title"><i class="fas fa-file-import"></i> INPUT JSON</span>
+                        <div class="pane-actions">
+                            <i class="fas fa-file-code action-icon" onclick="loadSampleJSON()" title="Load Sample"></i>
+                            <i class="far fa-clipboard action-icon" onclick="pasteInput()" title="Paste"></i>
+                            <i class="far fa-trash-alt action-icon" onclick="clearInput()" title="Clear"></i>
+                        </div>
+                    </div>
+                    <div class="editor-container">
+                        <textarea id="jsonInput" placeholder="Paste your JSON here..."></textarea>
+                        <div class="editor-stats" id="inputStats">0 chars | 0 KB</div>
+                    </div>
+                </div>
+                <div class="pane">
+                    <div class="pane-header">
+                        <div class="tab-selector">
+                            <button class="tab-btn active" data-tab="typescript" onclick="switchTab('typescript')">
+                                <i class="fab fa-js-square"></i> TypeScript
+                            </button>
+                            <button class="tab-btn" data-tab="zod" onclick="switchTab('zod')">
+                                <i class="fas fa-shield-alt"></i> Zod Schema
+                            </button>
+                        </div>
+                        <div class="pane-actions">
+                            <i class="far fa-copy action-icon" onclick="copyOutput()" title="Copy"></i>
+                            <i class="fas fa-download action-icon" onclick="downloadOutput()" title="Download"></i>
+                        </div>
+                    </div>
+                    <div class="editor-container">
+                        <pre id="outputCode" class="output-code">// Paste JSON to generate types...</pre>
+                    </div>
+                </div>
+            </section>
+
+            <div class="content-container">
+                <article class="clean-card prose">
+                    <h1>JSON to TypeScript & Zod Schema Generator: Complete 2026 Guide</h1>
+
+                    <p>Converting <strong>JSON to TypeScript types</strong> is a fundamental task in modern web
+                        development. Whether you're working with API responses, configuration files, or complex data
+                        structures, having strong type safety is essential. Our <strong>JSON to TypeScript & Zod
+                            Generator</strong> automates this process, creating both compile-time TypeScript interfaces
+                        and runtime Zod validation schemas from your JSON data instantly.</p>
+
+                    <p>This powerful <strong>typescript generator</strong> tool eliminates hours of manual type
+                        creation. Simply paste your JSON, and instantly receive production-ready TypeScript types with
+                        intelligent inference for primitives, arrays, nested objects, and optional fields. Plus,
+                        generate <strong>Zod schemas</strong> for runtime validation—critical for validating untrusted
+                        external data from APIs, user input, or third-party services.</p>
+
+                    <h2>What is JSON to TypeScript Conversion?</h2>
+
+                    <p><strong>JSON to TypeScript conversion</strong> analyzes your JSON structure and generates
+                        corresponding TypeScript type definitions. TypeScript provides compile-time type safety,
+                        catching errors during development before code execution. However, TypeScript types don't exist
+                        at runtime—that's where <strong>Zod validation schemas</strong> become crucial for production
+                        applications.</p>
+
+                    <p>While TypeScript catches typos like <code>user.emaill</code> instead of <code>user.email</code>
+                        in your IDE, it cannot validate that API responses actually contain the expected data structure.
+                        Zod provides this <strong>runtime validation</strong>, ensuring external data matches your
+                        expected structure before your application processes it. This combination of compile-time and
+                        runtime type safety is the gold standard for modern TypeScript applications.</p>
+
+                    <h2>How to Use This JSON to TypeScript Converter</h2>
+
+                    <h3>Step 1: Paste Your JSON Data</h3>
+                    <p>Copy any valid JSON into the input pane—API responses, configuration files, database exports, or
+                        sample data. Our <strong>JSON parser</strong> validates syntax and highlights errors with
+                        detailed messages for invalid JSON, making debugging easy.</p>
+
+                    <h3>Step 2: Select Your Output Format</h3>
+                    <p>Switch between <strong>TypeScript interfaces</strong> and <strong>Zod Schema</strong> tabs
+                        instantly. TypeScript generates interface/type definitions for compile-time checking in your
+                        IDE. Zod generates validation schemas for runtime data verification in production environments.
+                    </p>
+
+                    <h3>Step 3: Intelligent Type Inference</h3>
+                    <p>Our advanced <strong>type inference engine</strong> automatically detects types from your JSON
+                        values:</p>
+                    <ul>
+                        <li><strong>Numbers</strong> → <code>number</code> in TypeScript, <code>z.number()</code> in Zod
+                        </li>
+                        <li><strong>Strings</strong> → <code>string</code> with email/URL detection for Zod validation
+                        </li>
+                        <li><strong>Booleans</strong> → <code>boolean</code> type</li>
+                        <li><strong>Null values</strong> → Optional fields or nullable types for flexible schemas</li>
+                        <li><strong>Arrays</strong> → Typed arrays like <code>User[]</code> or <code>string[]</code>
+                        </li>
+                        <li><strong>Nested Objects</strong> → Separate interfaces with proper hierarchy</li>
+                    </ul>
+
+                    <h3>Step 4: Copy or Download Generated Code</h3>
+                    <p>Use the Copy button to paste code directly into your project, or Download as a <code>.ts</code>
+                        file with proper imports, exports, and TypeScript-standard formatting ready for immediate use.
+                    </p>
+
+                    <h2>TypeScript vs Zod: When to Use Each</h2>
+
+                    <h3>TypeScript Interfaces (Compile-Time Type Checking)</h3>
+                    <p><strong>TypeScript interfaces</strong> define data shapes during development. Your IDE catches
+                        errors like accessing non-existent properties immediately. However, TypeScript types are
+                        completely erased at runtime after compilation—they provide zero protection against malformed
+                        data from external sources like APIs.</p>
+
+                    <h3>Zod Schemas (Runtime Validation)</h3>
+                    <p><strong>Zod validates data at runtime</strong>, ensuring incoming data from APIs, forms, or
+                        external services matches your expected structure. When fetching from APIs, you cannot trust
+                        that responses match your TypeScript types. Zod ensures incoming data is valid with detailed
+                        error messages:</p>
+
+                    <pre><code>const response = await fetch('/api/user').then(r => r.json());
+const validatedUser = UserSchema.parse(response); // Throws if invalid
+// TypeScript now knows validatedUser has the correct type</code></pre>
+
+                    <h3>Best Practice: Use Both Together</h3>
+                    <p>Modern production applications use both approaches together. Generate Zod schemas first, then
+                        infer TypeScript types from them for a single source of truth:</p>
+
+                    <pre><code>export const UserSchema = z.object({
+  id: z.number(),
+  email: z.string().email(),
+  name: z.string()
+});
+
+export type User = z.infer&lt;typeof UserSchema&gt;;</code></pre>
+
+                    <p>This pattern creates a single source of truth—your Zod schema provides both runtime validation
+                        AND compile-time types through type inference, eliminating duplication and potential mismatches.
+                    </p>
+
+                    <h2>Advanced Type Generation Features</h2>
+
+                    <h3>Nested Object Handling</h3>
+                    <p>Our <strong>JSON to TypeScript converter</strong> recursively generates types for deeply nested
+                        structures. Complex JSON like <code>user.profile.address.city</code> creates proper nested
+                        interfaces with clear organization and maintainable code structure. Each nested object gets its
+                        own interface for maximum reusability.</p>
+
+                    <h3>Array Type Inference</h3>
+                    <p>For primitive arrays like <code>["admin", "user"]</code>, we generate <code>string[]</code>. For
+                        object arrays, we create typed arrays like <code>User[]</code> with the item interface defined
+                        separately. Mixed-type arrays generate union types like
+                        <code>(number | string | boolean)[]</code> preserving full type safety.
+                    </p>
+
+                    <h3>Optional and Nullable Fields</h3>
+                    <p>Fields with <code>null</code> values are intelligently marked as optional
+                        (<code>field?: type</code>) or nullable (<code>field: type | null</code>), ensuring generated
+                        types accurately reflect your data's actual nullability patterns.</p>
+
+                    <h2>Zod Schema Patterns & Validation Features</h2>
+
+                    <h3>Smart String Validation</h3>
+                    <p>Generated Zod schemas include intelligent validation: strings containing "@" become
+                        <code>z.string().email()</code>, URLs become <code>z.string().url()</code>, providing
+                        out-of-the-box validation for common patterns without additional configuration.
+                    </p>
+
+                    <h3>Runtime Safety Methods</h3>
+                    <p>Use <code>Schema.parse(data)</code> for validation that throws detailed errors on failure, or
+                        <code>Schema.safeParse(data)</code> for non-throwing validation returning
+                        <code>{ success: boolean, data/error }</code>. Perfect for APIs, forms, and user input
+                        validation.
+                    </p>
+
+                    <h3>Schema Composition</h3>
+                    <p>Generated base schemas can be extended with Zod's <code>.extend()</code>, <code>.merge()</code>,
+                        <code>.pick()</code>, or <code>.omit()</code> methods, or refined with custom validation logic
+                        without modifying generated code.
+                    </p>
+
+                    <h2>Common Use Cases for JSON to TypeScript</h2>
+
+                    <h3>API Response Typing</h3>
+                    <p>Copy API response JSON, generate Zod schema, validate all API calls. This catches API contract
+                        changes immediately, preventing runtime errors in production before they impact users.</p>
+
+                    <h3>Form Validation</h3>
+                    <p>Use generated Zod schemas with React Hook Form, Formik, or other form libraries. Your validation
+                        rules perfectly match your data types with zero duplication and automatic TypeScript inference.
+                    </p>
+
+                    <h3>Database Schema Types</h3>
+                    <p>Export database records, generate TypeScript types, use with ORMs like Prisma, Drizzle, or
+                        TypeORM ensuring your code matches actual database structure for end-to-end type safety.</p>
+
+                    <h3>Configuration Files</h3>
+                    <p>For <code>package.json</code>, <code>tsconfig.json</code>, or custom configs, generate types to
+                        get autocomplete and type checking when manipulating configuration programmatically.</p>
+
+                    <h2>Best Practices for Production TypeScript</h2>
+
+                    <p><strong>Use Representative Samples:</strong> Generate from production-like JSON. If fields can be
+                        null in production but your sample has values, manually adjust optionality in the generated
+                        code.</p>
+
+                    <p><strong>Review Generated Code:</strong> Always review generated types. The tool makes best-effort
+                        inferences, but you may need adjustments based on domain knowledge—adding union types, marking
+                        fields optional, or adding JSDoc comments.</p>
+
+                    <p><strong>Version Control Types:</strong> Commit generated type files to version control for
+                        historical tracking of API contract evolution and type changes over time.</p>
+
+                    <p><strong>Combine with TypeScript Utilities:</strong> Use utility types like
+                        <code>Partial&lt;T&gt;</code>, <code>Required&lt;T&gt;</code>, <code>Pick&lt;T, K&gt;</code>,
+                        <code>Omit&lt;T, K&gt;</code> to create variations of generated types for different use cases
+                        like partial updates.
+                    </p>
+
+                    <h2>Frequently Asked Questions</h2>
+
+                    <div class="faq-item"><strong>What's the difference between TypeScript and Zod?</strong>
+                        <p><strong>TypeScript</strong> provides compile-time type checking during development but types
+                            are erased at runtime. <strong>Zod</strong> validates data at runtime, ensuring external
+                            data (APIs, user input) matches expected structure. Best practice: use Zod for validation
+                            and infer TypeScript types from Zod schemas using <code>z.infer&lt;typeof Schema&gt;</code>
+                            for both compile-time safety and runtime protection.</p>
+                    </div>
+
+                    <div class="faq-item"><strong>Can I use both TypeScript and Zod in the same project?</strong>
+                        <p>Absolutely! This is the recommended approach. Define Zod schemas for data validation, then
+                            use <code>type User = z.infer&lt;typeof UserSchema&gt;</code> to generate TypeScript types
+                            automatically. This creates a single source of truth—your Zod schema becomes both runtime
+                            validator and TypeScript type definition with zero duplication.</p>
+                    </div>
+
+                    <div class="faq-item"><strong>How does the tool handle optional vs required fields?</strong>
+                        <p>The tool infers optionality from <code>null</code> values in JSON. Fields with
+                            <code>null</code> are marked optional (<code>field?: type</code>) or nullable
+                            (<code>field: type | null</code>). However, JSON samples don't represent all states—always
+                            review and manually adjust optionality based on your actual API contract.
+                        </p>
+                    </div>
+
+                    <div class="faq-item"><strong>What about deeply nested or complex JSON structures?</strong>
+                        <p>The tool recursively generates types for unlimited nesting depth. For deeply nested JSON, it
+                            creates separate interfaces for each level, making code readable and maintainable. Complex
+                            structures with arrays of objects, mixed types, or conditional fields are fully supported
+                            following TypeScript best practices.</p>
+                    </div>
+
+                    <div class="faq-item"><strong>How do I validate data at runtime using Zod?</strong>
+                        <p>Use <code>Schema.parse(data)</code> to validate and throw detailed errors on failure. For
+                            non-throwing validation, use <code>Schema.safeParse(data)</code> returning
+                            <code>{ success: true, data }</code> or <code>{ success: false, error }</code>. Perfect for
+                            API responses, form submissions, or any untrusted external data.
+                        </p>
+                    </div>
+
+                    <div class="faq-item"><strong>Is the generated code production-ready?</strong>
+                        <p>Generated code is a solid starting point following TypeScript best practices with proper
+                            imports/exports and correct syntax. However, review and enhance based on domain
+                            knowledge—add JSDoc comments, refine optional fields, add Zod refinements for custom
+                            validation, or split large types into smaller reusable pieces for your specific needs.</p>
+                    </div>
+
+                    <div class="faq-item"><strong>Does my data stay private?</strong>
+                        <p>100% yes. All processing happens client-side in your browser using JavaScript. Your JSON data
+                            never leaves your computer—no server uploads, no data logging, complete privacy guaranteed.
+                            Perfect for sensitive API responses containing tokens or personal information.</p>
+                    </div>
+
+                    <p style="text-align:center;margin-top:3rem;color:#525252;font-size:0.85rem;">
+                        Generate type-safe TypeScript interfaces and Zod validation schemas instantly. Save hours of
+                        manual typing and eliminate runtime errors. 100% free, client-side processing—your data never
+                        leaves your browser.
+                    </p>
+                </article>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="footer-stats">
+                <div class="stat-item" id="typeCount"><i class="fas fa-file-code"></i> Types: 0</div>
+                <div class="footer-links"><a href="./about.html">About</a> • <a href="./privacy.html">Privacy</a> • <a
+                        href="./contact.html">Contact</a></div>
+            </div>
+            <div class="footer-actions">
+                <button class="btn btn-sec" onclick="clearInput()"><i class="far fa-trash-alt"></i> CLEAR</button>
+                <button class="btn btn-pri" onclick="loadSampleJSON()"><i class="fas fa-file-code"></i> SAMPLE</button>
+            </div>
+        </footer>
+    </main>
+    <div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMessage">Action completed!</span>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        let currentTab = 'typescript';
+
+        function switchTab(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.tab === tab);
+            });
+            generateOutput();
+        }
+
+        function loadSampleJSON() {
+            const sample = `{
+  "user": {
+    "id": 123,
+    "name": "John Doe",
+    "email": "john@example.com",
+    "isActive": true,
+    "roles": ["admin", "user"],
+    "profile": {
+      "avatar": "https://example.com/avatar.jpg",
+      "bio": "Full-stack developer",
+      "age": 28
+    },
+    "metadata": {
+      "createdAt": "2026-01-04T12:00:00Z",
+      "lastLogin": null
+    }
+  },
+  "settings": {
+    "theme": "dark",
+    "notifications": {
+      "email": true,
+      "push": false
+    }
+  }
+}`;
+            document.getElementById('jsonInput').value = sample;
+            generateOutput();
+            updateInputStats();
+        }
+
+        function clearInput() {
+            document.getElementById('jsonInput').value = '';
+            document.getElementById('outputCode').textContent = '// Paste JSON to generate types...';
+            updateInputStats();
+        }
+
+        function jsonToTypeScript(json, interfaceName = 'Root') {
+            let output = '/**\n * Generated TypeScript Interfaces\n * Timestamp: ' + new Date().toISOString() + '\n */\n\n';
+            const interfaces = [];
+
+            function inferType(value, name = 'Value') {
+                if (value === null) return 'null';
+                if (typeof value === 'boolean') return 'boolean';
+                if (typeof value === 'number') return 'number';
+                if (typeof value === 'string') return 'string';
+                if (Array.isArray(value)) {
+                    if (value.length === 0) return 'any[]';
+                    const itemType = inferType(value[0], name);
+                    return itemType + '[]';
+                }
+                if (typeof value === 'object') {
+                    const typeName = name.charAt(0).toUpperCase() + name.slice(1);
+                    interfaces.push({ name: typeName, obj: value });
+                    return typeName;
+                }
+                return 'any';
+            }
+
+            function generateInterface(name, obj) {
+                let code = `export interface ${name} {\n`;
+                for (const [key, value] of Object.entries(obj)) {
+                    const type = inferType(value, key);
+                    const optional = value === null ? '?' : '';
+                    code += `  ${key}${optional}: ${type};\n`;
+                }
+                code += '}\n\n';
+                return code;
+            }
+
+            interfaces.push({ name: interfaceName, obj: json });
+
+            while (interfaces.length > 0) {
+                const { name, obj } = interfaces.shift();
+                output += generateInterface(name, obj);
+            }
+
+            updateTypeCount(output);
+            return output;
+        }
+
+        function jsonToZod(json) {
+            let output = 'import { z } from \'zod\';\n\n/**\n * Generated Zod Schemas\n * Timestamp: ' + new Date().toISOString() + '\n */\n\n';
+            const schemas = [];
+
+            function inferZodType(value, name = 'Value') {
+                if (value === null) return 'z.null()';
+                if (typeof value === 'boolean') return 'z.boolean()';
+                if (typeof value === 'number') return 'z.number()';
+                if (typeof value === 'string') {
+                    if (value.includes('@')) return 'z.string().email()';
+                    if (value.match(/^https?:\/\//)) return 'z.string().url()';
+                    return 'z.string()';
+                }
+                if (Array.isArray(value)) {
+                    if (value.length === 0) return 'z.array(z.any())';
+                    const itemType = inferZodType(value[0], name);
+                    return `z.array(${itemType})`;
+                }
+                if (typeof value === 'object') {
+                    const schemaName = name.charAt(0).toUpperCase() + name.slice(1) + 'Schema';
+                    schemas.push({ name: schemaName, obj: value });
+                    return schemaName;
+                }
+                return 'z.any()';
+            }
+
+            function generateSchema(name, obj) {
+                let code = `export const ${name} = z.object({\n`;
+                for (const [key, value] of Object.entries(obj)) {
+                    const type = inferZodType(value, key);
+                    const optional = value === null ? '.optional()' : '';
+                    code += `  ${key}: ${type}${optional},\n`;
+                }
+                code += '});\n\n';
+                code += `export type ${name.replace('Schema', '')} = z.infer<typeof ${name}>;\n\n`;
+                return code;
+            }
+
+            schemas.push({ name: 'RootSchema', obj: json });
+
+            while (schemas.length > 0) {
+                const { name, obj } = schemas.shift();
+                output += generateSchema(name, obj);
+            }
+
+            updateTypeCount(output);
+            return output;
+        }
+
+        function generateOutput() {
+            const input = document.getElementById('jsonInput').value.trim();
+            if (!input) {
+                document.getElementById('outputCode').textContent = '// Paste JSON to generate types...';
+                updateTypeCount('');
+                return;
+            }
+
+            try {
+                const json = JSON.parse(input);
+                const output = currentTab === 'typescript' ? jsonToTypeScript(json) : jsonToZod(json);
+                document.getElementById('outputCode').textContent = output;
+            } catch (error) {
+                document.getElementById('outputCode').textContent = `// Error: ${error.message}\n// Please check your JSON syntax`;
+                updateTypeCount('');
+            }
+        }
+
+        function updateTypeCount(output) {
+            const interfaceCount = (output.match(/export (interface|const)/g) || []).length;
+            document.getElementById('typeCount').innerHTML = `<i class="fas fa-file-code"></i> Types: ${interfaceCount}`;
+        }
+
+        function updateInputStats() {
+            const input = document.getElementById('jsonInput').value;
+            const chars = input.length;
+            const kb = (new Blob([input]).size / 1024).toFixed(2);
+            document.getElementById('inputStats').textContent = `${chars} chars | ${kb} KB`;
+        }
+
+        function copyOutput() {
+            const output = document.getElementById('outputCode').textContent;
+            navigator.clipboard.writeText(output).then(() => {
+                showToast('Code copied to clipboard!');
+            });
+        }
+
+        function downloadOutput() {
+            const output = document.getElementById('outputCode').textContent;
+            const blob = new Blob([output], { type: 'text/typescript' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `generated-${currentTab}.ts`;
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast('File downloaded!');
+        }
+
+        async function pasteInput() {
+            try {
+                const text = await navigator.clipboard.readText();
+                document.getElementById('jsonInput').value = text;
+                generateOutput();
+                updateInputStats();
+                showToast('Pasted from clipboard!');
+            } catch (err) {
+                showToast('Failed to paste: ' + err.message, true);
+            }
+        }
+
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            toastMessage.textContent = message;
+            if (isError) toast.classList.add('error');
+            else toast.classList.remove('error');
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        function debounce(func, wait) {
+            let timeout;
+            return function (...args) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, args), wait);
+            };
+        }
+
+        document.getElementById('jsonInput').addEventListener('input', debounce(() => {
+            generateOutput();
+            updateInputStats();
+        }, 300));
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadSampleJSON();
+        });
+
+        const activeToolId = "json-ts";
+    </script>
+</body>
+
+</html>
