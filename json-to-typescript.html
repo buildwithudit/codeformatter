@@ -26,15 +26,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
-        :root {
-            --bg-body: #0a0a0a;
-            --bg-panel: #171717;
-            --border-color: #262626;
-            --primary: #3b82f6;
-            --text-main: #ededed;
-            --text-muted: #a1a1aa;
-        }
-
         .tab-selector {
             display: flex;
             gap: 5px;
@@ -62,9 +53,9 @@
 
         /* 1. HEADER (Clean) */
         header {
-            background: var(--bg-panel);
+            background: var(--bg-sidebar);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border);
             z-index: 20;
             flex-shrink: 0;
         }
@@ -84,6 +75,20 @@
             background: var(--bg-input);
             height: 100%;
             overflow: auto;
+        }
+
+        /* Light theme overrides for proper text visibility */
+        html.light .output-code {
+            color: #1e293b;
+        }
+
+        html.light .tab-btn {
+            color: #64748b;
+        }
+
+        html.light .tab-btn.active {
+            background: var(--primary);
+            color: white;
         }
 
         .pane {

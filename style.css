@@ -3,6 +3,8 @@
     --bg-body: #09090b;
     --bg-sidebar: #121214;
     --bg-pane: #18181b;
+    --bg-panel: #18181b;
+    --bg-card: #1e1e1e;
     --bg-input: #000000;
     --bg-drawer: #121214;
     --border: #27272a;
@@ -27,6 +29,8 @@ html.light {
     --bg-body: #f8fafc;
     --bg-sidebar: #ffffff;
     --bg-pane: #ffffff;
+    --bg-panel: #ffffff;
+    --bg-card: #ffffff;
     --bg-input: #f1f5f9;
     --bg-drawer: #ffffff;
     --border: #e2e8f0;
