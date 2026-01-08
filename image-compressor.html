@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Image Compressor - Compress WebP, PNG & JPG</title>
     <meta name="description"
         content="The fastest, most secure online developer toolkit. Validate & Beautify JSON, Compress Images locally, Format SQL, and Minify CSS/JS.">
@@ -463,7 +463,7 @@
 
     <main>
         <header>
-            <div class="header-left"><i class="fas fa-bars menu-toggle-btn" onclick="handleMenuClick()"></i>
+            <div class="header-left"><i class="fas fa-bars menu-toggle-btn" onclick="handleMenuClick()" aria-label="Toggle navigation menu"></i>
                 <div class="tool-info">
                     <div id="toolTitle">Loading...</div>
                     <p id="toolDesc">...</p>
@@ -471,7 +471,7 @@
             </div>
             <div class="header-right">
                 <a href="blog.html" class="nav-link">Blog</a>
-                <button class="theme-btn" onclick="toggleTheme()"><i class="fas fa-moon" id="themeIcon"></i></button>
+                <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle dark and light theme"><i class="fas fa-moon" id="themeIcon"></i></button>
             </div>
         </header>
 
