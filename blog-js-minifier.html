@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -13,6 +13,7 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
     <link rel="canonical" href="https://www.codeformatter.in/blog-js-minifier.html">
     <meta property="og:title" content="JavaScript Minifier: Professional Optimization Guide">
     <meta property="og:description"
@@ -24,6 +25,55 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Enhanced JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Article",
+                "@id": "https://www.codeformatter.in/blog-js-minifier.html#article",
+                "headline": "JavaScript Minifier: Complete Optimization Guide (2026)",
+                "description": "Master JavaScript minification with Terser, esbuild, and production optimization best practices.",
+                "image": "https://www.codeformatter.in/js-minifier-blog.png",
+                "author": {"@type": "Person", "name": "Udit Sharma", "url": "https://www.codeformatter.in/about.html"},
+                "datePublished": "2026-01-02",
+                "dateModified": "2026-01-17",
+                "publisher": {"@type": "Organization", "name": "Code Formatter", "logo": {"@type": "ImageObject", "url": "https://www.codeformatter.in/favicon.svg"}},
+                "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.codeformatter.in/blog-js-minifier.html"}
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+                    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.codeformatter.in/blog.html"},
+                    {"@type": "ListItem", "position": 3, "name": "JavaScript Minifier Guide"}
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {"@type": "Question", "name": "How much can JS minification reduce file size?", "acceptedAnswer": {"@type": "Answer", "text": "JavaScript minification typically reduces file size by 40-70%. Combined with gzip and tree-shaking, you can achieve 80-90% reduction."}},
+                    {"@type": "Question", "name": "What's the difference between Terser and UglifyJS?", "acceptedAnswer": {"@type": "Answer", "text": "Terser is the modern successor to UglifyJS with ES6+ support. UglifyJS only supports ES5."}},
+                    {"@type": "Question", "name": "Does minification affect debugging?", "acceptedAnswer": {"@type": "Answer", "text": "Use source maps to debug minified code. They map minified code back to original source."}}
+                ]
+            },
+            {
+                "@type": "HowTo",
+                "name": "How to Minify JavaScript Online",
+                "description": "Compress JavaScript for production deployment",
+                "step": [
+                    {"@type": "HowToStep", "name": "Paste Code", "text": "Paste your JavaScript into the input area"},
+                    {"@type": "HowToStep", "name": "Configure", "text": "Select minification options"},
+                    {"@type": "HowToStep", "name": "Minify", "text": "Click Minify to compress your code"},
+                    {"@type": "HowToStep", "name": "Use", "text": "Copy the minified JavaScript for production"}
+                ]
+            }
+        ]
+    }
+    </script>
+
     <style>
         :root {
             --bg-body: #09090b;
@@ -107,7 +157,9 @@
         }
 
         .brand-logo {
-            font-weight: 700; color: #3b82f6; text-decoration: none;
+            font-weight: 700;
+            color: #3b82f6;
+            text-decoration: none;
             font-size: .9rem;
             letter-spacing: -.5px
         }
@@ -508,6 +560,7 @@
         }
 
         footer {
+            padding-bottom: 100px; /* Space for sticky CTA */
             margin-top: 80px;
             padding: 30px 0;
             border-top: 1px solid var(--border);
@@ -566,6 +619,48 @@
                 font-size: .8rem
             }
         }
+    
+        /* Featured Image Styles */
+        .featured-image {
+            margin: 2rem 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+        }
+        .featured-image figcaption {
+            text-align: center;
+            padding: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+    
+        /* Workflow Diagram Styles */
+        .workflow-diagram {
+            margin: 2rem 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .workflow-diagram img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+        }
+        .workflow-diagram figcaption {
+            text-align: center;
+            padding: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
     </style>
 </head>
 
@@ -585,6 +680,14 @@
                 <span><i class="far fa-calendar-alt"></i> Jan 2, 2026</span>
                 <span><i class="far fa-clock"></i> 14 Min Read</span>
             </div>
+
+            <!-- Featured Image -->
+            <figure class="featured-image">
+                <img src="https://images.unsplash.com/photo-1593720213428-28a5b9e94613?q=80&w=800&auto=format&fit=crop" 
+                    alt="JS MINIFIER - Complete Guide" width="800" height="450"
+                    loading="eager" fetchpriority="high">
+                <figcaption>JS MINIFIER: Your complete guide to mastering this tool</figcaption>
+            </figure>
             <details class="toc" open>
                 <summary>Table of Contents</summary>
                 <ul>
@@ -608,7 +711,7 @@
             <p>According to Google's 2025 Web Performance Report, properly minified JavaScript improves Time to
                 Interactive (TTI) by an average of <strong>1.2 seconds</strong> on mobile devices. Research shows that
                 every 100ms improvement in load time correlates with a <strong>1% increase in conversion
-                    rates</strong>—making minification a revenue-impacting optimization, not just technical best
+                    rates</strong>�making minification a revenue-impacting optimization, not just technical best
                 practice.</p>
 
             <p>This comprehensive guide, based on <strong>15+ years of performance engineering</strong> at companies
@@ -619,7 +722,7 @@
 
             <p><strong>JavaScript minification</strong> transforms readable source code into compact,
                 production-optimized code by removing whitespace, renaming variables to shorter names, eliminating dead
-                code, and applying syntactic optimizations—all while preserving functionality.</p>
+                code, and applying syntactic optimizations�all while preserving functionality.</p>
 
             <div class="code-wrapper">
                 <div class="code-header">Source vs Minified JavaScript</div>
@@ -637,7 +740,7 @@
 <span class="token-keyword">function</span> <span class="token-function">calculateTotalPrice</span>(t,e){<span class="token-keyword">let</span> r=0;<span class="token-keyword">for</span>(<span class="token-keyword">const</span> a <span class="token-keyword">of</span> t)r+=a.price*a.quantity;<span class="token-keyword">return</span> r+r*e}</code></pre>
             </div>
 
-            <p>Notice how variables are renamed (<code>items→t</code>, <code>taxRate→e</code>, <code>subtotal→r</code>),
+            <p>Notice how variables are renamed (<code>items?t</code>, <code>taxRate?e</code>, <code>subtotal?r</code>),
                 whitespace vanishes, and the result is functionally identical but dramatically smaller.</p>
 
             <h2 id="tools">Modern Minification Tools Compared</h2>
@@ -694,7 +797,7 @@
             </div>
 
             <h3>2. Property Mangling (Aggressive)</h3>
-            <p>Rename private object properties (risky—only mangle properties explicitly marked). Can save 10-20%
+            <p>Rename private object properties (risky�only mangle properties explicitly marked). Can save 10-20%
                 additional size but breaks if external code references those properties.</p>
 
             <h3>3. Dead Code Elimination</h3>
@@ -707,7 +810,7 @@
 
             <h3>5. Function Inlining</h3>
             <p>Replace small function calls with their bodies when profitable. Reduces call overhead but increases code
-                size slightly—Terser only inlines when net savings exist.</p>
+                size slightly�Terser only inlines when net savings exist.</p>
 
             <h2 id="tree-shaking">Tree-Shaking & Dead Code Elimination</h2>
 
@@ -763,10 +866,10 @@ console.<span class="token-function">log</span>(<span class="token-function">add
 
             <h3>Bundle Size Reduction</h3>
             <ul>
-                <li><strong>React app (typical):</strong> 450KB source → 180KB minified (60% reduction) → 55KB gzipped
+                <li><strong>React app (typical):</strong> 450KB source ? 180KB minified (60% reduction) ? 55KB gzipped
                 </li>
-                <li><strong>Vue.js app:</strong> 380KB source → 155KB minified (59%) → 48KB gzipped</li>
-                <li><strong>Vanilla JS:</strong> 200KB source → 85KB minified (58%) → 28KB gzipped</li>
+                <li><strong>Vue.js app:</strong> 380KB source ? 155KB minified (59%) ? 48KB gzipped</li>
+                <li><strong>Vanilla JS:</strong> 200KB source ? 85KB minified (58%) ? 28KB gzipped</li>
             </ul>
 
             <h3>Load Time Improvements</h3>
@@ -850,7 +953,7 @@ console.<span class="token-function">log</span>(<span class="token-function">add
                     </summary>
                     <div class="faq-answer">
                         <strong>No, absolutely not.</strong> Development builds should be unminified for debuggability.
-                        Minified code makes debugging impossible—you can't read variable names, set meaningful
+                        Minified code makes debugging impossible�you can't read variable names, set meaningful
                         breakpoints, or understand stack traces. Modern dev servers (Vite, webpack-dev-server) serve
                         unminified code with source maps automatically. Only minify for <strong>staging and
                             production</strong> environments. Exception: Testing the minified build itself to catch
@@ -896,7 +999,7 @@ console.<span class="token-function">log</span>(<span class="token-function">add
                     <div class="faq-answer">
                         <strong>Slightly yes, mainly for parsing.</strong> Minified JavaScript has fewer bytes to parse
                         and shorter variable names (faster lexing). However, once parsed, execution speed is
-                        identical—JavaScript engines optimize away variable name length. Real performance gain:
+                        identical�JavaScript engines optimize away variable name length. Real performance gain:
                         <strong>network transfer time and parse time.</strong> Example: 500KB source takes 380ms to
                         parse on mobile; 200KB minified takes 220ms (42% faster parsing). But actual code execution
                         (loops, functions) runs at same speed. The wins are pre-execution.
@@ -938,17 +1041,17 @@ console.<span class="token-function">log</span>(<span class="token-function">add
         </article>
 
         <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="index.html"><i class="fas fa-home"></i> Home</a>
-                <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
-                <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
-                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+                    <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+                    <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                </div>
+                <p class="footer-copyright"> 2026 Code Formatter. All rights reserved.</p>
             </div>
-            <p class="footer-copyright"> 2026 Code Formatter. All rights reserved.</p>
-        </div>
-    </footer>
+        </footer>
     </div>
 
     <div class="sticky-cta">

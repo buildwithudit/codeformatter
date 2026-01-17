@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -13,6 +13,7 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
     <link rel="canonical" href="https://www.codeformatter.in/blog-jwt-decoder.html">
     <meta property="og:title" content="JWT Decoder: The Definitive Guide to JSON Web Tokens">
     <meta property="og:description"
@@ -24,6 +25,55 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Enhanced JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Article",
+                "@id": "https://www.codeformatter.in/blog-jwt-decoder.html#article",
+                "headline": "JWT Decoder: Complete Token Analysis Guide (2026)",
+                "description": "Master JWT token decoding and debugging. Learn JWT structure, claims, and security best practices.",
+                "image": "https://www.codeformatter.in/jwt-decoder-blog.png",
+                "author": {"@type": "Person", "name": "Udit Sharma", "url": "https://www.codeformatter.in/about.html"},
+                "datePublished": "2026-01-02",
+                "dateModified": "2026-01-17",
+                "publisher": {"@type": "Organization", "name": "Code Formatter", "logo": {"@type": "ImageObject", "url": "https://www.codeformatter.in/favicon.svg"}},
+                "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.codeformatter.in/blog-jwt-decoder.html"}
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+                    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.codeformatter.in/blog.html"},
+                    {"@type": "ListItem", "position": 3, "name": "JWT Decoder Guide"}
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {"@type": "Question", "name": "What is a JWT token?", "acceptedAnswer": {"@type": "Answer", "text": "JWT (JSON Web Token) is a compact, URL-safe token format for securely transmitting claims between parties."}},
+                    {"@type": "Question", "name": "Is it safe to decode JWT online?", "acceptedAnswer": {"@type": "Answer", "text": "Our decoder runs 100% client-side. Your tokens never leave your browser."}},
+                    {"@type": "Question", "name": "Can I verify JWT signatures?", "acceptedAnswer": {"@type": "Answer", "text": "Our tool decodes the payload. Signature verification requires the secret key (server-side)."}}
+                ]
+            },
+            {
+                "@type": "HowTo",
+                "name": "How to Decode JWT Online",
+                "description": "Analyze JWT tokens instantly",
+                "step": [
+                    {"@type": "HowToStep", "name": "Paste Token", "text": "Paste your JWT token"},
+                    {"@type": "HowToStep", "name": "Decode", "text": "View decoded header and payload"},
+                    {"@type": "HowToStep", "name": "Analyze", "text": "Review claims and expiration"},
+                    {"@type": "HowToStep", "name": "Debug", "text": "Identify any issues with the token"}
+                ]
+            }
+        ]
+    }
+    </script>
+
     <style>
         :root {
             --bg-body: #09090b;
@@ -107,7 +157,9 @@
         }
 
         .brand-logo {
-            font-weight: 700; color: #3b82f6; text-decoration: none;
+            font-weight: 700;
+            color: #3b82f6;
+            text-decoration: none;
             font-size: .9rem;
             letter-spacing: -.5px
         }
@@ -508,6 +560,7 @@
         }
 
         footer {
+            padding-bottom: 100px; /* Space for sticky CTA */
             margin-top: 80px;
             padding: 30px 0;
             border-top: 1px solid var(--border);
@@ -566,6 +619,48 @@
                 font-size: .8rem
             }
         }
+    
+        /* Featured Image Styles */
+        .featured-image {
+            margin: 2rem 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+        }
+        .featured-image figcaption {
+            text-align: center;
+            padding: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+    
+        /* Workflow Diagram Styles */
+        .workflow-diagram {
+            margin: 2rem 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .workflow-diagram img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+        }
+        .workflow-diagram figcaption {
+            text-align: center;
+            padding: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
     </style>
 </head>
 
@@ -585,6 +680,14 @@
                 <span><i class="far fa-calendar-alt"></i> Jan 2, 2026</span>
                 <span><i class="far fa-clock"></i> 15 Min Read</span>
             </div>
+
+            <!-- Featured Image -->
+            <figure class="featured-image">
+                <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=800&auto=format&fit=crop" 
+                    alt="JWT DECODER - Complete Guide" width="800" height="450"
+                    loading="eager" fetchpriority="high">
+                <figcaption>JWT DECODER: Your complete guide to mastering this tool</figcaption>
+            </figure>
             <details class="toc" open>
                 <summary>Table of Contents</summary>
                 <ul>
@@ -600,7 +703,7 @@
 
             <p id="intro"><strong>JSON Web Tokens (JWT)</strong> have become the de facto standard for securing modern
                 web applications, microservices, and mobile APIs. Unlike traditional session-based authentication (where
-                the server stores user data in memory), JWTs are <strong>stateless</strong>—the token itself contains
+                the server stores user data in memory), JWTs are <strong>stateless</strong>�the token itself contains
                 all the information needed to identify the user.</p>
 
             <p>But with great power comes great responsibility. A poorly implemented JWT system can open your
@@ -642,6 +745,14 @@ SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</code></pre>
                 the algorithm specified in the header.</p>
 
             <h2 id="decoding">How Decoding Actually Works</h2>
+
+            <!-- Workflow Diagram -->
+            <figure class="workflow-diagram">
+                <img src="workflow-encoder.png" 
+                    alt="JWT DECODER Workflow - Step by Step Guide" width="800" height="300"
+                    loading="lazy">
+                <figcaption>How to use JWT DECODER - Simple 3-step workflow</figcaption>
+            </figure>
 
             <p>Many developers confuse "decoding" with "decrypting." <strong>Decoding a JWT is trivial.</strong> The
                 Header and Payload are just Base64Url encoded JSON. Anyone who has the token can see the data inside.
@@ -802,17 +913,17 @@ SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</code></pre>
         </article>
 
         <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="index.html"><i class="fas fa-home"></i> Home</a>
-                <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
-                <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
-                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+                    <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+                    <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                </div>
+                <p class="footer-copyright"> 2026 Code Formatter. All rights reserved.</p>
             </div>
-            <p class="footer-copyright"> 2026 Code Formatter. All rights reserved.</p>
-        </div>
-    </footer>
+        </footer>
     </div>
 
     <div class="sticky-cta">

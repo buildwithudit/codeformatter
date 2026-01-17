@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -14,6 +14,7 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
     <link rel="canonical" href="https://www.codeformatter.in/blog-technical-seo.html">
 
     <meta property="og:title" content="Technical SEO for React: Why Google Ignores You">
@@ -26,6 +27,43 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Enhanced JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Article",
+                "@id": "https://www.codeformatter.in/blog-technical-seo.html#article",
+                "headline": "Technical SEO: Complete Developer Guide (2026)",
+                "description": "Master technical SEO for developers. Learn Core Web Vitals, structured data, crawlability, and site architecture.",
+                "image": "https://www.codeformatter.in/technical-seo-blog.png",
+                "author": {"@type": "Person", "name": "Udit Sharma", "url": "https://www.codeformatter.in/about.html"},
+                "datePublished": "2026-01-02",
+                "dateModified": "2026-01-17",
+                "publisher": {"@type": "Organization", "name": "Code Formatter", "logo": {"@type": "ImageObject", "url": "https://www.codeformatter.in/favicon.svg"}},
+                "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.codeformatter.in/blog-technical-seo.html"}
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+                    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.codeformatter.in/blog.html"},
+                    {"@type": "ListItem", "position": 3, "name": "Technical SEO Guide"}
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {"@type": "Question", "name": "What are Core Web Vitals?", "acceptedAnswer": {"@type": "Answer", "text": "Core Web Vitals are Google's metrics for page experience: LCP (loading), INP (interactivity), and CLS (visual stability)."}},
+                    {"@type": "Question", "name": "How does site speed affect SEO?", "acceptedAnswer": {"@type": "Answer", "text": "Page speed is a ranking factor. Slow pages have higher bounce rates and lower rankings."}},
+                    {"@type": "Question", "name": "What is structured data?", "acceptedAnswer": {"@type": "Answer", "text": "JSON-LD markup that helps search engines understand your content, enabling rich snippets in search results."}}
+                ]
+            }
+        ]
+    }
+    </script>
 
     <style>
         /* --- CORE VARIABLES --- */
@@ -124,7 +162,9 @@
         }
 
         .brand-logo {
-            font-weight: 700; color: #3b82f6; text-decoration: none;
+            font-weight: 700;
+            color: #3b82f6;
+            text-decoration: none;
             font-size: 0.9rem;
             letter-spacing: -0.5px;
         }
@@ -495,6 +535,7 @@
 
         /* --- FOOTER --- */
         footer {
+            padding-bottom: 100px; /* Space for sticky CTA */
             margin-top: 80px;
             padding: 30px 0;
             border-top: 1px solid var(--border);
@@ -557,6 +598,27 @@
                 font-size: 0.8rem;
             }
         }
+    
+        /* Featured Image Styles */
+        .featured-image {
+            margin: 2rem 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+        }
+        .featured-image figcaption {
+            text-align: center;
+            padding: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
     </style>
 </head>
 
@@ -579,6 +641,14 @@
                 <span><i class="far fa-calendar-alt"></i> Jan 29, 2026</span>
                 <span><i class="far fa-clock"></i> 16 Min Read</span>
             </div>
+
+            <!-- Featured Image -->
+            <figure class="featured-image">
+                <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?q=80&w=800&auto=format&fit=crop" 
+                    alt="TECHNICAL SEO - Complete Guide" width="800" height="450"
+                    loading="eager" fetchpriority="high">
+                <figcaption>TECHNICAL SEO: Your complete guide to mastering this tool</figcaption>
+            </figure>
 
             <details class="toc" open>
                 <summary>Table of Contents</summary>
@@ -673,7 +743,7 @@
             </div>
 
             <div class="tool-card">
-                <h3>⚡ Check Your Meta Tags</h3>
+                <h3>? Check Your Meta Tags</h3>
                 <p>Is your HTML structure correct? Paste your URL or code to validate SEO tags instantly.</p>
                 <a href="https://www.codeformatter.in/" class="cta-btn-primary" style="display:inline-block;">
                     Open HTML Validator
@@ -721,7 +791,7 @@ Sitemap: https://codeformatter.in//sitemap.xml</code></pre>
                 <i class="fas fa-tachometer-alt"></i>
                 <div class="callout-content">
                     <h4>The Compounding Effect</h4>
-                    <p>Core Web Vitals don't just affect rankings directly—they improve **user behavior signals** (lower
+                    <p>Core Web Vitals don't just affect rankings directly�they improve **user behavior signals** (lower
                         bounce rate, longer sessions, higher engagement) which are even stronger ranking factors. Sites
                         that pass all 3 Core Web Vitals have **42% better overall SEO performance** (BrightEdge 2025
                         study).</p>
@@ -743,18 +813,18 @@ Sitemap: https://codeformatter.in//sitemap.xml</code></pre>
             </ol>
 
             <h2>Real-World Migration Case Studies</h2>
-            <p>Companies that switched from CSR to SSR/SSG—and what happened to their organic traffic:</p>
+            <p>Companies that switched from CSR to SSR/SSG�and what happened to their organic traffic:</p>
 
-            <h3>Hulu (2020: React SPA → Next.js SSR)</h3>
+            <h3>Hulu (2020: React SPA ? Next.js SSR)</h3>
             <ul>
                 <li>**Before:** Custom React SPA with client-side routing, 4.2s Time to Interactive (TTI)</li>
                 <li>**After:** Next.js SSR for show pages, SSG for marketing pages</li>
                 <li>**Result:** **50% increase in organic search traffic** within 6 months (reported at Next.js Conf
                     2021)</li>
-                <li>**LCP improvement:** 4.2s → 1.8s (58% faster)</li>
+                <li>**LCP improvement:** 4.2s ? 1.8s (58% faster)</li>
             </ul>
 
-            <h3>Twitch (2022: JavaScript-Heavy → Partial SSR)</h3>
+            <h3>Twitch (2022: JavaScript-Heavy ? Partial SSR)</h3>
             <ul>
                 <li>**Problem:** Directory pages (game categories) were CSR, invisible to Google</li>
                 <li>**Solution:** Migrated directory/category pages to Next.js SSR, kept dashboard as CSR
@@ -763,7 +833,7 @@ Sitemap: https://codeformatter.in//sitemap.xml</code></pre>
                     improvement)</li>
             </ul>
 
-            <h3>TripAdvisor (2019: SPA Experiment Failure → SSG)</h3>
+            <h3>TripAdvisor (2019: SPA Experiment Failure ? SSG)</h3>
             <ul>
                 <li>**Experiment:** Rebuilt hotel pages as React SPA for better UX</li>
                 <li>**Result:** **80% drop in organic traffic** within 3 weeks (Google couldn't index dynamic
@@ -774,7 +844,7 @@ Sitemap: https://codeformatter.in//sitemap.xml</code></pre>
             </ul>
 
             <div class="tool-card">
-                <h3>📊 Validate Your Structured Data</h3>
+                <h3>?? Validate Your Structured Data</h3>
                 <p>Adding JSON-LD schemas? Test them with Google's Rich Results validator to ensure your Article,
                     BreadcrumbList, and FAQPage markup is correct.</p>
                 <a href="index.html" class="cta-btn-primary" style="display:inline-block;">
@@ -867,7 +937,7 @@ Sitemap: https://codeformatter.in//sitemap.xml</code></pre>
 
                     <h3>2. Coverage Report</h3>
                     <ul>
-                        <li>**Valid:** Pages indexed successfully ✅</li>
+                        <li>**Valid:** Pages indexed successfully ?</li>
                         <li>**Excluded:** Pages blocked (check robots.txt, noindex meta tags)</li>
                         <li>**Errors:** Critical issues (404s, server errors, redirect loops)</li>
                     </ul>
@@ -957,7 +1027,7 @@ Sitemap: https://codeformatter.in//sitemap.xml</code></pre>
                                 **Step-by-step migration path:** (1) **Create Next.js app:** `npx
                                 create-next-app@latest` with App Router. (2) **Copy components:** Move `src/components`
                                 to `app/components` (no changes needed). (3) **Convert routes:** React Router `<Route
-                                    path="/about">` → Next.js file-based routing `app/about/page.tsx`. (4) **Replace
+                                    path="/about">` ? Next.js file-based routing `app/about/page.tsx`. (4) **Replace
                                     React Helmet:** Remove `react-helmet-async`, use Next.js `export const metadata =
                                     {}` in `page.tsx`. (5) **Handle client-side state:** Wrap client components with
                                     `'use client'` directive (useState, useEffect, browser APIs). (6) **API routes:**
@@ -988,7 +1058,7 @@ Sitemap: https://codeformatter.in//sitemap.xml</code></pre>
                                 even if bots see fast HTML (Core Web Vitals based on real users, not bots). (4)
                                 **Delay:** Caching means content updates not instantly visible to Google. **Verdict:**
                                 Use prerendering only as **temporary stopgap** (3-6 months) while planning Next.js
-                                migration. Don't use long-term—you're paying monthly fees to work around a solvable
+                                migration. Don't use long-term�you're paying monthly fees to work around a solvable
                                 problem.
                             </div>
                         </details>
@@ -1002,7 +1072,7 @@ Sitemap: https://codeformatter.in//sitemap.xml</code></pre>
                             </summary>
                             <div
                                 style="padding: 0 20px 20px 20px; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
-                                **Problem:** In React Router SPA, URL changes (e.g., `/blog/post-1` → `/blog/post-2`)
+                                **Problem:** In React Router SPA, URL changes (e.g., `/blog/post-1` ? `/blog/post-2`)
                                 but `
                                 <link rel="canonical">` in `
 
@@ -1013,7 +1083,7 @@ Sitemap: https://codeformatter.in//sitemap.xml</code></pre>
                                     Canonical auto-updated per page. In `app/blog/[slug]/page.tsx` add `export const
                                     metadata = { alternates: { canonical: 'https://yoursite.com/blog/slug' } }`. (3)
                                     **Absolute vs relative:** Always use **absolute URLs** (`https://example.com/page`)
-                                    not relative (`/page`)—Google docs specify absolute. **Common mistake:** Forgetting
+                                    not relative (`/page`)�Google docs specify absolute. **Common mistake:** Forgetting
                                     trailing slash consistency (`/blog/` vs `/blog`). Pick one convention, use
                                     everywhere, set canonical to preferred version. Next.js handles this automatically.
                             </div>
@@ -1035,12 +1105,12 @@ Sitemap: https://codeformatter.in//sitemap.xml</code></pre>
                         work remain invisible. Treat SEO as a technical requirement, not a marketing afterthought.</p>
 
                     <p>The data doesn't lie: Sites with **good Core Web Vitals have 28% higher rank probability**
-                        (HTTPArchive 2025), and real-world migrations prove it—Hulu saw **50% organic growth**, Twitch
+                        (HTTPArchive 2025), and real-world migrations prove it�Hulu saw **50% organic growth**, Twitch
                         climbed **40% in rankings**, and TripAdvisor learned the hard way that **80% traffic drops**
                         happen when you ignore SEO fundamentals.</p>
 
                     <p>If you're still running Create React App in 2026, you're fighting with one hand tied behind your
-                        back. The migration to Next.js isn't just about SEO—it's about **developer experience**
+                        back. The migration to Next.js isn't just about SEO�it's about **developer experience**
                         (automatic code splitting, image optimization, TypeScript by default) and **user experience**
                         (instant page loads with SSG/ISR).</p>
 
@@ -1065,17 +1135,17 @@ Sitemap: https://codeformatter.in//sitemap.xml</code></pre>
         </div>
 
         <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="index.html"><i class="fas fa-home"></i> Home</a>
-                <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
-                <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
-                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+                    <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+                    <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                </div>
+                <p class="footer-copyright"> 2026 Code Formatter. All rights reserved.</p>
             </div>
-            <p class="footer-copyright"> 2026 Code Formatter. All rights reserved.</p>
-        </div>
-    </footer>
+        </footer>
     </div>
 
     <div class="sticky-cta">

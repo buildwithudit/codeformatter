@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -14,6 +14,7 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
     <link rel="canonical" href="https://www.codeformatter.in/blog-image-opt.html">
 
     <meta property="og:title" content="WebP vs PNG vs AVIF: Stop Killing Your LCP Score">
@@ -26,6 +27,43 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Enhanced JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Article",
+                "@id": "https://www.codeformatter.in/blog-image-opt.html#article",
+                "headline": "Image Optimization: Complete Web Performance Guide (2026)",
+                "description": "Master image optimization for web. Learn formats, compression, lazy loading, and Core Web Vitals.",
+                "image": "https://www.codeformatter.in/image-opt-blog.png",
+                "author": {"@type": "Person", "name": "Udit Sharma", "url": "https://www.codeformatter.in/about.html"},
+                "datePublished": "2026-01-02",
+                "dateModified": "2026-01-17",
+                "publisher": {"@type": "Organization", "name": "Code Formatter", "logo": {"@type": "ImageObject", "url": "https://www.codeformatter.in/favicon.svg"}},
+                "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.codeformatter.in/blog-image-opt.html"}
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+                    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.codeformatter.in/blog.html"},
+                    {"@type": "ListItem", "position": 3, "name": "Image Optimization Guide"}
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {"@type": "Question", "name": "Which image format is best for web?", "acceptedAnswer": {"@type": "Answer", "text": "WebP offers best compression. Use AVIF for cutting-edge, JPEG for compatibility, PNG for transparency."}},
+                    {"@type": "Question", "name": "How does image size affect LCP?", "acceptedAnswer": {"@type": "Answer", "text": "Large images delay LCP (Largest Contentful Paint). Optimize hero images for fast initial load."}},
+                    {"@type": "Question", "name": "Should I use lazy loading?", "acceptedAnswer": {"@type": "Answer", "text": "Yes for below-the-fold images. Don't lazy-load hero images�they should load immediately."}}
+                ]
+            }
+        ]
+    }
+    </script>
 
     <style>
         /* --- CORE VARIABLES --- */
@@ -124,7 +162,9 @@
         }
 
         .brand-logo {
-            font-weight: 700; color: #3b82f6; text-decoration: none;
+            font-weight: 700;
+            color: #3b82f6;
+            text-decoration: none;
             font-size: 0.9rem;
             letter-spacing: -0.5px;
         }
@@ -491,6 +531,7 @@
 
         /* --- FOOTER --- */
         footer {
+            padding-bottom: 100px; /* Space for sticky CTA */
             margin-top: 80px;
             padding: 30px 0;
             border-top: 1px solid var(--border);
@@ -553,6 +594,27 @@
                 font-size: 0.8rem;
             }
         }
+    
+        /* Featured Image Styles */
+        .featured-image {
+            margin: 2rem 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+        }
+        .featured-image figcaption {
+            text-align: center;
+            padding: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
     </style>
 </head>
 
@@ -575,6 +637,14 @@
                 <span><i class="far fa-calendar-alt"></i> Jan 29, 2026</span>
                 <span><i class="far fa-clock"></i> 14 Min Read</span>
             </div>
+
+            <!-- Featured Image -->
+            <figure class="featured-image">
+                <img src="https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?q=80&w=800&auto=format&fit=crop" 
+                    alt="IMAGE OPT - Complete Guide" width="800" height="450"
+                    loading="eager" fetchpriority="high">
+                <figcaption>IMAGE OPT: Your complete guide to mastering this tool</figcaption>
+            </figure>
 
             <details class="toc" open>
                 <summary>Table of Contents</summary>
@@ -633,7 +703,7 @@ hero.avif ......... 85 KB    <span class="token-val">(Next-Gen / The Winner)</sp
             </p>
 
             <div class="tool-card">
-                <h3>⚡ Convert Images Instantly</h3>
+                <h3>? Convert Images Instantly</h3>
                 <p>Stop uploading heavy PNGs. Use our free tool to convert images to WebP/AVIF with the perfect
                     compression settings.</p>
                 <a href="https://www.codeformatter.in/" class="cta-btn-primary" style="display:inline-block;">
@@ -746,7 +816,7 @@ cwebp -q 80 image.png -o image.webp</code></pre>
                 reduces total page weight by 60-70%.</p>
 
             <div class="tool-card">
-                <h3>🚀 Optimize Your Images</h3>
+                <h3>?? Optimize Your Images</h3>
                 <p>Don't let heavy images kill your Core Web Vitals score. Use our compression tools to convert and
                     optimize in seconds.</p>
                 <a href="index.html" class="cta-btn-primary" style="display:inline-block;">
@@ -960,7 +1030,7 @@ cwebp -q 80 image.png -o image.webp</code></pre>
                     tag with WebP and JPG fallbacks. Add `srcset` for responsive sizing. Lazy load everything below the
                     fold. Test with PageSpeed Insights. Watch your LCP drop from 4s to <2s.< /p>
 
-                        <p>Remember: <strong>Users don't wait for slow sites—they bounce to faster competitors</strong>.
+                        <p>Remember: <strong>Users don't wait for slow sites�they bounce to faster competitors</strong>.
                             Optimize today.</p>
 
         </article>
@@ -977,17 +1047,17 @@ cwebp -q 80 image.png -o image.webp</code></pre>
         </div>
 
         <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="index.html"><i class="fas fa-home"></i> Home</a>
-                <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
-                <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
-                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+                    <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+                    <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                </div>
+                <p class="footer-copyright"> 2026 Code Formatter. All rights reserved.</p>
             </div>
-            <p class="footer-copyright"> 2026 Code Formatter. All rights reserved.</p>
-        </div>
-    </footer>
+        </footer>
     </div>
 
     <div class="sticky-cta">

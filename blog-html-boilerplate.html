@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -14,6 +14,7 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
     <link rel="canonical" href="https://www.codeformatter.in/blog-html-boilerplate.html">
 
     <meta property="og:title" content="The Ultimate HTML5 Boilerplate (2026)">
@@ -26,6 +27,54 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Enhanced JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Article",
+                "@id": "https://www.codeformatter.in/blog-html-boilerplate.html#article",
+                "headline": "HTML Boilerplate: Complete Starter Template Guide (2026)",
+                "description": "Create professional HTML templates. Learn essential meta tags, SEO setup, and modern best practices.",
+                "image": "https://www.codeformatter.in/html-boilerplate-blog.png",
+                "author": {"@type": "Person", "name": "Udit Sharma", "url": "https://www.codeformatter.in/about.html"},
+                "datePublished": "2026-01-02",
+                "dateModified": "2026-01-17",
+                "publisher": {"@type": "Organization", "name": "Code Formatter", "logo": {"@type": "ImageObject", "url": "https://www.codeformatter.in/favicon.svg"}},
+                "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.codeformatter.in/blog-html-boilerplate.html"}
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+                    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.codeformatter.in/blog.html"},
+                    {"@type": "ListItem", "position": 3, "name": "HTML Boilerplate Guide"}
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {"@type": "Question", "name": "What is an HTML boilerplate?", "acceptedAnswer": {"@type": "Answer", "text": "A boilerplate is a pre-made HTML template with essential meta tags, viewport settings, and common elements."}},
+                    {"@type": "Question", "name": "What meta tags are essential?", "acceptedAnswer": {"@type": "Answer", "text": "charset, viewport, title, description, and og:tags for social sharing are essential."}},
+                    {"@type": "Question", "name": "Should I include all meta tags?", "acceptedAnswer": {"@type": "Answer", "text": "Include what you need. At minimum: charset, viewport, title, description, and favicon."}}
+                ]
+            },
+            {
+                "@type": "HowTo",
+                "name": "How to Create HTML Boilerplate",
+                "description": "Generate professional HTML templates",
+                "step": [
+                    {"@type": "HowToStep", "name": "Select Options", "text": "Choose features (SEO, social, PWA)"},
+                    {"@type": "HowToStep", "name": "Configure", "text": "Set title and meta descriptions"},
+                    {"@type": "HowToStep", "name": "Generate", "text": "Click Generate to create template"},
+                    {"@type": "HowToStep", "name": "Download", "text": "Copy or download the boilerplate"}
+                ]
+            }
+        ]
+    }
+    </script>
 
     <style>
         /* --- CORE VARIABLES --- */
@@ -124,7 +173,9 @@
         }
 
         .brand-logo {
-            font-weight: 700; color: #3b82f6; text-decoration: none;
+            font-weight: 700;
+            color: #3b82f6;
+            text-decoration: none;
             font-size: 0.9rem;
             letter-spacing: -0.5px;
         }
@@ -501,6 +552,7 @@
 
         /* --- FOOTER --- */
         footer {
+            padding-bottom: 100px; /* Space for sticky CTA */
             margin-top: 80px;
             padding: 30px 0;
             border-top: 1px solid var(--border);
@@ -563,6 +615,27 @@
                 font-size: 0.8rem;
             }
         }
+    
+        /* Featured Image Styles */
+        .featured-image {
+            margin: 2rem 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+        }
+        .featured-image figcaption {
+            text-align: center;
+            padding: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
     </style>
 </head>
 
@@ -585,6 +658,14 @@
                 <span><i class="far fa-calendar-alt"></i> Jan 29, 2026</span>
                 <span><i class="far fa-clock"></i> 10 Min Read</span>
             </div>
+
+            <!-- Featured Image -->
+            <figure class="featured-image">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop" 
+                    alt="HTML BOILERPLATE - Complete Guide" width="800" height="450"
+                    loading="eager" fetchpriority="high">
+                <figcaption>HTML BOILERPLATE: Your complete guide to mastering this tool</figcaption>
+            </figure>
 
             <details class="toc" open>
                 <summary>Table of Contents</summary>
@@ -659,7 +740,7 @@
             </div>
 
             <div class="tool-card">
-                <h3>⚡ Validate Your HTML</h3>
+                <h3>? Validate Your HTML</h3>
                 <p>One missing closing tag can break your layout. Check your code instantly.</p>
                 <a href="https://www.codeformatter.in/" class="cta-btn-primary" style="display:inline-block;">
                     Open HTML Validator
@@ -745,7 +826,7 @@
                 response headers (Nginx, Apache, or CDN) for full protection.</p>
 
             <div class="tool-card">
-                <h3>🛠️ Test Your HTML Template</h3>
+                <h3>??? Test Your HTML Template</h3>
                 <p>Before deploying, validate your boilerplate with our HTML checker to catch missing tags and syntax
                     errors.</p>
                 <a href="index.html" class="cta-btn-primary" style="display:inline-block;">
@@ -781,7 +862,7 @@
             <ul>
                 <li><strong>W3C Markup Validator:</strong> `validator.w3.org` - Catches unclosed tags, invalid
                     attributes.</li>
-                <li><strong>Lighthouse (Chrome DevTools):</strong> Audits SEO, accessibility, and performance—including
+                <li><strong>Lighthouse (Chrome DevTools):</strong> Audits SEO, accessibility, and performance�including
                     meta tag issues.</li>
             </ul>
 
@@ -900,17 +981,17 @@ export default defineConfig({
                     <li><strong>`<nav>`:</strong> For navigation menus.</li>
                     <li><strong>`<aside>`:</strong> For sidebars or tangentially related content.</li>
                     <li><strong>`<header>` / `<footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="index.html"><i class="fas fa-home"></i> Home</a>
-                <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
-                <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
-                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
-            </div>
-            <p class="footer-copyright"> 2026 Code Formatter. All rights reserved.</p>
-        </div>
-    </footer>
+                                    <div class="footer-content">
+                                        <div class="footer-links">
+                                            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                                            <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+                                            <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+                                            <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                                            <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                                        </div>
+                                        <p class="footer-copyright"> 2026 Code Formatter. All rights reserved.</p>
+                                    </div>
+                                </footer>
             </div>
 
             <div class="sticky-cta">

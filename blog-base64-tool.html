@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -13,6 +13,7 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
     <link rel="canonical" href="https://www.codeformatter.in/blog-base64-tool.html">
     <meta property="og:title" content="Base64 Encode/Decode: The Definitive Guide">
     <meta property="og:description"
@@ -24,6 +25,55 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Enhanced JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Article",
+                "@id": "https://www.codeformatter.in/blog-base64-tool.html#article",
+                "headline": "Base64 Encoder/Decoder: Complete Guide (2026)",
+                "description": "Master Base64 encoding and decoding for secure data transfer. Learn when and how to use Base64 effectively.",
+                "image": "https://www.codeformatter.in/base64-tool-blog.png",
+                "author": {"@type": "Person", "name": "Udit Sharma", "url": "https://www.codeformatter.in/about.html"},
+                "datePublished": "2026-01-02",
+                "dateModified": "2026-01-17",
+                "publisher": {"@type": "Organization", "name": "Code Formatter", "logo": {"@type": "ImageObject", "url": "https://www.codeformatter.in/favicon.svg"}},
+                "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.codeformatter.in/blog-base64-tool.html"}
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+                    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.codeformatter.in/blog.html"},
+                    {"@type": "ListItem", "position": 3, "name": "Base64 Tool Guide"}
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {"@type": "Question", "name": "What is Base64 encoding?", "acceptedAnswer": {"@type": "Answer", "text": "Base64 converts binary data to ASCII text, making it safe to transfer over text-based protocols like email or JSON."}},
+                    {"@type": "Question", "name": "Is Base64 encryption?", "acceptedAnswer": {"@type": "Answer", "text": "No. Base64 is encoding, not encryption. Anyone can decode Base64 data. Use encryption for security."}},
+                    {"@type": "Question", "name": "Why is Base64 33% larger?", "acceptedAnswer": {"@type": "Answer", "text": "Base64 uses 6 bits per character instead of 8, requiring more characters to represent the same data."}}
+                ]
+            },
+            {
+                "@type": "HowTo",
+                "name": "How to Encode/Decode Base64 Online",
+                "description": "Convert data to and from Base64 encoding",
+                "step": [
+                    {"@type": "HowToStep", "name": "Paste Data", "text": "Paste text or Base64 string"},
+                    {"@type": "HowToStep", "name": "Select Mode", "text": "Choose Encode or Decode"},
+                    {"@type": "HowToStep", "name": "Convert", "text": "Click convert to process"},
+                    {"@type": "HowToStep", "name": "Copy", "text": "Copy the result"}
+                ]
+            }
+        ]
+    }
+    </script>
+
     <style>
         :root {
             --bg-body: #09090b;
@@ -107,7 +157,9 @@
         }
 
         .brand-logo {
-            font-weight: 700; color: #3b82f6; text-decoration: none;
+            font-weight: 700;
+            color: #3b82f6;
+            text-decoration: none;
             font-size: .9rem;
             letter-spacing: -.5px
         }
@@ -508,6 +560,7 @@
         }
 
         footer {
+            padding-bottom: 100px; /* Space for sticky CTA */
             margin-top: 80px;
             padding: 30px 0;
             border-top: 1px solid var(--border);
@@ -566,6 +619,48 @@
                 font-size: .8rem
             }
         }
+    
+        /* Featured Image Styles */
+        .featured-image {
+            margin: 2rem 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+        }
+        .featured-image figcaption {
+            text-align: center;
+            padding: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+    
+        /* Workflow Diagram Styles */
+        .workflow-diagram {
+            margin: 2rem 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .workflow-diagram img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+        }
+        .workflow-diagram figcaption {
+            text-align: center;
+            padding: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
     </style>
 </head>
 
@@ -585,6 +680,14 @@
                 <span><i class="far fa-calendar-alt"></i> Jan 2, 2026</span>
                 <span><i class="far fa-clock"></i> 14 Min Read</span>
             </div>
+
+            <!-- Featured Image -->
+            <figure class="featured-image">
+                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop" 
+                    alt="BASE64 TOOL - Complete Guide" width="800" height="450"
+                    loading="eager" fetchpriority="high">
+                <figcaption>BASE64 TOOL: Your complete guide to mastering this tool</figcaption>
+            </figure>
             <details class="toc" open>
                 <summary>Table of Contents</summary>
                 <ul>
@@ -608,6 +711,14 @@
                     development experience</strong>.</p>
 
             <h2 id="how-it-works">How Base64 Actually Works</h2>
+
+            <!-- Workflow Diagram -->
+            <figure class="workflow-diagram">
+                <img src="workflow-encoder.png" 
+                    alt="BASE64 TOOL Workflow - Step by Step Guide" width="800" height="300"
+                    loading="lazy">
+                <figcaption>How to use BASE64 TOOL - Simple 3-step workflow</figcaption>
+            </figure>
 
             <p>Computers store data as bytes (8 bits). Text protocols (like email or HTTP) sometimes choke on certain
                 byte values (like null bytes or control characters). Base64 solves this by translating
@@ -641,7 +752,7 @@
 
             <h2 id="use-cases">When to Use It (And When Not To)</h2>
 
-            <h3>✅ Good Use Cases</h3>
+            <h3>? Good Use Cases</h3>
             <ul>
                 <li><strong>Embedding small icons (Data URIs):</strong> Reduces HTTP requests for tiny images (e.g.,
                     social icons, spinners).</li>
@@ -652,7 +763,7 @@
                     (but needs HTTPS!).</li>
             </ul>
 
-            <h3>❌ Bad Use Cases</h3>
+            <h3>? Bad Use Cases</h3>
             <ul>
                 <li><strong>Embedding large images:</strong> Bloats the HTML/CSS, blocks rendering, and prevents
                     caching.</li>
@@ -847,17 +958,17 @@ fileInput.<span class="token-function">addEventListener</span>(<span class="toke
         </article>
 
         <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="index.html"><i class="fas fa-home"></i> Home</a>
-                <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
-                <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
-                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+                    <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+                    <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                </div>
+                <p class="footer-copyright"> 2026 Code Formatter. All rights reserved.</p>
             </div>
-            <p class="footer-copyright"> 2026 Code Formatter. All rights reserved.</p>
-        </div>
-    </footer>
+        </footer>
     </div>
 
     <div class="sticky-cta">

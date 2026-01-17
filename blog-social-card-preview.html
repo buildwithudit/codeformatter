@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -13,6 +13,7 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
     <link rel="canonical" href="https://www.codeformatter.in/blog-social-card-preview.html">
     <meta property="og:title" content="Social Card Preview: The Ultimate Guide to Link Unfurling">
     <meta property="og:description" content="Why your links look broken on Slack and how to fix them.">
@@ -23,6 +24,55 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Enhanced JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Article",
+                "@id": "https://www.codeformatter.in/blog-social-card-preview.html#article",
+                "headline": "Social Card Preview: OG Tags & Twitter Cards Guide (2026)",
+                "description": "Preview and debug Open Graph and Twitter Card meta tags. Optimize social media share previews.",
+                "image": "https://www.codeformatter.in/social-card-preview-blog.png",
+                "author": {"@type": "Person", "name": "Udit Sharma", "url": "https://www.codeformatter.in/about.html"},
+                "datePublished": "2026-01-02",
+                "dateModified": "2026-01-17",
+                "publisher": {"@type": "Organization", "name": "Code Formatter", "logo": {"@type": "ImageObject", "url": "https://www.codeformatter.in/favicon.svg"}},
+                "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.codeformatter.in/blog-social-card-preview.html"}
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+                    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.codeformatter.in/blog.html"},
+                    {"@type": "ListItem", "position": 3, "name": "Social Card Preview Guide"}
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {"@type": "Question", "name": "What are Open Graph tags?", "acceptedAnswer": {"@type": "Answer", "text": "OG tags control how your page appears when shared on Facebook, LinkedIn, and other social platforms."}},
+                    {"@type": "Question", "name": "What size should my OG image be?", "acceptedAnswer": {"@type": "Answer", "text": "Recommended size is 1200x630 pixels for optimal display across all platforms."}},
+                    {"@type": "Question", "name": "How do I test my social cards?", "acceptedAnswer": {"@type": "Answer", "text": "Use our preview tool or platform validators like Facebook Debugger and Twitter Card Validator."}}
+                ]
+            },
+            {
+                "@type": "HowTo",
+                "name": "How to Preview Social Cards",
+                "description": "Test your OG and Twitter Card meta tags",
+                "step": [
+                    {"@type": "HowToStep", "name": "Enter URL", "text": "Enter your page URL"},
+                    {"@type": "HowToStep", "name": "Fetch", "text": "Tool fetches your meta tags"},
+                    {"@type": "HowToStep", "name": "Preview", "text": "See how cards appear on each platform"},
+                    {"@type": "HowToStep", "name": "Debug", "text": "Fix any missing or incorrect tags"}
+                ]
+            }
+        ]
+    }
+    </script>
+
     <style>
         :root {
             --bg-body: #09090b;
@@ -106,7 +156,9 @@
         }
 
         .brand-logo {
-            font-weight: 700; color: #3b82f6; text-decoration: none;
+            font-weight: 700;
+            color: #3b82f6;
+            text-decoration: none;
             font-size: .9rem;
             letter-spacing: -.5px
         }
@@ -507,6 +559,7 @@
         }
 
         footer {
+            padding-bottom: 100px; /* Space for sticky CTA */
             margin-top: 80px;
             padding: 30px 0;
             border-top: 1px solid var(--border);
@@ -565,6 +618,48 @@
                 font-size: .8rem
             }
         }
+    
+        /* Featured Image Styles */
+        .featured-image {
+            margin: 2rem 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+        }
+        .featured-image figcaption {
+            text-align: center;
+            padding: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+    
+        /* Workflow Diagram Styles */
+        .workflow-diagram {
+            margin: 2rem 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .workflow-diagram img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+        }
+        .workflow-diagram figcaption {
+            text-align: center;
+            padding: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
     </style>
 </head>
 
@@ -584,6 +679,14 @@
                 <span><i class="far fa-calendar-alt"></i> Jan 2, 2026</span>
                 <span><i class="far fa-clock"></i> 11 Min Read</span>
             </div>
+
+            <!-- Featured Image -->
+            <figure class="featured-image">
+                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=800&auto=format&fit=crop" 
+                    alt="SOCIAL CARD PREVIEW - Complete Guide" width="800" height="450"
+                    loading="eager" fetchpriority="high">
+                <figcaption>SOCIAL CARD PREVIEW: Your complete guide to mastering this tool</figcaption>
+            </figure>
             <details class="toc" open>
                 <summary>Table of Contents</summary>
                 <ul>
@@ -672,7 +775,7 @@
 
             <h2 id="debugging">Tools for Debugging</h2>
 
-            <p>If you update your image but Facebook still shows the old one, it’s because of <strong>Caching</strong>.
+            <p>If you update your image but Facebook still shows the old one, it�s because of <strong>Caching</strong>.
                 Use these official debugger tools to force a "re-scrape."</p>
 
             <ul>
@@ -762,17 +865,17 @@
         </article>
 
         <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="index.html"><i class="fas fa-home"></i> Home</a>
-                <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
-                <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
-                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+                    <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+                    <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                </div>
+                <p class="footer-copyright"> 2026 Code Formatter. All rights reserved.</p>
             </div>
-            <p class="footer-copyright"> 2026 Code Formatter. All rights reserved.</p>
-        </div>
-    </footer>
+        </footer>
     </div>
 
     <div class="sticky-cta">

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -13,6 +13,7 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
     <link rel="canonical" href="https://www.codeformatter.in/blog-url-encoder.html">
     <meta property="og:title" content="URL Encoder: Professional Guide to URL Encoding">
     <meta property="og:description"
@@ -24,6 +25,55 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Enhanced JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Article",
+                "@id": "https://www.codeformatter.in/blog-url-encoder.html#article",
+                "headline": "URL Encoder/Decoder: Complete Guide (2026)",
+                "description": "Master URL encoding and decoding for web development. Learn percent-encoding and special character handling.",
+                "image": "https://www.codeformatter.in/url-encoder-blog.png",
+                "author": {"@type": "Person", "name": "Udit Sharma", "url": "https://www.codeformatter.in/about.html"},
+                "datePublished": "2026-01-02",
+                "dateModified": "2026-01-17",
+                "publisher": {"@type": "Organization", "name": "Code Formatter", "logo": {"@type": "ImageObject", "url": "https://www.codeformatter.in/favicon.svg"}},
+                "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.codeformatter.in/blog-url-encoder.html"}
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+                    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.codeformatter.in/blog.html"},
+                    {"@type": "ListItem", "position": 3, "name": "URL Encoder Guide"}
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {"@type": "Question", "name": "What is URL encoding?", "acceptedAnswer": {"@type": "Answer", "text": "URL encoding (percent-encoding) converts special characters to %XX format for safe transmission in URLs."}},
+                    {"@type": "Question", "name": "When should I URL encode?", "acceptedAnswer": {"@type": "Answer", "text": "Encode when passing data in URLs, query strings, or form submissions containing special characters."}},
+                    {"@type": "Question", "name": "What characters need encoding?", "acceptedAnswer": {"@type": "Answer", "text": "Spaces, &, =, ?, #, and non-ASCII characters must be encoded. Letters, numbers, and -_.~ are safe."}}
+                ]
+            },
+            {
+                "@type": "HowTo",
+                "name": "How to Encode URLs Online",
+                "description": "Encode special characters for safe URL transmission",
+                "step": [
+                    {"@type": "HowToStep", "name": "Paste URL", "text": "Paste your URL or text"},
+                    {"@type": "HowToStep", "name": "Select Mode", "text": "Choose Encode or Decode"},
+                    {"@type": "HowToStep", "name": "Convert", "text": "Click convert to process"},
+                    {"@type": "HowToStep", "name": "Use", "text": "Copy the encoded/decoded result"}
+                ]
+            }
+        ]
+    }
+    </script>
+
     <style>
         :root {
             --bg-body: #09090b;
@@ -107,7 +157,9 @@
         }
 
         .brand-logo {
-            font-weight: 700; color: #3b82f6; text-decoration: none;
+            font-weight: 700;
+            color: #3b82f6;
+            text-decoration: none;
             font-size: .9rem;
             letter-spacing: -.5px
         }
@@ -504,6 +556,7 @@
         }
 
         footer {
+            padding-bottom: 100px; /* Space for sticky CTA */
             margin-top: 80px;
             padding: 30px 0;
             border-top: 1px solid var(--border);
@@ -562,6 +615,48 @@
                 font-size: .8rem
             }
         }
+    
+        /* Featured Image Styles */
+        .featured-image {
+            margin: 2rem 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+        }
+        .featured-image figcaption {
+            text-align: center;
+            padding: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+    
+        /* Workflow Diagram Styles */
+        .workflow-diagram {
+            margin: 2rem 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .workflow-diagram img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+        }
+        .workflow-diagram figcaption {
+            text-align: center;
+            padding: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
     </style>
 </head>
 
@@ -581,6 +676,14 @@
                 <span><i class="far fa-calendar-alt"></i> Jan 2, 2026</span>
                 <span><i class="far fa-clock"></i> 13 Min Read</span>
             </div>
+
+            <!-- Featured Image -->
+            <figure class="featured-image">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop" 
+                    alt="URL ENCODER - Complete Guide" width="800" height="450"
+                    loading="eager" fetchpriority="high">
+                <figcaption>URL ENCODER: Your complete guide to mastering this tool</figcaption>
+            </figure>
             <details class="toc" open>
                 <summary>Table of Contents</summary>
                 <ul>
@@ -610,7 +713,7 @@
 
             <p><strong>URL encoding</strong> converts special characters into a format that can be safely transmitted
                 over the internet. URLs can only contain a limited set of characters from the ASCII character
-                set—letters, digits, and a few special characters like hyphen and underscore.</p>
+                set�letters, digits, and a few special characters like hyphen and underscore.</p>
 
             <p>Any character outside this safe set must be encoded using the <strong>percent-encoding scheme</strong>: a
                 percent sign <code>%</code> followed by two hexadecimal digits representing the character's byte value.
@@ -619,11 +722,11 @@
             <div class="code-wrapper">
                 <div class="code-header">URL Encoding Examples</div>
                 <pre><code><span class="token-comment">// Original strings with special characters</span>
-<span class="token-string">"Hello World"</span>      → <span class="token-string">"Hello%20World"</span>
-<span class="token-string">"user@example.com"</span> → <span class="token-string">"user%40example.com"</span>
-<span class="token-string">"50% discount"</span>    → <span class="token-string">"50%25%20discount"</span>
-<span class="token-string">"café"</span>            → <span class="token-string">"caf%C3%A9"</span>
-<span class="token-string">"path/to/file"</span>    → <span class="token-string">"path%2Fto%2Ffile"</span></code></pre>
+<span class="token-string">"Hello World"</span>      ? <span class="token-string">"Hello%20World"</span>
+<span class="token-string">"user@example.com"</span> ? <span class="token-string">"user%40example.com"</span>
+<span class="token-string">"50% discount"</span>    ? <span class="token-string">"50%25%20discount"</span>
+<span class="token-string">"caf�"</span>            ? <span class="token-string">"caf%C3%A9"</span>
+<span class="token-string">"path/to/file"</span>    ? <span class="token-string">"path%2Fto%2Ffile"</span></code></pre>
             </div>
 
             <p>Notice how spaces become <code>%20</code>, the @ symbol becomes <code>%40</code>, and even the percent
@@ -636,14 +739,14 @@
 
             <h3>1. Query String Parameters</h3>
             <p><strong>Always encode query parameter values.</strong> This is the most common use case. User input,
-                search queries, filter values—all must be encoded before adding to URLs:</p>
+                search queries, filter values�all must be encoded before adding to URLs:</p>
 
             <div class="code-wrapper">
                 <div class="code-header">Query String Encoding</div>
-                <pre><code><span class="token-comment">// ❌ WRONG - Breaks with special characters</span>
+                <pre><code><span class="token-comment">// ? WRONG - Breaks with special characters</span>
 <span class="token-keyword">const</span> url = <span class="token-string">`/search?q=${userInput}`</span>;
 
-<span class="token-comment">// ✅ CORRECT - Encoded safely</span>
+<span class="token-comment">// ? CORRECT - Encoded safely</span>
 <span class="token-keyword">const</span> url = <span class="token-string">`/search?q=${encodeURIComponent(userInput)}`</span>;</code></pre>
             </div>
 
@@ -664,7 +767,7 @@
                 <i class="fas fa-lightbulb"></i>
                 <div class="callout-content">
                     <h4>Expert Insight: Double Encoding Trap</h4>
-                    <p>Never encode data that's already encoded—this creates "double encoding" where <code>%20</code>
+                    <p>Never encode data that's already encoded�this creates "double encoding" where <code>%20</code>
                         becomes <code>%2520</code>. Many bugs stem from encoding data multiple times in different
                         application layers. Always track encoding state carefully.</p>
                 </div>
@@ -718,12 +821,12 @@
 
             <div class="code-wrapper">
                 <div class="code-header">Injection Vulnerability</div>
-                <pre><code><span class="token-comment">// ❌ VULNERABLE - Attacker controls redirect destination</span>
+                <pre><code><span class="token-comment">// ? VULNERABLE - Attacker controls redirect destination</span>
 <span class="token-keyword">const</span> redirect = <span class="token-string">`/redirect?url=${userInput}`</span>;
 <span class="token-comment">// If userInput = "evil.com&admin=true", becomes:</span>
 <span class="token-comment">// /redirect?url=evil.com&admin=true</span>
 
-<span class="token-comment">// ✅ SAFE - Encoded properly</span>
+<span class="token-comment">// ? SAFE - Encoded properly</span>
 <span class="token-keyword">const</span> redirect = <span class="token-string">`/redirect?url=${encodeURIComponent(userInput)}`</span>;
 <span class="token-comment">// Becomes: /redirect?url=evil.com%26admin%3Dtrue (safe)</span></code></pre>
             </div>
@@ -775,7 +878,7 @@ encodeURI(query); <span class="token-comment">// Returns: "C++" (incorrect, inte
                 a nested directory structure.</p>
 
             <h3>Issue 3: Hash Fragments and Anchors</h3>
-            <p>Characters after <code>#</code> aren't sent to servers in HTTP requests—they're processed client-side.
+            <p>Characters after <code>#</code> aren't sent to servers in HTTP requests�they're processed client-side.
                 Encode fragment values for consistency but remember they're never server-visible.</p>
 
             <h3>Issue 4: Reserved Characters in Specific Contexts</h3>
@@ -789,7 +892,7 @@ encodeURI(query); <span class="token-comment">// Returns: "C++" (incorrect, inte
                 <li><strong>Default to encodeURIComponent():</strong> For 95% of use cases (query params, form values),
                     this is the correct function. When in doubt, use this.</li>
                 <li><strong>Never Manually Encode:</strong> Don't try to replace spaces with <code>%20</code>
-                    manually—use built-in functions that handle all edge cases.</li>
+                    manually�use built-in functions that handle all edge cases.</li>
                 <li><strong>Encode Immediately Before Use:</strong> Encode data at the last possible moment before
                     inserting into URLs to avoid double-encoding.</li>
                 <li><strong>Store Original, Not Encoded:</strong> In databases, store original user input, not
@@ -814,17 +917,17 @@ encodeURI(query); <span class="token-comment">// Returns: "C++" (incorrect, inte
             <p>URL encoding international (non-ASCII) characters requires understanding UTF-8 encoding:</p>
 
             <h3>How Unicode Encoding Works</h3>
-            <p>Characters like é, 中, or ñ get converted to UTF-8 bytes, then each byte is percent-encoded:</p>
+            <p>Characters like �, ?, or � get converted to UTF-8 bytes, then each byte is percent-encoded:</p>
 
             <div class="code-wrapper">
                 <div class="code-header">Unicode Encoding Examples</div>
-                <pre><code>encodeURIComponent(<span class="token-string">"café"</span>)     <span class="token-comment">// "caf%C3%A9"</span>
-encodeURIComponent(<span class="token-string">"北京"</span>)     <span class="token-comment">// "%E5%8C%97%E4%BA%AC"</span>
-encodeURIComponent(<span class="token-string">"español"</span>) <span class="token-comment">// "espa%C3%B1ol"</span></code></pre>
+                <pre><code>encodeURIComponent(<span class="token-string">"caf�"</span>)     <span class="token-comment">// "caf%C3%A9"</span>
+encodeURIComponent(<span class="token-string">"??"</span>)     <span class="token-comment">// "%E5%8C%97%E4%BA%AC"</span>
+encodeURIComponent(<span class="token-string">"espa�ol"</span>) <span class="token-comment">// "espa%C3%B1ol"</span></code></pre>
             </div>
 
             <h3>Internationalized Domain Names (IDN)</h3>
-            <p>Domain names with Unicode characters (like münchen.de) use Punycode encoding (starts with
+            <p>Domain names with Unicode characters (like m�nchen.de) use Punycode encoding (starts with
                 <code>xn--</code>). Browsers handle this automatically, but be aware when programmatically constructing
                 URLs.
             </p>
@@ -889,7 +992,7 @@ encodeURIComponent(<span class="token-string">"español"</span>) <span class="to
                         Different URL encoding standards and implementations exist. <strong>RFC 3986</strong> (modern
                         standard) differs slightly from older specs. Some systems use <code>+</code> for spaces, others
                         use <code>%20</code>. Some encode <code>!</code> and <code>*</code>, others don't. This is why
-                        using standard library functions (<code>encodeURIComponent</code>) is critical—they follow
+                        using standard library functions (<code>encodeURIComponent</code>) is critical�they follow
                         current specifications. When consuming third-party APIs, test with their specific encoding
                         requirements and document any quirks.
                     </div>
@@ -906,7 +1009,7 @@ encodeURIComponent(<span class="token-string">"español"</span>) <span class="to
                         <strong>PHP:</strong> <code>urlencode()</code> or <code>rawurlencode()</code>.
                         <strong>Java:</strong> <code>URLEncoder.encode()</code>. <strong>Ruby:</strong>
                         <code>ERB::Util.url_encode()</code>. <strong>Node.js:</strong> <code>encodeURIComponent()</code>
-                        (same as browser). Always use the language's standard library—don't write custom encoding logic,
+                        (same as browser). Always use the language's standard library�don't write custom encoding logic,
                         which inevitably has bugs.
                     </div>
                 </details>
@@ -937,7 +1040,7 @@ encodeURIComponent(<span class="token-string">"español"</span>) <span class="to
                         <strong>Yes, practical limits exist.</strong> While there's no official URL length limit in HTTP
                         specs, browsers and servers impose limits: Most browsers support 2,000-8,000 characters.
                         Internet Explorer (legacy): ~2,083 characters. Apache default: 8,190 characters. Nginx default:
-                        4,096-8,192 characters. Encoded URLs are longer than original (é becomes %C3%A9), so encoding
+                        4,096-8,192 characters. Encoded URLs are longer than original (� becomes %C3%A9), so encoding
                         can push you over limits. For very long data, use POST request bodies instead of URL parameters.
                         As a rule of thumb: keep URLs under 2,000 characters for universal compatibility.
                     </div>
@@ -947,17 +1050,17 @@ encodeURIComponent(<span class="token-string">"español"</span>) <span class="to
         </article>
 
         <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="index.html"><i class="fas fa-home"></i> Home</a>
-                <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
-                <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
-                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+                    <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+                    <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                </div>
+                <p class="footer-copyright"> 2026 Code Formatter. All rights reserved.</p>
             </div>
-            <p class="footer-copyright"> 2026 Code Formatter. All rights reserved.</p>
-        </div>
-    </footer>
+        </footer>
     </div>
 
     <div class="sticky-cta">

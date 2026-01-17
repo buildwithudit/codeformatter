@@ -1,4 +1,4 @@
-Ôªø<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -13,6 +13,7 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
     <link rel="canonical" href="https://www.codeformatter.in/blog-color-converter.html">
     <meta property="og:title" content="Color Converter: Complete Color Format Guide">
     <meta property="og:description"
@@ -24,6 +25,54 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Enhanced JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Article",
+                "@id": "https://www.codeformatter.in/blog-color-converter.html#article",
+                "headline": "Color Converter: HEX to RGB, HSL & CMYK Guide (2026)",
+                "description": "Master color conversion for web design. Convert between HEX, RGB, RGBA, HSL, and CMYK color formats.",
+                "image": "https://www.codeformatter.in/color-converter-blog.png",
+                "author": {"@type": "Person", "name": "Udit Sharma", "url": "https://www.codeformatter.in/about.html"},
+                "datePublished": "2026-01-02",
+                "dateModified": "2026-01-17",
+                "publisher": {"@type": "Organization", "name": "Code Formatter", "logo": {"@type": "ImageObject", "url": "https://www.codeformatter.in/favicon.svg"}},
+                "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.codeformatter.in/blog-color-converter.html"}
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+                    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.codeformatter.in/blog.html"},
+                    {"@type": "ListItem", "position": 3, "name": "Color Converter Guide"}
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {"@type": "Question", "name": "What is the difference between HEX and RGB?", "acceptedAnswer": {"@type": "Answer", "text": "HEX uses hexadecimal notation (#RRGGBB), RGB uses decimal values (0-255). Both represent the same colors."}},
+                    {"@type": "Question", "name": "When should I use HSL vs RGB?", "acceptedAnswer": {"@type": "Answer", "text": "HSL is more intuitive for adjusting color variations (lightness, saturation). RGB is standard for web colors."}},
+                    {"@type": "Question", "name": "Can I convert for print (CMYK)?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! Our tool converts to CMYK for print. Note: screen and print colors may differ."}}
+                ]
+            },
+            {
+                "@type": "HowTo",
+                "name": "How to Convert Colors Online",
+                "description": "Convert between color formats instantly",
+                "step": [
+                    {"@type": "HowToStep", "name": "Enter Color", "text": "Enter a color in any format (HEX, RGB, HSL)"},
+                    {"@type": "HowToStep", "name": "View Conversions", "text": "See instant conversions to all formats"},
+                    {"@type": "HowToStep", "name": "Copy", "text": "Copy the format you need"}
+                ]
+            }
+        ]
+    }
+    </script>
+
     <style>
         :root {
             --bg-body: #09090b;
@@ -107,7 +156,9 @@
         }
 
         .brand-logo {
-            font-weight: 700; color: #3b82f6; text-decoration: none;
+            font-weight: 700;
+            color: #3b82f6;
+            text-decoration: none;
             font-size: .9rem;
             letter-spacing: -.5px
         }
@@ -508,6 +559,7 @@
         }
 
         footer {
+            padding-bottom: 100px; /* Space for sticky CTA */
             margin-top: 80px;
             padding: 30px 0;
             border-top: 1px solid var(--border);
@@ -566,6 +618,48 @@
                 font-size: .8rem
             }
         }
+    
+        /* Featured Image Styles */
+        .featured-image {
+            margin: 2rem 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+        }
+        .featured-image figcaption {
+            text-align: center;
+            padding: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+    
+        /* Workflow Diagram Styles */
+        .workflow-diagram {
+            margin: 2rem 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .workflow-diagram img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+        }
+        .workflow-diagram figcaption {
+            text-align: center;
+            padding: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
     </style>
 </head>
 
@@ -585,6 +679,14 @@
                 <span><i class="far fa-calendar-alt"></i> Jan 2, 2026</span>
                 <span><i class="far fa-clock"></i> 14 Min Read</span>
             </div>
+
+            <!-- Featured Image -->
+            <figure class="featured-image">
+                <img src="https://images.unsplash.com/photo-1541367777708-7905fe3296c0?q=80&w=800&auto=format&fit=crop" 
+                    alt="COLOR CONVERTER - Complete Guide" width="800" height="450"
+                    loading="eager" fetchpriority="high">
+                <figcaption>COLOR CONVERTER: Your complete guide to mastering this tool</figcaption>
+            </figure>
             <details class="toc" open>
                 <summary>Table of Contents</summary>
                 <ul>
@@ -601,12 +703,12 @@
             </details>
 
             <p id="intro"><strong>Color format conversion</strong> enables seamless translation between HEX, RGB, HSL,
-                and CMYK color spaces‚Äîessential for web development, print design, and maintaining consistent brand
+                and CMYK color spacesóessential for web development, print design, and maintaining consistent brand
                 colors across digital and physical media. Understanding color models and conversion mathematics is
                 fundamental to professional design workflows.</p>
 
             <p>According to design tool analytics from 2025, developers and designers perform <strong>over 50 million
-                    color conversions daily</strong> across tools like Figma, Adobe XD, and VS Code‚Äîprimarily converting
+                    color conversions daily</strong> across tools like Figma, Adobe XD, and VS Codeóprimarily converting
                 between HEX (CSS standard) and HSL (intuitive for theming) or RGB (JavaScript canvas APIs). Mastering
                 these conversions accelerates development and prevents costly color inconsistencies.</p>
 
@@ -660,9 +762,9 @@
   hex = hex.<span class="token-function">replace</span>(<span class="token-string">/^#/</span>, <span class="token-string">''</span>);
   
   <span class="token-comment">// Parse hex pairs to decimal</span>
-  <span class="token-keyword">const</span> r = <span class="token-function">parseInt</span>(hex.<span class="token-function">substring</span>(<span class="token-val">0</span>, <span class="token-val">2</span>), <span class="token-val">16</span>); <span class="token-comment">// FF ‚Üí 255</span>
-  <span class="token-keyword">const</span> g = <span class="token-function">parseInt</span>(hex.<span class="token-function">substring</span>(<span class="token-val">2</span>, <span class="token-val">4</span>), <span class="token-val">16</span>); <span class="token-comment">// 57 ‚Üí 87</span>
-  <span class="token-keyword">const</span> b = <span class="token-function">parseInt</span>(hex.<span class="token-function">substring</span>(<span class="token-val">4</span>, <span class="token-val">6</span>), <span class="token-val">16</span>); <span class="token-comment">// 33 ‚Üí 51</span>
+  <span class="token-keyword">const</span> r = <span class="token-function">parseInt</span>(hex.<span class="token-function">substring</span>(<span class="token-val">0</span>, <span class="token-val">2</span>), <span class="token-val">16</span>); <span class="token-comment">// FF ? 255</span>
+  <span class="token-keyword">const</span> g = <span class="token-function">parseInt</span>(hex.<span class="token-function">substring</span>(<span class="token-val">2</span>, <span class="token-val">4</span>), <span class="token-val">16</span>); <span class="token-comment">// 57 ? 87</span>
+  <span class="token-keyword">const</span> b = <span class="token-function">parseInt</span>(hex.<span class="token-function">substring</span>(<span class="token-val">4</span>, <span class="token-val">6</span>), <span class="token-val">16</span>); <span class="token-comment">// 33 ? 51</span>
   
   <span class="token-keyword">return</span> { r, g, b };
 }
@@ -673,7 +775,7 @@
             <h2 id="rgb">RGB: The Digital Color Foundation</h2>
 
             <p><strong>RGB</strong> represents colors via Red, Green, Blue channels (0-255 each). Additive color
-                mixing‚Äîall at 255 = white, all at 0 = black.</p>
+                mixingóall at 255 = white, all at 0 = black.</p>
 
             <div class="code-wrapper">
                 <div class="code-header">RGB in CSS</div>
@@ -715,7 +817,7 @@
             <p><strong>HSL (Hue, Saturation, Lightness)</strong> represents colors intuitively:</p>
 
             <ul>
-                <li><strong>Hue (0-360¬∞):</strong> Color wheel position (0/360=red, 120=green, 240=blue)</li>
+                <li><strong>Hue (0-360∞):</strong> Color wheel position (0/360=red, 120=green, 240=blue)</li>
                 <li><strong>Saturation (0-100%):</strong> Color intensity (0=gray, 100=vivid)</li>
                 <li><strong>Lightness (0-100%):</strong> Brightness (0=black, 50=pure color, 100=white)</li>
             </ul>
@@ -790,11 +892,11 @@
             <h3>All Conversions Summarized</h3>
             <div class="code-wrapper">
                 <div class="code-header">Conversion Path Overview</div>
-                <pre><code><span class="token-comment">/* HEX ‚Üí RGB: Parse hex pairs to decimal */</span>
-<span class="token-comment">/* RGB ‚Üí HEX: Convert decimal to hex, concatenate */</span>
-<span class="token-comment">/* RGB ‚Üí HSL: Complex algorithm (see above) */</span>
-<span class="token-comment">/* HSL ‚Üí RGB: Reverse algorithm with modulo arithmetic */</span>
-<span class="token-comment">/* HEX ‚Üî HSL: Convert via RGB intermediate */</span></code></pre>
+                <pre><code><span class="token-comment">/* HEX ? RGB: Parse hex pairs to decimal */</span>
+<span class="token-comment">/* RGB ? HEX: Convert decimal to hex, concatenate */</span>
+<span class="token-comment">/* RGB ? HSL: Complex algorithm (see above) */</span>
+<span class="token-comment">/* HSL ? RGB: Reverse algorithm with modulo arithmetic */</span>
+<span class="token-comment">/* HEX ? HSL: Convert via RGB intermediate */</span></code></pre>
             </div>
 
             <h3>HSL to RGB Conversion</h3>
@@ -904,8 +1006,8 @@
             <p>Use purpose-based names, not color names:</p>
 
             <ul>
-                <li>‚úÖ <code>--color-primary</code>, <code>--color-danger</code>, <code>--color-success</code></li>
-                <li>‚ùå <code>--color-blue</code>, <code>--color-red</code>, <code>--color-green</code></li>
+                <li>? <code>--color-primary</code>, <code>--color-danger</code>, <code>--color-success</code></li>
+                <li>? <code>--color-blue</code>, <code>--color-red</code>, <code>--color-green</code></li>
             </ul>
 
             <h3>3. Include Alpha Channel Support</h3>
@@ -941,12 +1043,12 @@
                     </summary>
                     <div class="faq-answer">
                         <strong>Use HSL for design systems, RGB/HEX for static colors.</strong> <strong>HSL
-                            advantages:</strong> (1) Intuitive manipulation‚Äîadjust lightness/saturation easily for
+                            advantages:</strong> (1) Intuitive manipulationóadjust lightness/saturation easily for
                         variants. (2) Perfect for theming with CSS variables. (3) Creates consistent color
                         relationships. <strong>HEX/RGB advantages:</strong> (1) More compact. (2) Design tool exports
                         (Figma outputs HEX). (3) Universal familiarity. <strong>Recommendation:</strong> Define colors
                         in HSL for flexibility, convert to HEX/RGB for final CSS if needed. Modern browsers support all
-                        equally‚Äîpick based on maintainability needs. For design systems with dynamic theming, HSL is
+                        equallyópick based on maintainability needs. For design systems with dynamic theming, HSL is
                         superior.
                     </div>
                 </details>
@@ -960,11 +1062,11 @@
                         <strong>Screens use RGB (additive), printers use CMYK (subtractive) color models.</strong>
                         <strong>RGB (screens):</strong> Light-based, millions of colors, vibrant. <strong>CMYK
                             (print):</strong> Ink-based, limited gamut, duller. Many vibrant RGB colors (especially
-                        bright blues, greens) have no CMYK equivalent‚Äîthey get "gamut compressed" to nearest printable
+                        bright blues, greens) have no CMYK equivalentóthey get "gamut compressed" to nearest printable
                         color. <strong>Solution:</strong> (1) Design in CMYK from start for print projects. (2) Use
                         Pantone/spot colors for brand consistency. (3) Request press proofs before large print runs. (4)
-                        Convert RGB‚ÜíCMYK in Adobe apps (handles gamut mapping intelligently). Online converters can
-                        approximate but lack color management‚Äîuse professional software for critical work.
+                        Convert RGB?CMYK in Adobe apps (handles gamut mapping intelligently). Online converters can
+                        approximate but lack color managementóuse professional software for critical work.
                     </div>
                 </details>
 
@@ -980,8 +1082,8 @@
                         instant pass/fail. (2) <strong>Stark plugin (Figma):</strong> Real-time contrast checking during
                         design. (3) <strong>Browser DevTools:</strong> Chrome/Firefox show contrast info in color
                         picker. (4) <strong>Automated testing:</strong> Axe, Pa11y scan entire sites. <strong>Pro
-                            tip:</strong> Build contrast checking into design system‚Äîdefine only AA/AAA compliant color
-                        pairings. Don't let designers pick arbitrary combinations‚Äîprovide pre-validated palette.
+                            tip:</strong> Build contrast checking into design systemódefine only AA/AAA compliant color
+                        pairings. Don't let designers pick arbitrary combinationsóprovide pre-validated palette.
                     </div>
                 </details>
 
@@ -996,9 +1098,9 @@
                         semi-transparent. Text becomes unreadable. <strong>Alpha channel:</strong>
                         <code>rgba(0,0,0,0.5)</code> or <code>#00000080</code> makes background semi-transparent, text
                         stays opaque. <strong>Use cases:</strong> (1) <strong>Alpha:</strong> Overlays, glassmorphism,
-                        subtle backgrounds‚Äîtext remains readable. (2) <strong>Opacity:</strong> Fade animations,
-                        disabled states‚Äîentire element fades. <strong>Common mistake:</strong> Using
-                        <code>opacity</code> for backgrounds thinking text stays solid‚Äîit doesn't. Always use RGBA/HSLA
+                        subtle backgroundsótext remains readable. (2) <strong>Opacity:</strong> Fade animations,
+                        disabled statesóentire element fades. <strong>Common mistake:</strong> Using
+                        <code>opacity</code> for backgrounds thinking text stays solidóit doesn't. Always use RGBA/HSLA
                         for transparent backgrounds with opaque text.
                     </div>
                 </details>
@@ -1010,11 +1112,11 @@
                     </summary>
                     <div class="faq-answer">
                         <strong>Yes, browsers convert to common format automatically.</strong> Animating
-                        <code>color: #FF0000</code> to <code>color: rgb(0,255,0)</code> works‚Äîbrowser converts both to
+                        <code>color: #FF0000</code> to <code>color: rgb(0,255,0)</code> worksóbrowser converts both to
                         RGB, interpolates. <strong>However:</strong> (1) <strong>HEX/RGB interpolation:</strong>
                         Animates through RGB space (sometimes ugly mid-colors). (2) <strong>HSL interpolation:</strong>
-                        Animates through hue wheel‚Äîsmoother color transitions for gradients. (3)
-                        <strong>Performance:</strong> All color formats perform equally‚ÄîGPU handles conversions.
+                        Animates through hue wheelósmoother color transitions for gradients. (3)
+                        <strong>Performance:</strong> All color formats perform equallyóGPU handles conversions.
                         <strong>Best practice:</strong> Use HSL for hue-based animations (rainbow effects, theme
                         transitions). Use RGB/HEX for direct interpolation. CSS Color Level 4 adds interpolation control
                         with <code>color-mix()</code> and <code>color()</code> functions.
@@ -1027,14 +1129,14 @@
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <strong>Use official Pantone libraries or licensed converters‚Äîunofficial conversions are
+                        <strong>Use official Pantone libraries or licensed convertersóunofficial conversions are
                             inaccurate.</strong> Pantone colors are proprietary spot colors (physical ink formulas), not
                         RGB/CMYK equivalents. <strong>Official method:</strong> (1) Pantone Color Bridge guides show
                         "closest RGB/CMYK" matches. (2) Adobe Creative Suite includes licensed Pantone libraries. (3)
                         Pantone Connect app provides digital values. <strong>Problem:</strong> Many Pantones (especially
-                        fluorescents, metallics) have no accurate RGB equivalent‚Äîthey're outside RGB gamut. <strong>For
+                        fluorescents, metallics) have no accurate RGB equivalentóthey're outside RGB gamut. <strong>For
                             branding:</strong> Specify Pantone for print, define closest web-safe RGB separately.
-                        Document both in brand guidelines. Never trust random online converters‚Äîcolors will be off.
+                        Document both in brand guidelines. Never trust random online convertersócolors will be off.
                     </div>
                 </details>
 
@@ -1044,7 +1146,7 @@
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <strong>CSS has 140+ named colors (red, blue, cornflowerblue)‚Äîuse sparingly.</strong> Named
+                        <strong>CSS has 140+ named colors (red, blue, cornflowerblue)óuse sparingly.</strong> Named
                         colors like <code>color: red</code> or <code>color: rebeccapurple</code> are convenient but
                         problematic: (1) <strong>Imprecise:</strong> "red" is <code>#FF0000</code> (too bright for most
                         designs). (2) <strong>Limited palette:</strong> 140 colors insufficient for brands. (3)
@@ -1061,17 +1163,17 @@
         </article>
 
         <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="index.html"><i class="fas fa-home"></i> Home</a>
-                <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
-                <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
-                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+                    <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+                    <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                </div>
+                <p class="footer-copyright"> 2026 Code Formatter. All rights reserved.</p>
             </div>
-            <p class="footer-copyright"> 2026 Code Formatter. All rights reserved.</p>
-        </div>
-    </footer>
+        </footer>
     </div>
 
     <div class="sticky-cta">

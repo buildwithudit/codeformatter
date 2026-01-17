@@ -1,4 +1,4 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -24,6 +24,7 @@
     <meta name="twitter:image" content="https://code-formats.com/assets/aspect-ratio-calculator-preview.png">
     <meta name="theme-color" content="#171717">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
 
     <link rel="stylesheet" href="style.css">
 
@@ -562,7 +563,7 @@
         }
 
         .prose li::before {
-            content: "â†’";
+            content: "?";
             color: var(--primary);
             font-weight: bold;
             font-size: 1.1rem;
@@ -949,7 +950,7 @@
                                         <label>New Height</label>
                                         <div id="calculatedHeight" class="dimension-input"
                                             style="background: var(--primary-glow); border-color: var(--primary); display: flex; align-items: center;">
-                                            â€”</div>
+                                            —</div>
                                     </div>
                                 </div>
                             </div>
@@ -982,7 +983,7 @@
                             <div class="preview-box">
                                 <div class="aspect-rectangle" id="previewRect">
                                     <div class="ratio-display" id="ratioDisplay">16:9</div>
-                                    <div class="dimension-display" id="dimDisplay">1920 Ã— 1080</div>
+                                    <div class="dimension-display" id="dimDisplay">1920 × 1080</div>
                                 </div>
                             </div>
 
@@ -1038,14 +1039,14 @@
                     <p>An <strong>aspect ratio</strong> is the proportional relationship between the width and height of
                         an image, video, or screen. It's expressed as two numbers separated by a colon (e.g., 16:9)
                         representing the ratio of width to height. This ratio remains constant regardless of the actual
-                        pixel dimensions, meaning a 1920Ã—1080 image has the same 16:9 aspect ratio as a 3840Ã—2160 (4K)
+                        pixel dimensions, meaning a 1920×1080 image has the same 16:9 aspect ratio as a 3840×2160 (4K)
                         image.</p>
 
                     <p><strong>Key Concepts:</strong></p>
                     <ul>
                         <li><strong>Width-to-Height Ratio:</strong> The first number represents width, the second
                             represents height (16:9 means 16 units wide for every 9 units tall).</li>
-                        <li><strong>Decimal Form:</strong> The ratio can also be expressed as a decimal (16Ã·9 = 1.778),
+                        <li><strong>Decimal Form:</strong> The ratio can also be expressed as a decimal (16÷9 = 1.778),
                             useful for calculations and CSS.</li>
                         <li><strong>Simplified Form:</strong> Ratios are typically reduced to their lowest terms
                             (1920:1080 simplifies to 16:9 using GCD).</li>
@@ -1141,21 +1142,21 @@
                     <h2>Video & Screen Resolution Standards</h2>
 
                     <h3>HD & 4K Resolutions</h3>
-                    <p>Standard video resolutions follow the 16:9 aspect ratio: 1280Ã—720 (HD/720p), 1920Ã—1080 (Full
-                        HD/1080p), 2560Ã—1440 (QHD/2K), and 3840Ã—2160 (UHD/4K). Understanding these relationships helps
+                    <p>Standard video resolutions follow the 16:9 aspect ratio: 1280×720 (HD/720p), 1920×1080 (Full
+                        HD/1080p), 2560×1440 (QHD/2K), and 3840×2160 (UHD/4K). Understanding these relationships helps
                         content creators ensure their assets export at correct dimensions.</p>
 
                     <h3>Social Media Dimensions</h3>
-                    <p>Each platform has optimal dimensions: Instagram feed posts (1080Ã—1080, 1:1), Instagram stories
-                        (1080Ã—1920, 9:16), Twitter posts (1200Ã—675, 16:9), Facebook cover (820Ã—312, 2.63:1), and
-                        LinkedIn banners (1584Ã—396, 4:1). Our calculator helps you quickly find the right dimensions for
+                    <p>Each platform has optimal dimensions: Instagram feed posts (1080×1080, 1:1), Instagram stories
+                        (1080×1920, 9:16), Twitter posts (1200×675, 16:9), Facebook cover (820×312, 2.63:1), and
+                        LinkedIn banners (1584×396, 4:1). Our calculator helps you quickly find the right dimensions for
                         any platform.</p>
 
                     <h2>Photography Aspect Ratios</h2>
 
                     <p>Different camera sensors and film formats produce different native ratios. Full-frame DSLRs
                         typically shoot 3:2, while micro four-thirds cameras use 4:3. Print sizes also follow specific
-                        ratios: 4Ã—6 prints are 3:2, 5Ã—7 prints are 7:5, and 8Ã—10 prints are 5:4. Understanding these
+                        ratios: 4×6 prints are 3:2, 5×7 prints are 7:5, and 8×10 prints are 5:4. Understanding these
                         differences is crucial when preparing images for print to avoid unexpected cropping.</p>
 
                     <h2>Frequently Asked Questions</h2>
@@ -1163,7 +1164,7 @@
                     <div class="faq-item">
                         <strong>How do I calculate aspect ratio from pixel dimensions?</strong>
                         <p>Divide both the width and height by their Greatest Common Divisor (GCD). For example,
-                            1920Ã·120 = 16 and 1080Ã·120 = 9, giving you 16:9. Our calculator does this automatically.</p>
+                            1920÷120 = 16 and 1080÷120 = 9, giving you 16:9. Our calculator does this automatically.</p>
                     </div>
 
                     <div class="faq-item">
@@ -1176,13 +1177,13 @@
                     <div class="faq-item">
                         <strong>How do I resize an image without distortion?</strong>
                         <p>Maintain the original aspect ratio by calculating the new height proportionally. If the
-                            original is 1920Ã—1080 (16:9) and you want 1280 width: 1280 Ã· 1.778 = 720 height. Our resize
+                            original is 1920×1080 (16:9) and you want 1280 width: 1280 ÷ 1.778 = 720 height. Our resize
                             calculator handles this instantly.</p>
                     </div>
 
                     <div class="faq-item">
                         <strong>What aspect ratio should I use for YouTube thumbnails?</strong>
-                        <p>YouTube recommends 1280Ã—720 (16:9) for thumbnails. This matches the video player proportions
+                        <p>YouTube recommends 1280×720 (16:9) for thumbnails. This matches the video player proportions
                             and displays consistently across devices without letterboxing or cropping.</p>
                     </div>
 
@@ -1221,7 +1222,7 @@
                     <div class="stat-item" id="savingsStat" style="display:none;"><i class="fas fa-arrow-down"></i>
                         <span id="savingsText"></span> <span class="diff-tag" id="savingsBadge"></span>
                     </div>
-                    <div class="footer-links"><a href="./about.html">About</a> â€¢ <a href="./privacy.html">Privacy</a> â€¢
+                    <div class="footer-links"><a href="./about.html">About</a> • <a href="./privacy.html">Privacy</a> •
                         <a href="./contact.html">Contact</a>
                     </div>
                 </div>
@@ -1292,7 +1293,7 @@
 
             // Update displays
             document.getElementById('ratioDisplay').textContent = `${ratioW}:${ratioH}`;
-            document.getElementById('dimDisplay').textContent = `${currentWidth} Ã— ${currentHeight}`;
+            document.getElementById('dimDisplay').textContent = `${currentWidth} × ${currentHeight}`;
             document.getElementById('outRatio').textContent = `${ratioW}:${ratioH}`;
             document.getElementById('outDecimal').textContent = decimal;
             document.getElementById('outOrientation').textContent = orientation;
@@ -1367,7 +1368,7 @@
                 const newHeight = Math.round(newWidth / ratio);
                 document.getElementById('calculatedHeight').textContent = newHeight;
             } else {
-                document.getElementById('calculatedHeight').textContent = 'â€”';
+                document.getElementById('calculatedHeight').textContent = '—';
             }
         }
 
@@ -1375,7 +1376,7 @@
             document.getElementById('inputWidth').value = 1920;
             document.getElementById('inputHeight').value = 1080;
             document.getElementById('newWidth').value = '';
-            document.getElementById('calculatedHeight').textContent = 'â€”';
+            document.getElementById('calculatedHeight').textContent = '—';
 
             document.querySelectorAll('.preset-btn').forEach(btn => {
                 btn.classList.remove('active');

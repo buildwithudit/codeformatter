@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -14,6 +14,7 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
     <link rel="canonical" href="https://www.codeformatter.in/blog-debugging.html">
 
     <meta property="og:title" content="How to Debug Minified JavaScript in Chrome">
@@ -26,6 +27,43 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Enhanced JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Article",
+                "@id": "https://www.codeformatter.in/blog-debugging.html#article",
+                "headline": "JavaScript Debugging: Complete Developer Guide (2026)",
+                "description": "Master debugging techniques for JavaScript. Learn DevTools, console methods, and problem-solving strategies.",
+                "image": "https://www.codeformatter.in/debugging-blog.png",
+                "author": {"@type": "Person", "name": "Udit Sharma", "url": "https://www.codeformatter.in/about.html"},
+                "datePublished": "2026-01-02",
+                "dateModified": "2026-01-17",
+                "publisher": {"@type": "Organization", "name": "Code Formatter", "logo": {"@type": "ImageObject", "url": "https://www.codeformatter.in/favicon.svg"}},
+                "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.codeformatter.in/blog-debugging.html"}
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+                    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.codeformatter.in/blog.html"},
+                    {"@type": "ListItem", "position": 3, "name": "JavaScript Debugging Guide"}
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {"@type": "Question", "name": "What is the best debugging tool?", "acceptedAnswer": {"@type": "Answer", "text": "Chrome DevTools is the most powerful. Also use VS Code debugger for Node.js and browser debugging."}},
+                    {"@type": "Question", "name": "How do I debug async code?", "acceptedAnswer": {"@type": "Answer", "text": "Use async stack traces in DevTools, console.trace(), and breakpoints in Promise handlers."}},
+                    {"@type": "Question", "name": "What's better than console.log?", "acceptedAnswer": {"@type": "Answer", "text": "console.table() for arrays, console.group() for organization, and debugger statements for breakpoints."}}
+                ]
+            }
+        ]
+    }
+    </script>
 
     <style>
         /* --- CORE VARIABLES --- */
@@ -124,7 +162,9 @@
         }
 
         .brand-logo {
-            font-weight: 700; color: #3b82f6; text-decoration: none;
+            font-weight: 700;
+            color: #3b82f6;
+            text-decoration: none;
             font-size: 0.9rem;
             letter-spacing: -0.5px;
         }
@@ -497,6 +537,7 @@
 
         /* --- FOOTER --- */
         footer {
+            padding-bottom: 100px; /* Space for sticky CTA */
             margin-top: 80px;
             padding: 30px 0;
             border-top: 1px solid var(--border);
@@ -559,6 +600,27 @@
                 font-size: 0.8rem;
             }
         }
+    
+        /* Featured Image Styles */
+        .featured-image {
+            margin: 2rem 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+        }
+        .featured-image figcaption {
+            text-align: center;
+            padding: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
     </style>
 </head>
 
@@ -582,6 +644,14 @@
                 <span><i class="far fa-clock"></i> 16 Min Read</span>
             </div>
 
+            <!-- Featured Image -->
+            <figure class="featured-image">
+                <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?q=80&w=800&auto=format&fit=crop" 
+                    alt="DEBUGGING - Complete Guide" width="800" height="450"
+                    loading="eager" fetchpriority="high">
+                <figcaption>DEBUGGING: Your complete guide to mastering this tool</figcaption>
+            </figure>
+
             <details class="toc" open>
                 <summary>Table of Contents</summary>
                 <ul>
@@ -601,7 +671,7 @@
             </p>
 
             <p>Your heart sinks. In development (localhost), the error would tell you exactly which file and line number
-                caused the crash. In production, your code is <strong>minified</strong>—compressed into a single line of
+                caused the crash. In production, your code is <strong>minified</strong>�compressed into a single line of
                 unreadable characters to save bandwidth.</p>
 
             <p>How do you debug variables named <code>a</code>, <code>b</code>, and <code>x</code>? In this guide, we
@@ -644,7 +714,7 @@
                 variables will still be named <code>a</code>, <code>b</code>, and <code>n</code>.</p>
 
             <div class="tool-card">
-                <h3>⚡ Minify Code Safely</h3>
+                <h3>? Minify Code Safely</h3>
                 <p>Want to reduce file size without breaking your app? Use our safe JS minifier.</p>
                 <a href="https://www.codeformatter.in/" class="cta-btn-primary" style="display:inline-block;">
                     Open JS Minifier
@@ -752,7 +822,7 @@
                 requests.</p>
 
             <h3>Logpoints (Breakpoints Without Stopping)</h3>
-            <p>Sometimes you don't want to pause execution—you just want to log a value without modifying your code.
+            <p>Sometimes you don't want to pause execution�you just want to log a value without modifying your code.
                 Logpoints let you inject `console.log()` statements **without editing a single file**:</p>
 
             <ol>
@@ -765,7 +835,7 @@
                 `console.log()` but temporary and traceless.</p>
 
             <div class="tool-card">
-                <h3>🛠️ Keep Your Code Clean</h3>
+                <h3>??? Keep Your Code Clean</h3>
                 <p>Stop debugging by adding `console.log()` everywhere. Use our dev tools to format, validate, and
                     minify your production code properly.</p>
                 <a href="index.html" class="cta-btn-primary" style="display:inline-block;">
@@ -829,7 +899,7 @@ at checkout.js:1:8293</code></pre>
             <div class="code-wrapper">
                 <div class="code-header">Original Source: PaymentForm.tsx (Line 47)</div>
                 <pre><code><span class="token-prop">const</span> cardToken = await stripe.createToken(
-  paymentMethod<span class="token-val">.card</span>  <span class="token-comment">// ⚠️ Line 47</span>
+  paymentMethod<span class="token-val">.card</span>  <span class="token-comment">// ?? Line 47</span>
 )</code></pre>
             </div>
 
@@ -842,7 +912,7 @@ at checkout.js:1:8293</code></pre>
             <p>The developer added proper null checking and deployed in 8 minutes. **Without source maps, this would
                 have taken hours of guessing.**</p>
 
-            <p>The lesson? Source maps don't just help you—they help your customers by reducing downtime.</p>
+            <p>The lesson? Source maps don't just help you�they help your customers by reducing downtime.</p>
 
             <h2>Team Debugging Workflows</h2>
             <p>Debugging isn't just a solo activity. Here's how top teams structure their debugging processes:</p>
@@ -857,7 +927,7 @@ at checkout.js:1:8293</code></pre>
 - <span class="token-prop">name</span>: Check Source Maps
   <span class="token-prop">run</span>: |
     if [ ! -f dist/*.map ]; then
-      echo <span class="token-val">"❌ Source maps missing!"</span>
+      echo <span class="token-val">"? Source maps missing!"</span>
       exit 1
     fi</code></pre>
             </div>
@@ -900,18 +970,18 @@ at checkout.js:1:8293</code></pre>
                 code to anyone. If you have proprietary algorithms, secret API logic, or hardcoded credentials (never do
                 this!), don't ship maps publicly. Use `sourcemap: 'hidden'` in Vite or Webpack (generates maps but
                 doesn't link them in JS files), then upload maps privately to Sentry/LogRocket. For typical CRUD apps,
-                the security risk is negligible—your business logic should live in APIs, not frontend code.</p>
+                the security risk is negligible�your business logic should live in APIs, not frontend code.</p>
 
             <h3><strong>Q: How do I debug React components specifically?</strong></h3>
             <p><strong>A:</strong> Install **React DevTools** browser extension (Chrome/Firefox/Edge). It adds a
                 "Components" tab showing React tree structure with props/state. Combine with source maps: click a
-                component in React DevTools → "View Source" → jumps to original `.tsx` file in Sources tab. For
+                component in React DevTools ? "View Source" ? jumps to original `.tsx` file in Sources tab. For
                 production debugging, use `displayName` on components so they're identifiable in minified builds. Enable
                 Profiler in React DevTools to find slow re-renders.</p>
 
             <h3><strong>Q: Should our entire team enable source maps or just senior devs?</strong></h3>
             <p><strong>A:</strong> **Everyone should have them**. Junior developers benefit most from readable stack
-                traces—it's a learning tool. The myth that source maps "slow down seniors" is false; they help everyone
+                traces�it's a learning tool. The myth that source maps "slow down seniors" is false; they help everyone
                 debug faster. The only exception: if you have contractors with limited access, use private source map
                 servers. But internal full-time team members should always debug with full source visibility.</p>
 
@@ -939,7 +1009,7 @@ at checkout.js:1:8293</code></pre>
                 painful. Configure your build tools today to generate source maps, learn to use the "Ignore List," and
                 stop fearing production deployments.</p>
 
-            <p>The best developers aren't those who write perfect code—they're the ones who can **debug production
+            <p>The best developers aren't those who write perfect code�they're the ones who can **debug production
                 issues in minutes, not hours**. Master DevTools, invest in error monitoring, and treat source maps as
                 non-negotiable infrastructure.</p>
 
@@ -960,17 +1030,17 @@ at checkout.js:1:8293</code></pre>
         </div>
 
         <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="index.html"><i class="fas fa-home"></i> Home</a>
-                <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
-                <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
-                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+                    <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+                    <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                </div>
+                <p class="footer-copyright"> 2026 Code Formatter. All rights reserved.</p>
             </div>
-            <p class="footer-copyright"> 2026 Code Formatter. All rights reserved.</p>
-        </div>
-    </footer>
+        </footer>
     </div>
 
     <div class="sticky-cta">

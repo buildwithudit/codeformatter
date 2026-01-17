@@ -1,4 +1,4 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -20,6 +20,7 @@
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#6366f1">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap">
@@ -281,7 +282,7 @@
                     <p>This powerful <strong>typescript generator</strong> tool eliminates hours of manual type
                         creation. Simply paste your JSON, and instantly receive production-ready TypeScript types with
                         intelligent inference for primitives, arrays, nested objects, and optional fields. Plus,
-                        generate <strong>Zod schemas</strong> for runtime validationâ€”critical for validating untrusted
+                        generate <strong>Zod schemas</strong> for runtime validation—critical for validating untrusted
                         external data from APIs, user input, or third-party services.</p>
 
                     <h2>What is JSON to TypeScript Conversion?</h2>
@@ -289,7 +290,7 @@
                     <p><strong>JSON to TypeScript conversion</strong> analyzes your JSON structure and generates
                         corresponding TypeScript type definitions. TypeScript provides compile-time type safety,
                         catching errors during development before code execution. However, TypeScript types don't exist
-                        at runtimeâ€”that's where <strong>Zod validation schemas</strong> become crucial for production
+                        at runtime—that's where <strong>Zod validation schemas</strong> become crucial for production
                         applications.</p>
 
                     <p>While TypeScript catches typos like <code>user.emaill</code> instead of <code>user.email</code>
@@ -301,7 +302,7 @@
                     <h2>How to Use This JSON to TypeScript Converter</h2>
 
                     <h3>Step 1: Paste Your JSON Data</h3>
-                    <p>Copy any valid JSON into the input paneâ€”API responses, configuration files, database exports, or
+                    <p>Copy any valid JSON into the input pane—API responses, configuration files, database exports, or
                         sample data. Our <strong>JSON parser</strong> validates syntax and highlights errors with
                         detailed messages for invalid JSON, making debugging easy.</p>
 
@@ -315,15 +316,15 @@
                     <p>Our advanced <strong>type inference engine</strong> automatically detects types from your JSON
                         values:</p>
                     <ul>
-                        <li><strong>Numbers</strong> â†’ <code>number</code> in TypeScript, <code>z.number()</code> in Zod
+                        <li><strong>Numbers</strong> ? <code>number</code> in TypeScript, <code>z.number()</code> in Zod
                         </li>
-                        <li><strong>Strings</strong> â†’ <code>string</code> with email/URL detection for Zod validation
+                        <li><strong>Strings</strong> ? <code>string</code> with email/URL detection for Zod validation
                         </li>
-                        <li><strong>Booleans</strong> â†’ <code>boolean</code> type</li>
-                        <li><strong>Null values</strong> â†’ Optional fields or nullable types for flexible schemas</li>
-                        <li><strong>Arrays</strong> â†’ Typed arrays like <code>User[]</code> or <code>string[]</code>
+                        <li><strong>Booleans</strong> ? <code>boolean</code> type</li>
+                        <li><strong>Null values</strong> ? Optional fields or nullable types for flexible schemas</li>
+                        <li><strong>Arrays</strong> ? Typed arrays like <code>User[]</code> or <code>string[]</code>
                         </li>
-                        <li><strong>Nested Objects</strong> â†’ Separate interfaces with proper hierarchy</li>
+                        <li><strong>Nested Objects</strong> ? Separate interfaces with proper hierarchy</li>
                     </ul>
 
                     <h3>Step 4: Copy or Download Generated Code</h3>
@@ -336,7 +337,7 @@
                     <h3>TypeScript Interfaces (Compile-Time Type Checking)</h3>
                     <p><strong>TypeScript interfaces</strong> define data shapes during development. Your IDE catches
                         errors like accessing non-existent properties immediately. However, TypeScript types are
-                        completely erased at runtime after compilationâ€”they provide zero protection against malformed
+                        completely erased at runtime after compilation—they provide zero protection against malformed
                         data from external sources like APIs.</p>
 
                     <h3>Zod Schemas (Runtime Validation)</h3>
@@ -361,7 +362,7 @@ const validatedUser = UserSchema.parse(response); // Throws if invalid
 
 export type User = z.infer&lt;typeof UserSchema&gt;;</code></pre>
 
-                    <p>This pattern creates a single source of truthâ€”your Zod schema provides both runtime validation
+                    <p>This pattern creates a single source of truth—your Zod schema provides both runtime validation
                         AND compile-time types through type inference, eliminating duplication and potential mismatches.
                     </p>
 
@@ -432,7 +433,7 @@ export type User = z.infer&lt;typeof UserSchema&gt;;</code></pre>
                         code.</p>
 
                     <p><strong>Review Generated Code:</strong> Always review generated types. The tool makes best-effort
-                        inferences, but you may need adjustments based on domain knowledgeâ€”adding union types, marking
+                        inferences, but you may need adjustments based on domain knowledge—adding union types, marking
                         fields optional, or adding JSDoc comments.</p>
 
                     <p><strong>Version Control Types:</strong> Commit generated type files to version control for
@@ -457,14 +458,14 @@ export type User = z.infer&lt;typeof UserSchema&gt;;</code></pre>
                     <div class="faq-item"><strong>Can I use both TypeScript and Zod in the same project?</strong>
                         <p>Absolutely! This is the recommended approach. Define Zod schemas for data validation, then
                             use <code>type User = z.infer&lt;typeof UserSchema&gt;</code> to generate TypeScript types
-                            automatically. This creates a single source of truthâ€”your Zod schema becomes both runtime
+                            automatically. This creates a single source of truth—your Zod schema becomes both runtime
                             validator and TypeScript type definition with zero duplication.</p>
                     </div>
 
                     <div class="faq-item"><strong>How does the tool handle optional vs required fields?</strong>
                         <p>The tool infers optionality from <code>null</code> values in JSON. Fields with
                             <code>null</code> are marked optional (<code>field?: type</code>) or nullable
-                            (<code>field: type | null</code>). However, JSON samples don't represent all statesâ€”always
+                            (<code>field: type | null</code>). However, JSON samples don't represent all states—always
                             review and manually adjust optionality based on your actual API contract.
                         </p>
                     </div>
@@ -487,19 +488,19 @@ export type User = z.infer&lt;typeof UserSchema&gt;;</code></pre>
                     <div class="faq-item"><strong>Is the generated code production-ready?</strong>
                         <p>Generated code is a solid starting point following TypeScript best practices with proper
                             imports/exports and correct syntax. However, review and enhance based on domain
-                            knowledgeâ€”add JSDoc comments, refine optional fields, add Zod refinements for custom
+                            knowledge—add JSDoc comments, refine optional fields, add Zod refinements for custom
                             validation, or split large types into smaller reusable pieces for your specific needs.</p>
                     </div>
 
                     <div class="faq-item"><strong>Does my data stay private?</strong>
                         <p>100% yes. All processing happens client-side in your browser using JavaScript. Your JSON data
-                            never leaves your computerâ€”no server uploads, no data logging, complete privacy guaranteed.
+                            never leaves your computer—no server uploads, no data logging, complete privacy guaranteed.
                             Perfect for sensitive API responses containing tokens or personal information.</p>
                     </div>
 
                     <p style="text-align:center;margin-top:3rem;color:#525252;font-size:0.85rem;">
                         Generate type-safe TypeScript interfaces and Zod validation schemas instantly. Save hours of
-                        manual typing and eliminate runtime errors. 100% free, client-side processingâ€”your data never
+                        manual typing and eliminate runtime errors. 100% free, client-side processing—your data never
                         leaves your browser.
                     </p>
                 </article>
@@ -508,7 +509,7 @@ export type User = z.infer&lt;typeof UserSchema&gt;;</code></pre>
         <footer class="footer">
             <div class="footer-stats">
                 <div class="stat-item" id="typeCount"><i class="fas fa-file-code"></i> Types: 0</div>
-                <div class="footer-links"><a href="./about.html">About</a> â€¢ <a href="./privacy.html">Privacy</a> â€¢ <a
+                <div class="footer-links"><a href="./about.html">About</a> • <a href="./privacy.html">Privacy</a> • <a
                         href="./contact.html">Contact</a></div>
             </div>
             <div class="footer-actions">
