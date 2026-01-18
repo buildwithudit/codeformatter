@@ -556,20 +556,18 @@
         }
 
         footer {
-            padding-bottom: 100px; /* Space for sticky CTA */
             margin-top: 80px;
             padding: 30px 0;
             border-top: 1px solid var(--border);
             background: rgba(24, 24, 27, 0.4);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px)
         }
 
         .footer-content {
             text-align: center;
             max-width: 760px;
             margin: 0 auto;
-            padding: 0 20px
+            padding: 0 20px 80px 20px;
         }
 
         .footer-links {
@@ -599,7 +597,8 @@
         .footer-copyright {
             font-size: 0.85rem;
             color: var(--text-dim);
-            margin: 0
+            margin: 0;
+            text-align: center;
         }
 
         @media(max-width:600px) {
@@ -658,6 +657,11 @@
         }
 
     </style>
+    <style>
+        /* Footer spacing fix for sticky CTA */
+        footer { padding: 30px 0 30px 0 !important; }
+        body { padding-bottom: 100px !important; }
+    </style>
 </head>
 
 <body>
@@ -714,7 +718,13 @@
                 critical CSS extraction and automated unused style purging used by companies serving billions of
                 pageviews.</p>
 
-            <h2 id="what-is">What is CSS Minification?</h2>
+            <h2 id="what-is">
+            <!-- Workflow Diagram -->
+            <figure class="workflow-diagram">
+                <img src="workflow-minifier.png" alt="How to Minify CSS - Simple 3-step workflow" width="760" height="400" loading="lazy">
+                <figcaption>How to Minify CSS - Simple 3-step workflow</figcaption>
+            </figure>
+What is CSS Minification?</h2>
 
             <p><strong>CSS minification</strong> transforms human-readable stylesheets into compact production code by
                 removing whitespace, optimizing colors, merging rules, and eliminating redundancies—all while preserving
@@ -1063,24 +1073,22 @@ module.exports = {
             </div>
 
         </article>
-
-        <footer>
-            <div class="footer-content">
-                <div class="footer-links">
-                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
-                    <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
-                    <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
-                    <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
-                </div>
-                <p class="footer-copyright"> 2026 Code Formatter. All rights reserved.</p>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+                <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
             </div>
-        </footer>
+            <p class="footer-copyright">2026 Code Formatter. All rights reserved.</p>
+        </div>
+    </footer>
     </div>
-
     <div class="sticky-cta">
-        <div class="sticky-text">Minify CSS now <span>Free tool</span></div>
-        <a href="css-minifier.html" class="cta-btn-primary">Open Tool</a>
+        <div class="sticky-text"><span>Broken JSON?</span> Fix it instantly.</div>
+        <a href="json-formatter.html" class="cta-btn-primary">Use JSON Validator ?</a>
     </div>
 
     <script>
@@ -1094,3 +1102,4 @@ module.exports = {
 </body>
 
 </html>
+

@@ -628,20 +628,18 @@
         }
 
         footer {
-            padding-bottom: 100px; /* Space for sticky CTA */
             margin-top: 80px;
             padding: 30px 0;
             border-top: 1px solid var(--border);
             background: rgba(24, 24, 27, 0.4);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px)
         }
 
         .footer-content {
             text-align: center;
             max-width: 760px;
             margin: 0 auto;
-            padding: 0 20px
+            padding: 0 20px 80px 20px;
         }
 
         .footer-links {
@@ -671,7 +669,8 @@
         .footer-copyright {
             font-size: 0.85rem;
             color: var(--text-dim);
-            margin: 0
+            margin: 0;
+            text-align: center;
         }
 
         @media(max-width: 600px) {
@@ -839,6 +838,11 @@
             font-size: 0.85rem;
             color: var(--text-dim);
         }
+    </style>
+    <style>
+        /* Footer spacing fix for sticky CTA */
+        footer { padding: 30px 0 30px 0 !important; }
+        body { padding-bottom: 100px !important; }
     </style>
 </head>
 
@@ -1221,24 +1225,23 @@
 
         </article>
     </div>
-
     <footer>
         <div class="footer-content">
             <div class="footer-links">
-                <a href="css-formatter.html"><i class="fas fa-code"></i> CSS Formatter</a>
-                <a href="css-minifier.html"><i class="fas fa-compress-alt"></i> CSS Minifier</a>
-                <a href="index.html"><i class="fas fa-layer-group"></i> All Tools</a>
-                <a href="blog.html"><i class="fas fa-newspaper"></i> All Articles</a>
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+                <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
             </div>
-            <p class="footer-copyright">&copy; 2026 Code Formatter by <strong>Udit Sharma</strong>. All rights reserved.
-            </p>
+            <p class="footer-copyright">2026 Code Formatter. All rights reserved.</p>
         </div>
     </footer>
 
     <!-- Sticky CTA -->
     <div class="sticky-cta">
-        <span class="sticky-text">Format CSS Instantly <span>→</span></span>
-        <a href="css-formatter.html" class="cta-btn-primary">Open Tool</a>
+        <div class="sticky-text"><span>Broken JSON?</span> Fix it instantly.</div>
+        <a href="json-formatter.html" class="cta-btn-primary">Use JSON Validator ?</a>
     </div>
 
     <script>
@@ -1251,3 +1254,4 @@
 </body>
 
 </html>
+

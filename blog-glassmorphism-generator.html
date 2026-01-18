@@ -560,20 +560,18 @@
         }
 
         footer {
-            padding-bottom: 100px; /* Space for sticky CTA */
             margin-top: 80px;
             padding: 30px 0;
             border-top: 1px solid var(--border);
             background: rgba(24, 24, 27, 0.4);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px)
         }
 
         .footer-content {
             text-align: center;
             max-width: 760px;
             margin: 0 auto;
-            padding: 0 20px
+            padding: 0 20px 80px 20px;
         }
 
         .footer-links {
@@ -603,7 +601,8 @@
         .footer-copyright {
             font-size: 0.85rem;
             color: var(--text-dim);
-            margin: 0
+            margin: 0;
+            text-align: center;
         }
 
         @media(max-width:600px) {
@@ -662,6 +661,11 @@
         }
 
     </style>
+    <style>
+        /* Footer spacing fix for sticky CTA */
+        footer { padding: 30px 0 30px 0 !important; }
+        body { padding-bottom: 100px !important; }
+    </style>
 </head>
 
 <body>
@@ -717,7 +721,13 @@
                 covers glassmorphism from CSS fundamentals to production-ready implementation including accessibility,
                 performance optimization, and fallback strategies for browsers without backdrop-filter support.</p>
 
-            <h2 id="trend">The Glassmorphism Design Trend Evolution</h2>
+            <h2 id="trend">
+            <!-- Workflow Diagram -->
+            <figure class="workflow-diagram">
+                <img src="workflow-glassmorphism.png" alt="How to Generate Glassmorphism - Simple 3-step workflow" width="760" height="400" loading="lazy">
+                <figcaption>How to Generate Glassmorphism - Simple 3-step workflow</figcaption>
+            </figure>
+The Glassmorphism Design Trend Evolution</h2>
 
             <h3>From Skeuomorphism to Glassmorphism</h3>
             <p>UI design has cycled through distinct eras:</p>
@@ -1125,24 +1135,22 @@
             </div>
 
         </article>
-
-        <footer>
-            <div class="footer-content">
-                <div class="footer-links">
-                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
-                    <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
-                    <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
-                    <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
-                </div>
-                <p class="footer-copyright"> 2026 Code Formatter. All rights reserved.</p>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+                <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
             </div>
-        </footer>
+            <p class="footer-copyright">2026 Code Formatter. All rights reserved.</p>
+        </div>
+    </footer>
     </div>
-
     <div class="sticky-cta">
-        <div class="sticky-text">Generate glassmorphism <span>Free tool</span></div>
-        <a href="glassmorphism-generator.html" class="cta-btn-primary">Open Tool</a>
+        <div class="sticky-text"><span>Broken JSON?</span> Fix it instantly.</div>
+        <a href="json-formatter.html" class="cta-btn-primary">Use JSON Validator ?</a>
     </div>
 
     <script>
@@ -1156,3 +1164,4 @@
 </body>
 
 </html>
+

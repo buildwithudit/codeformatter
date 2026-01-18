@@ -552,20 +552,18 @@
 
         /* --- FOOTER --- */
         footer {
-            padding-bottom: 100px; /* Space for sticky CTA */
             margin-top: 80px;
             padding: 30px 0;
             border-top: 1px solid var(--border);
             background: rgba(24, 24, 27, 0.4);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px)
         }
 
         .footer-content {
             text-align: center;
             max-width: 760px;
             margin: 0 auto;
-            padding: 0 20px
+            padding: 0 20px 80px 20px;
         }
 
         .footer-links {
@@ -595,7 +593,8 @@
         .footer-copyright {
             font-size: 0.85rem;
             color: var(--text-dim);
-            margin: 0
+            margin: 0;
+            text-align: center;
         }
 
         @media(max-width: 600px) {
@@ -636,6 +635,11 @@
             font-size: 0.9rem;
         }
 
+    </style>
+    <style>
+        /* Footer spacing fix for sticky CTA */
+        footer { padding: 30px 0 30px 0 !important; }
+        body { padding-bottom: 100px !important; }
     </style>
 </head>
 
@@ -980,30 +984,26 @@ export default defineConfig({
                     <li><strong>`<section>`:</strong> For thematic groupings (e.g., "Features" section).</li>
                     <li><strong>`<nav>`:</strong> For navigation menus.</li>
                     <li><strong>`<aside>`:</strong> For sidebars or tangentially related content.</li>
-                    <li><strong>`<header>` / `<footer>
-                                    <div class="footer-content">
-                                        <div class="footer-links">
-                                            <a href="index.html"><i class="fas fa-home"></i> Home</a>
-                                            <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
-                                            <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
-                                            <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-                                            <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
-                                        </div>
-                                        <p class="footer-copyright"> 2026 Code Formatter. All rights reserved.</p>
-                                    </div>
-                                </footer>
+                    <li><strong>`<header>` / `
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+                <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
             </div>
-
-            <div class="sticky-cta">
-                <div class="sticky-text">
-                    Messy HTML? <span>Format it instantly.</span>
-                </div>
-                <a href="https://www.codeformatter.in/" class="cta-btn-primary">
-                    Use HTML Formatter <i class="fas fa-bolt"></i>
-                </a>
+            <p class="footer-copyright">2026 Code Formatter. All rights reserved.</p>
+        </div>
+    </footer>
             </div>
+    <div class="sticky-cta">
+        <div class="sticky-text"><span>Broken JSON?</span> Fix it instantly.</div>
+        <a href="json-formatter.html" class="cta-btn-primary">Use JSON Validator ?</a>
+    </div>
 
-            <script>
+    <script>
                 // Progress Bar Logic
                 window.onscroll = function () {
                     let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -1015,3 +1015,4 @@ export default defineConfig({
 </body>
 
 </html>
+

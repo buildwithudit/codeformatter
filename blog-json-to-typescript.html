@@ -390,20 +390,18 @@
         }
 
         footer {
-            padding-bottom: 100px; /* Space for sticky CTA */
             margin-top: 80px;
             padding: 30px 0;
             border-top: 1px solid var(--border);
             background: rgba(24, 24, 27, 0.4);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px)
         }
 
         .footer-content {
             text-align: center;
             max-width: 760px;
             margin: 0 auto;
-            padding: 0 20px
+            padding: 0 20px 80px 20px;
         }
 
         .footer-links {
@@ -433,7 +431,8 @@
         .footer-copyright {
             font-size: 0.85rem;
             color: var(--text-dim);
-            margin: 0
+            margin: 0;
+            text-align: center;
         }
 
         @media(max-width:600px) {
@@ -517,6 +516,11 @@
         "dateModified": "2026-01-04"
     }
     </script>
+    <style>
+        /* Footer spacing fix for sticky CTA */
+        footer { padding: 30px 0 30px 0 !important; }
+        body { padding-bottom: 100px !important; }
+    </style>
 </head>
 
 <body>
@@ -557,7 +561,13 @@
                     conversion</strong>, including type inference strategies, <strong>Zod validation schemas</strong>
                 for runtime safety, and production best practices used by senior engineers at top tech companies.</p>
 
-            <h2>Understanding JSON to TypeScript Conversion</h2>
+            <h2>
+            <!-- Workflow Diagram -->
+            <figure class="workflow-diagram">
+                <img src="workflow-json-to-typescript.png" alt="How to Convert JSON to TypeScript - Simple 3-step workflow" width="760" height="400" loading="lazy">
+                <figcaption>How to Convert JSON to TypeScript - Simple 3-step workflow</figcaption>
+            </figure>
+Understanding JSON to TypeScript Conversion</h2>
 
             <p><strong>JSON to TypeScript conversion</strong> is the process of analyzing JSON data structures and
                 generating corresponding TypeScript type definitions. TypeScript provides compile-time type checking,
@@ -916,7 +926,6 @@ export const userRouter = router({
                 Professional developer tools built with privacy and performance in mind.</p>
         </article>
     </div>
-
     <footer>
         <div class="footer-content">
             <div class="footer-links">
@@ -926,7 +935,7 @@ export const userRouter = router({
                 <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
                 <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
             </div>
-            <p class="footer-copyright">© 2026 Code Formatter. All rights reserved.</p>
+            <p class="footer-copyright">2026 Code Formatter. All rights reserved.</p>
         </div>
     </footer>
 
@@ -936,3 +945,4 @@ export const userRouter = router({
 </body>
 
 </html>
+
