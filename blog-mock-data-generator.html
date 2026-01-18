@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -14,7 +14,7 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
-    <link rel="canonical" href="https://www.codeformatter.in/blog-mock-data-generator.html">
+    <link rel="canonical" href="https://www.codeformatter.in/mock-data-generator.html">
     <meta property="og:title" content="Mock Data Generator: Professional Testing Guide">
     <meta property="og:description"
         content="Expert guide to generating realistic mock data for testing, prototyping, and development.">
@@ -33,7 +33,7 @@
         "@graph": [
             {
                 "@type": "Article",
-                "@id": "https://www.codeformatter.in/blog-mock-data-generator.html#article",
+                "@id": "https://www.codeformatter.in/mock-data-generator.html#article",
                 "headline": "Mock Data Generator: Complete Guide (2026)",
                 "description": "Generate realistic test data for development. Create fake names, emails, addresses, and more.",
                 "image": "https://www.codeformatter.in/mock-data-generator-blog.png",
@@ -41,7 +41,7 @@
                 "datePublished": "2026-01-02",
                 "dateModified": "2026-01-17",
                 "publisher": {"@type": "Organization", "name": "Code Formatter", "logo": {"@type": "ImageObject", "url": "https://www.codeformatter.in/favicon.svg"}},
-                "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.codeformatter.in/blog-mock-data-generator.html"}
+                "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.codeformatter.in/mock-data-generator.html"}
             },
             {
                 "@type": "BreadcrumbList",
@@ -757,7 +757,7 @@ What is Mock Data Generation?</h2>
             </div>
 
             <p>Realistic mock data exposes edge cases like long names, special characters in emails, international
-                addresses—issues missed with simplistic "Test User" data.</p>
+                addressesï¿½issues missed with simplistic "Test User" data.</p>
 
             <h2 id="use-cases">Critical Use Cases for Mock Data</h2>
 
@@ -823,7 +823,7 @@ What is Mock Data Generation?</h2>
 
             <h3>JSON Schema Faker</h3>
             <p><strong>JSON Schema Faker</strong> generates mock data from JSON Schema definitions. Perfect for
-                API-first development—define schema once, auto-generate test data matching spec.</p>
+                API-first developmentï¿½define schema once, auto-generate test data matching spec.</p>
 
             <h3>Custom Generators (Advanced)</h3>
             <p>For domain-specific data (medical records, financial transactions, specialized formats), build custom
@@ -863,7 +863,7 @@ What is Mock Data Generation?</h2>
 
             <h3>5. Edge Cases & Invalid Data</h3>
             <p>Intentionally include edge cases: extremely long strings, special characters, null values, empty arrays.
-                This is where production bugs hide—test data must expose them.</p>
+                This is where production bugs hideï¿½test data must expose them.</p>
 
             <h2 id="privacy">GDPR & Privacy Compliance</h2>
 
@@ -874,7 +874,7 @@ What is Mock Data Generation?</h2>
                 <li><strong>No Real PII:</strong> Generated data must not accidentally include real people's information
                 </li>
                 <li><strong>Clear Marking:</strong> Tag mock data clearly in databases to prevent confusion</li>
-                <li><strong>Anonymization ? Mock Data:</strong> Anonymized production data is NOT mock data—still
+                <li><strong>Anonymization ? Mock Data:</strong> Anonymized production data is NOT mock dataï¿½still
                     carries risks</li>
             </ul>
 
@@ -883,7 +883,7 @@ What is Mock Data Generation?</h2>
                 <li><strong>Generate, Don't Scramble:</strong> Create synthetic data from scratch rather than scrambling
                     production data</li>
                 <li><strong>Avoid Real Names:</strong> Faker generates names that might coincidentally match real
-                    people—acceptable as they're random</li>
+                    peopleï¿½acceptable as they're random</li>
                 <li><strong>Mark Test Accounts:</strong> Use obvious test domains (<code>@example.com</code>,
                     <code>@test.local</code>) to prevent accidental communication
                 </li>
@@ -974,7 +974,7 @@ What is Mock Data Generation?</h2>
 
             <h3>Performance Test Data Generation</h3>
             <p>Generate large datasets on-demand for load testing. Store generation scripts, not generated data, in
-                version control—data is reproducible from scripts.</p>
+                version controlï¿½data is reproducible from scripts.</p>
 
             <h3>Snapshot Testing with Mock Data</h3>
             <p>Use seeded data for visual regression tests. Same mock data = same screenshots, enabling reliable
@@ -992,7 +992,7 @@ What is Mock Data Generation?</h2>
                         <strong>Yes, completely legal and recommended.</strong> Faker.js generates <strong>random,
                             synthetic data</strong> that doesn't reference real people. Even if a generated name
                         coincidentally matches someone real, it's statistically random, not targeted data collection.
-                        This is explicitly allowed under GDPR and CCPA—regulators care about <strong>real PII</strong>,
+                        This is explicitly allowed under GDPR and CCPAï¿½regulators care about <strong>real PII</strong>,
                         not randomly generated strings. However, <strong>never use generated data for malicious
                             purposes</strong> (fake accounts, spam). For testing/development, Faker is the
                         industry-standard legal approach to avoiding real PII exposure.
@@ -1005,10 +1005,10 @@ What is Mock Data Generation?</h2>
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <strong>Not recommended—anonymization is extremely hard to get right.</strong> "Anonymization"
+                        <strong>Not recommendedï¿½anonymization is extremely hard to get right.</strong> "Anonymization"
                         often fails: hashing emails is reversible via rainbow tables, k-anonymization can be defeated by
                         cross-referencing datasets, even "anonymized" data can re-identify individuals when combined
-                        with other data. <strong>GDPR requires irreversible anonymization</strong>—nearly impossible to
+                        with other data. <strong>GDPR requires irreversible anonymization</strong>ï¿½nearly impossible to
                         guarantee. Safer approach: <strong>generate mock data from scratch.</strong> It's faster,
                         legally cleaner, and avoids re-identification risks. If you must use production data, engage
                         legal counsel and data protection specialists.
@@ -1027,7 +1027,7 @@ What is Mock Data Generation?</h2>
                             integration:</strong> Tools like Factory Boy (Python), FactoryBot (Ruby) integrate with ORMs
                         to generate valid database records automatically. (4) <strong>SQL seeding scripts:</strong>
                         Write INSERT statements using programmatic data generation. Most effective: Combine Faker with
-                        schema introspection—read database schema, auto-generate factories for each table.
+                        schema introspectionï¿½read database schema, auto-generate factories for each table.
                     </div>
                 </details>
 
@@ -1041,7 +1041,7 @@ What is Mock Data Generation?</h2>
                         repositories and cause merge conflicts. Instead, commit: (1) <strong>Generation scripts</strong>
                         (Faker code, factory definitions). (2) <strong>Seed values</strong> for deterministic
                         generation. (3) <strong>Small fixture files</strong> for specific test cases. Generated data
-                        should be <strong>ephemeral</strong>—created on-demand during dev setup or CI pipeline runs.
+                        should be <strong>ephemeral</strong>ï¿½created on-demand during dev setup or CI pipeline runs.
                         Exception: Small, carefully curated test fixtures that represent critical edge cases worth
                         versioning explicitly.
                     </div>
@@ -1053,7 +1053,7 @@ What is Mock Data Generation?</h2>
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <strong>Very realistic—it exposes UI bugs early.</strong> "Lorem Ipsum" everywhere hides
+                        <strong>Very realisticï¿½it exposes UI bugs early.</strong> "Lorem Ipsum" everywhere hides
                         problems: text overflow, line wrapping, responsive layout breaks. Use <strong>realistic
                             names</strong> (various lengths: "Li", "Maria Garcia-Rodriguez"), <strong>real-world
                             addresses</strong> (expose internationalization issues), <strong>varied data</sten> (empty
@@ -1075,7 +1075,7 @@ What is Mock Data Generation?</h2>
                         in chunks, avoiding memory spikes. (3) <strong>Worker threads:</strong> Parallelize generation
                         across CPU cores. (4) <strong>Caching:</strong> Generate once, reuse across test runs with
                         seeded randomization. (5) <strong>Database bulk inserts:</strong> Batch INSERT statements for
-                        100-1000x faster database seeding. For production code, never generate mock data—only in
+                        100-1000x faster database seeding. For production code, never generate mock dataï¿½only in
                         dev/test environments.
                     </div>
                 </details>

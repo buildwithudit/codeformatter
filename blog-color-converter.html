@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -14,7 +14,7 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
-    <link rel="canonical" href="https://www.codeformatter.in/blog-color-converter.html">
+    <link rel="canonical" href="https://www.codeformatter.in/color-converter.html">
     <meta property="og:title" content="Color Converter: Complete Color Format Guide">
     <meta property="og:description"
         content="Expert guide to converting between HEX, RGB, HSL, CMYK color formats with accessibility best practices.">
@@ -33,7 +33,7 @@
         "@graph": [
             {
                 "@type": "Article",
-                "@id": "https://www.codeformatter.in/blog-color-converter.html#article",
+                "@id": "https://www.codeformatter.in/color-converter.html#article",
                 "headline": "Color Converter: HEX to RGB, HSL & CMYK Guide (2026)",
                 "description": "Master color conversion for web design. Convert between HEX, RGB, RGBA, HSL, and CMYK color formats.",
                 "image": "https://www.codeformatter.in/color-converter-blog.png",
@@ -41,7 +41,7 @@
                 "datePublished": "2026-01-02",
                 "dateModified": "2026-01-17",
                 "publisher": {"@type": "Organization", "name": "Code Formatter", "logo": {"@type": "ImageObject", "url": "https://www.codeformatter.in/favicon.svg"}},
-                "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.codeformatter.in/blog-color-converter.html"}
+                "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.codeformatter.in/color-converter.html"}
             },
             {
                 "@type": "BreadcrumbList",
@@ -707,12 +707,12 @@
             </details>
 
             <p id="intro"><strong>Color format conversion</strong> enables seamless translation between HEX, RGB, HSL,
-                and CMYK color spaces—essential for web development, print design, and maintaining consistent brand
+                and CMYK color spacesï¿½essential for web development, print design, and maintaining consistent brand
                 colors across digital and physical media. Understanding color models and conversion mathematics is
                 fundamental to professional design workflows.</p>
 
             <p>According to design tool analytics from 2025, developers and designers perform <strong>over 50 million
-                    color conversions daily</strong> across tools like Figma, Adobe XD, and VS Code—primarily converting
+                    color conversions daily</strong> across tools like Figma, Adobe XD, and VS Codeï¿½primarily converting
                 between HEX (CSS standard) and HSL (intuitive for theming) or RGB (JavaScript canvas APIs). Mastering
                 these conversions accelerates development and prevents costly color inconsistencies.</p>
 
@@ -785,7 +785,7 @@ Understanding Color Formats</h2>
             <h2 id="rgb">RGB: The Digital Color Foundation</h2>
 
             <p><strong>RGB</strong> represents colors via Red, Green, Blue channels (0-255 each). Additive color
-                mixing—all at 255 = white, all at 0 = black.</p>
+                mixingï¿½all at 255 = white, all at 0 = black.</p>
 
             <div class="code-wrapper">
                 <div class="code-header">RGB in CSS</div>
@@ -827,7 +827,7 @@ Understanding Color Formats</h2>
             <p><strong>HSL (Hue, Saturation, Lightness)</strong> represents colors intuitively:</p>
 
             <ul>
-                <li><strong>Hue (0-360°):</strong> Color wheel position (0/360=red, 120=green, 240=blue)</li>
+                <li><strong>Hue (0-360ï¿½):</strong> Color wheel position (0/360=red, 120=green, 240=blue)</li>
                 <li><strong>Saturation (0-100%):</strong> Color intensity (0=gray, 100=vivid)</li>
                 <li><strong>Lightness (0-100%):</strong> Brightness (0=black, 50=pure color, 100=white)</li>
             </ul>
@@ -1053,12 +1053,12 @@ Understanding Color Formats</h2>
                     </summary>
                     <div class="faq-answer">
                         <strong>Use HSL for design systems, RGB/HEX for static colors.</strong> <strong>HSL
-                            advantages:</strong> (1) Intuitive manipulation—adjust lightness/saturation easily for
+                            advantages:</strong> (1) Intuitive manipulationï¿½adjust lightness/saturation easily for
                         variants. (2) Perfect for theming with CSS variables. (3) Creates consistent color
                         relationships. <strong>HEX/RGB advantages:</strong> (1) More compact. (2) Design tool exports
                         (Figma outputs HEX). (3) Universal familiarity. <strong>Recommendation:</strong> Define colors
                         in HSL for flexibility, convert to HEX/RGB for final CSS if needed. Modern browsers support all
-                        equally—pick based on maintainability needs. For design systems with dynamic theming, HSL is
+                        equallyï¿½pick based on maintainability needs. For design systems with dynamic theming, HSL is
                         superior.
                     </div>
                 </details>
@@ -1072,11 +1072,11 @@ Understanding Color Formats</h2>
                         <strong>Screens use RGB (additive), printers use CMYK (subtractive) color models.</strong>
                         <strong>RGB (screens):</strong> Light-based, millions of colors, vibrant. <strong>CMYK
                             (print):</strong> Ink-based, limited gamut, duller. Many vibrant RGB colors (especially
-                        bright blues, greens) have no CMYK equivalent—they get "gamut compressed" to nearest printable
+                        bright blues, greens) have no CMYK equivalentï¿½they get "gamut compressed" to nearest printable
                         color. <strong>Solution:</strong> (1) Design in CMYK from start for print projects. (2) Use
                         Pantone/spot colors for brand consistency. (3) Request press proofs before large print runs. (4)
                         Convert RGB?CMYK in Adobe apps (handles gamut mapping intelligently). Online converters can
-                        approximate but lack color management—use professional software for critical work.
+                        approximate but lack color managementï¿½use professional software for critical work.
                     </div>
                 </details>
 
@@ -1092,8 +1092,8 @@ Understanding Color Formats</h2>
                         instant pass/fail. (2) <strong>Stark plugin (Figma):</strong> Real-time contrast checking during
                         design. (3) <strong>Browser DevTools:</strong> Chrome/Firefox show contrast info in color
                         picker. (4) <strong>Automated testing:</strong> Axe, Pa11y scan entire sites. <strong>Pro
-                            tip:</strong> Build contrast checking into design system—define only AA/AAA compliant color
-                        pairings. Don't let designers pick arbitrary combinations—provide pre-validated palette.
+                            tip:</strong> Build contrast checking into design systemï¿½define only AA/AAA compliant color
+                        pairings. Don't let designers pick arbitrary combinationsï¿½provide pre-validated palette.
                     </div>
                 </details>
 
@@ -1108,9 +1108,9 @@ Understanding Color Formats</h2>
                         semi-transparent. Text becomes unreadable. <strong>Alpha channel:</strong>
                         <code>rgba(0,0,0,0.5)</code> or <code>#00000080</code> makes background semi-transparent, text
                         stays opaque. <strong>Use cases:</strong> (1) <strong>Alpha:</strong> Overlays, glassmorphism,
-                        subtle backgrounds—text remains readable. (2) <strong>Opacity:</strong> Fade animations,
-                        disabled states—entire element fades. <strong>Common mistake:</strong> Using
-                        <code>opacity</code> for backgrounds thinking text stays solid—it doesn't. Always use RGBA/HSLA
+                        subtle backgroundsï¿½text remains readable. (2) <strong>Opacity:</strong> Fade animations,
+                        disabled statesï¿½entire element fades. <strong>Common mistake:</strong> Using
+                        <code>opacity</code> for backgrounds thinking text stays solidï¿½it doesn't. Always use RGBA/HSLA
                         for transparent backgrounds with opaque text.
                     </div>
                 </details>
@@ -1122,11 +1122,11 @@ Understanding Color Formats</h2>
                     </summary>
                     <div class="faq-answer">
                         <strong>Yes, browsers convert to common format automatically.</strong> Animating
-                        <code>color: #FF0000</code> to <code>color: rgb(0,255,0)</code> works—browser converts both to
+                        <code>color: #FF0000</code> to <code>color: rgb(0,255,0)</code> worksï¿½browser converts both to
                         RGB, interpolates. <strong>However:</strong> (1) <strong>HEX/RGB interpolation:</strong>
                         Animates through RGB space (sometimes ugly mid-colors). (2) <strong>HSL interpolation:</strong>
-                        Animates through hue wheel—smoother color transitions for gradients. (3)
-                        <strong>Performance:</strong> All color formats perform equally—GPU handles conversions.
+                        Animates through hue wheelï¿½smoother color transitions for gradients. (3)
+                        <strong>Performance:</strong> All color formats perform equallyï¿½GPU handles conversions.
                         <strong>Best practice:</strong> Use HSL for hue-based animations (rainbow effects, theme
                         transitions). Use RGB/HEX for direct interpolation. CSS Color Level 4 adds interpolation control
                         with <code>color-mix()</code> and <code>color()</code> functions.
@@ -1139,14 +1139,14 @@ Understanding Color Formats</h2>
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <strong>Use official Pantone libraries or licensed converters—unofficial conversions are
+                        <strong>Use official Pantone libraries or licensed convertersï¿½unofficial conversions are
                             inaccurate.</strong> Pantone colors are proprietary spot colors (physical ink formulas), not
                         RGB/CMYK equivalents. <strong>Official method:</strong> (1) Pantone Color Bridge guides show
                         "closest RGB/CMYK" matches. (2) Adobe Creative Suite includes licensed Pantone libraries. (3)
                         Pantone Connect app provides digital values. <strong>Problem:</strong> Many Pantones (especially
-                        fluorescents, metallics) have no accurate RGB equivalent—they're outside RGB gamut. <strong>For
+                        fluorescents, metallics) have no accurate RGB equivalentï¿½they're outside RGB gamut. <strong>For
                             branding:</strong> Specify Pantone for print, define closest web-safe RGB separately.
-                        Document both in brand guidelines. Never trust random online converters—colors will be off.
+                        Document both in brand guidelines. Never trust random online convertersï¿½colors will be off.
                     </div>
                 </details>
 
@@ -1156,7 +1156,7 @@ Understanding Color Formats</h2>
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <strong>CSS has 140+ named colors (red, blue, cornflowerblue)—use sparingly.</strong> Named
+                        <strong>CSS has 140+ named colors (red, blue, cornflowerblue)ï¿½use sparingly.</strong> Named
                         colors like <code>color: red</code> or <code>color: rebeccapurple</code> are convenient but
                         problematic: (1) <strong>Imprecise:</strong> "red" is <code>#FF0000</code> (too bright for most
                         designs). (2) <strong>Limited palette:</strong> 140 colors insufficient for brands. (3)

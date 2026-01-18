@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -14,7 +14,7 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
-    <link rel="canonical" href="https://www.codeformatter.in/blog-css-minifier.html">
+    <link rel="canonical" href="https://www.codeformatter.in/css-minifier.html">
     <meta property="og:title" content="CSS Minifier: Professional Optimization Guide">
     <meta property="og:description"
         content="Expert CSS minification guide covering cssnano, PostCSS, selector optimization, and critical CSS extraction.">
@@ -33,7 +33,7 @@
         "@graph": [
             {
                 "@type": "Article",
-                "@id": "https://www.codeformatter.in/blog-css-minifier.html#article",
+                "@id": "https://www.codeformatter.in/css-minifier.html#article",
                 "headline": "CSS Minifier: Complete Guide to CSS Compression & Optimization (2026)",
                 "description": "Master CSS minification with our expert guide. Learn cssnano, PostCSS optimization, and production best practices.",
                 "image": "https://www.codeformatter.in/css-minifier-blog.png",
@@ -41,7 +41,7 @@
                 "datePublished": "2026-01-02",
                 "dateModified": "2026-01-17",
                 "publisher": {"@type": "Organization", "name": "Code Formatter", "logo": {"@type": "ImageObject", "url": "https://www.codeformatter.in/favicon.svg"}},
-                "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.codeformatter.in/blog-css-minifier.html"}
+                "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.codeformatter.in/css-minifier.html"}
             },
             {
                 "@type": "BreadcrumbList",
@@ -704,13 +704,13 @@
             </details>
 
             <p id="intro"><strong>CSS minification</strong> reduces stylesheet file sizes by 30-50% through whitespace
-                removal, color optimization, and property consolidation—directly improving First Contentful Paint (FCP)
+                removal, color optimization, and property consolidationï¿½directly improving First Contentful Paint (FCP)
                 and Largest Contentful Paint (LCP), two critical Core Web Vitals that influence Google search rankings
                 and user experience.</p>
 
             <p>According to HTTP Archive data from 2025, the median website ships <strong>78KB of CSS</strong>, much of
                 it redundant or poorly optimized. Proper minification combined with unused style removal can reduce this
-                to 25-35KB, saving 200-300ms on mobile connections—the difference between acceptable and frustrating
+                to 25-35KB, saving 200-300ms on mobile connectionsï¿½the difference between acceptable and frustrating
                 load times.</p>
 
             <p>This comprehensive guide, based on <strong>15+ years of frontend performance optimization</strong>,
@@ -727,7 +727,7 @@
 What is CSS Minification?</h2>
 
             <p><strong>CSS minification</strong> transforms human-readable stylesheets into compact production code by
-                removing whitespace, optimizing colors, merging rules, and eliminating redundancies—all while preserving
+                removing whitespace, optimizing colors, merging rules, and eliminating redundanciesï¿½all while preserving
                 visual rendering.</p>
 
             <div class="code-wrapper">
@@ -1015,7 +1015,7 @@ module.exports = {
                     </summary>
                     <div class="faq-answer">
                         <strong>Slightly yes, mainly parsing speed.</strong> Minified CSS has fewer bytes to parse
-                        (faster lexing), but once parsed, rendering speed is identical—browsers build the same CSSOM
+                        (faster lexing), but once parsed, rendering speed is identicalï¿½browsers build the same CSSOM
                         regardless. Real gains: <strong>network transfer time and parse time.</strong> Example: 80KB
                         source takes ~45ms to parse on mobile; 42KB minified takes ~28ms (38% faster). But actual style
                         application (layout, paint) runs at same speed. The wins are pre-render phase. Critical CSS
@@ -1033,7 +1033,7 @@ module.exports = {
                         <code>.min.css</code>, run it through your minifier with your custom CSS. Why? (1) Your minifier
                         can remove unused Bootstrap components via PurgeCSS. (2) Merging rules across boundaries
                         improves compression. (3) Consistent optimization settings. (4) Better gzip compression when all
-                        CSS is processed together. Don't trust pre-minified versions—they might not be optimized for
+                        CSS is processed together. Don't trust pre-minified versionsï¿½they might not be optimized for
                         your specific browser targets or build configuration. Process all CSS through your build
                         pipeline.
                     </div>
