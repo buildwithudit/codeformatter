@@ -179,14 +179,18 @@
             <a href="json-to-csv.html" class="nav-item" data-id="json-csv"><i class="fas fa-table"></i> JSON to CSV</a>
             <a href="csv-to-json.html" class="nav-item" data-id="csv-json"><i class="fas fa-file-csv"></i> CSV to
                 JSON</a>
-            <a href="json-to-typescript.html" class="nav-item active" data-id="json-ts"><i class="fas fa-file-code"></i>
-                JSON to TypeScript</a>
+            <a href="json-to-typescript.html" class="nav-item" class="nav-item active" data-id="json-ts"><i class="fas fa-file-code"></i> JSON
+                to TypeScript</a>
             <a href="excel-to-html.html" class="nav-item" data-id="excel-html"><i class="fas fa-table"></i> Excel to
                 HTML</a>
             <a href="case-converter.html" class="nav-item" data-id="case-conv"><i class="fas fa-text-height"></i> Case
                 Converter</a>
 
             <div class="nav-group-title">Encoding & Security</div>
+            <a href="regex-tester.html" class="nav-item" data-id="regex-test"><i class="fas fa-asterisk"></i> Regex
+                Tester</a>
+            <a href="password-generator.html" class="nav-item" data-id="pwd-gen"><i class="fas fa-key"></i> Password
+                Generator</a>
             <a href="base64-tool.html" class="nav-item" data-id="base64"><i class="fas fa-lock"></i> Base64 Tool</a>
             <a href="url-encoder.html" class="nav-item" data-id="url-enc"><i class="fas fa-link"></i> URL Encoder</a>
             <a href="hash-generator.html" class="nav-item" data-id="hash-gen"><i class="fas fa-fingerprint"></i> Hash
@@ -195,6 +199,8 @@
                 Decoder</a>
 
             <div class="nav-group-title">CSS Generators</div>
+            <a href="gradient-generator.html" class="nav-item" data-id="gradient-gen"><i
+                    class="fas fa-fill-drip"></i> Gradient Generator</a>
             <a href="glassmorphism-generator.html" class="nav-item" data-id="glass-morphism"><i class="fas fa-wind"></i>
                 Glassmorphism</a>
             <a href="smooth-shadow-generator.html" class="nav-item" data-id="shadow-gen"><i
@@ -205,11 +211,14 @@
                 Aspect Ratio</a>
 
             <div class="nav-group-title">Text & Data</div>
-                        <a href="uuid-generator.html" class="nav-item" data-id="uuid-gen"><i class="fas fa-fingerprint"></i> UUID Generator</a>
-            <a href="timestamp-converter.html" class="nav-item" data-id="timestamp-conv"><i class="fas fa-clock"></i> Timestamp Converter</a>
-            <a href="cron-generator.html" class="nav-item" data-id="cron-gen"><i class="fas fa-calendar-alt"></i> Cron Generator</a>
-            <a href="json-to-yaml.html" class="nav-item" data-id="json-yaml"><i class="fas fa-exchange-alt"></i> JSON to YAML</a>
-            
+            <a href="uuid-generator.html" class="nav-item" data-id="uuid-gen"><i class="fas fa-fingerprint"></i> UUID
+                Generator</a>
+            <a href="timestamp-converter.html" class="nav-item" data-id="timestamp-conv"><i class="fas fa-clock"></i>
+                Timestamp Converter</a>
+            <a href="cron-generator.html" class="nav-item" data-id="cron-gen"><i class="fas fa-calendar-alt"></i> Cron
+                Generator</a>
+            <a href="json-to-yaml.html" class="nav-item" data-id="json-yaml"><i class="fas fa-exchange-alt"></i> JSON to
+                YAML</a>
             <a href="lorem-ipsum-generator.html" class="nav-item" data-id="lorem"><i class="fas fa-paragraph"></i> Lorem
                 Ipsum</a>
             <a href="mock-data-generator.html" class="nav-item" data-id="mock-data"><i class="fas fa-users"></i> Mock
@@ -287,7 +296,7 @@
                     <p>This powerful <strong>typescript generator</strong> tool eliminates hours of manual type
                         creation. Simply paste your JSON, and instantly receive production-ready TypeScript types with
                         intelligent inference for primitives, arrays, nested objects, and optional fields. Plus,
-                        generate <strong>Zod schemas</strong> for runtime validation—critical for validating untrusted
+                        generate <strong>Zod schemas</strong> for runtime validationï¿½critical for validating untrusted
                         external data from APIs, user input, or third-party services.</p>
 
                     <h2>What is JSON to TypeScript Conversion?</h2>
@@ -295,7 +304,7 @@
                     <p><strong>JSON to TypeScript conversion</strong> analyzes your JSON structure and generates
                         corresponding TypeScript type definitions. TypeScript provides compile-time type safety,
                         catching errors during development before code execution. However, TypeScript types don't exist
-                        at runtime—that's where <strong>Zod validation schemas</strong> become crucial for production
+                        at runtimeï¿½that's where <strong>Zod validation schemas</strong> become crucial for production
                         applications.</p>
 
                     <p>While TypeScript catches typos like <code>user.emaill</code> instead of <code>user.email</code>
@@ -307,7 +316,7 @@
                     <h2>How to Use This JSON to TypeScript Converter</h2>
 
                     <h3>Step 1: Paste Your JSON Data</h3>
-                    <p>Copy any valid JSON into the input pane—API responses, configuration files, database exports, or
+                    <p>Copy any valid JSON into the input paneï¿½API responses, configuration files, database exports, or
                         sample data. Our <strong>JSON parser</strong> validates syntax and highlights errors with
                         detailed messages for invalid JSON, making debugging easy.</p>
 
@@ -342,7 +351,7 @@
                     <h3>TypeScript Interfaces (Compile-Time Type Checking)</h3>
                     <p><strong>TypeScript interfaces</strong> define data shapes during development. Your IDE catches
                         errors like accessing non-existent properties immediately. However, TypeScript types are
-                        completely erased at runtime after compilation—they provide zero protection against malformed
+                        completely erased at runtime after compilationï¿½they provide zero protection against malformed
                         data from external sources like APIs.</p>
 
                     <h3>Zod Schemas (Runtime Validation)</h3>
@@ -367,7 +376,7 @@ const validatedUser = UserSchema.parse(response); // Throws if invalid
 
 export type User = z.infer&lt;typeof UserSchema&gt;;</code></pre>
 
-                    <p>This pattern creates a single source of truth—your Zod schema provides both runtime validation
+                    <p>This pattern creates a single source of truthï¿½your Zod schema provides both runtime validation
                         AND compile-time types through type inference, eliminating duplication and potential mismatches.
                     </p>
 
@@ -438,7 +447,7 @@ export type User = z.infer&lt;typeof UserSchema&gt;;</code></pre>
                         code.</p>
 
                     <p><strong>Review Generated Code:</strong> Always review generated types. The tool makes best-effort
-                        inferences, but you may need adjustments based on domain knowledge—adding union types, marking
+                        inferences, but you may need adjustments based on domain knowledgeï¿½adding union types, marking
                         fields optional, or adding JSDoc comments.</p>
 
                     <p><strong>Version Control Types:</strong> Commit generated type files to version control for
@@ -463,14 +472,14 @@ export type User = z.infer&lt;typeof UserSchema&gt;;</code></pre>
                     <div class="faq-item"><strong>Can I use both TypeScript and Zod in the same project?</strong>
                         <p>Absolutely! This is the recommended approach. Define Zod schemas for data validation, then
                             use <code>type User = z.infer&lt;typeof UserSchema&gt;</code> to generate TypeScript types
-                            automatically. This creates a single source of truth—your Zod schema becomes both runtime
+                            automatically. This creates a single source of truthï¿½your Zod schema becomes both runtime
                             validator and TypeScript type definition with zero duplication.</p>
                     </div>
 
                     <div class="faq-item"><strong>How does the tool handle optional vs required fields?</strong>
                         <p>The tool infers optionality from <code>null</code> values in JSON. Fields with
                             <code>null</code> are marked optional (<code>field?: type</code>) or nullable
-                            (<code>field: type | null</code>). However, JSON samples don't represent all states—always
+                            (<code>field: type | null</code>). However, JSON samples don't represent all statesï¿½always
                             review and manually adjust optionality based on your actual API contract.
                         </p>
                     </div>
@@ -493,19 +502,19 @@ export type User = z.infer&lt;typeof UserSchema&gt;;</code></pre>
                     <div class="faq-item"><strong>Is the generated code production-ready?</strong>
                         <p>Generated code is a solid starting point following TypeScript best practices with proper
                             imports/exports and correct syntax. However, review and enhance based on domain
-                            knowledge—add JSDoc comments, refine optional fields, add Zod refinements for custom
+                            knowledgeï¿½add JSDoc comments, refine optional fields, add Zod refinements for custom
                             validation, or split large types into smaller reusable pieces for your specific needs.</p>
                     </div>
 
                     <div class="faq-item"><strong>Does my data stay private?</strong>
                         <p>100% yes. All processing happens client-side in your browser using JavaScript. Your JSON data
-                            never leaves your computer—no server uploads, no data logging, complete privacy guaranteed.
+                            never leaves your computerï¿½no server uploads, no data logging, complete privacy guaranteed.
                             Perfect for sensitive API responses containing tokens or personal information.</p>
                     </div>
 
                     <p style="text-align:center;margin-top:3rem;color:#525252;font-size:0.85rem;">
                         Generate type-safe TypeScript interfaces and Zod validation schemas instantly. Save hours of
-                        manual typing and eliminate runtime errors. 100% free, client-side processing—your data never
+                        manual typing and eliminate runtime errors. 100% free, client-side processingï¿½your data never
                         leaves your browser.
                     </p>
                 </article>
@@ -514,7 +523,7 @@ export type User = z.infer&lt;typeof UserSchema&gt;;</code></pre>
         <footer class="footer">
             <div class="footer-stats">
                 <div class="stat-item" id="typeCount"><i class="fas fa-file-code"></i> Types: 0</div>
-                <div class="footer-links"><a href="./about.html">About</a> • <a href="./privacy.html">Privacy</a> • <a
+                <div class="footer-links"><a href="./about.html">About</a> ï¿½ <a href="./privacy.html">Privacy</a> ï¿½ <a
                         href="./contact.html">Contact</a></div>
             </div>
             <div class="footer-actions">
