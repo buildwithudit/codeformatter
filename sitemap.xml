@@ -150,6 +150,19 @@
         <priority>0.85</priority>
     </url>
 
+    <url>
+        <loc>https://www.codeformatter.in/regex-tester.html</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://www.codeformatter.in/password-generator.html</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+
     <!-- Generators (Priority 0.9) -->
     <url>
         <loc>https://www.codeformatter.in/uuid-generator.html</loc>
@@ -178,6 +191,12 @@
 
 
     <!-- CSS Generators (Priority 0.8) -->
+    <url>
+        <loc>https://www.codeformatter.in/gradient-generator.html</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
     <url>
         <loc>https://www.codeformatter.in/glassmorphism-generator.html</loc>
         <lastmod>2026-01-04</lastmod>

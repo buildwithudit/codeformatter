@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free CSS Gradient Generator 2026 | Linear & Radial Gradients | Code Formatter</title>
+    <meta name="google-site-verification" content="6_k0h2oAjdSyBrxc3C7kKIze5LcIWSJUvM3YRBZIx_U" />
+    <meta name="description"
+        content="Create stunning CSS gradients instantly with our free online gradient generator. Build linear and radial gradients with multiple color stops, preview live, and copy CSS code. Perfect for web designers and developers.">
+    <meta name="keywords"
+        content="css gradient generator, linear gradient, radial gradient, gradient maker, css gradient tool, gradient creator, color gradient, web gradient, gradient css code, background gradient, gradient picker, free gradient generator 2026, css gradient builder">
+    <link rel="canonical" href="https://www.codeformatter.in/gradient-generator.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://codeformatter.in/gradient-generator.html">
+    <meta property="og:title" content="Free CSS Gradient Generator 2026 | Create Beautiful Gradients">
+    <meta property="og:description"
+        content="Create stunning CSS gradients with our visual gradient builder. Linear & radial gradients with live preview and instant CSS code.">
+    <meta property="og:image" content="https://www.codeformatter.in/codeformat.png">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Code Formatter">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://codeformatter.in/gradient-generator.html">
+    <meta name="twitter:title" content="Free CSS Gradient Generator 2026">
+    <meta name="twitter:description"
+        content="Create stunning CSS gradients with live preview. Linear & radial gradients made easy.">
+    <meta name="twitter:image" content="https://www.codeformatter.in/codeformat.png">
+
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="Code Formatter">
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        :root {
+            --bg-body: #0a0a0a;
+            --bg-panel: #171717;
+            --border-color: #262626;
+            --primary: #3b82f6;
+            --text-main: #ededed;
+            --text-muted: #a1a1aa;
+            --bg-input: #1a1a1a;
+            --text-heading: #ffffff;
+            --secondary: #22c55e;
+        }
+
+        html.light {
+            --bg-body: #f8fafc;
+            --bg-panel: #ffffff;
+            --border-color: #e2e8f0;
+            --primary: #4f46e5;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --bg-input: #f1f5f9;
+            --text-heading: #0f172a;
+            --secondary: #16a34a;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        html.light body {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+        }
+
+        main {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        header {
+            background: var(--bg-panel);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 20;
+            flex-shrink: 0;
+        }
+
+        html.light header {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        #scrollable-wrapper {
+            flex-grow: 1;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 80px;
+        }
+
+        #scrollable-wrapper::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #scrollable-wrapper::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 3px;
+        }
+
+        .workspace {
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            min-height: 70vh;
+        }
+
+        .pane {
+            flex: 1;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+
+        .pane:hover {
+            border-color: #404040;
+        }
+
+        .pane-header {
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pane-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #d4d4d4;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .pane-title i {
+            margin-right: 8px;
+            color: var(--primary);
+        }
+
+        .pane-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .action-icon {
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: color 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .action-icon:hover {
+            color: var(--primary);
+        }
+
+        /* Gradient Preview */
+        .gradient-preview {
+            flex: 1;
+            min-height: 300px;
+            border-radius: 0 0 12px 12px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .preview-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Controls Panel */
+        .controls-panel {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            overflow-y: auto;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .control-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Type Selector */
+        .type-selector {
+            display: flex;
+            gap: 10px;
+        }
+
+        .type-btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-input);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .type-btn:hover {
+            border-color: var(--primary);
+        }
+
+        .type-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #fff;
+        }
+
+        /* Direction/Shape Control */
+        .direction-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+        .direction-btn {
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-input);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .direction-btn:hover {
+            border-color: var(--primary);
+        }
+
+        .direction-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #fff;
+        }
+
+        /* Angle Slider */
+        .angle-control {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .angle-slider {
+            flex: 1;
+            height: 6px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: var(--border-color);
+            border-radius: 3px;
+            outline: none;
+        }
+
+        .angle-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .angle-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary);
+            min-width: 50px;
+            text-align: right;
+        }
+
+        /* Color Stops */
+        .color-stops-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .color-stop {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            background: var(--bg-input);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .color-stop:hover {
+            border-color: var(--primary);
+        }
+
+        .color-picker-wrapper {
+            position: relative;
+            width: 40px;
+            height: 40px;
+        }
+
+        .color-picker {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .color-picker::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+
+        .color-picker::-webkit-color-swatch {
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        .color-hex {
+            flex: 1;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            text-transform: uppercase;
+        }
+
+        .color-hex:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .position-input {
+            width: 60px;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 8px 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            text-align: center;
+        }
+
+        .position-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .remove-stop {
+            color: #ef4444;
+            cursor: pointer;
+            padding: 5px;
+            transition: opacity 0.2s;
+        }
+
+        .remove-stop:hover {
+            opacity: 0.7;
+        }
+
+        .add-stop-btn {
+            padding: 12px;
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .add-stop-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Preset Gradients */
+        .presets-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+        }
+
+        .preset-swatch {
+            aspect-ratio: 1;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .preset-swatch:hover {
+            transform: scale(1.1);
+            border-color: #fff;
+        }
+
+        /* CSS Output */
+        .css-output {
+            background: var(--bg-input);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--secondary);
+            line-height: 1.6;
+            word-break: break-all;
+            max-height: 120px;
+            overflow-y: auto;
+        }
+
+        .editor-stats {
+            padding: 10px 15px;
+            background: var(--bg-input);
+            border-top: 1px solid var(--border-color);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            display: flex;
+            gap: 20px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .stat-item i {
+            color: var(--primary);
+        }
+
+        /* Content Section */
+        .content-container {
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .clean-card {
+            background: var(--bg-panel);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .clean-card::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            filter: blur(120px);
+            opacity: 0.12;
+            z-index: -1;
+        }
+
+        .prose h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin: 0 0 20px 0;
+            background: linear-gradient(180deg, var(--text-heading), var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .prose h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-top: 45px;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .prose h2::before {
+            content: '#';
+            color: var(--primary);
+            opacity: 0.4;
+            margin-right: 10px;
+        }
+
+        .prose h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-top: 30px;
+            margin-bottom: 12px;
+        }
+
+        .prose p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 18px;
+            font-size: 1.02rem;
+        }
+
+        .prose strong {
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .prose ul,
+        .prose ol {
+            margin-bottom: 24px;
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        .prose li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        .prose ul li::before {
+            content: "→";
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .prose ol {
+            counter-reset: list-counter;
+        }
+
+        .prose ol li {
+            counter-increment: list-counter;
+        }
+
+        .prose ol li::before {
+            content: counter(list-counter) ".";
+            color: var(--primary);
+            font-weight: 700;
+            position: absolute;
+            left: 0;
+        }
+
+        .prose code {
+            background: var(--bg-input);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--secondary);
+        }
+
+        .faq-item {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 22px 25px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .faq-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--primary);
+            transition: height 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary);
+            background: rgba(59, 130, 246, 0.02);
+            transform: translateX(5px);
+        }
+
+        .faq-item:hover::before {
+            height: 100%;
+        }
+
+        .faq-item strong {
+            display: block;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            font-size: 1.02rem;
+        }
+
+        .faq-item p {
+            margin-bottom: 0;
+            font-size: 0.92rem;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--bg-panel);
+            border-top: 1px solid var(--border-color);
+            z-index: 30;
+            padding: 10px 20px;
+        }
+
+        @media (max-width: 768px) {
+            .workspace {
+                flex-direction: column;
+            }
+
+            .clean-card {
+                padding: 30px;
+            }
+
+            .presets-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .direction-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .prose h1 {
+                font-size: 1.4rem !important;
+            }
+
+            .prose h2 {
+                font-size: 1.15rem !important;
+            }
+
+            .clean-card {
+                padding: 20px !important;
+            }
+
+            .presets-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        a.brand-logo {
+            color: inherit;
+            text-decoration: none;
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "CSS Gradient Generator",
+          "url": "https://www.codeformatter.in/gradient-generator.html",
+          "description": "Create stunning CSS gradients with linear and radial options, multiple color stops, and instant CSS code.",
+          "applicationCategory": "DesignApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "Code Formatter",
+            "url": "https://www.codeformatter.in"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is a CSS gradient?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A CSS gradient is a smooth transition between two or more colors. It can be linear (in a straight line) or radial (emanating from a center point). Gradients are commonly used for backgrounds, buttons, and visual effects."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How many color stops can I add?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "You can add as many color stops as you need. Each color stop defines a color and its position along the gradient. More stops allow for complex, multi-color transitions."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body>
+    <aside id="sidebar">
+        <div class="brand">
+            <a href="index.html" class="brand-logo"><i class="fas fa-layer-group"></i> Code Formatter</a>
+        </div>
+        <div class="search-container"><input type="text" class="search-input" placeholder="Search tools..."
+                onkeyup="filterTools(this)"></div>
+        <nav class="menu" id="menuContainer">
+            <div class="nav-group-title">Code Formatters</div>
+            <a href="index.html" class="nav-item" data-id="json-fmt"><i class="fas fa-code"></i> JSON Formatter</a>
+            <a href="json-tree-viewer.html" class="nav-item" data-id="json-tree"><i class="fas fa-sitemap"></i> JSON
+                Tree View</a>
+            <a href="html-formatter.html" class="nav-item" data-id="html-fmt"><i class="fab fa-html5"></i> HTML
+                Formatter</a>
+            <a href="css-formatter.html" class="nav-item" data-id="css-fmt"><i class="fab fa-css3-alt"></i> CSS
+                Formatter</a>
+            <a href="js-formatter.html" class="nav-item" data-id="js-fmt"><i class="fab fa-js"></i> JS Formatter</a>
+            <a href="sql-formatter.html" class="nav-item" data-id="sql-fmt"><i class="fas fa-database"></i> SQL
+                Formatter</a>
+            <a href="xml-formatter.html" class="nav-item" data-id="xml-fmt"><i class="fas fa-code"></i> XML
+                Formatter</a>
+
+            <div class="nav-group-title">Image & Color Tools</div>
+            <a href="image-compressor.html" class="nav-item" data-id="img-compress"><i class="fas fa-image"></i> Image
+                Compressor</a>
+            <a href="color-converter.html" class="nav-item" data-id="color-conv"><i class="fas fa-palette"></i> Color
+                Converter</a>
+            <a href="qr-code-generator.html" class="nav-item" data-id="qr-gen"><i class="fas fa-qrcode"></i> QR
+                Generator</a>
+
+            <div class="nav-group-title">Code Minifiers</div>
+            <a href="json-minifier.html" class="nav-item" data-id="json-min"><i class="fas fa-compress"></i> JSON
+                Minifier</a>
+            <a href="html-minifier.html" class="nav-item" data-id="html-min"><i class="fas fa-compress-arrows-alt"></i>
+                HTML Minifier</a>
+            <a href="css-minifier.html" class="nav-item" data-id="css-min"><i class="fas fa-compress-arrows-alt"></i>
+                CSS Minifier</a>
+            <a href="js-minifier.html" class="nav-item" data-id="js-min"><i class="fas fa-file-archive"></i> JS
+                Minifier</a>
+
+            <div class="nav-group-title">Data Converters</div>
+            <a href="json-to-csv.html" class="nav-item" data-id="json-csv"><i class="fas fa-table"></i> JSON to CSV</a>
+            <a href="csv-to-json.html" class="nav-item" data-id="csv-json"><i class="fas fa-file-csv"></i> CSV to
+                JSON</a>
+            <a href="json-to-typescript.html" class="nav-item" data-id="json-ts"><i class="fas fa-file-code"></i> JSON
+                to TypeScript</a>
+            <a href="excel-to-html.html" class="nav-item" data-id="excel-html"><i class="fas fa-table"></i> Excel to
+                HTML</a>
+            <a href="case-converter.html" class="nav-item" data-id="case-conv"><i class="fas fa-text-height"></i> Case
+                Converter</a>
+
+            <div class="nav-group-title">Encoding & Security</div>
+            <a href="regex-tester.html" class="nav-item" data-id="regex-test"><i class="fas fa-asterisk"></i> Regex
+                Tester</a>
+            <a href="password-generator.html" class="nav-item" data-id="pwd-gen"><i class="fas fa-key"></i> Password
+                Generator</a>
+            <a href="base64-tool.html" class="nav-item" data-id="base64"><i class="fas fa-lock"></i> Base64 Tool</a>
+            <a href="url-encoder.html" class="nav-item" data-id="url-enc"><i class="fas fa-link"></i> URL Encoder</a>
+            <a href="hash-generator.html" class="nav-item" data-id="hash-gen"><i class="fas fa-fingerprint"></i> Hash
+                Generator</a>
+            <a href="jwt-decoder.html" class="nav-item" data-id="jwt-dec"><i class="fas fa-shield-alt"></i> JWT
+                Decoder</a>
+
+            <div class="nav-group-title">CSS Generators</div>
+            <a href="gradient-generator.html" class="nav-item active" data-id="gradient-gen"><i
+                    class="fas fa-fill-drip"></i> Gradient Generator</a>
+            <a href="glassmorphism-generator.html" class="nav-item" data-id="glass-morphism"><i class="fas fa-wind"></i>
+                Glassmorphism</a>
+            <a href="smooth-shadow-generator.html" class="nav-item" data-id="shadow-gen"><i
+                    class="fas fa-layer-group"></i> Smooth Shadow</a>
+            <a href="px-to-rem.html" class="nav-item" data-id="px-rem"><i class="fas fa-ruler-combined"></i> PX to
+                REM</a>
+            <a href="aspect-ratio-calculator.html" class="nav-item" data-id="aspect-ratio"><i class="fas fa-expand"></i>
+                Aspect Ratio</a>
+
+            <div class="nav-group-title">Text & Data</div>
+            <a href="uuid-generator.html" class="nav-item" data-id="uuid-gen"><i class="fas fa-fingerprint"></i> UUID
+                Generator</a>
+            <a href="timestamp-converter.html" class="nav-item" data-id="timestamp-conv"><i class="fas fa-clock"></i>
+                Timestamp Converter</a>
+            <a href="cron-generator.html" class="nav-item" data-id="cron-gen"><i class="fas fa-calendar-alt"></i> Cron
+                Generator</a>
+            <a href="json-to-yaml.html" class="nav-item" data-id="json-yaml"><i class="fas fa-exchange-alt"></i> JSON to
+                YAML</a>
+            <a href="lorem-ipsum-generator.html" class="nav-item" data-id="lorem"><i class="fas fa-paragraph"></i> Lorem
+                Ipsum</a>
+            <a href="mock-data-generator.html" class="nav-item" data-id="mock-data"><i class="fas fa-users"></i> Mock
+                Data Gen</a>
+            <a href="diff-checker.html" class="nav-item" data-id="diff-check"><i class="fas fa-exchange-alt"></i> Diff
+                Checker</a>
+
+            <div class="nav-group-title">Preview Tools</div>
+            <a href="html-viewer.html" class="nav-item" data-id="html-view"><i class="fas fa-eye"></i> HTML Viewer</a>
+            <a href="social-card-preview.html" class="nav-item" data-id="social-card"><i class="fas fa-share-alt"></i>
+                Social Preview</a>
+        </nav>
+    </aside>
+    <div id="overlay" onclick="closeAllDrawers()"></div>
+
+    <main>
+        <header>
+            <div class="header-left"><i class="fas fa-bars menu-toggle-btn" onclick="handleMenuClick()"
+                    aria-label="Toggle navigation menu"></i>
+                <div class="tool-info">
+                    <div id="toolTitle">CSS Gradient Generator</div>
+                    <p id="toolDesc">Create stunning linear & radial CSS gradients</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="blog.html" class="nav-link">Blog</a>
+                <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle dark and light theme"><i
+                        class="fas fa-moon" id="themeIcon"></i></button>
+            </div>
+        </header>
+
+        <div id="scrollable-wrapper">
+            <section class="workspace" id="workspace">
+                <!-- Preview Pane -->
+                <div class="pane">
+                    <div class="pane-header">
+                        <span class="pane-title"><i class="fas fa-eye"></i> Preview</span>
+                        <div class="pane-actions">
+                            <i class="fas fa-random action-icon" onclick="randomGradient()" title="Random Gradient"></i>
+                            <i class="far fa-copy action-icon" onclick="copyCSS()" title="Copy CSS"></i>
+                        </div>
+                    </div>
+                    <div class="gradient-preview" id="gradientPreview">
+                        <span class="preview-text">Preview</span>
+                    </div>
+                    <div class="editor-stats">
+                        <div class="stat-item"><i class="fas fa-fill-drip"></i> <span id="gradientType">Linear</span>
+                        </div>
+                        <div class="stat-item"><i class="fas fa-palette"></i> <span id="colorCount">2 colors</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls Pane -->
+                <div class="pane">
+                    <div class="pane-header">
+                        <span class="pane-title"><i class="fas fa-sliders-h"></i> Controls</span>
+                    </div>
+                    <div class="controls-panel">
+                        <!-- Gradient Type -->
+                        <div class="control-group">
+                            <span class="control-label">Gradient Type</span>
+                            <div class="type-selector">
+                                <button class="type-btn active" data-type="linear" onclick="setType('linear')">
+                                    <i class="fas fa-long-arrow-alt-right"></i> Linear
+                                </button>
+                                <button class="type-btn" data-type="radial" onclick="setType('radial')">
+                                    <i class="fas fa-circle"></i> Radial
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Direction (for linear) -->
+                        <div class="control-group" id="directionGroup">
+                            <span class="control-label">Direction</span>
+                            <div class="direction-grid">
+                                <button class="direction-btn" data-dir="to top"
+                                    onclick="setDirection('to top')">↑</button>
+                                <button class="direction-btn" data-dir="to top right"
+                                    onclick="setDirection('to top right')">↗</button>
+                                <button class="direction-btn active" data-dir="to right"
+                                    onclick="setDirection('to right')">→</button>
+                                <button class="direction-btn" data-dir="to bottom right"
+                                    onclick="setDirection('to bottom right')">↘</button>
+                                <button class="direction-btn" data-dir="to bottom"
+                                    onclick="setDirection('to bottom')">↓</button>
+                                <button class="direction-btn" data-dir="to bottom left"
+                                    onclick="setDirection('to bottom left')">↙</button>
+                                <button class="direction-btn" data-dir="to left"
+                                    onclick="setDirection('to left')">←</button>
+                                <button class="direction-btn" data-dir="to top left"
+                                    onclick="setDirection('to top left')">↖</button>
+                            </div>
+                        </div>
+
+                        <!-- Custom Angle -->
+                        <div class="control-group" id="angleGroup">
+                            <span class="control-label">Custom Angle</span>
+                            <div class="angle-control">
+                                <input type="range" class="angle-slider" id="angleSlider" min="0" max="360" value="90"
+                                    oninput="setAngle(this.value)">
+                                <span class="angle-value" id="angleValue">90°</span>
+                            </div>
+                        </div>
+
+                        <!-- Color Stops -->
+                        <div class="control-group">
+                            <span class="control-label">Color Stops</span>
+                            <div class="color-stops-container" id="colorStops">
+                                <!-- Color stops will be added here -->
+                            </div>
+                            <button class="add-stop-btn" onclick="addColorStop()">
+                                <i class="fas fa-plus"></i> Add Color Stop
+                            </button>
+                        </div>
+
+                        <!-- Preset Gradients -->
+                        <div class="control-group">
+                            <span class="control-label">Presets</span>
+                            <div class="presets-grid" id="presetsGrid">
+                                <!-- Presets will be added here -->
+                            </div>
+                        </div>
+
+                        <!-- CSS Output -->
+                        <div class="control-group">
+                            <span class="control-label">CSS Code</span>
+                            <div class="css-output" id="cssOutput">background: linear-gradient(to right, #667eea,
+                                #764ba2);</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEO CONTENT SECTION -->
+            <div class="content-container">
+                <article class="clean-card prose">
+                    <h1>Free CSS Gradient Generator 2026 – Create Beautiful Gradients Instantly</h1>
+
+                    <p>Welcome to <strong>Code Formatter's CSS Gradient Generator</strong> – the ultimate visual tool
+                        for creating stunning CSS gradients. Whether you're designing a modern website, crafting
+                        eye-catching buttons, or building beautiful user interfaces, our <strong>free gradient
+                            generator</strong> makes it effortless to create professional-quality gradients with just a
+                        few clicks.</p>
+
+                    <p>Gradients are a cornerstone of modern web design, adding depth, dimension, and visual interest to
+                        otherwise flat designs. Our tool supports both <strong>linear and radial gradients</strong>,
+                        unlimited color stops, precise angle control, and instant CSS code generation. All processing
+                        happens in your browser, so your designs remain private and you get instant results.</p>
+
+                    <h2>What Are CSS Gradients?</h2>
+                    <p>CSS gradients are smooth transitions between two or more colors. Unlike solid colors, gradients
+                        create a sense of depth, movement, and modernity. They're defined using CSS functions and can be
+                        applied to backgrounds, borders, text, and other elements.</p>
+
+                    <h3>Linear Gradients</h3>
+                    <p>Linear gradients transition colors along a straight line (horizontal, vertical, or at any angle).
+                        They're perfect for backgrounds, buttons, and progress bars. The syntax is:
+                        <code>linear-gradient(direction, color1, color2, ...)</code>
+                    </p>
+
+                    <h3>Radial Gradients</h3>
+                    <p>Radial gradients emanate from a center point outward in a circular or elliptical pattern. They're
+                        ideal for spotlight effects, buttons, and creating depth. The syntax is:
+                        <code>radial-gradient(shape, color1, color2, ...)</code>
+                    </p>
+
+                    <h2>How to Use Our Gradient Generator</h2>
+                    <ol>
+                        <li><strong>Choose Gradient Type:</strong> Select between Linear or Radial gradient using the
+                            type buttons.</li>
+                        <li><strong>Set Direction or Angle:</strong> For linear gradients, click a direction arrow or
+                            use the angle slider for precise control.</li>
+                        <li><strong>Add Color Stops:</strong> Click on color pickers to change colors, adjust positions,
+                            or add more color stops for complex gradients.</li>
+                        <li><strong>Use Presets:</strong> Click any preset swatch to instantly apply professional
+                            gradient combinations.</li>
+                        <li><strong>Copy CSS:</strong> Click the copy button or use the generated CSS code directly in
+                            your stylesheets.</li>
+                    </ol>
+
+                    <h2>Key Features</h2>
+                    <ul>
+                        <li><strong>Visual Preview:</strong> See your gradient in real-time as you adjust colors and
+                            settings</li>
+                        <li><strong>Linear & Radial Support:</strong> Create both gradient types with full customization
+                        </li>
+                        <li><strong>8-Direction Quick Select:</strong> Instantly set horizontal, vertical, or diagonal
+                            gradients</li>
+                        <li><strong>Custom Angle Control:</strong> Use the slider for precise angle adjustments (0-360°)
+                        </li>
+                        <li><strong>Unlimited Color Stops:</strong> Add as many colors as needed for complex multi-color
+                            gradients</li>
+                        <li><strong>Position Control:</strong> Set exact percentage positions for each color stop</li>
+                        <li><strong>Beautiful Presets:</strong> Start with handcrafted gradient combinations used by top
+                            designers</li>
+                        <li><strong>Random Generator:</strong> Get inspired with randomly generated gradient
+                            combinations</li>
+                        <li><strong>One-Click Copy:</strong> Copy the complete CSS code to your clipboard instantly</li>
+                        <li><strong>Cross-Browser CSS:</strong> Generated code works in all modern browsers</li>
+                    </ul>
+
+                    <h2>CSS Gradient Best Practices</h2>
+                    <ul>
+                        <li><strong>Use Subtle Transitions:</strong> Gradients with similar hues create elegant,
+                            professional looks</li>
+                        <li><strong>Consider Contrast:</strong> Ensure text remains readable over gradient backgrounds
+                        </li>
+                        <li><strong>Limit Color Stops:</strong> 2-3 colors usually work best; too many can look chaotic
+                        </li>
+                        <li><strong>Match Your Brand:</strong> Use gradients that complement your brand's color palette
+                        </li>
+                        <li><strong>Add Fallback Colors:</strong> Always include a solid background-color as fallback
+                            for older browsers</li>
+                        <li><strong>Test on Mobile:</strong> Ensure gradients look good on smaller screens</li>
+                        <li><strong>Performance:</strong> CSS gradients are rendered by the browser and don't require
+                            image downloads</li>
+                    </ul>
+
+                    <h2>Popular Gradient Trends in 2026</h2>
+                    <ul>
+                        <li><strong>Mesh Gradients:</strong> Complex multi-point gradients that create organic, flowing
+                            shapes</li>
+                        <li><strong>Dark Mode Gradients:</strong> Subtle transitions between dark shades for modern dark
+                            UIs</li>
+                        <li><strong>Glassmorphism:</strong> Translucent gradients combined with blur effects</li>
+                        <li><strong>Duotone:</strong> Two-color gradients applied over images for artistic effects</li>
+                        <li><strong>Aurora Gradients:</strong> Vibrant, multi-color gradients inspired by northern
+                            lights</li>
+                        <li><strong>Soft Gradients:</strong> Extremely subtle transitions that add depth without
+                            distraction</li>
+                    </ul>
+
+                    <h2>Frequently Asked Questions</h2>
+
+                    <div class="faq-item">
+                        <strong>What's the difference between linear and radial gradients?</strong>
+                        <p>Linear gradients transition colors in a straight line (horizontal, vertical, or diagonal),
+                            while radial gradients emanate from a central point outward in a circular or elliptical
+                            pattern. Linear is more common for backgrounds; radial creates spotlight or button effects.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>How many color stops can I add?</strong>
+                        <p>You can add as many color stops as you need. However, for most designs, 2-4 colors work best.
+                            Each color stop can have a specific position (percentage) where it appears in the gradient.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Do CSS gradients work in all browsers?</strong>
+                        <p>Yes, CSS gradients are supported in all modern browsers including Chrome, Firefox, Safari,
+                            Edge, and Opera. Our generator produces standard CSS that works everywhere without vendor
+                            prefixes.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Can I use gradients for text?</strong>
+                        <p>Yes! You can apply gradients to text using <code>background-clip: text</code> and
+                            <code>-webkit-background-clip: text</code> along with <code>color: transparent</code>. This
+                            creates stunning gradient text effects.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Are CSS gradients better than gradient images?</strong>
+                        <p>In most cases, yes. CSS gradients are resolution-independent (look sharp on all screens),
+                            don't require additional HTTP requests, can be easily modified in code, and are typically
+                            smaller in file size than equivalent images.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>How do I create a smooth gradient?</strong>
+                        <p>For smooth gradients, use colors that are close to each other on the color wheel. Avoid
+                            jarring transitions by adding intermediate color stops. Our generator's live preview helps
+                            you see exactly how smooth your gradient will look.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Can I animate CSS gradients?</strong>
+                        <p>While you can't directly animate gradient colors with CSS transitions, you can use techniques
+                            like animating the background-position or background-size properties, or use CSS custom
+                            properties (variables) with JavaScript for dynamic gradient animations.</p>
+                    </div>
+
+                    <p style="text-align: center; margin-top: 3rem; color: var(--text-muted); font-size: 0.85rem;">
+                        Code Formatter © 2026. Professional developer tools built with privacy and performance in mind.
+                    </p>
+                </article>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-stats">
+                <div class="stat-item" id="footerStatus"><i class="fas fa-circle-notch"></i> Ready</div>
+                <div class="footer-links"><a href="./about.html">About</a> · <a href="./privacy.html">Privacy</a> · <a
+                        href="./contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-actions">
+                <button class="btn btn-sec" onclick="randomGradient()"><i class="fas fa-random"></i> RANDOM</button>
+                <button class="btn btn-pri" onclick="copyCSS()"><i class="far fa-copy"></i> COPY CSS</button>
+            </div>
+        </footer>
+    </main>
+
+    <div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span>Action Completed</span></div>
+
+    <script>
+        const activeToolId = "gradient-gen";
+
+        // Gradient State
+        let gradientState = {
+            type: 'linear',
+            direction: 'to right',
+            angle: 90,
+            useAngle: false,
+            colorStops: [
+                { color: '#667eea', position: 0 },
+                { color: '#764ba2', position: 100 }
+            ]
+        };
+
+        // Preset Gradients
+        const presets = [
+            { colors: ['#667eea', '#764ba2'] },
+            { colors: ['#f093fb', '#f5576c'] },
+            { colors: ['#4facfe', '#00f2fe'] },
+            { colors: ['#43e97b', '#38f9d7'] },
+            { colors: ['#fa709a', '#fee140'] },
+            { colors: ['#a8edea', '#fed6e3'] },
+            { colors: ['#ff0844', '#ffb199'] },
+            { colors: ['#00c6fb', '#005bea'] },
+            { colors: ['#f83600', '#f9d423'] },
+            { colors: ['#b721ff', '#21d4fd'] },
+            { colors: ['#08aeea', '#2af598'] },
+            { colors: ['#fee140', '#fa709a'] },
+            { colors: ['#6a11cb', '#2575fc'] },
+            { colors: ['#ff9a9e', '#fecfef'] },
+            { colors: ['#a18cd1', '#fbc2eb'] },
+            { colors: ['#ffecd2', '#fcb69f'] },
+            { colors: ['#ff6b6b', '#feca57'] },
+            { colors: ['#5f72bd', '#9b23ea'] }
+        ];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderColorStops();
+            renderPresets();
+            updateGradient();
+        });
+
+        function setType(type) {
+            gradientState.type = type;
+            document.querySelectorAll('.type-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.type === type);
+            });
+            document.getElementById('directionGroup').style.display = type === 'linear' ? 'flex' : 'none';
+            document.getElementById('angleGroup').style.display = type === 'linear' ? 'flex' : 'none';
+            document.getElementById('gradientType').textContent = type.charAt(0).toUpperCase() + type.slice(1);
+            updateGradient();
+        }
+
+        function setDirection(direction) {
+            gradientState.direction = direction;
+            gradientState.useAngle = false;
+            document.querySelectorAll('.direction-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.dir === direction);
+            });
+            // Update angle to match direction
+            const angles = {
+                'to top': 0, 'to top right': 45, 'to right': 90, 'to bottom right': 135,
+                'to bottom': 180, 'to bottom left': 225, 'to left': 270, 'to top left': 315
+            };
+            document.getElementById('angleSlider').value = angles[direction] || 90;
+            document.getElementById('angleValue').textContent = (angles[direction] || 90) + '°';
+            updateGradient();
+        }
+
+        function setAngle(angle) {
+            gradientState.angle = parseInt(angle);
+            gradientState.useAngle = true;
+            document.getElementById('angleValue').textContent = angle + '°';
+            // Deselect direction buttons
+            document.querySelectorAll('.direction-btn').forEach(btn => btn.classList.remove('active'));
+            updateGradient();
+        }
+
+        function renderColorStops() {
+            const container = document.getElementById('colorStops');
+            container.innerHTML = '';
+
+            gradientState.colorStops.forEach((stop, index) => {
+                const stopEl = document.createElement('div');
+                stopEl.className = 'color-stop';
+                stopEl.innerHTML = `
+                    <div class="color-picker-wrapper">
+                        <input type="color" class="color-picker" value="${stop.color}" 
+                            onchange="updateColorStop(${index}, 'color', this.value)">
+                    </div>
+                    <input type="text" class="color-hex" value="${stop.color}" 
+                        onchange="updateColorStop(${index}, 'color', this.value)">
+                    <input type="number" class="position-input" value="${stop.position}" min="0" max="100"
+                        onchange="updateColorStop(${index}, 'position', this.value)">
+                    <span>%</span>
+                    ${gradientState.colorStops.length > 2 ?
+                        `<i class="fas fa-times remove-stop" onclick="removeColorStop(${index})"></i>` : ''}
+                `;
+                container.appendChild(stopEl);
+            });
+
+            document.getElementById('colorCount').textContent = gradientState.colorStops.length + ' colors';
+        }
+
+        function updateColorStop(index, property, value) {
+            if (property === 'color') {
+                gradientState.colorStops[index].color = value;
+                // Update both picker and hex input
+                const stopEl = document.querySelectorAll('.color-stop')[index];
+                stopEl.querySelector('.color-picker').value = value;
+                stopEl.querySelector('.color-hex').value = value;
+            } else if (property === 'position') {
+                gradientState.colorStops[index].position = parseInt(value);
+            }
+            updateGradient();
+        }
+
+        function addColorStop() {
+            const lastColor = gradientState.colorStops[gradientState.colorStops.length - 1];
+            const newColor = getRandomColor();
+            const newPosition = Math.min(100, lastColor.position + 20);
+            gradientState.colorStops.push({ color: newColor, position: newPosition });
+            renderColorStops();
+            updateGradient();
+            showToast('Color stop added!');
+        }
+
+        function removeColorStop(index) {
+            if (gradientState.colorStops.length > 2) {
+                gradientState.colorStops.splice(index, 1);
+                renderColorStops();
+                updateGradient();
+                showToast('Color stop removed!');
+            }
+        }
+
+        function renderPresets() {
+            const container = document.getElementById('presetsGrid');
+            container.innerHTML = '';
+
+            presets.forEach((preset, index) => {
+                const swatch = document.createElement('div');
+                swatch.className = 'preset-swatch';
+                swatch.style.background = `linear-gradient(to right, ${preset.colors.join(', ')})`;
+                swatch.onclick = () => applyPreset(index);
+                container.appendChild(swatch);
+            });
+        }
+
+        function applyPreset(index) {
+            const preset = presets[index];
+            gradientState.colorStops = preset.colors.map((color, i) => ({
+                color,
+                position: Math.round((i / (preset.colors.length - 1)) * 100)
+            }));
+            renderColorStops();
+            updateGradient();
+            showToast('Preset applied!');
+        }
+
+        function getRandomColor() {
+            return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+        }
+
+        function randomGradient() {
+            const numColors = Math.floor(Math.random() * 3) + 2; // 2-4 colors
+            gradientState.colorStops = [];
+            for (let i = 0; i < numColors; i++) {
+                gradientState.colorStops.push({
+                    color: getRandomColor(),
+                    position: Math.round((i / (numColors - 1)) * 100)
+                });
+            }
+            gradientState.angle = Math.floor(Math.random() * 360);
+            gradientState.useAngle = true;
+            document.getElementById('angleSlider').value = gradientState.angle;
+            document.getElementById('angleValue').textContent = gradientState.angle + '°';
+            document.querySelectorAll('.direction-btn').forEach(btn => btn.classList.remove('active'));
+            renderColorStops();
+            updateGradient();
+            showToast('Random gradient generated!');
+        }
+
+        function updateGradient() {
+            const preview = document.getElementById('gradientPreview');
+            const cssOutput = document.getElementById('cssOutput');
+
+            const colorString = gradientState.colorStops
+                .map(stop => `${stop.color} ${stop.position}%`)
+                .join(', ');
+
+            let css;
+            if (gradientState.type === 'linear') {
+                const direction = gradientState.useAngle ?
+                    `${gradientState.angle}deg` :
+                    gradientState.direction;
+                css = `linear-gradient(${direction}, ${colorString})`;
+            } else {
+                css = `radial-gradient(circle, ${colorString})`;
+            }
+
+            preview.style.background = css;
+            cssOutput.textContent = `background: ${css};`;
+        }
+
+        function copyCSS() {
+            const css = document.getElementById('cssOutput').textContent;
+            navigator.clipboard.writeText(css);
+            showToast('CSS copied to clipboard!');
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.querySelector('span').textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        // Theme toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('themeIcon');
+            html.classList.toggle('light');
+            if (html.classList.contains('light')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'light');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load saved theme
+        (function () {
+            const saved = localStorage.getItem('theme');
+            if (saved === 'light') {
+                document.documentElement.classList.add('light');
+                document.getElementById('themeIcon').classList.replace('fa-moon', 'fa-sun');
+            }
+        })();
+
+        // Sidebar functions
+        function handleMenuClick() {
+            document.getElementById('sidebar').classList.toggle('open');
+            document.getElementById('overlay').classList.toggle('show');
+        }
+
+        function closeAllDrawers() {
+            document.getElementById('sidebar').classList.remove('open');
+            document.getElementById('overlay').classList.remove('show');
+        }
+
+        function filterTools(input) {
+            const filter = input.value.toLowerCase();
+            const items = document.querySelectorAll('.nav-item');
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                item.style.display = text.includes(filter) ? '' : 'none';
+            });
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

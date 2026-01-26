@@ -730,16 +730,6 @@
             <a href="jwt-decoder.html" class="nav-item" data-id="jwt-dec"><i class="fas fa-shield-alt"></i> JWT
                 Decoder</a>
 
-            <div class="nav-group-title">Generators</div>
-            <a href="uuid-generator.html" class="nav-item" data-id="uuid-gen"><i class="fas fa-fingerprint"></i> UUID
-                Generator</a>
-            <a href="timestamp-converter.html" class="nav-item" data-id="timestamp-conv"><i class="fas fa-clock"></i>
-                Timestamp Converter</a>
-            <a href="lorem-ipsum-generator.html" class="nav-item" data-id="lorem"><i class="fas fa-paragraph"></i> Lorem
-                Ipsum</a>
-            <a href="mock-data-generator.html" class="nav-item" data-id="mock-data"><i class="fas fa-users"></i> Mock
-                Data Gen</a>
-
             <div class="nav-group-title">CSS Generators</div>
             <a href="glassmorphism-generator.html" class="nav-item" data-id="glass-morphism"><i class="fas fa-wind"></i>
                 Glassmorphism</a>
@@ -751,6 +741,19 @@
                 Aspect Ratio</a>
 
             <div class="nav-group-title">Text & Data</div>
+            <a href="uuid-generator.html" class="nav-item" data-id="uuid-gen"><i class="fas fa-fingerprint"></i> UUID
+                Generator</a>
+            <a href="timestamp-converter.html" class="nav-item" data-id="timestamp-conv"><i class="fas fa-clock"></i>
+                Timestamp Converter</a>
+            <a href="cron-generator.html" class="nav-item" data-id="cron-gen"><i class="fas fa-calendar-alt"></i> Cron
+                Generator</a>
+            <a href="json-to-yaml.html" class="nav-item" data-id="json-yaml"><i class="fas fa-exchange-alt"></i> JSON to
+                YAML</a>
+
+            <a href="lorem-ipsum-generator.html" class="nav-item" data-id="lorem"><i class="fas fa-paragraph"></i> Lorem
+                Ipsum</a>
+            <a href="mock-data-generator.html" class="nav-item" data-id="mock-data"><i class="fas fa-users"></i> Mock
+                Data Gen</a>
             <a href="diff-checker.html" class="nav-item" data-id="diff-check"><i class="fas fa-exchange-alt"></i> Diff
                 Checker</a>
 
@@ -938,12 +941,14 @@
                     <h3>Unix Timestamp in Seconds (10 digits)</h3>
                     <p>The traditional Unix timestamp format uses seconds as the base unit. A 10-digit timestamp like
                         <code>1706234567</code> is used by most backend systems, databases (MySQL, PostgreSQL), and
-                        programming languages like Python, PHP, and Ruby.</p>
+                        programming languages like Python, PHP, and Ruby.
+                    </p>
 
                     <h3>Unix Timestamp in Milliseconds (13 digits)</h3>
                     <p>JavaScript, Java, and many modern APIs use millisecond precision. A 13-digit timestamp like
                         <code>1706234567890</code> includes three additional digits for millisecond accuracy. Our
-                        converter automatically detects which format you're using based on the number of digits.</p>
+                        converter automatically detects which format you're using based on the number of digits.
+                    </p>
 
                     <h2>How to Use This Converter</h2>
 
@@ -1028,7 +1033,8 @@
                     <div class="faq-item">
                         <strong>Can I convert negative timestamps?</strong>
                         <p>Yes! Negative timestamps represent dates before January 1, 1970. For example,
-                            <code>-86400</code> represents December 31, 1969.</p>
+                            <code>-86400</code> represents December 31, 1969.
+                        </p>
                     </div>
 
                     <div class="faq-item">
