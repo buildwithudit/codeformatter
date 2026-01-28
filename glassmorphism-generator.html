@@ -424,8 +424,11 @@
             border-top: 1px solid var(--border-color);
             z-index: 10;
         }
-    
-        a.brand-logo { color: inherit; text-decoration: none; }
+
+        a.brand-logo {
+            color: inherit;
+            text-decoration: none;
+        }
     </style>
 
 <body>
@@ -435,7 +438,7 @@
         </div>
         <div class="search-container"><input type="text" class="search-input" placeholder="Search tools..."
                 onkeyup="filterTools(this)"></div>
-                        <nav class="menu" id="menuContainer">
+        <nav class="menu" id="menuContainer">
             <div class="nav-group-title">Code Formatters</div>
             <a href="index.html" class="nav-item" data-id="json-fmt"><i class="fas fa-code"></i> JSON Formatter</a>
             <a href="json-tree-viewer.html" class="nav-item" data-id="json-tree"><i class="fas fa-sitemap"></i> JSON
@@ -492,8 +495,8 @@
                 Decoder</a>
 
             <div class="nav-group-title">CSS Generators</div>
-            <a href="gradient-generator.html" class="nav-item" data-id="gradient-gen"><i
-                    class="fas fa-fill-drip"></i> Gradient Generator</a>
+            <a href="gradient-generator.html" class="nav-item" data-id="gradient-gen"><i class="fas fa-fill-drip"></i>
+                Gradient Generator</a>
             <a href="glassmorphism-generator.html" class="nav-item" data-id="glass-morphism"><i class="fas fa-wind"></i>
                 Glassmorphism</a>
             <a href="smooth-shadow-generator.html" class="nav-item" data-id="shadow-gen"><i
@@ -529,7 +532,8 @@
 
     <main>
         <header>
-            <div class="header-left"><i class="fas fa-bars menu-toggle-btn" onclick="handleMenuClick()" aria-label="Toggle navigation menu"></i>
+            <div class="header-left"><i class="fas fa-bars menu-toggle-btn" onclick="handleMenuClick()"
+                    aria-label="Toggle navigation menu"></i>
                 <div class="tool-info">
                     <div id="toolTitle">Loading...</div>
                     <p id="toolDesc">...</p>
@@ -537,7 +541,8 @@
             </div>
             <div class="header-right">
                 <a href="blog.html" class="nav-link">Blog</a>
-                <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle dark and light theme"><i class="fas fa-moon" id="themeIcon"></i></button>
+                <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle dark and light theme"><i
+                        class="fas fa-moon" id="themeIcon"></i></button>
             </div>
         </header>
 
@@ -864,6 +869,12 @@
                             that perfectly map to these CSS properties.</p>
                     </div>
 
+
+                    <p style="text-align: center; margin-top: 2rem; margin-bottom: 1rem;">
+                        <a href="blog-glassmorphism-generator.html"
+                            style="color: var(--primary); font-weight: 600; text-decoration: none; font-size: 1.1rem;">📖
+                            Read Our Complete Glassmorphism Design Guide →</a>
+                    </p>
                 </article>
             </div>
 
@@ -1074,8 +1085,11 @@
         html.light .glass-label {
             color: var(--text-muted);
         }
-    
-        a.brand-logo { color: inherit; text-decoration: none; }
+
+        a.brand-logo {
+            color: inherit;
+            text-decoration: none;
+        }
     </style>
 
     <script>
@@ -1227,4 +1241,3 @@
 </body>
 
 </html>
-

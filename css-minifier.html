@@ -435,51 +435,64 @@
                 padding: 30px;
             }
         }
-    
-            /* Enhanced Mobile Content Styles */
-            @media (max-width: 480px) {
-                .prose h1 {
-                    font-size: 1.4rem !important;
-                    line-height: 1.25 !important;
-                    margin-bottom: 15px !important;
-                }
-                .prose h2 {
-                    font-size: 1.15rem !important;
-                    margin-top: 25px !important;
-                }
-                .prose h3 {
-                    font-size: 1rem !important;
-                }
-                .prose p {
-                    font-size: 0.9rem !important;
-                    line-height: 1.65 !important;
-                }
-                .prose li {
-                    font-size: 0.9rem !important;
-                    padding-left: 20px !important;
-                }
-                .prose ol li::before {
-                    font-size: 0.85rem !important;
-                }
-                .clean-card {
-                    padding: 20px !important;
-                }
-                .content-container {
-                    margin: 20px auto !important;
-                    padding: 0 10px !important;
-                }
-                .faq-item {
-                    padding: 15px !important;
-                }
-                .faq-item strong {
-                    font-size: 0.9rem !important;
-                }
-                .faq-item p {
-                    font-size: 0.85rem !important;
-                }
+
+        /* Enhanced Mobile Content Styles */
+        @media (max-width: 480px) {
+            .prose h1 {
+                font-size: 1.4rem !important;
+                line-height: 1.25 !important;
+                margin-bottom: 15px !important;
             }
-    
-        a.brand-logo { color: inherit; text-decoration: none; }
+
+            .prose h2 {
+                font-size: 1.15rem !important;
+                margin-top: 25px !important;
+            }
+
+            .prose h3 {
+                font-size: 1rem !important;
+            }
+
+            .prose p {
+                font-size: 0.9rem !important;
+                line-height: 1.65 !important;
+            }
+
+            .prose li {
+                font-size: 0.9rem !important;
+                padding-left: 20px !important;
+            }
+
+            .prose ol li::before {
+                font-size: 0.85rem !important;
+            }
+
+            .clean-card {
+                padding: 20px !important;
+            }
+
+            .content-container {
+                margin: 20px auto !important;
+                padding: 0 10px !important;
+            }
+
+            .faq-item {
+                padding: 15px !important;
+            }
+
+            .faq-item strong {
+                font-size: 0.9rem !important;
+            }
+
+            .faq-item p {
+                font-size: 0.85rem !important;
+            }
+        }
+
+        a.brand-logo {
+            color: inherit;
+            text-decoration: none;
+        }
     </style>
     <script type="application/ld+json">
     {
@@ -511,7 +524,7 @@
         </div>
         <div class="search-container"><input type="text" class="search-input" placeholder="Search tools..."
                 onkeyup="filterTools(this)"></div>
-                        <nav class="menu" id="menuContainer">
+        <nav class="menu" id="menuContainer">
             <div class="nav-group-title">Code Formatters</div>
             <a href="index.html" class="nav-item" data-id="json-fmt"><i class="fas fa-code"></i> JSON Formatter</a>
             <a href="json-tree-viewer.html" class="nav-item" data-id="json-tree"><i class="fas fa-sitemap"></i> JSON
@@ -568,8 +581,8 @@
                 Decoder</a>
 
             <div class="nav-group-title">CSS Generators</div>
-            <a href="gradient-generator.html" class="nav-item" data-id="gradient-gen"><i
-                    class="fas fa-fill-drip"></i> Gradient Generator</a>
+            <a href="gradient-generator.html" class="nav-item" data-id="gradient-gen"><i class="fas fa-fill-drip"></i>
+                Gradient Generator</a>
             <a href="glassmorphism-generator.html" class="nav-item" data-id="glass-morphism"><i class="fas fa-wind"></i>
                 Glassmorphism</a>
             <a href="smooth-shadow-generator.html" class="nav-item" data-id="shadow-gen"><i
@@ -605,7 +618,8 @@
 
     <main>
         <header>
-            <div class="header-left"><i class="fas fa-bars menu-toggle-btn" onclick="handleMenuClick()" aria-label="Toggle navigation menu"></i>
+            <div class="header-left"><i class="fas fa-bars menu-toggle-btn" onclick="handleMenuClick()"
+                    aria-label="Toggle navigation menu"></i>
                 <div class="tool-info">
                     <div id="toolTitle">CSS Minifier</div>
                     <p id="toolDesc">Compress your stylesheets for maximum website performance.</p>
@@ -613,7 +627,8 @@
             </div>
             <div class="header-right">
                 <a href="blog.html" class="nav-link">Blog</a>
-                <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle dark and light theme"><i class="fas fa-moon" id="themeIcon"></i></button>
+                <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle dark and light theme"><i
+                        class="fas fa-moon" id="themeIcon"></i></button>
             </div>
         </header>
 
@@ -802,6 +817,12 @@
                     <p style="text-align: center; margin-top: 3rem; color: var(--text-muted); font-size: 0.85rem;">
                         Code Formatter ? 2026. Professional developer tools built with privacy and performance in mind.
                     </p>
+
+                    <p style="text-align: center; margin-top: 2rem; margin-bottom: 1rem;">
+                        <a href="blog-css-minifier.html"
+                            style="color: var(--primary); font-weight: 600; text-decoration: none; font-size: 1.1rem;">📖
+                            Read Our Complete CSS Minification Guide →</a>
+                    </p>
                 </article>
             </div>
         </div>
@@ -945,5 +966,3 @@
 </body>
 
 </html>
-
-
