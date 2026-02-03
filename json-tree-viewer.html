@@ -107,7 +107,7 @@
             color: #0451a5;
         }
 
-        html.light .tree-number {
+        or html.light .tree-number {
             color: #098658;
         }
 
@@ -302,22 +302,54 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "JSON Tree Viewer",
-      "url": "https://www.codeformatter.in/json-tree-viewer.html",
-      "description": "Visualize JSON data in a tree structure. Free online tool.",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Code Formatter",
-        "url": "https://www.codeformatter.in"
-      }
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "JSON Tree Viewer",
+          "url": "https://www.codeformatter.in/json-tree-viewer.html",
+          "description": "Free online JSON tree viewer. Visualize and navigate complex JSON structures with interactive expand/collapse, search, and JSONPath copying.",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "Code Formatter",
+            "url": "https://www.codeformatter.in"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+            {"@type": "ListItem", "position": 2, "name": "Code Formatters", "item": "https://www.codeformatter.in/#formatters"},
+            {"@type": "ListItem", "position": 3, "name": "JSON Tree Viewer"}
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "name": "How to Visualize JSON as a Tree",
+          "description": "Explore JSON data interactively in 4 simple steps",
+          "step": [
+            {"@type": "HowToStep", "position": 1, "name": "Paste JSON", "text": "Copy your JSON data and paste it into the Input pane"},
+            {"@type": "HowToStep", "position": 2, "name": "View Tree", "text": "The right pane instantly renders your JSON as an interactive tree structure"},
+            {"@type": "HowToStep", "position": 3, "name": "Explore", "text": "Click arrows to expand/collapse nodes, use search to find specific keys or values"},
+            {"@type": "HowToStep", "position": 4, "name": "Copy Path", "text": "Click Copy Path on any node to get the JSONPath expression for accessing that value"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "Can I use this with very large JSON files?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! Our tool handles large JSON files (50MB+) efficiently. The tree structure lets you collapse sections you're not interested in."}},
+            {"@type": "Question", "name": "Is my JSON data secure?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely. All processing happens 100% client-side in your browser. Your data never gets uploaded to any server."}},
+            {"@type": "Question", "name": "What is JSONPath?", "acceptedAnswer": {"@type": "Answer", "text": "JSONPath is a query language for JSON, similar to XPath for XML. When you click Copy Path on a node, you get an expression like data.users[0].name to access that value."}},
+            {"@type": "Question", "name": "Does it work with invalid JSON?", "acceptedAnswer": {"@type": "Answer", "text": "The tool requires valid JSON to generate the tree view. Use our JSON Formatter first to validate and fix any syntax issues."}}
+          ]
+        }
+      ]
     }
     </script>
 </head>

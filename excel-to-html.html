@@ -523,22 +523,53 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Excel to HTML Converter",
-      "url": "https://www.codeformatter.in/excel-to-html.html",
-      "description": "Convert Excel XLS/XLSX files to HTML tables instantly. Free online converter.",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Code Formatter",
-        "url": "https://www.codeformatter.in"
-      }
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Excel to HTML Converter",
+          "url": "https://www.codeformatter.in/excel-to-html.html",
+          "description": "Free online Excel to HTML converter. Transform XLS/XLSX spreadsheets and CSV files into clean, semantic HTML tables instantly.",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "Code Formatter",
+            "url": "https://www.codeformatter.in"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+            {"@type": "ListItem", "position": 2, "name": "Data Converters", "item": "https://www.codeformatter.in/#converters"},
+            {"@type": "ListItem", "position": 3, "name": "Excel to HTML"}
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "name": "How to Convert Excel to HTML Online",
+          "description": "Transform spreadsheet data into HTML tables in 3 simple steps",
+          "step": [
+            {"@type": "HowToStep", "position": 1, "name": "Upload File", "text": "Drop your .xlsx, .xls, or .csv file into the upload area, or paste copied Excel cells directly"},
+            {"@type": "HowToStep", "position": 2, "name": "Click Convert", "text": "Press CONVERT to generate clean, semantic HTML table code with proper thead/tbody structure"},
+            {"@type": "HowToStep", "position": 3, "name": "Use the Code", "text": "Preview the table, then copy or download the HTML for your website or CMS"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "Does it support Excel formulas?", "acceptedAnswer": {"@type": "Answer", "text": "No. It converts the displayed values only. Excel formulas don't transfer to HTML logic."}},
+            {"@type": "Question", "name": "Will it keep my formatting?", "acceptedAnswer": {"@type": "Answer", "text": "No. We intentionally strip visual styling to give you clean, raw HTML that matches your website's theme."}},
+            {"@type": "Question", "name": "Can I convert multiple sheets?", "acceptedAnswer": {"@type": "Answer", "text": "Currently, the file uploader reads the first sheet. For other sheets, copy and paste their data individually."}},
+            {"@type": "Question", "name": "Is my data private?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. All conversion happens in your browser using SheetJS. Your files are never uploaded to any server."}}
+          ]
+        }
+      ]
     }
     </script>
 </head>

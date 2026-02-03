@@ -627,22 +627,53 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "JWT Decoder",
-      "url": "https://www.codeformatter.in/jwt-decoder.html",
-      "description": "Decode and verify JWT tokens instantly.",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Code Formatter",
-        "url": "https://www.codeformatter.in"
-      }
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "JWT Decoder",
+          "url": "https://www.codeformatter.in/jwt-decoder.html",
+          "description": "Free online JWT decoder. Instantly decode and inspect JSON Web Tokens - view header, payload claims, and signature with expiration detection.",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "Code Formatter",
+            "url": "https://www.codeformatter.in"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+            {"@type": "ListItem", "position": 2, "name": "Encoding & Security", "item": "https://www.codeformatter.in/#security"},
+            {"@type": "ListItem", "position": 3, "name": "JWT Decoder"}
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "name": "How to Decode JWT Tokens Online",
+          "description": "Inspect JSON Web Tokens in 3 simple steps",
+          "step": [
+            {"@type": "HowToStep", "position": 1, "name": "Paste Token", "text": "Paste your complete JWT token (header.payload.signature) into the input pane"},
+            {"@type": "HowToStep", "position": 2, "name": "View Decoded", "text": "Instantly see the decoded header (algorithm, type) and payload (claims like sub, exp, iat)"},
+            {"@type": "HowToStep", "position": 3, "name": "Check Expiration", "text": "View the expiration status badge showing whether the token is valid or expired"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "Is it safe to paste my JWT here?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. All decoding happens 100% client-side in your browser. Your token is never sent to any server, logged, or stored anywhere."}},
+            {"@type": "Question", "name": "Can you verify the signature?", "acceptedAnswer": {"@type": "Answer", "text": "No. Signature verification requires access to the secret key. Our tool decodes and displays token contents but doesn't validate signatures."}},
+            {"@type": "Question", "name": "What algorithms are supported?", "acceptedAnswer": {"@type": "Answer", "text": "All standard JWT algorithms: HS256, HS384, HS512, RS256, RS384, RS512, ES256, ES384, ES512, PS256. The algorithm is shown in the header section."}},
+            {"@type": "Question", "name": "What's the difference between HS256 and RS256?", "acceptedAnswer": {"@type": "Answer", "text": "HS256 uses symmetric encryption (shared secret). RS256 uses asymmetric encryption (public/private key pair). RS256 is preferred for distributed systems."}}
+          ]
+        }
+      ]
     }
     </script>
 </head>

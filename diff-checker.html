@@ -590,22 +590,45 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Diff Checker",
-      "url": "https://www.codeformatter.in/diff-checker.html",
-      "description": "Compare two texts or code snippets and find differences instantly.",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Code Formatter",
-        "url": "https://www.codeformatter.in"
-      }
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Diff Checker",
+          "url": "https://www.codeformatter.in/diff-checker.html",
+          "description": "Free online diff checker. Compare two texts or code snippets and find differences instantly with color-coded results.",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+          "provider": {"@type": "Organization", "name": "Code Formatter", "url": "https://www.codeformatter.in"}
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+            {"@type": "ListItem", "position": 2, "name": "Text & Data", "item": "https://www.codeformatter.in/#text-data"},
+            {"@type": "ListItem", "position": 3, "name": "Diff Checker"}
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "name": "How to Compare Text Online",
+          "description": "Find differences between two texts in 3 simple steps",
+          "step": [
+            {"@type": "HowToStep", "position": 1, "name": "Paste Original", "text": "Enter your original content in the left 'Original Text' pane"},
+            {"@type": "HowToStep", "position": 2, "name": "Paste Modified", "text": "Enter the modified version in the right 'Modified Text' pane"},
+            {"@type": "HowToStep", "position": 3, "name": "Compare", "text": "Click Compare to see color-coded results: green for added, red for removed, gray for unchanged"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "Is my data secure?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, 100%. All comparison happens client-side in your browser using JavaScript. Your code and documents are never uploaded to any server."}},
+            {"@type": "Question", "name": "Can I compare code from any language?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! Our diff checker works with any plain text: JavaScript, Python, HTML, CSS, JSON, SQL, or any text-based files."}},
+            {"@type": "Question", "name": "Is there a size limit?", "acceptedAnswer": {"@type": "Answer", "text": "No server limit since processing is local. The practical limit depends on your device memory. Most computers handle files up to several megabytes."}},
+            {"@type": "Question", "name": "Can I use this offline?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! After the initial page load, the diff checker works completely offline - perfect for secure environments."}}
+          ]
+        }
+      ]
     }
     </script>
 </head>

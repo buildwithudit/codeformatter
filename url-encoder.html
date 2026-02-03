@@ -515,22 +515,53 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "URL Encoder/Decoder",
-      "url": "https://www.codeformatter.in/url-encoder.html",
-      "description": "Encode or decode URLs instantly.",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Code Formatter",
-        "url": "https://www.codeformatter.in"
-      }
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "URL Encoder/Decoder",
+          "url": "https://www.codeformatter.in/url-encoder.html",
+          "description": "Free online URL encoder and decoder. Convert special characters to percent-encoding instantly with 100% client-side processing.",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "Code Formatter",
+            "url": "https://www.codeformatter.in"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+            {"@type": "ListItem", "position": 2, "name": "Encoding Tools", "item": "https://www.codeformatter.in/#encoding"},
+            {"@type": "ListItem", "position": 3, "name": "URL Encoder"}
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "name": "How to Encode a URL",
+          "description": "Convert text to URL-safe format in 3 simple steps",
+          "step": [
+            {"@type": "HowToStep", "position": 1, "name": "Select Mode", "text": "Choose Encode to convert text to URL format, or Decode to convert back"},
+            {"@type": "HowToStep", "position": 2, "name": "Enter Text", "text": "Type or paste your text into the input box"},
+            {"@type": "HowToStep", "position": 3, "name": "Copy Result", "text": "The encoded/decoded result appears instantly - click copy to grab it"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "What is the difference between encodeURI and encodeURIComponent?", "acceptedAnswer": {"@type": "Answer", "text": "encodeURI is for full URLs (preserves http://, ?, etc.), while encodeURIComponent is for individual parameters (encodes everything). Our tool uses encodeURIComponent for maximum safety."}},
+            {"@type": "Question", "name": "Why did my space become %20 or +?", "acceptedAnswer": {"@type": "Answer", "text": "Historically, spaces could be + in query strings, but %20 is the standard percent-encoding for a space character. Both are widely accepted."}},
+            {"@type": "Question", "name": "Is it secure for API keys?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Since the computation is local (client-side), you can paste URLs containing sensitive tokens without fear of them being logged on a server."}},
+            {"@type": "Question", "name": "Does it support Emojis?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! Emojis are encoded as multiple percent sequences. For example, 👋 becomes %F0%9F%91%8B."}}
+          ]
+        }
+      ]
     }
     </script>
 </head>

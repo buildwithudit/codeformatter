@@ -545,22 +545,53 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Smooth Shadow Generator",
-      "url": "https://www.codeformatter.in/smooth-shadow-generator.html",
-      "description": "Create beautiful layered CSS shadows.",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Code Formatter",
-        "url": "https://www.codeformatter.in"
-      }
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Smooth Shadow Generator",
+          "url": "https://www.codeformatter.in/smooth-shadow-generator.html",
+          "description": "Free online smooth shadow generator. Create beautiful layered CSS box-shadows with realistic depth and natural light falloff for modern UI design.",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "Code Formatter",
+            "url": "https://www.codeformatter.in"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+            {"@type": "ListItem", "position": 2, "name": "CSS Generators", "item": "https://www.codeformatter.in/#css-generators"},
+            {"@type": "ListItem", "position": 3, "name": "Smooth Shadow Generator"}
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "name": "How to Create Smooth CSS Shadows Online",
+          "description": "Generate realistic layered shadows in 3 simple steps",
+          "step": [
+            {"@type": "HowToStep", "position": 1, "name": "Adjust Settings", "text": "Use sliders to control intensity, vertical distance, blur strength, and shadow color"},
+            {"@type": "HowToStep", "position": 2, "name": "Preview Live", "text": "See real-time shadow updates on the preview card with contrasting background"},
+            {"@type": "HowToStep", "position": 3, "name": "Copy CSS", "text": "Copy the generated multi-layer box-shadow CSS code for your project"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "What makes smooth shadows different?", "acceptedAnswer": {"@type": "Answer", "text": "Smooth shadows use 3-5 layered box-shadow declarations with varying blur and opacity. This creates natural depth gradients instead of the flat, harsh look of single-layer shadows."}},
+            {"@type": "Question", "name": "How many shadow layers do you generate?", "acceptedAnswer": {"@type": "Answer", "text": "We generate 3-5 layered shadows using the Tobias Ahlin algorithm - small blur/high opacity for sharp edges, medium blur for transition, and large blur/low opacity for ambient diffuse light."}},
+            {"@type": "Question", "name": "Will layered shadows affect performance?", "acceptedAnswer": {"@type": "Answer", "text": "Minimal impact. Modern browsers GPU-accelerate box-shadow. We limit to 3-5 layers which renders smoothly even on mobile devices."}},
+            {"@type": "Question", "name": "How do I adapt shadows for dark mode?", "acceptedAnswer": {"@type": "Answer", "text": "Use lighter shadow colors like rgba(255,255,255,0.1) instead of black. You can select a custom shadow color with our color picker."}}
+          ]
+        }
+      ]
     }
     </script>
 </head>

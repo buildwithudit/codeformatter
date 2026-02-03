@@ -569,22 +569,53 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "QR Code Generator",
-      "url": "https://www.codeformatter.in/qr-code-generator.html",
-      "description": "Generate QR codes for URLs, text, and more.",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Code Formatter",
-        "url": "https://www.codeformatter.in"
-      }
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "QR Code Generator",
+          "url": "https://www.codeformatter.in/qr-code-generator.html",
+          "description": "Free online QR code generator. Create custom QR codes for URLs, text, WiFi, and more with high resolution output.",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "Code Formatter",
+            "url": "https://www.codeformatter.in"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+            {"@type": "ListItem", "position": 2, "name": "Image Tools", "item": "https://www.codeformatter.in/#image-tools"},
+            {"@type": "ListItem", "position": 3, "name": "QR Generator"}
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "name": "How to Generate a QR Code",
+          "description": "Create custom QR codes in 3 simple steps",
+          "step": [
+            {"@type": "HowToStep", "position": 1, "name": "Enter Content", "text": "Type your URL, text, or WiFi credentials in the input box"},
+            {"@type": "HowToStep", "position": 2, "name": "Customize", "text": "Adjust size, colors, and error correction level to match your brand"},
+            {"@type": "HowToStep", "position": 3, "name": "Download", "text": "Click download to save your QR code as a high-quality PNG image"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "Do these QR codes expire?", "acceptedAnswer": {"@type": "Answer", "text": "No. These are static QR codes. The data is encoded directly into the pattern and never expires."}},
+            {"@type": "Question", "name": "Can I track scans?", "acceptedAnswer": {"@type": "Answer", "text": "No. Static QR codes don't track. Use a dynamic QR service with tracking URLs for analytics."}},
+            {"@type": "Question", "name": "Can I add a logo in the middle?", "acceptedAnswer": {"@type": "Answer", "text": "Download the QR and use an image editor to add a logo. Use High error correction for best results."}},
+            {"@type": "Question", "name": "Is it free for commercial use?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! Use generated QR codes for any purpose, including commercial products, without attribution."}}
+          ]
+        }
+      ]
     }
     </script>
 </head>

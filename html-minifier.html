@@ -501,22 +501,54 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "HTML Minifier",
-      "url": "https://www.codeformatter.in/html-minifier.html",
-      "description": "Minify and compress HTML code to reduce file size.",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Code Formatter",
-        "url": "https://www.codeformatter.in"
-      }
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "HTML Minifier",
+          "url": "https://www.codeformatter.in/html-minifier.html",
+          "description": "Free online HTML minifier. Compress HTML code by removing whitespace, comments, and redundant syntax to reduce file size by 20-40%.",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "Code Formatter",
+            "url": "https://www.codeformatter.in"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+            {"@type": "ListItem", "position": 2, "name": "Code Minifiers", "item": "https://www.codeformatter.in/#minifiers"},
+            {"@type": "ListItem", "position": 3, "name": "HTML Minifier"}
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "name": "How to Minify HTML Online",
+          "description": "Compress HTML code in 4 simple steps",
+          "step": [
+            {"@type": "HowToStep", "position": 1, "name": "Paste HTML", "text": "Copy your formatted HTML code and paste it into the Original HTML area"},
+            {"@type": "HowToStep", "position": 2, "name": "Click Minify", "text": "Press the MINIFY button to compress your HTML by removing unnecessary characters"},
+            {"@type": "HowToStep", "position": 3, "name": "Review Stats", "text": "See exactly how many characters were saved with the savings percentage badge"},
+            {"@type": "HowToStep", "position": 4, "name": "Copy or Download", "text": "Click copy to grab the minified code, or download as a .html file"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "Will minified HTML look different in browsers?", "acceptedAnswer": {"@type": "Answer", "text": "No. Minification only removes characters that don't affect rendering - whitespace, comments, and optional syntax. Pages look and function identically."}},
+            {"@type": "Question", "name": "How much can I save with HTML minification?", "acceptedAnswer": {"@type": "Answer", "text": "Typical savings range from 20-40% depending on your code's formatting. Well-indented HTML with many comments sees the highest compression."}},
+            {"@type": "Question", "name": "Is it safe to minify HTML with inline JavaScript?", "acceptedAnswer": {"@type": "Answer", "text": "Our tool safely handles HTML with embedded scripts. For best results, use dedicated JS minifiers, then minify the combined HTML."}},
+            {"@type": "Question", "name": "Does minification affect SEO?", "acceptedAnswer": {"@type": "Answer", "text": "Positively! Faster load times improve Core Web Vitals scores, which is a direct Google ranking factor."}}
+          ]
+        }
+      ]
     }
     </script>
 </head>

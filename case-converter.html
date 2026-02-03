@@ -531,22 +531,53 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Case Converter",
-      "url": "https://www.codeformatter.in/case-converter.html",
-      "description": "Convert text to uppercase, lowercase, title case and more.",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Code Formatter",
-        "url": "https://www.codeformatter.in"
-      }
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Case Converter",
+          "url": "https://www.codeformatter.in/case-converter.html",
+          "description": "Free online case converter. Transform text to UPPERCASE, lowercase, Title Case, camelCase, snake_case, kebab-case, and more instantly.",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "Code Formatter",
+            "url": "https://www.codeformatter.in"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+            {"@type": "ListItem", "position": 2, "name": "Data Converters", "item": "https://www.codeformatter.in/#converters"},
+            {"@type": "ListItem", "position": 3, "name": "Case Converter"}
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "name": "How to Convert Text Case Online",
+          "description": "Transform text case in 3 simple steps",
+          "step": [
+            {"@type": "HowToStep", "position": 1, "name": "Enter Text", "text": "Type or paste your text into the input area - supports any length from words to documents"},
+            {"@type": "HowToStep", "position": 2, "name": "Choose Format", "text": "Click any of the 10 case conversion buttons - UPPERCASE, lowercase, Title Case, camelCase, snake_case, kebab-case, etc."},
+            {"@type": "HowToStep", "position": 3, "name": "Copy Result", "text": "Copy the transformed text instantly with one click"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "Which case should I use for variables?", "acceptedAnswer": {"@type": "Answer", "text": "JavaScript/Java use camelCase, Python uses snake_case, CSS uses kebab-case for class names, and most languages use PascalCase for class names."}},
+            {"@type": "Question", "name": "What's the best case for SEO-friendly URLs?", "acceptedAnswer": {"@type": "Answer", "text": "Use kebab-case. Search engines treat hyphens as word separators, making 'how-to-cook-pasta' more readable than alternatives."}},
+            {"@type": "Question", "name": "Can I convert text with special characters?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The tool preserves special characters, numbers, and punctuation while only transforming alphabetic letters."}},
+            {"@type": "Question", "name": "Is there a character limit?", "acceptedAnswer": {"@type": "Answer", "text": "No. All processing happens locally in your browser. Convert single words, paragraphs, or entire articles without limitations."}}
+          ]
+        }
+      ]
     }
     </script>
 </head>

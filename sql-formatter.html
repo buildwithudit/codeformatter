@@ -510,22 +510,54 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "SQL Formatter",
-      "url": "https://www.codeformatter.in/sql-formatter.html",
-      "description": "Format and beautify SQL queries instantly. Free online tool.",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Code Formatter",
-        "url": "https://www.codeformatter.in"
-      }
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "SQL Formatter",
+          "url": "https://www.codeformatter.in/sql-formatter.html",
+          "description": "Free online SQL formatter and beautifier. Instantly format MySQL, PostgreSQL, SQL Server, and standard SQL queries.",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "Code Formatter",
+            "url": "https://www.codeformatter.in"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+            {"@type": "ListItem", "position": 2, "name": "Code Formatters", "item": "https://www.codeformatter.in/#formatters"},
+            {"@type": "ListItem", "position": 3, "name": "SQL Formatter"}
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "name": "How to Format SQL Online",
+          "description": "Clean up your database queries in 3 steps",
+          "step": [
+            {"@type": "HowToStep", "position": 1, "name": "Paste SQL", "text": "Copy your raw or minified SQL query into the Input SQL editor"},
+            {"@type": "HowToStep", "position": 2, "name": "Select Dialect", "text": "Choose your database type (MySQL, PostgreSQL, etc.) from the dropdown"},
+            {"@type": "HowToStep", "position": 3, "name": "Click Format", "text": "Hit FORMAT to intelligently indent SELECT, FROM, WHERE, and JOIN clauses"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "Does it execute the query?", "acceptedAnswer": {"@type": "Answer", "text": "No! This is purely a text formatter. It does not connect to any database and cannot execute queries."}},
+            {"@type": "Question", "name": "Is it safe for sensitive data?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Processing happens in your browser via JavaScript. Your queries never leave your computer."}},
+            {"@type": "Question", "name": "Does it handle stored procedures?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, it handles CREATE PROCEDURE and BEGIN...END blocks, especially with PL/SQL or T-SQL dialect selected."}},
+            {"@type": "Question", "name": "Can I format multiple queries at once?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. If your queries are separated by semicolons, the formatter handles them as a script block."}},
+            {"@type": "Question", "name": "Why did it uppercase my keywords?", "acceptedAnswer": {"@type": "Answer", "text": "Standard SQL convention uses UPPERCASE for keywords (SELECT, FROM) and lowercase for table names."}}
+          ]
+        }
+      ]
     }
     </script>
 </head>

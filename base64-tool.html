@@ -516,22 +516,53 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Base64 Encoder/Decoder",
-      "url": "https://www.codeformatter.in/base64-tool.html",
-      "description": "Encode or decode Base64 strings instantly.",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Code Formatter",
-        "url": "https://www.codeformatter.in"
-      }
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Base64 Encoder/Decoder",
+          "url": "https://www.codeformatter.in/base64-tool.html",
+          "description": "Free online Base64 encoder and decoder. Convert text to Base64 and decode Base64 to text instantly with UTF-8 support.",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "Code Formatter",
+            "url": "https://www.codeformatter.in"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+            {"@type": "ListItem", "position": 2, "name": "Encoding Tools", "item": "https://www.codeformatter.in/#encoding"},
+            {"@type": "ListItem", "position": 3, "name": "Base64 Tool"}
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "name": "How to Encode and Decode Base64",
+          "description": "Convert between text and Base64 in 3 steps",
+          "step": [
+            {"@type": "HowToStep", "position": 1, "name": "Select Mode", "text": "Choose Encode (text to Base64) or Decode (Base64 to text) mode"},
+            {"@type": "HowToStep", "position": 2, "name": "Enter Input", "text": "Type or paste your text or Base64 string into the input box"},
+            {"@type": "HowToStep", "position": 3, "name": "Get Result", "text": "The converted result appears instantly in the output box, ready to copy"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "Is Base64 encryption?", "acceptedAnswer": {"@type": "Answer", "text": "No! Base64 is encoding, not encryption. It provides zero security. Anyone can decode the string back to the original text."}},
+            {"@type": "Question", "name": "Why does my Base64 string end with =?", "acceptedAnswer": {"@type": "Answer", "text": "That is padding. The encoding process breaks data into 24-bit chunks, and = characters are added to fill incomplete blocks."}},
+            {"@type": "Question", "name": "Does this tool support Unicode/Emojis?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We use a UTF-8 encoding wrapper so emojis and special characters decode/encode correctly."}},
+            {"@type": "Question", "name": "Is there a character limit?", "acceptedAnswer": {"@type": "Answer", "text": "As a client-side tool, it can handle very large strings (megabytes of text) as long as your browser has enough memory."}}
+          ]
+        }
+      ]
     }
     </script>
 </head>

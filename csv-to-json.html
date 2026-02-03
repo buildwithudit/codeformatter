@@ -523,22 +523,53 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "CSV to JSON Converter",
-      "url": "https://www.codeformatter.in/csv-to-json.html",
-      "description": "Convert CSV data to JSON format instantly.",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Code Formatter",
-        "url": "https://www.codeformatter.in"
-      }
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "CSV to JSON Converter",
+          "url": "https://www.codeformatter.in/csv-to-json.html",
+          "description": "Free online CSV to JSON converter. Transform CSV spreadsheet data into structured JSON objects instantly with smart type inference.",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "Code Formatter",
+            "url": "https://www.codeformatter.in"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+            {"@type": "ListItem", "position": 2, "name": "Data Converters", "item": "https://www.codeformatter.in/#converters"},
+            {"@type": "ListItem", "position": 3, "name": "CSV to JSON"}
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "name": "How to Convert CSV to JSON Online",
+          "description": "Transform CSV data into JSON in 3 simple steps",
+          "step": [
+            {"@type": "HowToStep", "position": 1, "name": "Paste CSV", "text": "Paste your CSV data with headers into the input pane, or drop a .csv file"},
+            {"@type": "HowToStep", "position": 2, "name": "Click Convert", "text": "Press CONVERT to parse and transform CSV rows into JSON objects"},
+            {"@type": "HowToStep", "position": 3, "name": "Copy JSON", "text": "Copy the prettified JSON output or download as a .json file"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "Does it handle quoted fields?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We use PapaParse which correctly handles quoted fields, escaped quotes, and line breaks within cells."}},
+            {"@type": "Question", "name": "What about numeric values?", "acceptedAnswer": {"@type": "Answer", "text": "Dynamic typing is enabled. Strings like '123' become numbers, and 'true'/'false' become booleans in the JSON output."}},
+            {"@type": "Question", "name": "Is there a file size limit?", "acceptedAnswer": {"@type": "Answer", "text": "No server limits. All parsing happens in your browser, so the limit is your device's RAM. Files up to 50MB work smoothly."}},
+            {"@type": "Question", "name": "Is my data private?", "acceptedAnswer": {"@type": "Answer", "text": "100% yes. All parsing happens client-side. Your CSV never leaves your browser and is never sent to any server."}}
+          ]
+        }
+      ]
     }
     </script>
 </head>

@@ -407,22 +407,56 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Image Compressor",
-      "url": "https://www.codeformatter.in/image-compressor.html",
-      "description": "Compress images without losing quality.",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Code Formatter",
-        "url": "https://www.codeformatter.in"
-      }
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Image Compressor",
+          "url": "https://www.codeformatter.in/image-compressor.html",
+          "description": "Free online image compressor. Reduce PNG, JPG, and WebP file sizes by up to 90% while preserving quality. 100% client-side processing.",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "Code Formatter",
+            "url": "https://www.codeformatter.in"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+            {"@type": "ListItem", "position": 2, "name": "Image Tools", "item": "https://www.codeformatter.in/#image-tools"},
+            {"@type": "ListItem", "position": 3, "name": "Image Compressor"}
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "name": "How to Compress Images Online",
+          "description": "Compress images in 5 simple steps",
+          "step": [
+            {"@type": "HowToStep", "position": 1, "name": "Upload Image", "text": "Click or drag PNG, JPG, or WebP files into the drop zone"},
+            {"@type": "HowToStep", "position": 2, "name": "Adjust Quality", "text": "Use the quality slider (10%-100%) to balance size vs. visual fidelity"},
+            {"@type": "HowToStep", "position": 3, "name": "Set Max Width", "text": "Optionally resize images while compressing for responsive design"},
+            {"@type": "HowToStep", "position": 4, "name": "Choose Format", "text": "Convert to WebP for best compression or keep original format"},
+            {"@type": "HowToStep", "position": 5, "name": "Download", "text": "Save compressed image instantly with visible size reduction percentage"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "Is my image uploaded to your server?", "acceptedAnswer": {"@type": "Answer", "text": "No! All compression happens locally in your browser using HTML5 Canvas API. Your images never leave your device, ensuring complete privacy."}},
+            {"@type": "Question", "name": "What image formats are supported?", "acceptedAnswer": {"@type": "Answer", "text": "We support PNG, JPG/JPEG, and WebP for both input and output. You can also convert between formats."}},
+            {"@type": "Question", "name": "How much can I reduce image size?", "acceptedAnswer": {"@type": "Answer", "text": "Typical compression reduces file sizes by 60-90% depending on the image type and quality settings chosen."}},
+            {"@type": "Question", "name": "Why should I use WebP format?", "acceptedAnswer": {"@type": "Answer", "text": "WebP is Google's modern format offering 25-35% better compression than JPEG with equal quality. It's supported by all modern browsers."}},
+            {"@type": "Question", "name": "Is there a file size limit?", "acceptedAnswer": {"@type": "Answer", "text": "Since processing happens in your browser, the limit depends on your device's memory. Most devices can handle images up to 50MB without issues."}}
+          ]
+        }
+      ]
     }
     </script>
 </head>

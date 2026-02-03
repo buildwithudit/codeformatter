@@ -459,13 +459,45 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Cron Expression Generator",
-      "url": "https://www.codeformatter.in/cron-generator.html",
-      "description": "Generate cron expressions visually with human-readable explanations",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Web Browser",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Cron Expression Generator",
+          "url": "https://www.codeformatter.in/cron-generator.html",
+          "description": "Free online cron expression generator. Build cron jobs visually with human-readable explanations.",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+          "provider": {"@type": "Organization", "name": "Code Formatter", "url": "https://www.codeformatter.in"}
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+            {"@type": "ListItem", "position": 2, "name": "Text & Data", "item": "https://www.codeformatter.in/#text-data"},
+            {"@type": "ListItem", "position": 3, "name": "Cron Generator"}
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "name": "How to Create Cron Expressions Online",
+          "description": "Build cron schedules visually in 3 simple steps",
+          "step": [
+            {"@type": "HowToStep", "position": 1, "name": "Select Settings", "text": "Use presets or configure minute, hour, day, month, and weekday fields"},
+            {"@type": "HowToStep", "position": 2, "name": "Preview Schedule", "text": "See the human-readable explanation and next scheduled run times"},
+            {"@type": "HowToStep", "position": 3, "name": "Copy Expression", "text": "Copy the cron expression for use in Linux, Kubernetes, or CI/CD"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "What does * * * * * mean in cron?", "acceptedAnswer": {"@type": "Answer", "text": "Five asterisks mean every minute of every hour of every day - runs 24/7."}},
+            {"@type": "Question", "name": "How do I run a cron job every 5 minutes?", "acceptedAnswer": {"@type": "Answer", "text": "Use */5 * * * * - the step syntax means every 5th minute."}},
+            {"@type": "Question", "name": "5 vs 6 field cron?", "acceptedAnswer": {"@type": "Answer", "text": "Standard cron has 5 fields. Some systems add a 6th seconds field."}},
+            {"@type": "Question", "name": "Sunday as 0 or 7?", "acceptedAnswer": {"@type": "Answer", "text": "Both work. Our tool uses 0 for Sunday."}}
+          ]
+        }
+      ]
     }
     </script>
 </head>

@@ -1177,13 +1177,45 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Social Media Card Preview Tool",
-      "description": "Visualize and generate Open Graph and Twitter Card tags.",
-      "url": "https://codeformatter.in/social-card-preview.html",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "All",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Social Media Card Preview Tool",
+          "url": "https://www.codeformatter.in/social-card-preview.html",
+          "description": "Free online social card preview generator. Visualize Open Graph and Twitter Card tags before publishing.",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+          "provider": {"@type": "Organization", "name": "Code Formatter", "url": "https://www.codeformatter.in"}
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+            {"@type": "ListItem", "position": 2, "name": "Preview Tools", "item": "https://www.codeformatter.in/#preview-tools"},
+            {"@type": "ListItem", "position": 3, "name": "Social Card Preview"}
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "name": "How to Preview Social Media Cards Online",
+          "description": "Generate Open Graph and Twitter meta tags in 3 steps",
+          "step": [
+            {"@type": "HowToStep", "position": 1, "name": "Enter Details", "text": "Fill in title, description, image URL, and website URL in the controls panel"},
+            {"@type": "HowToStep", "position": 2, "name": "Preview Cards", "text": "Toggle between Open Graph and Twitter Card tabs to see how your link will appear on each platform"},
+            {"@type": "HowToStep", "position": 3, "name": "Copy Tags", "text": "Copy the generated meta tags and paste them into your webpage's head section"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "What is the best image size for social cards?", "acceptedAnswer": {"@type": "Answer", "text": "1200x630 pixels (1.91:1 aspect ratio) works perfectly for Facebook, LinkedIn, and Twitter large cards."}},
+            {"@type": "Question", "name": "My image isn't showing on Facebook?", "acceptedAnswer": {"@type": "Answer", "text": "Facebook caches previews aggressively. Use the Facebook Sharing Debugger to rescrape your URL after updating meta tags."}},
+            {"@type": "Question", "name": "Can I use different images for Twitter and Facebook?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! Use og:image for Facebook/LinkedIn and twitter:image for Twitter. Each platform uses its own tag if available."}},
+            {"@type": "Question", "name": "Does this affect SEO rankings?", "acceptedAnswer": {"@type": "Answer", "text": "Indirectly. While Google doesn't use OG tags for ranking, social cards drive more traffic and engagement which can positively influence search performance."}}
+          ]
+        }
+      ]
     }
     </script>
 </head>

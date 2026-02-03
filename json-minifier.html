@@ -463,22 +463,53 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "JSON Minifier",
-      "url": "https://www.codeformatter.in/json-minifier.html",
-      "description": "Free online JSON minifier and compressor. Reduce JSON file size by up to 80% instantly.",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Code Formatter",
-        "url": "https://www.codeformatter.in"
-      }
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "JSON Minifier",
+          "url": "https://www.codeformatter.in/json-minifier.html",
+          "description": "Free online JSON minifier and compressor. Reduce JSON file size by 60-80% instantly with client-side processing.",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "Code Formatter",
+            "url": "https://www.codeformatter.in"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+            {"@type": "ListItem", "position": 2, "name": "Code Minifiers", "item": "https://www.codeformatter.in/#minifiers"},
+            {"@type": "ListItem", "position": 3, "name": "JSON Minifier"}
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "name": "How to Minify JSON",
+          "description": "Compress JSON data in 3 simple steps",
+          "step": [
+            {"@type": "HowToStep", "position": 1, "name": "Paste JSON", "text": "Copy your formatted JSON data into the input editor"},
+            {"@type": "HowToStep", "position": 2, "name": "Click Minify", "text": "Press the MINIFY button to remove whitespace and reduce file size"},
+            {"@type": "HowToStep", "position": 3, "name": "Copy Result", "text": "Click copy to grab your compressed JSON for APIs or databases"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "How much can I reduce JSON size?", "acceptedAnswer": {"@type": "Answer", "text": "Typically 60-80% reduction by removing whitespace and line breaks. Results depend on original formatting."}},
+            {"@type": "Question", "name": "Is the minified JSON still valid?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! Minification only removes whitespace. The data structure and content remain identical and fully valid."}},
+            {"@type": "Question", "name": "Is my data secure?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely. All processing happens locally in your browser. Your JSON never leaves your computer."}},
+            {"@type": "Question", "name": "Can I minify large files?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Since processing is client-side, you can handle large JSON files limited only by your browser's memory."}}
+          ]
+        }
+      ]
     }
     </script>
 </head>

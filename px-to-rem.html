@@ -633,22 +633,53 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "PX to REM Converter",
-      "url": "https://www.codeformatter.in/px-to-rem.html",
-      "description": "Convert pixels to REM units for responsive design.",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Code Formatter",
-        "url": "https://www.codeformatter.in"
-      }
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "PX to REM Converter",
+          "url": "https://www.codeformatter.in/px-to-rem.html",
+          "description": "Free online PX to REM converter. Instantly convert pixels to rem units for responsive, accessible CSS with custom base font size support.",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "Code Formatter",
+            "url": "https://www.codeformatter.in"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+            {"@type": "ListItem", "position": 2, "name": "CSS Generators", "item": "https://www.codeformatter.in/#css-generators"},
+            {"@type": "ListItem", "position": 3, "name": "PX to REM"}
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "name": "How to Convert PX to REM Online",
+          "description": "Convert pixel values to rem units in 3 simple steps",
+          "step": [
+            {"@type": "HowToStep", "position": 1, "name": "Enter Pixels", "text": "Type the pixel value from your design file (Figma, Sketch, etc.) into the Pixel Value input"},
+            {"@type": "HowToStep", "position": 2, "name": "Set Base Size", "text": "Adjust the base font size if your project uses something other than the 16px default"},
+            {"@type": "HowToStep", "position": 3, "name": "Copy Result", "text": "Copy the calculated REM value or the complete CSS property for your stylesheet"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "What base font size should I use?", "acceptedAnswer": {"@type": "Answer", "text": "16px is recommended - it's the browser default and what accessibility guidelines assume. Only change it for specific design requirements."}},
+            {"@type": "Question", "name": "Should I use REM for everything?", "acceptedAnswer": {"@type": "Answer", "text": "Use rem for font sizes and spacing that should scale with text. Use pixels for borders, shadows, and decorative elements that need fixed sizes."}},
+            {"@type": "Question", "name": "What's the difference between EM and REM?", "acceptedAnswer": {"@type": "Answer", "text": "EM is relative to the parent element, which can cause compounding issues. REM is always relative to the root element, providing predictable behavior."}},
+            {"@type": "Question", "name": "Will REM work in all browsers?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! REM has excellent support in all modern browsers back to IE9. No compatibility concerns for any current project."}}
+          ]
+        }
+      ]
     }
     </script>
 </head>

@@ -684,22 +684,45 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Mock Data Generator",
-      "url": "https://www.codeformatter.in/mock-data-generator.html",
-      "description": "Generate fake data for testing and development.",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Code Formatter",
-        "url": "https://www.codeformatter.in"
-      }
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Mock Data Generator",
+          "url": "https://www.codeformatter.in/mock-data-generator.html",
+          "description": "Free online mock data generator. Create realistic fake JSON data with user profiles, emails, and more for testing.",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+          "provider": {"@type": "Organization", "name": "Code Formatter", "url": "https://www.codeformatter.in"}
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+            {"@type": "ListItem", "position": 2, "name": "Text & Data", "item": "https://www.codeformatter.in/#text-data"},
+            {"@type": "ListItem", "position": 3, "name": "Mock Data Generator"}
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "name": "How to Generate Mock JSON Data Online",
+          "description": "Create fake test data in 3 simple steps",
+          "step": [
+            {"@type": "HowToStep", "position": 1, "name": "Set Count", "text": "Enter how many fake user records you need (1-1000)"},
+            {"@type": "HowToStep", "position": 2, "name": "Select Fields", "text": "Check which fields to include: ID, Name, Email, Phone, Avatar, Role"},
+            {"@type": "HowToStep", "position": 3, "name": "Generate", "text": "Click Generate to create formatted JSON array ready for use in your application"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "Is the generated data truly random?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! Names, emails, and other fields are algorithmically randomized. Each generation produces unique, non-repeating datasets perfect for testing."}},
+            {"@type": "Question", "name": "Can I use this data in production?", "acceptedAnswer": {"@type": "Answer", "text": "No. Mock data is for development and testing only. It shouldn't replace proper user registration systems in production applications."}},
+            {"@type": "Question", "name": "Are the email addresses functional?", "acceptedAnswer": {"@type": "Answer", "text": "No. Generated emails follow valid formatting rules but are not real, deliverable addresses. They are safe for testing without risk of sending actual mail."}},
+            {"@type": "Question", "name": "Is my data processed on your servers?", "acceptedAnswer": {"@type": "Answer", "text": "No. All mock data is generated 100% client-side in your browser using JavaScript. Nothing is uploaded to any server."}}
+          ]
+        }
+      ]
     }
     </script>
 </head>

@@ -497,22 +497,54 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "CSS Minifier",
-      "url": "https://www.codeformatter.in/css-minifier.html",
-      "description": "Minify and compress CSS code to reduce file size.",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Code Formatter",
-        "url": "https://www.codeformatter.in"
-      }
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "CSS Minifier",
+          "url": "https://www.codeformatter.in/css-minifier.html",
+          "description": "Free online CSS minifier. Compress stylesheets by removing comments, whitespace, and optimizing syntax for 20-50% size reduction.",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "Code Formatter",
+            "url": "https://www.codeformatter.in"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+            {"@type": "ListItem", "position": 2, "name": "Code Minifiers", "item": "https://www.codeformatter.in/#minifiers"},
+            {"@type": "ListItem", "position": 3, "name": "CSS Minifier"}
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "name": "How to Minify CSS Online",
+          "description": "Compress your stylesheet in 4 simple steps",
+          "step": [
+            {"@type": "HowToStep", "position": 1, "name": "Paste CSS", "text": "Copy your CSS content and paste it into the Input CSS pane"},
+            {"@type": "HowToStep", "position": 2, "name": "Click Minify", "text": "Press MINIFY to remove comments, whitespace, and optimize values"},
+            {"@type": "HowToStep", "position": 3, "name": "Check Savings", "text": "View the savings badge showing your compression percentage (typically 20-50%)"},
+            {"@type": "HowToStep", "position": 4, "name": "Deploy", "text": "Copy or download as .min.css for production use"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "Will minification break my layouts?", "acceptedAnswer": {"@type": "Answer", "text": "No. Our minifier uses safe compression rules that respect media queries, CSS grid/flexbox, and vendor prefixes. It's 99.9% safe for valid CSS."}},
+            {"@type": "Question", "name": "Does it support CSS Variables?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. CSS variables like --main-color are preserved exactly as written to ensure your dynamic theming continues to work."}},
+            {"@type": "Question", "name": "Can I reverse minification?", "acceptedAnswer": {"@type": "Answer", "text": "Use our CSS Formatter to make it readable again, but original comments will be lost permanently."}},
+            {"@type": "Question", "name": "Do you store my CSS?", "acceptedAnswer": {"@type": "Answer", "text": "No. All processing happens locally in your browser via JavaScript. Your styles are never uploaded to any server."}}
+          ]
+        }
+      ]
     }
     </script>
 </head>

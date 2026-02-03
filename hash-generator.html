@@ -518,22 +518,53 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Hash Generator",
-      "url": "https://www.codeformatter.in/hash-generator.html",
-      "description": "Generate MD5, SHA-1, SHA-256 and other hash values.",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Code Formatter",
-        "url": "https://www.codeformatter.in"
-      }
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Hash Generator",
+          "url": "https://www.codeformatter.in/hash-generator.html",
+          "description": "Free online hash generator. Create MD5, SHA-1, SHA-256, SHA-512, and SHA-3 hashes instantly with 100% client-side processing.",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "Code Formatter",
+            "url": "https://www.codeformatter.in"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+            {"@type": "ListItem", "position": 2, "name": "Security Tools", "item": "https://www.codeformatter.in/#security"},
+            {"@type": "ListItem", "position": 3, "name": "Hash Generator"}
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "name": "How to Generate a Hash",
+          "description": "Create cryptographic hashes in 3 simple steps",
+          "step": [
+            {"@type": "HowToStep", "position": 1, "name": "Enter Text", "text": "Type or paste your text string into the input box"},
+            {"@type": "HowToStep", "position": 2, "name": "Select Algorithm", "text": "Choose your hash algorithm (MD5, SHA-1, SHA-256, SHA-512, or SHA-3)"},
+            {"@type": "HowToStep", "position": 3, "name": "Copy Result", "text": "The hash value appears instantly - click copy to grab it"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "Can I decrypt a hash?", "acceptedAnswer": {"@type": "Answer", "text": "No. Hash functions are one-way. You cannot mathematically reverse a hash to get the original text."}},
+            {"@type": "Question", "name": "Is this tool safe for passwords?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, it runs locally. But for production, use salted hashes with bcrypt or Argon2, not simple SHA-256."}},
+            {"@type": "Question", "name": "Which algorithm should I use?", "acceptedAnswer": {"@type": "Answer", "text": "SHA-256 is the current industry standard. MD5 and SHA-1 are deprecated for security but fine for checksums."}},
+            {"@type": "Question", "name": "Is my data private?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely. All processing happens in your browser using CryptoJS. Your text never leaves your device."}}
+          ]
+        }
+      ]
     }
     </script>
 </head>

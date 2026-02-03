@@ -112,26 +112,57 @@
     <!-- Structured Data for SEO -->
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "JSON to TypeScript & Zod Generator",
-        "description": "Convert JSON data to TypeScript interfaces and Zod validation schemas instantly with intelligent type inference.",
-        "url": "https://www.codeformatter.in/json-to-typescript.html",
-        "applicationCategory": "DeveloperApplication",
-        "operatingSystem": "Any",
-        "offers": {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "JSON to TypeScript & Zod Generator",
+          "description": "Convert JSON data to TypeScript interfaces and Zod validation schemas instantly with intelligent type inference.",
+          "url": "https://www.codeformatter.in/json-to-typescript.html",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Any",
+          "offers": {
             "@type": "Offer",
             "price": "0",
             "priceCurrency": "USD"
-        },
-        "featureList": [
+          },
+          "featureList": [
             "JSON to TypeScript conversion",
             "JSON to Zod schema generation",
             "Intelligent type inference",
             "Nested object handling",
             "Array type detection",
             "100% client-side processing"
-        ]
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+            {"@type": "ListItem", "position": 2, "name": "Data Converters", "item": "https://www.codeformatter.in/#converters"},
+            {"@type": "ListItem", "position": 3, "name": "JSON to TypeScript"}
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "name": "How to Convert JSON to TypeScript Online",
+          "description": "Generate TypeScript interfaces and Zod schemas in 3 simple steps",
+          "step": [
+            {"@type": "HowToStep", "position": 1, "name": "Paste JSON", "text": "Copy your JSON data - API responses, config files, or sample data - and paste into the input pane"},
+            {"@type": "HowToStep", "position": 2, "name": "Select Output", "text": "Switch between TypeScript interfaces for compile-time types, or Zod schemas for runtime validation"},
+            {"@type": "HowToStep", "position": 3, "name": "Copy Code", "text": "Copy the generated code with proper exports for immediate use in your TypeScript project"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "What's the difference between TypeScript and Zod?", "acceptedAnswer": {"@type": "Answer", "text": "TypeScript provides compile-time type checking but types are erased at runtime. Zod validates data at runtime, ensuring external data matches expected structures."}},
+            {"@type": "Question", "name": "Can I use both TypeScript and Zod together?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely! Best practice: define Zod schemas, then use z.infer<typeof Schema> to generate TypeScript types for a single source of truth."}},
+            {"@type": "Question", "name": "Does it handle nested objects?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The tool recursively generates types for deeply nested structures, creating separate interfaces for each level."}},
+            {"@type": "Question", "name": "Is the generated code production-ready?", "acceptedAnswer": {"@type": "Answer", "text": "It's a solid starting point. Review and enhance based on domain knowledge - add JSDoc comments, refine optional fields, and add custom Zod refinements."}}
+          ]
+        }
+      ]
     }
     </script>
 </head>

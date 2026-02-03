@@ -497,22 +497,45 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "HTML Viewer",
-      "url": "https://www.codeformatter.in/html-viewer.html",
-      "description": "Preview HTML code in real-time.",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Code Formatter",
-        "url": "https://www.codeformatter.in"
-      }
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "HTML Viewer",
+          "url": "https://www.codeformatter.in/html-viewer.html",
+          "description": "Free online HTML viewer and live preview tool. Write HTML, CSS, and JavaScript and see instant real-time results.",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+          "provider": {"@type": "Organization", "name": "Code Formatter", "url": "https://www.codeformatter.in"}
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+            {"@type": "ListItem", "position": 2, "name": "Preview Tools", "item": "https://www.codeformatter.in/#preview-tools"},
+            {"@type": "ListItem", "position": 3, "name": "HTML Viewer"}
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "name": "How to Preview HTML Code Online",
+          "description": "Test HTML, CSS, and JS in 3 simple steps",
+          "step": [
+            {"@type": "HowToStep", "position": 1, "name": "Write Code", "text": "Enter your HTML with inline CSS and JavaScript in the editor pane"},
+            {"@type": "HowToStep", "position": 2, "name": "Watch Preview", "text": "See the live preview update instantly as you type"},
+            {"@type": "HowToStep", "position": 3, "name": "Open Full Screen", "text": "Click the external link icon to view in a new tab"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "Is my code saved on your server?", "acceptedAnswer": {"@type": "Answer", "text": "No. The HTML Viewer works entirely client-side in your browser."}},
+            {"@type": "Question", "name": "Can I use external CSS or JavaScript?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! Include external resources via CDN using link or script tags."}},
+            {"@type": "Question", "name": "Does it support HTML5 and ES6+?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, it supports whatever your current browser supports."}},
+            {"@type": "Question", "name": "Can I test responsive designs?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Resize your browser window to test responsive layouts."}}
+          ]
+        }
+      ]
     }
     </script>
 </head>

@@ -596,6 +596,36 @@
             }
         }
     </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Blog",
+          "name": "Code Formatter Blog",
+          "url": "https://www.codeformatter.in/blog.html",
+          "description": "Developer resources, web development guides, SEO tips, and UI/UX insights to help you build smarter.",
+          "publisher": {"@type": "Organization", "name": "Code Formatter", "url": "https://www.codeformatter.in"}
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+            {"@type": "ListItem", "position": 2, "name": "Blog"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "What topics does the blog cover?", "acceptedAnswer": {"@type": "Answer", "text": "Web development, JSON formatting, CSS optimization, JavaScript best practices, SEO strategies, and developer productivity tips."}},
+            {"@type": "Question", "name": "Who writes the blog?", "acceptedAnswer": {"@type": "Answer", "text": "Articles are written by Udit Sharma and the Code Formatter team, sharing hands-on experience and practical tips."}},
+            {"@type": "Question", "name": "How often is new content published?", "acceptedAnswer": {"@type": "Answer", "text": "New articles are published regularly covering the latest in web development, tools, and best practices."}}
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
 
 <body>

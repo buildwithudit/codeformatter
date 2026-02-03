@@ -708,22 +708,45 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Lorem Ipsum Generator",
-      "url": "https://www.codeformatter.in/lorem-ipsum-generator.html",
-      "description": "Generate placeholder text for your designs.",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Code Formatter",
-        "url": "https://www.codeformatter.in"
-      }
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Lorem Ipsum Generator",
+          "url": "https://www.codeformatter.in/lorem-ipsum-generator.html",
+          "description": "Free online Lorem Ipsum generator. Create placeholder text by word, sentence, or paragraph count with optional HTML tags.",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+          "provider": {"@type": "Organization", "name": "Code Formatter", "url": "https://www.codeformatter.in"}
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+            {"@type": "ListItem", "position": 2, "name": "Text & Data", "item": "https://www.codeformatter.in/#text-data"},
+            {"@type": "ListItem", "position": 3, "name": "Lorem Ipsum Generator"}
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "name": "How to Generate Lorem Ipsum Text Online",
+          "description": "Create placeholder text in 3 simple steps",
+          "step": [
+            {"@type": "HowToStep", "position": 1, "name": "Choose Amount", "text": "Select how many paragraphs, sentences, or words you need"},
+            {"@type": "HowToStep", "position": 2, "name": "Set Options", "text": "Toggle the classic 'Lorem ipsum...' start and optional HTML paragraph tags"},
+            {"@type": "HowToStep", "position": 3, "name": "Generate & Copy", "text": "Click Generate and copy the placeholder text for your design mockups"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "What does 'Lorem Ipsum' mean?", "acceptedAnswer": {"@type": "Answer", "text": "It doesn't have a coherent meaning. It's a corrupted version of Cicero's 45 BC work 'De Finibus Bonorum et Malorum', with words altered and truncated."}},
+            {"@type": "Question", "name": "Is Lorem Ipsum free to use?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! Being 2000+ years old, it's public domain. You can use it in any personal or commercial project without attribution."}},
+            {"@type": "Question", "name": "Why use Latin placeholder text?", "acceptedAnswer": {"@type": "Answer", "text": "Using a 'dead' language ensures viewers focus on visual design (fonts, colors, layout) rather than reading the content."}},
+            {"@type": "Question", "name": "Can I generate HTML formatted text?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! Check the 'Add HTML Tags' option to wrap each paragraph in <p> tags, ready for direct insertion into your code."}}
+          ]
+        }
+      ]
     }
     </script>
 </head>

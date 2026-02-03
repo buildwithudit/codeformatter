@@ -809,23 +809,54 @@
 
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Aspect Ratio Calculator",
-        "description": "Free online aspect ratio calculator for images, videos, and CSS layouts. Calculate dimensions while maintaining proportions.",
-        "url": "https://code-formats.com/aspect-ratio-calculator.html",
-        "applicationCategory": "DeveloperApplication",
-        "operatingSystem": "All",
-        "offers": {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Aspect Ratio Calculator",
+          "description": "Free online aspect ratio calculator for images, videos, and CSS layouts. Calculate dimensions while maintaining proportions with live preview.",
+          "url": "https://www.codeformatter.in/aspect-ratio-calculator.html",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {
             "@type": "Offer",
             "price": "0",
             "priceCurrency": "USD"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "Code Formatter",
+            "url": "https://www.codeformatter.in"
+          }
         },
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "ratingCount": "1847"
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+            {"@type": "ListItem", "position": 2, "name": "CSS Generators", "item": "https://www.codeformatter.in/#css-generators"},
+            {"@type": "ListItem", "position": 3, "name": "Aspect Ratio Calculator"}
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "name": "How to Calculate Aspect Ratio Online",
+          "description": "Find aspect ratios and resize dimensions in 3 simple steps",
+          "step": [
+            {"@type": "HowToStep", "position": 1, "name": "Enter Dimensions", "text": "Input your width and height values, or select a common preset like 16:9, 4:3, or 1:1"},
+            {"@type": "HowToStep", "position": 2, "name": "View Results", "text": "See the simplified ratio, decimal value, orientation, and total pixels with live preview"},
+            {"@type": "HowToStep", "position": 3, "name": "Resize or Copy", "text": "Enter a new width to calculate proportional height, or copy the CSS aspect-ratio code"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "How do I calculate aspect ratio from pixels?", "acceptedAnswer": {"@type": "Answer", "text": "Divide width and height by their Greatest Common Divisor (GCD). For example, 1920÷120=16 and 1080÷120=9, giving 16:9. Our calculator does this automatically."}},
+            {"@type": "Question", "name": "What's the best aspect ratio for YouTube?", "acceptedAnswer": {"@type": "Answer", "text": "16:9 is YouTube's native ratio. Standard resolutions are 1920×1080 (1080p), 2560×1440 (1440p), and 3840×2160 (4K)."}},
+            {"@type": "Question", "name": "What aspect ratio is Instagram?", "acceptedAnswer": {"@type": "Answer", "text": "Instagram supports 1:1 (square posts), 4:5 (portrait posts), 16:9 (landscape), and 9:16 (Stories/Reels)."}},
+            {"@type": "Question", "name": "Does CSS aspect-ratio work in all browsers?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! The CSS aspect-ratio property works in Chrome 88+, Firefox 89+, Safari 15+, and Edge 88+. All modern browsers fully support it."}}
+          ]
         }
+      ]
     }
     </script>
 </head>

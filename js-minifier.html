@@ -500,22 +500,54 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "JavaScript Minifier",
-      "url": "https://www.codeformatter.in/js-minifier.html",
-      "description": "Minify and compress JavaScript code to reduce file size.",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Code Formatter",
-        "url": "https://www.codeformatter.in"
-      }
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "JavaScript Minifier",
+          "url": "https://www.codeformatter.in/js-minifier.html",
+          "description": "Free online JavaScript minifier powered by Terser. Compress JS code with variable shortening, dead code removal, and comment stripping for 30-80% size reduction.",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "Code Formatter",
+            "url": "https://www.codeformatter.in"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+            {"@type": "ListItem", "position": 2, "name": "Code Minifiers", "item": "https://www.codeformatter.in/#minifiers"},
+            {"@type": "ListItem", "position": 3, "name": "JS Minifier"}
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "name": "How to Minify JavaScript Online",
+          "description": "Compress JavaScript code in 4 simple steps",
+          "step": [
+            {"@type": "HowToStep", "position": 1, "name": "Paste Code", "text": "Drop your development JavaScript code into the left pane"},
+            {"@type": "HowToStep", "position": 2, "name": "Click Minify", "text": "Press MINIFY to apply Terser compression algorithms"},
+            {"@type": "HowToStep", "position": 3, "name": "Check Savings", "text": "View the savings badge showing your compression percentage (typically 30-80%)"},
+            {"@type": "HowToStep", "position": 4, "name": "Deploy", "text": "Copy or download as .min.js for production use"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "Will minification break my code?", "acceptedAnswer": {"@type": "Answer", "text": "The Terser engine is very robust. However, code using eval() or implicit globals may have issues. Always test minified code in staging."}},
+            {"@type": "Question", "name": "Does it support ES6/ESNext?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Our tool supports modern JavaScript including arrow functions, classes, and async/await without transpiling to ES5."}},
+            {"@type": "Question", "name": "How much can I save?", "acceptedAnswer": {"@type": "Answer", "text": "Typical savings range from 30-80%. Code with long variable names and comments sees the biggest reduction."}},
+            {"@type": "Question", "name": "Is it safe for production?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. This uses Terser, the same technology as Webpack and other production build tools. Millions of websites use it."}}
+          ]
+        }
+      ]
     }
     </script>
 </head>

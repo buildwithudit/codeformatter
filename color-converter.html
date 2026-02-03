@@ -404,22 +404,53 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Color Converter",
-      "url": "https://www.codeformatter.in/color-converter.html",
-      "description": "Convert colors between HEX, RGB, HSL and more.",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Code Formatter",
-        "url": "https://www.codeformatter.in"
-      }
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Color Converter",
+          "url": "https://www.codeformatter.in/color-converter.html",
+          "description": "Free online color converter. Convert between HEX, RGB, HSL, and CMYK formats with real-time preview and WCAG contrast checking.",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "Code Formatter",
+            "url": "https://www.codeformatter.in"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+            {"@type": "ListItem", "position": 2, "name": "Image & Color Tools", "item": "https://www.codeformatter.in/#image-color"},
+            {"@type": "ListItem", "position": 3, "name": "Color Converter"}
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "name": "How to Convert Colors Online",
+          "description": "Convert between HEX, RGB, HSL, and CMYK in 3 simple steps",
+          "step": [
+            {"@type": "HowToStep", "position": 1, "name": "Input Color", "text": "Paste a HEX code, adjust RGB sliders, or use the color picker to select your color"},
+            {"@type": "HowToStep", "position": 2, "name": "View Conversions", "text": "See instant conversions to RGB, HSL, CMYK, and CSS variables simultaneously"},
+            {"@type": "HowToStep", "position": 3, "name": "Copy & Use", "text": "Click copy to grab any format - use the contrast badge to verify accessibility"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "What is the difference between HEX and RGB?", "acceptedAnswer": {"@type": "Answer", "text": "HEX is a compact 6-character format (#FF5733) while RGB uses three values (255, 87, 51). Both represent the same colors - HEX is shorthand for RGB values in hexadecimal."}},
+            {"@type": "Question", "name": "Why do some colors look different when printed?", "acceptedAnswer": {"@type": "Answer", "text": "RGB is for screens (additive light) while CMYK is for print (subtractive ink). The RGB gamut is 30% larger than CMYK, so some screen colors cannot be reproduced in print."}},
+            {"@type": "Question", "name": "What is HSL format used for?", "acceptedAnswer": {"@type": "Answer", "text": "HSL (Hue, Saturation, Lightness) is designer-friendly. Change hue to switch colors, saturation for vibrancy, lightness for brightness - perfect for building design systems."}},
+            {"@type": "Question", "name": "Is my color data private?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. All conversions happen 100% client-side in your browser. Your brand colors are never uploaded to any server."}}
+          ]
+        }
+      ]
     }
     </script>
 </head>
