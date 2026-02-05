@@ -648,12 +648,25 @@
 
         <!-- SEO: Static links for Google crawlers (noscript fallback) -->
         <noscript>
-            <style>.seo-links { padding: 20px; } .seo-links a { display: block; color: #6366f1; margin: 10px 0; font-size: 1rem; }</style>
+            <style>
+                .seo-links {
+                    padding: 20px;
+                }
+
+                .seo-links a {
+                    display: block;
+                    color: #6366f1;
+                    margin: 10px 0;
+                    font-size: 1rem;
+                }
+            </style>
             <div class="seo-links">
                 <h2>All Blog Posts</h2>
                 <a href="blog-json-minify-online.html">Minify JSON Online: Best Free JSON Minifier Tool</a>
-                <a href="blog-css-online-formatter.html">CSS Formatter Online: Best Free CSS Beautifier & Code Formatter</a>
-                <a href="blog-json-online-formatter.html">JSON Online Formatter: Best Free JSON Formatter Tool & JSON Format Fixer</a>
+                <a href="blog-css-online-formatter.html">CSS Formatter Online: Best Free CSS Beautifier & Code
+                    Formatter</a>
+                <a href="blog-json-online-formatter.html">JSON Online Formatter: Best Free JSON Formatter Tool & JSON
+                    Format Fixer</a>
                 <a href="blog-json-to-typescript.html">JSON to TypeScript & Zod Generator: Type-Safe Code Guide</a>
                 <a href="blog-json-tree-viewer.html">JSON Tree View: Interactive JSON Explorer (2026 Guide)</a>
                 <a href="blog-json-fix.html">How to Fix "Unexpected Token" in JSON (2026 Guide)</a>
@@ -721,6 +734,78 @@
     <script>
         // Blog data - All your created blog pages
         const blogPosts = [
+            {
+                title: "Markdown Editor: Complete Guide to Markdown Formatting",
+                excerpt: "Write and preview Markdown instantly. Convert Markdown to HTML with our free live editor. Perfect for README files and documentation.",
+                tags: ["Markdown", "Dev"],
+                tagClasses: ["t-dev", "t-design"],
+                image: "https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?q=80&w=600&auto=format&fit=crop",
+                link: "blog-markdown-editor.html"
+            },
+            {
+                title: "Regex Tester Online: Complete Guide to Regular Expressions",
+                excerpt: "Master regex patterns with real-time testing. Learn syntax, debug expressions, and validate text matching with our comprehensive guide.",
+                tags: ["Regex", "Dev"],
+                tagClasses: ["t-dev", "t-seo"],
+                image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=90&w=600&auto=format&fit=crop",
+                link: "blog-regex-tester.html"
+            },
+            {
+                title: "Password Generator: Complete Guide to Strong Passwords",
+                excerpt: "Master password security. Learn to generate uncrackable passwords and best practices for password management. 100% client-side processing.",
+                tags: ["Security", "Dev"],
+                tagClasses: ["t-seo", "t-dev"],
+                image: "https://images.unsplash.com/photo-1633265486064-086b219458ec?q=90&w=600&auto=format&fit=crop",
+                link: "blog-password-generator.html"
+            },
+            {
+                title: "Cron Generator: Complete Guide to Cron Jobs & Scheduling",
+                excerpt: "Master cron expressions with our visual generator. Learn cron syntax, scheduling patterns, and best practices for Linux, Kubernetes, and CI/CD.",
+                tags: ["DevOps", "Dev"],
+                tagClasses: ["t-dev", "t-seo"],
+                image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=90&w=600&auto=format&fit=crop",
+                link: "blog-cron-generator.html"
+            },
+            {
+                title: "CSS Gradient Generator: Complete Guide to Beautiful Gradients",
+                excerpt: "Master CSS gradients with our visual generator. Learn linear, radial, and conic gradients. Create stunning backgrounds instantly.",
+                tags: ["CSS", "Design"],
+                tagClasses: ["t-design", "t-dev"],
+                image: "https://images.unsplash.com/photo-1557682250-33bd709cbe85?q=90&w=600&auto=format&fit=crop",
+                link: "blog-gradient-generator.html"
+            },
+            {
+                title: "UUID Generator: Complete Guide to UUIDs and GUIDs",
+                excerpt: "Master UUIDs with our comprehensive guide. Learn UUID versions, use cases, and generate unique identifiers instantly with our free tool.",
+                tags: ["Dev", "Data"],
+                tagClasses: ["t-dev", "t-seo"],
+                image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=90&w=600&auto=format&fit=crop",
+                link: "blog-uuid-generator.html"
+            },
+            {
+                title: "Unix Timestamp Converter: Complete Guide to Epoch Time",
+                excerpt: "Master Unix timestamps with our comprehensive guide. Convert epoch time to dates, understand timezones, and learn timestamp best practices.",
+                tags: ["Dev", "Data"],
+                tagClasses: ["t-dev", "t-seo"],
+                image: "https://images.unsplash.com/photo-1501139083538-0139583c060f?q=90&w=600&auto=format&fit=crop",
+                link: "blog-timestamp-converter.html"
+            },
+            {
+                title: "JSON to CSV Converter: Complete Guide to Data Transformation",
+                excerpt: "Master JSON to CSV conversion. Transform JSON arrays to Excel-friendly spreadsheets instantly with our free online tool.",
+                tags: ["JSON", "Data"],
+                tagClasses: ["t-dev", "t-seo"],
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=90&w=600&auto=format&fit=crop",
+                link: "blog-json-to-csv.html"
+            },
+            {
+                title: "JSON to YAML Converter: Complete Guide to Config File Formats",
+                excerpt: "Master JSON to YAML conversion. Understand the differences between JSON and YAML and convert between formats instantly.",
+                tags: ["JSON", "YAML"],
+                tagClasses: ["t-dev", "t-seo"],
+                image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=90&w=600&auto=format&fit=crop",
+                link: "blog-json-to-yaml.html"
+            },
             {
                 title: "Minify JSON Online: Best Free JSON Minifier Tool",
                 excerpt: "Get your JSON minified instantly with our free JSON Minifier. Reduce file size by 40% for faster loading times. 100% client-side processing.",
