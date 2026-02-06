@@ -124,6 +124,30 @@
         <priority>0.65</priority>
     </url>
 
+    <!-- JSON Parse Error Blog (High Traffic) -->
+    <url>
+        <loc>https://www.codeformatter.in/blog-json-parse-error.html</loc>
+        <lastmod>2026-02-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+
+    <!-- Regex Cheat Sheet Blog (High Traffic Reference) -->
+    <url>
+        <loc>https://www.codeformatter.in/blog-regex-cheat-sheet.html</loc>
+        <lastmod>2026-02-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+
+    <!-- Image Compression Blog (High Traffic) -->
+    <url>
+        <loc>https://www.codeformatter.in/blog-compress-images.html</loc>
+        <lastmod>2026-02-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+
     <!-- Code Minifiers (Priority 0.85) -->
     <url>
         <loc>https://www.codeformatter.in/json-minifier.html</loc>

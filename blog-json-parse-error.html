@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Parse Error: How to Fix All Common Errors (Complete 2026 Guide)</title>
+    <meta name="description"
+        content="Complete guide to fixing JSON parse errors. Learn how to solve 'Unexpected token', 'Unexpected end of JSON input', 'Invalid JSON' and all common JSON syntax errors with examples.">
+    <meta name="keywords"
+        content="json parse error, unexpected token in json, json syntax error, invalid json, json parsing failed, unexpected end of json input, json format error, fix json error, json validator, json debugger">
+    <meta name="author" content="Udit Sharma">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+    <link rel="canonical" href="https://www.codeformatter.in/blog-json-parse-error.html">
+    <meta property="og:title" content="JSON Parse Error: Complete Fix Guide for All Common Errors">
+    <meta property="og:description"
+        content="Fix all JSON parse errors: Unexpected token, Unexpected end of input, Invalid JSON. Complete debugging guide with examples.">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://www.codeformatter.in/json-parse-error-guide.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="JSON Parse Error: How to Fix All Common Errors">
+    <meta name="twitter:description" content="Complete guide to debugging and fixing every type of JSON parse error.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Enhanced JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Article",
+                "@id": "https://www.codeformatter.in/blog-json-parse-error.html#article",
+                "headline": "JSON Parse Error: How to Fix All Common Errors (Complete 2026 Guide)",
+                "description": "Complete guide to fixing JSON parse errors including Unexpected token, Unexpected end of JSON input, and Invalid JSON with code examples.",
+                "image": "https://www.codeformatter.in/json-parse-error-guide.png",
+                "author": {"@type": "Person", "name": "Udit Sharma", "url": "https://www.codeformatter.in/about.html"},
+                "datePublished": "2026-02-06",
+                "dateModified": "2026-02-06",
+                "publisher": {"@type": "Organization", "name": "Code Formatter", "logo": {"@type": "ImageObject", "url": "https://www.codeformatter.in/favicon.svg"}},
+                "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.codeformatter.in/blog-json-parse-error.html"}
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+                    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.codeformatter.in/blog.html"},
+                    {"@type": "ListItem", "position": 3, "name": "JSON Parse Error Guide"}
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {"@type": "Question", "name": "What causes JSON parse error?", "acceptedAnswer": {"@type": "Answer", "text": "JSON parse errors occur when the JSON syntax is invalid. Common causes include trailing commas, single quotes instead of double quotes, unquoted keys, missing brackets, and special characters that need escaping."}},
+                    {"@type": "Question", "name": "How do I fix 'Unexpected token' in JSON?", "acceptedAnswer": {"@type": "Answer", "text": "The 'Unexpected token' error usually means there's an invalid character in your JSON. Check for trailing commas, single quotes, comments, or unquoted property names. Use a JSON validator to find the exact location."}},
+                    {"@type": "Question", "name": "Why is my JSON not parsing in JavaScript?", "acceptedAnswer": {"@type": "Answer", "text": "JavaScript's JSON.parse() is strict about syntax. Ensure you use double quotes for strings, no trailing commas, no comments, and proper escaping for special characters. Use try-catch to handle parsing errors gracefully."}},
+                    {"@type": "Question", "name": "How do I fix 'Unexpected end of JSON input'?", "acceptedAnswer": {"@type": "Answer", "text": "This error means your JSON is incomplete - usually a missing closing bracket }, brace ], or quote. It can also happen when trying to parse an empty string. Check that all brackets and braces are properly closed."}},
+                    {"@type": "Question", "name": "Can JSON have comments?", "acceptedAnswer": {"@type": "Answer", "text": "No, standard JSON does not support comments. If you have // or /* */ comments in your JSON, they will cause parse errors. Remove all comments or use a JSON5 parser that supports comments."}},
+                    {"@type": "Question", "name": "Why does trailing comma cause JSON error?", "acceptedAnswer": {"@type": "Answer", "text": "Unlike JavaScript, JSON does not allow trailing commas after the last element in arrays or objects. The comma after the final item must be removed for valid JSON."}},
+                    {"@type": "Question", "name": "How to validate JSON before parsing?", "acceptedAnswer": {"@type": "Answer", "text": "Use a try-catch block in JavaScript, or use an online JSON validator like Code Formatter's JSON Formatter which highlights errors with exact line numbers and shows you where the problem is."}}
+                ]
+            },
+            {
+                "@type": "HowTo",
+                "name": "How to Fix JSON Parse Errors",
+                "description": "Step-by-step guide to debug and fix common JSON parsing errors",
+                "step": [
+                    {"@type": "HowToStep", "name": "Identify the Error", "text": "Read the error message carefully - it usually tells you the position and character that caused the problem"},
+                    {"@type": "HowToStep", "name": "Use a JSON Validator", "text": "Paste your JSON into a validator tool that highlights syntax errors with line numbers"},
+                    {"@type": "HowToStep", "name": "Check Common Issues", "text": "Look for trailing commas, single quotes, unquoted keys, comments, and missing brackets"},
+                    {"@type": "HowToStep", "name": "Fix and Validate", "text": "Make corrections and validate again until no errors remain"}
+                ]
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg-body: #09090b;
+            --bg-card: rgba(24, 24, 27, 0.6);
+            --bg-code: #121214;
+            --border: #27272a;
+            --border-highlight: #3f3f46;
+            --primary: #818cf8;
+            --primary-glow: rgba(129, 140, 248, 0.15);
+            --secondary: #10b981;
+            --danger: #f87171;
+            --warning: #fbbf24;
+            --text-main: #e4e4e7;
+            --text-muted: #a1a1aa;
+            --text-dim: #71717a;
+            --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-code: 'JetBrains Mono', monospace
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            background-color: var(--bg-body);
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: var(--text-main);
+            font-family: var(--font-ui);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            padding-bottom: 100px !important;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden
+        }
+
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: transparent;
+            z-index: 1000
+        }
+
+        .progress-bar {
+            height: 3px;
+            background: var(--primary);
+            width: 0%;
+            box-shadow: 0 0 10px var(--primary);
+            transition: width .1s
+        }
+
+        .wrapper {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 40px 20px 120px 20px;
+            position: relative
+        }
+
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 15px
+        }
+
+        .nav-back {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: .85rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color .2s
+        }
+
+        .nav-back:hover {
+            color: #fff
+        }
+
+        .brand-logo {
+            font-weight: 700;
+            color: #3b82f6;
+            text-decoration: none;
+            font-size: .9rem;
+            letter-spacing: -.5px
+        }
+
+        article h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -.03em;
+            line-height: 1.2;
+            margin: 0 0 15px 0;
+            background: linear-gradient(180deg, #fff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text
+        }
+
+        .meta-row {
+            display: flex;
+            gap: 20px;
+            font-size: .8rem;
+            color: var(--text-dim);
+            font-family: var(--font-code);
+            margin-bottom: 35px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+            flex-wrap: wrap
+        }
+
+        .meta-row span {
+            display: flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .meta-row i {
+            color: var(--primary)
+        }
+
+        article p {
+            font-size: 1.05rem;
+            color: #d4d4d8;
+            margin-bottom: 20px
+        }
+
+        article h2 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: -.02em;
+            color: #fff;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border)
+        }
+
+        article h2::before {
+            content: '#';
+            color: var(--primary);
+            opacity: .4;
+            margin-right: 8px
+        }
+
+        article h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #fff;
+            margin-top: 35px;
+            margin-bottom: 12px
+        }
+
+        strong {
+            color: #fff;
+            font-weight: 700
+        }
+
+        ul,
+        ol {
+            margin-bottom: 24px;
+            padding-left: 20px;
+            color: var(--text-muted)
+        }
+
+        li {
+            margin-bottom: 8px
+        }
+
+        .toc {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 50px;
+            font-size: .9rem
+        }
+
+        .toc summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-muted);
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .toc summary:hover {
+            color: #fff
+        }
+
+        .toc ul {
+            margin: 15px 0 0 0;
+            padding-left: 0;
+            list-style: none
+        }
+
+        .toc li {
+            margin-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            padding-bottom: 8px
+        }
+
+        .toc a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: .2s;
+            display: block
+        }
+
+        .toc a:hover {
+            color: var(--primary);
+            padding-left: 5px
+        }
+
+        .code-wrapper {
+            position: relative;
+            margin: 30px 0;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg-code);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3)
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 15px;
+            background: #18181b;
+            border-bottom: 1px solid var(--border);
+            font-size: .75rem;
+            color: var(--text-dim);
+            font-family: var(--font-ui);
+            text-transform: uppercase;
+            font-weight: 600
+        }
+
+        .code-header.error {
+            background: rgba(248, 113, 113, 0.1);
+            color: var(--danger)
+        }
+
+        .code-header.success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--secondary)
+        }
+
+        pre {
+            margin: 0;
+            padding: 20px;
+            overflow-x: auto;
+            font-size: .85rem;
+            line-height: 1.6
+        }
+
+        code {
+            font-family: var(--font-code);
+            color: #a5b4fc
+        }
+
+        .token-error {
+            color: #f87171;
+            background: rgba(248, 113, 113, 0.15);
+            padding: 0 4px;
+            border-radius: 3px
+        }
+
+        .token-fix {
+            color: #10b981
+        }
+
+        .token-prop {
+            color: #67e8f9
+        }
+
+        .token-val {
+            color: #fca5a5
+        }
+
+        .token-string {
+            color: #c3e88d
+        }
+
+        .token-comment {
+            color: #52525b;
+            font-style: italic
+        }
+
+        p code {
+            background: #27272a;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: .85em;
+            color: #fff;
+            border: 1px solid #3f3f46
+        }
+
+        .callout {
+            background: rgba(129, 140, 248, 0.05);
+            border: 1px solid rgba(129, 140, 248, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start
+        }
+
+        .callout i {
+            color: var(--primary);
+            margin-top: 4px
+        }
+
+        .callout h4 {
+            margin: 0 0 5px 0;
+            font-size: 1rem;
+            color: #fff
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: .95rem;
+            color: var(--text-muted)
+        }
+
+        .callout-danger {
+            background: rgba(248, 113, 113, 0.05);
+            border: 1px solid rgba(248, 113, 113, 0.2)
+        }
+
+        .callout-danger i {
+            color: var(--danger)
+        }
+
+        .callout-success {
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.2)
+        }
+
+        .callout-success i {
+            color: var(--secondary)
+        }
+
+        .error-card {
+            background: linear-gradient(180deg, rgba(129, 140, 248, 0.08) 0%, rgba(24, 24, 27, 0.4) 100%);
+            border: 1px solid rgba(129, 140, 248, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0
+        }
+
+        .error-card h4 {
+            color: var(--primary);
+            margin: 0 0 10px 0;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .error-card p {
+            margin: 0;
+            color: var(--text-muted)
+        }
+
+        .sticky-cta {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 500px;
+            background: rgba(24, 24, 27, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-highlight);
+            padding: 10px 10px 10px 25px;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            z-index: 999;
+            animation: floatUp .8s cubic-bezier(0.16, 1, 0.3, 1) 2s backwards
+        }
+
+        .sticky-text {
+            font-size: .9rem;
+            font-weight: 500;
+            color: #fff
+        }
+
+        .sticky-text span {
+            color: var(--text-dim)
+        }
+
+        .cta-btn-primary {
+            background: linear-gradient(135deg, var(--primary), #6366f1);
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: .85rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px var(--primary-glow);
+            transition: transform .2s;
+            white-space: nowrap
+        }
+
+        .cta-btn-primary:hover {
+            transform: scale(1.05)
+        }
+
+        @keyframes floatUp {
+            from {
+                transform: translate(-50%, 100px);
+                opacity: 0
+            }
+
+            to {
+                transform: translate(-50%, 0);
+                opacity: 1
+            }
+        }
+
+        .tool-card {
+            background: linear-gradient(180deg, rgba(39, 39, 42, 0.4) 0%, rgba(24, 24, 27, 0.4) 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            margin: 50px 0;
+            position: relative;
+            overflow: hidden
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 150px;
+            background: var(--primary);
+            filter: blur(80px);
+            opacity: .25;
+            z-index: -1
+        }
+
+        .tool-card h3 {
+            margin: 0 0 15px 0;
+            color: #fff;
+            font-size: 1.4rem
+        }
+
+        .tool-card p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 25px
+        }
+
+        .faq-section {
+            margin-top: 60px
+        }
+
+        .faq-item {
+            background: rgba(24, 24, 27, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: all .2s
+        }
+
+        .faq-item:hover {
+            border-color: var(--border-highlight);
+            background: rgba(32, 32, 35, 0.7)
+        }
+
+        .faq-question {
+            padding: 18px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #fff;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none
+        }
+
+        .faq-question::-webkit-details-marker {
+            display: none
+        }
+
+        .faq-icon {
+            color: var(--primary);
+            font-size: 1.3rem;
+            font-weight: 300;
+            transition: transform .3s ease;
+            min-width: 20px;
+            text-align: center
+        }
+
+        .faq-item[open] .faq-icon {
+            transform: rotate(45deg)
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px 20px;
+            color: var(--text-muted);
+            font-size: .98rem;
+            line-height: 1.7;
+            animation: fadeIn .3s ease-in-out
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-5px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .faq-answer strong {
+            color: #fff
+        }
+
+        .faq-answer code {
+            background: rgba(129, 140, 248, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: .9em
+        }
+
+        footer {
+            margin-top: 80px;
+            padding: 30px 0 30px 0 !important;
+            border-top: 1px solid var(--border);
+            background: rgba(24, 24, 27, 0.4);
+            backdrop-filter: blur(10px)
+        }
+
+        .footer-content {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 20px 80px 20px
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 15px;
+            flex-wrap: wrap
+        }
+
+        .footer-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+            transform: translateY(-2px)
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin: 0;
+            text-align: center
+        }
+
+        .featured-image {
+            margin: 2rem 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3)
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px
+        }
+
+        .featured-image figcaption {
+            text-align: center;
+            padding: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem
+        }
+
+        .workflow-diagram {
+            margin: 40px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--bg-code)
+        }
+
+        .workflow-diagram img {
+            width: 100%;
+            height: auto;
+            display: block
+        }
+
+        .workflow-diagram figcaption {
+            padding: 12px 20px;
+            font-size: .85rem;
+            color: var(--text-muted);
+            text-align: center;
+            border-top: 1px solid var(--border)
+        }
+
+        .error-list {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0
+        }
+
+        .error-list li {
+            background: rgba(129, 140, 248, 0.05);
+            border-left: 3px solid var(--primary);
+            padding: 12px 20px;
+            margin-bottom: 10px;
+            border-radius: 0 8px 8px 0
+        }
+
+        .error-list li code {
+            background: rgba(129, 140, 248, 0.15);
+            color: var(--primary)
+        }
+
+        @media(max-width:600px) {
+            .wrapper {
+                padding: 20px 15px 100px 15px
+            }
+
+            article h1 {
+                font-size: 1.8rem
+            }
+
+            .sticky-text {
+                font-size: .8rem
+            }
+
+            .meta-row {
+                gap: 10px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="wrapper">
+        <nav class="nav-header">
+            <a href="blog.html" class="nav-back"><i class="fas fa-arrow-left"></i> All Articles</a>
+            <a href="index.html" class="brand-logo">Code Formatter</a>
+        </nav>
+        <article>
+            <h1>JSON Parse Error: How to Fix All Common Errors (Complete Guide)</h1>
+            <div class="meta-row">
+                <span><i class="far fa-user-circle"></i> Udit Sharma</span>
+                <span><i class="far fa-calendar-alt"></i> Feb 6, 2026</span>
+                <span><i class="far fa-clock"></i> 15 Min Read</span>
+                <span><i class="fas fa-fire"></i> 2.5K+ Monthly Searches</span>
+            </div>
+
+            <!-- Featured Image -->
+            <figure class="featured-image">
+                <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=800&auto=format&fit=crop"
+                    alt="JSON Parse Error - Complete Debugging Guide" width="800" height="450" loading="eager"
+                    fetchpriority="high">
+                <figcaption>Complete guide to understanding and fixing JSON parse errors in JavaScript</figcaption>
+            </figure>
+
+            <details class="toc" open>
+                <summary>🔧 Table of Contents</summary>
+                <ul>
+                    <li><a href="#what-is">What is JSON Parse Error?</a></li>
+                    <li><a href="#common-errors">Most Common JSON Parse Errors</a></li>
+                    <li><a href="#error-1">Error #1: Unexpected Token</a></li>
+                    <li><a href="#error-2">Error #2: Unexpected End of JSON Input</a></li>
+                    <li><a href="#error-3">Error #3: Invalid JSON Format</a></li>
+                    <li><a href="#error-4">Error #4: Trailing Comma</a></li>
+                    <li><a href="#error-5">Error #5: Single Quotes</a></li>
+                    <li><a href="#debugging">How to Debug JSON Errors</a></li>
+                    <li><a href="#best-practices">Best Practices</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </details>
+
+            <p>If you've ever worked with JSON data in JavaScript, Python, or any other language, you've probably
+                encountered the dreaded <strong>JSON parse error</strong>. These errors can be frustrating because they
+                often provide cryptic messages like <code>Unexpected token</code> or
+                <code>Unexpected end of JSON input</code> without telling you exactly what's wrong.
+            </p>
+
+            <p>In this comprehensive guide, we'll explore <strong>every type of JSON parse error</strong> you might
+                encounter, explain exactly what causes each one, and show you how to fix them with real code examples.
+                Whether you're a beginner or an experienced developer, this guide will help you become a JSON debugging
+                expert.</p>
+
+            <div class="callout callout-danger">
+                <i class="fas fa-exclamation-circle"></i>
+                <div class="callout-content">
+                    <h4>Why JSON Errors Happen</h4>
+                    <p>JSON (JavaScript Object Notation) has <strong>strict syntax rules</strong>. Unlike JavaScript
+                        objects, JSON doesn't allow trailing commas, single quotes, comments, or unquoted property
+                        names. Even a single misplaced character will cause a parse error.</p>
+                </div>
+            </div>
+
+            <h2 id="what-is">What is JSON Parse Error?</h2>
+
+            <p>A <strong>JSON parse error</strong> occurs when you try to convert a string into a JavaScript object
+                using <code>JSON.parse()</code>, but the string doesn't contain valid JSON syntax. The JavaScript engine
+                can't understand the data structure, so it throws an error.</p>
+
+            <div class="code-wrapper">
+                <div class="code-header error">❌ This Will Throw a Parse Error</div>
+                <pre><code><span class="token-comment">// Trying to parse invalid JSON</span>
+const badJSON = '{ name: "Alice", age: 25 }'; <span class="token-comment">// Missing quotes around "name"</span>
+
+try {
+    const data = JSON.parse(badJSON);
+} catch (error) {
+    console.log(error.message);
+    <span class="token-comment">// Output: "Unexpected token n in JSON at position 2"</span>
+}</code></pre>
+            </div>
+
+            <p>The error message tells us there's an "Unexpected token n" at position 2. This is because
+                <code>name</code> should be <code>"name"</code> in valid JSON — all property names must be double-quoted
+                strings.
+            </p>
+
+            <h2 id="common-errors">Most Common JSON Parse Errors</h2>
+
+            <p>Here are the <strong>top 5 JSON parse errors</strong> that developers encounter most frequently:</p>
+
+            <ul class="error-list">
+                <li><strong>Unexpected token &lt;X&gt;</strong> — Invalid character found where it shouldn't be</li>
+                <li><strong>Unexpected end of JSON input</strong> — JSON is incomplete (missing brackets)</li>
+                <li><strong>Invalid JSON</strong> — General syntax error</li>
+                <li><strong>Trailing comma error</strong> — Comma after the last element</li>
+                <li><strong>Single quote error</strong> — Using ' instead of "</li>
+            </ul>
+
+            <p>Let's dive deep into each error type with examples and solutions.</p>
+
+            <!-- Error #1 -->
+            <h2 id="error-1">Error #1: Unexpected Token</h2>
+
+            <p>The <strong>"Unexpected token"</strong> error is the most common JSON parse error. It means the parser
+                found a character that doesn't belong where it was found.</p>
+
+            <div class="error-card">
+                <h4><i class="fas fa-times-circle"></i> Error Message</h4>
+                <p><code>SyntaxError: Unexpected token X in JSON at position Y</code></p>
+            </div>
+
+            <h3>Common Causes:</h3>
+
+            <h4>1. Unquoted Property Names</h4>
+
+            <div class="code-wrapper">
+                <div class="code-header error">❌ Wrong - Unquoted Keys</div>
+                <pre><code>{
+    <span class="token-error">name</span>: "Alice",
+    <span class="token-error">age</span>: 25
+}</code></pre>
+            </div>
+
+            <div class="code-wrapper">
+                <div class="code-header success">✅ Correct - Double-Quoted Keys</div>
+                <pre><code>{
+    <span class="token-fix">"name"</span>: "Alice",
+    <span class="token-fix">"age"</span>: 25
+}</code></pre>
+            </div>
+
+            <h4>2. Comments in JSON</h4>
+
+            <div class="code-wrapper">
+                <div class="code-header error">❌ Wrong - JSON Doesn't Support Comments</div>
+                <pre><code>{
+    "name": "Alice",
+    <span class="token-error">// This is a comment</span>
+    "age": 25
+}</code></pre>
+            </div>
+
+            <div class="code-wrapper">
+                <div class="code-header success">✅ Correct - Remove All Comments</div>
+                <pre><code>{
+    "name": "Alice",
+    "age": 25
+}</code></pre>
+            </div>
+
+            <h4>3. Undefined or NaN Values</h4>
+
+            <div class="code-wrapper">
+                <div class="code-header error">❌ Wrong - undefined and NaN are not valid JSON</div>
+                <pre><code>{
+    "value": <span class="token-error">undefined</span>,
+    "number": <span class="token-error">NaN</span>
+}</code></pre>
+            </div>
+
+            <div class="code-wrapper">
+                <div class="code-header success">✅ Correct - Use null for missing values</div>
+                <pre><code>{
+    "value": <span class="token-fix">null</span>,
+    "number": <span class="token-fix">0</span>
+}</code></pre>
+            </div>
+
+            <!-- Error #2 -->
+            <h2 id="error-2">Error #2: Unexpected End of JSON Input</h2>
+
+            <p>This error occurs when your JSON string is <strong>incomplete</strong> — usually because of missing
+                closing brackets or braces.</p>
+
+            <div class="error-card">
+                <h4><i class="fas fa-times-circle"></i> Error Message</h4>
+                <p><code>SyntaxError: Unexpected end of JSON input</code></p>
+            </div>
+
+            <h3>Common Causes:</h3>
+
+            <h4>1. Missing Closing Bracket</h4>
+
+            <div class="code-wrapper">
+                <div class="code-header error">❌ Wrong - Missing Closing Brace</div>
+                <pre><code>{
+    "name": "Alice",
+    "skills": ["JavaScript", "Python"]
+<span class="token-error">// Missing } here</span></code></pre>
+            </div>
+
+            <div class="code-wrapper">
+                <div class="code-header success">✅ Correct - All Brackets Closed</div>
+                <pre><code>{
+    "name": "Alice",
+    "skills": ["JavaScript", "Python"]
+<span class="token-fix">}</span></code></pre>
+            </div>
+
+            <h4>2. Parsing Empty String</h4>
+
+            <div class="code-wrapper">
+                <div class="code-header error">❌ Wrong - Empty String</div>
+                <pre><code><span class="token-comment">// This will throw "Unexpected end of JSON input"</span>
+const data = JSON.parse(<span class="token-error">""</span>);</code></pre>
+            </div>
+
+            <div class="code-wrapper">
+                <div class="code-header success">✅ Correct - Check Before Parsing</div>
+                <pre><code>const jsonString = getDataFromAPI();
+
+<span class="token-fix">if (jsonString && jsonString.trim()) {</span>
+    const data = JSON.parse(jsonString);
+<span class="token-fix">}</span> else {
+    console.log("No JSON data received");
+}</code></pre>
+            </div>
+
+            <!-- Error #3 -->
+            <h2 id="error-3">Error #3: Invalid JSON Format</h2>
+
+            <p>Sometimes JSON can have structural problems that make it completely invalid.</p>
+
+            <h4>Multiple Root Elements</h4>
+
+            <div class="code-wrapper">
+                <div class="code-header error">❌ Wrong - Two Root Objects</div>
+                <pre><code><span class="token-error">{"name": "Alice"} {"name": "Bob"}</span></code></pre>
+            </div>
+
+            <div class="code-wrapper">
+                <div class="code-header success">✅ Correct - Use Array for Multiple Objects</div>
+                <pre><code><span class="token-fix">[</span>
+    {"name": "Alice"},
+    {"name": "Bob"}
+<span class="token-fix">]</span></code></pre>
+            </div>
+
+            <!-- Error #4 -->
+            <h2 id="error-4">Error #4: Trailing Comma</h2>
+
+            <p>Unlike JavaScript, <strong>JSON doesn't allow trailing commas</strong> after the last element in arrays
+                or objects.</p>
+
+            <div class="code-wrapper">
+                <div class="code-header error">❌ Wrong - Trailing Comma</div>
+                <pre><code>{
+    "name": "Alice",
+    "age": 25<span class="token-error">,</span>   <span class="token-comment">// This comma breaks JSON!</span>
+}</code></pre>
+            </div>
+
+            <div class="code-wrapper">
+                <div class="code-header success">✅ Correct - No Trailing Comma</div>
+                <pre><code>{
+    "name": "Alice",
+    "age": 25
+}</code></pre>
+            </div>
+
+            <div class="callout callout-success">
+                <i class="fas fa-lightbulb"></i>
+                <div class="callout-content">
+                    <h4>Pro Tip: Finding Trailing Commas</h4>
+                    <p>Use our <a href="index.html" style="color: var(--primary)">JSON Formatter</a> to automatically
+                        detect and highlight trailing comma locations with exact line numbers!</p>
+                </div>
+            </div>
+
+            <!-- Error #5 -->
+            <h2 id="error-5">Error #5: Single Quotes Instead of Double Quotes</h2>
+
+            <p>JSON requires <strong>double quotes</strong> for all strings. Single quotes are not valid.</p>
+
+            <div class="code-wrapper">
+                <div class="code-header error">❌ Wrong - Single Quotes</div>
+                <pre><code>{
+    <span class="token-error">'name'</span>: <span class="token-error">'Alice'</span>,
+    <span class="token-error">'city'</span>: <span class="token-error">'New York'</span>
+}</code></pre>
+            </div>
+
+            <div class="code-wrapper">
+                <div class="code-header success">✅ Correct - Double Quotes Only</div>
+                <pre><code>{
+    <span class="token-fix">"name"</span>: <span class="token-fix">"Alice"</span>,
+    <span class="token-fix">"city"</span>: <span class="token-fix">"New York"</span>
+}</code></pre>
+            </div>
+
+            <!-- Debugging Section -->
+            <h2 id="debugging">How to Debug JSON Errors</h2>
+
+            <p>Follow this <strong>step-by-step debugging workflow</strong> when you encounter JSON parse errors:</p>
+
+            <!-- Workflow Diagram -->
+            <figure class="workflow-diagram">
+                <svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg"
+                    style="background: #121214; padding: 20px;">
+                    <!-- Step 1 -->
+                    <rect x="20" y="60" width="140" height="80" rx="10" fill="#27272a" stroke="#f87171"
+                        stroke-width="2" />
+                    <text x="90" y="95" fill="#fff" font-size="12" text-anchor="middle" font-weight="600">1. Read
+                        Error</text>
+                    <text x="90" y="115" fill="#a1a1aa" font-size="10" text-anchor="middle">Message</text>
+
+                    <!-- Arrow 1 -->
+                    <path d="M165 100 L195 100" stroke="#f87171" stroke-width="2" marker-end="url(#arrow)" />
+
+                    <!-- Step 2 -->
+                    <rect x="200" y="60" width="140" height="80" rx="10" fill="#27272a" stroke="#fbbf24"
+                        stroke-width="2" />
+                    <text x="270" y="95" fill="#fff" font-size="12" text-anchor="middle" font-weight="600">2. Find
+                        Position</text>
+                    <text x="270" y="115" fill="#a1a1aa" font-size="10" text-anchor="middle">Line Number</text>
+
+                    <!-- Arrow 2 -->
+                    <path d="M345 100 L375 100" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrow)" />
+
+                    <!-- Step 3 -->
+                    <rect x="380" y="60" width="140" height="80" rx="10" fill="#27272a" stroke="#818cf8"
+                        stroke-width="2" />
+                    <text x="450" y="95" fill="#fff" font-size="12" text-anchor="middle" font-weight="600">3. Use
+                        Validator</text>
+                    <text x="450" y="115" fill="#a1a1aa" font-size="10" text-anchor="middle">JSON Formatter</text>
+
+                    <!-- Arrow 3 -->
+                    <path d="M525 100 L555 100" stroke="#818cf8" stroke-width="2" marker-end="url(#arrow)" />
+
+                    <!-- Step 4 -->
+                    <rect x="560" y="60" width="140" height="80" rx="10" fill="#27272a" stroke="#10b981"
+                        stroke-width="2" />
+                    <text x="630" y="95" fill="#fff" font-size="12" text-anchor="middle" font-weight="600">4. Fix &
+                        Test</text>
+                    <text x="630" y="115" fill="#a1a1aa" font-size="10" text-anchor="middle">Validate Again</text>
+
+                    <!-- Arrow marker -->
+                    <defs>
+                        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+                            <path d="M0,0 L0,10 L10,5 Z" fill="#fff" />
+                        </marker>
+                    </defs>
+                </svg>
+                <figcaption>JSON Error Debugging Workflow: Read → Locate → Validate → Fix</figcaption>
+            </figure>
+
+            <h3>Step 1: Read the Error Message Carefully</h3>
+            <p>The error message contains valuable information:</p>
+            <ul>
+                <li><strong>"Unexpected token X"</strong> — tells you which character is problematic</li>
+                <li><strong>"at position Y"</strong> — tells you exactly where in the string</li>
+            </ul>
+
+            <h3>Step 2: Use a JSON Validator</h3>
+            <p>Paste your JSON into our <a href="index.html" style="color: var(--primary); font-weight: 600;">JSON
+                    Formatter tool</a>. It will:</p>
+            <ul>
+                <li>Highlight the exact line with the error</li>
+                <li>Show a descriptive error message</li>
+                <li>Auto-format valid JSON with proper indentation</li>
+            </ul>
+
+            <h3>Step 3: Safe Parsing with try-catch</h3>
+
+            <div class="code-wrapper">
+                <div class="code-header success">✅ Always Use try-catch for JSON Parsing</div>
+                <pre><code>function safeParseJSON(jsonString) {
+    try {
+        return { data: JSON.parse(jsonString), error: null };
+    } catch (error) {
+        return { data: null, error: error.message };
+    }
+}
+
+<span class="token-comment">// Usage</span>
+const result = safeParseJSON(userInput);
+if (result.error) {
+    console.error("JSON Parse Error:", result.error);
+} else {
+    console.log("Parsed data:", result.data);
+}</code></pre>
+            </div>
+
+            <!-- Tool Card -->
+            <div class="tool-card">
+                <h3>🔧 Fix JSON Errors Instantly</h3>
+                <p>Paste your broken JSON into our free validator tool. Get instant error highlighting, line numbers,
+                    and auto-formatting.</p>
+                <a href="index.html" class="cta-btn-primary">Open JSON Formatter →</a>
+            </div>
+
+            <!-- Best Practices -->
+            <h2 id="best-practices">Best Practices to Avoid JSON Errors</h2>
+
+            <ol>
+                <li><strong>Always use double quotes</strong> — Never use single quotes in JSON</li>
+                <li><strong>Validate before parsing</strong> — Use a validator during development</li>
+                <li><strong>Use JSON.stringify()</strong> — Let JavaScript create JSON for you</li>
+                <li><strong>Handle errors gracefully</strong> — Always wrap parse in try-catch</li>
+                <li><strong>Check for empty responses</strong> — Verify API responses before parsing</li>
+                <li><strong>Avoid manual JSON editing</strong> — Use tools or libraries when possible</li>
+            </ol>
+
+            <div class="code-wrapper">
+                <div class="code-header success">✅ Let JavaScript Create Valid JSON</div>
+                <pre><code><span class="token-comment">// Instead of manually writing JSON strings...</span>
+const data = {
+    name: "Alice",
+    skills: ["JavaScript", "Python"],
+    active: true
+};
+
+<span class="token-comment">// Let JSON.stringify create valid JSON</span>
+const jsonString = JSON.stringify(data, null, 2);
+console.log(jsonString);
+<span class="token-comment">// Output: perfectly formatted valid JSON!</span></code></pre>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="faq-section" id="faq">
+                <h2>Frequently Asked Questions</h2>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <strong>What causes "Unexpected token" in JSON?</strong>
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>The <strong>"Unexpected token"</strong> error occurs when the JSON parser encounters a
+                            character that shouldn't be there. Common causes include: <strong>unquoted property
+                                names</strong>, <strong>single quotes</strong> instead of double quotes,
+                            <strong>comments</strong> (which JSON doesn't support), <strong>trailing commas</strong>, or
+                            <strong>undefined/NaN values</strong>. The error message tells you which character (token)
+                            was unexpected and at which position.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <strong>How do I fix "Unexpected end of JSON input"?</strong>
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>This error means your JSON string is <strong>incomplete</strong>. Check for: <strong>missing
+                                closing braces</strong> <code>}</code>, <strong>missing closing brackets</strong>
+                            <code>]</code>, <strong>missing closing quotes</strong> <code>"</code>, or you might be
+                            trying to parse an <strong>empty string</strong>. Use our JSON Formatter to find where
+                            brackets are unbalanced.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <strong>Can JSON have comments?</strong>
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p><strong>No!</strong> Standard JSON does not support comments. If you have <code>//</code> or
+                            <code>/* */</code> comments in your JSON, they will cause parse errors. If you need
+                            comments, consider using <strong>JSON5</strong> (a JSON superset that allows comments) or
+                            store comments as regular string properties.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <strong>Why is my API response not parsing as JSON?</strong>
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>Common reasons: The server might be returning <strong>HTML error pages</strong> instead of
+                            JSON. Check if the <code>Content-Type</code> header is <code>application/json</code>. The
+                            response might be <strong>empty</strong>. There could be a <strong>BOM (Byte Order
+                                Mark)</strong> at the start of the response. Always log the raw response before parsing
+                            to debug.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <strong>How to validate JSON before parsing?</strong>
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>The simplest approach is to use <strong>try-catch</strong>: If <code>JSON.parse()</code>
+                            succeeds, it's valid JSON. For development, use our <a href="index.html"
+                                style="color: var(--primary)">JSON Formatter tool</a> which provides detailed validation
+                            with line numbers and error descriptions. You can also use libraries like <code>ajv</code>
+                            for schema validation.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <strong>What's the difference between JSON and JavaScript objects?</strong>
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p><strong>JSON</strong> is a text format for data exchange with strict rules: double quotes
+                            required, no trailing commas, no comments, no undefined/functions. <strong>JavaScript
+                                objects</strong> are more flexible: single quotes allowed, trailing commas OK, can
+                            contain functions and undefined. JSON is always a string; JS objects are actual data
+                            structures.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <strong>How to escape special characters in JSON strings?</strong>
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>Use backslash escaping: <code>\"</code> for quotes, <code>\\</code> for backslash,
+                            <code>\n</code> for newline, <code>\t</code> for tab, <code>\r</code> for carriage return.
+                            The easiest way is to use <code>JSON.stringify()</code> which automatically escapes all
+                            special characters correctly.
+                        </p>
+                    </div>
+                </details>
+            </div>
+
+            <p style="text-align:center;margin-top:3rem;color:#525252;font-size:0.85rem;">Code Formatter © 2026.
+                Professional developer tools built with privacy and performance in mind.</p>
+        </article>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+                <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+            </div>
+            <p class="footer-copyright">© 2026 Code Formatter. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Sticky CTA -->
+    <div class="sticky-cta">
+        <span class="sticky-text">JSON Error? <span>Fix it instantly.</span></span>
+        <a href="index.html" class="cta-btn-primary">Fix JSON Now ⚡</a>
+    </div>
+
+    <script>
+        // Progress bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+    </script>
+</body>
+
+</html>
