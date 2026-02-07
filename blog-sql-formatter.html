@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -55,7 +55,7 @@
                 "@type": "FAQPage",
                 "mainEntity": [
                     {"@type": "Question", "name": "Is the SQL Formatter free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! Our SQL Formatter is completely free with no limits on query length or usage."}},
-                    {"@type": "Question", "name": "Does formatting affect SQL query performance?", "acceptedAnswer": {"@type": "Answer", "text": "No�formatting has zero runtime impact. Database query optimizers parse SQL identically regardless of formatting."}},
+                    {"@type": "Question", "name": "Does formatting affect SQL query performance?", "acceptedAnswer": {"@type": "Answer", "text": "No?formatting has zero runtime impact. Database query optimizers parse SQL identically regardless of formatting."}},
                     {"@type": "Question", "name": "Which SQL dialects are supported?", "acceptedAnswer": {"@type": "Answer", "text": "We support PostgreSQL, MySQL, Oracle, MS SQL Server, SQLite, and standard SQL."}}
                 ]
             },
@@ -772,7 +772,7 @@
             </div>
 
             <p>Formatted version instantly reveals: 4 table joins, filter conditions, ordering logic, and result
-                limiting�enabling quick comprehension and optimization analysis.</p>
+                limiting?enabling quick comprehension and optimization analysis.</p>
 
             <h2 id="standards">Industry SQL Formatting Standards</h2>
 
@@ -802,7 +802,7 @@
                 <div class="callout-content">
                     <h4>Pro Tip: Trailing Commas Debate</h4>
                     <p><strong>Leading commas</strong> (<code>, column_name</code>) make adding/removing columns
-                        easier�immediately see missing commas. <strong>Trailing commas</strong>
+                        easier?immediately see missing commas. <strong>Trailing commas</strong>
                         (<code>column_name,</code>) look more natural. Pick one, enforce team-wide.</p>
                 </div>
             </div>
@@ -851,7 +851,7 @@ formatted = sqlparse.<span class="token-function">format</span>(
 
             <h2 id="optimization">Does Formatting Affect Query Performance?</h2>
 
-            <p><strong>No�formatting has zero runtime impact.</strong> Database query optimizers parse SQL into
+            <p><strong>No?formatting has zero runtime impact.</strong> Database query optimizers parse SQL into
                 execution plans regardless of formatting. Whether query is one line or perfectly formatted, execution is
                 identical.</p>
 
@@ -1057,7 +1057,7 @@ jobs:
                         <strong>No, zero performance impact whatsoever.</strong> Database engines parse SQL into
                         execution plans before running queries. Whether SQL is single-line or beautifully formatted, the
                         execution plan is identical. The optimizer doesn't care about whitespace, indentation, or
-                        keyword capitalization�only logical structure. <strong>However,</strong> formatted queries help
+                        keyword capitalization?only logical structure. <strong>However,</strong> formatted queries help
                         humans identify performance issues (missing indexes, inefficient joins, N+1 queries) faster,
                         enabling optimization. The performance benefit is indirect: readable queries get optimized
                         sooner by developers who can actually understand them.
@@ -1076,7 +1076,7 @@ jobs:
                             where):</strong> Some teams prefer this, arguing it's easier to type and less "shouty."
                         Valid choice if enforced consistently. <strong>Recommendation:</strong> Uppercase for maximum
                         readability and industry alignment. But if your team uses lowercase, enforce it via
-                        linters�inconsistency is far worse than either choice alone.
+                        linters?inconsistency is far worse than either choice alone.
                     </div>
                 </details>
 
@@ -1106,7 +1106,7 @@ jobs:
                         <strong>pgFormatter formats PostgreSQL; SQLFluff is dialect-agnostic linter +
                             formatter.</strong> <strong>pgFormatter:</strong>?? for PostgreSQL. Excellent formatting
                         quality, handles Postgres-specific syntax (arrays, JSON operators, CTEs). Command-line and web
-                        UI. Pure formatter�no linting. <strong>SQLFluff:</strong> Supports 10+ SQL dialects (Postgres,
+                        UI. Pure formatter?no linting. <strong>SQLFluff:</strong> Supports 10+ SQL dialects (Postgres,
                         MySQL, SQL Server, Spark SQL, etc.). Lints AND formats. Checks style violations, suggests fixes.
                         Configurable rules, perfect for CI/CD. Python-based, extensible. <strong>Choose
                             pgFormatter</strong> for Postgres-only projects wanting best format quality. <strong>Choose
@@ -1139,7 +1139,7 @@ jobs:
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <strong>Yes, absolutely�version control works best with consistently formatted code.</strong>
+                        <strong>Yes, absolutely?version control works best with consistently formatted code.</strong>
                         Committing formatted SQL: (1) <strong>Reduces diff noise:</strong> Format changes don't obscure
                         logic changes. (2) <strong>Enables meaningful code review:</strong> Reviewers see actual query
                         changes, not whitespace churn. (3) <strong>Prevents merge conflicts:</strong> Consistent
@@ -1176,7 +1176,8 @@ jobs:
                     <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
                     <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
                     <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                <a href="terms.html"><i class="fas fa-file-contract"></i> Terms</a>
+                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
                 </div>
                 <p class="footer-copyright">2026 Code Formatter. All rights reserved.</p>
             </div>
@@ -1198,3 +1199,5 @@ jobs:
 </body>
 
 </html>
+
+

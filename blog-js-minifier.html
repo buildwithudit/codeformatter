@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -722,7 +722,7 @@
             <p>According to Google's 2025 Web Performance Report, properly minified JavaScript improves Time to
                 Interactive (TTI) by an average of <strong>1.2 seconds</strong> on mobile devices. Research shows that
                 every 100ms improvement in load time correlates with a <strong>1% increase in conversion
-                    rates</strong>�making minification a revenue-impacting optimization, not just technical best
+                    rates</strong>?making minification a revenue-impacting optimization, not just technical best
                 practice.</p>
 
             <p>This comprehensive guide, based on <strong>15+ years of performance engineering</strong> at companies
@@ -741,7 +741,7 @@
 
             <p><strong>JavaScript minification</strong> transforms readable source code into compact,
                 production-optimized code by removing whitespace, renaming variables to shorter names, eliminating dead
-                code, and applying syntactic optimizations�all while preserving functionality.</p>
+                code, and applying syntactic optimizations?all while preserving functionality.</p>
 
             <div class="code-wrapper">
                 <div class="code-header">Source vs Minified JavaScript</div>
@@ -816,7 +816,7 @@
             </div>
 
             <h3>2. Property Mangling (Aggressive)</h3>
-            <p>Rename private object properties (risky�only mangle properties explicitly marked). Can save 10-20%
+            <p>Rename private object properties (risky?only mangle properties explicitly marked). Can save 10-20%
                 additional size but breaks if external code references those properties.</p>
 
             <h3>3. Dead Code Elimination</h3>
@@ -829,7 +829,7 @@
 
             <h3>5. Function Inlining</h3>
             <p>Replace small function calls with their bodies when profitable. Reduces call overhead but increases code
-                size slightly�Terser only inlines when net savings exist.</p>
+                size slightly?Terser only inlines when net savings exist.</p>
 
             <h2 id="tree-shaking">Tree-Shaking & Dead Code Elimination</h2>
 
@@ -972,7 +972,7 @@ console.<span class="token-function">log</span>(<span class="token-function">add
                     </summary>
                     <div class="faq-answer">
                         <strong>No, absolutely not.</strong> Development builds should be unminified for debuggability.
-                        Minified code makes debugging impossible�you can't read variable names, set meaningful
+                        Minified code makes debugging impossible?you can't read variable names, set meaningful
                         breakpoints, or understand stack traces. Modern dev servers (Vite, webpack-dev-server) serve
                         unminified code with source maps automatically. Only minify for <strong>staging and
                             production</strong> environments. Exception: Testing the minified build itself to catch
@@ -1018,7 +1018,7 @@ console.<span class="token-function">log</span>(<span class="token-function">add
                     <div class="faq-answer">
                         <strong>Slightly yes, mainly for parsing.</strong> Minified JavaScript has fewer bytes to parse
                         and shorter variable names (faster lexing). However, once parsed, execution speed is
-                        identical�JavaScript engines optimize away variable name length. Real performance gain:
+                        identical?JavaScript engines optimize away variable name length. Real performance gain:
                         <strong>network transfer time and parse time.</strong> Example: 500KB source takes 380ms to
                         parse on mobile; 200KB minified takes 220ms (42% faster parsing). But actual code execution
                         (loops, functions) runs at same speed. The wins are pre-execution.
@@ -1065,7 +1065,8 @@ console.<span class="token-function">log</span>(<span class="token-function">add
                     <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
                     <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
                     <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                <a href="terms.html"><i class="fas fa-file-contract"></i> Terms</a>
+                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
                 </div>
                 <p class="footer-copyright">2026 Code Formatter. All rights reserved.</p>
             </div>
@@ -1087,3 +1088,5 @@ console.<span class="token-function">log</span>(<span class="token-function">add
 </body>
 
 </html>
+
+

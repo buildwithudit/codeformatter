@@ -738,7 +738,7 @@
                 programming language, text editor, and command-line tool.</p>
 
             <p>At its core, regex answers the question: "Does this text contain a pattern that matches these rules?" For
-                example, the regex <code>\d{3}-\d{4}</code> matches any phone number in the format "123-4567" — three
+                example, the regex <code>\d{3}-\d{4}</code> matches any phone number in the format "123-4567" � three
                 digits, a hyphen, then four digits.</p>
 
             <div class="callout">
@@ -759,25 +759,25 @@
 
             <div class="code-wrapper">
                 <div class="code-header">Character Classes</div>
-                <pre><code><span class="token-keyword">\d</span>  → Any digit (0-9)
-<span class="token-keyword">\D</span>  → Any non-digit
-<span class="token-keyword">\w</span>  → Any word character (a-z, A-Z, 0-9, _)
-<span class="token-keyword">\W</span>  → Any non-word character
-<span class="token-keyword">\s</span>  → Any whitespace (space, tab, newline)
-<span class="token-keyword">\S</span>  → Any non-whitespace
-<span class="token-keyword">.</span>   → Any character except newline</code></pre>
+                <pre><code><span class="token-keyword">\d</span>  ? Any digit (0-9)
+<span class="token-keyword">\D</span>  ? Any non-digit
+<span class="token-keyword">\w</span>  ? Any word character (a-z, A-Z, 0-9, _)
+<span class="token-keyword">\W</span>  ? Any non-word character
+<span class="token-keyword">\s</span>  ? Any whitespace (space, tab, newline)
+<span class="token-keyword">\S</span>  ? Any non-whitespace
+<span class="token-keyword">.</span>   ? Any character except newline</code></pre>
             </div>
 
             <h3>Custom Character Sets</h3>
 
             <div class="code-wrapper">
                 <div class="code-header">Character Sets with Brackets</div>
-                <pre><code><span class="token-string">[abc]</span>     → Match 'a', 'b', or 'c'
-<span class="token-string">[a-z]</span>     → Match any lowercase letter
-<span class="token-string">[A-Z]</span>     → Match any uppercase letter
-<span class="token-string">[0-9]</span>     → Match any digit (same as \d)
-<span class="token-string">[a-zA-Z]</span>  → Match any letter
-<span class="token-string">[^abc]</span>    → Match anything EXCEPT 'a', 'b', or 'c'</code></pre>
+                <pre><code><span class="token-string">[abc]</span>     ? Match 'a', 'b', or 'c'
+<span class="token-string">[a-z]</span>     ? Match any lowercase letter
+<span class="token-string">[A-Z]</span>     ? Match any uppercase letter
+<span class="token-string">[0-9]</span>     ? Match any digit (same as \d)
+<span class="token-string">[a-zA-Z]</span>  ? Match any letter
+<span class="token-string">[^abc]</span>    ? Match anything EXCEPT 'a', 'b', or 'c'</code></pre>
             </div>
 
             <h2 id="quantifiers">Quantifiers & Anchors</h2>
@@ -789,30 +789,30 @@
 
             <div class="code-wrapper">
                 <div class="code-header">Quantifier Syntax</div>
-                <pre><code><span class="token-keyword">*</span>      → Zero or more (greedy)
-<span class="token-keyword">+</span>      → One or more (greedy)
-<span class="token-keyword">?</span>      → Zero or one (optional)
-<span class="token-keyword">{3}</span>    → Exactly 3 times
-<span class="token-keyword">{2,5}</span>  → Between 2 and 5 times
-<span class="token-keyword">{2,}</span>   → 2 or more times
-<span class="token-keyword">*?</span>     → Zero or more (lazy/non-greedy)
-<span class="token-keyword">+?</span>     → One or more (lazy/non-greedy)</code></pre>
+                <pre><code><span class="token-keyword">*</span>      ? Zero or more (greedy)
+<span class="token-keyword">+</span>      ? One or more (greedy)
+<span class="token-keyword">?</span>      ? Zero or one (optional)
+<span class="token-keyword">{3}</span>    ? Exactly 3 times
+<span class="token-keyword">{2,5}</span>  ? Between 2 and 5 times
+<span class="token-keyword">{2,}</span>   ? 2 or more times
+<span class="token-keyword">*?</span>     ? Zero or more (lazy/non-greedy)
+<span class="token-keyword">+?</span>     ? One or more (lazy/non-greedy)</code></pre>
             </div>
 
             <h3>Anchors</h3>
 
             <div class="code-wrapper">
                 <div class="code-header">Anchor Syntax</div>
-                <pre><code><span class="token-keyword">^</span>   → Start of string (or line with 'm' flag)
-<span class="token-keyword">$</span>   → End of string (or line with 'm' flag)
-<span class="token-keyword">\b</span>  → Word boundary
-<span class="token-keyword">\B</span>  → Non-word boundary</code></pre>
+                <pre><code><span class="token-keyword">^</span>   ? Start of string (or line with 'm' flag)
+<span class="token-keyword">$</span>   ? End of string (or line with 'm' flag)
+<span class="token-keyword">\b</span>  ? Word boundary
+<span class="token-keyword">\B</span>  ? Non-word boundary</code></pre>
             </div>
 
             <div class="tool-card">
                 <h3>Try Our Regex Tester Now</h3>
                 <p>Test your patterns in real-time. See matches highlighted instantly as you type.</p>
-                <a href="regex-tester.html" class="cta-btn-primary">Open Regex Tester →</a>
+                <a href="regex-tester.html" class="cta-btn-primary">Open Regex Tester ?</a>
             </div>
 
             <h2 id="groups">Groups & Lookarounds</h2>
@@ -824,21 +824,21 @@
 
             <div class="code-wrapper">
                 <div class="code-header">Groups Syntax</div>
-                <pre><code><span class="token-keyword">(abc)</span>      → Capture group - matches "abc" and stores it
-<span class="token-keyword">(?:abc)</span>    → Non-capturing group - matches but doesn't store
-<span class="token-keyword">(a|b|c)</span>    → Alternation - matches 'a' OR 'b' OR 'c'
-<span class="token-keyword">\1</span>         → Backreference to first captured group
-<span class="token-keyword">\2</span>         → Backreference to second captured group</code></pre>
+                <pre><code><span class="token-keyword">(abc)</span>      ? Capture group - matches "abc" and stores it
+<span class="token-keyword">(?:abc)</span>    ? Non-capturing group - matches but doesn't store
+<span class="token-keyword">(a|b|c)</span>    ? Alternation - matches 'a' OR 'b' OR 'c'
+<span class="token-keyword">\1</span>         ? Backreference to first captured group
+<span class="token-keyword">\2</span>         ? Backreference to second captured group</code></pre>
             </div>
 
             <h3>Lookahead & Lookbehind</h3>
 
             <div class="code-wrapper">
                 <div class="code-header">Lookaround Syntax</div>
-                <pre><code><span class="token-keyword">(?=abc)</span>   → Positive lookahead: followed by "abc"
-<span class="token-keyword">(?!abc)</span>   → Negative lookahead: NOT followed by "abc"
-<span class="token-keyword">(?<=abc)</span>  → Positive lookbehind: preceded by "abc"
-<span class="token-keyword">(?<!abc)</span>  → Negative lookbehind: NOT preceded by "abc"</code></pre>
+                <pre><code><span class="token-keyword">(?=abc)</span>   ? Positive lookahead: followed by "abc"
+<span class="token-keyword">(?!abc)</span>   ? Negative lookahead: NOT followed by "abc"
+<span class="token-keyword">(?<=abc)</span>  ? Positive lookbehind: preceded by "abc"
+<span class="token-keyword">(?<!abc)</span>  ? Negative lookbehind: NOT preceded by "abc"</code></pre>
             </div>
 
             <h2 id="how-to">How to Use Our Regex Tester</h2>
@@ -943,7 +943,7 @@
 
             <p>Our Regex Tester processes everything <strong>100% client-side</strong>. Your patterns and test strings
                 never leave your browser or get uploaded to any server. You can verify this by checking your browser's
-                Network tab — no data is transmitted after the initial page load.</p>
+                Network tab � no data is transmitted after the initial page load.</p>
 
             <p>This makes our tool safe for testing regex on:</p>
             <ul>
@@ -1046,7 +1046,7 @@
                 </details>
             </div>
 
-            <p style="text-align:center;margin-top:3rem;color:#525252;font-size:0.85rem;">Code Formatter © 2026.
+            <p style="text-align:center;margin-top:3rem;color:#525252;font-size:0.85rem;">Code Formatter � 2026.
                 Professional developer tools built with privacy and performance in mind.</p>
         </article>
     </div>
@@ -1058,16 +1058,17 @@
                 <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
                 <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
                 <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="terms.html"><i class="fas fa-file-contract"></i> Terms</a>
                 <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
             </div>
-            <p class="footer-copyright">© 2026 Code Formatter. All rights reserved.</p>
+            <p class="footer-copyright">� 2026 Code Formatter. All rights reserved.</p>
         </div>
     </footer>
 
     <!-- Sticky CTA -->
     <div class="sticky-cta">
         <span class="sticky-text">Test regex? <span>Try live matching.</span></span>
-        <a href="regex-tester.html" class="cta-btn-primary">Use Regex Tester ⚡</a>
+        <a href="regex-tester.html" class="cta-btn-primary">Use Regex Tester ?</a>
     </div>
 
     <script>
@@ -1082,3 +1083,5 @@
 </body>
 
 </html>
+
+

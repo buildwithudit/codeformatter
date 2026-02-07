@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -590,7 +590,7 @@
         }
 
         .prose ul li::before {
-            content: "→";
+            content: "?";
             color: var(--primary);
             font-weight: bold;
             position: absolute;
@@ -929,21 +929,21 @@
                             <span class="control-label">Direction</span>
                             <div class="direction-grid">
                                 <button class="direction-btn" data-dir="to top"
-                                    onclick="setDirection('to top')">↑</button>
+                                    onclick="setDirection('to top')">?</button>
                                 <button class="direction-btn" data-dir="to top right"
-                                    onclick="setDirection('to top right')">↗</button>
+                                    onclick="setDirection('to top right')">?</button>
                                 <button class="direction-btn active" data-dir="to right"
-                                    onclick="setDirection('to right')">→</button>
+                                    onclick="setDirection('to right')">?</button>
                                 <button class="direction-btn" data-dir="to bottom right"
-                                    onclick="setDirection('to bottom right')">↘</button>
+                                    onclick="setDirection('to bottom right')">?</button>
                                 <button class="direction-btn" data-dir="to bottom"
-                                    onclick="setDirection('to bottom')">↓</button>
+                                    onclick="setDirection('to bottom')">?</button>
                                 <button class="direction-btn" data-dir="to bottom left"
-                                    onclick="setDirection('to bottom left')">↙</button>
+                                    onclick="setDirection('to bottom left')">?</button>
                                 <button class="direction-btn" data-dir="to left"
-                                    onclick="setDirection('to left')">←</button>
+                                    onclick="setDirection('to left')">?</button>
                                 <button class="direction-btn" data-dir="to top left"
-                                    onclick="setDirection('to top left')">↖</button>
+                                    onclick="setDirection('to top left')">?</button>
                             </div>
                         </div>
 
@@ -953,7 +953,7 @@
                             <div class="angle-control">
                                 <input type="range" class="angle-slider" id="angleSlider" min="0" max="360" value="90"
                                     oninput="setAngle(this.value)">
-                                <span class="angle-value" id="angleValue">90°</span>
+                                <span class="angle-value" id="angleValue">90�</span>
                             </div>
                         </div>
 
@@ -989,9 +989,9 @@
             <!-- SEO CONTENT SECTION -->
             <div class="content-container">
                 <article class="clean-card prose">
-                    <h1>Free CSS Gradient Generator 2026 – Create Beautiful Gradients Instantly</h1>
+                    <h1>Free CSS Gradient Generator 2026 � Create Beautiful Gradients Instantly</h1>
 
-                    <p>Welcome to <strong>Code Formatter's CSS Gradient Generator</strong> – the ultimate visual tool
+                    <p>Welcome to <strong>Code Formatter's CSS Gradient Generator</strong> � the ultimate visual tool
                         for creating stunning CSS gradients. Whether you're designing a modern website, crafting
                         eye-catching buttons, or building beautiful user interfaces, our <strong>free gradient
                             generator</strong> makes it effortless to create professional-quality gradients with just a
@@ -1041,7 +1041,7 @@
                         </li>
                         <li><strong>8-Direction Quick Select:</strong> Instantly set horizontal, vertical, or diagonal
                             gradients</li>
-                        <li><strong>Custom Angle Control:</strong> Use the slider for precise angle adjustments (0-360°)
+                        <li><strong>Custom Angle Control:</strong> Use the slider for precise angle adjustments (0-360�)
                         </li>
                         <li><strong>Unlimited Color Stops:</strong> Add as many colors as needed for complex multi-color
                             gradients</li>
@@ -1139,13 +1139,13 @@
                     </div>
 
                     <p style="text-align: center; margin-top: 3rem; color: var(--text-muted); font-size: 0.85rem;">
-                        Code Formatter © 2026. Professional developer tools built with privacy and performance in mind.
+                        Code Formatter � 2026. Professional developer tools built with privacy and performance in mind.
                     </p>
 
                     <p style="text-align: center; margin-top: 2rem; margin-bottom: 1rem;">
                         <a href="blog-gradient-generator.html"
-                            style="color: var(--primary); font-weight: 600; text-decoration: none; font-size: 1.1rem;">📖
-                            Read Our Complete CSS Gradient Guide →</a>
+                            style="color: var(--primary); font-weight: 600; text-decoration: none; font-size: 1.1rem;">??
+                            Read Our Complete CSS Gradient Guide ?</a>
                     </p>
                 </article>
             </div>
@@ -1154,9 +1154,7 @@
         <footer class="footer">
             <div class="footer-stats">
                 <div class="stat-item" id="footerStatus"><i class="fas fa-circle-notch"></i> Ready</div>
-                <div class="footer-links"><a href="./about.html">About</a> · <a href="./privacy.html">Privacy</a> · <a
-                        href="./contact.html">Contact</a>
-                </div>
+                <div class="footer-links"><a href="./about.html">About</a>  <a href="./privacy.html">Privacy</a>  <a href="./terms.html">Terms</a>  <a href="./contact.html">Contact</a></div>
             </div>
             <div class="footer-actions">
                 <button class="btn btn-sec" onclick="randomGradient()"><i class="fas fa-random"></i> RANDOM</button>
@@ -1234,14 +1232,14 @@
                 'to bottom': 180, 'to bottom left': 225, 'to left': 270, 'to top left': 315
             };
             document.getElementById('angleSlider').value = angles[direction] || 90;
-            document.getElementById('angleValue').textContent = (angles[direction] || 90) + '°';
+            document.getElementById('angleValue').textContent = (angles[direction] || 90) + '�';
             updateGradient();
         }
 
         function setAngle(angle) {
             gradientState.angle = parseInt(angle);
             gradientState.useAngle = true;
-            document.getElementById('angleValue').textContent = angle + '°';
+            document.getElementById('angleValue').textContent = angle + '�';
             // Deselect direction buttons
             document.querySelectorAll('.direction-btn').forEach(btn => btn.classList.remove('active'));
             updateGradient();
@@ -1345,7 +1343,7 @@
             gradientState.angle = Math.floor(Math.random() * 360);
             gradientState.useAngle = true;
             document.getElementById('angleSlider').value = gradientState.angle;
-            document.getElementById('angleValue').textContent = gradientState.angle + '°';
+            document.getElementById('angleValue').textContent = gradientState.angle + '�';
             document.querySelectorAll('.direction-btn').forEach(btn => btn.classList.remove('active'));
             renderColorStops();
             updateGradient();
@@ -1436,3 +1434,5 @@
 </body>
 
 </html>
+
+

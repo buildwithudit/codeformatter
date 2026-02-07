@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -713,7 +713,7 @@
                 </ul>
             </details>
 
-            <p id="intro">In the JavaScript ecosystem, <strong>code formatting</strong> is not optional�it's a
+            <p id="intro">In the JavaScript ecosystem, <strong>code formatting</strong> is not optional?it's a
                 fundamental requirement for maintainable, collaborative codebases. With JavaScript powering everything
                 from simple websites to complex enterprise applications, poorly formatted code creates technical debt
                 that compounds exponentially over time.</p>
@@ -753,7 +753,7 @@
             </div>
 
             <p>The formatted version reveals function signature, callback structure, and calculation logic at a
-                glance�critical when debugging complex data transformations.</p>
+                glance?critical when debugging complex data transformations.</p>
 
             <h2 id="benefits">Professional Benefits of JavaScript Formatting</h2>
 
@@ -769,7 +769,7 @@
 
             <h3>3. Improved Onboarding</h3>
             <p>New team members inherit consistent code style instantly through shared formatter configs. They can
-                contribute meaningful code on day one without learning arbitrary team conventions�the formatter enforces
+                contribute meaningful code on day one without learning arbitrary team conventions?the formatter enforces
                 standards automatically.</p>
 
             <h3>4. Better Diff Quality</h3>
@@ -798,7 +798,7 @@
 
             <h3>Prettier: Code Formatting</h3>
             <p><strong>Prettier</strong> is an opinionated formatter that rewrites code for consistency. It handles
-                indentation, spacing, quotes, semicolons, and line length. Prettier has minimal configuration�its
+                indentation, spacing, quotes, semicolons, and line length. Prettier has minimal configuration?its
                 philosophy is "use the defaults" to avoid bikeshedding.</p>
 
             <h3>ESLint: Code Quality Linting</h3>
@@ -887,7 +887,7 @@
             <p>Common question: does formatted JavaScript run slower than minified code?</p>
 
             <h3>Development: No Performance Impact</h3>
-            <p>During development, formatted code and minified code execute identically�JavaScript engines parse both in
+            <p>During development, formatted code and minified code execute identically?JavaScript engines parse both in
                 milliseconds. The browser doesn't care about whitespace or formatting.</p>
 
             <h3>Production: Always Minify</h3>
@@ -914,7 +914,7 @@
 
             <h3>Editor Integration (Format on Save)</h3>
             <p>Configure VS Code, WebStorm, or Sublime Text to auto-format on every save. This creates a tight feedback
-                loop�write code, save, instantly formatted. No manual effort required.</p>
+                loop?write code, save, instantly formatted. No manual effort required.</p>
 
             <h3>Pre-commit Hooks (Husky + lint-staged)</h3>
             <p>Prevent unformatted code from ever reaching version control. Husky runs Prettier on staged files before
@@ -950,7 +950,7 @@ npx lint-staged</code></pre>
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        This is the most debated JavaScript style question. <strong>Both are valid</strong>�what matters
+                        This is the most debated JavaScript style question. <strong>Both are valid</strong>?what matters
                         is consistency. Teams using <strong>semicolons</strong> have explicit statement termination
                         (Airbnb, Google style guides). Teams using <strong>ASI (no semicolons)</strong> write cleaner
                         code (Vue.js, Svelte, many modern projects). Prettier defaults to no semicolons. Pick one,
@@ -967,7 +967,7 @@ npx lint-staged</code></pre>
                     <div class="faq-answer">
                         <strong>Quality formatters never break code semantics.</strong> Prettier is battle-tested on
                         millions of codebases and undergoes rigorous testing to ensure it only changes whitespace,
-                        quotes, and semicolons�never logic. However, <strong>edge cases exist</strong>: comments in
+                        quotes, and semicolons?never logic. However, <strong>edge cases exist</strong>: comments in
                         unusual positions might move, and ASI edge cases (rare) could theoretically break. Always test
                         after initial setup, but in practice, Prettier/ESLint are extremely safe.
                     </div>
@@ -1009,7 +1009,7 @@ npx lint-staged</code></pre>
                     <div class="faq-answer">
                         When debugging production issues, you often encounter minified JS. <strong>Browser DevTools have
                             built-in "Pretty Print"</strong> (usually a <code>{}</code> button). For offline formatting,
-                        paste minified code into our JS formatter or Prettier�it intelligently adds line breaks and
+                        paste minified code into our JS formatter or Prettier?it intelligently adds line breaks and
                         indentation, making it debuggable. However, variable names will still be minified (a?b). Use
                         source maps in production to map minified code back to original source for true debugging.
                     </div>
@@ -1024,7 +1024,7 @@ npx lint-staged</code></pre>
                         <strong>It depends on source control.</strong> Code generated by tools (Swagger/OpenAPI clients,
                         GraphQL codegen, etc.) that's <strong>committed to git</strong> should be formatted for better
                         diffs and code review. Code generated on-the-fly during builds (not committed) doesn't need
-                        formatting�it's ephemeral. Use <code>.prettierignore</code> to exclude generated files if
+                        formatting?it's ephemeral. Use <code>.prettierignore</code> to exclude generated files if
                         needed. However, formatting generated code rarely hurts and often helps when debugging build
                         issues.
                     </div>
@@ -1054,7 +1054,8 @@ npx lint-staged</code></pre>
                     <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
                     <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
                     <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                <a href="terms.html"><i class="fas fa-file-contract"></i> Terms</a>
+                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
                 </div>
                 <p class="footer-copyright">2026 Code Formatter. All rights reserved.</p>
             </div>
@@ -1076,3 +1077,5 @@ npx lint-staged</code></pre>
 </body>
 
 </html>
+
+

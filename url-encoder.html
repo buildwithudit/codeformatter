@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -558,7 +558,7 @@
             {"@type": "Question", "name": "What is the difference between encodeURI and encodeURIComponent?", "acceptedAnswer": {"@type": "Answer", "text": "encodeURI is for full URLs (preserves http://, ?, etc.), while encodeURIComponent is for individual parameters (encodes everything). Our tool uses encodeURIComponent for maximum safety."}},
             {"@type": "Question", "name": "Why did my space become %20 or +?", "acceptedAnswer": {"@type": "Answer", "text": "Historically, spaces could be + in query strings, but %20 is the standard percent-encoding for a space character. Both are widely accepted."}},
             {"@type": "Question", "name": "Is it secure for API keys?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Since the computation is local (client-side), you can paste URLs containing sensitive tokens without fear of them being logged on a server."}},
-            {"@type": "Question", "name": "Does it support Emojis?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! Emojis are encoded as multiple percent sequences. For example, 👋 becomes %F0%9F%91%8B."}}
+            {"@type": "Question", "name": "Does it support Emojis?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! Emojis are encoded as multiple percent sequences. For example, ?? becomes %F0%9F%91%8B."}}
           ]
         }
       ]
@@ -825,8 +825,8 @@
 
                     <p style="text-align: center; margin-top: 2rem; margin-bottom: 1rem;">
                         <a href="blog-url-encoder.html"
-                            style="color: var(--primary); font-weight: 600; text-decoration: none; font-size: 1.1rem;">📖
-                            Read Our Complete URL Encoding Guide →</a>
+                            style="color: var(--primary); font-weight: 600; text-decoration: none; font-size: 1.1rem;">??
+                            Read Our Complete URL Encoding Guide ?</a>
                     </p>
                 </article>
             </div>
@@ -835,9 +835,7 @@
         <footer class="footer">
             <div class="footer-stats">
                 <div class="stat-item" id="footerStatus"><i class="fas fa-circle-notch"></i> Ready</div>
-                <div class="footer-links"><a href="./about.html">About</a> ? <a href="./privacy.html">Privacy</a> ? <a
-                        href="./contact.html">Contact</a>
-                </div>
+                <div class="footer-links"><a href="./about.html">About</a>  <a href="./privacy.html">Privacy</a>  <a href="./terms.html">Terms</a>  <a href="./contact.html">Contact</a></div>
             </div>
             <div class="footer-actions">
                 <button class="btn btn-sec" onclick="clearAll()"><i class="far fa-trash-alt"></i> CLEAR</button>
@@ -953,3 +951,5 @@
 </body>
 
 </html>
+
+

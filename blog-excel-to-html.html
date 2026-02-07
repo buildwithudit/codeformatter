@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -750,7 +750,7 @@
 
             <h3>2. Email Marketing Campaigns</h3>
             <p>Embedding HTML tables in emails (product catalogs, pricing tables, data summaries) delivers better
-                formatting than plain text and works in all email clients�unlike attached Excel files that recipients
+                formatting than plain text and works in all email clients?unlike attached Excel files that recipients
                 may not open.</p>
 
             <h3>3. Web Dashboards & Analytics</h3>
@@ -763,7 +763,7 @@
 
             <h3>5. Automated Reporting Systems</h3>
             <p>Scheduled scripts generate Excel reports (sales data, inventory, metrics), convert to HTML, and publish
-                to dashboards automatically�eliminating manual refresh cycles.</p>
+                to dashboards automatically?eliminating manual refresh cycles.</p>
 
             <div class="callout">
                 <i class="fas fa-lightbulb"></i>
@@ -823,7 +823,7 @@ html = df.<span class="token-function">to_html</span>(
 <span class="token-keyword">print</span>(html)</code></pre>
             </div>
 
-            <p>Verdict: Best for production�clean output, full control, automation-friendly.</p>
+            <p>Verdict: Best for production?clean output, full control, automation-friendly.</p>
 
             <h3>Method 3: Online Converters</h3>
             <p>Web-based tools like Aspose, ConvertCSV, or TableConvert. Upload Excel, download HTML. Pros: No coding,
@@ -1041,7 +1041,7 @@ console.<span class="token-function">log</span>(html);</code></pre>
                     </summary>
                     <div class="faq-answer">
                         <strong>No, formulas don't automatically translate to HTML/JavaScript.</strong> Standard
-                        conversion exports only <strong>calculated values</strong>�the formula results at time of
+                        conversion exports only <strong>calculated values</strong>?the formula results at time of
                         conversion. Formulas themselves disappear. To replicate formula logic: (1) <strong>Recalculate
                             server-side:</strong> Run conversion script on fresh data each time, Excel recalculates
                         before export. (2) <strong>Manual JavaScript recreation:</strong> Rewrite critical formulas as
@@ -1075,14 +1075,14 @@ console.<span class="token-function">log</span>(html);</code></pre>
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <strong>Not directly�charts require recreation with JavaScript libraries.</strong> Excel charts
+                        <strong>Not directly?charts require recreation with JavaScript libraries.</strong> Excel charts
                         are embedded objects; they don't convert to HTML automatically. Solutions: (1) <strong>Export as
                             images:</strong> Save Excel charts as PNG, embed in HTML via <code>&lt;img&gt;</code> tags.
                         (2) <strong>Recreate with Chart.js/D3.js:</strong> Extract underlying data, rebuild charts using
                         web visualization libraries. (3) <strong>Use specialized tools:</strong> Some enterprise BI
                         tools (Tableau, Power BI) export interactive HTML dashboards from Excel. For production systems,
                         <strong>rebuild charts in web format</strong> using actual data for interactivity and
-                        responsiveness�don't rely on static Excel chart images.
+                        responsiveness?don't rely on static Excel chart images.
                     </div>
                 </details>
 
@@ -1099,7 +1099,7 @@ console.<span class="token-function">log</span>(html);</code></pre>
                         automatically. <strong>Accessibility tip:</strong> Add scope attributes to merged header cells:
                         <code>&lt;th colspan="2" scope="col"&gt;Quarter 1&lt;/th&gt;</code> for screen readers.
                         <strong>Caution:</strong> Complex merged cell patterns can create confusing HTML. If possible,
-                        avoid merging cells in source Excel�use CSS text-align/vertical-align instead for visual
+                        avoid merging cells in source Excel?use CSS text-align/vertical-align instead for visual
                         presentation.
                     </div>
                 </details>
@@ -1127,7 +1127,7 @@ console.<span class="token-function">log</span>(html);</code></pre>
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <strong>No�never upload sensitive data to third-party converters.</strong> Online conversion
+                        <strong>No?never upload sensitive data to third-party converters.</strong> Online conversion
                         tools process files on their servers, creating security risks: (1) Data exposure to service
                         providers. (2) Potential breaches or logging. (3) GDPR/compliance violations if data contains
                         PII. For <strong>confidential financial, medical, or proprietary data</strong>, use: (1)
@@ -1149,7 +1149,7 @@ console.<span class="token-function">log</span>(html);</code></pre>
                         Perfect for: summaries, dashboards, reports where data is reference-only. Ensure
                         mobile-responsive CSS with media queries. <strong>Excel attachments:</strong> Recipients can
                         sort, filter, analyze data. Better for: datasets requiring manipulation, formulas/charts,
-                        audiences who need raw data. <strong>Best practice:</strong> Combine both�HTML summary in email
+                        audiences who need raw data. <strong>Best practice:</strong> Combine both?HTML summary in email
                         body, Excel attachment for detailed analysis. Always test HTML emails across clients (Gmail,
                         Outlook) as rendering varies significantly. Use table-based layouts (not divs) for maximum
                         compatibility.
@@ -1165,7 +1165,8 @@ console.<span class="token-function">log</span>(html);</code></pre>
                     <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
                     <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
                     <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                <a href="terms.html"><i class="fas fa-file-contract"></i> Terms</a>
+                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
                 </div>
                 <p class="footer-copyright">2026 Code Formatter. All rights reserved.</p>
             </div>
@@ -1187,3 +1188,5 @@ console.<span class="token-function">log</span>(html);</code></pre>
 </body>
 
 </html>
+
+

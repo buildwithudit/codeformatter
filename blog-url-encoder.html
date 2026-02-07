@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -732,7 +732,7 @@
 
             <p><strong>URL encoding</strong> converts special characters into a format that can be safely transmitted
                 over the internet. URLs can only contain a limited set of characters from the ASCII character
-                set�letters, digits, and a few special characters like hyphen and underscore.</p>
+                set?letters, digits, and a few special characters like hyphen and underscore.</p>
 
             <p>Any character outside this safe set must be encoded using the <strong>percent-encoding scheme</strong>: a
                 percent sign <code>%</code> followed by two hexadecimal digits representing the character's byte value.
@@ -744,7 +744,7 @@
 <span class="token-string">"Hello World"</span>      ? <span class="token-string">"Hello%20World"</span>
 <span class="token-string">"user@example.com"</span> ? <span class="token-string">"user%40example.com"</span>
 <span class="token-string">"50% discount"</span>    ? <span class="token-string">"50%25%20discount"</span>
-<span class="token-string">"caf�"</span>            ? <span class="token-string">"caf%C3%A9"</span>
+<span class="token-string">"caf?"</span>            ? <span class="token-string">"caf%C3%A9"</span>
 <span class="token-string">"path/to/file"</span>    ? <span class="token-string">"path%2Fto%2Ffile"</span></code></pre>
             </div>
 
@@ -758,7 +758,7 @@
 
             <h3>1. Query String Parameters</h3>
             <p><strong>Always encode query parameter values.</strong> This is the most common use case. User input,
-                search queries, filter values�all must be encoded before adding to URLs:</p>
+                search queries, filter values?all must be encoded before adding to URLs:</p>
 
             <div class="code-wrapper">
                 <div class="code-header">Query String Encoding</div>
@@ -786,7 +786,7 @@
                 <i class="fas fa-lightbulb"></i>
                 <div class="callout-content">
                     <h4>Expert Insight: Double Encoding Trap</h4>
-                    <p>Never encode data that's already encoded�this creates "double encoding" where <code>%20</code>
+                    <p>Never encode data that's already encoded?this creates "double encoding" where <code>%20</code>
                         becomes <code>%2520</code>. Many bugs stem from encoding data multiple times in different
                         application layers. Always track encoding state carefully.</p>
                 </div>
@@ -897,7 +897,7 @@ encodeURI(query); <span class="token-comment">// Returns: "C++" (incorrect, inte
                 a nested directory structure.</p>
 
             <h3>Issue 3: Hash Fragments and Anchors</h3>
-            <p>Characters after <code>#</code> aren't sent to servers in HTTP requests�they're processed client-side.
+            <p>Characters after <code>#</code> aren't sent to servers in HTTP requests?they're processed client-side.
                 Encode fragment values for consistency but remember they're never server-visible.</p>
 
             <h3>Issue 4: Reserved Characters in Specific Contexts</h3>
@@ -911,7 +911,7 @@ encodeURI(query); <span class="token-comment">// Returns: "C++" (incorrect, inte
                 <li><strong>Default to encodeURIComponent():</strong> For 95% of use cases (query params, form values),
                     this is the correct function. When in doubt, use this.</li>
                 <li><strong>Never Manually Encode:</strong> Don't try to replace spaces with <code>%20</code>
-                    manually�use built-in functions that handle all edge cases.</li>
+                    manually?use built-in functions that handle all edge cases.</li>
                 <li><strong>Encode Immediately Before Use:</strong> Encode data at the last possible moment before
                     inserting into URLs to avoid double-encoding.</li>
                 <li><strong>Store Original, Not Encoded:</strong> In databases, store original user input, not
@@ -936,17 +936,17 @@ encodeURI(query); <span class="token-comment">// Returns: "C++" (incorrect, inte
             <p>URL encoding international (non-ASCII) characters requires understanding UTF-8 encoding:</p>
 
             <h3>How Unicode Encoding Works</h3>
-            <p>Characters like �, ?, or � get converted to UTF-8 bytes, then each byte is percent-encoded:</p>
+            <p>Characters like ?, ?, or ? get converted to UTF-8 bytes, then each byte is percent-encoded:</p>
 
             <div class="code-wrapper">
                 <div class="code-header">Unicode Encoding Examples</div>
-                <pre><code>encodeURIComponent(<span class="token-string">"caf�"</span>)     <span class="token-comment">// "caf%C3%A9"</span>
+                <pre><code>encodeURIComponent(<span class="token-string">"caf?"</span>)     <span class="token-comment">// "caf%C3%A9"</span>
 encodeURIComponent(<span class="token-string">"??"</span>)     <span class="token-comment">// "%E5%8C%97%E4%BA%AC"</span>
-encodeURIComponent(<span class="token-string">"espa�ol"</span>) <span class="token-comment">// "espa%C3%B1ol"</span></code></pre>
+encodeURIComponent(<span class="token-string">"espa?ol"</span>) <span class="token-comment">// "espa%C3%B1ol"</span></code></pre>
             </div>
 
             <h3>Internationalized Domain Names (IDN)</h3>
-            <p>Domain names with Unicode characters (like m�nchen.de) use Punycode encoding (starts with
+            <p>Domain names with Unicode characters (like m?nchen.de) use Punycode encoding (starts with
                 <code>xn--</code>). Browsers handle this automatically, but be aware when programmatically constructing
                 URLs.
             </p>
@@ -1011,7 +1011,7 @@ encodeURIComponent(<span class="token-string">"espa�ol"</span>) <span class="t
                         Different URL encoding standards and implementations exist. <strong>RFC 3986</strong> (modern
                         standard) differs slightly from older specs. Some systems use <code>+</code> for spaces, others
                         use <code>%20</code>. Some encode <code>!</code> and <code>*</code>, others don't. This is why
-                        using standard library functions (<code>encodeURIComponent</code>) is critical�they follow
+                        using standard library functions (<code>encodeURIComponent</code>) is critical?they follow
                         current specifications. When consuming third-party APIs, test with their specific encoding
                         requirements and document any quirks.
                     </div>
@@ -1028,7 +1028,7 @@ encodeURIComponent(<span class="token-string">"espa�ol"</span>) <span class="t
                         <strong>PHP:</strong> <code>urlencode()</code> or <code>rawurlencode()</code>.
                         <strong>Java:</strong> <code>URLEncoder.encode()</code>. <strong>Ruby:</strong>
                         <code>ERB::Util.url_encode()</code>. <strong>Node.js:</strong> <code>encodeURIComponent()</code>
-                        (same as browser). Always use the language's standard library�don't write custom encoding logic,
+                        (same as browser). Always use the language's standard library?don't write custom encoding logic,
                         which inevitably has bugs.
                     </div>
                 </details>
@@ -1059,7 +1059,7 @@ encodeURIComponent(<span class="token-string">"espa�ol"</span>) <span class="t
                         <strong>Yes, practical limits exist.</strong> While there's no official URL length limit in HTTP
                         specs, browsers and servers impose limits: Most browsers support 2,000-8,000 characters.
                         Internet Explorer (legacy): ~2,083 characters. Apache default: 8,190 characters. Nginx default:
-                        4,096-8,192 characters. Encoded URLs are longer than original (� becomes %C3%A9), so encoding
+                        4,096-8,192 characters. Encoded URLs are longer than original (? becomes %C3%A9), so encoding
                         can push you over limits. For very long data, use POST request bodies instead of URL parameters.
                         As a rule of thumb: keep URLs under 2,000 characters for universal compatibility.
                     </div>
@@ -1074,7 +1074,8 @@ encodeURIComponent(<span class="token-string">"espa�ol"</span>) <span class="t
                     <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
                     <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
                     <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                <a href="terms.html"><i class="fas fa-file-contract"></i> Terms</a>
+                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
                 </div>
                 <p class="footer-copyright">2026 Code Formatter. All rights reserved.</p>
             </div>
@@ -1096,3 +1097,5 @@ encodeURIComponent(<span class="token-string">"espa�ol"</span>) <span class="t
 </body>
 
 </html>
+
+

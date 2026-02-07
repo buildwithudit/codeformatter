@@ -742,7 +742,7 @@
             </div>
 
             <details class="toc" open>
-                <summary>📋 Table of Contents</summary>
+                <summary>?? Table of Contents</summary>
                 <ul>
                     <li><a href="#basics">Basic Syntax</a></li>
                     <li><a href="#metacharacters">Metacharacters</a></li>
@@ -758,7 +758,7 @@
             </details>
 
             <p><strong>Regular Expressions (regex)</strong> are powerful patterns used for matching, searching, and
-                manipulating text. Every developer needs regex skills — from form validation to log parsing to data
+                manipulating text. Every developer needs regex skills � from form validation to log parsing to data
                 extraction. This complete cheat sheet contains everything you need to master regex in 2026.</p>
 
             <p>Whether you're working in JavaScript, Python, Java, PHP, or any other language, the core regex syntax
@@ -814,42 +814,42 @@
                     <tr>
                         <td><code>.</code></td>
                         <td>Any character except newline</td>
-                        <td class="example">a.c → "abc", "a1c", "a-c"</td>
+                        <td class="example">a.c ? "abc", "a1c", "a-c"</td>
                     </tr>
                     <tr>
                         <td><code>^</code></td>
                         <td>Start of string</td>
-                        <td class="example">^Hello → "Hello World"</td>
+                        <td class="example">^Hello ? "Hello World"</td>
                     </tr>
                     <tr>
                         <td><code>$</code></td>
                         <td>End of string</td>
-                        <td class="example">World$ → "Hello World"</td>
+                        <td class="example">World$ ? "Hello World"</td>
                     </tr>
                     <tr>
                         <td><code>*</code></td>
                         <td>Zero or more times</td>
-                        <td class="example">ab*c → "ac", "abc", "abbc"</td>
+                        <td class="example">ab*c ? "ac", "abc", "abbc"</td>
                     </tr>
                     <tr>
                         <td><code>+</code></td>
                         <td>One or more times</td>
-                        <td class="example">ab+c → "abc", "abbc" (not "ac")</td>
+                        <td class="example">ab+c ? "abc", "abbc" (not "ac")</td>
                     </tr>
                     <tr>
                         <td><code>?</code></td>
                         <td>Zero or one time (optional)</td>
-                        <td class="example">colou?r → "color", "colour"</td>
+                        <td class="example">colou?r ? "color", "colour"</td>
                     </tr>
                     <tr>
                         <td><code>|</code></td>
                         <td>OR operator (alternation)</td>
-                        <td class="example">cat|dog → "cat" or "dog"</td>
+                        <td class="example">cat|dog ? "cat" or "dog"</td>
                     </tr>
                     <tr>
                         <td><code>\</code></td>
                         <td>Escape special character</td>
-                        <td class="example">\. → literal "."</td>
+                        <td class="example">\. ? literal "."</td>
                     </tr>
                 </tbody>
             </table>
@@ -978,32 +978,32 @@
                     <tr>
                         <td><code>*</code></td>
                         <td>0 or more</td>
-                        <td class="example">a* → "", "a", "aaa"</td>
+                        <td class="example">a* ? "", "a", "aaa"</td>
                     </tr>
                     <tr>
                         <td><code>+</code></td>
                         <td>1 or more</td>
-                        <td class="example">a+ → "a", "aaa" (not "")</td>
+                        <td class="example">a+ ? "a", "aaa" (not "")</td>
                     </tr>
                     <tr>
                         <td><code>?</code></td>
                         <td>0 or 1 (optional)</td>
-                        <td class="example">a? → "", "a"</td>
+                        <td class="example">a? ? "", "a"</td>
                     </tr>
                     <tr>
                         <td><code>{n}</code></td>
                         <td>Exactly n times</td>
-                        <td class="example">a{3} → "aaa"</td>
+                        <td class="example">a{3} ? "aaa"</td>
                     </tr>
                     <tr>
                         <td><code>{n,}</code></td>
                         <td>n or more times</td>
-                        <td class="example">a{2,} → "aa", "aaa", "aaaa"</td>
+                        <td class="example">a{2,} ? "aa", "aaa", "aaaa"</td>
                     </tr>
                     <tr>
                         <td><code>{n,m}</code></td>
                         <td>Between n and m times</td>
-                        <td class="example">a{2,4} → "aa", "aaa", "aaaa"</td>
+                        <td class="example">a{2,4} ? "aa", "aaa", "aaaa"</td>
                     </tr>
                 </tbody>
             </table>
@@ -1045,7 +1045,7 @@
             <!-- Anchors -->
             <h2 id="anchors">Anchors & Boundaries</h2>
 
-            <p>Anchors don't match characters — they match positions.</p>
+            <p>Anchors don't match characters � they match positions.</p>
 
             <table class="regex-table">
                 <thead>
@@ -1059,22 +1059,22 @@
                     <tr>
                         <td><code>^</code></td>
                         <td>Start of string/line</td>
-                        <td class="example">^Start → "Start here"</td>
+                        <td class="example">^Start ? "Start here"</td>
                     </tr>
                     <tr>
                         <td><code>$</code></td>
                         <td>End of string/line</td>
-                        <td class="example">end$ → "The end"</td>
+                        <td class="example">end$ ? "The end"</td>
                     </tr>
                     <tr>
                         <td><code>\b</code></td>
                         <td>Word boundary</td>
-                        <td class="example">\bword\b → whole word only</td>
+                        <td class="example">\bword\b ? whole word only</td>
                     </tr>
                     <tr>
                         <td><code>\B</code></td>
                         <td>Non-word boundary</td>
-                        <td class="example">\Bword → "sword" (not "word")</td>
+                        <td class="example">\Bword ? "sword" (not "word")</td>
                     </tr>
                 </tbody>
             </table>
@@ -1127,7 +1127,7 @@
                     <h4>Example: Swap First & Last Name</h4>
                     <p>Pattern: <code>(\w+)\s(\w+)</code><br>
                         Replace: <code>$2, $1</code><br>
-                        "John Smith" → "Smith, John"</p>
+                        "John Smith" ? "Smith, John"</p>
                 </div>
             </div>
 
@@ -1268,10 +1268,10 @@
 
             <!-- Tool Card -->
             <div class="tool-card">
-                <h3>🧪 Test Your Regex Patterns</h3>
+                <h3>?? Test Your Regex Patterns</h3>
                 <p>Use our free Regex Tester to validate patterns in real-time with instant feedback and match
                     highlighting.</p>
-                <a href="regex-tester.html" class="cta-btn-primary">Open Regex Tester →</a>
+                <a href="regex-tester.html" class="cta-btn-primary">Open Regex Tester ?</a>
             </div>
 
             <!-- FAQ Section -->
@@ -1298,9 +1298,9 @@
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <p><code>*</code> (asterisk) matches <strong>zero or more</strong> occurrences — the pattern is
+                        <p><code>*</code> (asterisk) matches <strong>zero or more</strong> occurrences � the pattern is
                             optional and can repeat. <code>+</code> (plus) matches <strong>one or more</strong>
-                            occurrences — at least one match is required. Example: <code>a*</code> matches "", "a", "aa"
+                            occurrences � at least one match is required. Example: <code>a*</code> matches "", "a", "aa"
                             but <code>a+</code> only matches "a", "aa" (not empty string).</p>
                     </div>
                 </details>
@@ -1326,7 +1326,7 @@
                     <div class="faq-answer">
                         <p>The caret <code>^</code> has two different meanings: At the <strong>start of a
                                 pattern</strong>, it means "beginning of string". Inside a <strong>character
-                                class</strong> <code>[^...]</code>, it means "NOT these characters" — a negated
+                                class</strong> <code>[^...]</code>, it means "NOT these characters" � a negated
                             character class. <code>[^abc]</code> matches any character except a, b, or c.</p>
                     </div>
                 </details>
@@ -1352,7 +1352,7 @@
                     <div class="faq-answer">
                         <p><strong>Capturing groups</strong> <code>(pattern)</code> save the matched text for later use
                             via backreferences ($1, $2) or match arrays. <strong>Non-capturing groups</strong>
-                            <code>(?:pattern)</code> group patterns without saving — useful when you need grouping for
+                            <code>(?:pattern)</code> group patterns without saving � useful when you need grouping for
                             quantifiers but don't need the captured value. Non-capturing is slightly faster.</p>
                     </div>
                 </details>
@@ -1363,7 +1363,7 @@
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <p>Quantifiers like <code>*</code> and <code>+</code> are <strong>greedy</strong> by default —
+                        <p>Quantifiers like <code>*</code> and <code>+</code> are <strong>greedy</strong> by default �
                             they match as much as possible. To make them <strong>lazy</strong> (match minimum), add
                             <code>?</code> after: <code>*?</code> <code>+?</code> <code>??</code>. Example: for
                             "&lt;div&gt;text&lt;/div&gt;", pattern <code>&lt;.*&gt;</code> matches the whole thing, but
@@ -1372,7 +1372,7 @@
                 </details>
             </div>
 
-            <p style="text-align:center;margin-top:3rem;color:#525252;font-size:0.85rem;">Code Formatter © 2026.
+            <p style="text-align:center;margin-top:3rem;color:#525252;font-size:0.85rem;">Code Formatter � 2026.
                 Professional developer tools built with privacy and performance in mind.</p>
         </article>
     </div>
@@ -1384,16 +1384,17 @@
                 <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
                 <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
                 <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="terms.html"><i class="fas fa-file-contract"></i> Terms</a>
                 <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
             </div>
-            <p class="footer-copyright">© 2026 Code Formatter. All rights reserved.</p>
+            <p class="footer-copyright">� 2026 Code Formatter. All rights reserved.</p>
         </div>
     </footer>
 
     <!-- Sticky CTA -->
     <div class="sticky-cta">
         <span class="sticky-text">Test regex? <span>Try live matching.</span></span>
-        <a href="regex-tester.html" class="cta-btn-primary">Regex Tester ⚡</a>
+        <a href="regex-tester.html" class="cta-btn-primary">Regex Tester ?</a>
     </div>
 
     <script>
@@ -1408,3 +1409,5 @@
 </body>
 
 </html>
+
+

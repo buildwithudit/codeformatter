@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -718,7 +718,7 @@
             <p>According to HTTP Archive data from 2025, the average web page transfers over <strong>2.3MB of JSON
                     data</strong> across API calls and embedded configurations. Minifying this JSON can save 700KB-1.4MB
                 per page load. For a site with 1 million monthly visitors, that's <strong>700GB-1.4TB of saved
-                    bandwidth</strong> monthly�translating to thousands of dollars in CDN costs and significantly faster
+                    bandwidth</strong> monthly?translating to thousands of dollars in CDN costs and significantly faster
                 load times.</p>
 
             <p>This comprehensive guide, based on <strong>15+ years of API development and performance
@@ -747,7 +747,7 @@
 {<span class="token-prop">"user"</span>:{<span class="token-prop">"id"</span>:12345,<span class="token-prop">"name"</span>:<span class="token-val">"John Doe"</span>,<span class="token-prop">"email"</span>:<span class="token-val">"john@example.com"</span>,<span class="token-prop">"active"</span>:<span class="token-val">true</span>}}</code></pre>
             </div>
 
-            <p>The minified version is 43% smaller�multiply this across thousands of API calls daily and the savings
+            <p>The minified version is 43% smaller?multiply this across thousands of API calls daily and the savings
                 become massive.</p>
 
             <h2 id="benefits">Performance Benefits of JSON Minification</h2>
@@ -755,7 +755,7 @@
             <h3>1. Reduced Network Transfer Time</h3>
             <p>Smaller JSON files transfer faster over networks, especially on mobile connections. A 100KB formatted
                 JSON minifies to ~65KB, saving 35KB per request. On 3G connections (750Kbps), that's <strong>373ms
-                    faster download</strong>. Across 100 API calls per session, that's 37 seconds saved�enough to
+                    faster download</strong>. Across 100 API calls per session, that's 37 seconds saved?enough to
                 dramatically improve perceived performance.</p>
 
             <h3>2. Lower Bandwidth Costs</h3>
@@ -765,7 +765,7 @@
 
             <h3>3. Faster JSON Parsing</h3>
             <p>Contrary to intuition, minified JSON often parses slightly <strong>faster</strong> than formatted JSON.
-                Modern JavaScript engines (V8, SpiderMonkey) parse fewer characters more efficiently�though the
+                Modern JavaScript engines (V8, SpiderMonkey) parse fewer characters more efficiently?though the
                 difference is minimal (microseconds), it matters at scale.</p>
 
             <h3>4. Reduced Memory Usage</h3>
@@ -813,7 +813,7 @@
             </div>
 
             <h3>Step 2: Preserve String Content</h3>
-            <p>Whitespace <strong>inside</strong> quoted strings must be preserved�it's data, not formatting. Advanced
+            <p>Whitespace <strong>inside</strong> quoted strings must be preserved?it's data, not formatting. Advanced
                 minifiers parse JSON correctly to distinguish between structural whitespace and string content.</p>
 
             <h3>Step 3: Handle Edge Cases</h3>
@@ -839,7 +839,7 @@
                 <li>Happens once during build/deployment</li>
                 <li>Reduces size 30-50%</li>
                 <li>Result is still valid JSON text</li>
-                <li>No decompression needed�browsers use directly</li>
+                <li>No decompression needed?browsers use directly</li>
             </ul>
 
             <h3>Gzip/Brotli Compression (Transfer Encoding)</h3>
@@ -974,11 +974,11 @@ app.get(<span class="token-string">'/api/data'</span>, (req, res) => {
                     </summary>
                     <div class="faq-answer">
                         <strong>Slightly faster, but negligible.</strong> Modern JSON parsers (V8's JSON.parse) process
-                        fewer characters faster�minified JSON has 30-50% fewer characters. However, the actual parsing
+                        fewer characters faster?minified JSON has 30-50% fewer characters. However, the actual parsing
                         time difference is microseconds for typical API responses (under 1MB). The real performance gain
                         is <strong>network transfer time</strong>, not parsing. For a 100KB JSON: formatted takes ~5ms
                         to parse, minified takes ~4ms. But formatted takes 150ms to download on 3G, minified takes
-                        95ms�a 55ms savings that users actually notice.
+                        95ms?a 55ms savings that users actually notice.
                     </div>
                 </details>
 
@@ -992,7 +992,7 @@ app.get(<span class="token-string">'/api/data'</span>, (req, res) => {
                         between tokens, never modifying structure or data. However, <strong>low-quality tools might
                             fail</strong> on edge cases like escaped quotes, Unicode, or comments (which aren't valid
                         JSON anyway). Use battle-tested minifiers (built-in language functions, our tool, or
-                        well-maintained libraries). Always validate output�any actual minifier will produce
+                        well-maintained libraries). Always validate output?any actual minifier will produce
                         syntactically identical JSON, just compact.
                     </div>
                 </details>
@@ -1003,7 +1003,7 @@ app.get(<span class="token-string">'/api/data'</span>, (req, res) => {
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <strong>Generally no�store formatted for query-ability.</strong> Databases like PostgreSQL
+                        <strong>Generally no?store formatted for query-ability.</strong> Databases like PostgreSQL
                         (JSONB) and MongoDB store JSON in binary formats internally (already compressed), so minifying
                         before storage provides no benefit. Worse, it makes manual inspection and debugging harder.
                         Exception: If storing JSON as plain text (TEXT column) and it's truly immutable (audit logs,
@@ -1019,7 +1019,7 @@ app.get(<span class="token-string">'/api/data'</span>, (req, res) => {
                     </summary>
                     <div class="faq-answer">
                         <strong>Uglification doesn't apply to JSON.</strong> "Uglify" typically refers to JavaScript
-                        obfuscation (renaming variables, shortening function names). JSON has no executable code�just
+                        obfuscation (renaming variables, shortening function names). JSON has no executable code?just
                         data. <strong>JSON minification only removes whitespace.</strong> There's no equivalent to
                         JavaScript uglification for JSON because you can't rename properties without breaking code that
                         references them. Some tools compress property names using dictionaries, but that's
@@ -1034,7 +1034,7 @@ app.get(<span class="token-string">'/api/data'</span>, (req, res) => {
                     </summary>
                     <div class="faq-answer">
                         <strong>Typical savings: 30-50% file size reduction.</strong> Exact savings depend on formatting
-                        style�heavily indented JSON with lots of nesting saves more. Example reductions: 2-space indent:
+                        style?heavily indented JSON with lots of nesting saves more. Example reductions: 2-space indent:
                         ~35% savings. 4-space indent: ~45% savings. Tab indentation: ~40% savings. Once gzipped,
                         minified JSON compresses an additional 5-10% better than formatted due to elimination of
                         repetitive whitespace patterns. Real-world example: A 500KB formatted API response becomes 325KB
@@ -1049,10 +1049,10 @@ app.get(<span class="token-string">'/api/data'</span>, (req, res) => {
                     </summary>
                     <div class="faq-answer">
                         <strong>Standard JSON doesn't support comments.</strong> Pure JSON per RFC 8259 has no comment
-                        syntax�adding <code>//</code> or <code>/* */</code> makes it invalid. However, some tools use
+                        syntax?adding <code>//</code> or <code>/* */</code> makes it invalid. However, some tools use
                         JSON-with-comments (JSONC) for config files, which supports comments. If minifying JSONC, use a
                         JSONC-aware minifier that strips comments during minification. Alternatively, use JSON5 (which
-                        supports comments) with a JSON5 minifier. For production APIs, never use comments�stick to pure
+                        supports comments) with a JSON5 minifier. For production APIs, never use comments?stick to pure
                         JSON which minifies safely with any standard tool.
                     </div>
                 </details>
@@ -1063,7 +1063,7 @@ app.get(<span class="token-string">'/api/data'</span>, (req, res) => {
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <strong>Indirectly, yes�through faster load times.</strong> Google's Core Web Vitals (especially
+                        <strong>Indirectly, yes?through faster load times.</strong> Google's Core Web Vitals (especially
                         Largest Contentful Paint and First Input Delay) benefit from faster API responses. If your page
                         fetches JSON to render content, minifying that JSON reduces transfer time, improving LCP scores.
                         Lighthouse audits specifically flag uncompressed responses, which includes unminified JSON.
@@ -1082,7 +1082,8 @@ app.get(<span class="token-string">'/api/data'</span>, (req, res) => {
                     <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
                     <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
                     <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                <a href="terms.html"><i class="fas fa-file-contract"></i> Terms</a>
+                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
                 </div>
                 <p class="footer-copyright">2026 Code Formatter. All rights reserved.</p>
             </div>
@@ -1104,3 +1105,5 @@ app.get(<span class="token-string">'/api/data'</span>, (req, res) => {
 </body>
 
 </html>
+
+

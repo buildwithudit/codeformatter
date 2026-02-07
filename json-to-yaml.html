@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -286,7 +286,7 @@
         }
 
         .prose li::before {
-            content: "→";
+            content: "?";
             color: var(--primary);
             position: absolute;
             left: 0;
@@ -495,7 +495,7 @@
             <div class="header-left">
                 <i class="fas fa-bars menu-toggle-btn" onclick="handleMenuClick()"></i>
                 <div class="tool-info">
-                    <div id="toolTitle">JSON ↔ YAML Converter</div>
+                    <div id="toolTitle">JSON ? YAML Converter</div>
                     <p id="toolDesc">Convert between JSON and YAML formats</p>
                 </div>
             </div>
@@ -537,7 +537,7 @@
                 <div class="direction-toggle">
                     <button class="toggle-btn" id="swapBtn">
                         <i class="fas fa-exchange-alt"></i>
-                        <span id="directionText">JSON → YAML</span>
+                        <span id="directionText">JSON ? YAML</span>
                     </button>
                 </div>
 
@@ -579,7 +579,7 @@
 
                     <h2>Key Features</h2>
                     <ul>
-                        <li><strong>Bidirectional Conversion:</strong> JSON → YAML and YAML → JSON</li>
+                        <li><strong>Bidirectional Conversion:</strong> JSON ? YAML and YAML ? JSON</li>
                         <li><strong>Real-time Validation:</strong> Instant syntax checking</li>
                         <li><strong>One-Click Copy:</strong> Copy output instantly</li>
                         <li><strong>Download Option:</strong> Save as .json or .yaml file</li>
@@ -597,13 +597,13 @@
                     </div>
 
                     <p style="text-align: center; margin-top: 3rem; color: var(--text-muted); font-size: 0.85rem;">
-                        Code Formatter © 2026. Professional developer tools built with privacy and performance in mind.
+                        Code Formatter � 2026. Professional developer tools built with privacy and performance in mind.
                     </p>
 
                     <p style="text-align: center; margin-top: 2rem; margin-bottom: 1rem;">
                         <a href="blog-json-to-yaml.html"
-                            style="color: var(--primary); font-weight: 600; text-decoration: none; font-size: 1.1rem;">📖
-                            Read Our Complete JSON to YAML Guide →</a>
+                            style="color: var(--primary); font-weight: 600; text-decoration: none; font-size: 1.1rem;">??
+                            Read Our Complete JSON to YAML Guide ?</a>
                     </p>
                 </article>
             </div>
@@ -612,7 +612,7 @@
         <footer class="footer">
             <div class="footer-stats">
                 <div class="stat-item" id="footerStatus"><i class="fas fa-circle-notch"></i> Ready</div>
-                <div class="footer-links"><a href="./about.html">About</a> · <a href="./privacy.html">Privacy</a></div>
+                <div class="footer-links"><a href="./about.html">About</a>  <a href="./privacy.html">Privacy</a>  <a href="./terms.html">Terms</a>  <a href="./contact.html">Contact</a></div>
             </div>
             <div class="footer-actions">
                 <button class="btn btn-sec" id="clearAllBtn"><i class="far fa-trash-alt"></i> CLEAR</button>
@@ -831,12 +831,12 @@
             direction = direction === 'jsonToYaml' ? 'yamlToJson' : 'jsonToYaml';
 
             if (direction === 'jsonToYaml') {
-                directionText.textContent = 'JSON → YAML';
+                directionText.textContent = 'JSON ? YAML';
                 inputLabel.textContent = 'JSON Input';
                 outputLabel.textContent = 'YAML Output';
                 inputText.placeholder = 'Paste your JSON here...';
             } else {
-                directionText.textContent = 'YAML → JSON';
+                directionText.textContent = 'YAML ? JSON';
                 inputLabel.textContent = 'YAML Input';
                 outputLabel.textContent = 'JSON Output';
                 inputText.placeholder = 'Paste your YAML here...';
@@ -909,3 +909,5 @@
 </body>
 
 </html>
+
+

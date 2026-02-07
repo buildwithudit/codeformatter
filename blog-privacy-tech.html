@@ -824,14 +824,14 @@ self.onmessage = <span class="token-val">function</span>(e) {
             <div class="tool-card">
                 <h3>?? Verify Our Claims</h3>
                 <p>We're transparent about our privacy. Open DevTools, paste sensitive data, and watch the Network
-                    tab�you'll see ZERO requests because everything runs locally.</p>
+                    tab?you'll see ZERO requests because everything runs locally.</p>
                 <a href="index.html" class="cta-btn-primary" style="display:inline-block;">
                     Test Privacy Yourself
                 </a>
             </div>
 
             <h2>Zero-Knowledge Architecture</h2>
-            <p>Client-side processing is a form of **"zero-knowledge architecture"**�the server (our hosting provider)
+            <p>Client-side processing is a form of **"zero-knowledge architecture"**?the server (our hosting provider)
                 has zero knowledge of what users are doing because we never send user data to servers.</p>
 
             <h3>Comparison: End-to-End Encryption vs Client-Side</h3>
@@ -853,7 +853,7 @@ self.onmessage = <span class="token-val">function</span>(e) {
             </ul>
 
             <p>**The difference:** E2EE requires trusting the encryption implementation. Client-side requires trusting
-                **nothing**�you can inspect the source code directly (View ? Developer ? View Source).</p>
+                **nothing**?you can inspect the source code directly (View ? Developer ? View Source).</p>
 
             <h2>Privacy-Focused Developer Tool Alternatives</h2>
             <p>Stop using random websites. Here are **trustworthy local-first alternatives**:</p>
@@ -890,7 +890,7 @@ self.onmessage = <span class="token-val">function</span>(e) {
             <ul>
                 <li>**SOC 2 Type II:** Requires "logical access controls" preventing unauthorized data transfer</li>
                 <li>**ISO 27001:** Mandates data classification and approved processing tools</li>
-                <li>**HIPAA (Healthcare):** PHI cannot be sent to unapproved third parties (�164.308)</li>
+                <li>**HIPAA (Healthcare):** PHI cannot be sent to unapproved third parties (?164.308)</li>
                 <li>**PCI-DSS (Payment):** Cardholder data must stay in certified environments</li>
                 <li>**GDPR (EU):** Requires Data Processing Agreements (DPAs) for third-party processors</li>
             </ul>
@@ -900,11 +900,11 @@ self.onmessage = <span class="token-val">function</span>(e) {
                 company could:</p>
             <ul>
                 <li>**Fail SOC 2 audit** (lose enterprise customers)</li>
-                <li>**Breach GDPR** (�20M fine or 4% global revenue, whichever is higher)</li>
+                <li>**Breach GDPR** (?20M fine or 4% global revenue, whichever is higher)</li>
                 <li>**Violate HIPAA** ($50K per violation, potential criminal charges)</li>
             </ul>
 
-            <p>**Client-side tools eliminate this risk** because data never enters a "third-party system"�it stays on
+            <p>**Client-side tools eliminate this risk** because data never enters a "third-party system"?it stays on
                 the employee's device.</p>
 
             <div id="faq" style="margin-top: 60px; border-top: 1px solid var(--border); padding-top: 40px;">
@@ -950,9 +950,9 @@ self.onmessage = <span class="token-val">function</span>(e) {
                         **Step-by-step:** (1) Open the tool, (2) Press F12 to open Chrome DevTools, (3) Go to "Network"
                         tab, (4) Clear logs (?? icon), (5) Paste data and click "Format", (6) Watch for new requests.
                         **No XHR/Fetch requests with your data size?** = Client-side (safe). **POST request to `/api/`
-                        endpoint?** = Server-side (unsafe). Look at the "Type" column�if it shows "xhr" or "fetch" with
+                        endpoint?** = Server-side (unsafe). Look at the "Type" column?if it shows "xhr" or "fetch" with
                         payload matching your data size (check "Size" column), your data was uploaded. Alternative: Do
-                        the airplane mode test�turn off WiFi, try the tool. If it works offline, it's client-side.
+                        the airplane mode test?turn off WiFi, try the tool. If it works offline, it's client-side.
                     </div>
                 </details>
 
@@ -968,7 +968,7 @@ self.onmessage = <span class="token-val">function</span>(e) {
                         **No. HTTPS only encrypts data in transit (prevents WiFi snooping), but does NOT protect you
                         from the server itself**. Think of it as a lockbox: HTTPS locks the box during shipping, but the
                         recipient (the server) can still open it and read everything inside. If the server is malicious
-                        or compromised, HTTPS provides zero protection�your API keys, JWT tokens, or credentials are
+                        or compromised, HTTPS provides zero protection?your API keys, JWT tokens, or credentials are
                         visible in plain text to the server operator. HTTPS protects against **third-party
                         eavesdropping** (ISP, hackers on public WiFi), not **first-party logging** (the website owner
                         storing your data). That's why client-side processing is critical: your data never reaches the
@@ -988,10 +988,10 @@ self.onmessage = <span class="token-val">function</span>(e) {
                         style="padding: 0 20px 20px 20px; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
                         **Usually faster**. Server-side has latency: (1) Upload time (300KB file on slow WiFi = 2-3
                         seconds), (2) Server processing, (3) Download time. Client-side eliminates
-                        upload/download�processing starts instantly. Benchmark example: Formatting a 5MB JSON file:
+                        upload/download?processing starts instantly. Benchmark example: Formatting a 5MB JSON file:
                         **Server-side:** 8-12 seconds (3s upload + 2s processing + 3s download). **Client-side:** 1-2
                         seconds (instant start, Web Worker processing). Exception: Ultra-heavy tasks (4K video encoding,
-                        complex ML models) might benefit from server GPUs�but for text processing (JSON, CSS, HTML),
+                        complex ML models) might benefit from server GPUs?but for text processing (JSON, CSS, HTML),
                         your laptop's CPU is more than enough. Modern browsers use V8 (Chrome) or SpiderMonkey (Firefox)
                         engines optimized for JavaScript, often matching or exceeding server performance for typical dev
                         tool tasks. Bonus: Client-side doesn't need to wait in a server queue (no "Processing... please
@@ -1040,7 +1040,7 @@ self.onmessage = <span class="token-val">function</span>(e) {
                 <li>? **Advocate for enterprise policy** requiring local-first tools at your company</li>
             </ul>
 
-            <p>Remember: <strong>Your data is valuable. Treat it like cash�would you hand it to a stranger?</strong>
+            <p>Remember: <strong>Your data is valuable. Treat it like cash?would you hand it to a stranger?</strong>
                 Client-side tools keep it in your pocket.</p>
 
         </article>
@@ -1062,6 +1062,7 @@ self.onmessage = <span class="token-val">function</span>(e) {
                 <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
                 <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
                 <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="terms.html"><i class="fas fa-file-contract"></i> Terms</a>
                 <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
             </div>
             <p class="footer-copyright">2026 Code Formatter. All rights reserved.</p>
@@ -1085,4 +1086,7 @@ self.onmessage = <span class="token-val">function</span>(e) {
 </body>
 
 </html>
+
+
+
 

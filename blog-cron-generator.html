@@ -738,12 +738,12 @@
             <div class="code-wrapper">
                 <div class="code-header">Cron Expression Format</div>
                 <pre><code><span class="token-comment"># Standard 5-field cron expression</span>
-┌───────────── <span class="token-prop">minute</span> (0-59)
-│ ┌───────────── <span class="token-prop">hour</span> (0-23)
-│ │ ┌───────────── <span class="token-prop">day of month</span> (1-31)
-│ │ │ ┌───────────── <span class="token-prop">month</span> (1-12)
-│ │ │ │ ┌───────────── <span class="token-prop">day of week</span> (0-6, Sun=0)
-│ │ │ │ │
++------------- <span class="token-prop">minute</span> (0-59)
+� +------------- <span class="token-prop">hour</span> (0-23)
+� � +------------- <span class="token-prop">day of month</span> (1-31)
+� � � +------------- <span class="token-prop">month</span> (1-12)
+� � � � +------------- <span class="token-prop">day of week</span> (0-6, Sun=0)
+� � � � �
 <span class="token-val">* * * * *</span>  command to execute</code></pre>
             </div>
 
@@ -757,7 +757,7 @@
             <p>Uses 24-hour format. <code>0</code> is midnight, <code>12</code> is noon, <code>23</code> is 11 PM.</p>
 
             <h3>3. Day of Month (1-31)</h3>
-            <p>The calendar day. Be careful with values like 31—months with fewer days will skip execution.</p>
+            <p>The calendar day. Be careful with values like 31�months with fewer days will skip execution.</p>
 
             <h3>4. Month (1-12)</h3>
             <p>January is 1, December is 12. Some systems accept three-letter abbreviations (JAN, FEB, etc.).</p>
@@ -771,23 +771,23 @@
                 <div class="callout-content">
                     <h4>Day of Month vs Day of Week</h4>
                     <p>When both day-of-month and day-of-week are specified (not *), most cron implementations run on
-                        EITHER matching day—it's an OR condition, not AND. This catches many developers by surprise!</p>
+                        EITHER matching day�it's an OR condition, not AND. This catches many developers by surprise!</p>
                 </div>
             </div>
 
             <h2 id="special">Special Characters</h2>
 
-            <h3>Asterisk (*) — Any Value</h3>
+            <h3>Asterisk (*) � Any Value</h3>
             <p><code>* * * * *</code> runs every minute because * matches all possible values in each field.</p>
 
-            <h3>Comma (,) — List of Values</h3>
+            <h3>Comma (,) � List of Values</h3>
             <p><code>0,15,30,45 * * * *</code> runs at minutes 0, 15, 30, and 45 of every hour (four times per hour).
             </p>
 
-            <h3>Hyphen (-) — Range of Values</h3>
+            <h3>Hyphen (-) � Range of Values</h3>
             <p><code>0 9-17 * * *</code> runs at the top of every hour from 9 AM to 5 PM (business hours).</p>
 
-            <h3>Slash (/) — Step Values</h3>
+            <h3>Slash (/) � Step Values</h3>
             <p><code>*/5 * * * *</code> runs every 5 minutes. The slash means "every Nth value."</p>
 
             <div class="code-wrapper">
@@ -811,30 +811,30 @@
             <div class="tool-card">
                 <h3>Build Your Cron Expression</h3>
                 <p>Use our visual generator with real-time preview and next run times.</p>
-                <a href="cron-generator.html" class="cta-btn-primary">Open Cron Generator →</a>
+                <a href="cron-generator.html" class="cta-btn-primary">Open Cron Generator ?</a>
             </div>
 
             <h2 id="examples">Common Cron Expression Examples</h2>
 
             <h3>System Maintenance</h3>
             <ul>
-                <li><strong><code>0 2 * * *</code></strong> — Daily at 2 AM (perfect for backups)</li>
-                <li><strong><code>0 0 * * 0</code></strong> — Weekly on Sunday midnight (weekly cleanup)</li>
-                <li><strong><code>0 0 1 * *</code></strong> — Monthly on the 1st at midnight</li>
+                <li><strong><code>0 2 * * *</code></strong> � Daily at 2 AM (perfect for backups)</li>
+                <li><strong><code>0 0 * * 0</code></strong> � Weekly on Sunday midnight (weekly cleanup)</li>
+                <li><strong><code>0 0 1 * *</code></strong> � Monthly on the 1st at midnight</li>
             </ul>
 
             <h3>Business Schedules</h3>
             <ul>
-                <li><strong><code>0 9 * * 1-5</code></strong> — Weekdays at 9 AM (daily standup reminder)</li>
-                <li><strong><code>0 18 * * 5</code></strong> — Every Friday at 6 PM (weekly report)</li>
-                <li><strong><code>0 0 1,15 * *</code></strong> — 1st and 15th of month (payroll)</li>
+                <li><strong><code>0 9 * * 1-5</code></strong> � Weekdays at 9 AM (daily standup reminder)</li>
+                <li><strong><code>0 18 * * 5</code></strong> � Every Friday at 6 PM (weekly report)</li>
+                <li><strong><code>0 0 1,15 * *</code></strong> � 1st and 15th of month (payroll)</li>
             </ul>
 
             <h3>Development & DevOps</h3>
             <ul>
-                <li><strong><code>*/5 * * * *</code></strong> — Every 5 minutes (health checks)</li>
-                <li><strong><code>0 */4 * * *</code></strong> — Every 4 hours (sync jobs)</li>
-                <li><strong><code>0 3 * * *</code></strong> — Daily at 3 AM (CI/CD nightly builds)</li>
+                <li><strong><code>*/5 * * * *</code></strong> � Every 5 minutes (health checks)</li>
+                <li><strong><code>0 */4 * * *</code></strong> � Every 4 hours (sync jobs)</li>
+                <li><strong><code>0 3 * * *</code></strong> � Daily at 3 AM (CI/CD nightly builds)</li>
             </ul>
 
             <h2 id="platforms">Cron on Different Platforms</h2>
@@ -913,7 +913,7 @@
             <p>Use our generator to validate your expression and see exactly when it will run next.</p>
 
             <h3>Test Command Manually</h3>
-            <p>Run your command directly in a shell first. Remember cron has a minimal environment—use full paths!</p>
+            <p>Run your command directly in a shell first. Remember cron has a minimal environment�use full paths!</p>
 
             <h3>Check Permissions</h3>
             <p>Ensure the script is executable (<code>chmod +x script.sh</code>) and the cron user has permission to run
@@ -952,7 +952,7 @@
                     </summary>
                     <div class="faq-answer">
                         <p>Standard Unix cron uses <strong>5 fields</strong> (minute to day-of-week). Some systems add a
-                            <strong>6th field</strong> — either for seconds (at the beginning) or year (at the end). Our
+                            <strong>6th field</strong> � either for seconds (at the beginning) or year (at the end). Our
                             generator uses the universal 5-field format that works everywhere.</p>
                     </div>
                 </details>
@@ -975,10 +975,10 @@
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <p>Common causes: <strong>(1)</strong> Incorrect cron syntax — validate with our generator.
-                            <strong>(2)</strong> PATH issues — use absolute paths. <strong>(3)</strong> Permission
-                            problems — check file permissions. <strong>(4)</strong> Script errors — test manually first.
-                            <strong>(5)</strong> Cron daemon not running — check with
+                        <p>Common causes: <strong>(1)</strong> Incorrect cron syntax � validate with our generator.
+                            <strong>(2)</strong> PATH issues � use absolute paths. <strong>(3)</strong> Permission
+                            problems � check file permissions. <strong>(4)</strong> Script errors � test manually first.
+                            <strong>(5)</strong> Cron daemon not running � check with
                             <code>systemctl status cron</code>.</p>
                     </div>
                 </details>
@@ -1002,13 +1002,13 @@
                     </summary>
                     <div class="faq-answer">
                         <p><strong>Absolutely.</strong> All processing happens 100% client-side in your browser using
-                            JavaScript. Your cron expressions never leave your device—we have no servers receiving your
+                            JavaScript. Your cron expressions never leave your device�we have no servers receiving your
                             data. You can verify this in your browser's Network tab.</p>
                     </div>
                 </details>
             </div>
 
-            <p style="text-align:center;margin-top:3rem;color:#525252;font-size:0.85rem;">Code Formatter © 2026.
+            <p style="text-align:center;margin-top:3rem;color:#525252;font-size:0.85rem;">Code Formatter � 2026.
                 Professional developer tools built with privacy and performance in mind.</p>
         </article>
     </div>
@@ -1020,16 +1020,17 @@
                 <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
                 <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
                 <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="terms.html"><i class="fas fa-file-contract"></i> Terms</a>
                 <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
             </div>
-            <p class="footer-copyright">© 2026 Code Formatter. All rights reserved.</p>
+            <p class="footer-copyright">� 2026 Code Formatter. All rights reserved.</p>
         </div>
     </footer>
 
     <!-- Sticky CTA -->
     <div class="sticky-cta">
         <span class="sticky-text">Need cron help? <span>Build expressions visually.</span></span>
-        <a href="cron-generator.html" class="cta-btn-primary">Use Generator ⚡</a>
+        <a href="cron-generator.html" class="cta-btn-primary">Use Generator ?</a>
     </div>
 
     <script>
@@ -1044,3 +1045,5 @@
 </body>
 
 </html>
+
+

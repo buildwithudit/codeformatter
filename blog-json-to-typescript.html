@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -589,7 +589,7 @@
             <p>However, TypeScript types are <strong>erased at runtime</strong>. After compilation to JavaScript, no
                 type information exists. This means TypeScript cannot protect your application from malformed data
                 received from external sources like APIs, user input, or third-party services. That's where
-                <strong>Zod</strong> enters the equation—providing runtime validation that TypeScript cannot.
+                <strong>Zod</strong> enters the equation?providing runtime validation that TypeScript cannot.
             </p>
 
             <h3>Why Generate Types Instead of Writing Manually?</h3>
@@ -635,13 +635,13 @@ interface User {
                 become union types:</p>
 
             <pre><code>// Homogeneous array
-"tags": ["react", "typescript"]  →  tags: string[]
+"tags": ["react", "typescript"]  ?  tags: string[]
 
 // Object array
-"users": [{"id": 1}, {"id": 2}]  →  users: User[]
+"users": [{"id": 1}, {"id": 2}]  ?  users: User[]
 
 // Mixed array (rare)
-"mixed": [1, "hello", true]  →  mixed: (number | string | boolean)[]</code></pre>
+"mixed": [1, "hello", true]  ?  mixed: (number | string | boolean)[]</code></pre>
 
             <h3>Nested Object Handling</h3>
 
@@ -665,7 +665,7 @@ interface Profile {
 }</code></pre>
 
             <div class="cta-box">
-                <h3>🚀 Try Our JSON to TypeScript Generator</h3>
+                <h3>?? Try Our JSON to TypeScript Generator</h3>
                 <p>Paste your JSON and instantly generate TypeScript interfaces or Zod schemas. 100% free, 100%
                     client-side.</p>
             </div>
@@ -673,7 +673,7 @@ interface Profile {
             <h2>Zod Schema Generation for Runtime Validation</h2>
 
             <p>While TypeScript catches errors at compile-time, <strong>Zod provides runtime
-                    validation</strong>—essential for any production application that receives external data. When you
+                    validation</strong>?essential for any production application that receives external data. When you
                 fetch data from an API, you're trusting that the response matches your types. But APIs can change, bugs
                 can occur, and malicious actors can send unexpected data.</p>
 
@@ -703,10 +703,10 @@ const user = UserSchema.parse(rawData);  // Throws detailed error if invalid
             <p>Quality type generators detect common patterns and add appropriate Zod validations:</p>
 
             <ul>
-                <li>Strings containing "@" → <code>z.string().email()</code></li>
-                <li>Strings starting with "http" → <code>z.string().url()</code></li>
-                <li>Null values → <code>.optional()</code> or <code>.nullable()</code></li>
-                <li>Arrays → <code>z.array(itemSchema)</code> with nested schema references</li>
+                <li>Strings containing "@" ? <code>z.string().email()</code></li>
+                <li>Strings starting with "http" ? <code>z.string().url()</code></li>
+                <li>Null values ? <code>.optional()</code> or <code>.nullable()</code></li>
+                <li>Arrays ? <code>z.array(itemSchema)</code> with nested schema references</li>
             </ul>
 
             <h2>Best Practice: Single Source of Truth</h2>
@@ -735,7 +735,7 @@ async function fetchUser(id: number): Promise&lt;User&gt; {
 }</code></pre>
 
             <p>This pattern ensures your runtime validation and compile-time types <strong>can never drift out of
-                    sync</strong>—changes to the schema automatically update the type.</p>
+                    sync</strong>?changes to the schema automatically update the type.</p>
 
             <h2>When to Use TypeScript vs Zod</h2>
 
@@ -768,7 +768,7 @@ async function fetchUser(id: number): Promise&lt;User&gt; {
 
             <h3>3. Version Control Your Types</h3>
             <p>Commit generated type files to track API contract evolution. Review type changes in pull
-                requests—unexpected type changes often indicate API breaking changes.</p>
+                requests?unexpected type changes often indicate API breaking changes.</p>
 
             <h3>4. Use TypeScript Utility Types</h3>
             <pre><code>// Create variations for different use cases
@@ -839,7 +839,7 @@ export const userRouter = router({
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <p>Not directly—TypeScript types don't exist at runtime, so there's nothing to convert. The
+                        <p>Not directly?TypeScript types don't exist at runtime, so there's nothing to convert. The
                             recommended approach is the reverse: define Zod schemas first, then infer TypeScript types
                             using <code>type T = z.infer&lt;typeof schema&gt;</code>. This makes Zod your source of
                             truth. Some tools like <code>ts-to-zod</code> can parse TypeScript source files and generate
@@ -889,7 +889,7 @@ export const userRouter = router({
                             application performance. TypeScript types are completely erased during compilation. Zod
                             validation does add minimal runtime overhead (microseconds per validation), but this is
                             negligible compared to network latency and is essential for data safety. Our generator
-                            processes everything client-side in your browser—it never affects your deployed
+                            processes everything client-side in your browser?it never affects your deployed
                             application.
                         </p>
                     </div>
@@ -902,7 +902,7 @@ export const userRouter = router({
                     </summary>
                     <div class="faq-answer">
                         <p>Absolutely! Generated code follows TypeScript best practices with proper exports, type
-                            annotations, and Zod imports. However, treat it as a starting point—add JSDoc
+                            annotations, and Zod imports. However, treat it as a starting point?add JSDoc
                             documentation,
                             refine optional fields based on actual API contracts, add custom Zod refinements (like
                             <code>.min()</code>, <code>.max()</code>), and consider splitting large types into smaller,
@@ -917,10 +917,10 @@ export const userRouter = router({
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <p>Our tool processes <strong>100% client-side</strong>—your JSON never leaves your browser.
+                        <p>Our tool processes <strong>100% client-side</strong>?your JSON never leaves your browser.
                             All
                             parsing and type generation happens locally using JavaScript. We don't collect, store, or
-                            transmit any data. You can verify this in your browser's Network tab—you'll see zero data
+                            transmit any data. You can verify this in your browser's Network tab?you'll see zero data
                             requests after the page loads. For sensitive production data, this client-side approach is
                             essential for security.</p>
                     </div>
@@ -928,13 +928,13 @@ export const userRouter = router({
             </div>
 
             <div class="cta-box">
-                <h3>🎯 Start Generating Type-Safe Code</h3>
+                <h3>?? Start Generating Type-Safe Code</h3>
                 <p>Convert your JSON to TypeScript interfaces and Zod schemas instantly. No signup, no data collection.
                 </p>
                 Generator</a>
             </div>
 
-            <p style="text-align:center;margin-top:3rem;color:#525252;font-size:0.85rem;">Code Formatter © 2026.
+            <p style="text-align:center;margin-top:3rem;color:#525252;font-size:0.85rem;">Code Formatter ? 2026.
                 Professional developer tools built with privacy and performance in mind.</p>
         </article>
     </div>
@@ -945,6 +945,7 @@ export const userRouter = router({
                 <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
                 <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
                 <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="terms.html"><i class="fas fa-file-contract"></i> Terms</a>
                 <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
             </div>
             <p class="footer-copyright">2026 Code Formatter. All rights reserved.</p>
@@ -957,3 +958,5 @@ export const userRouter = router({
 </body>
 
 </html>
+
+

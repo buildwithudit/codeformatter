@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -745,7 +745,7 @@
 
             <h3>CSV (Comma-Separated Values)</h3>
             <p><strong>CSV</strong> is a flat, tabular format where each row represents a record and columns are
-                delimited by commas. Simple, compact, universally supported�but limited to two-dimensional data.</p>
+                delimited by commas. Simple, compact, universally supported?but limited to two-dimensional data.</p>
 
             <div class="code-wrapper">
                 <div class="code-header">Sample CSV Data</div>
@@ -1073,7 +1073,7 @@ app = <span class="token-function">Flask</span>(__name__)
                     </summary>
                     <div class="faq-answer">
                         <strong>JSON is the clear winner for modern APIs.</strong> <strong>JSON advantages:</strong> (1)
-                        Native JavaScript support�parse with <code>JSON.parse()</code>, no libraries needed. (2)
+                        Native JavaScript support?parse with <code>JSON.parse()</code>, no libraries needed. (2)
                         Supports hierarchical data (nested objects/arrays). (3) Type preservation (numbers, booleans,
                         null). (4) Universal adoption by REST APIs, GraphQL, microservices. <strong>CSV use
                             cases:</strong> Bulk data exports, spreadsheet integration, data warehouse imports, email
@@ -1089,13 +1089,13 @@ app = <span class="token-function">Flask</span>(__name__)
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <strong>Use proper CSV parsing libraries�never split on commas manually.</strong> Standard CSV
+                        <strong>Use proper CSV parsing libraries?never split on commas manually.</strong> Standard CSV
                         format handles this: values containing commas, quotes, or newlines are <strong>quoted</strong>.
                         Example: <code>"Smith, John","Developer"</code>. Quality parsers (pandas, csvtojson, Python's
                         csv module) handle quoted values automatically. Common pitfalls: (1)
-                        <code>data.split(',')</code> breaks on quoted commas�always use a CSV parser. (2) Excel's "Save
-                        As CSV" sometimes creates malformed files�validate output. (3) UTF-8 encoding issues with
-                        international characters�specify encoding explicitly. <strong>Best practice:</strong> Use RFC
+                        <code>data.split(',')</code> breaks on quoted commas?always use a CSV parser. (2) Excel's "Save
+                        As CSV" sometimes creates malformed files?validate output. (3) UTF-8 encoding issues with
+                        international characters?specify encoding explicitly. <strong>Best practice:</strong> Use RFC
                         4180-compliant parsers and validate edge cases.
                     </div>
                 </details>
@@ -1107,9 +1107,9 @@ app = <span class="token-function">Flask</span>(__name__)
                     </summary>
                     <div class="faq-answer">
                         <strong>Server-side for production, client-side for quick tools.</strong> <strong>Server-side
-                            (recommended):</strong> (1) Security�validate/sanitize data before exposing to clients. (2)
-                        Performance�handle large files without browser memory limits. (3) Consistency�guaranteed
-                        environment, no browser compatibility issues. (4) Reusability�one API endpoint serves all
+                            (recommended):</strong> (1) Security?validate/sanitize data before exposing to clients. (2)
+                        Performance?handle large files without browser memory limits. (3) Consistency?guaranteed
+                        environment, no browser compatibility issues. (4) Reusability?one API endpoint serves all
                         clients. <strong>Client-side:</strong> Good for: simple standalone tools, privacy (no data
                         upload), offline applications. Use libraries like PapaParse (JavaScript) for browser-based
                         parsing. <strong>Hybrid approach:</strong> Client uploads CSV, server converts and validates,
@@ -1124,7 +1124,7 @@ app = <span class="token-function">Flask</span>(__name__)
                     </summary>
                     <div class="faq-answer">
                         <strong>Be careful with floating-point precision and large integers.</strong> Issues: (1)
-                        <strong>Large integers:</strong> JavaScript numbers max at 25�-1 (9 quadrillion). Larger values
+                        <strong>Large integers:</strong> JavaScript numbers max at 25?-1 (9 quadrillion). Larger values
                         (like 18-digit IDs) lose precision. Solution: Store as strings or use BigInt. (2)
                         <strong>Decimal precision:</strong> Financial data (0.1 + 0.2 ? 0.3 in binary). Solution: Use
                         Decimal libraries or store as strings/cents. (3) <strong>Scientific notation:</strong> 1E+10
@@ -1147,7 +1147,7 @@ app = <span class="token-function">Flask</span>(__name__)
                         single keys ("Q1 Sales" from "Q1" + "Sales"). (3) <strong>Pre-processing:</strong> Clean CSV
                         first, remove extraneous rows. (4) <strong>Hierarchical JSON:</strong> Create nested structure
                         reflecting header hierarchy. Best practice: <strong>Standardize CSV format before
-                            conversion</strong>�add cleanup step to remove extra headers/footers.
+                            conversion</strong>?add cleanup step to remove extra headers/footers.
                     </div>
                 </details>
 
@@ -1177,10 +1177,10 @@ app = <span class="token-function">Flask</span>(__name__)
                     </summary>
                     <div class="faq-answer">
                         <strong>CSV is 20-40% smaller but JSON parses faster in browsers.</strong> <strong>File
-                            size:</strong> CSV wins�less syntax overhead. 1MB CSV ? 1.3-1.4MB JSON typically. However,
+                            size:</strong> CSV wins?less syntax overhead. 1MB CSV ? 1.3-1.4MB JSON typically. However,
                         both compress similarly with gzip (70-80% reduction). <strong>Parse speed:</strong> JSON is
                         faster in JavaScript (<code>JSON.parse()</code> is optimized C++ code). CSV requires libraries
-                        (PapaParse) and regex parsing�slower. <strong>Server processing:</strong> CSV parsing is simpler
+                        (PapaParse) and regex parsing?slower. <strong>Server processing:</strong> CSV parsing is simpler
                         (split lines, columns). JSON requires full tree construction. <strong>Recommendation:</strong>
                         For <strong>web delivery</strong>: use JSON (native parsing). For <strong>data
                             storage/transfer</strong>: CSV + gzip (smaller). For <strong>big data pipelines</strong>:
@@ -1197,7 +1197,8 @@ app = <span class="token-function">Flask</span>(__name__)
                     <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
                     <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
                     <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                <a href="terms.html"><i class="fas fa-file-contract"></i> Terms</a>
+                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
                 </div>
                 <p class="footer-copyright">2026 Code Formatter. All rights reserved.</p>
             </div>
@@ -1219,3 +1220,5 @@ app = <span class="token-function">Flask</span>(__name__)
 </body>
 
 </html>
+
+

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -716,7 +716,7 @@
             </details>
 
             <p id="intro"><strong>Smooth shadows</strong> create realistic depth and elevation in UI design through
-                multi-layered <code>box-shadow</code> techniques that mimic natural light physics�replacing harsh,
+                multi-layered <code>box-shadow</code> techniques that mimic natural light physics?replacing harsh,
                 single-shadow edges with soft, graduated falloffs that feel organic and professional. This technique is
                 fundamental to modern design systems from Material Design to Apple's Human Interface Guidelines.</p>
 
@@ -742,7 +742,7 @@
             </h2>
 
             <h3>Single Shadow (Basic)</h3>
-            <p>A single <code>box-shadow</code> creates depth but looks artificial�harsh edges and abrupt falloff:</p>
+            <p>A single <code>box-shadow</code> creates depth but looks artificial?harsh edges and abrupt falloff:</p>
 
             <div class="code-wrapper">
                 <div class="code-header">Single Shadow (Harsh)</div>
@@ -768,7 +768,7 @@
             </div>
 
             <h3>Why Layering Works</h3>
-            <p>Natural shadows aren't uniform�they combine <strong>umbra</strong> (dark core), <strong>penumbra</strong>
+            <p>Natural shadows aren't uniform?they combine <strong>umbra</strong> (dark core), <strong>penumbra</strong>
                 (soft edge), and <strong>ambient occlusion</strong> (environmental darkening). Multi-layer CSS shadows
                 simulate these phenomena.</p>
 
@@ -776,7 +776,7 @@
                 <i class="fas fa-lightbulb"></i>
                 <div class="callout-content">
                     <h4>The Physics of Light</h4>
-                    <p>Light sources aren't point sources�they have area. This creates soft shadow edges. Layering 3-5
+                    <p>Light sources aren't point sources?they have area. This creates soft shadow edges. Layering 3-5
                         shadows with increasing blur and decreasing opacity mimics how real light diffuses, creating
                         that "premium" look.</p>
                 </div>
@@ -976,7 +976,7 @@
 
             <h2 id="dark-mode">Dark Mode Shadow Adjustments</h2>
 
-            <p>Shadows behave differently on dark backgrounds�they need adjustment:</p>
+            <p>Shadows behave differently on dark backgrounds?they need adjustment:</p>
 
             <h3>Light Mode vs Dark Mode</h3>
             <div class="code-wrapper">
@@ -1024,7 +1024,7 @@
             </ul>
 
             <h3>2. Limit Elevation Levels</h3>
-            <p>More than 5-6 elevation levels creates confusion. Users can't distinguish between 7 shadow depths�keep it
+            <p>More than 5-6 elevation levels creates confusion. Users can't distinguish between 7 shadow depths?keep it
                 simple.</p>
 
             <h3>3. Animate Elevation Changes</h3>
@@ -1065,12 +1065,12 @@
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <strong>Single shadows look artificial�layered shadows mimic natural light physics.</strong>
+                        <strong>Single shadows look artificial?layered shadows mimic natural light physics.</strong>
                         Natural shadows aren't uniform blurs. They combine sharp cores (umbra), soft edges (penumbra),
-                        and ambient darkening. A single <code>box-shadow</code> creates uniform falloff�looks
+                        and ambient darkening. A single <code>box-shadow</code> creates uniform falloff?looks
                         computer-generated. <strong>Layering 3-5 shadows</strong> with progressive blur radii (2px, 4px,
                         8px, 16px) and low opacity (0.05-0.09) creates graduated density that feels realistic. This is
-                        why Material Design, iOS, and premium SaaS apps use layered shadows�they convey depth more
+                        why Material Design, iOS, and premium SaaS apps use layered shadows?they convey depth more
                         convincingly, making interfaces feel polished and professional.
                     </div>
                 </details>
@@ -1083,7 +1083,7 @@
                     <div class="faq-answer">
                         <strong>Minimal impact with 3-5 layers; avoid 10+ layers or animating shadows.</strong> Each
                         shadow layer triggers GPU rendering but modern browsers optimize well. <strong>Performance
-                            tips:</strong> (1) <strong>3-5 layers:</strong> Sweet spot�smooth appearance, negligible
+                            tips:</strong> (1) <strong>3-5 layers:</strong> Sweet spot?smooth appearance, negligible
                         cost. (2) <strong>Avoid animating box-shadow:</strong> Expensive repaints every frame. Instead,
                         animate opacity on pseudo-elements with shadows. (3) <strong>Use CSS variables:</strong> Reuse
                         shadow definitions, browser caches calculations. (4) <strong>Test on mobile:</strong> Mid-range
@@ -1098,7 +1098,7 @@
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <strong>Yes�dark mode requires darker, more opaque shadows.</strong> Light mode shadows (black
+                        <strong>Yes?dark mode requires darker, more opaque shadows.</strong> Light mode shadows (black
                         at 0.05-0.09 opacity) disappear on dark backgrounds. <strong>Dark mode adjustments:</strong> (1)
                         <strong>Increase opacity:</strong> 0.09 ? 0.4-0.5 for visibility. (2) <strong>Add glow
                             rings:</strong> <code>0 0 0 1px rgba(255,255,255,0.05)</code> creates subtle border
@@ -1115,7 +1115,7 @@
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <strong>5-6 levels maximum�more creates confusion.</strong> Humans can't reliably distinguish 10
+                        <strong>5-6 levels maximum?more creates confusion.</strong> Humans can't reliably distinguish 10
                         shadow depths. <strong>Recommended scale:</strong> Level 0 (flat), Level 1 (cards at rest),
                         Level 2 (raised/hover), Level 3 (dropdowns/tooltips), Level 4 (modals), Level 5 (navigation
                         drawers). Material Design uses 0-24 technically but most apps only use 5-6 distinct levels.
@@ -1133,13 +1133,13 @@
                     </summary>
                     <div class="faq-answer">
                         <strong>Yes, but use pseudo-elements for performance.</strong> Animating <code>box-shadow</code>
-                        directly is GPU-intensive�browsers recalculate every frame. <strong>Performant
+                        directly is GPU-intensive?browsers recalculate every frame. <strong>Performant
                             technique:</strong> Use pseudo-element with higher elevation shadow, fade opacity on
                         interaction. Example:
                         <code>.card::before { box-shadow: var(--elevation-3); opacity: 0; transition: opacity 0.3s; } .card:hover::before { opacity: 1; }</code>.
                         This animates opacity (cheap) not shadow (expensive). <strong>Easing:</strong> Use Material
                         Design easing <code>cubic-bezier(0.4, 0, 0.2, 1)</code> for natural feel. Test on low-end
-                        devices�janky animations destroy UX. If smooth animation isn't achievable, instant transitions
+                        devices?janky animations destroy UX. If smooth animation isn't achievable, instant transitions
                         are better than stuttering.
                     </div>
                 </details>
@@ -1152,12 +1152,12 @@
                     <div class="faq-answer">
                         <strong>Typically black/gray; colored shadows can enhance brand but risk looking
                             gimmicky.</strong> <strong>Standard approach:</strong> Black shadows
-                        (<code>rgba(0,0,0,opacity)</code>) work universally�neutral, realistic. <strong>Colored shadows
+                        (<code>rgba(0,0,0,opacity)</code>) work universally?neutral, realistic. <strong>Colored shadows
                             (use sparingly):</strong> Brand-colored shadows on primary buttons create glow effects.
                         Example: Purple button with <code>rgba(99,102,241,0.3)</code> shadow. Looks premium if done
                         right, tacky if overused. <strong>Rules for colored shadows:</strong> (1) Only on brand elements
                         (CTAs, primary actions). (2) Use brand color at low opacity (0.15-0.3). (3) Combine with
-                        standard black shadow layers. (4) A/B test�users might find it distracting. Conservative
+                        standard black shadow layers. (4) A/B test?users might find it distracting. Conservative
                         approach: stick with black/gray shadows, use color only for special moments.
                     </div>
                 </details>
@@ -1175,8 +1175,8 @@
                         backgrounds. (2) <strong>Subtle border:</strong> <code>border: 1px solid rgba(0,0,0,0.1)</code>
                         or inner shadow ensures edge definition. (3) <strong>Backdrop-filter (optional):</strong> Blur
                         background behind element for glassmorphism effect. (4) <strong>Test on photos:</strong> Shadows
-                        that work on white/gray might disappear on busy images�borders save you. This is why modern
-                        cards often combine shadows + borders�redundant but reliable across all contexts.
+                        that work on white/gray might disappear on busy images?borders save you. This is why modern
+                        cards often combine shadows + borders?redundant but reliable across all contexts.
                     </div>
                 </details>
             </div>
@@ -1189,7 +1189,8 @@
                     <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
                     <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
                     <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                <a href="terms.html"><i class="fas fa-file-contract"></i> Terms</a>
+                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
                 </div>
                 <p class="footer-copyright">2026 Code Formatter. All rights reserved.</p>
             </div>
@@ -1211,3 +1212,5 @@
 </body>
 
 </html>
+
+

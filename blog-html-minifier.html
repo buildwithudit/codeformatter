@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -732,7 +732,7 @@
 
             <p><strong>HTML minification</strong> removes unnecessary characters from HTML source code without affecting
                 browser rendering. This includes whitespace between tags, HTML comments, redundant attributes, and
-                optional closing tags�all of which browsers ignore but consume bandwidth and parsing time.</p>
+                optional closing tags?all of which browsers ignore but consume bandwidth and parsing time.</p>
 
             <div class="code-wrapper">
                 <div class="code-header">Original vs Minified HTML</div>
@@ -755,13 +755,13 @@
             </div>
 
             <p>Notice how the minified version removes line breaks, indentation, comments, and quote marks around simple
-                attribute values�all valid HTML5 optimizations.</p>
+                attribute values?all valid HTML5 optimizations.</p>
 
             <h2 id="benefits">Performance & SEO Benefits of HTML Minification</h2>
 
             <h3>1. Faster Page Load Times</h3>
             <p>Every kilobyte saved reduces time-to-first-byte (TTFB) and time-to-interactive (TTI). A typical HTML
-                document of 50KB minifies to 35KB�15KB saved. On 3G connections (750Kbps), that's <strong>160ms faster
+                document of 50KB minifies to 35KB?15KB saved. On 3G connections (750Kbps), that's <strong>160ms faster
                     delivery</strong>. Multiply across millions of requests and you've saved users years of cumulative
                 waiting time.</p>
 
@@ -783,7 +783,7 @@
 
             <h3>4. Better Mobile Performance</h3>
             <p>Mobile users on constrained networks benefit most. Reducing HTML from 80KB to 56KB on slow 2G (250Kbps)
-                saves <strong>768ms</strong>�the difference between tolerable and frustrating load times.</p>
+                saves <strong>768ms</strong>?the difference between tolerable and frustrating load times.</p>
 
             <h3>5. Enhanced SEO Rankings</h3>
             <p>Google explicitly confirmed page speed as a ranking factor. Sites with better Core Web Vitals scores
@@ -911,7 +911,7 @@
             </div>
 
             <h3>2. Preserve Critical Comments</h3>
-            <p>Some comments are functional�IE conditional comments, server-side includes, or licensing headers.
+            <p>Some comments are functional?IE conditional comments, server-side includes, or licensing headers.
                 Configure minifiers to preserve these:</p>
 
             <p>Most minifiers preserve comments starting with <code>&lt;!--!</code> or <code>&lt;!--#</code>
@@ -970,7 +970,7 @@ module.exports = {
 
             <h3>Next.js</h3>
             <p>Next.js minifies HTML output automatically in production (<code>next build</code>). No configuration
-                needed�it just works.</p>
+                needed?it just works.</p>
 
             <h3>Gulp (gulp-htmlmin)</h3>
             <div class="code-wrapper">
@@ -998,7 +998,7 @@ gulp.task(<span class="token-string">'minify-html'</span>, () => {
                         <strong>near-zero risk</strong>. Aggressive settings (removing optional tags) can theoretically
                         break quirky HTML, but issues are rare with valid HTML5. Always test after initial setup, but in
                         practice, properly configured minifiers work flawlessly. The main risk: preserving
-                        whitespace-sensitive content like <code>&lt;pre&gt;</code> blocks�which quality minifiers handle
+                        whitespace-sensitive content like <code>&lt;pre&gt;</code> blocks?which quality minifiers handle
                         automatically.
                     </div>
                 </details>
@@ -1025,7 +1025,7 @@ gulp.task(<span class="token-string">'minify-html'</span>, () => {
                     </summary>
                     <div class="faq-answer">
                         <strong>Minification helps SEO, neutral for accessibility.</strong> Google's crawlers parse
-                        minified HTML identically to formatted�they don't care about whitespace. Better Core Web Vitals
+                        minified HTML identically to formatted?they don't care about whitespace. Better Core Web Vitals
                         from faster loading <strong>improves rankings</strong>. For accessibility: screen readers and
                         assistive tech parse the DOM (after browser parsing), not raw HTML, so minification has zero
                         impact on ARIA attributes, semantic structure, or keyboard navigation. However, preserve HTML
@@ -1039,7 +1039,7 @@ gulp.task(<span class="token-string">'minify-html'</span>, () => {
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <strong>Absolutely�even more important for SPAs.</strong> React, Vue, Angular apps often have
+                        <strong>Absolutely?even more important for SPAs.</strong> React, Vue, Angular apps often have
                         large initial HTML shells (before JavaScript renders content). Minifying this HTML saves
                         critical first-load bytes. Additionally, minify HTML templates/components bundled in JavaScript.
                         Most modern frameworks (Create React App, Vue CLI, Angular CLI) automatically minify production
@@ -1070,7 +1070,7 @@ gulp.task(<span class="token-string">'minify-html'</span>, () => {
                     </summary>
                     <div class="faq-answer">
                         <strong>Use browser DevTools "Pretty Print".</strong> Chrome/Firefox DevTools automatically
-                        format minified HTML in the Elements/Inspector panel�it's human-readable even if source is
+                        format minified HTML in the Elements/Inspector panel?it's human-readable even if source is
                         minified. For deeper debugging: (1) Enable source maps if your build tool supports them (rare
                         for HTML). (2) Use environment flags to serve formatted HTML in staging
                         (<code>?debug=true</code> query param). (3) Keep formatted source in version control with good
@@ -1086,9 +1086,9 @@ gulp.task(<span class="token-string">'minify-html'</span>, () => {
                     </summary>
                     <div class="faq-answer">
                         <strong>Yes, if you have a build process anyway.</strong> For tiny personal blogs (5-10 pages)
-                        with no build tools, manual minification isn't worth effort�just enable gzip on your server. But
+                        with no build tools, manual minification isn't worth effort?just enable gzip on your server. But
                         if you're already using webpack/Vite/Next.js, minification is <strong>automatic and
-                            free</strong>�just enable it in config. The performance gain on small sites is modest
+                            free</strong>?just enable it in config. The performance gain on small sites is modest
                         (50-100ms faster), but it costs nothing to implement if your tooling supports it. Plus, good
                         habits scale as your site grows. Bottom line: don't add build complexity solely for
                         minification, but enable it if you have builds.
@@ -1104,7 +1104,8 @@ gulp.task(<span class="token-string">'minify-html'</span>, () => {
                     <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
                     <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
                     <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                <a href="terms.html"><i class="fas fa-file-contract"></i> Terms</a>
+                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
                 </div>
                 <p class="footer-copyright">2026 Code Formatter. All rights reserved.</p>
             </div>
@@ -1126,3 +1127,5 @@ gulp.task(<span class="token-string">'minify-html'</span>, () => {
 </body>
 
 </html>
+
+

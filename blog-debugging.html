@@ -675,7 +675,7 @@
             </p>
 
             <p>Your heart sinks. In development (localhost), the error would tell you exactly which file and line number
-                caused the crash. In production, your code is <strong>minified</strong>�compressed into a single line of
+                caused the crash. In production, your code is <strong>minified</strong>?compressed into a single line of
                 unreadable characters to save bandwidth.</p>
 
             <p>How do you debug variables named <code>a</code>, <code>b</code>, and <code>x</code>? In this guide, we
@@ -826,7 +826,7 @@
                 requests.</p>
 
             <h3>Logpoints (Breakpoints Without Stopping)</h3>
-            <p>Sometimes you don't want to pause execution�you just want to log a value without modifying your code.
+            <p>Sometimes you don't want to pause execution?you just want to log a value without modifying your code.
                 Logpoints let you inject `console.log()` statements **without editing a single file**:</p>
 
             <ol>
@@ -916,7 +916,7 @@ at checkout.js:1:8293</code></pre>
             <p>The developer added proper null checking and deployed in 8 minutes. **Without source maps, this would
                 have taken hours of guessing.**</p>
 
-            <p>The lesson? Source maps don't just help you�they help your customers by reducing downtime.</p>
+            <p>The lesson? Source maps don't just help you?they help your customers by reducing downtime.</p>
 
             <h2>Team Debugging Workflows</h2>
             <p>Debugging isn't just a solo activity. Here's how top teams structure their debugging processes:</p>
@@ -974,7 +974,7 @@ at checkout.js:1:8293</code></pre>
                 code to anyone. If you have proprietary algorithms, secret API logic, or hardcoded credentials (never do
                 this!), don't ship maps publicly. Use `sourcemap: 'hidden'` in Vite or Webpack (generates maps but
                 doesn't link them in JS files), then upload maps privately to Sentry/LogRocket. For typical CRUD apps,
-                the security risk is negligible�your business logic should live in APIs, not frontend code.</p>
+                the security risk is negligible?your business logic should live in APIs, not frontend code.</p>
 
             <h3><strong>Q: How do I debug React components specifically?</strong></h3>
             <p><strong>A:</strong> Install **React DevTools** browser extension (Chrome/Firefox/Edge). It adds a
@@ -985,7 +985,7 @@ at checkout.js:1:8293</code></pre>
 
             <h3><strong>Q: Should our entire team enable source maps or just senior devs?</strong></h3>
             <p><strong>A:</strong> **Everyone should have them**. Junior developers benefit most from readable stack
-                traces�it's a learning tool. The myth that source maps "slow down seniors" is false; they help everyone
+                traces?it's a learning tool. The myth that source maps "slow down seniors" is false; they help everyone
                 debug faster. The only exception: if you have contractors with limited access, use private source map
                 servers. But internal full-time team members should always debug with full source visibility.</p>
 
@@ -1013,7 +1013,7 @@ at checkout.js:1:8293</code></pre>
                 painful. Configure your build tools today to generate source maps, learn to use the "Ignore List," and
                 stop fearing production deployments.</p>
 
-            <p>The best developers aren't those who write perfect code�they're the ones who can **debug production
+            <p>The best developers aren't those who write perfect code?they're the ones who can **debug production
                 issues in minutes, not hours**. Master DevTools, invest in error monitoring, and treat source maps as
                 non-negotiable infrastructure.</p>
 
@@ -1039,6 +1039,7 @@ at checkout.js:1:8293</code></pre>
                 <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
                 <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
                 <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="terms.html"><i class="fas fa-file-contract"></i> Terms</a>
                 <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
             </div>
             <p class="footer-copyright">2026 Code Formatter. All rights reserved.</p>
@@ -1062,4 +1063,7 @@ at checkout.js:1:8293</code></pre>
 </body>
 
 </html>
+
+
+
 

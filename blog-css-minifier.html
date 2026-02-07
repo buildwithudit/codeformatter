@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -711,13 +711,13 @@
             </details>
 
             <p id="intro"><strong>CSS minification</strong> reduces stylesheet file sizes by 30-50% through whitespace
-                removal, color optimization, and property consolidation�directly improving First Contentful Paint (FCP)
+                removal, color optimization, and property consolidation?directly improving First Contentful Paint (FCP)
                 and Largest Contentful Paint (LCP), two critical Core Web Vitals that influence Google search rankings
                 and user experience.</p>
 
             <p>According to HTTP Archive data from 2025, the median website ships <strong>78KB of CSS</strong>, much of
                 it redundant or poorly optimized. Proper minification combined with unused style removal can reduce this
-                to 25-35KB, saving 200-300ms on mobile connections�the difference between acceptable and frustrating
+                to 25-35KB, saving 200-300ms on mobile connections?the difference between acceptable and frustrating
                 load times.</p>
 
             <p>This comprehensive guide, based on <strong>15+ years of frontend performance optimization</strong>,
@@ -736,7 +736,7 @@
             </h2>
 
             <p><strong>CSS minification</strong> transforms human-readable stylesheets into compact production code by
-                removing whitespace, optimizing colors, merging rules, and eliminating redundancies�all while preserving
+                removing whitespace, optimizing colors, merging rules, and eliminating redundancies?all while preserving
                 visual rendering.</p>
 
             <div class="code-wrapper">
@@ -1024,7 +1024,7 @@ module.exports = {
                     </summary>
                     <div class="faq-answer">
                         <strong>Slightly yes, mainly parsing speed.</strong> Minified CSS has fewer bytes to parse
-                        (faster lexing), but once parsed, rendering speed is identical�browsers build the same CSSOM
+                        (faster lexing), but once parsed, rendering speed is identical?browsers build the same CSSOM
                         regardless. Real gains: <strong>network transfer time and parse time.</strong> Example: 80KB
                         source takes ~45ms to parse on mobile; 42KB minified takes ~28ms (38% faster). But actual style
                         application (layout, paint) runs at same speed. The wins are pre-render phase. Critical CSS
@@ -1042,7 +1042,7 @@ module.exports = {
                         <code>.min.css</code>, run it through your minifier with your custom CSS. Why? (1) Your minifier
                         can remove unused Bootstrap components via PurgeCSS. (2) Merging rules across boundaries
                         improves compression. (3) Consistent optimization settings. (4) Better gzip compression when all
-                        CSS is processed together. Don't trust pre-minified versions�they might not be optimized for
+                        CSS is processed together. Don't trust pre-minified versions?they might not be optimized for
                         your specific browser targets or build configuration. Process all CSS through your build
                         pipeline.
                     </div>
@@ -1089,7 +1089,8 @@ module.exports = {
                     <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
                     <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
                     <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                <a href="terms.html"><i class="fas fa-file-contract"></i> Terms</a>
+                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
                 </div>
                 <p class="footer-copyright">2026 Code Formatter. All rights reserved.</p>
             </div>
@@ -1111,3 +1112,5 @@ module.exports = {
 </body>
 
 </html>
+
+

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -55,7 +55,7 @@
                 "@type": "FAQPage",
                 "mainEntity": [
                     {"@type": "Question", "name": "What's the difference between well-formed and valid XML?", "acceptedAnswer": {"@type": "Answer", "text": "Well-formed XML is syntactically correct. Valid XML additionally conforms to a schema (DTD or XSD)."}},
-                    {"@type": "Question", "name": "Does XML formatting affect performance?", "acceptedAnswer": {"@type": "Answer", "text": "No�formatting has zero runtime impact. XML parsers ignore whitespace outside of elements."}},
+                    {"@type": "Question", "name": "Does XML formatting affect performance?", "acceptedAnswer": {"@type": "Answer", "text": "No?formatting has zero runtime impact. XML parsers ignore whitespace outside of elements."}},
                     {"@type": "Question", "name": "Can I validate XML against XSD?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! Our tool validates XML structure and can check well-formedness instantly."}}
                 ]
             },
@@ -715,7 +715,7 @@
             </details>
 
             <p id="intro">Despite JSON's popularity, <strong>XML (Extensible Markup Language)</strong> remains critical
-                in enterprise systems, SOAP APIs, configuration files, and data interchange�especially in finance,
+                in enterprise systems, SOAP APIs, configuration files, and data interchange?especially in finance,
                 healthcare, and government sectors where XML standards are regulatory requirements. Properly formatted
                 XML is essential for debuggability, compliance validation, and system integration.</p>
 
@@ -963,7 +963,7 @@ xmllint --noout input.xml</code></pre>
 
             <h3>When to Format XML</h3>
             <p>Format XML during development and debugging, but <strong>not in production</strong> unless human-readable
-                output is required. Formatted XML is 20-40% larger due to whitespace�significant for high-throughput
+                output is required. Formatted XML is 20-40% larger due to whitespace?significant for high-throughput
                 APIs.</p>
 
             <h3>Compression</h3>
@@ -1012,7 +1012,7 @@ xmllint --noout input.xml</code></pre>
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <strong>Quality formatters preserve data perfectly�only whitespace changes.</strong> Formatting
+                        <strong>Quality formatters preserve data perfectly?only whitespace changes.</strong> Formatting
                         adds/removes whitespace between tags for readability but <strong>never modifies element content,
                             attributes, or structure</strong>. However, <strong>whitespace-significant content</strong>
                         (like <code>&lt;pre&gt;</code> elements or mixed content with formatting) might change if the
@@ -1029,12 +1029,12 @@ xmllint --noout input.xml</code></pre>
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <strong>Formatters handle namespaces automatically�no special action needed.</strong> Namespaces
+                        <strong>Formatters handle namespaces automatically?no special action needed.</strong> Namespaces
                         are attributes (<code>xmlns:prefix="URI"</code>), so formatters preserve them while indenting.
                         Best practices: (1) Declare namespaces on root element unless scoped to specific subtrees. (2)
                         Use consistent prefix conventions (<code>soap:</code>, <code>xs:</code>). (3) Configure
                         formatters to <strong>normalize namespace declarations</strong> (group them visually). (4) Some
-                        formatters offer "sort attributes" which can group namespace declarations�useful for
+                        formatters offer "sort attributes" which can group namespace declarations?useful for
                         readability. The XML spec treats namespace prefixes as arbitrary labels, but consistency helps
                         humans.
                     </div>
@@ -1053,7 +1053,7 @@ xmllint --noout input.xml</code></pre>
                         values. Example:
                         <code>&lt;product id="123" category="electronics"&gt;&lt;name&gt;Laptop&lt;/name&gt;&lt;price&gt;999&lt;/price&gt;&lt;/product&gt;</code>
                         uses attributes for metadata, elements for core data. Practical tip: When in doubt, use
-                        elements�they're more flexible for evolution.
+                        elements?they're more flexible for evolution.
                     </div>
                 </details>
 
@@ -1064,7 +1064,7 @@ xmllint --noout input.xml</code></pre>
                     </summary>
                     <div class="faq-answer">
                         <strong>Use streaming parsers, not DOM-based formatters.</strong> DOM formatters load entire XML
-                        into memory�impossible for multi-GB files. Solutions: (1) <strong>SAX/StAX parsers:</strong>
+                        into memory?impossible for multi-GB files. Solutions: (1) <strong>SAX/StAX parsers:</strong>
                         Process XML sequentially, formatting output as you stream. (2) <strong>xmllint in streaming
                             mode:</strong> Handles arbitrarily large files with constant memory. (3) <strong>Split large
                             files:</strong> If possible, split into smaller chunks processed independently. (4)
@@ -1080,8 +1080,8 @@ xmllint --noout input.xml</code></pre>
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <strong>No perfect conversion�XML and JSON have different semantics.</strong> XML supports
-                        attributes, namespaces, mixed content, ordered elements�JSON doesn't. Challenges: (1) Attributes
+                        <strong>No perfect conversion?XML and JSON have different semantics.</strong> XML supports
+                        attributes, namespaces, mixed content, ordered elements?JSON doesn't. Challenges: (1) Attributes
                         become properties, but so do elements. (2) Namespaces require special handling. (3) XML order
                         matters sometimes, JSON objects are unordered. Tools: <strong>xml2js</strong> (Node.js),
                         <strong>xmltodict</strong> (Python), <strong>Jackson</strong> (Java) offer conversions with
@@ -1100,7 +1100,8 @@ xmllint --noout input.xml</code></pre>
                     <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
                     <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
                     <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                <a href="terms.html"><i class="fas fa-file-contract"></i> Terms</a>
+                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
                 </div>
                 <p class="footer-copyright">2026 Code Formatter. All rights reserved.</p>
             </div>
@@ -1122,3 +1123,5 @@ xmllint --noout input.xml</code></pre>
 </body>
 
 </html>
+
+
