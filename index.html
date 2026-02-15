@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="en" class="dark">
 
 <head>
@@ -14,7 +14,7 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://codeformatter.in/">
+    <meta property="og:url" content="https://www.codeformatter.in/">
     <meta property="og:title" content="Free Online JSON Formatter & Validator Tool 2026 | Code Formatter">
     <meta property="og:description"
         content="Professional JSON formatter with 100% client-side processing. Format, validate & minify JSON instantly - no server uploads required.">
@@ -24,7 +24,7 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://codeformatter.in/">
+    <meta name="twitter:url" content="https://www.codeformatter.in/">
     <meta name="twitter:title" content="Free Online JSON Formatter & Validator Tool 2026">
     <meta name="twitter:description"
         content="Professional JSON formatter with 100% client-side processing. Format, validate & minify JSON securely in your browser.">
@@ -52,9 +52,12 @@
 
     <link rel="stylesheet" href="style.css">
 
+    <!-- Core Scripts (Required for JSON Formatter) -->
     <script src="https://unpkg.com/prettier@3.0.3/standalone.js" defer></script>
     <script src="https://unpkg.com/prettier@3.0.3/plugins/babel.js" defer></script>
     <script src="https://unpkg.com/prettier@3.0.3/plugins/estree.js" defer></script>
+
+    <!-- Secondary Scripts (Lazy loaded for other tools) -->
     <script src="https://unpkg.com/prettier@3.0.3/plugins/html.js" defer></script>
     <script src="https://unpkg.com/prettier@3.0.3/plugins/postcss.js" defer></script>
     <script src="https://unpkg.com/prettier@3.0.3/plugins/yaml.js" defer></script>
@@ -68,26 +71,18 @@
 
     <style>
         :root {
-            /* Cleaner Dark Theme Palette */
             --bg-body: #0a0a0a;
-            /* Almost Black */
             --bg-panel: #171717;
-            /* Very Dark Grey */
             --border-color: #262626;
-            /* Subtle Border */
             --primary: #3b82f6;
             --text-main: #ededed;
             --text-muted: #a1a1aa;
         }
 
         html.light {
-            /* Light Theme Palette */
             --bg-body: #f8fafc;
-            /* Light Background */
             --bg-panel: #ffffff;
-            /* White Panel */
             --border-color: #e2e8f0;
-            /* Light Border */
             --primary: #4f46e5;
             --text-main: #0f172a;
             --text-muted: #64748b;
@@ -95,23 +90,19 @@
 
         body {
             background-color: var(--bg-body);
-            /* Technical Grid Background Pattern */
             background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
             background-size: 30px 30px;
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
             overflow: hidden;
-            /* Main handles scrolling */
         }
 
-        /* Light theme grid - darker lines for visibility */
         html.light body {
             background-image: linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
         }
 
-        /* FLEX LAYOUT STRUCTURE */
         main {
             height: 100vh;
             display: flex;
@@ -119,7 +110,6 @@
             position: relative;
         }
 
-        /* 1. HEADER (Clean) */
         header {
             background: var(--bg-panel);
             backdrop-filter: blur(12px);
@@ -132,13 +122,11 @@
             background: rgba(255, 255, 255, 0.9);
         }
 
-        /* 2. SCROLLABLE AREA */
         #scrollable-wrapper {
             flex-grow: 1;
             overflow-y: auto;
             scroll-behavior: smooth;
             padding-bottom: 80px;
-            /* Space for footer */
         }
 
         #scrollable-wrapper::-webkit-scrollbar {
@@ -150,16 +138,13 @@
             border-radius: 3px;
         }
 
-        /* 3. WORKSPACE (The Tool) */
         .workspace {
             padding: 20px;
             display: flex;
             gap: 20px;
             min-height: 75vh;
-            /* Tool takes reduced height for better content visibility */
         }
 
-        /* Clean Input/Output Boxes */
         .pane {
             flex: 1;
             background: var(--bg-panel);
@@ -173,7 +158,6 @@
 
         .pane:hover {
             border-color: #404040;
-            /* Slight highlight on hover */
         }
 
         .pane-header {
@@ -209,9 +193,7 @@
             resize: none;
         }
 
-        /* 4. CONTENT AREA (Premium Blog Style) */
         .content-container {
-            /* max-width: 760px; */
             margin: 20px auto 40px auto;
             padding: 0 20px;
             position: relative;
@@ -228,7 +210,6 @@
             overflow: hidden;
         }
 
-        /* Light theme content card */
         html.light .clean-card {
             background: rgba(255, 255, 255, 0.8);
             border-color: #e2e8f0;
@@ -249,7 +230,6 @@
             pointer-events: none;
         }
 
-        /* Modern Typography for Enhanced Readability */
         .prose h1 {
             font-size: 2.4rem;
             font-weight: 800;
@@ -328,7 +308,7 @@
         }
 
         .prose li::before {
-            content: "?";
+            content: "\2022";
             color: var(--primary);
             font-weight: bold;
             font-size: 1.1rem;
@@ -357,7 +337,6 @@
             left: 0;
         }
 
-        /* Premium FAQ Cards */
         .faq-item {
             background: var(--bg-panel);
             border: 1px solid var(--border-color);
@@ -369,7 +348,6 @@
             overflow: hidden;
         }
 
-        /* Light theme FAQ */
         html.light .faq-item {
             background: rgba(255, 255, 255, 0.9);
             border-color: #e2e8f0;
@@ -419,7 +397,6 @@
             color: #64748b;
         }
 
-        /* Additional Light Theme Overrides forFull Readability */
         html.light .prose h2 {
             color: #0f172a;
             border-bottom-color: #e2e8f0;
@@ -445,17 +422,69 @@
             border-color: #cbd5e1;
         }
 
-        /* 5. FOOTER (Fixed) */
         .footer {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
             background: var(--bg-panel);
-            /* Solid bg for readability */
             border-top: 1px solid var(--border-color);
             z-index: 30;
             padding: 10px 20px;
+        }
+
+        .blog-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .blog-card {
+            display: block;
+            padding: 20px;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .blog-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .blog-card h4 {
+            color: var(--text-main);
+            margin: 0 0 8px 0;
+            font-size: 1rem;
+        }
+
+        .blog-card p {
+            color: var(--text-muted);
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        html.light .blog-card {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        a.brand-logo {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Menu toggle button - no background */
+        .menu-toggle-btn {
+            background: none;
+            border: none;
+            color: inherit;
+            cursor: pointer;
+            padding: 8px;
+            font-size: inherit;
         }
 
         @media (max-width: 768px) {
@@ -473,7 +502,6 @@
             }
         }
 
-        /* Enhanced Mobile Content Styles */
         @media (max-width: 480px) {
             .prose h1 {
                 font-size: 1.4rem !important;
@@ -524,55 +552,182 @@
             .faq-item p {
                 font-size: 0.85rem !important;
             }
-        }
 
-        a.brand-logo {
-            color: inherit;
-            text-decoration: none;
+            .blog-cards-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 
+    <!-- Single Consolidated Structured Data -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "WebSite",
-          "name": "Code Formatter",
-          "url": "https://www.codeformatter.in/",
-          "description": "Free online developer tools for JSON formatting, code beautification, data conversion, and more. 100% client-side processing.",
-          "publisher": {"@type": "Organization", "name": "Code Formatter", "url": "https://www.codeformatter.in"}
-        },
-        {
-          "@type": "WebApplication",
-          "name": "JSON Formatter",
-          "url": "https://www.codeformatter.in/",
-          "description": "Professional JSON formatter, validator and beautifier. Format, validate, and minify JSON data instantly with 100% client-side processing.",
-          "applicationCategory": "DeveloperApplication",
-          "operatingSystem": "Web Browser",
-          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
-          "provider": {"@type": "Organization", "name": "Code Formatter", "url": "https://www.codeformatter.in"}
-        },
-        {
-          "@type": "HowTo",
-          "name": "How to Format JSON Online",
-          "description": "Format and validate JSON in 3 simple steps",
-          "step": [
-            {"@type": "HowToStep", "position": 1, "name": "Paste JSON", "text": "Paste your JSON data in the input editor"},
-            {"@type": "HowToStep", "position": 2, "name": "Format", "text": "Click Format to beautify with proper indentation and syntax highlighting"},
-            {"@type": "HowToStep", "position": 3, "name": "Copy or Download", "text": "Copy the formatted output or download as a .json file"}
-          ]
-        },
-        {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {"@type": "Question", "name": "What is Code Formatter?", "acceptedAnswer": {"@type": "Answer", "text": "Code Formatter is a collection of 30+ free online developer tools for JSON formatting, code beautification, data conversion, and more."}},
-            {"@type": "Question", "name": "Is my data secure?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! All tools run 100% client-side in your browser. Your data never leaves your device or touches our servers."}},
-            {"@type": "Question", "name": "Are the tools free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, all tools are completely free with no registration required. No limits on usage."}},
-            {"@type": "Question", "name": "What tools are available?", "acceptedAnswer": {"@type": "Answer", "text": "JSON/HTML/CSS/JS formatters, minifiers, converters (JSON to CSV, Base64), generators (QR, UUID, passwords), and many more."}}
-          ]
-        }
-      ]
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "name": "Code Formatter",
+                "url": "https://www.codeformatter.in/",
+                "logo": "https://www.codeformatter.in/codeformat.png",
+                "description": "Professional developer tools for JSON formatting, validation, image compression, and code beautification"
+            },
+            {
+                "@type": "WebSite",
+                "name": "Code Formatter",
+                "url": "https://www.codeformatter.in/",
+                "description": "Free online developer tools for JSON formatting, code beautification, data conversion, and more. 100% client-side processing.",
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "Code Formatter",
+                    "url": "https://www.codeformatter.in/"
+                }
+            },
+            {
+                "@type": "WebApplication",
+                "name": "Code Formatter JSON Formatter",
+                "url": "https://www.codeformatter.in/",
+                "description": "Professional JSON formatter, validator and beautifier. Format, validate, and minify JSON data instantly with 100% client-side processing.",
+                "applicationCategory": "DeveloperApplication",
+                "operatingSystem": "Any",
+                "browserRequirements": "Requires JavaScript",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                },
+                "featureList": [
+                    "JSON Formatting",
+                    "JSON Validation",
+                    "JSON Minification",
+                    "Syntax Highlighting",
+                    "Error Detection",
+                    "Client-side Processing"
+                ],
+                "provider": {
+                    "@type": "Organization",
+                    "name": "Code Formatter",
+                    "url": "https://www.codeformatter.in/"
+                }
+            },
+            {
+                "@type": "HowTo",
+                "name": "How to Format JSON Online",
+                "description": "Learn how to format and validate JSON data using our online JSON formatter tool in 3 simple steps",
+                "step": [
+                    {
+                        "@type": "HowToStep",
+                        "position": 1,
+                        "name": "Paste JSON Data",
+                        "text": "Copy your raw, minified, or malformed JSON string and paste it into the Input pane"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "position": 2,
+                        "name": "Automatic Validation and Formatting",
+                        "text": "The tool automatically validates and beautifies your JSON with proper indentation and syntax highlighting"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "position": 3,
+                        "name": "Copy or Download",
+                        "text": "Use the copy button or download the formatted JSON file to your computer"
+                    }
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "Is there a file size limit for JSON formatting?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "There's no hard file size limit imposed by our tool. Since all processing happens locally in your browser, the practical limit depends on your device's available RAM and processing power. In practice, we've successfully tested files exceeding 50MB without performance degradation on modern computers."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is my JSON data secure when using this tool?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Absolutely. Your JSON data never leaves your browser. All formatting, validation, and minification operations are performed 100% client-side using JavaScript. We don't have servers collecting your data, which means your API keys, confidential information, and sensitive data remain completely private and secure."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I convert JSON to other formats like CSV or Excel?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes! Navigate to JSON to CSV from the sidebar menu to transform your JSON arrays into spreadsheet-compatible CSV format. This is particularly useful for exporting database records, analyzing tabular data, or importing JSON data into Excel, Google Sheets, or other spreadsheet applications."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What's the difference between JSON validation and formatting?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "JSON validation checks whether your data conforms to valid JSON syntax rules (proper quotes, correct bracket matching, valid escape sequences, etc.). JSON formatting (beautification) organizes valid JSON with indentation and whitespace for improved readability. Our tool performs both operations simultaneously."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Does this JSON formatter work offline?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes! After the initial page load (which downloads the necessary JavaScript libraries), the JSON formatter continues to work even without an internet connection. This makes it perfect for developers working in restricted network environments."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How does JSON minification reduce file size?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "JSON minification removes all non-essential whitespace characters (spaces, tabs, newlines), resulting in a compact single-line format. For typical JSON documents with proper indentation, minification reduces file size by 20-40%, leading to faster network transmission and improved application performance."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I use this tool for validating JSON-LD structured data?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Absolutely! Our tool is perfect for validating JSON-LD structured data used in Schema.org markup for SEO purposes. It will catch syntax errors that could prevent your rich snippets from appearing in Google search results."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What error messages does the JSON validator provide?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Our advanced JSON parser provides detailed error diagnostics including the specific line number, character position, and descriptive error message explaining what went wrong (e.g., Unexpected token at line 15, column 8 or Expected comma or closing brace after property value)."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What is Code Formatter?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Code Formatter is a collection of 30+ free online developer tools for JSON formatting, code beautification, data conversion, and more. All tools run 100% client-side in your browser."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Are the tools free?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, all tools are completely free with no registration required. No limits on usage."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What tools are available?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "JSON/HTML/CSS/JS formatters, minifiers, converters (JSON to CSV, Base64), generators (QR, UUID, passwords), and many more developer tools."
+                        }
+                    }
+                ]
+            }
+        ]
     }
     </script>
 </head>
@@ -582,9 +737,11 @@
         <div class="brand">
             <a href="index.html" class="brand-logo"><i class="fas fa-layer-group"></i> Code Formatter</a>
         </div>
-        <div class="search-container"><input type="text" class="search-input" placeholder="Search tools..."
-                onkeyup="filterTools(this)"></div>
-        <nav class="menu" id="menuContainer">
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search tools..." onkeyup="filterTools(this)"
+                aria-label="Search developer tools">
+        </div>
+        <nav class="menu" id="menuContainer" aria-label="Main navigation">
             <div class="nav-group-title">Code Formatters</div>
             <a href="index.html" class="nav-item" data-id="json-fmt"><i class="fas fa-code"></i> JSON Formatter</a>
             <a href="json-tree-viewer.html" class="nav-item" data-id="json-tree"><i class="fas fa-sitemap"></i> JSON
@@ -599,7 +756,7 @@
             <a href="xml-formatter.html" class="nav-item" data-id="xml-fmt"><i class="fas fa-code"></i> XML
                 Formatter</a>
 
-            <div class="nav-group-title">Image & Color Tools</div>
+            <div class="nav-group-title">Image &amp; Color Tools</div>
             <a href="image-compressor.html" class="nav-item" data-id="img-compress"><i class="fas fa-image"></i> Image
                 Compressor</a>
             <a href="color-converter.html" class="nav-item" data-id="color-conv"><i class="fas fa-palette"></i> Color
@@ -618,7 +775,8 @@
                 Minifier</a>
 
             <div class="nav-group-title">Data Converters</div>
-            <a href="json-to-csv.html" class="nav-item" data-id="json-csv"><i class="fas fa-table"></i> JSON to CSV</a>
+            <a href="json-to-csv.html" class="nav-item" data-id="json-csv"><i class="fas fa-table"></i> JSON to
+                CSV</a>
             <a href="csv-to-json.html" class="nav-item" data-id="csv-json"><i class="fas fa-file-csv"></i> CSV to
                 JSON</a>
             <a href="json-to-typescript.html" class="nav-item" data-id="json-ts"><i class="fas fa-file-code"></i> JSON
@@ -628,7 +786,7 @@
             <a href="case-converter.html" class="nav-item" data-id="case-conv"><i class="fas fa-text-height"></i> Case
                 Converter</a>
 
-            <div class="nav-group-title">Encoding & Security</div>
+            <div class="nav-group-title">Encoding &amp; Security</div>
             <a href="regex-tester.html" class="nav-item" data-id="regex-test"><i class="fas fa-asterisk"></i> Regex
                 Tester</a>
             <a href="password-generator.html" class="nav-item" data-id="pwd-gen"><i class="fas fa-key"></i> Password
@@ -652,17 +810,17 @@
             <a href="aspect-ratio-calculator.html" class="nav-item" data-id="aspect-ratio"><i class="fas fa-expand"></i>
                 Aspect Ratio</a>
 
-            <div class="nav-group-title">Text & Data</div>
+            <div class="nav-group-title">Text &amp; Data</div>
             <a href="uuid-generator.html" class="nav-item" data-id="uuid-gen"><i class="fas fa-fingerprint"></i> UUID
                 Generator</a>
             <a href="timestamp-converter.html" class="nav-item" data-id="timestamp-conv"><i class="fas fa-clock"></i>
                 Timestamp Converter</a>
             <a href="cron-generator.html" class="nav-item" data-id="cron-gen"><i class="fas fa-calendar-alt"></i> Cron
                 Generator</a>
-            <a href="json-to-yaml.html" class="nav-item" data-id="json-yaml"><i class="fas fa-exchange-alt"></i> JSON to
-                YAML</a>
-            <a href="lorem-ipsum-generator.html" class="nav-item" data-id="lorem"><i class="fas fa-paragraph"></i> Lorem
-                Ipsum</a>
+            <a href="json-to-yaml.html" class="nav-item" data-id="json-yaml"><i class="fas fa-exchange-alt"></i> JSON
+                to YAML</a>
+            <a href="lorem-ipsum-generator.html" class="nav-item" data-id="lorem"><i class="fas fa-paragraph"></i>
+                Lorem Ipsum</a>
             <a href="mock-data-generator.html" class="nav-item" data-id="mock-data"><i class="fas fa-users"></i> Mock
                 Data Gen</a>
             <a href="diff-checker.html" class="nav-item" data-id="diff-check"><i class="fas fa-exchange-alt"></i> Diff
@@ -672,8 +830,8 @@
             <a href="html-viewer.html" class="nav-item" data-id="html-view"><i class="fas fa-eye"></i> HTML Viewer</a>
             <a href="social-card-preview.html" class="nav-item" data-id="social-card"><i class="fas fa-share-alt"></i>
                 Social Preview</a>
-            <a href="markdown-editor.html" class="nav-item" data-id="markdown-edit"><i class="fas fa-edit"></i> Markdown
-                Editor</a>
+            <a href="markdown-editor.html" class="nav-item" data-id="markdown-edit"><i class="fas fa-edit"></i>
+                Markdown Editor</a>
         </nav>
     </aside>
 
@@ -681,7 +839,8 @@
 
     <main>
         <header>
-            <div class="header-left"><i class="fas fa-bars menu-toggle-btn" onclick="handleMenuClick()"
+            <div class="header-left">
+                <i class="fas fa-bars menu-toggle-btn" onclick="handleMenuClick()"
                     aria-label="Toggle navigation menu"></i>
                 <div class="tool-info">
                     <div id="toolTitle">JSON Formatter</div>
@@ -690,15 +849,16 @@
             </div>
             <div class="header-right">
                 <a href="blog.html" class="nav-link">Blog</a>
-                <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle dark and light theme"><i
-                        class="fas fa-moon" id="themeIcon"></i></button>
+                <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle dark and light theme">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
             </div>
         </header>
 
         <div id="scrollable-wrapper">
 
-            <section class="workspace" id="workspace">
-                <div class="pane">
+            <section class="workspace" id="workspace" aria-label="JSON Formatter workspace">
+                <div class="pane" role="region" aria-label="Input panel">
                     <div class="pane-header">
                         <span class="pane-title" id="paneInputTitle"><i class="fas fa-code"></i> Input</span>
                         <div class="pane-actions" id="inputActions">
@@ -709,41 +869,46 @@
                         </div>
                     </div>
                     <div class="editor-container">
-                        <textarea id="input" placeholder="Paste your raw JSON or content here..."></textarea>
+                        <textarea id="input" placeholder="Paste your raw JSON or content here..."
+                            aria-label="JSON input editor" spellcheck="false"></textarea>
 
                         <div id="mockControls" style="display:none;"></div>
                         <div id="imageControls" style="display:none;"></div>
                         <div id="socialControls" style="display:none;"></div>
                         <div id="shadowControls" style="display:none;"></div>
 
-                        <div class="editor-stats" id="inputStats">0 chars | 0 KB</div>
+                        <div class="editor-stats" id="inputStats" aria-live="polite">0 chars | 0 KB</div>
                     </div>
                 </div>
 
-                <div class="pane">
+                <div class="pane" role="region" aria-label="Output panel">
                     <div class="pane-header">
                         <span class="pane-title" id="paneOutputTitle"><i class="fas fa-check"></i> Output</span>
                         <div class="pane-actions">
-                            <i class="fas fa-expand action-icon" onclick="toggleFullscreen()" title="Fullscreen"></i>
-                            <i class="far fa-copy action-icon" onclick="copyOutput()" title="Copy Result"></i>
-                            <i class="fas fa-download action-icon" onclick="downloadOutput()" title="Download"></i>
+                            <i class="fas fa-expand action-icon" onclick="toggleFullscreen()" title="Fullscreen"
+                                aria-label="Toggle fullscreen view"></i>
+                            <i class="far fa-copy action-icon" onclick="copyOutput()" title="Copy Result"
+                                aria-label="Copy result to clipboard"></i>
+                            <i class="fas fa-download action-icon" onclick="downloadOutput()" title="Download"
+                                aria-label="Download output file"></i>
                         </div>
                     </div>
                     <div class="editor-container">
-                        <textarea id="output" readonly placeholder="Result will appear here..."></textarea>
+                        <textarea id="output" readonly placeholder="Result will appear here..."
+                            aria-label="Formatted JSON output" spellcheck="false"></textarea>
                         <div id="visualOutput"></div>
                         <div id="imagePreview"></div>
-                        <div class="editor-stats" id="outputStats" style="display:none;">0 KB</div>
+                        <div class="editor-stats" id="outputStats" style="display:none;" aria-live="polite">0 KB</div>
                     </div>
                 </div>
             </section>
 
             <div class="content-container">
                 <article class="clean-card prose">
-                    <h1>Free Online JSON Formatter, Validator & Beautifier Tool 2026</h1>
+                    <h1>Free Online JSON Formatter, Validator &amp; Beautifier Tool 2026</h1>
 
-                    <p>Welcome to <strong>Code Formatter</strong> ? your ultimate destination for professional JSON
-                        formatting, validation, and beautification. Our secure, client-side tool is specifically
+                    <p>Welcome to <strong>Code Formatter</strong> &mdash; your ultimate destination for professional
+                        JSON formatting, validation, and beautification. Our secure, client-side tool is specifically
                         designed to help developers, webmasters, and API testers format, validate, and minify JSON data
                         instantly with zero compromise on privacy or security. Unlike other tools cluttered with
                         intrusive ads and slow server processing, we focus exclusively on speed, complete data privacy,
@@ -751,57 +916,58 @@
 
                     <h2>What is JSON and Why Do You Need a Formatter?</h2>
                     <p><strong>JSON (JavaScript Object Notation)</strong> is the most widely-used data interchange
-                        format in modern web development. It's lightweight, human-readable, and language-independent,
+                        format in modern web development. It&rsquo;s lightweight, human-readable, and
+                        language-independent,
                         making it the standard choice for APIs, configuration files, database exports, and data storage.
                         However, JSON data is often transmitted in a <strong>minified format</strong> (compressed into a
                         single line without whitespace) to reduce file size and bandwidth consumption during network
                         transmission.</p>
 
-                    <p>While minified JSON is excellent for performance, it's practically impossible for humans to read
-                        or debug. That's where a <strong>JSON formatter</strong> becomes essential. Our online JSON
-                        formatter tool transforms compressed, unreadable JSON into a beautifully structured, indented
-                        format that makes it easy to understand the data hierarchy, identify errors, and perform
-                        debugging operations efficiently.</p>
+                    <p>While minified JSON is excellent for performance, it&rsquo;s practically impossible for humans to
+                        read or debug. That&rsquo;s where a <strong>JSON formatter</strong> becomes essential. Our
+                        online JSON formatter tool transforms compressed, unreadable JSON into a beautifully structured,
+                        indented format that makes it easy to understand the data hierarchy, identify errors, and
+                        perform debugging operations efficiently.</p>
 
-                    <h2>How to Use Our JSON Formatter & Validator</h2>
+                    <h2>How to Use Our JSON Formatter &amp; Validator</h2>
                     <p>Working with complex API responses, configuration files, or database exports can be challenging
                         when JSON data is minified. Our intuitive JSON formatter makes the entire process effortless
                         with just three simple steps:</p>
                     <ol>
                         <li><strong>Paste Your JSON Data:</strong> Copy your raw, minified, or malformed JSON string and
-                            paste it into the left "Input" pane. You can paste data from API responses, clipboard
-                            content, or any JSON source.</li>
-                        <li><strong>Automatic Validation & Formatting:</strong> Our intelligent JSON parser
+                            paste it into the left &ldquo;Input&rdquo; pane. You can paste data from API responses,
+                            clipboard content, or any JSON source.</li>
+                        <li><strong>Automatic Validation &amp; Formatting:</strong> Our intelligent JSON parser
                             automatically detects and validates your input. If the JSON syntax is correct, it instantly
-                            beautifies and formats the code in the right "Output" pane with proper indentation and color
-                            coding.</li>
-                        <li><strong>Minify or Download:</strong> Use the "MINIFY" button to compress your JSON for
-                            production deployment, reducing file size by removing all unnecessary whitespace. You can
-                            also download the formatted or minified output directly to your computer.</li>
+                            beautifies and formats the code in the right &ldquo;Output&rdquo; pane with proper
+                            indentation and color coding.</li>
+                        <li><strong>Minify or Download:</strong> Use the &ldquo;MINIFY&rdquo; button to compress your
+                            JSON for production deployment, reducing file size by removing all unnecessary whitespace.
+                            You can also download the formatted or minified output directly to your computer.</li>
                     </ol>
 
                     <h2>Powerful Features Built for Professional Developers</h2>
                     <p>We created Code Formatter because we were frustrated with slow, privacy-invasive, and
-                        feature-limited JSON tools. Here's what makes our JSON formatter stand out from the competition:
-                    </p>
+                        feature-limited JSON tools. Here&rsquo;s what makes our JSON formatter stand out from the
+                        competition:</p>
 
                     <ul>
                         <li><strong>100% Client-Side Processing (Complete Privacy):</strong> Your sensitive JSON data
                             never leaves your browser. Everything is processed locally using JavaScript, ensuring that
                             API keys, authentication tokens, personal information, and confidential data remain
                             completely secure. No server uploads, no data logging, no privacy concerns.</li>
-                        <li><strong>Advanced Error Detection & Debugging:</strong> Invalid JSON? No problem. Our
-                            validator doesn't just display a generic "Syntax Error" message. It pinpoints the exact line
-                            number, character position, and nature of the error (missing comma, unclosed bracket,
-                            invalid escape sequence, etc.), enabling you to fix issues in seconds rather than minutes.
-                        </li>
+                        <li><strong>Advanced Error Detection &amp; Debugging:</strong> Invalid JSON? No problem. Our
+                            validator doesn&rsquo;t just display a generic &ldquo;Syntax Error&rdquo; message. It
+                            pinpoints the exact line number, character position, and nature of the error (missing comma,
+                            unclosed bracket, invalid escape sequence, etc.), enabling you to fix issues in seconds
+                            rather than minutes.</li>
                         <li><strong>Lightning-Fast Performance:</strong> Forget about slow server round-trips and
                             loading spinners. Our tool processes even large JSON files (up to 50MB+) instantly in your
                             browser, delivering results in milliseconds.</li>
                         <li><strong>Multiple Tool Integration:</strong> Seamlessly switch between JSON formatting, JSON
                             minification, JSON to CSV conversion, XML formatting, SQL beautification, and image
                             compression without leaving the page or losing your work.</li>
-                        <li><strong>Syntax Highlighting & Color Coding:</strong> Our editor uses intelligent syntax
+                        <li><strong>Syntax Highlighting &amp; Color Coding:</strong> Our editor uses intelligent syntax
                             highlighting to differentiate between object keys, string values, numbers, booleans, and
                             null values, making complex JSON structures easier to comprehend at a glance.</li>
                         <li><strong>One-Click Actions:</strong> Copy formatted output, download as a file, clear input,
@@ -810,10 +976,10 @@
                     </ul>
 
                     <h2>Common Use Cases for JSON Formatting</h2>
-                    <p>Our JSON formatter tool serves numerous practical purposes across various development scenarios:
-                    </p>
+                    <p>Our JSON formatter tool serves numerous practical purposes across various development
+                        scenarios:</p>
 
-                    <h3>API Development & Testing</h3>
+                    <h3>API Development &amp; Testing</h3>
                     <p>When building or consuming REST APIs, responses are typically returned in minified JSON format.
                         Use our formatter to beautify API responses, making it easier to understand endpoint structures,
                         debug authentication issues, and verify data contracts between frontend and backend systems.</p>
@@ -823,27 +989,27 @@
                         .eslintrc.json, etc.). Our formatter helps you maintain clean, readable configuration files with
                         consistent indentation and proper structure.</p>
 
-                    <h3>Database Data Export & Import</h3>
+                    <h3>Database Data Export &amp; Import</h3>
                     <p>Many NoSQL databases like MongoDB, CouchDB, and Firebase export data in JSON format. Format large
                         database dumps to analyze data structure, identify anomalies, and prepare data for migration or
                         backup operations.</p>
 
                     <h3>JSON Schema Validation for SEO</h3>
-                    <p>If you're a webmaster or SEO professional, you likely use <strong>JSON-LD structured
-                            data</strong> to enhance your website's search engine visibility. Google Search Console
-                        requires perfectly valid JSON-LD markup for Rich Snippets (star ratings, product prices, event
-                        details, FAQ sections, breadcrumbs, etc.) to appear in search results. A single syntax error in
-                        your schema markup can prevent these valuable rich results from displaying, severely impacting
-                        your click-through rates. Use our validator to ensure your Schema.org markup is syntactically
-                        perfect before deploying to production.</p>
+                    <p>If you&rsquo;re a webmaster or SEO professional, you likely use <strong>JSON-LD structured
+                            data</strong> to enhance your website&rsquo;s search engine visibility. Google Search
+                        Console requires perfectly valid JSON-LD markup for Rich Snippets (star ratings, product prices,
+                        event details, FAQ sections, breadcrumbs, etc.) to appear in search results. A single syntax
+                        error in your schema markup can prevent these valuable rich results from displaying, severely
+                        impacting your click-through rates. Use our validator to ensure your Schema.org markup is
+                        syntactically perfect before deploying to production.</p>
 
                     <h2>JSON Beautifier vs. JSON Minifier: When to Use Each</h2>
                     <p><strong>JSON Beautification</strong> (also called pretty-printing) adds whitespace, indentation,
                         and line breaks to make JSON human-readable. Use beautification during development, debugging,
                         code reviews, and documentation. <strong>JSON Minification</strong> removes all unnecessary
-                        whitespace, reducing file size by up to 30-40% for faster network transmission and improved
-                        application performance. Use minification for production deployments, API responses, and
-                        situations where bandwidth optimization is critical.</p>
+                        whitespace, reducing file size by up to 30&ndash;40% for faster network transmission and
+                        improved application performance. Use minification for production deployments, API responses,
+                        and situations where bandwidth optimization is critical.</p>
 
                     <h2>Best Practices for Working with JSON Data</h2>
                     <ul>
@@ -852,53 +1018,53 @@
                             corruption.</li>
                         <li><strong>Use Consistent Formatting:</strong> Maintain consistent indentation (2 or 4 spaces)
                             across all JSON files in your project for better readability and team collaboration.</li>
-                        <li><strong>Avoid Deep Nesting:</strong> Excessive nesting (more than 5-6 levels) makes JSON
-                            difficult to read and maintain. Consider restructuring your data model if you encounter
+                        <li><strong>Avoid Deep Nesting:</strong> Excessive nesting (more than 5&ndash;6 levels) makes
+                            JSON difficult to read and maintain. Consider restructuring your data model if you encounter
                             deeply nested objects.</li>
                         <li><strong>Escape Special Characters Properly:</strong> Ensure that quotes, backslashes, and
                             special characters in string values are properly escaped to prevent parsing errors.</li>
                         <li><strong>Compress for Production:</strong> Always minify JSON files before deploying to
-                            production environments to reduce bandwidth consumption and improve application load times.
-                        </li>
+                            production environments to reduce bandwidth consumption and improve application load
+                            times.</li>
                     </ul>
 
                     <h2>Why Choose Code Formatter JSON Formatter?</h2>
                     <p>Among hundreds of online JSON formatting tools, Code Formatter stands out for its unwavering
                         commitment to <strong>user privacy, blazing-fast performance, and developer-centric
-                            features</strong>. We don't track your data, inject ads, impose artificial file size limits,
-                        or require account registration. Our tool is completely free, works offline after initial load,
-                        and provides enterprise-grade functionality accessible to everyone from beginner developers to
-                        seasoned DevOps engineers.</p>
+                            features</strong>. We don&rsquo;t track your data, inject ads, impose artificial file size
+                        limits, or require account registration. Our tool is completely free, works offline after
+                        initial load, and provides enterprise-grade functionality accessible to everyone from beginner
+                        developers to seasoned DevOps engineers.</p>
 
                     <h2>Frequently Asked Questions</h2>
                     <div class="faq-item">
                         <strong>Is there a file size limit for JSON formatting?</strong>
-                        <p>There's no hard file size limit imposed by our tool. Since all processing happens locally in
-                            your browser, the practical limit depends on your device's available RAM and processing
-                            power. In practice, we've successfully tested files exceeding 50MB without performance
-                            degradation on modern computers.</p>
+                        <p>There&rsquo;s no hard file size limit imposed by our tool. Since all processing happens
+                            locally in your browser, the practical limit depends on your device&rsquo;s available RAM
+                            and processing power. In practice, we&rsquo;ve successfully tested files exceeding 50MB
+                            without performance degradation on modern computers.</p>
                     </div>
                     <div class="faq-item">
                         <strong>Is my JSON data secure when using this tool?</strong>
                         <p>Absolutely. Your JSON data never leaves your browser. All formatting, validation, and
-                            minification operations are performed 100% client-side using JavaScript. We don't have
+                            minification operations are performed 100% client-side using JavaScript. We don&rsquo;t have
                             servers collecting your data, which means your API keys, confidential information, and
                             sensitive data remain completely private and secure.</p>
                     </div>
                     <div class="faq-item">
                         <strong>Can I convert JSON to other formats like CSV or Excel?</strong>
-                        <p>Yes! Navigate to "JSON to CSV" from the sidebar menu to transform your JSON arrays into
-                            spreadsheet-compatible CSV format. This is particularly useful for exporting database
-                            records, analyzing tabular data, or importing JSON data into Excel, Google Sheets, or other
-                            spreadsheet applications.</p>
+                        <p>Yes! Navigate to &ldquo;JSON to CSV&rdquo; from the sidebar menu to transform your JSON
+                            arrays into spreadsheet-compatible CSV format. This is particularly useful for exporting
+                            database records, analyzing tabular data, or importing JSON data into Excel, Google Sheets,
+                            or other spreadsheet applications.</p>
                     </div>
                     <div class="faq-item">
-                        <strong>What's the difference between JSON validation and formatting?</strong>
+                        <strong>What&rsquo;s the difference between JSON validation and formatting?</strong>
                         <p>JSON validation checks whether your data conforms to valid JSON syntax rules (proper quotes,
                             correct bracket matching, valid escape sequences, etc.). JSON formatting (beautification)
                             organizes valid JSON with indentation and whitespace for improved readability. Our tool
-                            performs both operations simultaneously ? validating your input and formatting it if it's
-                            syntactically correct.</p>
+                            performs both operations simultaneously &mdash; validating your input and formatting it if
+                            it&rsquo;s syntactically correct.</p>
                     </div>
                     <div class="faq-item">
                         <strong>Does this JSON formatter work offline?</strong>
@@ -911,7 +1077,7 @@
                         <strong>How does JSON minification reduce file size?</strong>
                         <p>JSON minification removes all non-essential whitespace characters (spaces, tabs, newlines),
                             resulting in a compact single-line format. For typical JSON documents with proper
-                            indentation, minification reduces file size by 20-40%, leading to faster network
+                            indentation, minification reduces file size by 20&ndash;40%, leading to faster network
                             transmission, reduced bandwidth costs, and improved application performance.</p>
                     </div>
                     <div class="faq-item">
@@ -919,167 +1085,91 @@
                         <p>Absolutely! Our tool is perfect for validating JSON-LD structured data used in Schema.org
                             markup for SEO purposes. It will catch syntax errors that could prevent your rich snippets
                             from appearing in Google search results. For full semantic validation against Schema.org
-                            vocabularies, consider using Google's Rich Results Test after ensuring syntactic validity
-                            with our formatter.</p>
+                            vocabularies, consider using Google&rsquo;s Rich Results Test after ensuring syntactic
+                            validity with our formatter.</p>
                     </div>
                     <div class="faq-item">
                         <strong>What error messages does the JSON validator provide?</strong>
                         <p>Our advanced JSON parser provides detailed error diagnostics including the specific line
                             number, character position, and descriptive error message explaining what went wrong (e.g.,
-                            "Unexpected token '}' at line 15, column 8" or "Expected comma or closing brace after
-                            property value"). This precision dramatically speeds up debugging compared to generic error
-                            messages.</p>
+                            &ldquo;Unexpected token &rsquo;}&rsquo; at line 15, column 8&rdquo; or &ldquo;Expected
+                            comma or closing brace after property value&rdquo;). This precision dramatically speeds up
+                            debugging compared to generic error messages.</p>
                     </div>
 
-                    <h2>?? Latest Developer Resources</h2>
-                    <div
-                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 25px 0;">
-                        <a href="blog-json-online-formatter.html"
-                            style="display: block; padding: 20px; background: #18181b; border: 1px solid #27272a; border-radius: 12px; text-decoration: none; transition: all 0.2s;">
-                            <h4 style="color: #f4f4f5; margin: 0 0 8px 0; font-size: 1rem;">JSON Formatter Guide</h4>
-                            <p style="color: #71717a; margin: 0; font-size: 0.9rem;">Complete guide to beautifying and
-                                validating JSON data</p>
+                    <h2>Latest Developer Resources</h2>
+                    <div class="blog-cards-grid">
+                        <a href="blog-json-online-formatter.html" class="blog-card">
+                            <h4>JSON Formatter Guide</h4>
+                            <p>Complete guide to beautifying and validating JSON data</p>
                         </a>
-                        <a href="blog-json-minify-online.html"
-                            style="display: block; padding: 20px; background: #18181b; border: 1px solid #27272a; border-radius: 12px; text-decoration: none; transition: all 0.2s;">
-                            <h4 style="color: #f4f4f5; margin: 0 0 8px 0; font-size: 1rem;">JSON Minifier Guide</h4>
-                            <p style="color: #71717a; margin: 0; font-size: 0.9rem;">Reduce JSON file size by 40% for
-                                faster performance</p>
+                        <a href="blog-json-minify-online.html" class="blog-card">
+                            <h4>JSON Minifier Guide</h4>
+                            <p>Reduce JSON file size by 40% for faster performance</p>
                         </a>
-                        <a href="blog-css-online-formatter.html"
-                            style="display: block; padding: 20px; background: #18181b; border: 1px solid #27272a; border-radius: 12px; text-decoration: none; transition: all 0.2s;">
-                            <h4 style="color: #f4f4f5; margin: 0 0 8px 0; font-size: 1rem;">CSS Formatter Online</h4>
-                            <p style="color: #71717a; margin: 0; font-size: 0.9rem;">Beautify and organize messy CSS
-                                code instantly</p>
+                        <a href="blog-css-online-formatter.html" class="blog-card">
+                            <h4>CSS Formatter Online</h4>
+                            <p>Beautify and organize messy CSS code instantly</p>
                         </a>
-                        <a href="blog-json-tree-viewer.html"
-                            style="display: block; padding: 20px; background: #18181b; border: 1px solid #27272a; border-radius: 12px; text-decoration: none; transition: all 0.2s;">
-                            <h4 style="color: #f4f4f5; margin: 0 0 8px 0; font-size: 1rem;">JSON Tree Viewer</h4>
-                            <p style="color: #71717a; margin: 0; font-size: 0.9rem;">Visualize complex JSON structures
-                                with collapsible tree view</p>
+                        <a href="blog-json-tree-viewer.html" class="blog-card">
+                            <h4>JSON Tree Viewer</h4>
+                            <p>Visualize complex JSON structures with collapsible tree view</p>
                         </a>
                     </div>
-                    <p style="text-align: center;"><a href="blog.html"
-                            style="color: #818cf8; text-decoration: none; font-weight: 500;">View All Articles ?</a></p>
+                    <p style="text-align: center;">
+                        <a href="blog.html" style="color: #818cf8; text-decoration: none; font-weight: 500;">View All
+                            Articles
+                            &rarr;</a>
+                    </p>
 
                     <p style="text-align: center; margin-top: 3rem; color: #525252; font-size: 0.85rem;">
-                        Code Formatter ? 2026. Professional developer tools built with privacy and performance in mind.
+                        Code Formatter &copy; 2026. Professional developer tools built with privacy and performance in
+                        mind.
                     </p>
 
                     <p style="text-align: center; margin-top: 2rem; margin-bottom: 1rem;">
                         <a href="blog-json-formatter.html"
-                            style="color: var(--primary); font-weight: 600; text-decoration: none; font-size: 1.1rem;">??
-                            Read Our Complete JSON Formatting Guide ?</a>
+                            style="color: var(--primary); font-weight: 600; text-decoration: none; font-size: 1.1rem;">
+                            Read Our Complete JSON Formatting Guide &rarr;
+                        </a>
                     </p>
                 </article>
             </div>
         </div>
 
-        <footer class="footer">
+        <footer class="footer" role="contentinfo">
             <div class="footer-stats">
                 <div class="stat-item" id="footerStatus"><i class="fas fa-circle-notch"></i> Ready</div>
-                <div class="stat-item" id="savingsStat" style="display:none;"><i class="fas fa-arrow-down"></i> <span
-                        id="savingsText"></span> <span class="diff-tag" id="savingsBadge"></span></div>
-                <div class="footer-links"><a href="./about.html">About</a> · <a href="./privacy.html">Privacy</a> · <a
-                        href="./terms.html">Terms</a> · <a href="./contact.html">Contact</a></div>
+                <div class="stat-item" id="savingsStat" style="display:none;">
+                    <i class="fas fa-arrow-down"></i>
+                    <span id="savingsText"></span>
+                    <span class="diff-tag" id="savingsBadge"></span>
+                </div>
+                <div class="footer-links">
+                    <a href="./about.html">About</a> &middot;
+                    <a href="./privacy.html">Privacy</a> &middot;
+                    <a href="./terms.html">Terms</a> &middot;
+                    <a href="./contact.html">Contact</a>
+                </div>
             </div>
             <div class="footer-actions">
-                <button class="btn btn-sec" id="btnSecondary" onclick="runAction('secondary')">MINIFY</button>
-                <button class="btn btn-pri" id="btnPrimary" onclick="runAction('primary')"><i class="fas fa-play"></i>
-                    RUN</button>
+                <button class="btn btn-sec" id="btnSecondary" onclick="runAction('secondary')"
+                    aria-label="Minify JSON">MINIFY</button>
+                <button class="btn btn-pri" id="btnPrimary" onclick="runAction('primary')" aria-label="Format JSON"><i
+                        class="fas fa-play"></i> RUN</button>
             </div>
         </footer>
     </main>
 
-    <div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span>Action Completed</span></div>
-
-    <!-- JSON-LD Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Code Formatter JSON Formatter",
-        "url": "https://codeformatter.in/",
-        "description": "Free online JSON formatter, validator and beautifier tool. Format, validate and minify JSON data with 100% client-side processing for complete privacy.",
-        "applicationCategory": "DeveloperApplication",
-        "operatingSystem": "Any",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        },
-        "featureList": ["JSON Formatting", "JSON Validation", "JSON Minification", "Syntax Highlighting", "Error Detection", "Client-side Processing"],
-        "browserRequirements": "Requires JavaScript"
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "Is there a file size limit for JSON formatting?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "There's no hard file size limit imposed by our tool. Since all processing happens locally in your browser, the practical limit depends on your device's available RAM and processing power. In practice, we've successfully tested files exceeding 50MB without performance degradation on modern computers."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Is my JSON data secure when using this tool?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Absolutely. Your JSON data never leaves your browser. All formatting, validation, and minification operations are performed 100% client-side using JavaScript. We don't have servers collecting your data."
-                }
-            }
-        ]
-    }</script>
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "HowTo",
-        "name": "How to Format JSON Online",
-        "description": "Learn how to format and validate JSON data using our online JSON formatter tool",
-        "step": [
-            {
-                "@type": "HowToStep",
-                "name": "Paste JSON Data",
-                "text": "Copy your raw, minified, or malformed JSON string and paste it into the Input pane"
-            },
-            {
-                "@type": "HowToStep",
-                "name": "Automatic Validation",
-                "text": "The tool automatically validates and beautifies your JSON with proper indentation"
-            },
-            {
-                "@type": "HowToStep",
-                "name": "Copy or Download",
-                "text": "Use the copy button or download the formatted JSON to your computer"
-            }
-        ]
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Code Formatter",
-        "url": "https://codeformatter.in/",
-        "logo": "https://codeformatter.in/logo.png",
-        "description": "Professional developer tools for JSON formatting, validation, image compression, and code beautification"
-    }
-    </script>
+    <div class="toast" id="toast" role="alert" aria-live="assertive">
+        <i class="fas fa-check-circle"></i>
+        <span>Action Completed</span>
+    </div>
 
     <script>
-        const activeToolId = "json-fmt"; 
+        const activeToolId = "json-fmt";
     </script>
     <script src="script.js"></script>
 </body>
 
 </html>
-
-
