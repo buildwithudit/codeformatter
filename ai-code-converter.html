@@ -410,6 +410,120 @@
             left: 100%
         }
 
+        /* Empty State */
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-align: center;
+            padding: 30px 20px;
+            gap: 16px
+        }
+
+        .empty-state-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(6, 182, 212, 0.15));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--primary);
+            border: 1px dashed rgba(99, 102, 241, 0.3);
+            animation: emptyPulse 3s ease-in-out infinite;
+            position: relative
+        }
+
+        .empty-state-icon::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 24px;
+            border: 1px dashed rgba(99, 102, 241, 0.15);
+            animation: emptyRotate 12s linear infinite
+        }
+
+        @keyframes emptyPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.85
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 1
+            }
+        }
+
+        @keyframes emptyRotate {
+            from {
+                transform: rotate(0deg)
+            }
+
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        html.light .empty-state-icon {
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(8, 145, 178, 0.1));
+            border-color: rgba(79, 70, 229, 0.25)
+        }
+
+        .empty-state-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-main);
+            letter-spacing: -0.01em
+        }
+
+        .empty-state-steps {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center
+        }
+
+        .empty-step {
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            background: rgba(99, 102, 241, 0.06);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap
+        }
+
+        .empty-step i {
+            color: var(--primary);
+            font-size: 0.7rem
+        }
+
+        html.light .empty-step {
+            background: rgba(79, 70, 229, 0.04)
+        }
+
+        .empty-step-arrow {
+            color: var(--border-color);
+            font-size: 0.65rem
+        }
+
+        .empty-state-sub {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            opacity: 0.7
+        }
+
         .content-container {
             margin: 20px auto 40px auto;
             padding: 0 20px;
@@ -883,14 +997,17 @@
                         </div>
                     </div>
                     <div id="convertedOutput">
-                        <div
-                            style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center;color:var(--text-muted)">
-                            <i class="fas fa-exchange-alt"
-                                style="font-size:3rem;color:var(--primary);margin-bottom:16px;opacity:0.5"></i>
-                            <p style="font-size:1.1rem;font-weight:500;margin:0 0 8px 0;color:var(--text-main)">Paste
-                                code &amp; click Convert</p>
-                            <p style="font-size:0.9rem;margin:0">Supports Python, JavaScript, Java, C++, Go &amp; more
-                            </p>
+                        <div class="empty-state">
+                            <div class="empty-state-icon"><i class="fas fa-exchange-alt"></i></div>
+                            <div class="empty-state-title">Converted code appears here</div>
+                            <div class="empty-state-steps">
+                                <span class="empty-step"><i class="fas fa-paste"></i> Paste code</span>
+                                <span class="empty-step-arrow"><i class="fas fa-chevron-right"></i></span>
+                                <span class="empty-step"><i class="fas fa-language"></i> Pick language</span>
+                                <span class="empty-step-arrow"><i class="fas fa-chevron-right"></i></span>
+                                <span class="empty-step"><i class="fas fa-bolt"></i> Click Convert</span>
+                            </div>
+                            <div class="empty-state-sub">Supports Python, JavaScript, Java, C++, Go &amp; 6 more</div>
                         </div>
                     </div>
                 </div>
@@ -1055,7 +1172,7 @@
     <script src="script.js"></script>
     <script>
         function pasteCode() { navigator.clipboard.readText().then(t => { document.getElementById('codeInput').value = t }).catch(() => { }) }
-        function clearAll() { document.getElementById('codeInput').value = ''; document.getElementById('convertedOutput').innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center;color:var(--text-muted)"><i class="fas fa-exchange-alt" style="font-size:3rem;color:var(--primary);margin-bottom:16px;opacity:0.5"></i><p style="font-size:1.1rem;font-weight:500;margin:0 0 8px 0;color:var(--text-main)">Paste code & click Convert</p><p style="font-size:0.9rem;margin:0">Supports Python, JavaScript, Java, C++, Go & more</p></div>' }
+        function clearAll() { document.getElementById('codeInput').value = ''; document.getElementById('convertedOutput').innerHTML = '<div class="empty-state"><div class="empty-state-icon"><i class="fas fa-exchange-alt"></i></div><div class="empty-state-title">Converted code appears here</div><div class="empty-state-steps"><span class="empty-step"><i class="fas fa-paste"></i> Paste code</span><span class="empty-step-arrow"><i class="fas fa-chevron-right"></i></span><span class="empty-step"><i class="fas fa-language"></i> Pick language</span><span class="empty-step-arrow"><i class="fas fa-chevron-right"></i></span><span class="empty-step"><i class="fas fa-bolt"></i> Click Convert</span></div><div class="empty-state-sub">Supports Python, JavaScript, Java, C++, Go & 6 more</div></div>' }
         function copyOutput() { const t = document.getElementById('convertedOutput').innerText; navigator.clipboard.writeText(t); showToast('Converted code copied!') }
         function swapLanguages() { const s = document.getElementById('sourceLang'); const t = document.getElementById('targetLang'); const sv = s.value; s.value = t.value; t.value = sv }
         const langNames = { javascript: 'JavaScript', python: 'Python', java: 'Java', cpp: 'C++', csharp: 'C#', typescript: 'TypeScript', php: 'PHP', go: 'Go', rust: 'Rust', ruby: 'Ruby', swift: 'Swift' };

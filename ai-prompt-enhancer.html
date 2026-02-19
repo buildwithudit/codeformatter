@@ -653,6 +653,120 @@
             font-weight: 500
         }
 
+        /* Empty State */
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-align: center;
+            padding: 30px 20px;
+            gap: 16px
+        }
+
+        .empty-state-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(6, 182, 212, 0.15));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--primary);
+            border: 1px dashed rgba(99, 102, 241, 0.3);
+            animation: emptyPulse 3s ease-in-out infinite;
+            position: relative
+        }
+
+        .empty-state-icon::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 24px;
+            border: 1px dashed rgba(99, 102, 241, 0.15);
+            animation: emptyRotate 12s linear infinite
+        }
+
+        @keyframes emptyPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.85
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 1
+            }
+        }
+
+        @keyframes emptyRotate {
+            from {
+                transform: rotate(0deg)
+            }
+
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        html.light .empty-state-icon {
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(8, 145, 178, 0.1));
+            border-color: rgba(79, 70, 229, 0.25)
+        }
+
+        .empty-state-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-main);
+            letter-spacing: -0.01em
+        }
+
+        .empty-state-steps {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center
+        }
+
+        .empty-step {
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            background: rgba(99, 102, 241, 0.06);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap
+        }
+
+        .empty-step i {
+            color: var(--primary);
+            font-size: 0.7rem
+        }
+
+        html.light .empty-step {
+            background: rgba(79, 70, 229, 0.04)
+        }
+
+        .empty-step-arrow {
+            color: var(--border-color);
+            font-size: 0.65rem
+        }
+
+        .empty-state-sub {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            opacity: 0.7
+        }
+
         @media(max-width:768px) {
             .workspace-top {
                 flex-direction: column
@@ -901,14 +1015,18 @@
                             </div>
                         </div>
                         <div id="enhancedOutput">
-                            <div
-                                style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center;color:var(--text-muted)">
-                                <i class="fas fa-wand-magic-sparkles"
-                                    style="font-size:3rem;color:var(--primary);margin-bottom:16px;opacity:0.5"></i>
-                                <p style="font-size:1.1rem;font-weight:500;margin:0 0 8px 0;color:var(--text-main)">Type
-                                    a prompt &amp; click Enhance</p>
-                                <p style="font-size:0.9rem;margin:0">Your basic prompt will be transformed into a
-                                    detailed, optimized version</p>
+                            <div class="empty-state">
+                                <div class="empty-state-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+                                <div class="empty-state-title">Enhanced prompt appears here</div>
+                                <div class="empty-state-steps">
+                                    <span class="empty-step"><i class="fas fa-pen-nib"></i> Write a prompt</span>
+                                    <span class="empty-step-arrow"><i class="fas fa-chevron-right"></i></span>
+                                    <span class="empty-step"><i class="fas fa-sliders-h"></i> Pick options</span>
+                                    <span class="empty-step-arrow"><i class="fas fa-chevron-right"></i></span>
+                                    <span class="empty-step"><i class="fas fa-bolt"></i> Click Enhance</span>
+                                </div>
+                                <div class="empty-state-sub">Works with ChatGPT, Gemini, Claude, Midjourney &amp; more
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -930,7 +1048,8 @@
                             about dogs&rdquo; or &ldquo;Explain quantum computing.&rdquo;</li>
                         <li><strong>Choose Your Settings:</strong> Select the <strong>Tone</strong> (Professional,
                             Casual, Academic, Creative), <strong>Detail Level</strong> (Concise, Detailed, Expert), and
-                            <strong>Purpose</strong> (ChatGPT, Coding, Writing, Image Gen).</li>
+                            <strong>Purpose</strong> (ChatGPT, Coding, Writing, Image Gen).
+                        </li>
                         <li><strong>Click Enhance:</strong> Our engine analyzes your intent, adds context, structure,
                             constraints, and formatting instructions to produce a prompt that gets 10x better AI output.
                         </li>
@@ -1048,7 +1167,7 @@
         function selectChip(el, groupId) { document.querySelectorAll('#' + groupId + ' .chip').forEach(c => c.classList.remove('active')); el.classList.add('active') }
         function getSelected(groupId) { const a = document.querySelector('#' + groupId + ' .chip.active'); return a ? a.dataset.value : '' }
         function pastePrompt() { navigator.clipboard.readText().then(t => { document.getElementById('promptInput').value = t; updateWordCount() }).catch(() => { }) }
-        function clearAll() { document.getElementById('promptInput').value = ''; updateWordCount(); document.getElementById('enhancedOutput').innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center;color:var(--text-muted)"><i class="fas fa-wand-magic-sparkles" style="font-size:3rem;color:var(--primary);margin-bottom:16px;opacity:0.5"></i><p style="font-size:1.1rem;font-weight:500;margin:0 0 8px 0;color:var(--text-main)">Type a prompt & click Enhance</p><p style="font-size:0.9rem;margin:0">Your basic prompt will be transformed into a detailed, optimized version</p></div>'; document.getElementById('outputWordCount').textContent = '0 words' }
+        function clearAll() { document.getElementById('promptInput').value = ''; updateWordCount(); document.getElementById('enhancedOutput').innerHTML = '<div class="empty-state"><div class="empty-state-icon"><i class="fas fa-wand-magic-sparkles"></i></div><div class="empty-state-title">Enhanced prompt appears here</div><div class="empty-state-steps"><span class="empty-step"><i class="fas fa-pen-nib"></i> Write a prompt</span><span class="empty-step-arrow"><i class="fas fa-chevron-right"></i></span><span class="empty-step"><i class="fas fa-sliders-h"></i> Pick options</span><span class="empty-step-arrow"><i class="fas fa-chevron-right"></i></span><span class="empty-step"><i class="fas fa-bolt"></i> Click Enhance</span></div><div class="empty-state-sub">Works with ChatGPT, Gemini, Claude, Midjourney & more</div></div>'; document.getElementById('outputWordCount').textContent = '0 words' }
         function copyOutput() { const t = document.getElementById('enhancedOutput').innerText; navigator.clipboard.writeText(t); showToast('Enhanced prompt copied!') }
         function updateWordCount() { const v = document.getElementById('promptInput').value.trim(); const w = v ? v.split(/\s+/).length : 0; document.getElementById('inputWordCount').textContent = w + ' word' + (w !== 1 ? 's' : '') }
 
