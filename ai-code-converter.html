@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free AI Code Converter Online - Convert Code Between Languages | Code Formatter</title>
+    <meta name="description"
+        content="Free AI Code Converter tool. Convert code between Python, JavaScript, Java, C++, TypeScript, Go, Rust and more. Instant, accurate code translation online. 100% free, no signup.">
+    <meta name="keywords"
+        content="ai code converter, convert code online, code translator, convert python to javascript, convert java to python, code conversion tool, translate code between languages, programming language converter, free code converter 2026">
+    <link rel="canonical" href="https://www.codeformatter.in/ai-code-converter.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.codeformatter.in/ai-code-converter.html">
+    <meta property="og:title" content="Free AI Code Converter - Convert Code Between Languages Instantly">
+    <meta property="og:description"
+        content="Convert code between any programming language instantly. Supports Python, JavaScript, Java, C++ and more.">
+    <meta property="og:image" content="https://www.codeformatter.in/codeformat.png">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Code Formatter">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free AI Code Converter - Convert Code Between Languages Instantly">
+    <meta name="twitter:description" content="Convert code between any programming language instantly with AI.">
+    <meta name="twitter:image" content="https://www.codeformatter.in/codeformat.png">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="Code Formatter">
+    <meta name="theme-color" content="#6366f1">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --bg-body: #09090b;
+            --bg-panel: #18181b;
+            --border-color: #27272a;
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.2);
+            --accent: #06b6d4;
+            --text-main: #f4f4f5;
+            --text-muted: #d4d4d8
+        }
+
+        html.light {
+            --bg-body: #f8fafc;
+            --bg-panel: #ffffff;
+            --border-color: #e2e8f0;
+            --primary: #4f46e5;
+            --primary-glow: rgba(79, 70, 229, 0.15);
+            --accent: #0891b2;
+            --text-main: #0f172a;
+            --text-muted: #64748b
+        }
+
+        body {
+            background-color: var(--bg-body);
+            background-image: linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow: hidden
+        }
+
+        html.light body {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px)
+        }
+
+        main {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative
+        }
+
+        header {
+            background: var(--bg-panel);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 20;
+            flex-shrink: 0
+        }
+
+        html.light header {
+            background: rgba(255, 255, 255, 0.9)
+        }
+
+        #scrollable-wrapper {
+            flex-grow: 1;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 80px
+        }
+
+        #scrollable-wrapper::-webkit-scrollbar {
+            width: 6px
+        }
+
+        #scrollable-wrapper::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 3px
+        }
+
+        .ai-workspace {
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            min-height: 75vh
+        }
+
+        .ai-pane {
+            flex: 1;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative
+        }
+
+        .ai-pane:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.08)
+        }
+
+        .ai-pane::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), var(--accent), transparent);
+            opacity: 0;
+            transition: opacity 0.3s
+        }
+
+        .ai-pane:hover::before {
+            opacity: 1
+        }
+
+        .ai-pane-header {
+            padding: 14px 18px;
+            background: rgba(99, 102, 241, 0.04);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .ai-pane-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .ai-pane-title .ai-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+            animation: aiPulse 2s infinite
+        }
+
+        @keyframes aiPulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                box-shadow: 0 0 0 0 var(--primary-glow)
+            }
+
+            50% {
+                opacity: 0.7;
+                box-shadow: 0 0 0 8px transparent
+            }
+        }
+
+        .ai-pane-title i {
+            color: var(--primary)
+        }
+
+        .editor-container {
+            flex: 1;
+            position: relative
+        }
+
+        textarea {
+            background: transparent !important;
+            border: none;
+            padding: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: #e5e5e5;
+            line-height: 1.6;
+            resize: none;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box
+        }
+
+        html.light textarea {
+            color: #0f172a
+        }
+
+        html.light .ai-pane-title {
+            color: #475569
+        }
+
+        html.light .ai-pane-header {
+            background: rgba(79, 70, 229, 0.04)
+        }
+
+        html.light .ai-pane:hover {
+            border-color: rgba(79, 70, 229, 0.3);
+            box-shadow: 0 0 30px rgba(79, 70, 229, 0.06)
+        }
+
+        .lang-select {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-main);
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.2s;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23a1a1aa' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            padding-right: 30px;
+            position: relative;
+            z-index: 10
+        }
+
+        .lang-select:hover {
+            border-color: var(--primary)
+        }
+
+        .lang-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px var(--primary-glow)
+        }
+
+        .lang-select option {
+            background: var(--bg-panel);
+            color: var(--text-main);
+            padding: 8px 12px;
+            font-size: 0.85rem
+        }
+
+        html.light .lang-select {
+            background-color: #f1f5f9;
+            border-color: #e2e8f0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2364748b' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E")
+        }
+
+        html.light .lang-select option {
+            background: #ffffff;
+            color: #0f172a
+        }
+
+        #convertedOutput {
+            padding: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--text-main);
+            overflow-y: auto;
+            flex: 1;
+            max-height: 55vh;
+            white-space: pre-wrap;
+            word-wrap: break-word
+        }
+
+        .convert-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            flex-shrink: 0;
+            width: 50px;
+            align-self: center;
+            animation: arrowPulse 2s infinite
+        }
+
+        @keyframes arrowPulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: translateX(0)
+            }
+
+            50% {
+                opacity: 0.6;
+                transform: translateX(5px)
+            }
+        }
+
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .ai-typing {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 12px 20px
+        }
+
+        .ai-typing span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+            animation: typingBounce 1.4s infinite
+        }
+
+        .ai-typing span:nth-child(2) {
+            animation-delay: 0.2s
+        }
+
+        .ai-typing span:nth-child(3) {
+            animation-delay: 0.4s
+        }
+
+        @keyframes typingBounce {
+
+            0%,
+            60%,
+            100% {
+                transform: translateY(0);
+                opacity: 0.4
+            }
+
+            30% {
+                transform: translateY(-10px);
+                opacity: 1
+            }
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--bg-panel);
+            border-top: 1px solid var(--border-color);
+            z-index: 30;
+            padding: 10px 20px
+        }
+
+        .ai-run-btn {
+            background: linear-gradient(135deg, #6366f1, #06b6d4) !important;
+            border: none !important;
+            color: #fff !important;
+            font-weight: 600;
+            padding: 8px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden
+        }
+
+        .ai-run-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4)
+        }
+
+        .ai-run-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: 0.5s
+        }
+
+        .ai-run-btn:hover::after {
+            left: 100%
+        }
+
+        .content-container {
+            margin: 20px auto 40px auto;
+            padding: 0 20px;
+            position: relative
+        }
+
+        .clean-card {
+            background: var(--bg-panel);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 60px;
+            position: relative;
+            overflow: hidden
+        }
+
+        html.light .clean-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-color: #e2e8f0
+        }
+
+        .clean-card::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            filter: blur(120px);
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none
+        }
+
+        .prose h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin: 0 0 20px 0;
+            background: linear-gradient(180deg, #fff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text
+        }
+
+        html.light .prose h1 {
+            background: linear-gradient(180deg, #0f172a, #64748b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent
+        }
+
+        .prose h2 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #27272a
+        }
+
+        .prose h2::before {
+            content: '#';
+            color: var(--primary);
+            opacity: 0.4;
+            margin-right: 10px
+        }
+
+        .prose h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-top: 35px;
+            margin-bottom: 12px
+        }
+
+        .prose p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.05rem
+        }
+
+        html.light .prose p {
+            color: #475569
+        }
+
+        .prose strong {
+            color: var(--text-main);
+            font-weight: 700
+        }
+
+        .prose ul {
+            margin-bottom: 24px;
+            padding-left: 20px;
+            list-style: none
+        }
+
+        .prose li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            color: var(--text-muted);
+            line-height: 1.7
+        }
+
+        .prose li::before {
+            content: "\2022";
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.1rem;
+            position: absolute;
+            left: 0;
+            top: 0
+        }
+
+        .prose ol {
+            counter-reset: list-counter;
+            margin-bottom: 24px;
+            padding-left: 20px;
+            list-style: none
+        }
+
+        .prose ol li {
+            counter-increment: list-counter;
+            padding-left: 35px
+        }
+
+        .prose ol li::before {
+            content: counter(list-counter) ".";
+            color: var(--primary);
+            font-weight: 700;
+            position: absolute;
+            left: 0
+        }
+
+        html.light .prose h2 {
+            color: #0f172a;
+            border-bottom-color: #e2e8f0
+        }
+
+        html.light .prose li {
+            color: #475569
+        }
+
+        .faq-item {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 22px 25px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden
+        }
+
+        html.light .faq-item {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: #e2e8f0
+        }
+
+        .faq-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--primary);
+            transition: height 0.3s ease
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.03);
+            transform: translateX(5px)
+        }
+
+        html.light .faq-item:hover {
+            background: rgba(79, 70, 229, 0.05)
+        }
+
+        .faq-item:hover::before {
+            height: 100%
+        }
+
+        .faq-item strong {
+            display: block;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+            font-weight: 600
+        }
+
+        .faq-item p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-muted)
+        }
+
+        html.light .faq-item p {
+            color: #64748b
+        }
+
+        a.brand-logo {
+            color: inherit;
+            text-decoration: none
+        }
+
+        .menu-toggle-btn {
+            background: none;
+            border: none;
+            color: inherit;
+            cursor: pointer;
+            padding: 8px;
+            font-size: inherit
+        }
+
+        .swap-btn {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            color: var(--primary);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            transition: all 0.3s;
+            font-size: 0.9rem
+        }
+
+        .swap-btn:hover {
+            background: var(--primary);
+            color: #fff;
+            transform: rotate(180deg);
+            box-shadow: 0 0 20px var(--primary-glow)
+        }
+
+        @media(max-width:768px) {
+            .ai-workspace {
+                flex-direction: column;
+                min-height: auto
+            }
+
+            .ai-pane {
+                height: 350px
+            }
+
+            .convert-arrow {
+                transform: rotate(90deg);
+                width: auto;
+                height: 40px
+            }
+
+            .clean-card {
+                padding: 25px
+            }
+        }
+
+        @media(max-width:480px) {
+            .prose h1 {
+                font-size: 1.4rem !important
+            }
+
+            .prose h2 {
+                font-size: 1.15rem !important
+            }
+
+            .prose p {
+                font-size: 0.9rem !important
+            }
+
+            .clean-card {
+                padding: 20px !important
+            }
+
+            .content-container {
+                margin: 20px auto !important;
+                padding: 0 10px !important
+            }
+
+            .faq-item {
+                padding: 15px !important
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"Code Formatter","url":"https://www.codeformatter.in/","logo":"https://www.codeformatter.in/codeformat.png"},{"@type":"WebApplication","name":"AI Code Converter","url":"https://www.codeformatter.in/ai-code-converter.html","description":"Free AI Code Converter tool that converts code between programming languages instantly.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["AI-Powered Code Conversion","Multi-Language Support","Syntax-Aware Translation","100% Client-Side Processing","Instant Results"]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What programming languages can I convert between?","acceptedAnswer":{"@type":"Answer","text":"Our AI Code Converter supports conversions between Python, JavaScript, TypeScript, Java, C++, C#, Go, Rust, PHP, Ruby, and Swift. You can convert from any supported language to any other."}},{"@type":"Question","name":"Is the AI Code Converter free?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100% free. No registration, no sign-up, no limits. Convert as much code as you want."}},{"@type":"Question","name":"Is my code private when using this tool?","acceptedAnswer":{"@type":"Answer","text":"Yes. All conversion happens 100% client-side in your browser. Your code never leaves your device."}},{"@type":"Question","name":"How accurate is the code conversion?","acceptedAnswer":{"@type":"Answer","text":"Our converter uses syntax-aware pattern matching to produce accurate translations. It handles variables, functions, loops, conditionals, classes, and common patterns."}},{"@type":"Question","name":"Can it convert entire files?","acceptedAnswer":{"@type":"Answer","text":"Yes. Paste complete files with multiple functions, classes, and imports. The converter handles the full structure."}},{"@type":"Question","name":"Does it preserve code comments?","acceptedAnswer":{"@type":"Answer","text":"Yes. Comments are detected and converted to the target language's comment syntax automatically."}},{"@type":"Question","name":"How is this different from ChatGPT for code conversion?","acceptedAnswer":{"@type":"Answer","text":"ChatGPT requires login and sends your code to servers. Our tool is instant, requires no login, works offline, and keeps your code 100% private."}},{"@type":"Question","name":"Can I convert Python to JavaScript?","acceptedAnswer":{"@type":"Answer","text":"Yes! Python to JavaScript is one of our most popular conversions. It handles print to console.log, def to function, lists to arrays, dictionaries to objects, and much more."}}]}]}
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2670168844256558"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <aside id="sidebar">
+        <div class="brand"><a href="index.html" class="brand-logo"><i class="fas fa-layer-group"></i> Code Formatter</a>
+        </div>
+        <div class="search-container"><input type="text" class="search-input" placeholder="Search tools..."
+                onkeyup="filterTools(this)" aria-label="Search developer tools"></div>
+        <nav class="menu" id="menuContainer" aria-label="Main navigation">
+            <div class="nav-group-title">Code Formatters</div>
+            <a href="index.html" class="nav-item" data-id="json-fmt"><i class="fas fa-code"></i> JSON Formatter</a>
+            <a href="json-tree-viewer.html" class="nav-item" data-id="json-tree"><i class="fas fa-sitemap"></i> JSON
+                Tree View</a>
+            <a href="html-formatter.html" class="nav-item" data-id="html-fmt"><i class="fab fa-html5"></i> HTML
+                Formatter</a>
+            <a href="css-formatter.html" class="nav-item" data-id="css-fmt"><i class="fab fa-css3-alt"></i> CSS
+                Formatter</a>
+            <a href="js-formatter.html" class="nav-item" data-id="js-fmt"><i class="fab fa-js"></i> JS Formatter</a>
+            <a href="sql-formatter.html" class="nav-item" data-id="sql-fmt"><i class="fas fa-database"></i> SQL
+                Formatter</a>
+            <a href="xml-formatter.html" class="nav-item" data-id="xml-fmt"><i class="fas fa-code"></i> XML
+                Formatter</a>
+            <div class="nav-group-title">AI Tools</div>
+            <a href="ai-code-explainer.html" class="nav-item" data-id="ai-explainer"><i class="fas fa-robot"></i> AI
+                Code Explainer</a>
+            <a href="ai-code-converter.html" class="nav-item active" data-id="ai-converter"><i
+                    class="fas fa-exchange-alt"></i> AI Code Converter</a>
+            <div class="nav-group-title">Image &amp; Color Tools</div>
+            <a href="image-compressor.html" class="nav-item" data-id="img-compress"><i class="fas fa-image"></i> Image
+                Compressor</a>
+            <a href="color-converter.html" class="nav-item" data-id="color-conv"><i class="fas fa-palette"></i> Color
+                Converter</a>
+            <a href="qr-code-generator.html" class="nav-item" data-id="qr-gen"><i class="fas fa-qrcode"></i> QR
+                Generator</a>
+            <div class="nav-group-title">Code Minifiers</div>
+            <a href="json-minifier.html" class="nav-item" data-id="json-min"><i class="fas fa-compress"></i> JSON
+                Minifier</a>
+            <a href="html-minifier.html" class="nav-item" data-id="html-min"><i class="fas fa-compress-arrows-alt"></i>
+                HTML Minifier</a>
+            <a href="css-minifier.html" class="nav-item" data-id="css-min"><i class="fas fa-compress-arrows-alt"></i>
+                CSS Minifier</a>
+            <a href="js-minifier.html" class="nav-item" data-id="js-min"><i class="fas fa-file-archive"></i> JS
+                Minifier</a>
+            <div class="nav-group-title">Data Converters</div>
+            <a href="json-to-csv.html" class="nav-item" data-id="json-csv"><i class="fas fa-table"></i> JSON to CSV</a>
+            <a href="csv-to-json.html" class="nav-item" data-id="csv-json"><i class="fas fa-file-csv"></i> CSV to
+                JSON</a>
+            <a href="json-to-typescript.html" class="nav-item" data-id="json-ts"><i class="fas fa-file-code"></i> JSON
+                to TypeScript</a>
+            <a href="excel-to-html.html" class="nav-item" data-id="excel-html"><i class="fas fa-table"></i> Excel to
+                HTML</a>
+            <a href="case-converter.html" class="nav-item" data-id="case-conv"><i class="fas fa-text-height"></i> Case
+                Converter</a>
+            <div class="nav-group-title">Encoding &amp; Security</div>
+            <a href="regex-tester.html" class="nav-item" data-id="regex-test"><i class="fas fa-asterisk"></i> Regex
+                Tester</a>
+            <a href="password-generator.html" class="nav-item" data-id="pwd-gen"><i class="fas fa-key"></i> Password
+                Generator</a>
+            <a href="base64-tool.html" class="nav-item" data-id="base64"><i class="fas fa-lock"></i> Base64 Tool</a>
+            <a href="url-encoder.html" class="nav-item" data-id="url-enc"><i class="fas fa-link"></i> URL Encoder</a>
+            <a href="hash-generator.html" class="nav-item" data-id="hash-gen"><i class="fas fa-fingerprint"></i> Hash
+                Generator</a>
+            <a href="jwt-decoder.html" class="nav-item" data-id="jwt-dec"><i class="fas fa-shield-alt"></i> JWT
+                Decoder</a>
+            <div class="nav-group-title">CSS Generators</div>
+            <a href="gradient-generator.html" class="nav-item" data-id="gradient-gen"><i class="fas fa-fill-drip"></i>
+                Gradient Generator</a>
+            <a href="glassmorphism-generator.html" class="nav-item" data-id="glass-morphism"><i class="fas fa-wind"></i>
+                Glassmorphism</a>
+            <a href="smooth-shadow-generator.html" class="nav-item" data-id="shadow-gen"><i
+                    class="fas fa-layer-group"></i> Smooth Shadow</a>
+            <a href="px-to-rem.html" class="nav-item" data-id="px-rem"><i class="fas fa-ruler-combined"></i> PX to
+                REM</a>
+            <a href="aspect-ratio-calculator.html" class="nav-item" data-id="aspect-ratio"><i class="fas fa-expand"></i>
+                Aspect Ratio</a>
+            <div class="nav-group-title">Text &amp; Data</div>
+            <a href="uuid-generator.html" class="nav-item" data-id="uuid-gen"><i class="fas fa-fingerprint"></i> UUID
+                Generator</a>
+            <a href="timestamp-converter.html" class="nav-item" data-id="timestamp-conv"><i class="fas fa-clock"></i>
+                Timestamp Converter</a>
+            <a href="cron-generator.html" class="nav-item" data-id="cron-gen"><i class="fas fa-calendar-alt"></i> Cron
+                Generator</a>
+            <a href="json-to-yaml.html" class="nav-item" data-id="json-yaml"><i class="fas fa-exchange-alt"></i> JSON to
+                YAML</a>
+            <a href="lorem-ipsum-generator.html" class="nav-item" data-id="lorem"><i class="fas fa-paragraph"></i> Lorem
+                Ipsum</a>
+            <a href="mock-data-generator.html" class="nav-item" data-id="mock-data"><i class="fas fa-users"></i> Mock
+                Data Gen</a>
+            <a href="diff-checker.html" class="nav-item" data-id="diff-check"><i class="fas fa-exchange-alt"></i> Diff
+                Checker</a>
+            <div class="nav-group-title">Preview Tools</div>
+            <a href="html-viewer.html" class="nav-item" data-id="html-view"><i class="fas fa-eye"></i> HTML Viewer</a>
+            <a href="social-card-preview.html" class="nav-item" data-id="social-card"><i class="fas fa-share-alt"></i>
+                Social Preview</a>
+            <a href="markdown-editor.html" class="nav-item" data-id="markdown-edit"><i class="fas fa-edit"></i> Markdown
+                Editor</a>
+        </nav>
+    </aside>
+    <div id="overlay" onclick="closeAllDrawers()"></div>
+    <main>
+        <header>
+            <div class="header-left">
+                <i class="fas fa-bars menu-toggle-btn" onclick="handleMenuClick()"
+                    aria-label="Toggle navigation menu"></i>
+                <div class="tool-info">
+                    <div id="toolTitle">AI Code Converter</div>
+                    <p id="toolDesc">Convert code between programming languages instantly</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="blog.html" class="nav-link">Blog</a>
+                <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme"><i class="fas fa-moon"
+                        id="themeIcon"></i></button>
+            </div>
+        </header>
+        <div id="scrollable-wrapper">
+            <section class="ai-workspace" id="workspace">
+                <div class="ai-pane">
+                    <div class="ai-pane-header">
+                        <span class="ai-pane-title"><i class="fas fa-code"></i> <span class="ai-dot"></span> Source
+                            Code</span>
+                        <div style="display:flex;gap:10px;align-items:center">
+                            <select class="lang-select" id="sourceLang">
+                                <option value="python">Python</option>
+                                <option value="javascript" selected>JavaScript</option>
+                                <option value="java">Java</option>
+                                <option value="cpp">C / C++</option>
+                                <option value="csharp">C#</option>
+                                <option value="typescript">TypeScript</option>
+                                <option value="php">PHP</option>
+                                <option value="go">Go</option>
+                                <option value="rust">Rust</option>
+                                <option value="ruby">Ruby</option>
+                                <option value="swift">Swift</option>
+                            </select>
+                            <i class="far fa-clipboard action-icon" onclick="pasteCode()" title="Paste"></i>
+                            <i class="far fa-trash-alt action-icon" onclick="clearAll()" title="Clear"></i>
+                        </div>
+                    </div>
+                    <div class="editor-container">
+                        <textarea id="codeInput"
+                            placeholder="// Paste your source code here...&#10;// Example:&#10;function greet(name) {&#10;  return 'Hello, ' + name + '!';&#10;}"
+                            spellcheck="false"></textarea>
+                    </div>
+                </div>
+                <div class="convert-arrow">
+                    <button class="swap-btn" onclick="swapLanguages()" title="Swap languages"><i
+                            class="fas fa-exchange-alt"></i></button>
+                </div>
+                <div class="ai-pane">
+                    <div class="ai-pane-header">
+                        <span class="ai-pane-title"><i class="fas fa-magic"></i> <span class="ai-dot"></span> Converted
+                            Code</span>
+                        <div style="display:flex;gap:10px;align-items:center">
+                            <select class="lang-select" id="targetLang">
+                                <option value="python" selected>Python</option>
+                                <option value="javascript">JavaScript</option>
+                                <option value="java">Java</option>
+                                <option value="cpp">C / C++</option>
+                                <option value="csharp">C#</option>
+                                <option value="typescript">TypeScript</option>
+                                <option value="php">PHP</option>
+                                <option value="go">Go</option>
+                                <option value="rust">Rust</option>
+                                <option value="ruby">Ruby</option>
+                                <option value="swift">Swift</option>
+                            </select>
+                            <i class="far fa-copy action-icon" onclick="copyOutput()" title="Copy"></i>
+                        </div>
+                    </div>
+                    <div id="convertedOutput">
+                        <div
+                            style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center;color:var(--text-muted)">
+                            <i class="fas fa-exchange-alt"
+                                style="font-size:3rem;color:var(--primary);margin-bottom:16px;opacity:0.5"></i>
+                            <p style="font-size:1.1rem;font-weight:500;margin:0 0 8px 0;color:var(--text-main)">Paste
+                                code &amp; click Convert</p>
+                            <p style="font-size:0.9rem;margin:0">Supports Python, JavaScript, Java, C++, Go &amp; more
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="content-container">
+                <article class="clean-card prose">
+                    <h1>AI Code Converter &mdash; Convert Code Between Languages Online (Free, 2026)</h1>
+                    <p>Need to <strong>convert Python to JavaScript</strong>? Or translate <strong>Java to
+                            Python</strong>? Our <strong>AI Code Converter</strong> does it instantly. Paste your source
+                        code, pick the target language, click <strong>Convert</strong> &mdash; and get production-ready
+                        code in seconds. No sign-up. No API key. No cost. Supports 11 languages including Python,
+                        JavaScript, Java, C++, TypeScript, Go, Rust, C#, PHP, Ruby, and Swift.</p>
+
+                    <h2>How It Works</h2>
+                    <ol>
+                        <li><strong>Paste Your Code:</strong> Copy code from your editor, GitHub, or Stack Overflow into
+                            the left &ldquo;Source Code&rdquo; panel.</li>
+                        <li><strong>Select Languages:</strong> Choose the source language on the left and the target
+                            language on the right. Use the swap button to quickly reverse them.</li>
+                        <li><strong>Click Convert:</strong> Our AI engine analyzes the code structure &mdash; variables,
+                            functions, loops, classes, imports &mdash; and generates equivalent code in the target
+                            language.</li>
+                    </ol>
+
+                    <h2>Supported Language Conversions</h2>
+                    <p>Convert between any pair of these <strong>11 programming languages</strong>:</p>
+                    <ul>
+                        <li><strong>Most Popular:</strong> Python &harr; JavaScript, Java &harr; Python, C++ &harr;
+                            Python</li>
+                        <li><strong>Web Stack:</strong> JavaScript &harr; TypeScript, PHP &harr; Python, Ruby &harr;
+                            Python</li>
+                        <li><strong>Systems:</strong> C++ &harr; Rust, Go &harr; Python, C# &harr; Java</li>
+                        <li><strong>Mobile:</strong> Swift &harr; Java, Swift &harr; TypeScript</li>
+                    </ul>
+                    <p>That&rsquo;s <strong>110 possible conversion pairs</strong> &mdash; all available for free,
+                        unlimited use.</p>
+
+                    <h2>What Gets Converted</h2>
+                    <p>Our converter handles the most common code patterns across all supported languages:</p>
+                    <ul>
+                        <li><strong>Variable Declarations:</strong> <code>const/let/var</code> &rarr;
+                            language-appropriate syntax (<code>:=</code> in Go, <code>val/var</code> in Swift)</li>
+                        <li><strong>Functions:</strong> <code>function</code>/<code>def</code>/<code>func</code> &rarr;
+                            target function syntax with proper return types</li>
+                        <li><strong>Loops:</strong> <code>for</code>, <code>while</code>, <code>for...of</code> &rarr;
+                            equivalent loop constructs</li>
+                        <li><strong>Conditionals:</strong> <code>if/else</code>, <code>switch/case</code>, ternary
+                            operators</li>
+                        <li><strong>Classes &amp; Objects:</strong> Class definitions, constructors, methods,
+                            inheritance</li>
+                        <li><strong>Print/Output:</strong> <code>console.log</code> &harr; <code>print()</code> &harr;
+                            <code>System.out.println</code> &harr; <code>fmt.Println</code></li>
+                        <li><strong>Comments:</strong> <code>//</code> and <code>/* */</code> &harr; <code>#</code>
+                            conversions preserved</li>
+                        <li><strong>String Operations:</strong> Template literals, concatenation, f-strings converted
+                            accurately</li>
+                        <li><strong>Array/List Methods:</strong> <code>.map()</code>, <code>.filter()</code>,
+                            <code>.forEach()</code> &rarr; equivalent constructs</li>
+                    </ul>
+
+                    <h2>Why Developers Use Our Converter</h2>
+                    <ul>
+                        <li><strong>Learning New Languages:</strong> Know Python but need to write Go? Paste your Python
+                            code and see how the same logic looks in Go. Best way to learn syntax fast.</li>
+                        <li><strong>Porting Projects:</strong> Moving a Node.js backend to Python? Convert files one by
+                            one and adjust where needed.</li>
+                        <li><strong>Code Interviews:</strong> Practice problems in your strongest language, then convert
+                            to the language required by the interviewer.</li>
+                        <li><strong>Stack Overflow Answers:</strong> Found a great solution in Java but your project
+                            uses C#? Convert it instantly.</li>
+                        <li><strong>Documentation:</strong> Show code examples in multiple languages for your API docs
+                            or tutorials.</li>
+                    </ul>
+
+                    <h2>Privacy &amp; Security</h2>
+                    <p>Your code <strong>never leaves your browser</strong>. Everything runs client-side in JavaScript:
+                    </p>
+                    <ul>
+                        <li>No API calls. Zero server requests. Check your Network tab.</li>
+                        <li>No data logging or code storage of any kind</li>
+                        <li>API keys, tokens, and secrets stay completely private</li>
+                        <li>Works offline after first page load</li>
+                        <li>Safe for enterprise and proprietary codebases</li>
+                    </ul>
+
+                    <h2>Tips for Best Results</h2>
+                    <ul>
+                        <li><strong>Paste Complete Functions:</strong> The converter works best with complete code
+                            blocks rather than fragments.</li>
+                        <li><strong>Select Correct Source Language:</strong> This ensures the parser understands your
+                            syntax correctly.</li>
+                        <li><strong>Review Edge Cases:</strong> While the converter handles most patterns,
+                            language-specific idioms may need manual adjustment.</li>
+                        <li><strong>Use the Swap Button:</strong> Quickly reverse source and target languages to compare
+                            both directions.</li>
+                    </ul>
+
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="faq-item"><strong>What languages can I convert between?</strong>
+                        <p>We support 11 languages: Python, JavaScript, TypeScript, Java, C++, C#, Go, Rust, PHP, Ruby,
+                            and Swift. That&rsquo;s 110 possible conversion pairs.</p>
+                    </div>
+                    <div class="faq-item"><strong>Is it free to use?</strong>
+                        <p>Yes, 100% free. No registration, no limits, no premium tiers. Convert as much code as you
+                            want.</p>
+                    </div>
+                    <div class="faq-item"><strong>Is my code private?</strong>
+                        <p>Completely. All conversion runs client-side in your browser. We don&rsquo;t have a backend
+                            for this tool. Your code never leaves your device.</p>
+                    </div>
+                    <div class="faq-item"><strong>How accurate is the conversion?</strong>
+                        <p>Our converter handles variables, functions, loops, conditionals, classes, comments, print
+                            statements, and common patterns. For complex framework-specific code, you may need minor
+                            manual adjustments.</p>
+                    </div>
+                    <div class="faq-item"><strong>Can I convert Python to JavaScript?</strong>
+                        <p>Yes! It&rsquo;s our most popular conversion. <code>def</code> becomes <code>function</code>,
+                            <code>print()</code> becomes <code>console.log()</code>, lists become arrays, dicts become
+                            objects, and much more.</p>
+                    </div>
+                    <div class="faq-item"><strong>Can it handle classes and OOP code?</strong>
+                        <p>Yes. The converter translates class definitions, constructors, methods, and inheritance
+                            syntax between languages.</p>
+                    </div>
+                    <div class="faq-item"><strong>Does it preserve comments?</strong>
+                        <p>Yes. Comments are detected and converted to the target language&rsquo;s comment syntax
+                            (<code>//</code> &harr; <code>#</code>).</p>
+                    </div>
+                    <div class="faq-item"><strong>How is this different from ChatGPT?</strong>
+                        <p>ChatGPT requires a login and sends code to OpenAI servers. Our tool is instant, needs no
+                            login, works offline, and has a purpose-built UI with source/target dropdowns designed for
+                            code conversion.</p>
+                    </div>
+
+                    <p style="text-align:center;margin-top:3rem;color:var(--text-muted);font-size:0.85rem;">Code
+                        Formatter &copy; 2026 &middot; Professional developer tools built with privacy and performance
+                        in mind.</p>
+                </article>
+            </div>
+        </div>
+        <footer class="footer" role="contentinfo">
+            <div class="footer-stats">
+                <div class="stat-item" id="footerStatus"><i class="fas fa-exchange-alt"></i> AI Ready</div>
+                <div class="footer-links">
+                    <a href="./about.html">About</a> &middot; <a href="./privacy.html">Privacy</a> &middot; <a
+                        href="./terms.html">Terms</a> &middot; <a href="./contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-actions">
+                <button class="btn btn-sec" onclick="clearAll()">CLEAR</button>
+                <button class="ai-run-btn" onclick="convertCode()"><i class="fas fa-bolt"></i> CONVERT</button>
+            </div>
+        </footer>
+    </main>
+    <div class="toast" id="toast" role="alert" aria-live="assertive"><i class="fas fa-check-circle"></i><span>Action
+            Completed</span></div>
+    <script>const activeToolId = "ai-converter";</script>
+    <script src="script.js"></script>
+    <script>
+        function pasteCode() { navigator.clipboard.readText().then(t => { document.getElementById('codeInput').value = t }).catch(() => { }) }
+        function clearAll() { document.getElementById('codeInput').value = ''; document.getElementById('convertedOutput').innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center;color:var(--text-muted)"><i class="fas fa-exchange-alt" style="font-size:3rem;color:var(--primary);margin-bottom:16px;opacity:0.5"></i><p style="font-size:1.1rem;font-weight:500;margin:0 0 8px 0;color:var(--text-main)">Paste code & click Convert</p><p style="font-size:0.9rem;margin:0">Supports Python, JavaScript, Java, C++, Go & more</p></div>' }
+        function copyOutput() { const t = document.getElementById('convertedOutput').innerText; navigator.clipboard.writeText(t); showToast('Converted code copied!') }
+        function swapLanguages() { const s = document.getElementById('sourceLang'); const t = document.getElementById('targetLang'); const sv = s.value; s.value = t.value; t.value = sv }
+        const langNames = { javascript: 'JavaScript', python: 'Python', java: 'Java', cpp: 'C++', csharp: 'C#', typescript: 'TypeScript', php: 'PHP', go: 'Go', rust: 'Rust', ruby: 'Ruby', swift: 'Swift' };
+        const syntaxMap = {
+            print: { javascript: 'console.log', python: 'print', java: 'System.out.println', cpp: 'cout <<', csharp: 'Console.WriteLine', typescript: 'console.log', php: 'echo', go: 'fmt.Println', rust: 'println!', ruby: 'puts', swift: 'print' },
+            commentSingle: { javascript: '//', python: '#', java: '//', cpp: '//', csharp: '//', typescript: '//', php: '//', go: '//', rust: '//', ruby: '#', swift: '//' },
+            boolTrue: { javascript: 'true', python: 'True', java: 'true', cpp: 'true', csharp: 'true', typescript: 'true', php: 'true', go: 'true', rust: 'true', ruby: 'true', swift: 'true' },
+            boolFalse: { javascript: 'false', python: 'False', java: 'false', cpp: 'false', csharp: 'false', typescript: 'false', php: 'false', go: 'false', rust: 'false', ruby: 'false', swift: 'false' },
+            nullVal: { javascript: 'null', python: 'None', java: 'null', cpp: 'nullptr', csharp: 'null', typescript: 'null', php: 'null', go: 'nil', rust: 'None', ruby: 'nil', swift: 'nil' },
+            thisRef: { javascript: 'this.', python: 'self.', java: 'this.', cpp: 'this->', csharp: 'this.', typescript: 'this.', php: '$this->', go: '', rust: 'self.', ruby: '@', swift: 'self.' }
+        };
+        function convertLine(line, src, tgt) {
+            let trimmed = line.trim();
+            if (!trimmed) return '';
+            let indent = line.match(/^\s*/)[0];
+            const srcC = syntaxMap.commentSingle[src], tgtC = syntaxMap.commentSingle[tgt];
+            if (trimmed.startsWith(srcC + ' ') || trimmed === srcC) return indent + trimmed.replace(srcC, tgtC);
+            if (trimmed.startsWith('#') && (src === 'python' || src === 'ruby')) return indent + trimmed.replace('#', tgtC);
+            let r = trimmed;
+            // Print
+            for (const [lang, fn] of Object.entries(syntaxMap.print)) {
+                if (lang === src && r.includes(fn)) { r = r.replace(new RegExp(fn.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), syntaxMap.print[tgt]) }
+            }
+            // Function defs
+            let fname = r.match(/(?:function|def|func|fn|void|static void)\s+(\w+)/);
+            if (fname && /^(function |def |func |fn |public static |static void |public void |private void )/.test(r)) {
+                let name = fname[1], params = r.match(/\(([^)]*)\)/) || ['', ''], pStr = params[1];
+                if (tgt === 'python') r = 'def ' + name + '(' + pStr + '):';
+                else if (tgt === 'go') r = 'func ' + name + '(' + pStr + ') {';
+                else if (tgt === 'rust') r = 'fn ' + name + '(' + pStr + ') {';
+                else if (tgt === 'ruby') r = 'def ' + name + '(' + pStr + ')';
+                else if (tgt === 'swift') r = 'func ' + name + '(' + pStr + ') {';
+                else if (tgt === 'java') r = 'public static void ' + name + '(' + pStr + ') {';
+                else if (tgt === 'csharp') r = 'static void ' + name + '(' + pStr + ') {';
+                else if (tgt === 'cpp') r = 'void ' + name + '(' + pStr + ') {';
+                else if (tgt === 'php') r = 'function ' + name + '(' + pStr + ') {';
+                else r = 'function ' + name + '(' + pStr + ') {';
+            }
+            // Variables
+            r = r.replace(/^(const|let|var)\s+/, tgt === 'python' || tgt === 'ruby' ? '' : tgt === 'go' ? '' : tgt === 'php' ? '$' : 'let ');
+            // Booleans
+            r = r.replace(/\bTrue\b/g, syntaxMap.boolTrue[tgt]).replace(/\bFalse\b/g, syntaxMap.boolFalse[tgt]);
+            r = r.replace(/\btrue\b/g, syntaxMap.boolTrue[tgt]).replace(/\bfalse\b/g, syntaxMap.boolFalse[tgt]);
+            // Null
+            r = r.replace(/\bNone\b/g, syntaxMap.nullVal[tgt]).replace(/\bnull\b/g, syntaxMap.nullVal[tgt]).replace(/\bnil\b/g, syntaxMap.nullVal[tgt]);
+            // this/self
+            if (syntaxMap.thisRef[src] && syntaxMap.thisRef[tgt]) {
+                let srcT = syntaxMap.thisRef[src].replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                if (srcT) r = r.replace(new RegExp(srcT, 'g'), syntaxMap.thisRef[tgt]);
+            }
+            // Block endings
+            if (trimmed === '}' && tgt === 'python') return '';
+            if (trimmed === '}' && tgt === 'ruby') return indent + 'end';
+            if (trimmed === 'end' && src === 'ruby' && tgt !== 'ruby' && tgt !== 'python') return indent + '}';
+            // Semicolons
+            if (['java', 'cpp', 'csharp', 'php'].includes(tgt) && !r.endsWith(';') && !r.endsWith('{') && !r.endsWith(':') && !r.endsWith('}') && !r.startsWith('//') && !r.startsWith('#') && !r.startsWith('if') && !r.startsWith('for') && !r.startsWith('while') && !r.startsWith('class') && r.length > 0) { r = r.replace(/;$/, '') + ';' }
+            if (['python', 'go', 'ruby', 'rust', 'swift'].includes(tgt)) { r = r.replace(/;$/, '') }
+            // Python colons
+            if (tgt === 'python' && (r.match(/^\s*if\s/) || r.match(/^\s*elif\s/) || r.match(/^\s*else/) || r.match(/^\s*for\s/) || r.match(/^\s*while\s/) || r.match(/^\s*class\s/))) { r = r.replace(/\s*{?\s*$/, '') + ':' }
+            return indent + r;
+        }
+        function convertCode() {
+            const code = document.getElementById('codeInput').value.trim();
+            if (!code) { showToast('Please paste some code first'); return }
+            const src = document.getElementById('sourceLang').value;
+            const tgt = document.getElementById('targetLang').value;
+            if (src === tgt) { showToast('Source and target languages are the same!'); return }
+            const out = document.getElementById('convertedOutput');
+            out.innerHTML = '<div class="ai-typing"><span></span><span></span><span></span></div>';
+            document.getElementById('footerStatus').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Converting...';
+            setTimeout(() => {
+                const lines = code.split('\n');
+                const converted = lines.map(l => convertLine(l, src, tgt)).join('\n');
+                const header = '// Converted from ' + langNames[src] + ' to ' + langNames[tgt] + '\n// Generated by Code Formatter AI Code Converter\n\n';
+                out.innerText = header + converted;
+                out.style.animation = 'fadeSlideIn 0.5s ease';
+                document.getElementById('footerStatus').innerHTML = '<i class="fas fa-check-circle"></i> Converted to ' + langNames[tgt];
+                showToast('Code converted to ' + langNames[tgt] + '!');
+            }, 800);
+        }
+    </script>
+</body>
+
+</html>

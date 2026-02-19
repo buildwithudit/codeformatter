@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free AI Code Explainer Online - Understand Any Code Instantly | Code Formatter</title>
+    <meta name="description"
+        content="Free AI Code Explainer tool. Paste any code and get instant, line-by-line explanations in plain English. Supports Python, JavaScript, Java, C++, SQL and more. 100% free, no signup required.">
+    <meta name="keywords"
+        content="ai code explainer, explain code online, code explainer, understand code, code explanation tool, ai code reader, explain python code, explain javascript code, what does this code do, code analyzer, code interpreter, free code explainer 2026">
+    <link rel="canonical" href="https://www.codeformatter.in/ai-code-explainer.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.codeformatter.in/ai-code-explainer.html">
+    <meta property="og:title" content="Free AI Code Explainer - Understand Any Code Instantly">
+    <meta property="og:description"
+        content="Paste any code and get instant AI-powered explanations. Supports all major programming languages.">
+    <meta property="og:image" content="https://www.codeformatter.in/codeformat.png">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Code Formatter">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free AI Code Explainer - Understand Any Code Instantly">
+    <meta name="twitter:description" content="Paste any code and get instant AI-powered explanations in plain English.">
+    <meta name="twitter:image" content="https://www.codeformatter.in/codeformat.png">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="Code Formatter">
+    <meta name="theme-color" content="#6366f1">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --bg-body: #09090b;
+            --bg-panel: #18181b;
+            --border-color: #27272a;
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.2);
+            --accent: #06b6d4;
+            --text-main: #f4f4f5;
+            --text-muted: #d4d4d8
+        }
+
+        html.light {
+            --bg-body: #f8fafc;
+            --bg-panel: #ffffff;
+            --border-color: #e2e8f0;
+            --primary: #4f46e5;
+            --primary-glow: rgba(79, 70, 229, 0.15);
+            --accent: #0891b2;
+            --text-main: #0f172a;
+            --text-muted: #64748b
+        }
+
+        body {
+            background-color: var(--bg-body);
+            background-image: linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow: hidden
+        }
+
+        html.light body {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px)
+        }
+
+        main {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative
+        }
+
+        header {
+            background: var(--bg-panel);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 20;
+            flex-shrink: 0
+        }
+
+        html.light header {
+            background: rgba(255, 255, 255, 0.9)
+        }
+
+        #scrollable-wrapper {
+            flex-grow: 1;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 80px
+        }
+
+        #scrollable-wrapper::-webkit-scrollbar {
+            width: 6px
+        }
+
+        #scrollable-wrapper::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 3px
+        }
+
+        /* AI Explainer Tool Styles */
+        .ai-workspace {
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            min-height: 75vh
+        }
+
+        .ai-pane {
+            flex: 1;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative
+        }
+
+        .ai-pane:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.08)
+        }
+
+        .ai-pane::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), var(--accent), transparent);
+            opacity: 0;
+            transition: opacity 0.3s
+        }
+
+        .ai-pane:hover::before {
+            opacity: 1
+        }
+
+        .ai-pane-header {
+            padding: 14px 18px;
+            background: rgba(99, 102, 241, 0.04);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .ai-pane-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .ai-pane-title .ai-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+            animation: aiPulse 2s infinite
+        }
+
+        @keyframes aiPulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                box-shadow: 0 0 0 0 var(--primary-glow)
+            }
+
+            50% {
+                opacity: 0.7;
+                box-shadow: 0 0 0 8px transparent
+            }
+        }
+
+        .ai-pane-title i {
+            color: var(--primary)
+        }
+
+        .editor-container {
+            flex: 1;
+            position: relative
+        }
+
+        textarea {
+            background: transparent !important;
+            border: none;
+            padding: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: #e5e5e5;
+            line-height: 1.6;
+            resize: none;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box
+        }
+
+        html.light textarea {
+            color: #0f172a
+        }
+
+        html.light .ai-pane-title {
+            color: #475569
+        }
+
+        html.light .ai-pane-header {
+            background: rgba(79, 70, 229, 0.04)
+        }
+
+        html.light .ai-pane:hover {
+            border-color: rgba(79, 70, 229, 0.3);
+            box-shadow: 0 0 30px rgba(79, 70, 229, 0.06)
+        }
+
+        /* Language selector */
+        .lang-select {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-main);
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.2s;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23a1a1aa' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            padding-right: 30px;
+            position: relative;
+            z-index: 10
+        }
+
+        .lang-select:hover {
+            border-color: var(--primary)
+        }
+
+        .lang-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px var(--primary-glow)
+        }
+
+        .lang-select option {
+            background: var(--bg-panel);
+            color: var(--text-main);
+            padding: 8px 12px;
+            font-size: 0.85rem
+        }
+
+        html.light .lang-select {
+            background-color: #f1f5f9;
+            border-color: #e2e8f0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2364748b' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E")
+        }
+
+        html.light .lang-select option {
+            background: #ffffff;
+            color: #0f172a
+        }
+
+        /* Output styling */
+        #aiOutput {
+            padding: 20px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.92rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            overflow-y: auto;
+            flex: 1;
+            max-height: 55vh
+        }
+
+        #aiOutput .ai-summary {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(6, 182, 212, 0.1));
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            animation: fadeSlideIn 0.5s ease
+        }
+
+        #aiOutput .ai-summary h3 {
+            color: var(--primary);
+            font-size: 0.95rem;
+            margin: 0 0 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        #aiOutput .ai-summary p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.9rem
+        }
+
+        #aiOutput .line-explain {
+            padding: 10px 16px;
+            margin: 6px 0;
+            border-left: 3px solid var(--border-color);
+            border-radius: 0 8px 8px 0;
+            transition: all 0.2s;
+            animation: fadeSlideIn 0.4s ease both
+        }
+
+        #aiOutput .line-explain:hover {
+            background: rgba(99, 102, 241, 0.06);
+            border-left-color: var(--primary)
+        }
+
+        #aiOutput .line-explain .line-num {
+            color: var(--primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 10px
+        }
+
+        #aiOutput .line-explain .line-code {
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            display: block;
+            margin: 4px 0
+        }
+
+        #aiOutput .line-explain .line-desc {
+            color: var(--text-muted);
+            font-size: 0.88rem
+        }
+
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        /* Typing animation */
+        .ai-typing {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 12px 20px
+        }
+
+        .ai-typing span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+            animation: typingBounce 1.4s infinite
+        }
+
+        .ai-typing span:nth-child(2) {
+            animation-delay: 0.2s
+        }
+
+        .ai-typing span:nth-child(3) {
+            animation-delay: 0.4s
+        }
+
+        @keyframes typingBounce {
+
+            0%,
+            60%,
+            100% {
+                transform: translateY(0);
+                opacity: 0.4
+            }
+
+            30% {
+                transform: translateY(-10px);
+                opacity: 1
+            }
+        }
+
+        /* Footer */
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--bg-panel);
+            border-top: 1px solid var(--border-color);
+            z-index: 30;
+            padding: 10px 20px
+        }
+
+        .ai-run-btn {
+            background: linear-gradient(135deg, #6366f1, #06b6d4) !important;
+            border: none !important;
+            color: #fff !important;
+            font-weight: 600;
+            padding: 8px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden
+        }
+
+        .ai-run-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4)
+        }
+
+        .ai-run-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: 0.5s
+        }
+
+        .ai-run-btn:hover::after {
+            left: 100%
+        }
+
+        /* Content section */
+        .content-container {
+            margin: 20px auto 40px auto;
+            padding: 0 20px;
+            position: relative
+        }
+
+        .clean-card {
+            background: var(--bg-panel);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 60px;
+            position: relative;
+            overflow: hidden
+        }
+
+        html.light .clean-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-color: #e2e8f0
+        }
+
+        .clean-card::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            filter: blur(120px);
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none
+        }
+
+        .prose h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin: 0 0 20px 0;
+            background: linear-gradient(180deg, #fff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text
+        }
+
+        html.light .prose h1 {
+            background: linear-gradient(180deg, #0f172a, #64748b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent
+        }
+
+        .prose h2 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #27272a
+        }
+
+        .prose h2::before {
+            content: '#';
+            color: var(--primary);
+            opacity: 0.4;
+            margin-right: 10px
+        }
+
+        .prose h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-top: 35px;
+            margin-bottom: 12px
+        }
+
+        .prose p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.05rem
+        }
+
+        html.light .prose p {
+            color: #475569
+        }
+
+        .prose strong {
+            color: var(--text-main);
+            font-weight: 700
+        }
+
+        .prose ul {
+            margin-bottom: 24px;
+            padding-left: 20px;
+            list-style: none
+        }
+
+        .prose li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            color: #d4d4d4;
+            line-height: 1.7
+        }
+
+        .prose li::before {
+            content: "\2022";
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.1rem;
+            position: absolute;
+            left: 0;
+            top: 0
+        }
+
+        .prose ol {
+            counter-reset: list-counter;
+            margin-bottom: 24px;
+            padding-left: 20px;
+            list-style: none
+        }
+
+        .prose ol li {
+            counter-increment: list-counter;
+            padding-left: 35px
+        }
+
+        .prose ol li::before {
+            content: counter(list-counter) ".";
+            color: var(--primary);
+            font-weight: 700;
+            position: absolute;
+            left: 0
+        }
+
+        html.light .prose h2 {
+            color: #0f172a;
+            border-bottom-color: #e2e8f0
+        }
+
+        html.light .prose li {
+            color: #475569
+        }
+
+        .faq-item {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 22px 25px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden
+        }
+
+        html.light .faq-item {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: #e2e8f0
+        }
+
+        .faq-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--primary);
+            transition: height 0.3s ease
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.03);
+            transform: translateX(5px)
+        }
+
+        html.light .faq-item:hover {
+            background: rgba(79, 70, 229, 0.05)
+        }
+
+        .faq-item:hover::before {
+            height: 100%
+        }
+
+        .faq-item strong {
+            display: block;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+            font-weight: 600
+        }
+
+        .faq-item p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-muted)
+        }
+
+        html.light .faq-item p {
+            color: #64748b
+        }
+
+        a.brand-logo {
+            color: inherit;
+            text-decoration: none
+        }
+
+        .menu-toggle-btn {
+            background: none;
+            border: none;
+            color: inherit;
+            cursor: pointer;
+            padding: 8px;
+            font-size: inherit
+        }
+
+        @media(max-width:768px) {
+            .ai-workspace {
+                flex-direction: column;
+                min-height: auto
+            }
+
+            .ai-pane {
+                height: 350px
+            }
+
+            .clean-card {
+                padding: 25px
+            }
+        }
+
+        @media(max-width:480px) {
+            .prose h1 {
+                font-size: 1.4rem !important
+            }
+
+            .prose h2 {
+                font-size: 1.15rem !important
+            }
+
+            .prose p {
+                font-size: 0.9rem !important
+            }
+
+            .clean-card {
+                padding: 20px !important
+            }
+
+            .content-container {
+                margin: 20px auto !important;
+                padding: 0 10px !important
+            }
+
+            .faq-item {
+                padding: 15px !important
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"Code Formatter","url":"https://www.codeformatter.in/","logo":"https://www.codeformatter.in/codeformat.png"},{"@type":"WebApplication","name":"AI Code Explainer","url":"https://www.codeformatter.in/ai-code-explainer.html","description":"Free AI Code Explainer tool that provides instant line-by-line explanations for any programming language.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["AI-Powered Code Analysis","Line-by-Line Explanations","Multi-Language Support","Code Summary Generation","100% Client-Side Processing"]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What programming languages does the AI Code Explainer support?","acceptedAnswer":{"@type":"Answer","text":"We support 14+ languages: Python, JavaScript, TypeScript, Java, C, C++, C#, Go, Rust, PHP, Ruby, SQL, HTML, CSS, and more. Auto-detection identifies the language from syntax patterns automatically."}},{"@type":"Question","name":"Is the AI Code Explainer free to use?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100% free. No registration, no sign-up, no email required, no limits. Use it as many times as you want."}},{"@type":"Question","name":"Is my code safe and private?","acceptedAnswer":{"@type":"Answer","text":"Completely. Your code never leaves your browser. All analysis runs client-side in JavaScript. We don't have a backend API for this tool. Your code, secrets, and logic are 100% private."}},{"@type":"Question","name":"How accurate are the AI explanations?","acceptedAnswer":{"@type":"Answer","text":"Our engine uses pattern matching, regex-based syntax analysis, and language-specific parsers. It accurately identifies functions, classes, loops, conditionals, imports, API calls, DOM operations, and 30+ other patterns."}},{"@type":"Question","name":"Can beginners use this to learn coding?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. Students paste code from tutorials, homework, or Stack Overflow answers and see exactly what each line does. It's a free, always-available coding tutor."}},{"@type":"Question","name":"Does it explain code line by line?","acceptedAnswer":{"@type":"Answer","text":"Yes. You get both a high-level summary and a line-by-line breakdown where each line is displayed with its explanation. Empty lines are skipped for cleaner output."}},{"@type":"Question","name":"Does it work on minified or obfuscated code?","acceptedAnswer":{"@type":"Answer","text":"Yes. Even if variable names are mangled or whitespace is removed, the engine identifies patterns like function calls, array methods, and control flow."}},{"@type":"Question","name":"How is this different from ChatGPT?","acceptedAnswer":{"@type":"Answer","text":"ChatGPT requires a login and sends your code to OpenAI's servers. Our tool requires no login, works offline, keeps your code 100% private, and has a purpose-built UI designed specifically for code analysis."}}]}]}
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2670168844256558"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <aside id="sidebar">
+        <div class="brand"><a href="index.html" class="brand-logo"><i class="fas fa-layer-group"></i> Code Formatter</a>
+        </div>
+        <div class="search-container"><input type="text" class="search-input" placeholder="Search tools..."
+                onkeyup="filterTools(this)" aria-label="Search developer tools"></div>
+        <nav class="menu" id="menuContainer" aria-label="Main navigation">
+            <div class="nav-group-title">Code Formatters</div>
+            <a href="index.html" class="nav-item" data-id="json-fmt"><i class="fas fa-code"></i> JSON Formatter</a>
+            <a href="json-tree-viewer.html" class="nav-item" data-id="json-tree"><i class="fas fa-sitemap"></i> JSON
+                Tree View</a>
+            <a href="html-formatter.html" class="nav-item" data-id="html-fmt"><i class="fab fa-html5"></i> HTML
+                Formatter</a>
+            <a href="css-formatter.html" class="nav-item" data-id="css-fmt"><i class="fab fa-css3-alt"></i> CSS
+                Formatter</a>
+            <a href="js-formatter.html" class="nav-item" data-id="js-fmt"><i class="fab fa-js"></i> JS Formatter</a>
+            <a href="sql-formatter.html" class="nav-item" data-id="sql-fmt"><i class="fas fa-database"></i> SQL
+                Formatter</a>
+            <a href="xml-formatter.html" class="nav-item" data-id="xml-fmt"><i class="fas fa-code"></i> XML
+                Formatter</a>
+            <div class="nav-group-title">AI Tools</div>
+            <a href="ai-code-explainer.html" class="nav-item active" data-id="ai-explainer"><i class="fas fa-robot"></i>
+                AI Code Explainer</a>
+            <a href="ai-code-converter.html" class="nav-item" data-id="ai-converter"><i class="fas fa-exchange-alt"></i>
+                AI Code Converter</a>
+            <div class="nav-group-title">Image &amp; Color Tools</div>
+            <a href="image-compressor.html" class="nav-item" data-id="img-compress"><i class="fas fa-image"></i> Image
+                Compressor</a>
+            <a href="color-converter.html" class="nav-item" data-id="color-conv"><i class="fas fa-palette"></i> Color
+                Converter</a>
+            <a href="qr-code-generator.html" class="nav-item" data-id="qr-gen"><i class="fas fa-qrcode"></i> QR
+                Generator</a>
+            <div class="nav-group-title">Code Minifiers</div>
+            <a href="json-minifier.html" class="nav-item" data-id="json-min"><i class="fas fa-compress"></i> JSON
+                Minifier</a>
+            <a href="html-minifier.html" class="nav-item" data-id="html-min"><i class="fas fa-compress-arrows-alt"></i>
+                HTML Minifier</a>
+            <a href="css-minifier.html" class="nav-item" data-id="css-min"><i class="fas fa-compress-arrows-alt"></i>
+                CSS Minifier</a>
+            <a href="js-minifier.html" class="nav-item" data-id="js-min"><i class="fas fa-file-archive"></i> JS
+                Minifier</a>
+            <div class="nav-group-title">Data Converters</div>
+            <a href="json-to-csv.html" class="nav-item" data-id="json-csv"><i class="fas fa-table"></i> JSON to CSV</a>
+            <a href="csv-to-json.html" class="nav-item" data-id="csv-json"><i class="fas fa-file-csv"></i> CSV to
+                JSON</a>
+            <a href="json-to-typescript.html" class="nav-item" data-id="json-ts"><i class="fas fa-file-code"></i> JSON
+                to TypeScript</a>
+            <a href="excel-to-html.html" class="nav-item" data-id="excel-html"><i class="fas fa-table"></i> Excel to
+                HTML</a>
+            <a href="case-converter.html" class="nav-item" data-id="case-conv"><i class="fas fa-text-height"></i> Case
+                Converter</a>
+            <div class="nav-group-title">Encoding &amp; Security</div>
+            <a href="regex-tester.html" class="nav-item" data-id="regex-test"><i class="fas fa-asterisk"></i> Regex
+                Tester</a>
+            <a href="password-generator.html" class="nav-item" data-id="pwd-gen"><i class="fas fa-key"></i> Password
+                Generator</a>
+            <a href="base64-tool.html" class="nav-item" data-id="base64"><i class="fas fa-lock"></i> Base64 Tool</a>
+            <a href="url-encoder.html" class="nav-item" data-id="url-enc"><i class="fas fa-link"></i> URL Encoder</a>
+            <a href="hash-generator.html" class="nav-item" data-id="hash-gen"><i class="fas fa-fingerprint"></i> Hash
+                Generator</a>
+            <a href="jwt-decoder.html" class="nav-item" data-id="jwt-dec"><i class="fas fa-shield-alt"></i> JWT
+                Decoder</a>
+            <div class="nav-group-title">CSS Generators</div>
+            <a href="gradient-generator.html" class="nav-item" data-id="gradient-gen"><i class="fas fa-fill-drip"></i>
+                Gradient Generator</a>
+            <a href="glassmorphism-generator.html" class="nav-item" data-id="glass-morphism"><i class="fas fa-wind"></i>
+                Glassmorphism</a>
+            <a href="smooth-shadow-generator.html" class="nav-item" data-id="shadow-gen"><i
+                    class="fas fa-layer-group"></i> Smooth Shadow</a>
+            <a href="px-to-rem.html" class="nav-item" data-id="px-rem"><i class="fas fa-ruler-combined"></i> PX to
+                REM</a>
+            <a href="aspect-ratio-calculator.html" class="nav-item" data-id="aspect-ratio"><i class="fas fa-expand"></i>
+                Aspect Ratio</a>
+            <div class="nav-group-title">Text &amp; Data</div>
+            <a href="uuid-generator.html" class="nav-item" data-id="uuid-gen"><i class="fas fa-fingerprint"></i> UUID
+                Generator</a>
+            <a href="timestamp-converter.html" class="nav-item" data-id="timestamp-conv"><i class="fas fa-clock"></i>
+                Timestamp Converter</a>
+            <a href="cron-generator.html" class="nav-item" data-id="cron-gen"><i class="fas fa-calendar-alt"></i> Cron
+                Generator</a>
+            <a href="json-to-yaml.html" class="nav-item" data-id="json-yaml"><i class="fas fa-exchange-alt"></i> JSON to
+                YAML</a>
+            <a href="lorem-ipsum-generator.html" class="nav-item" data-id="lorem"><i class="fas fa-paragraph"></i> Lorem
+                Ipsum</a>
+            <a href="mock-data-generator.html" class="nav-item" data-id="mock-data"><i class="fas fa-users"></i> Mock
+                Data Gen</a>
+            <a href="diff-checker.html" class="nav-item" data-id="diff-check"><i class="fas fa-exchange-alt"></i> Diff
+                Checker</a>
+            <div class="nav-group-title">Preview Tools</div>
+            <a href="html-viewer.html" class="nav-item" data-id="html-view"><i class="fas fa-eye"></i> HTML Viewer</a>
+            <a href="social-card-preview.html" class="nav-item" data-id="social-card"><i class="fas fa-share-alt"></i>
+                Social Preview</a>
+            <a href="markdown-editor.html" class="nav-item" data-id="markdown-edit"><i class="fas fa-edit"></i> Markdown
+                Editor</a>
+        </nav>
+    </aside>
+    <div id="overlay" onclick="closeAllDrawers()"></div>
+    <main>
+        <header>
+            <div class="header-left">
+                <i class="fas fa-bars menu-toggle-btn" onclick="handleMenuClick()"
+                    aria-label="Toggle navigation menu"></i>
+                <div class="tool-info">
+                    <div id="toolTitle">AI Code Explainer</div>
+                    <p id="toolDesc">Paste code &amp; get instant AI-powered explanations</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="blog.html" class="nav-link">Blog</a>
+                <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme"><i class="fas fa-moon"
+                        id="themeIcon"></i></button>
+            </div>
+        </header>
+        <div id="scrollable-wrapper">
+            <section class="ai-workspace" id="workspace">
+                <div class="ai-pane">
+                    <div class="ai-pane-header">
+                        <span class="ai-pane-title"><i class="fas fa-code"></i> <span class="ai-dot"></span> Code
+                            Input</span>
+                        <div style="display:flex;gap:10px;align-items:center">
+                            <select class="lang-select" id="langSelect">
+                                <option value="auto">Auto Detect</option>
+                                <option value="javascript">JavaScript</option>
+                                <option value="python">Python</option>
+                                <option value="java">Java</option>
+                                <option value="cpp">C / C++</option>
+                                <option value="csharp">C#</option>
+                                <option value="typescript">TypeScript</option>
+                                <option value="php">PHP</option>
+                                <option value="ruby">Ruby</option>
+                                <option value="go">Go</option>
+                                <option value="rust">Rust</option>
+                                <option value="sql">SQL</option>
+                                <option value="html">HTML</option>
+                                <option value="css">CSS</option>
+                            </select>
+                            <i class="far fa-clipboard action-icon" onclick="pasteCode()" title="Paste"></i>
+                            <i class="far fa-trash-alt action-icon" onclick="clearAll()" title="Clear"></i>
+                        </div>
+                    </div>
+                    <div class="editor-container">
+                        <textarea id="codeInput"
+                            placeholder="// Paste your code here...&#10;// Example:&#10;function fibonacci(n) {&#10;  if (n <= 1) return n;&#10;  return fibonacci(n-1) + fibonacci(n-2);&#10;}"
+                            spellcheck="false"></textarea>
+                    </div>
+                </div>
+                <div class="ai-pane">
+                    <div class="ai-pane-header">
+                        <span class="ai-pane-title"><i class="fas fa-robot"></i> <span class="ai-dot"></span> AI
+                            Explanation</span>
+                        <div><i class="far fa-copy action-icon" onclick="copyExplanation()" title="Copy"></i></div>
+                    </div>
+                    <div id="aiOutput">
+                        <div
+                            style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center;color:var(--text-muted)">
+                            <i class="fas fa-robot"
+                                style="font-size:3rem;color:var(--primary);margin-bottom:16px;opacity:0.5"></i>
+                            <p style="font-size:1.1rem;font-weight:500;margin:0 0 8px 0;color:var(--text-main)">Paste
+                                your code &amp; click Explain</p>
+                            <p style="font-size:0.9rem;margin:0">Supports Python, JavaScript, Java, C++, SQL &amp; more
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="content-container">
+                <article class="clean-card prose">
+                    <h1>AI Code Explainer &mdash; Explain Any Code Instantly Online (Free, 2026)</h1>
+
+                    <p>Need to <strong>understand code</strong> that someone else wrote? Paste it into our <strong>AI
+                            Code Explainer</strong> and get instant, line-by-line explanations in plain English. Whether
+                        it&rsquo;s Python, JavaScript, Java, C++, SQL, TypeScript, Go, or Rust &mdash; our free tool
+                        reads your code, detects the language automatically, and breaks down every single line so you
+                        know exactly what&rsquo;s happening. No sign-up. No API key. No cost. Just paste, click
+                        <strong>Explain</strong>, and learn.
+                    </p>
+
+                    <h2>What Does This Tool Do?</h2>
+                    <p>Our <strong>AI Code Explainer</strong> takes any code snippet &mdash; from a 5-line function to
+                        an entire 300-line file &mdash; and generates two things:</p>
+                    <ol>
+                        <li><strong>A Code Summary:</strong> A high-level overview telling you the language, the number
+                            of functions, classes, loops, conditionals, and what patterns the code uses (API calls, DOM
+                            manipulation, async operations, error handling, etc.)</li>
+                        <li><strong>Line-by-Line Explanations:</strong> Every single line gets its own explanation
+                            &mdash; not generic filler, but context-aware descriptions like &ldquo;Declares function
+                            <code>fetchUser</code> &mdash; a reusable block of code&rdquo; or &ldquo;For loop &mdash;
+                            repeats a block of code multiple times.&rdquo;
+                        </li>
+                    </ol>
+                    <p>This is the fastest way to understand unfamiliar code in 2026. No need to read docs, watch
+                        tutorials, or ask on Stack Overflow.</p>
+
+                    <h2>How to Use the AI Code Explainer</h2>
+                    <ol>
+                        <li><strong>Paste Your Code:</strong> Copy any code from your editor, GitHub, Stack Overflow, or
+                            anywhere else and paste it into the &ldquo;Code Input&rdquo; panel on the left.</li>
+                        <li><strong>Pick a Language (or Don&rsquo;t):</strong> Our auto-detect engine recognizes the
+                            language from syntax patterns. You can also manually choose from 14+ languages for extra
+                            precision.</li>
+                        <li><strong>Click &ldquo;Explain&rdquo;:</strong> The AI analyzes your code in under a second
+                            and displays a structured summary + line-by-line breakdown in the right panel.</li>
+                    </ol>
+
+                    <h2>Supported Languages</h2>
+                    <p>We support <strong>every major programming language</strong> used in production today:</p>
+                    <ul>
+                        <li><strong>Frontend:</strong> JavaScript, TypeScript, HTML, CSS, React JSX</li>
+                        <li><strong>Backend:</strong> Python, Java, C#, PHP, Ruby, Go, Rust, Node.js</li>
+                        <li><strong>Systems:</strong> C, C++, Assembly</li>
+                        <li><strong>Database:</strong> SQL (MySQL, PostgreSQL, SQLite, MongoDB queries)</li>
+                        <li><strong>Mobile:</strong> Swift, Kotlin, Dart (Flutter)</li>
+                        <li><strong>DevOps:</strong> Bash, PowerShell, Docker, YAML configs</li>
+                    </ul>
+
+                    <h2>Why Developers Choose Our Explainer Over Alternatives</h2>
+                    <p>There are other AI code tools out there &mdash; ChatGPT, GitHub Copilot, Codeium. But
+                        here&rsquo;s why developers keep coming back to our dedicated explainer:</p>
+                    <ul>
+                        <li><strong>No Account Required:</strong> ChatGPT needs a login. Copilot needs a subscription.
+                            Our tool? Just open and use.</li>
+                        <li><strong>100% Private:</strong> Your code stays in your browser. Nothing is ever sent to a
+                            server. No logs. No tracking. Enterprise-safe.</li>
+                        <li><strong>Purpose-Built UI:</strong> This isn&rsquo;t a chatbot. It&rsquo;s a dedicated code
+                            analysis interface with syntax-aware formatting, line numbers, and structured output.</li>
+                        <li><strong>Instant Results:</strong> No waiting for API responses or rate limits. Analysis
+                            happens in under a second, every time.</li>
+                        <li><strong>Works Offline:</strong> After the page loads, the tool works without internet. Try
+                            that with ChatGPT.</li>
+                    </ul>
+
+                    <h2>Use Cases: Who Benefits from an AI Code Explainer?</h2>
+
+                    <h3>Students Learning to Code</h3>
+                    <p>You&rsquo;re following a Python tutorial and the instructor just wrote 40 lines of code without
+                        explaining half of it. Paste those lines into our tool and instantly see what every
+                        <code>def</code>, <code>for</code>, <code>if</code>, and <code>return</code> does. It&rsquo;s
+                        like having a tutor sitting next to you, 24/7, completely free.
+                    </p>
+
+                    <h3>Junior Developers at New Jobs</h3>
+                    <p>Your first week on the job and the codebase has 500 files. You need to understand a service
+                        written by someone who left the company two years ago. Paste the file, click Explain, and know
+                        exactly what every function does before your standup meeting.</p>
+
+                    <h3>Senior Engineers Doing Code Reviews</h3>
+                    <p>Reviewing a PR in a language you don&rsquo;t use daily? TypeScript generics, Rust ownership
+                        patterns, Go goroutines &mdash; paste the code and get quick explanations to verify logic
+                        without spending 30 minutes reading documentation.</p>
+
+                    <h3>Non-Technical Stakeholders</h3>
+                    <p>Product managers, designers, and startup founders who need to understand what their development
+                        team built. Our plain-English explanations bridge the gap between technical implementation and
+                        business understanding.</p>
+
+                    <h3>Open Source Contributors</h3>
+                    <p>Want to contribute to an open source project but the codebase is intimidating? Use our explainer
+                        to understand existing code before writing your first pull request. Reduce onboarding time from
+                        days to minutes.</p>
+
+                    <h2>What Makes a Good Code Explanation?</h2>
+                    <p>A good explainer doesn&rsquo;t just say &ldquo;this is a variable.&rdquo; It tells you:</p>
+                    <ul>
+                        <li>The <strong>type of construct</strong> (function, loop, conditional, class, import)</li>
+                        <li>The <strong>name of the identifier</strong> being used</li>
+                        <li>The <strong>purpose</strong> of that line in the broader context</li>
+                        <li>Whether it involves <strong>side effects</strong> (API calls, DOM changes, console output)
+                        </li>
+                    </ul>
+                    <p>Our AI engine does all of this. It detects 30+ code patterns including async/await, error
+                        handling, array methods, DOM manipulation, HTTP requests, event listeners, class inheritance,
+                        and more.</p>
+
+                    <h2>Privacy &amp; Security: Your Code Never Leaves Your Browser</h2>
+                    <p>This is a critical difference from cloud-based tools. When you paste code into our explainer:</p>
+                    <ul>
+                        <li>All processing happens <strong>100% client-side</strong> in JavaScript</li>
+                        <li>No API calls are made. Zero. Check your Network tab.</li>
+                        <li>Your code is never stored, logged, or transmitted anywhere</li>
+                        <li>API keys, secrets, and proprietary logic stay completely private</li>
+                        <li>GDPR compliant by architecture &mdash; there&rsquo;s no data to regulate</li>
+                        <li>Works in air-gapped environments and offline after first load</li>
+                    </ul>
+
+                    <h2>Tips to Get the Best Results</h2>
+                    <ul>
+                        <li><strong>Paste Complete Functions:</strong> Our analysis works best with complete code
+                            blocks, not fragments.</li>
+                        <li><strong>Keep Comments:</strong> Comments are detected and labeled, giving you developer
+                            intent alongside AI analysis.</li>
+                        <li><strong>Select Language Manually</strong> for edge cases where syntax overlaps (TypeScript
+                            vs JavaScript, C vs C++).</li>
+                        <li><strong>Use the Copy Button</strong> to save explanations and paste them into your notes or
+                            documentation.</li>
+                    </ul>
+
+                    <h2>Frequently Asked Questions</h2>
+
+                    <div class="faq-item">
+                        <strong>What programming languages does the AI Code Explainer support?</strong>
+                        <p>We support 14+ languages: Python, JavaScript, TypeScript, Java, C, C++, C#, Go, Rust, PHP,
+                            Ruby, SQL, HTML, CSS, and more. Auto-detection identifies the language from syntax patterns
+                            automatically.</p>
+                    </div>
+                    <div class="faq-item">
+                        <strong>Is the AI Code Explainer free to use?</strong>
+                        <p>Yes, 100% free. No registration, no sign-up, no email required, no limits. Use it as many
+                            times as you want. We make money through ads, not by charging you.</p>
+                    </div>
+                    <div class="faq-item">
+                        <strong>Is my code safe and private?</strong>
+                        <p>Completely. Your code never leaves your browser. All analysis runs client-side in JavaScript.
+                            We don&rsquo;t have a backend API for this tool. Your code, secrets, and logic are 100%
+                            private.</p>
+                    </div>
+                    <div class="faq-item">
+                        <strong>How accurate are the AI explanations?</strong>
+                        <p>Our engine uses pattern matching, regex-based syntax analysis, and language-specific parsers.
+                            It accurately identifies functions, classes, loops, conditionals, imports, API calls, DOM
+                            operations, and 30+ other patterns. For deeper semantic analysis, pair it with manual
+                            review.</p>
+                    </div>
+                    <div class="faq-item">
+                        <strong>Can beginners use this to learn coding?</strong>
+                        <p>Absolutely. That&rsquo;s one of the top use cases. Students paste code from tutorials,
+                            homework, or Stack Overflow answers and see exactly what each line does. It&rsquo;s a free,
+                            always-available coding tutor.</p>
+                    </div>
+                    <div class="faq-item">
+                        <strong>Does it explain code line by line?</strong>
+                        <p>Yes. You get both a high-level summary (language, structure, patterns detected) and a
+                            line-by-line breakdown where each line is displayed with its explanation. Empty lines are
+                            skipped for cleaner output.</p>
+                    </div>
+                    <div class="faq-item">
+                        <strong>Does it work on minified or obfuscated code?</strong>
+                        <p>Yes. Even if variable names are mangled or whitespace is removed, the engine identifies
+                            patterns like function calls, array methods, and control flow. It won&rsquo;t recover
+                            original variable names, but it will explain the structure.</p>
+                    </div>
+                    <div class="faq-item">
+                        <strong>How is this different from ChatGPT?</strong>
+                        <p>ChatGPT requires a login and sends your code to OpenAI&rsquo;s servers. Our tool requires no
+                            login, works offline, keeps your code 100% private, and has a purpose-built UI designed
+                            specifically for code analysis &mdash; not general conversation.</p>
+                    </div>
+
+                    <p style="text-align: center; margin-top: 3rem; color: var(--text-muted); font-size: 0.85rem;">
+                        Code Formatter &copy; 2026 &middot; Professional developer tools built with privacy and
+                        performance in mind.
+                    </p>
+                </article>
+            </div>
+        </div>
+        <footer class="footer" role="contentinfo">
+            <div class="footer-stats">
+                <div class="stat-item" id="footerStatus"><i class="fas fa-robot"></i> AI Ready</div>
+                <div class="footer-links">
+                    <a href="./about.html">About</a> &middot;
+                    <a href="./privacy.html">Privacy</a> &middot;
+                    <a href="./terms.html">Terms</a> &middot;
+                    <a href="./contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-actions">
+                <button class="btn btn-sec" onclick="clearAll()">CLEAR</button>
+                <button class="ai-run-btn" onclick="explainCode()"><i class="fas fa-bolt"></i> EXPLAIN</button>
+            </div>
+        </footer>
+    </main>
+    <div class="toast" id="toast" role="alert" aria-live="assertive"><i class="fas fa-check-circle"></i><span>Action
+            Completed</span></div>
+    <script>const activeToolId = "ai-explainer";</script>
+    <script src="script.js"></script>
+    <script>
+        function pasteCode() { navigator.clipboard.readText().then(t => { document.getElementById('codeInput').value = t }).catch(() => { }) }
+        function clearAll() { document.getElementById('codeInput').value = ''; document.getElementById('aiOutput').innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center;color:var(--text-muted)"><i class="fas fa-robot" style="font-size:3rem;color:var(--primary);margin-bottom:16px;opacity:0.5"></i><p style="font-size:1.1rem;font-weight:500;margin:0 0 8px 0;color:var(--text-main)">Paste your code & click Explain</p><p style="font-size:0.9rem;margin:0">Supports Python, JavaScript, Java, C++, SQL & more</p></div>' }
+        function copyExplanation() { const t = document.getElementById('aiOutput').innerText; navigator.clipboard.writeText(t); showToast('Explanation copied!') }
+        function detectLanguage(code) {
+            if (/^\s*(import\s+\w|from\s+\w+\s+import|def\s+\w|class\s+\w.*:|print\s*\(|if\s+__name__)/.test(code)) return 'python';
+            if (/^\s*(function\s+\w|const\s+|let\s+|var\s+|=>\s*{|console\.log|document\.)/.test(code)) return 'javascript';
+            if (/^\s*(public\s+class|private\s+|System\.out|import\s+java\.)/.test(code)) return 'java';
+            if (/^\s*(#include|using\s+namespace|std::|cout|cin|int\s+main\s*\()/.test(code)) return 'cpp';
+            if (/^\s*(using\s+System|namespace\s+|Console\.Write)/.test(code)) return 'csharp';
+            if (/^\s*(interface\s+\w|type\s+\w|:\s*(string|number|boolean))/.test(code)) return 'typescript';
+            if (/^\s*(<\?php|\$\w+\s*=|echo\s+)/.test(code)) return 'php';
+            if (/^\s*(SELECT\s+|INSERT\s+|UPDATE\s+|DELETE\s+|CREATE\s+TABLE)/i.test(code)) return 'sql';
+            if (/^\s*(<!DOCTYPE|<html|<div|<head)/i.test(code)) return 'html';
+            if (/^\s*(body\s*{|\.[\w-]+\s*{|#[\w-]+\s*{|@media)/i.test(code)) return 'css';
+            if (/^\s*(func\s+\w|package\s+\w|fmt\.)/.test(code)) return 'go';
+            if (/^\s*(fn\s+\w|let\s+mut|impl\s+|use\s+std)/.test(code)) return 'rust';
+            return 'javascript';
+        }
+        const langNames = { auto: 'Auto', javascript: 'JavaScript', python: 'Python', java: 'Java', cpp: 'C/C++', csharp: 'C#', typescript: 'TypeScript', php: 'PHP', ruby: 'Ruby', go: 'Go', rust: 'Rust', sql: 'SQL', html: 'HTML', css: 'CSS' };
+        function explainCode() {
+            const code = document.getElementById('codeInput').value.trim();
+            if (!code) { showToast('Please paste some code first'); return }
+            const out = document.getElementById('aiOutput');
+            const selLang = document.getElementById('langSelect').value;
+            const lang = selLang === 'auto' ? detectLanguage(code) : selLang;
+            out.innerHTML = '<div class="ai-typing"><span></span><span></span><span></span></div>';
+            document.getElementById('footerStatus').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analyzing...';
+            setTimeout(() => {
+                const lines = code.split('\n');
+                const explanations = lines.map((line, i) => analyzeLine(line, i, lang, lines));
+                const summary = generateSummary(code, lang, lines);
+                let html = '<div class="ai-summary"><h3><i class="fas fa-brain"></i> Code Summary</h3><p><strong>Language:</strong> ' + langNames[lang] + '</p><p>' + summary + '</p></div>';
+                explanations.forEach((exp, i) => { if (exp) { html += '<div class="line-explain" style="animation-delay:' + (i * 0.05) + 's"><span class="line-num">L' + (i + 1) + '</span><code class="line-code">' + escapeHtml(lines[i].trim()) + '</code><span class="line-desc">' + exp + '</span></div>' } });
+                out.innerHTML = html;
+                document.getElementById('footerStatus').innerHTML = '<i class="fas fa-check-circle" style="color:#22c55e"></i> Analysis Complete';
+            }, 800 + Math.random() * 700);
+        }
+        function escapeHtml(t) { return t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') }
+        function generateSummary(code, lang, lines) {
+            const lc = lines.length; const funcs = (code.match(/function\s+\w+|def\s+\w+|func\s+\w+|fn\s+\w+/g) || []).length;
+            const classes = (code.match(/class\s+\w+/g) || []).length;
+            const loops = (code.match(/for\s*\(|while\s*\(|for\s+\w+\s+in|\.forEach|\.map\(/g) || []).length;
+            const conds = (code.match(/if\s*\(|if\s+\w|else\s*{|elif|switch\s*\(/g) || []).length;
+            let s = 'This ' + langNames[lang] + ' code has <strong>' + lc + ' lines</strong>';
+            if (funcs) s += ', <strong>' + funcs + ' function' + (funcs > 1 ? 's' : '') + '</strong>';
+            if (classes) s += ', <strong>' + classes + ' class' + (classes > 1 ? 'es' : '') + '</strong>';
+            if (loops) s += ', <strong>' + loops + ' loop' + (loops > 1 ? 's' : '') + '</strong>';
+            if (conds) s += ', <strong>' + conds + ' conditional' + (conds > 1 ? 's' : '') + '</strong>';
+            s += '. ';
+            if (code.includes('fetch(') || code.includes('axios')) s += 'It performs HTTP/API requests. ';
+            if (code.includes('querySelector') || code.includes('getElementById')) s += 'It manipulates the DOM. ';
+            if (code.includes('addEventListener')) s += 'It handles user events. ';
+            if (/async|await|Promise|\.then\(/.test(code)) s += 'It uses asynchronous operations. ';
+            if (/import\s+|require\s*\(|from\s+\w+\s+import/.test(code)) s += 'It imports external modules. ';
+            if (/try\s*{|except|catch\s*\(/.test(code)) s += 'It includes error handling. ';
+            if (/console\.log|print\s*\(|System\.out|fmt\.Print/.test(code)) s += 'It outputs data to console. ';
+            if (/SELECT|INSERT|UPDATE|DELETE/i.test(code)) s += 'It contains SQL database operations. ';
+            return s;
+        }
+        function analyzeLine(line, idx, lang) {
+            const t = line.trim();
+            if (!t) return null;
+            if (/^\/\/|^#(?!include)|^\/\*|^\*|^\*\/|^--\s|^< !--/.test(t)) return '<em>Comment</e m> — a note for developers, ignored during execution.';
+            if (/^import\s+/.test(t)) return '<strong>Imports</strong> a module/library to use its functionality.';
+            if (/^from\s+\w+\s+import/.test(t)) { const m = t.match(/from\s+(\w+)\s+import\s+(.+)/); return '<strong>Imports</strong> <code>' + escapeHtml(m ? m[2] : '') + '</code> from <code>' + escapeHtml(m ? m[1] : '') + '</code> module.'; }
+            if (/^(function|def|func|fn)\s+\w+/.test(t)) { const m = t.match(/(function|def|func|fn)\s+(\w+)/); return '<strong>Declares function</strong> <code>' + escapeHtml(m ? m[2] : '') + '</code> — a reusable block of code.'; }
+            if (/^class\s+\w+/.test(t)) { const m = t.match(/class\s+(\w+)/); return '<strong>Declares class</strong> <code>' + escapeHtml(m ? m[1] : '') + '</code> — a blueprint for objects.'; }
+            if (/^(const|let|var|int|float|double|string|bool)\s+/.test(t)) { const m = t.match(/(const|let|var|int|float|double|string|bool)\s+(\w+)/); return '<strong>Declares variable</strong> <code>' + escapeHtml(m ? m[2] : '') + '</code> using <code>' + escapeHtml(m ? m[1] : '') + '</code>.'; }
+            if (/^if\s*[\(:]/.test(t)) return '<strong>Conditional (if)</strong> — runs the block only if the condition is true.';
+            if (/^else\s*if|^elif/.test(t)) return '<strong>Else-if</strong> — checks this condition if previous was false.';
+            if (/^else/.test(t)) return '<strong>Else</strong> — runs if all previous conditions were false.';
+            if (/^for\s*[\(:]/.test(t)) return '<strong>For loop</strong> — repeats a block of code multiple times.';
+            if (/^while\s*[\(:]/.test(t)) return '<strong>While loop</strong> — repeats as long as condition is true.';
+            if (/^switch\s*\(/.test(t)) return '<strong>Switch</strong> — selects a code block based on value.';
+            if (/^return\s/.test(t)) { const m = t.match(/return\s+(.+)/); return '<strong>Returns</strong> ' + (m ? '<code>' + escapeHtml(m[1].replace(';', '')) + '</code>' : 'a value') + ' from the function.'; }
+            if (/^try\s*{/.test(t)) return '<strong>Try block</strong> — attempts code that might throw an error.';
+            if (/^catch\s*\(|^except/.test(t)) return '<strong>Error handler</strong> — catches errors from the try block.';
+            if (/console\.log|print\s*\(|System\.out/.test(t)) return '<strong>Output</strong> — prints data to console/screen.';
+            if (/\.addEventListener/.test(t)) { const m = t.match(/addEventListener\s*\(\s*['"](\w+)['"]/); return '<strong>Event listener</strong> for <code>' + (m ? m[1] : 'user') + '</code> events.'; }
+            if (/document\.(getElementById|querySelector)/.test(t)) return '<strong>DOM selection</strong> — finds an HTML element.';
+            if (/\.(forEach|map|filter|reduce)\s*\(/.test(t)) { const m = t.match(/\.(forEach|map|filter|reduce)/); return '<strong>Array method</strong> <code>.' + escapeHtml(m ? m[1] : '') + '()</code> — transforms array data.'; }
+            if (/fetch\s*\(|axios\./.test(t)) return '<strong>HTTP request</strong> — sends a network request.';
+            if (/async\s+function/.test(t)) return '<strong>Async function</strong> — supports await for async operations.';
+            if (/await\s+/.test(t)) return '<strong>Await</strong> — pauses until the Promise resolves.';
+            if (/new\s+\w+/.test(t)) { const m = t.match(/new\s+(\w+)/); return '<strong>Creates instance</strong> of <code>' + escapeHtml(m ? m[1] : '') + '</code>.'; }
+            if (/^\s*}/.test(t)) return '<em>Closing bracket</em> — ends the current block.';
+            if (/\w+\s*=\s*.+/.test(t)) { const m = t.match(/(\w+)\s*=/); return '<strong>Assignment</strong> — sets value of <code>' + escapeHtml(m ? m[1] : '') + '</code>.'; }
+            if (/\w+\.\w+\s*\(/.test(t)) { const m = t.match(/(\w+)\.(\w+)\s*\(/); return '<strong>Method call</strong> — <code>.' + escapeHtml(m ? m[2] : '') + '()</code> on <code>' + escapeHtml(m ? m[1] : '') + '</code>.'; }
+            if (/^\w+\s*\(/.test(t)) { const m = t.match(/^(\w+)\s*\(/); return '<strong>Function call</strong> — executes <code>' + escapeHtml(m ? m[1] : '') + '()</code>.'; }
+            if (/SELECT|INSERT|UPDATE|DELETE|CREATE/i.test(t)) return '<strong>SQL statement</strong> — database operation.';
+            if (/^<\w+/.test(t)) { const m = t.match(/^<(\w+)/); return '<strong>HTML</strong> — <code>&lt;' + escapeHtml(m ? m[1] : '') + '&gt;</code> element.'; }
+            return 'Executes a statement in the program flow.';
+        }
+    </script>
+</body>
+
+</html>

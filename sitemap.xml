@@ -8,6 +8,20 @@
         <priority>1.0</priority>
     </url>
 
+    <!-- AI Tools (Priority 0.9) -->
+    <url>
+        <loc>https://www.codeformatter.in/ai-code-explainer.html</loc>
+        <lastmod>2026-02-19</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.codeformatter.in/ai-code-converter.html</loc>
+        <lastmod>2026-02-19</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
     <!-- Code Formatters (Priority 0.9) -->
     <url>
         <loc>https://www.codeformatter.in/html-formatter.html</loc>
