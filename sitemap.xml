@@ -3,420 +3,313 @@
     <!-- Homepage -->
     <url>
         <loc>https://www.codeformatter.in/</loc>
-        <lastmod>2026-02-15</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
 
-    <!-- AI Tools (Priority 0.9) -->
+    <!-- AI Tools -->
     <url>
         <loc>https://www.codeformatter.in/ai-code-explainer.html</loc>
-        <lastmod>2026-02-19</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/ai-code-converter.html</loc>
-        <lastmod>2026-02-19</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/ai-prompt-enhancer.html</loc>
-        <lastmod>2026-02-19</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
-    <!-- Code Formatters (Priority 0.9) -->
+    <!-- Code Formatters -->
     <url>
         <loc>https://www.codeformatter.in/html-formatter.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/css-formatter.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/js-formatter.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/sql-formatter.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/xml-formatter.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/json-tree-viewer.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/markdown-editor.html</loc>
-        <lastmod>2026-02-05</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
-
-    <!-- JSON Parse Error Blog (High Traffic) -->
-    <url>
-        <loc>https://www.codeformatter.in/blog-json-parse-error.html</loc>
-        <lastmod>2026-02-06</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.75</priority>
-    </url>
-
-    <!-- Regex Cheat Sheet Blog (High Traffic Reference) -->
-    <url>
-        <loc>https://www.codeformatter.in/blog-regex-cheat-sheet.html</loc>
-        <lastmod>2026-02-06</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.75</priority>
-    </url>
-
-
-    <!-- Code Minifiers (Priority 0.85) -->
+    <!-- Code Minifiers -->
     <url>
         <loc>https://www.codeformatter.in/json-minifier.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.85</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/html-minifier.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.85</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/css-minifier.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.85</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/js-minifier.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.85</priority>
     </url>
 
-    <!-- Image & Color Tools (Priority 0.9) -->
+    <!-- Image & Color Tools -->
     <url>
         <loc>https://www.codeformatter.in/image-compressor.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/color-converter.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/qr-code-generator.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.85</priority>
     </url>
 
-    <!-- Data Converters (Priority 0.85) -->
+    <!-- Data Converters -->
     <url>
         <loc>https://www.codeformatter.in/json-to-csv.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.85</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/csv-to-json.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.85</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/json-to-typescript.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/excel-to-html.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/case-converter.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
-    <!-- Encoding & Security (Priority 0.85) -->
+    <!-- Encoding & Security -->
     <url>
         <loc>https://www.codeformatter.in/base64-tool.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.85</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/url-encoder.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.85</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/hash-generator.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.85</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/jwt-decoder.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.85</priority>
     </url>
-
     <url>
         <loc>https://www.codeformatter.in/regex-tester.html</loc>
-        <lastmod>2026-01-26</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.85</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/password-generator.html</loc>
-        <lastmod>2026-01-26</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.85</priority>
     </url>
 
-    <!-- Generators (Priority 0.9) -->
+    <!-- Generators -->
     <url>
         <loc>https://www.codeformatter.in/uuid-generator.html</loc>
-        <lastmod>2026-01-26</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/timestamp-converter.html</loc>
-        <lastmod>2026-01-26</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/json-to-yaml.html</loc>
-        <lastmod>2026-01-26</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/cron-generator.html</loc>
-        <lastmod>2026-01-26</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
-
-    <!-- CSS Generators (Priority 0.8) -->
+    <!-- CSS Generators -->
     <url>
         <loc>https://www.codeformatter.in/gradient-generator.html</loc>
-        <lastmod>2026-01-26</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/glassmorphism-generator.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/smooth-shadow-generator.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/px-to-rem.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/aspect-ratio-calculator.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
-    <!-- Text & Data Tools (Priority 0.8) -->
+    <!-- Text & Data Tools -->
     <url>
         <loc>https://www.codeformatter.in/lorem-ipsum-generator.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/mock-data-generator.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/diff-checker.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
-    <!-- Preview Tools (Priority 0.75) -->
+    <!-- Preview Tools -->
     <url>
         <loc>https://www.codeformatter.in/html-viewer.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.75</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/social-card-preview.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.75</priority>
     </url>
 
-    <!-- Blog Main Page (Priority 0.7) -->
+    <!-- Blog Main Page -->
     <url>
         <loc>https://www.codeformatter.in/blog.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
 
-    <url>
-        <loc>https://www.codeformatter.in/blog-json-fix.html</loc>
-        <lastmod>2026-01-04</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.65</priority>
-    </url>
-
-    <!-- Blog Posts - General/SEO (Priority 0.6) -->
-    <url>
-        <loc>https://www.codeformatter.in/blog-html-boilerplate.html</loc>
-        <lastmod>2026-01-04</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://www.codeformatter.in/blog-css-seo.html</loc>
-        <lastmod>2026-01-04</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://www.codeformatter.in/blog-vscode-tools.html</loc>
-        <lastmod>2026-01-04</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://www.codeformatter.in/blog-freelancing.html</loc>
-        <lastmod>2026-01-04</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://www.codeformatter.in/blog-technical-seo.html</loc>
-        <lastmod>2026-01-04</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://www.codeformatter.in/blog-dark-mode.html</loc>
-        <lastmod>2026-01-04</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://www.codeformatter.in/blog-json-xml.html</loc>
-        <lastmod>2026-01-04</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://www.codeformatter.in/blog-passive-income.html</loc>
-        <lastmod>2026-01-04</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://www.codeformatter.in/blog-privacy-tech.html</loc>
-        <lastmod>2026-01-04</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://www.codeformatter.in/blog-tailwind-review.html</loc>
-        <lastmod>2026-01-04</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://www.codeformatter.in/blog-debugging.html</loc>
-        <lastmod>2026-01-04</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://www.codeformatter.in/blog-button-design.html</loc>
-        <lastmod>2026-01-04</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://www.codeformatter.in/blog-ai-future.html</loc>
-        <lastmod>2026-01-04</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-
-    <!-- Static Pages (Lower Priority) -->
+    <!-- Static Pages -->
     <url>
         <loc>https://www.codeformatter.in/about.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/contact.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/privacy.html</loc>
-        <lastmod>2026-01-04</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.4</priority>
     </url>
     <url>
         <loc>https://www.codeformatter.in/terms.html</loc>
-        <lastmod>2026-02-07</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.4</priority>
     </url>
