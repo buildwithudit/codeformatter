@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free JSON to TypeScript Converter Online - Generate Types & Zod Schema 2026 | Code Formatter</title>
+    <title>Free JSON to TypeScript Converter Online — Generate Types & Zod Schema | Code Formatter</title>
     <meta name="description"
         content="Convert JSON to TypeScript interfaces and Zod validation schemas instantly. Free tool with intelligent type inference, runtime validation, and production-ready code generation.">
     <meta name="keywords"
-        content="json to typescript, json to zod, typescript generator, zod schema, type inference, runtime validation, typescript interfaces, zod validation, convert json to types, typescript type generator, zod schema generator, json typescript converter online, free typescript generator">
+        content="json to typescript, json to zod, typescript generator, zod schema, type inference, runtime validation, typescript interfaces, zod validation, convert json to types, typescript type generator, zod schema generator, json typescript converter online, free typescript generator, json to ts interface, generate zod from json">
     <link rel="canonical" href="https://www.codeformatter.in/json-to-typescript.html">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://codeformatter.in/json-to-typescript.html">
@@ -115,10 +115,32 @@
       "@context": "https://schema.org",
       "@graph": [
         {
+          "@type": "Organization",
+          "name": "Code Formatter",
+          "url": "https://www.codeformatter.in/",
+          "logo": "https://www.codeformatter.in/codeformat.png"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.codeformatter.in/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "JSON to TypeScript"
+            }
+          ]
+        },
+        {
           "@type": "WebApplication",
           "name": "JSON to TypeScript & Zod Generator",
-          "description": "Convert JSON data to TypeScript interfaces and Zod validation schemas instantly with intelligent type inference.",
           "url": "https://www.codeformatter.in/json-to-typescript.html",
+          "description": "Convert JSON data to TypeScript interfaces and Zod validation schemas instantly with intelligent type inference.",
           "applicationCategory": "DeveloperApplication",
           "operatingSystem": "Any",
           "offers": {
@@ -136,36 +158,72 @@
           ]
         },
         {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
-            {"@type": "ListItem", "position": 2, "name": "Data Converters", "item": "https://www.codeformatter.in/#converters"},
-            {"@type": "ListItem", "position": 3, "name": "JSON to TypeScript"}
-          ]
-        },
-        {
           "@type": "HowTo",
           "name": "How to Convert JSON to TypeScript Online",
           "description": "Generate TypeScript interfaces and Zod schemas in 3 simple steps",
           "step": [
-            {"@type": "HowToStep", "position": 1, "name": "Paste JSON", "text": "Copy your JSON data - API responses, config files, or sample data - and paste into the input pane"},
-            {"@type": "HowToStep", "position": 2, "name": "Select Output", "text": "Switch between TypeScript interfaces for compile-time types, or Zod schemas for runtime validation"},
-            {"@type": "HowToStep", "position": 3, "name": "Copy Code", "text": "Copy the generated code with proper exports for immediate use in your TypeScript project"}
+            {
+              "@type": "HowToStep",
+              "position": 1,
+              "name": "Paste JSON",
+              "text": "Copy your JSON data - API responses, config files, or sample data - and paste into the input pane"
+            },
+            {
+              "@type": "HowToStep",
+              "position": 2,
+              "name": "Select Output",
+              "text": "Switch between TypeScript interfaces for compile-time types, or Zod schemas for runtime validation"
+            },
+            {
+              "@type": "HowToStep",
+              "position": 3,
+              "name": "Copy Code",
+              "text": "Copy the generated code with proper exports for immediate use in your TypeScript project"
+            }
           ]
         },
         {
           "@type": "FAQPage",
           "mainEntity": [
-            {"@type": "Question", "name": "What's the difference between TypeScript and Zod?", "acceptedAnswer": {"@type": "Answer", "text": "TypeScript provides compile-time type checking but types are erased at runtime. Zod validates data at runtime, ensuring external data matches expected structures."}},
-            {"@type": "Question", "name": "Can I use both TypeScript and Zod together?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely! Best practice: define Zod schemas, then use z.infer<typeof Schema> to generate TypeScript types for a single source of truth."}},
-            {"@type": "Question", "name": "Does it handle nested objects?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The tool recursively generates types for deeply nested structures, creating separate interfaces for each level."}},
-            {"@type": "Question", "name": "Is the generated code production-ready?", "acceptedAnswer": {"@type": "Answer", "text": "It's a solid starting point. Review and enhance based on domain knowledge - add JSDoc comments, refine optional fields, and add custom Zod refinements."}}
+            {
+              "@type": "Question",
+              "name": "What's the difference between TypeScript and Zod?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "TypeScript provides compile-time type checking but types are erased at runtime. Zod validates data at runtime, ensuring external data matches expected structures."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I use both TypeScript and Zod together?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Absolutely! Best practice: define Zod schemas, then use z.infer<typeof Schema> to generate TypeScript types for a single source of truth."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does it handle nested objects?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. The tool recursively generates types for deeply nested structures, creating separate interfaces for each level."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is the generated code production-ready?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "It's a solid starting point. Review and enhance based on domain knowledge - add JSDoc comments, refine optional fields, and add custom Zod refinements."
+              }
+            }
           ]
         }
       ]
     }
     </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2670168844256558" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2670168844256558"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -323,10 +381,11 @@
                     <h1>JSON to TypeScript & Zod Schema Generator: Complete 2026 Guide</h1>
 
                     <p>Converting <strong>JSON to TypeScript types</strong> is a fundamental task in modern web
-                        development. Whether you're working with API responses, configuration files, or complex data
-                        structures, having strong type safety is essential. Our <strong>JSON to TypeScript & Zod
-                            Generator</strong> automates this process, creating both compile-time TypeScript interfaces
-                        and runtime Zod validation schemas from your JSON data instantly.</p>
+                        development. Whether you're working with API responses or complex data structures, having strong
+                        type safety is essential. Using an <a href="ai-code-converter.html"
+                            style="color:var(--primary); text-decoration:none; font-weight:600;">AI Code Converter</a>
+                        can help with broader logic, but our specialized <strong>JSON to TypeScript & Zod
+                            Generator</strong> provides the precision you need for production-ready interfaces.</p>
 
                     <p>This powerful <strong>typescript generator</strong> tool eliminates hours of manual type
                         creation. Simply paste your JSON, and instantly receive production-ready TypeScript types with
@@ -564,7 +623,8 @@ export type User = z.infer&lt;typeof UserSchema&gt;;</code></pre>
         <footer class="footer">
             <div class="footer-stats">
                 <div class="stat-item" id="typeCount"><i class="fas fa-file-code"></i> Types: 0</div>
-                <div class="footer-links"><a href="./about.html">About</a>  <a href="./privacy.html">Privacy</a>  <a href="./terms.html">Terms</a>  <a href="./contact.html">Contact</a></div>
+                <div class="footer-links"><a href="./about.html">About</a> <a href="./privacy.html">Privacy</a> <a
+                        href="./terms.html">Terms</a> <a href="./contact.html">Contact</a></div>
             </div>
             <div class="footer-actions">
                 <button class="btn btn-sec" onclick="clearInput()"><i class="far fa-trash-alt"></i> CLEAR</button>
@@ -810,5 +870,3 @@ export type User = z.infer&lt;typeof UserSchema&gt;;</code></pre>
 </body>
 
 </html>
-
-
