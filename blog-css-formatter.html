@@ -1,12 +1,634 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en" class="dark">
 
 <head>
-    <link rel="canonical" href="https://www.codeformatter.in/css-formatter.html">
-    <meta http-equiv="refresh" content="0; url=https://www.codeformatter.in/css-formatter.html">
-    <script>window.location.replace("https://www.codeformatter.in/css-formatter.html");</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Formatter Online – Beautify & Format CSS Code Free | Code Formatter</title>
+    <meta name="description"
+        content="Format and beautify messy CSS code instantly online. Our free CSS formatter fixes indentation, organizes properties, and makes your stylesheet readable in one click.">
+    <meta name="author" content="Udit Sharma">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+    <link rel="canonical" href="https://www.codeformatter.in/blog-css-formatter.html">
+    <meta property="og:title" content="CSS Formatter Online – Beautify & Format CSS Code Free">
+    <meta property="og:description"
+        content="Format and beautify messy CSS code instantly online for free. Fix indentation and make stylesheets readable.">
+    <meta property="og:type" content="article">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2670168844256558"
+        crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --bg-body: #09090b;
+            --bg-card: rgba(24, 24, 27, 0.6);
+            --bg-code: #121214;
+            --border: #27272a;
+            --border-highlight: #3f3f46;
+            --primary: #818cf8;
+            --primary-glow: rgba(129, 140, 248, 0.15);
+            --secondary: #10b981;
+            --text-main: #e4e4e7;
+            --text-muted: #a1a1aa;
+            --text-dim: #71717a;
+            --font-ui: 'Inter', sans-serif;
+            --font-code: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: var(--text-main);
+            font-family: var(--font-ui);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0 0 100px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            z-index: 1000;
+        }
+
+        .progress-bar {
+            height: 3px;
+            background: var(--primary);
+            width: 0%;
+            box-shadow: 0 0 10px var(--primary);
+            transition: width 0.1s;
+        }
+
+        .wrapper {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 40px 20px 60px;
+        }
+
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 15px;
+        }
+
+        .nav-back {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .nav-back:hover {
+            color: #fff;
+        }
+
+        .brand-logo {
+            font-weight: 700;
+            color: #3b82f6;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        article h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin: 0 0 15px;
+            background: linear-gradient(180deg, #fff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .meta-row {
+            display: flex;
+            gap: 20px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            font-family: var(--font-code);
+            margin-bottom: 35px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .meta-row span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .meta-row i {
+            color: var(--primary);
+        }
+
+        article p {
+            font-size: 1.05rem;
+            color: #d4d4d8;
+            margin-bottom: 20px;
+        }
+
+        article h2 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #fff;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        article h2::before {
+            content: '#';
+            color: var(--primary);
+            opacity: 0.4;
+            margin-right: 8px;
+        }
+
+        article h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #fff;
+            margin-top: 35px;
+            margin-bottom: 12px;
+        }
+
+        strong {
+            color: #fff;
+            font-weight: 700;
+        }
+
+        ul,
+        ol {
+            margin-bottom: 24px;
+            padding-left: 20px;
+            color: var(--text-muted);
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .toc {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 50px;
+            font-size: 0.9rem;
+        }
+
+        .toc summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-muted);
+            list-style: none;
+        }
+
+        .toc summary:hover {
+            color: #fff;
+        }
+
+        .toc ul {
+            margin: 15px 0 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .toc li {
+            margin-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            padding-bottom: 8px;
+        }
+
+        .toc a {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: block;
+            transition: 0.2s;
+        }
+
+        .toc a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .code-wrapper {
+            margin: 30px 0;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg-code);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 15px;
+            background: #18181b;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        pre {
+            margin: 0;
+            padding: 20px;
+            overflow-x: auto;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        code {
+            font-family: var(--font-code);
+            color: #a5b4fc;
+        }
+
+        .token-prop {
+            color: #67e8f9;
+        }
+
+        .token-val {
+            color: #fca5a5;
+        }
+
+        .token-str {
+            color: #86efac;
+        }
+
+        .token-comment {
+            color: #52525b;
+            font-style: italic;
+        }
+
+        p code {
+            background: #27272a;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            color: #fff;
+            border: 1px solid #3f3f46;
+        }
+
+        .callout {
+            background: rgba(129, 140, 248, 0.05);
+            border: 1px solid rgba(129, 140, 248, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        .callout i {
+            color: var(--primary);
+            margin-top: 4px;
+        }
+
+        .callout h4 {
+            margin: 0 0 5px;
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .tool-card {
+            background: linear-gradient(180deg, rgba(39, 39, 42, 0.4), rgba(24, 24, 27, 0.4));
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            margin: 50px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 150px;
+            background: var(--primary);
+            filter: blur(80px);
+            opacity: 0.25;
+            z-index: -1;
+        }
+
+        .tool-card h3 {
+            margin: 0 0 15px;
+            color: #fff;
+            font-size: 1.4rem;
+        }
+
+        .tool-card p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .cta-btn-primary {
+            background: linear-gradient(135deg, var(--primary), #6366f1);
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+
+        .cta-btn-primary:hover {
+            transform: scale(1.05);
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 60px;
+            border-top: 1px solid var(--border);
+            padding-top: 40px;
+        }
+
+        .related-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 25px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .related-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .related-card h3 {
+            font-size: 1.1rem;
+            margin: 0 0 8px;
+            color: #fff;
+        }
+
+        .related-card p {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            margin: 0;
+        }
+
+        footer {
+            margin-top: 80px;
+            padding: 30px 0;
+            border-top: 1px solid var(--border);
+            background: rgba(24, 24, 27, 0.4);
+        }
+
+        .footer-content {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin: 0;
+        }
+
+        @media(max-width:600px) {
+            article h1 {
+                font-size: 1.8rem;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
-<body></body>
+<body>
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="wrapper">
+        <nav class="nav-header">
+            <a href="blog.html" class="nav-back"><i class="fas fa-arrow-left"></i> All Articles</a>
+            <a href="index.html" class="brand-logo">Code Formatter</a>
+        </nav>
+        <article>
+            <h1>CSS Formatter Online – Beautify & Format CSS Code Free</h1>
+            <div class="meta-row">
+                <span><i class="far fa-user-circle"></i> Udit Sharma</span>
+                <span><i class="far fa-calendar-alt"></i> Jan 18, 2026</span>
+                <span><i class="far fa-clock"></i> 7 Min Read</span>
+            </div>
+            <details class="toc" open>
+                <summary>Table of Contents</summary>
+                <ul>
+                    <li><a href="#why-format-css">Why Format CSS?</a></li>
+                    <li><a href="#before-after">Before & After Example</a></li>
+                    <li><a href="#how-to-use">How to Use CSS Formatter</a></li>
+                    <li><a href="#css-best-practices">CSS Writing Best Practices</a></li>
+                    <li><a href="#css-vs-minify">Format vs Minify</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </details>
+
+            <p id="why-format-css">CSS is the language that makes the web beautiful. But after weeks of building
+                features, copy-pasting snippets, and quick fixes, stylesheets can turn into an unreadable mess. A
+                <strong>CSS formatter</strong> instantly restores order — making your code clean, consistent, and
+                maintainable.</p>
+
+            <h2 id="before-after">Before & After: The Power of CSS Formatting</h2>
+            <p>Look at this real-world example of unformatted CSS pulled from a minified stylesheet:</p>
+            <div class="code-wrapper">
+                <div class="code-header">❌ Unformatted CSS</div>
+                <pre><code>.btn{display:inline-flex;align-items:center;padding:10px 20px;background:#3b82f6;color:#fff;border:none;border-radius:6px;font-size:14px;cursor:pointer;transition:all .2s}.btn:hover{background:#2563eb;transform:translateY(-2px)}</code></pre>
+            </div>
+            <div class="code-wrapper">
+                <div class="code-header">✅ Formatted CSS</div>
+                <pre><code><span class="token-prop">.btn</span> {
+  <span class="token-prop">display</span>: <span class="token-val">inline-flex</span>;
+  <span class="token-prop">align-items</span>: <span class="token-val">center</span>;
+  <span class="token-prop">padding</span>: <span class="token-val">10px 20px</span>;
+  <span class="token-prop">background</span>: <span class="token-str">#3b82f6</span>;
+  <span class="token-prop">color</span>: <span class="token-str">#fff</span>;
+  <span class="token-prop">border</span>: <span class="token-val">none</span>;
+  <span class="token-prop">border-radius</span>: <span class="token-val">6px</span>;
+  <span class="token-prop">font-size</span>: <span class="token-val">14px</span>;
+  <span class="token-prop">cursor</span>: <span class="token-val">pointer</span>;
+  <span class="token-prop">transition</span>: <span class="token-val">all .2s</span>;
+}
+
+<span class="token-prop">.btn:hover</span> {
+  <span class="token-prop">background</span>: <span class="token-str">#2563eb</span>;
+  <span class="token-prop">transform</span>: <span class="token-val">translateY(-2px)</span>;
+}</code></pre>
+            </div>
+            <p>The formatted version is instantly readable. You can see every property, find issues quickly, and share
+                it with teammates without confusion.</p>
+
+            <h2 id="how-to-use">How to Use the Online CSS Formatter</h2>
+            <ol>
+                <li><strong>Paste your CSS</strong> — Copy from your stylesheet, browser DevTools, or any source.</li>
+                <li><strong>Click Format</strong> — The tool adds proper indentation and line breaks.</li>
+                <li><strong>Choose indentation</strong> — Pick 2-space or 4-space indentation based on your project
+                    standards.</li>
+                <li><strong>Copy back</strong> — Copy the clean CSS back into your project.</li>
+            </ol>
+
+            <div class="callout">
+                <i class="fas fa-lightbulb"></i>
+                <div>
+                    <h4>DevTools Tip</h4>
+                    <p>When you inspect an element in Chrome DevTools and find inline styles or computed styles, they're
+                        already minified. Paste them into the CSS formatter to quickly understand the styles before
+                        editing.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <h3>🎨 Format Your CSS Now — Free</h3>
+                <p>Paste messy CSS and get it beautifully formatted with proper indentation in seconds.</p>
+                <a href="css-formatter.html" class="cta-btn-primary">Open CSS Formatter</a>
+            </div>
+
+            <h2 id="css-best-practices">CSS Writing Best Practices</h2>
+            <p>Good CSS formatting isn't just about aesthetics — it's about maintainability. Here are the rules top
+                developers follow:</p>
+            <ul>
+                <li><strong>One property per line</strong> — Never put multiple properties on the same line (except for
+                    very short single-property rules).</li>
+                <li><strong>Consistent property ordering</strong> — Use a logical order: layout properties first
+                    (display, position), then box model (width, margin, padding), then visual (color, background).</li>
+                <li><strong>Add a space before {</strong> — Always write <code>.class {</code> not <code>.class{</code>.
+                </li>
+                <li><strong>Close on its own line</strong> — The closing <code>}</code> should always be on its own
+                    line.</li>
+                <li><strong>Group related rules</strong> — Keep component styles together. Don't scatter
+                    <code>.btn</code> rules across hundreds of lines.</li>
+                <li><strong>Comment sections</strong> — Use comments to separate major sections:
+                    <code>/* === Navigation === */</code>.</li>
+            </ul>
+
+            <h2 id="css-vs-minify">CSS Formatting vs CSS Minification</h2>
+            <p>These are opposite operations — both are important:</p>
+            <ul>
+                <li><strong>Format (development)</strong> — Add spaces, newlines, and indentation. Use during
+                    development for readability.</li>
+                <li><strong>Minify (production)</strong> — Remove all spaces, newlines, and comments. Use for production
+                    to reduce file size and improve page speed.</li>
+            </ul>
+            <p>A good workflow: write formatted CSS → build process minifies automatically for production.</p>
+
+            <h2 id="faq">Frequently Asked Questions</h2>
+            <h3>Does formatting CSS affect performance?</h3>
+            <p>No — formatted CSS is only for development. Always minify CSS for production. Formatted CSS files are
+                larger but your browser never sees them if you have a build step.</p>
+            <h3>Can it format SCSS or LESS?</h3>
+            <p>The CSS formatter works on standard CSS. For SCSS/LESS, it will format the CSS portions correctly but may
+                not handle preprocessor-specific syntax perfectly.</p>
+            <h3>Is my CSS stored on your servers?</h3>
+            <p>No. All formatting happens in your browser using JavaScript. Your CSS code is never uploaded to any
+                server.</p>
+
+            <div class="related-grid">
+                <a href="blog-css-minifier.html" class="related-card">
+                    <h3>CSS Minifier</h3>
+                    <p>Compress CSS for production — reduce file size by 60-80%.</p>
+                </a>
+                <a href="blog-html-formatter.html" class="related-card">
+                    <h3>HTML Formatter</h3>
+                    <p>Beautify and properly indent your HTML markup.</p>
+                </a>
+                <a href="blog-js-formatter.html" class="related-card">
+                    <h3>JavaScript Formatter</h3>
+                    <p>Format and beautify JavaScript code instantly.</p>
+                </a>
+                <a href="blog-json-formatter.html" class="related-card">
+                    <h3>JSON Formatter</h3>
+                    <p>Beautify and validate JSON data with one click.</p>
+                </a>
+            </div>
+        </article>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+                <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+                <a href="terms.html"><i class="fas fa-file-alt"></i> Terms</a>
+            </div>
+            <p class="footer-copyright">© 2026 Code Formatter. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        window.addEventListener('scroll', () => {
+            const el = document.getElementById('progressBar');
+            const s = document.documentElement;
+            el.style.width = (s.scrollTop / (s.scrollHeight - s.clientHeight) * 100) + '%';
+        });
+    </script>
+</body>
 
 </html>
