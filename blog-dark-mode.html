@@ -1,57 +1,1085 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How to Implement Dark Mode in CSS (2026 Guide) | Code Formatter</title>
-<meta name="description" content="Complete guide to implementing dark mode with CSS. CSS variables, prefers-color-scheme, and toggle switch tutorial.">
-<meta name="author" content="Udit Sharma">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
-<link rel="canonical" href="https://www.codeformatter.in/blog-dark-mode.html">
-<meta property="og:title" content="How to Implement Dark Mode in CSS (2026 Guide)">
-<meta property="og:description" content="Complete guide to implementing dark mode with CSS. CSS variables, prefers-color-scheme, and toggle switch tutorial.">
-<meta property="og:type" content="article">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2670168844256558" crossorigin="anonymous"></script>
-<style>
-:root{--bg-body:#09090b;--bg-card:rgba(24,24,27,.6);--border:#27272a;--primary:#818cf8;--text-main:#e4e4e7;--text-muted:#a1a1aa;--text-dim:#71717a;--font-ui:'Inter',sans-serif;--font-code:'JetBrains Mono',monospace}*{box-sizing:border-box}body{background-color:var(--bg-body);background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:30px 30px;color:var(--text-main);font-family:var(--font-ui);line-height:1.6;margin:0;padding:0 0 100px;-webkit-font-smoothing:antialiased}.progress-container{position:fixed;top:0;left:0;width:100%;height:3px;z-index:1000}.progress-bar{height:3px;background:var(--primary);width:0%;box-shadow:0 0 10px var(--primary);transition:width .1s}.wrapper{max-width:760px;margin:0 auto;padding:40px 20px 60px}.nav-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;border-bottom:1px solid var(--border);padding-bottom:15px}.nav-back{color:var(--text-muted);text-decoration:none;font-size:.85rem;font-weight:500;display:inline-flex;align-items:center;gap:6px}.nav-back:hover{color:#fff}.brand-logo{font-weight:700;color:#3b82f6;text-decoration:none;font-size:.9rem}article h1{font-size:2.2rem;font-weight:800;letter-spacing:-.03em;line-height:1.2;margin:0 0 15px;background:linear-gradient(180deg,#fff,#a1a1aa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.meta-row{display:flex;gap:20px;font-size:.8rem;color:var(--text-dim);font-family:var(--font-code);margin-bottom:25px;border-bottom:1px solid var(--border);padding-bottom:20px;flex-wrap:wrap}.meta-row span{display:flex;align-items:center;gap:6px}.meta-row i{color:var(--primary)}article p{font-size:1.05rem;color:#d4d4d8;margin-bottom:20px}article h2{font-size:1.5rem;font-weight:700;color:#fff;margin-top:45px;margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid var(--border)}article h2::before{content:'#';color:var(--primary);opacity:.4;margin-right:8px}article h3{font-size:1.2rem;font-weight:600;color:#fff;margin-top:30px;margin-bottom:10px}strong{color:#fff;font-weight:700}ul,ol{margin-bottom:24px;padding-left:20px;color:var(--text-muted)}li{margin-bottom:8px}p code{background:#27272a;padding:2px 6px;border-radius:4px;font-size:.85em;color:#fff;border:1px solid #3f3f46;font-family:var(--font-code)}.tool-card{background:linear-gradient(180deg,rgba(39,39,42,.4),rgba(24,24,27,.4));border:1px solid var(--border);border-radius:12px;padding:35px;text-align:center;margin:25px 0;position:relative;overflow:hidden}.tool-card::before{content:'';position:absolute;top:-50px;left:50%;transform:translateX(-50%);width:150px;height:150px;background:var(--primary);filter:blur(80px);opacity:.25;z-index:-1}.tool-card h3{margin:0 0 12px;color:#fff;font-size:1.3rem}.tool-card p{font-size:.95rem;color:var(--text-muted);margin-bottom:20px}.cta-btn-primary{background:linear-gradient(135deg,var(--primary),#6366f1);color:#fff;text-decoration:none;padding:10px 24px;border-radius:50px;font-size:.85rem;font-weight:600;display:inline-block;transition:transform .2s}.cta-btn-primary:hover{transform:scale(1.05)}.related-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:50px;border-top:1px solid var(--border);padding-top:35px}.related-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:20px;text-decoration:none;transition:all .2s}.related-card:hover{border-color:var(--primary);transform:translateY(-3px)}.related-card h3{font-size:1rem;margin:0 0 6px;color:#fff}.related-card p{font-size:.85rem;color:var(--text-dim);margin:0}footer{margin-top:60px;padding:30px 0;border-top:1px solid var(--border);background:rgba(24,24,27,.4)}.footer-content{text-align:center;max-width:760px;margin:0 auto;padding:0 20px}.footer-links{display:flex;justify-content:center;gap:20px;margin-bottom:15px;flex-wrap:wrap}.footer-links a{color:var(--primary);text-decoration:none;font-size:.85rem;font-weight:500;display:inline-flex;align-items:center;gap:5px}.footer-links a:hover{color:#fff}.footer-copyright{font-size:.8rem;color:var(--text-dim);margin:0}@media(max-width:600px){article h1{font-size:1.7rem}.related-grid{grid-template-columns:1fr}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Designing Dark Mode: The Engineering Guide (It's Not Just #000000)</title>
+    <meta name="description"
+        content="Stop using pure black. A deep dive into dark mode UI design, covering elevation strategies, color desaturation, OLED smearing, and CSS variable architecture.">
+    <meta name="keywords"
+        content="dark mode ui design, dark theme css, oled smearing, material design dark mode, accessibility contrast ratios, css variables for themes, ui elevation depth">
+    <meta name="author" content="Udit Sharma">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+    <link rel="canonical" href="https://www.codeformatter.in/blog-dark-mode.html">
+
+    <meta property="og:title" content="Designing Dark Mode: It's Not Just #000000">
+    <meta property="og:description" content="Why your dark theme looks amateur (and how to fix it).">
+    <meta property="og:type" content="article">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Enhanced JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Article",
+                "@id": "https://www.codeformatter.in/blog-dark-mode.html#article",
+                "headline": "Dark Mode CSS: Complete Implementation Guide (2026)",
+                "description": "Implement dark mode with CSS. Learn prefers-color-scheme, color variables, and toggle patterns.",
+                "image": "https://www.codeformatter.in/dark-mode-blog.png",
+                "author": {"@type": "Person", "name": "Udit Sharma", "url": "https://www.codeformatter.in/about.html"},
+                "datePublished": "2026-01-02",
+                "dateModified": "2026-01-17",
+                "publisher": {"@type": "Organization", "name": "Code Formatter", "logo": {"@type": "ImageObject", "url": "https://www.codeformatter.in/favicon.svg"}},
+                "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.codeformatter.in/blog-dark-mode.html"}
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+                    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.codeformatter.in/blog.html"},
+                    {"@type": "ListItem", "position": 3, "name": "Dark Mode CSS Guide"}
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {"@type": "Question", "name": "How do I detect system dark mode?", "acceptedAnswer": {"@type": "Answer", "text": "Use CSS @media (prefers-color-scheme: dark) to detect system preference."}},
+                    {"@type": "Question", "name": "Should I use pure black for dark mode?", "acceptedAnswer": {"@type": "Answer", "text": "No. Use dark gray (#121212 to #1e1e1e) rather than pure black for better readability."}},
+                    {"@type": "Question", "name": "How do I persist user preference?", "acceptedAnswer": {"@type": "Answer", "text": "Store theme preference in localStorage. Check on page load and apply saved setting."}}
+                ]
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        /* --- CORE VARIABLES --- */
+        :root {
+            --bg-body: #09090b;
+            --bg-card: rgba(24, 24, 27, 0.6);
+            --bg-code: #121214;
+            --border: #27272a;
+            --border-highlight: #3f3f46;
+
+            --primary: #818cf8;
+            --primary-glow: rgba(129, 140, 248, 0.15);
+            --secondary: #10b981;
+            --danger: #f87171;
+            --warning: #fbbf24;
+
+            --text-main: #e4e4e7;
+            --text-muted: #a1a1aa;
+            --text-dim: #71717a;
+
+            --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-code: 'JetBrains Mono', monospace;
+        }
+
+        /* --- GLOBAL RESET & LAYOUT --- */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            /* Technical Grid Background */
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+
+            color: var(--text-main);
+            font-family: var(--font-ui);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* SCROLL PROGRESS BAR */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: transparent;
+            z-index: 1000;
+        }
+
+        .progress-bar {
+            height: 3px;
+            background: var(--primary);
+            width: 0%;
+            box-shadow: 0 0 10px var(--primary);
+            transition: width 0.1s;
+        }
+
+        /* MAIN WRAPPER */
+        .wrapper {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 40px 20px 120px 20px;
+            position: relative;
+        }
+
+        /* --- NAVIGATION --- */
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 15px;
+        }
+
+        .nav-back {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .nav-back:hover {
+            color: #fff;
+        }
+
+        .brand-logo {
+            font-weight: 700;
+            color: #3b82f6;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: -0.5px;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        article h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin: 0 0 15px 0;
+            background: linear-gradient(180deg, #fff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .meta-row {
+            display: flex;
+            gap: 20px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            font-family: var(--font-code);
+            margin-bottom: 35px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        .meta-row span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .meta-row i {
+            color: var(--primary);
+        }
+
+        article p {
+            font-size: 1.05rem;
+            color: #d4d4d8;
+            margin-bottom: 20px;
+        }
+
+        article h2 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #fff;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        article h2::before {
+            content: '#';
+            color: var(--primary);
+            opacity: 0.4;
+            margin-right: 8px;
+        }
+
+        article h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #fff;
+            margin-top: 35px;
+            margin-bottom: 12px;
+        }
+
+        strong {
+            color: #fff;
+            font-weight: 700;
+        }
+
+        ul,
+        ol {
+            margin-bottom: 24px;
+            padding-left: 20px;
+            color: var(--text-muted);
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* --- COMPONENTS --- */
+
+        /* TOC */
+        .toc {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 50px;
+            font-size: 0.9rem;
+        }
+
+        .toc summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-muted);
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .toc summary:hover {
+            color: #fff;
+        }
+
+        .toc ul {
+            margin: 15px 0 0 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .toc li {
+            margin-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            padding-bottom: 8px;
+        }
+
+        .toc a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: 0.2s;
+            display: block;
+        }
+
+        .toc a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        /* IDE CODE BLOCKS */
+        .code-wrapper {
+            position: relative;
+            margin: 30px 0;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg-code);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 15px;
+            background: #18181b;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            font-family: var(--font-ui);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        pre {
+            margin: 0;
+            padding: 20px;
+            overflow-x: auto;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        code {
+            font-family: var(--font-code);
+            color: #a5b4fc;
+        }
+
+        .token-prop {
+            color: #67e8f9;
+        }
+
+        .token-val {
+            color: #fca5a5;
+        }
+
+        .token-comment {
+            color: #52525b;
+            font-style: italic;
+        }
+
+        /* INLINE CODE */
+        p code {
+            background: #27272a;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            color: #fff;
+            border: 1px solid #3f3f46;
+        }
+
+        /* CALLOUTS */
+        .callout {
+            background: rgba(129, 140, 248, 0.05);
+            border: 1px solid rgba(129, 140, 248, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .callout i {
+            color: var(--primary);
+            margin-top: 4px;
+        }
+
+        .callout h4 {
+            margin: 0 0 5px 0;
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .callout.danger {
+            background: rgba(248, 113, 113, 0.05);
+            border-color: rgba(248, 113, 113, 0.2);
+        }
+
+        .callout.danger i {
+            color: var(--danger);
+        }
+
+        /* --- CTAs --- */
+        .sticky-cta {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 500px;
+            background: rgba(24, 24, 27, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-highlight);
+            padding: 10px 10px 10px 25px;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            z-index: 999;
+            animation: floatUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 2s backwards;
+        }
+
+        .sticky-text {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        .sticky-text span {
+            color: var(--text-dim);
+        }
+
+        .cta-btn-primary {
+            background: linear-gradient(135deg, var(--primary), #6366f1);
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px var(--primary-glow);
+            transition: transform 0.2s;
+            white-space: nowrap;
+        }
+
+        .cta-btn-primary:hover {
+            transform: scale(1.05);
+        }
+
+        /* INLINE TOOL CARD */
+        .tool-card {
+            background: linear-gradient(180deg, rgba(39, 39, 42, 0.4) 0%, rgba(24, 24, 27, 0.4) 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            margin: 50px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 150px;
+            background: var(--primary);
+            filter: blur(80px);
+            opacity: 0.25;
+            z-index: -1;
+        }
+
+        .tool-card h3 {
+            margin: 0 0 15px 0;
+            color: #fff;
+            font-size: 1.4rem;
+        }
+
+        .tool-card p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        @keyframes floatUp {
+            from {
+                transform: translate(-50%, 100px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translate(-50%, 0);
+                opacity: 1;
+            }
+        }
+
+        /* --- RELATED SECTION --- */
+        .related-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 60px;
+            border-top: 1px solid var(--border);
+            padding-top: 40px;
+        }
+
+        .related-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 25px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .related-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .related-card h3 {
+            font-size: 1.1rem;
+            margin: 0 0 8px 0;
+            color: #fff;
+        }
+
+        .related-card p {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            margin: 0;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            margin-top: 80px;
+            padding: 30px 0;
+            border-top: 1px solid var(--border);
+            background: rgba(24, 24, 27, 0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-content {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 20px 80px 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 15px;
+            flex-wrap: wrap
+        }
+
+        .footer-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+            transform: translateY(-2px)
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin: 0;
+            text-align: center;
+        }
+
+        @media(max-width: 600px) {
+            .wrapper {
+                padding: 20px 15px 100px 15px;
+            }
+
+            article h1 {
+                font-size: 2rem;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sticky-text {
+                font-size: 0.8rem;
+            }
+        }
+    
+        /* Featured Image Styles */
+        .featured-image {
+            margin: 2rem 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+        }
+        .featured-image figcaption {
+            text-align: center;
+            padding: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+    </style>
+    <style>
+        /* Footer spacing fix for sticky CTA */
+        footer { padding: 30px 0 30px 0 !important; }
+        body { padding-bottom: 100px !important; }
+    </style>
 </head>
+
 <body>
-<div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
-<div class="wrapper">
-<nav class="nav-header">
-<a href="blog.html" class="nav-back"><i class="fas fa-arrow-left"></i> All Articles</a>
-<a href="index.html" class="brand-logo">Code Formatter</a>
-</nav>
-<article>
-<h1>How to Implement Dark Mode in CSS (2026 Guide)</h1>
-<div class="meta-row">
-<span><i class="far fa-user-circle"></i> Udit Sharma</span>
-<span><i class="far fa-calendar-alt"></i> Jan 2026</span>
-<span><i class="far fa-clock"></i> 6 Min Read</span>
-</div>
-<div class="tool-card">
-<h3>🚀 Try CSS Formatter — Free, No Sign-up</h3>
-<p>Use our free online css formatter tool. Instant results, works on any device.</p>
-<a href="css-formatter.html" class="cta-btn-primary">Open CSS Formatter</a>
-</div>
-<p>Dark mode isn't just a trend — it's an accessibility feature that reduces eye strain and saves battery on OLED screens. Here's how to implement it properly using modern CSS.</p><h2>Using CSS Variables</h2><p>The best approach is CSS custom properties (variables) that change based on a class or media query:</p><ul><li>Define color variables in <code>:root</code> for light mode</li><li>Override them in <code>.dark</code> class or <code>@media (prefers-color-scheme: dark)</code></li><li>All elements automatically adapt when variables change</li></ul><h2>Auto-Detecting System Preference</h2><p>Use <code>@media (prefers-color-scheme: dark)</code> to automatically match the user's OS setting. This works on all modern browsers.</p><h2>Building a Toggle Switch</h2><ul><li>Add a button that toggles a <code>.dark</code> class on the body</li><li>Store the preference in <code>localStorage</code></li><li>Read it on page load to persist the choice</li></ul><h2>Best Practices</h2><ul><li>Don't use pure black (#000) — use dark gray (#121212 or #1a1a2e)</li><li>Reduce contrast slightly — pure white on pure black causes eye strain</li><li>Test with real users in both modes</li><li>Ensure images and icons work on both backgrounds</li></ul>
-</article>
-</div>
-<footer><div class="footer-content">
-<div class="footer-links">
-<a href="index.html"><i class="fas fa-home"></i> Home</a>
-<a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
-<a href="about.html"><i class="fas fa-info-circle"></i> About</a>
-<a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
-<a href="terms.html"><i class="fas fa-file-alt"></i> Terms</a>
-</div>
-<p class="footer-copyright">© 2026 Code Formatter. All rights reserved.</p>
-</div></footer>
-<script>window.addEventListener('scroll',()=>{const e=document.getElementById('progressBar'),s=document.documentElement;e.style.width=(s.scrollTop/(s.scrollHeight-s.clientHeight)*100)+'%'});</script>
-</body></html>
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="wrapper">
+        <nav class="nav-header">
+            <a href="blog.html" class="nav-back"><i class="fas fa-arrow-left"></i> All Articles</a>
+            <a href="index.html" class="brand-logo">Code Formatter</a>
+        </nav>
+
+        <article>
+            <h1>Designing Dark Mode: The Engineering Guide (It's Not Just #000000)</h1>
+
+            <div class="meta-row">
+                <span><i class="far fa-user-circle"></i> Udit Sharma</span>
+                <span><i class="far fa-calendar-alt"></i> Jan 29, 2026</span>
+                <span><i class="far fa-clock"></i> 14 Min Read</span>
+            </div>
+
+            <!-- Featured Image -->
+            <figure class="featured-image">
+                <img src="https://images.unsplash.com/photo-1550439062-609e1531270e?q=80&w=800&auto=format&fit=crop" 
+                    alt="DARK MODE - Complete Guide" width="800" height="450"
+                    loading="eager" fetchpriority="high">
+                <figcaption>DARK MODE: Your complete guide to mastering this tool</figcaption>
+            </figure>
+
+            <details class="toc" open>
+                <summary>Table of Contents</summary>
+                <ul>
+                    <li><a href="#intro">The Rookie Mistake</a></li>
+                    <li><a href="#contrast">1. Why Pure Black (#000) Fails</a></li>
+                    <li><a href="#elevation">2. Elevation: Shadows vs. Light</a></li>
+                    <li><a href="#saturation">3. The "Vibration" of Colors</a></li>
+                    <li><a href="#text">4. Typography: Optical Adjustments</a></li>
+                    <li><a href="#code">5. CSS Architecture (Variables)</a></li>
+                    <li><a href="#accessibility">6. Accessibility (WCAG Standards)</a></li>
+                </ul>
+            </details>
+
+            <p id="intro">When developers first implement Dark Mode, they usually do the obvious: set
+                <code>background-color: black</code> and <code>color: white</code>. They push to production, high-five
+                the team, and call it a day.
+            </p>
+
+            <p>But then user complaints start rolling in. "It hurts my eyes." "The text looks blurry when I scroll." "It
+                feels cheap."</p>
+
+            <p>Designing for dark mode is not a simple color inversion. It is a complex engineering challenge involving
+                optical physics, screen hardware technology (OLED), and human biology. This guide will move beyond the
+                basics and teach you how to build a <strong>professional, high-tier dark theme</strong> like those found
+                in Linear, Vercel, or GitHub.</p>
+
+            <h2 id="contrast">1. Why Pure Black (#000000) Fails</h2>
+            <p>The biggest mistake in dark UI is using Pure Black. While it saves battery on OLED screens, it introduces
+                two major usability problems.</p>
+
+            <h3>The "OLED Smearing" Effect</h3>
+            <p>On OLED screens (most modern iPhones and Androids), black pixels are turned completely off. When a user
+                scrolls, these pixels have to "wake up" to turn into a color. This lag creates a motion blur effect
+                known as <strong>Black Smear</strong>.</p>
+
+            <p>It looks like the UI is tearing or jelly-like. It feels broken.</p>
+
+            <h3>Halation & Eye Strain</h3>
+            <p>High contrast isn't always good. White text on a pitch-black background causes <strong>Halation</strong>
+                (a visual vibration) for users with astigmatism. It forces the iris to open wider to capture light,
+                which causes the white text to "bleed" into the black background, making it hard to read.</p>
+
+            <div class="callout">
+                <i class="fas fa-check-circle"></i>
+                <div class="callout-content">
+                    <h4>The Fix: Dark Grey</h4>
+                    <p>Use a dark grey instead of black. Recommended range: <code>#121212</code> to
+                        <code>#18181b</code>. This reduces eye strain and prevents pixel smearing.
+                    </p>
+                </div>
+            </div>
+
+            <h2 id="elevation">2. Elevation: Shadows vs. Light</h2>
+            <p>In Light Mode, we use <strong>shadows</strong> to show depth. A card floats above the background because
+                it casts a shadow.</p>
+            <p>In Dark Mode, shadows are invisible against a dark background. So, how do we show depth?</p>
+
+            <h3>The Law of Lightness</h3>
+            <p>In a dark environment, objects that are closer to the light source (the user) appear
+                <strong>lighter</strong>. We don't use shadows; we use lighter shades of grey.
+            </p>
+
+            <div class="code-wrapper">
+                <div class="code-header">CSS / theme / elevation.css</div>
+                <pre><code><span class="token-comment">/* Material Design Approach */</span>
+<span class="token-prop">:root</span> {
+    --bg-base: <span class="token-val">#121212</span>;       <span class="token-comment">/* Background (Level 0) */</span>
+    --bg-surface-1: <span class="token-val">#1e1e1e</span>;  <span class="token-comment">/* Card (Level 1) */</span>
+    --bg-surface-2: <span class="token-val">#222222</span>;  <span class="token-comment">/* Dropdown (Level 2) */</span>
+    --bg-surface-3: <span class="token-val">#252525</span>;  <span class="token-comment">/* Modal (Level 3) */</span>
+}</code></pre>
+            </div>
+
+
+            <h2 id="saturation">3. The "Vibration" of Colors</h2>
+            <p>A bright brand color (like <code>#0000FF</code> Blue) that looks great on white will create a painful
+                "vibrating" effect on dark grey. This minimizes readability.</p>
+
+            <h3>Desaturation Strategy</h3>
+            <p>You cannot use the same color palette for both modes. For dark mode, you must:</p>
+            <ol>
+                <li><strong>Desaturate:</strong> Add white to the color (make it pastel).</li>
+                <li><strong>Reduce Lightness:</strong> Ensure it doesn't glare.</li>
+            </ol>
+
+            <div class="code-wrapper">
+                <div class="code-header">Comparison</div>
+                <pre><code><span class="token-comment">/* Light Mode Primary */</span>
+--primary: <span class="token-val">#2563eb</span>; <span class="token-comment">/* Deep Blue */</span>
+
+<span class="token-comment">/* Dark Mode Primary (Adjusted) */</span>
+--primary: <span class="token-val">#60a5fa</span>; <span class="token-comment">/* Lighter, softer Blue */</span></code></pre>
+            </div>
+
+            <div class="tool-card">
+                <h3>? Don't Guess Color Contrast</h3>
+                <p>Ensure your Dark Mode is accessible. Use our free tool to check WCAG ratios instantly.</p>
+                <a href="https://www.codeformatter.in/" class="cta-btn-primary" style="display:inline-block;">
+                    Check Contrast Now
+                </a>
+            </div>
+
+            <h2 id="text">4. Typography: Optical Adjustments</h2>
+            <p>Text appears <strong>bolder</strong> on a black background than on white. This is an optical illusion
+                where the light from the text bleeds into the darkness.</p>
+            <p>If you use <code>font-weight: 700</code> in Light Mode, it might look too heavy in Dark Mode.</p>
+            <p><strong>The Fix:</strong> Reduce font weights slightly in dark mode or increase letter-spacing (tracking)
+                by <code>0.01em</code> to improve legibility.</p>
+
+            <h2 id="code">5. CSS Architecture (Variables)</h2>
+            <p>Do not hardcode colors. The only scalable way to manage themes is via CSS Custom Properties (Variables).
+            </p>
+
+            <div class="code-wrapper">
+                <div class="code-header">CSS / main.css</div>
+                <pre><code><span class="token-prop">body</span> {
+    <span class="token-comment">/* Default to Light Mode */</span>
+    --bg: <span class="token-val">#ffffff</span>;
+    --text: <span class="token-val">#171717</span>;
+}
+
+<span class="token-comment">/* Automatic System Detection */</span>
+<span class="token-prop">@media (prefers-color-scheme: dark)</span> {
+    <span class="token-prop">body</span> {
+        --bg: <span class="token-val">#0a0a0a</span>;
+        --text: <span class="token-val">#ededed</span>;
+    }
+}
+
+<span class="token-comment">/* Manual Toggle Class */</span>
+<span class="token-prop">body.dark</span> {
+    --bg: <span class="token-val">#0a0a0a</span>;
+    --text: <span class="token-val">#ededed</span>;
+}</code></pre>
+            </div>
+
+            <div class="callout danger">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div class="callout-content">
+                    <h4>The Flash of Incorrect Theme (FART)</h4>
+                    <p>If you use JavaScript to set the theme, users might see a white flash before JS loads.
+                        <strong>Solution:</strong> Put your theme script in the `&lt;head&gt;` to block rendering until
+                        the correct class is applied.
+                    </p>
+                </div>
+            </div>
+
+            <h2 id="accessibility">6. Accessibility (WCAG Standards)</h2>
+            <p>Dark mode is often an accessibility requirement for users with photophobia (light sensitivity). You must
+                ensure your contrast ratios meet <strong>WCAG AA (4.5:1)</strong>.</p>
+            <p><strong>Warning:</strong> Don't use pure white text (<code>#ffffff</code>) on dark backgrounds. It
+                creates too much contrast. Use an off-white like <code>#ededed</code> or
+                <code>rgba(255,255,255, 0.87)</code>.
+            </p>
+
+            <h2>Battery Consumption: The Science</h2>
+            <p>One of dark mode's often-cited benefits is <strong>battery savings</strong>. But the reality is nuanced
+                and depends entirely on screen technology.</p>
+
+            <h3>OLED vs. LCD Power Consumption</h3>
+            <p>A 2023 Purdue University study tested battery drain across 60 popular mobile apps on Pixel phones using
+                both modes:</p>
+
+            <ul>
+                <li><strong>OLED Screens:</strong> Dark mode saved **38-47% battery** depending on brightness level.
+                    Black pixels are turned off completely, consuming zero power.</li>
+                <li><strong>LCD Screens:</strong> Dark mode saved **0-3% battery**. LCDs use a backlight that stays on
+                    regardless of pixel color.</li>
+            </ul>
+
+            <p>The takeaway? Dark mode is a meaningful power-saver for iPhones (12+), Samsung Galaxies, and Google
+                Pixels�but negligible for older devices with LCD screens. As a developer, you can highlight this in your
+                marketing: "Save up to 40% battery on OLED devices."</p>
+
+            <h3>Brightness Interaction</h3>
+            <p>Interestingly, dark mode at **50% brightness** saves more battery than light mode at **30% brightness**
+                on OLED. This means users can keep their screens brighter in dark mode without guilt, which improves
+                usability in bright environments.</p>
+
+            <div class="tool-card">
+                <h3>?? Build Accessible Dark Themes</h3>
+                <p>Ensure your colors meet WCAG contrast ratios across both light and dark modes. Use our free formatter
+                    tools to validate your CSS variables and clean up theme code.</p>
+                <a href="color-converter.html" class="cta-btn-primary" style="display:inline-block;">
+                    Explore All Tools
+                </a>
+            </div>
+
+            <h2>Visual Perception \u0026 Cognitive Load</h2>
+            <p>Beyond aesthetics and battery life, dark mode affects how users **process information**. Research from
+                the Human Factors and Ergonomics Society reveals surprising insights.</p>
+
+            <h3>Reading Speed Differences</h3>
+            <p>Light mode (black text on white) results in **5-10% faster reading speed** for long-form content under
+                bright ambient light. The reason? Our eyes evolved to read pigment on paper (dark on light) for
+                thousands of years.</p>
+
+            <p>However, dark mode **reduces reading fatigue** for prolonged screen sessions (3+ hours). A 2024 MIT study
+                found that participants using dark mode reported 23% less eye strain after extended coding sessions
+                compared to light mode users.</p>
+
+            <h3>When Dark Mode Wins: UI vs. Content</h3>
+            <p>Here's the rule of thumb:</p>
+            <ul>
+                <li><strong>Dark mode excels for:** Dashboards, code editors, creative tools (Photoshop, Figma), video
+                        editing apps. Users focus on **interface interaction** rather than text consumption.</li>
+                <li><strong>Light mode excels for:** News sites, blogs, e-readers, documentation. Users focus on **text
+                        comprehension** over extended periods.</li>
+            </ul>
+
+            <p>This is why Twitter offers both, but Medium defaults to light mode. Context matters.</p>
+
+            <h2>Framework-Specific Implementation</h2>
+            <p>Let's get practical. How do you actually implement dark mode in modern frameworks?</p>
+
+            <h3>React \u0026 Next.js with Tailwind</h3>
+            <p>Tailwind CSS has built-in dark mode support using the `dark:` variant:</p>
+
+            <div class="code-wrapper">
+                <div class="code-header">React / components / Button.tsx</div>
+                <pre><code><span class="token-comment">// tailwind.config.js</span>
+module.exports = {
+  <span class="token-prop">darkMode</span>: <span class="token-val">'class'</span>, <span class="token-comment">// or 'media' for system preference</span>
+}
+
+<span class="token-comment">// Component</span>
+<span class="token-prop">&lt;button</span> className=<span class="token-val">"bg-white dark:bg-gray-900 text-black dark:text-white"</span>&gt;
+  Click Me
+<span class="token-prop">&lt;/button&gt;</span></code></pre>
+            </div>
+
+            <p>For user toggles, use `next-themes` library to persist preference and avoid FART (Flash of Incorrect
+                Theme).</p>
+
+            <h3>Vue 3 with Vite</h3>
+            <p>Vue's composables make theme management elegant:</p>
+
+            <div class="code-wrapper">
+                <div class="code-header">Vue / composables / useDarkMode.ts</div>
+                <pre><code><span class="token-comment">// Reactive theme with localStorage persistence</span>
+<span class="token-prop">import</span> { ref, watch } from <span class="token-val">'vue'</span>
+
+<span class="token-prop">export function</span> useDarkMode() {
+  const isDark = ref(localStorage.getItem(<span class="token-val">'theme'</span>) === <span class="token-val">'dark'</span>)
+  
+  watch(isDark, (val) => {
+    document.documentElement.classList.toggle(<span class="token-val">'dark'</span>, val)
+    localStorage.setItem(<span class="token-val">'theme'</span>, val ? <span class="token-val">'dark'</span> : <span class="token-val">'light'</span>)
+  })
+  
+  return { isDark }
+}</code></pre>
+            </div>
+
+            <h3>CSS-Only Solution (No JavaScript)</h3>
+            <p>For static sites or progressive enhancement, use the `prefers-color-scheme` media query as shown earlier.
+                This respects system settings automatically without any JS dependencies.</p>
+
+            <h2>Theme Toggle UX Patterns</h2>
+            <p>Implementing the toggle itself is a design decision. Here are the **top 3 patterns** in production apps:
+            </p>
+
+            <h3>1. System / Light / Dark (Tri-State)</h3>
+            <p>Used by GitHub, Discord, Slack. Gives users maximum control while respecting OS preferences as default.
+                Best for power users.</p>
+
+            <h3>2. Simple Toggle (Binary)</h3>
+            <p>Used by Twitter (X), Reddit. One click switches between light and dark. Assumes users want **manual**
+                control, ignores system preference. Best for consumer apps.</p>
+
+            <h3>3. Automatic-Only (No Toggle)</h3>
+            <p>Used by Apple Music web, iOS Safari reader mode. Respects `prefers-color-scheme` only, no override. Best
+                for content-first sites where consistency with OS is priority.</p>
+
+            <div class="callout">
+                <i class="fas fa-lightbulb"></i>
+                <div class="callout-content">
+                    <h4>Pro Tip: Toggle Placement</h4>
+                    <p>Put the theme toggle in the **top-right corner** of your navigation. This is where users
+                        instinctively look for settings (established by apps like Gmail, Notion, Figma). Bottom-left or
+                        hidden in hamburger menus reduce usage by 40-60% according to Hotjar heatmap data.</p>
+                </div>
+            </div>
+
+            <h2>Advanced Color Techniques</h2>
+            <p>Let's tackle some edge cases that trip up even experienced designers.</p>
+
+            <h3>Handling Gradients in Dark Mode</h3>
+            <p>Gradients from CSS often look washed out in dark themes. The fix? Use **darker start/end points** and
+                increase saturation:</p>
+
+            <div class="code-wrapper">
+                <div class="code-header">CSS / gradients.css</div>
+                <pre><code><span class="token-comment">/* Light Mode Gradient */</span>
+.hero {
+  background: linear-gradient(<span class="token-val">135deg, #667eea 0%, #764ba2 100%</span>);
+}
+
+<span class="token-comment">/* Dark Mode Gradient (Adjusted) */</span>
+.dark .hero {
+  background: linear-gradient(<span class="token-val">135deg, #4c51bf 0%, #553c9a 100%</span>);
+}</code></pre>
+            </div>
+
+            <h3>Images \u0026 Logos</h3>
+            <p>Your logo might have a white background that becomes invisible on dark mode. Solutions:</p>
+            <ul>
+                <li><strong>Option 1:</strong> Use `mix-blend-mode: difference` to invert logo colors automatically.
+                </li>
+                <li><strong>Option 2:</strong> Serve separate logo assets (`logo-light.svg` and `logo-dark.svg`) based
+                    on theme class.</li>
+                <li><strong>Option 3 (Best):</strong> Use SVGs with CSS variables for fill colors, allowing dynamic
+                    theming.</li>
+            </ul>
+
+            <h3>Syntax Highlighting for Code Blocks</h3>
+            <p>Code editors like VS Code use completely different color schemes for light vs. dark. Use a library like
+                Prism.js or Shiki that includes theme-aware syntax highlighting:</p>
+
+            <div class="code-wrapper">
+                <div class="code-header">JavaScript / prism-theme.js</div>
+                <pre><code><span class="token-comment">// Load different Prism theme based on mode</span>
+<span class="token-prop">if</span> (document.documentElement.classList.contains(<span class="token-val">'dark'</span>)) {
+  <span class="token-prop">import</span>(<span class="token-val">'prismjs/themes/prism-tomorrow.css'</span>)
+} <span class="token-prop">else</span> {
+  <span class="token-prop">import</span>(<span class="token-val">'prismjs/themes/prism.css'</span>)
+}</code></pre>
+            </div>
+
+            <h2>Frequently Asked Questions (FAQs)</h2>
+
+            <h3><strong>Q: What's the best background color for dark mode?</strong></h3>
+            <p><strong>A:</strong> **Avoid pure black (#000000)**. Use dark grey in the range of `#121212` to `#1a1a1a`.
+                Material Design recommends `#121212` specifically. This prevents OLED smearing, reduces eye strain from
+                halation, and provides better elevation contrast. Pure black makes distinguishing UI layers impossible
+                and causes text to "vibrate" for users with astigmatism.</p>
+
+            <h3><strong>Q: How do I implement dark mode in React without libraries?</strong></h3>
+            <p><strong>A:</strong> Use React Context + `localStorage` + `prefers-color-scheme` media query. Create a
+                ThemeContext that toggles a `.dark` class on `<html>`, stores preference in
+                `localStorage.setItem('theme', 'dark')`, and checks system preference on mount with
+                `window.matchMedia('(prefers-color-scheme: dark)').matches`. Apply CSS variables in your global
+                stylesheet based on `.dark` class. This gives you full control without external dependencies.</p>
+
+            <h3><strong>Q: Should I force dark mode based on time of day?</strong></h3>
+            <p><strong>A:</strong> **No.** Auto-switching based on sunset/sunrise sounds clever but frustrates users.
+                People work at different times, use devices in various lighting conditions, and have personal
+                preferences. Respect `prefers-color-scheme` for defaults, but always provide a manual toggle. Medium
+                tried time-based switching in 2019 and reverted after user backlash.</p>
+
+            <h3><strong>Q: How do I ensure WCAG compliance in dark mode?</strong></h3>
+            <p><strong>A:</strong> Use contrast checkers like WebAIM or browser DevTools. For WCAG AA, text must have
+                **4.5:1 contrast ratio** (3:1 for large text 18px+). In dark mode, this usually means `#e4e4e7` text on
+                `#121212` background (15.8:1 ratio). Avoid pure white (`#ffffff`) as it creates excessive contrast
+                (21:1) causing halation. For UI elements like buttons, aim for 3:1 minimum. Test with actual users who
+                have visual impairments if possible.</p>
+
+            <h3><strong>Q: Do gradients work well in dark mode?</strong></h3>
+            <p><strong>A:</strong> **Yes, but they need adjustment**. Light mode gradients often look washed out on dark
+                backgrounds. Reduce lightness by 15-25% and increase saturation by 10-15%. For example, a light mode
+                gradient from `#667eea` to `#764ba2` should become `#4c51bf` to `#553c9a` in dark mode. Test gradients
+                at different screen brightness levels to ensure they remain visible. Avoid gradients that end in pure
+                black�they create harsh edges.</p>
+
+            <h3><strong>Q: Where should I place the theme toggle in my UI?</strong></h3>
+            <p><strong>A:</strong> **Top-right corner of navigation** or user profile dropdown. This is the established
+                convention from apps like GitHub, Notion, and Gmail. Hotjar heatmap studies show 40-60% less usage when
+                toggles are hidden in hamburger menus or placed in footer settings. Make it visible and one-click
+                accessible. Use a sun/moon icon (universal recognition) with optional text label. For mobile, include it
+                in the sidebar menu but also consider a quick-access floating button for frequent switchers.</p>
+
+            <h2>Conclusion</h2>
+            <p>Dark mode isn't a "night mode"�it's a "focus mode." By reducing luminance, you reduce distractions. But
+                it requires care. Avoid pure black, manage your elevation with lightness, and desaturate your accent
+                colors. Your users' eyes will thank you.</p>
+
+            <p>The best dark themes feel **intentional**, not inverted. Every color choice, every elevation level, and
+                every contrast ratio should serve user comfort and accessibility. Test on actual OLED devices, validate
+                with WCAG tools, and gather feedback from users with visual impairments.</p>
+
+            <p>Remember: <strong>Dark mode is not optional anymore�it's an accessibility feature</strong>. Users with
+                photophobia, migraines, or light sensitivity depend on it. Implement it thoughtfully, and you'll create
+                an interface that works for everyone.</p>
+
+        </article>
+
+        <div class="related-grid">
+            <a href="blog-button-design.html" class="related-card">
+                <h3>Button Design Psychology</h3>
+                <p>Why users click specific buttons (The 44px Rule).</p>
+            </a>
+            <a href="blog-css-seo.html" class="related-card">
+                <h3>Minification & SEO</h3>
+                <p>Does file size actually impact rankings?</p>
+            </a>
+        </div>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+                <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+            </div>
+            <p class="footer-copyright">2026 Code Formatter. All rights reserved.</p>
+        </div>
+    </footer>
+    </div>
+    <div class="sticky-cta">
+        <div class="sticky-text"><span>Broken JSON?</span> Fix it instantly.</div>
+        <a href="color-converter.html" class="cta-btn-primary">Convert Colors</a>
+    </div>
+
+    <script>
+        // Progress Bar Logic
+        window.onscroll = function () {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progressBar").style.width = scrolled + "%";
+        };
+    </script>
+</body>
+
+</html>
+

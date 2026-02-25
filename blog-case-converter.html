@@ -1,63 +1,922 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="dark">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Case Converter Online – Convert Text Case Free | Code Formatter</title>
-<meta name="description" content="Convert text between uppercase, lowercase, camelCase, snake_case, PascalCase and more. Free online case converter.">
-<meta name="author" content="Udit Sharma">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
-<link rel="canonical" href="https://www.codeformatter.in/blog-case-converter.html">
-<meta property="og:title" content="Case Converter Online – Convert Text Case Free">
-<meta property="og:description" content="Convert text between uppercase, lowercase, camelCase, snake_case, PascalCase and more. Free online case converter.">
-<meta property="og:type" content="article">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2670168844256558" crossorigin="anonymous"></script>
-<style>
-:root{--bg-body:#09090b;--bg-card:rgba(24,24,27,.6);--bg-code:#121214;--border:#27272a;--primary:#818cf8;--primary-glow:rgba(129,140,248,.15);--secondary:#10b981;--text-main:#e4e4e7;--text-muted:#a1a1aa;--text-dim:#71717a;--font-ui:'Inter',sans-serif;--font-code:'JetBrains Mono',monospace}*{box-sizing:border-box}body{background-color:var(--bg-body);background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:30px 30px;color:var(--text-main);font-family:var(--font-ui);line-height:1.6;margin:0;padding:0 0 100px;-webkit-font-smoothing:antialiased}.progress-container{position:fixed;top:0;left:0;width:100%;height:3px;z-index:1000}.progress-bar{height:3px;background:var(--primary);width:0%;box-shadow:0 0 10px var(--primary);transition:width .1s}.wrapper{max-width:760px;margin:0 auto;padding:40px 20px 60px}.nav-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;border-bottom:1px solid var(--border);padding-bottom:15px}.nav-back{color:var(--text-muted);text-decoration:none;font-size:.85rem;font-weight:500;display:inline-flex;align-items:center;gap:6px;transition:color .2s}.nav-back:hover{color:#fff}.brand-logo{font-weight:700;color:#3b82f6;text-decoration:none;font-size:.9rem}article h1{font-size:2.2rem;font-weight:800;letter-spacing:-.03em;line-height:1.2;margin:0 0 15px;background:linear-gradient(180deg,#fff,#a1a1aa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.meta-row{display:flex;gap:20px;font-size:.8rem;color:var(--text-dim);font-family:var(--font-code);margin-bottom:25px;border-bottom:1px solid var(--border);padding-bottom:20px;flex-wrap:wrap}.meta-row span{display:flex;align-items:center;gap:6px}.meta-row i{color:var(--primary)}article p{font-size:1.05rem;color:#d4d4d8;margin-bottom:20px}article h2{font-size:1.5rem;font-weight:700;color:#fff;margin-top:45px;margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid var(--border)}article h2::before{content:'#';color:var(--primary);opacity:.4;margin-right:8px}article h3{font-size:1.2rem;font-weight:600;color:#fff;margin-top:30px;margin-bottom:10px}strong{color:#fff;font-weight:700}ul,ol{margin-bottom:24px;padding-left:20px;color:var(--text-muted)}li{margin-bottom:8px}p code{background:#27272a;padding:2px 6px;border-radius:4px;font-size:.85em;color:#fff;border:1px solid #3f3f46;font-family:var(--font-code)}.tool-card{background:linear-gradient(180deg,rgba(39,39,42,.4),rgba(24,24,27,.4));border:1px solid var(--border);border-radius:12px;padding:35px;text-align:center;margin:25px 0;position:relative;overflow:hidden}.tool-card::before{content:'';position:absolute;top:-50px;left:50%;transform:translateX(-50%);width:150px;height:150px;background:var(--primary);filter:blur(80px);opacity:.25;z-index:-1}.tool-card h3{margin:0 0 12px;color:#fff;font-size:1.3rem}.tool-card p{font-size:.95rem;color:var(--text-muted);margin-bottom:20px}.cta-btn-primary{background:linear-gradient(135deg,var(--primary),#6366f1);color:#fff;text-decoration:none;padding:10px 24px;border-radius:50px;font-size:.85rem;font-weight:600;display:inline-block;transition:transform .2s}.cta-btn-primary:hover{transform:scale(1.05)}.related-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:50px;border-top:1px solid var(--border);padding-top:35px}.related-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:20px;text-decoration:none;transition:all .2s}.related-card:hover{border-color:var(--primary);transform:translateY(-3px)}.related-card h3{font-size:1rem;margin:0 0 6px;color:#fff}.related-card p{font-size:.85rem;color:var(--text-dim);margin:0}footer{margin-top:60px;padding:30px 0;border-top:1px solid var(--border);background:rgba(24,24,27,.4)}.footer-content{text-align:center;max-width:760px;margin:0 auto;padding:0 20px}.footer-links{display:flex;justify-content:center;gap:20px;margin-bottom:15px;flex-wrap:wrap}.footer-links a{color:var(--primary);text-decoration:none;font-size:.85rem;font-weight:500;display:inline-flex;align-items:center;gap:5px}.footer-links a:hover{color:#fff}.footer-copyright{font-size:.8rem;color:var(--text-dim);margin:0}@media(max-width:600px){article h1{font-size:1.7rem}.related-grid{grid-template-columns:1fr}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Converter: The Ultimate Naming Convention Guide (2026)</title>
+    <meta name="description"
+        content="Master variable naming conventions. CamelCase vs Snake_Case vs PascalCase vs Kebab-Case. Learn when to use which in JavaScript, Python, SQL, and CSS.">
+    <meta name="keywords"
+        content="case converter, camelCase vs snake_case, variable naming conventions, pascalcase, kebab-case, upper case to lower case, programming standards">
+    <meta name="author" content="Udit Sharma">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+    <link rel="canonical" href="https://www.codeformatter.in/blog-case-converter.html">
+    <meta property="og:title" content="Case Converter: Programming Naming Conventions Explained">
+    <meta property="og:description"
+        content="Stop arguing about variable names. The definitive guide to casing standards in 2026.">
+    <meta property="og:type" content="article">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Enhanced JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Article",
+                "@id": "https://www.codeformatter.in/case-converter.html#article",
+                "headline": "Case Converter: Complete Text Transformation Guide (2026)",
+                "description": "Convert text case instantly. Transform between uppercase, lowercase, title case, and camelCase.",
+                "image": "https://www.codeformatter.in/case-converter-blog.png",
+                "author": {"@type": "Person", "name": "Udit Sharma", "url": "https://www.codeformatter.in/about.html"},
+                "datePublished": "2026-01-02",
+                "dateModified": "2026-01-17",
+                "publisher": {"@type": "Organization", "name": "Code Formatter", "logo": {"@type": "ImageObject", "url": "https://www.codeformatter.in/favicon.svg"}},
+                "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.codeformatter.in/case-converter.html"}
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+                    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.codeformatter.in/blog.html"},
+                    {"@type": "ListItem", "position": 3, "name": "Case Converter Guide"}
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {"@type": "Question", "name": "What case formats are supported?", "acceptedAnswer": {"@type": "Answer", "text": "UPPERCASE, lowercase, Title Case, Sentence case, camelCase, PascalCase, snake_case, and kebab-case."}},
+                    {"@type": "Question", "name": "What's the difference between camelCase and PascalCase?", "acceptedAnswer": {"@type": "Answer", "text": "camelCase starts lowercase (myVariable), PascalCase starts uppercase (MyVariable)."}},
+                    {"@type": "Question", "name": "When should I use each case style?", "acceptedAnswer": {"@type": "Answer", "text": "camelCase for JS variables, PascalCase for classes, snake_case for Python, kebab-case for CSS/URLs."}}
+                ]
+            },
+            {
+                "@type": "HowTo",
+                "name": "How to Convert Text Case",
+                "description": "Transform text to different case formats",
+                "step": [
+                    {"@type": "HowToStep", "name": "Paste Text", "text": "Paste your text to convert"},
+                    {"@type": "HowToStep", "name": "Select Case", "text": "Choose target case format"},
+                    {"@type": "HowToStep", "name": "Convert", "text": "Text is transformed instantly"},
+                    {"@type": "HowToStep", "name": "Copy", "text": "Copy the converted text"}
+                ]
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg-body: #09090b;
+            --bg-card: rgba(24, 24, 27, 0.6);
+            --bg-code: #121214;
+            --border: #27272a;
+            --border-highlight: #3f3f46;
+            --primary: #818cf8;
+            --primary-glow: rgba(129, 140, 248, 0.15);
+            --text-main: #e4e4e7;
+            --text-muted: #a1a1aa;
+            --text-dim: #71717a;
+            --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-code: 'JetBrains Mono', monospace
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            background-color: var(--bg-body);
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: var(--text-main);
+            font-family: var(--font-ui);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden
+        }
+
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: transparent;
+            z-index: 1000
+        }
+
+        .progress-bar {
+            height: 3px;
+            background: var(--primary);
+            width: 0%;
+            box-shadow: 0 0 10px var(--primary);
+            transition: width .1s
+        }
+
+        .wrapper {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 40px 20px 120px 20px;
+            position: relative
+        }
+
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 15px
+        }
+
+        .nav-back {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: .85rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color .2s
+        }
+
+        .nav-back:hover {
+            color: #fff
+        }
+
+        .brand-logo {
+            font-weight: 700;
+            color: #3b82f6;
+            text-decoration: none;
+            font-size: .9rem;
+            letter-spacing: -.5px
+        }
+
+        article h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -.03em;
+            line-height: 1.2;
+            margin: 0 0 15px 0;
+            background: linear-gradient(180deg, #fff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text
+        }
+
+        .meta-row {
+            display: flex;
+            gap: 20px;
+            font-size: .8rem;
+            color: var(--text-dim);
+            font-family: var(--font-code);
+            margin-bottom: 35px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px
+        }
+
+        .meta-row span {
+            display: flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .meta-row i {
+            color: var(--primary)
+        }
+
+        article p {
+            font-size: 1.05rem;
+            color: #d4d4d8;
+            margin-bottom: 20px
+        }
+
+        article h2 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: -.02em;
+            color: #fff;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border)
+        }
+
+        article h2::before {
+            content: '#';
+            color: var(--primary);
+            opacity: .4;
+            margin-right: 8px
+        }
+
+        article h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #fff;
+            margin-top: 35px;
+            margin-bottom: 12px
+        }
+
+        strong {
+            color: #fff;
+            font-weight: 700
+        }
+
+        ul,
+        ol {
+            margin-bottom: 24px;
+            padding-left: 20px;
+            color: var(--text-muted)
+        }
+
+        li {
+            margin-bottom: 8px
+        }
+
+        .toc {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 50px;
+            font-size: .9rem
+        }
+
+        .toc summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-muted);
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .toc summary:hover {
+            color: #fff
+        }
+
+        .toc ul {
+            margin: 15px 0 0 0;
+            padding-left: 0;
+            list-style: none
+        }
+
+        .toc li {
+            margin-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            padding-bottom: 8px
+        }
+
+        .toc a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: .2s;
+            display: block
+        }
+
+        .toc a:hover {
+            color: var(--primary);
+            padding-left: 5px
+        }
+
+        .code-wrapper {
+            position: relative;
+            margin: 30px 0;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg-code);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3)
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 15px;
+            background: #18181b;
+            border-bottom: 1px solid var(--border);
+            font-size: .75rem;
+            color: var(--text-dim);
+            font-family: var(--font-ui);
+            text-transform: uppercase;
+            font-weight: 600
+        }
+
+        pre {
+            margin: 0;
+            padding: 20px;
+            overflow-x: auto;
+            font-size: .85rem;
+            line-height: 1.6
+        }
+
+        code {
+            font-family: var(--font-code);
+            color: #a5b4fc
+        }
+
+        .token-prop {
+            color: #67e8f9
+        }
+
+        .token-val {
+            color: #fca5a5
+        }
+
+        .token-keyword {
+            color: #c792ea
+        }
+
+        .token-comment {
+            color: #52525b;
+            font-style: italic
+        }
+
+        p code {
+            background: #27272a;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: .85em;
+            color: #fff;
+            border: 1px solid #3f3f46
+        }
+
+        .callout {
+            background: rgba(129, 140, 248, 0.05);
+            border: 1px solid rgba(129, 140, 248, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start
+        }
+
+        .callout i {
+            color: var(--primary);
+            margin-top: 4px
+        }
+
+        .callout h4 {
+            margin: 0 0 5px 0;
+            font-size: 1rem;
+            color: #fff
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: .95rem;
+            color: var(--text-muted)
+        }
+
+        .sticky-cta {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 500px;
+            background: rgba(24, 24, 27, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-highlight);
+            padding: 10px 10px 10px 25px;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            z-index: 999;
+            animation: floatUp .8s cubic-bezier(0.16, 1, 0.3, 1) 2s backwards
+        }
+
+        .sticky-text {
+            font-size: .9rem;
+            font-weight: 500;
+            color: #fff
+        }
+
+        .sticky-text span {
+            color: var(--text-dim)
+        }
+
+        .cta-btn-primary {
+            background: linear-gradient(135deg, var(--primary), #6366f1);
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: .85rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px var(--primary-glow);
+            transition: transform .2s;
+            white-space: nowrap
+        }
+
+        .cta-btn-primary:hover {
+            transform: scale(1.05)
+        }
+
+        @keyframes floatUp {
+            from {
+                transform: translate(-50%, 100px);
+                opacity: 0
+            }
+
+            to {
+                transform: translate(-50%, 0);
+                opacity: 1
+            }
+        }
+
+        .tool-card {
+            background: linear-gradient(180deg, rgba(39, 39, 42, 0.4) 0%, rgba(24, 24, 27, 0.4) 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            margin: 50px 0;
+            position: relative;
+            overflow: hidden
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 150px;
+            background: var(--primary);
+            filter: blur(80px);
+            opacity: .25;
+            z-index: -1
+        }
+
+        .tool-card h3 {
+            margin: 0 0 15px 0;
+            color: #fff;
+            font-size: 1.4rem
+        }
+
+        .tool-card p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 25px
+        }
+
+        .faq-section {
+            margin-top: 60px
+        }
+
+        .faq-item {
+            background: rgba(24, 24, 27, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: all .2s
+        }
+
+        .faq-item:hover {
+            border-color: var(--border-highlight);
+            background: rgba(32, 32, 35, 0.7)
+        }
+
+        .faq-question {
+            padding: 18px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #fff;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none
+        }
+
+        .faq-question::-webkit-details-marker {
+            display: none
+        }
+
+        .faq-icon {
+            color: var(--primary);
+            font-size: 1.3rem;
+            font-weight: 300;
+            transition: transform .3s ease;
+            min-width: 20px;
+            text-align: center
+        }
+
+        .faq-item[open] .faq-icon {
+            transform: rotate(45deg)
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px 20px;
+            color: var(--text-muted);
+            font-size: .98rem;
+            line-height: 1.7;
+            animation: fadeIn .3s ease-in-out
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-5px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .faq-answer strong {
+            color: #fff
+        }
+
+        .faq-answer code {
+            background: rgba(129, 140, 248, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: .9em
+        }
+
+        footer {
+            margin-top: 80px;
+            padding: 30px 0;
+            border-top: 1px solid var(--border);
+            background: rgba(24, 24, 27, 0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-content {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 20px 80px 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 15px;
+            flex-wrap: wrap
+        }
+
+        .footer-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+            transform: translateY(-2px)
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin: 0;
+            text-align: center;
+        }
+
+        @media(max-width:600px) {
+            .wrapper {
+                padding: 20px 15px 100px 15px
+            }
+
+            article h1 {
+                font-size: 2rem
+            }
+
+            .sticky-text {
+                font-size: .8rem
+            }
+        }
+
+        /* Featured Image Styles */
+        .featured-image {
+            margin: 2rem 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+        }
+
+        .featured-image figcaption {
+            text-align: center;
+            padding: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+
+        /* Workflow Diagram Styles */
+        .workflow-diagram {
+            margin: 2rem 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .workflow-diagram img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+        }
+
+        .workflow-diagram figcaption {
+            text-align: center;
+            padding: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+    <style>
+        /* Footer spacing fix for sticky CTA */
+        footer {
+            padding: 30px 0 30px 0 !important;
+        }
+
+        body {
+            padding-bottom: 100px !important;
+        }
+    </style>
 </head>
+
 <body>
-<div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
-<div class="wrapper">
-<nav class="nav-header">
-<a href="blog.html" class="nav-back"><i class="fas fa-arrow-left"></i> All Articles</a>
-<a href="index.html" class="brand-logo">Code Formatter</a>
-</nav>
-<article>
-<h1>Case Converter Online – Convert Text Case Free</h1>
-<div class="meta-row">
-<span><i class="far fa-user-circle"></i> Udit Sharma</span>
-<span><i class="far fa-calendar-alt"></i> Jan 2026</span>
-<span><i class="far fa-clock"></i> 6 Min Read</span>
-</div>
-<div class="tool-card">
-<h3>🚀 Try Case Converter — Free, No Sign-up</h3>
-<p>Use our free online case converter tool. Instant results, works on any device.</p>
-<a href="case-converter.html" class="cta-btn-primary">Open Case Converter</a>
-</div>
-<p>Different coding conventions require different case formats. Our <strong>case converter</strong> instantly transforms text between all common formats — camelCase, PascalCase, snake_case, CONSTANT_CASE, and more.</p><h2>Supported Case Formats</h2><ul><li><strong>camelCase</strong> — Used in JavaScript variables and functions.</li><li><strong>PascalCase</strong> — Used in React components and C# classes.</li><li><strong>snake_case</strong> — Used in Python, Ruby, and database columns.</li><li><strong>CONSTANT_CASE</strong> — Used for constants and environment variables.</li><li><strong>kebab-case</strong> — Used in CSS classes and HTML attributes.</li><li><strong>Title Case</strong> — Used for headings and titles.</li></ul><h2>How to Use</h2><ol><li>Paste or type your text</li><li>Select the target case format</li><li>Copy the converted text</li></ol><h2>FAQ</h2><h3>Does it handle multiple words?</h3><p>Yes, it intelligently detects word boundaries regardless of the input format.</p>
-<div class="related-grid">
-<a href="blog-csv-to-json.html" class="related-card"><h3>CSV to JSON Converter</h3><p>Convert CSV data to JSON format instantly online. Free tool with no sign-up requ...</p></a>
-<a href="blog-json-to-csv.html" class="related-card"><h3>JSON to CSV Converter</h3><p>Convert JSON data to CSV format instantly. Free online tool to transform JSON ar...</p></a>
-<a href="blog-json-to-yaml.html" class="related-card"><h3>JSON to YAML Converter</h3><p>Convert JSON to YAML format instantly online. Free tool for DevOps, Kubernetes c...</p></a>
-<a href="blog-json-to-typescript.html" class="related-card"><h3>JSON to TypeScript</h3><p>Generate TypeScript interfaces from JSON data automatically. Free online tool fo...</p></a>
-</div>
-</article>
-</div>
-<footer><div class="footer-content">
-<div class="footer-links">
-<a href="index.html"><i class="fas fa-home"></i> Home</a>
-<a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
-<a href="about.html"><i class="fas fa-info-circle"></i> About</a>
-<a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
-<a href="terms.html"><i class="fas fa-file-alt"></i> Terms</a>
-</div>
-<p class="footer-copyright">© 2026 Code Formatter. All rights reserved.</p>
-</div></footer>
-<script>window.addEventListener('scroll',()=>{const e=document.getElementById('progressBar'),s=document.documentElement;e.style.width=(s.scrollTop/(s.scrollHeight-s.clientHeight)*100)+'%'});</script>
-</body></html>
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="wrapper">
+        <nav class="nav-header">
+            <a href="blog.html" class="nav-back"><i class="fas fa-arrow-left"></i> All Articles</a>
+            <a href="index.html" class="brand-logo">Code Formatter</a>
+        </nav>
+        <article>
+            <h1>Case Converter: The Ultimate Naming Convention Guide (2026)</h1>
+            <div class="meta-row">
+                <span><i class="far fa-user-circle"></i> Udit Sharma</span>
+                <span><i class="far fa-calendar-alt"></i> Jan 2, 2026</span>
+                <span><i class="far fa-clock"></i> 11 Min Read</span>
+            </div>
+
+            <!-- Featured Image -->
+            <figure class="featured-image">
+                <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=800&auto=format&fit=crop"
+                    alt="CASE CONVERTER - Complete Guide" width="800" height="450" loading="eager" fetchpriority="high">
+                <figcaption>CASE CONVERTER: Your complete guide to mastering this tool</figcaption>
+            </figure>
+            <details class="toc" open>
+                <summary>Table of Contents</summary>
+                <ul>
+                    <li><a href="#intro">One Name, Many Shapes</a></li>
+                    <li><a href="#camel">camelCase (JavaScript/Java)</a></li>
+                    <li><a href="#snake">snake_case (Python/SQL)</a></li>
+                    <li><a href="#kebab">kebab-case (CSS/URLs)</a></li>
+                    <li><a href="#pascal">PascalCase (Classes/React)</a></li>
+                    <li><a href="#screaming">SCREAMING_SNAKE_CASE (Constants)</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </details>
+
+            <p id="intro">There are only two hard things in Computer Science: cache invalidation and <strong>naming
+                    things</strong>. And part of naming things is deciding HOW to write them. Should it be
+                <code>userId</code>, <code>user_id</code>, or <code>UserID</code>?
+            </p>
+
+            <p>These "casing conventions" aren't just about aesthetics; they are strict standards enforced by
+                programming languages and communities. Mixing them up (e.g., using snake_case in Java) is a surefire way
+                to look like a novice. This guide covers every major standard you need to know.</p>
+
+            <h2 id="camel">
+                <!-- Workflow Diagram -->
+                <figure class="workflow-diagram">
+                    <img src="workflow-case-converter.png" alt="How to Convert Text Case - Simple 3-step workflow"
+                        width="760" height="400" loading="lazy">
+                    <figcaption>How to Convert Text Case - Simple 3-step workflow</figcaption>
+                </figure>
+                camelCase
+            </h2>
+            <p><strong>Format:</strong> First letter lowercase, first letter of subsequent words uppercase. No spaces or
+                separators.</p>
+            <div class="code-wrapper">
+                <div class="code-header">Example (JavaScript)</div>
+                <pre><code><span class="token-keyword">const</span> userProfileImage = <span class="token-string">"url"</span>;
+<span class="token-keyword">function</span> <span class="token-function">calculateTotalScore</span>() { ... }</code></pre>
+            </div>
+            <p><strong>Where to use it:</strong></p>
+            <ul>
+                <li><strong>JavaScript/TypeScript:</strong> Variables, Functions, Methods, and Keys in JSON.</li>
+                <li><strong>Java:</strong> Variables and Methods.</li>
+                <li><strong>Golang:</strong> Internal (unexported) variables.</li>
+            </ul>
+
+            <h2 id="snake">snake_case</h2>
+            <p><strong>Format:</strong> All lowercase, words separated by underscores (<code>_</code>).</p>
+            <div class="code-wrapper">
+                <div class="code-header">Example (Python)</div>
+                <pre><code>user_profile_image = <span class="token-string">"url"</span>
+<span class="token-keyword">def</span> <span class="token-function">calculate_total_score</span>():
+    <span class="token-keyword">return</span> <span class="token-val">100</span></code></pre>
+            </div>
+            <p><strong>Where to use it:</strong></p>
+            <ul>
+                <li><strong>Python:</strong> Almost everything (variables, functions, filenames).</li>
+                <li><strong>SQL:</strong> Database table names (<code>users_table</code>) and column names
+                    (<code>first_name</code>).</li>
+                <li><strong>Rust:</strong> Variables and functions.</li>
+            </ul>
+
+            <h2 id="kebab">kebab-case</h2>
+            <p><strong>Format:</strong> All lowercase, words separated by hyphens (<code>-</code>). Also called
+                "spinal-case" or "lisp-case".</p>
+            <div class="code-wrapper">
+                <div class="code-header">Example (CSS & URLs)</div>
+                <pre><code><span class="token-keyword">.user-profile-card</span> {
+    <span class="token-prop">background-color</span>: <span class="token-val">#fff</span>;
+}
+<span class="token-comment">// https://example.com/blog/naming-conventions-guide</span></code></pre>
+            </div>
+            <p><strong>Where to use it:</strong></p>
+            <ul>
+                <li><strong>CSS:</strong> Class names, ID names, and properties.</li>
+                <li><strong>URLs:</strong> SEO-friendly slugs (Google prefers hyphens over underscores).</li>
+                <li><strong>HTML Attributes:</strong> <code>data-user-id="123"</code>.</li>
+            </ul>
+
+            <h2 id="pascal">PascalCase</h2>
+            <p><strong>Format:</strong> First letter uppercase, first letter of subsequent words uppercase. Like
+                camelCase, but capitalized start.</p>
+            <div class="code-wrapper">
+                <div class="code-header">Example (React/C#)</div>
+                <pre><code><span class="token-keyword">class</span> <span class="token-function">UserProfile</span> { ... }
+
+<span class="token-comment">// React Components MUST be PascalCase</span>
+<span class="token-keyword">const</span> <span class="token-function">SubmitButton</span> = () => &lt;button&gt;Go&lt;/button&gt;;</code></pre>
+            </div>
+            <p><strong>Where to use it:</strong></p>
+            <ul>
+                <li><strong>Classes:</strong> In almost every OOP language (Java, JS, Python, C#).</li>
+                <li><strong>React/Vue:</strong> Component names.</li>
+                <li><strong>Golang:</strong> Public (exported) variables/structs.</li>
+            </ul>
+
+            <div class="tool-card">
+                <h3>Convert Case Instantly</h3>
+                <p>Paste a list of variables or a paragraph. Convert between camel, snake, pascal, kebab, and title case
+                    with one click.</p>
+                <a href="case-converter.html" class="cta-btn-primary">Open Converter</a>
+            </div>
+
+            <h2 id="screaming">SCREAMING_SNAKE_CASE</h2>
+            <p><strong>Format:</strong> All uppercase, words separated by underscores.</p>
+            <div class="code-wrapper">
+                <div class="code-header">Example (Global Constants)</div>
+                <pre><code><span class="token-keyword">const</span> MAX_RETRY_ATTEMPTS = <span class="token-val">5</span>;
+<span class="token-keyword">const</span> API_BASE_URL = <span class="token-string">"https://api.example.com"</span>;</code></pre>
+            </div>
+            <p><strong>Where to use it:</strong></p>
+            <ul>
+                <li><strong>Constants:</strong> Values that are hard-coded and never change during execution.</li>
+                <li><strong>Environment Variables:</strong> <code>DB_PASSWORD</code>, <code>AWS_SECRET_KEY</code>.</li>
+            </ul>
+
+            <h2 id="faq">Frequently Asked Questions</h2>
+
+            <div class="faq-section">
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        How can I quickly switch case in VS Code?
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        Highlight the text and use the "Transform to..." command in the Command Palette (Ctrl+Shift+P).
+                        Or better yet, install an extension like "change-case" to bind shortcuts like
+                        <code>Alt+Shift+U</code> for UPPER or <code>Alt+Shift+C</code> for camelCase.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        Why does SQL use snake_case?
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        Historical reasons. Older databases were case-insensitive (treating <code>UserTable</code> and
+                        <code>usertable</code> as the same). Underscores provided a reliable way to separate words
+                        without relying on capitalization.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        What is Hungarian Notation?
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        An old convention (mostly dead now) where you prefix the variable name with its type. Example:
+                        <code>strName</code> (String Name) or <code>iCount</code> (Integer Count). Modern IDEs show
+                        types on hover, making this redundant and cluttering.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        Can I start a variable with a number?
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <strong>No.</strong> In almost all programming languages, variable names cannot start with a
+                        digit (e.g., <code>2user</code> is invalid). They must start with a letter, underscore, or
+                        dollar sign (JS).
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        What about spaces in filenames?
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <strong>Avoid them like the plague.</strong> Spaces cause nightmares in command-line tools
+                        (requiring escaping like <code>file\ name.txt</code>) and URLs (becoming
+                        <code>file%20name.txt</code>). Always use kebab-case (web) or snake_case (data/scripts) for
+                        files.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        Is Title Case used in coding?
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        Rarely in code logic, but often in UI strings or comments. Title Case (Capitalizing Every Major
+                        Word) is standard for headlines, buttons ("Sign Up Now"), and menu items.
+                    </div>
+                </details>
+            </div>
+
+        </article>
+        <footer>
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+                    <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+                    <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                </div>
+                <p class="footer-copyright">2026 Code Formatter. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+    <div class="sticky-cta">
+        <div class="sticky-text"><span>Broken JSON?</span> Fix it instantly.</div>
+        <a href="case-converter.html" class="cta-btn-primary">Convert Case</a>
+    </div>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+    </script>
+</body>
+
+</html>
