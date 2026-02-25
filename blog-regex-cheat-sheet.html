@@ -1,32 +1,1419 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
+
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Regex Cheat Sheet 2026 – Complete Reference Guide | Code Formatter</title>
-<meta name="description" content="Complete regular expression cheat sheet with examples. Anchors, quantifiers, groups, lookahead and more.">
-<meta name="author" content="Udit Sharma">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
-<link rel="canonical" href="https://www.codeformatter.in/blog-regex-cheat-sheet.html">
-<meta property="og:title" content="Regex Cheat Sheet 2026 – Complete Reference Guide">
-<meta property="og:description" content="Complete regular expression cheat sheet with examples. Anchors, quantifiers, groups, lookahead and more.">
-<meta property="og:type" content="article">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2670168844256558" crossorigin="anonymous"></script>
-<style>:root{--bg-body:#09090b;--bg-card:rgba(24,24,27,.6);--border:#27272a;--primary:#818cf8;--text-main:#e4e4e7;--text-muted:#a1a1aa;--text-dim:#71717a;--font-ui:'Inter',sans-serif;--font-code:'JetBrains Mono',monospace}*{box-sizing:border-box}body{background-color:var(--bg-body);background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:30px 30px;color:var(--text-main);font-family:var(--font-ui);line-height:1.6;margin:0;padding:0 0 100px}article h1{font-size:2.2rem;font-weight:800;letter-spacing:-.03em;line-height:1.2;margin:0 0 15px;background:linear-gradient(180deg,#fff,#a1a1aa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}article p{font-size:1.05rem;color:#d4d4d8;margin-bottom:20px}article h2{font-size:1.5rem;font-weight:700;color:#fff;margin-top:45px;margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid var(--border)}article h2::before{content:'#';color:var(--primary);opacity:.4;margin-right:8px}article h3{font-size:1.2rem;font-weight:600;color:#fff;margin-top:30px;margin-bottom:10px}strong{color:#fff}ul,ol{margin-bottom:24px;padding-left:20px;color:var(--text-muted)}li{margin-bottom:8px}p code{background:#27272a;padding:2px 6px;border-radius:4px;font-size:.85em;color:#fff;border:1px solid #3f3f46;font-family:var(--font-code)}.wrapper{max-width:760px;margin:0 auto;padding:40px 20px 60px}.nav-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;border-bottom:1px solid var(--border);padding-bottom:15px}.nav-back{color:var(--text-muted);text-decoration:none;font-size:.85rem;display:inline-flex;align-items:center;gap:6px}.nav-back:hover{color:#fff}.brand-logo{font-weight:700;color:#3b82f6;text-decoration:none;font-size:.9rem}.meta-row{display:flex;gap:20px;font-size:.8rem;color:var(--text-dim);font-family:var(--font-code);margin-bottom:25px;border-bottom:1px solid var(--border);padding-bottom:20px;flex-wrap:wrap}.meta-row span{display:flex;align-items:center;gap:6px}.meta-row i{color:var(--primary)}.tool-card{background:linear-gradient(180deg,rgba(39,39,42,.4),rgba(24,24,27,.4));border:1px solid var(--border);border-radius:12px;padding:35px;text-align:center;margin:25px 0;position:relative;overflow:hidden}.tool-card::before{content:'';position:absolute;top:-50px;left:50%;transform:translateX(-50%);width:150px;height:150px;background:var(--primary);filter:blur(80px);opacity:.25;z-index:-1}.tool-card h3{margin:0 0 12px;color:#fff;font-size:1.3rem}.tool-card p{font-size:.95rem;color:var(--text-muted);margin-bottom:20px}.cta-btn-primary{background:linear-gradient(135deg,var(--primary),#6366f1);color:#fff;text-decoration:none;padding:10px 24px;border-radius:50px;font-size:.85rem;font-weight:600;display:inline-block}footer{margin-top:60px;padding:30px 0;border-top:1px solid var(--border)}.footer-content{text-align:center;max-width:760px;margin:0 auto;padding:0 20px}.footer-links{display:flex;justify-content:center;gap:20px;margin-bottom:15px;flex-wrap:wrap}.footer-links a{color:var(--primary);text-decoration:none;font-size:.85rem;display:inline-flex;align-items:center;gap:5px}.footer-copyright{font-size:.8rem;color:var(--text-dim);margin:0}@media(max-width:600px){article h1{font-size:1.7rem}}</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regex Cheat Sheet 2026: Complete Regular Expression Reference Guide</title>
+    <meta name="description"
+        content="The ultimate Regex cheat sheet with all patterns, syntax, and examples. Master regular expressions with our complete 2026 reference guide. Bookmark this page!">
+    <meta name="keywords"
+        content="regex cheat sheet, regular expression cheat sheet, regex patterns, regex syntax, regex examples, regex reference, regex tutorial, regex guide, regex metacharacters, regex quantifiers">
+    <meta name="author" content="Udit Sharma">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+    <link rel="canonical" href="https://www.codeformatter.in/blog-regex-cheat-sheet.html">
+    <meta property="og:title" content="Regex Cheat Sheet 2026: Complete Regular Expression Reference">
+    <meta property="og:description"
+        content="The ultimate regex reference guide with patterns, syntax, examples. Bookmark this complete cheat sheet!">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://www.codeformatter.in/regex-cheat-sheet.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Regex Cheat Sheet 2026 - Complete Reference Guide">
+    <meta name="twitter:description"
+        content="Master regex with our complete cheat sheet. All patterns, syntax, and examples in one place.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Enhanced JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Article",
+                "@id": "https://www.codeformatter.in/blog-regex-cheat-sheet.html#article",
+                "headline": "Regex Cheat Sheet 2026: Complete Regular Expression Reference Guide",
+                "description": "The ultimate regex cheat sheet with all patterns, syntax, and examples. Master regular expressions with our complete reference guide.",
+                "image": "https://www.codeformatter.in/regex-cheat-sheet.png",
+                "author": {"@type": "Person", "name": "Udit Sharma", "url": "https://www.codeformatter.in/about.html"},
+                "datePublished": "2026-02-06",
+                "dateModified": "2026-02-06",
+                "publisher": {"@type": "Organization", "name": "Code Formatter", "logo": {"@type": "ImageObject", "url": "https://www.codeformatter.in/favicon.svg"}},
+                "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.codeformatter.in/blog-regex-cheat-sheet.html"}
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.codeformatter.in/"},
+                    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.codeformatter.in/blog.html"},
+                    {"@type": "ListItem", "position": 3, "name": "Regex Cheat Sheet"}
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {"@type": "Question", "name": "What is regex used for?", "acceptedAnswer": {"@type": "Answer", "text": "Regex (Regular Expressions) is used for pattern matching in text. Common uses include form validation, search and replace, data extraction, log parsing, and text processing."}},
+                    {"@type": "Question", "name": "What does ^ mean in regex?", "acceptedAnswer": {"@type": "Answer", "text": "The caret ^ has two meanings: at the start of a pattern it means 'beginning of string', inside a character class [^abc] it means 'NOT these characters'."}},
+                    {"@type": "Question", "name": "What is the difference between * and + in regex?", "acceptedAnswer": {"@type": "Answer", "text": "The asterisk * matches zero or more occurrences, while + matches one or more occurrences. So a* matches '', 'a', 'aa' but a+ only matches 'a', 'aa' (not empty string)."}},
+                    {"@type": "Question", "name": "How do I match any character in regex?", "acceptedAnswer": {"@type": "Answer", "text": "Use a dot . to match any single character except newline. To match literally any character including newlines, use [\\s\\S] or enable the 's' (dotall) flag."}},
+                    {"@type": "Question", "name": "What is a capturing group in regex?", "acceptedAnswer": {"@type": "Answer", "text": "Capturing groups use parentheses () to capture matched text for later use. You can reference captured groups with $1, $2, etc. in replacement patterns or \\1, \\2 as backreferences."}},
+                    {"@type": "Question", "name": "How do I make regex case insensitive?", "acceptedAnswer": {"@type": "Answer", "text": "Add the 'i' flag to your regex pattern. In JavaScript: /pattern/i. In Python: re.IGNORECASE or re.I. This makes the pattern match both uppercase and lowercase letters."}},
+                    {"@type": "Question", "name": "What is a lookahead in regex?", "acceptedAnswer": {"@type": "Answer", "text": "Lookahead (?=...) checks if a pattern exists ahead without consuming it. Positive lookahead (?=...) asserts the pattern must exist; negative lookahead (?!...) asserts it must NOT exist."}}
+                ]
+            },
+            {
+                "@type": "HowTo",
+                "name": "How to Use Regex",
+                "description": "Learn to write and test regular expressions",
+                "step": [
+                    {"@type": "HowToStep", "name": "Learn Basic Syntax", "text": "Start with literal characters, then learn metacharacters like . * + ?"},
+                    {"@type": "HowToStep", "name": "Understand Character Classes", "text": "Use [abc] for specific characters, \\d for digits, \\w for word characters"},
+                    {"@type": "HowToStep", "name": "Master Quantifiers", "text": "Control repetition with *, +, ?, and {n,m}"},
+                    {"@type": "HowToStep", "name": "Test Your Patterns", "text": "Use a regex tester tool to validate patterns with sample data"}
+                ]
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg-body: #09090b;
+            --bg-card: rgba(24, 24, 27, 0.6);
+            --bg-code: #121214;
+            --border: #27272a;
+            --border-highlight: #3f3f46;
+            --primary: #818cf8;
+            --primary-glow: rgba(129, 140, 248, 0.15);
+            --secondary: #10b981;
+            --text-main: #e4e4e7;
+            --text-muted: #a1a1aa;
+            --text-dim: #71717a;
+            --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-code: 'JetBrains Mono', monospace
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            background-color: var(--bg-body);
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: var(--text-main);
+            font-family: var(--font-ui);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            padding-bottom: 100px !important;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden
+        }
+
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: transparent;
+            z-index: 1000
+        }
+
+        .progress-bar {
+            height: 3px;
+            background: var(--primary);
+            width: 0%;
+            box-shadow: 0 0 10px var(--primary);
+            transition: width .1s
+        }
+
+        .wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px 120px 20px;
+            position: relative
+        }
+
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 15px
+        }
+
+        .nav-back {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: .85rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color .2s
+        }
+
+        .nav-back:hover {
+            color: #fff
+        }
+
+        .brand-logo {
+            font-weight: 700;
+            color: #3b82f6;
+            text-decoration: none;
+            font-size: .9rem;
+            letter-spacing: -.5px
+        }
+
+        article h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -.03em;
+            line-height: 1.2;
+            margin: 0 0 15px 0;
+            background: linear-gradient(180deg, #fff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text
+        }
+
+        .meta-row {
+            display: flex;
+            gap: 20px;
+            font-size: .8rem;
+            color: var(--text-dim);
+            font-family: var(--font-code);
+            margin-bottom: 35px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+            flex-wrap: wrap
+        }
+
+        .meta-row span {
+            display: flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .meta-row i {
+            color: var(--primary)
+        }
+
+        article p {
+            font-size: 1.05rem;
+            color: #d4d4d8;
+            margin-bottom: 20px
+        }
+
+        article h2 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: -.02em;
+            color: #fff;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border)
+        }
+
+        article h2::before {
+            content: '#';
+            color: var(--primary);
+            opacity: .4;
+            margin-right: 8px
+        }
+
+        article h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #fff;
+            margin-top: 35px;
+            margin-bottom: 12px
+        }
+
+        strong {
+            color: #fff;
+            font-weight: 700
+        }
+
+        ul,
+        ol {
+            margin-bottom: 24px;
+            padding-left: 20px;
+            color: var(--text-muted)
+        }
+
+        li {
+            margin-bottom: 8px
+        }
+
+        .toc {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 50px;
+            font-size: .9rem
+        }
+
+        .toc summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-muted);
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .toc summary:hover {
+            color: #fff
+        }
+
+        .toc ul {
+            margin: 15px 0 0 0;
+            padding-left: 0;
+            list-style: none
+        }
+
+        .toc li {
+            margin-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            padding-bottom: 8px
+        }
+
+        .toc a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: .2s;
+            display: block
+        }
+
+        .toc a:hover {
+            color: var(--primary);
+            padding-left: 5px
+        }
+
+        pre {
+            margin: 0;
+            padding: 20px;
+            overflow-x: auto;
+            font-size: .85rem;
+            line-height: 1.6
+        }
+
+        code {
+            font-family: var(--font-code);
+            color: #a5b4fc
+        }
+
+        p code {
+            background: #27272a;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: .85em;
+            color: #fff;
+            border: 1px solid #3f3f46
+        }
+
+        .callout {
+            background: rgba(129, 140, 248, 0.05);
+            border: 1px solid rgba(129, 140, 248, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start
+        }
+
+        .callout i {
+            color: var(--primary);
+            margin-top: 4px
+        }
+
+        .callout h4 {
+            margin: 0 0 5px 0;
+            font-size: 1rem;
+            color: #fff
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: .95rem;
+            color: var(--text-muted)
+        }
+
+        .callout-success {
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.2)
+        }
+
+        .callout-success i {
+            color: var(--secondary)
+        }
+
+        .sticky-cta {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 500px;
+            background: rgba(24, 24, 27, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-highlight);
+            padding: 10px 10px 10px 25px;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            z-index: 999;
+            animation: floatUp .8s cubic-bezier(0.16, 1, 0.3, 1) 2s backwards
+        }
+
+        .sticky-text {
+            font-size: .9rem;
+            font-weight: 500;
+            color: #fff
+        }
+
+        .sticky-text span {
+            color: var(--text-dim)
+        }
+
+        .cta-btn-primary {
+            background: linear-gradient(135deg, var(--primary), #6366f1);
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: .85rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px var(--primary-glow);
+            transition: transform .2s;
+            white-space: nowrap
+        }
+
+        .cta-btn-primary:hover {
+            transform: scale(1.05)
+        }
+
+        @keyframes floatUp {
+            from {
+                transform: translate(-50%, 100px);
+                opacity: 0
+            }
+
+            to {
+                transform: translate(-50%, 0);
+                opacity: 1
+            }
+        }
+
+        .tool-card {
+            background: linear-gradient(180deg, rgba(39, 39, 42, 0.4) 0%, rgba(24, 24, 27, 0.4) 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            margin: 50px 0;
+            position: relative;
+            overflow: hidden
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 150px;
+            background: var(--primary);
+            filter: blur(80px);
+            opacity: .25;
+            z-index: -1
+        }
+
+        .tool-card h3 {
+            margin: 0 0 15px 0;
+            color: #fff;
+            font-size: 1.4rem
+        }
+
+        .tool-card p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 25px
+        }
+
+        .faq-section {
+            margin-top: 60px
+        }
+
+        .faq-item {
+            background: rgba(24, 24, 27, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: all .2s
+        }
+
+        .faq-item:hover {
+            border-color: var(--border-highlight);
+            background: rgba(32, 32, 35, 0.7)
+        }
+
+        .faq-question {
+            padding: 18px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #fff;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none
+        }
+
+        .faq-question::-webkit-details-marker {
+            display: none
+        }
+
+        .faq-icon {
+            color: var(--primary);
+            font-size: 1.3rem;
+            font-weight: 300;
+            transition: transform .3s ease;
+            min-width: 20px;
+            text-align: center
+        }
+
+        .faq-item[open] .faq-icon {
+            transform: rotate(45deg)
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px 20px;
+            color: var(--text-muted);
+            font-size: .98rem;
+            line-height: 1.7;
+            animation: fadeIn .3s ease-in-out
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-5px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .faq-answer strong {
+            color: #fff
+        }
+
+        .faq-answer code {
+            background: rgba(129, 140, 248, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: .9em
+        }
+
+        footer {
+            margin-top: 80px;
+            padding: 30px 0 30px 0 !important;
+            border-top: 1px solid var(--border);
+            background: rgba(24, 24, 27, 0.4);
+            backdrop-filter: blur(10px)
+        }
+
+        .footer-content {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 20px 80px 20px
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 15px;
+            flex-wrap: wrap
+        }
+
+        .footer-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+            transform: translateY(-2px)
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin: 0;
+            text-align: center
+        }
+
+        .featured-image {
+            margin: 2rem 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3)
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px
+        }
+
+        .featured-image figcaption {
+            text-align: center;
+            padding: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem
+        }
+
+        /* Regex Table Styles */
+        .regex-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: var(--bg-code);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border)
+        }
+
+        .regex-table th {
+            background: #18181b;
+            padding: 15px 20px;
+            text-align: left;
+            font-weight: 600;
+            color: #fff;
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border)
+        }
+
+        .regex-table td {
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.95rem
+        }
+
+        .regex-table tr:last-child td {
+            border-bottom: none
+        }
+
+        .regex-table tr:hover {
+            background: rgba(129, 140, 248, 0.05)
+        }
+
+        .regex-table code {
+            background: rgba(129, 140, 248, 0.15);
+            color: var(--primary);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-family: var(--font-code)
+        }
+
+        .regex-table .example {
+            color: var(--secondary);
+            font-family: var(--font-code);
+            font-size: 0.85em
+        }
+
+        .bookmark-banner {
+            background: linear-gradient(135deg, rgba(129, 140, 248, 0.1), rgba(99, 102, 241, 0.1));
+            border: 1px solid rgba(129, 140, 248, 0.3);
+            border-radius: 12px;
+            padding: 20px 25px;
+            margin: 30px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px
+        }
+
+        .bookmark-banner i {
+            font-size: 1.5rem;
+            color: var(--primary)
+        }
+
+        .bookmark-banner p {
+            margin: 0;
+            color: var(--text-main);
+            font-size: 1rem
+        }
+
+        @media(max-width:600px) {
+            .wrapper {
+                padding: 20px 15px 100px 15px
+            }
+
+            article h1 {
+                font-size: 1.8rem
+            }
+
+            .sticky-text {
+                font-size: .8rem
+            }
+
+            .meta-row {
+                gap: 10px
+            }
+
+            .regex-table {
+                font-size: 0.85rem
+            }
+
+            .regex-table th,
+            .regex-table td {
+                padding: 10px 12px
+            }
+        }
+    </style>
 </head>
+
 <body>
-<div class="wrapper">
-<nav class="nav-header"><a href="blog.html" class="nav-back"><i class="fas fa-arrow-left"></i> All Articles</a><a href="index.html" class="brand-logo">Code Formatter</a></nav>
-<article>
-<h1>Regex Cheat Sheet 2026 – Complete Reference Guide</h1>
-<div class="meta-row"><span><i class="far fa-user-circle"></i> Udit Sharma</span><span><i class="far fa-calendar-alt"></i> Jan 2026</span><span><i class="far fa-clock"></i> 6 Min Read</span></div>
-<div class="tool-card"><h3>🚀 Try Regex Tester — Free</h3><p>Use our free regex tester tool instantly.</p><a href="regex-tester.html" class="cta-btn-primary">Open Regex Tester</a></div>
-<p>Regular expressions are powerful but hard to remember. This cheat sheet covers every regex pattern you'll need — from basics to advanced techniques.</p><h2>Anchors</h2><ul><li><code>^</code> — Start of string</li><li><code>$</code> — End of string</li><li><code>\b</code> — Word boundary</li></ul><h2>Character Classes</h2><ul><li><code>.</code> — Any character except newline</li><li><code>\d</code> — Digit (0-9)</li><li><code>\w</code> — Word character (a-z, A-Z, 0-9, _)</li><li><code>\s</code> — Whitespace</li><li><code>[abc]</code> — Any of a, b, or c</li><li><code>[^abc]</code> — Not a, b, or c</li></ul><h2>Quantifiers</h2><ul><li><code>*</code> — 0 or more</li><li><code>+</code> — 1 or more</li><li><code>?</code> — 0 or 1</li><li><code>{3}</code> — Exactly 3</li><li><code>{3,}</code> — 3 or more</li><li><code>{3,5}</code> — 3 to 5</li></ul><h2>Groups & Lookahead</h2><ul><li><code>(abc)</code> — Capture group</li><li><code>(?:abc)</code> — Non-capture group</li><li><code>(?=abc)</code> — Positive lookahead</li><li><code>(?!abc)</code> — Negative lookahead</li></ul><h2>Common Patterns</h2><ul><li>Email: <code>[\w.+-]+@[\w-]+\.[\w.]+</code></li><li>URL: <code>https?://[^\s]+</code></li><li>Phone: <code>\+?\d{1,3}[-.\s]?\d{4,14}</code></li></ul>
-</article>
-</div>
-<footer><div class="footer-content"><div class="footer-links"><a href="index.html"><i class="fas fa-home"></i> Home</a><a href="blog.html"><i class="fas fa-blog"></i> Blog</a><a href="about.html"><i class="fas fa-info-circle"></i> About</a><a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a><a href="terms.html"><i class="fas fa-file-alt"></i> Terms</a></div><p class="footer-copyright">© 2026 Code Formatter. All rights reserved.</p></div></footer>
-</body></html>
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="wrapper">
+        <nav class="nav-header">
+            <a href="blog.html" class="nav-back"><i class="fas fa-arrow-left"></i> All Articles</a>
+            <a href="index.html" class="brand-logo">Code Formatter</a>
+        </nav>
+        <article>
+            <h1>Regex Cheat Sheet 2026: The Complete Regular Expression Reference</h1>
+            <div class="meta-row">
+                <span><i class="far fa-user-circle"></i> Udit Sharma</span>
+                <span><i class="far fa-calendar-alt"></i> Feb 6, 2026</span>
+                <span><i class="far fa-clock"></i> 20 Min Read</span>
+                <span><i class="fas fa-bookmark"></i> Bookmark This!</span>
+            </div>
+
+            <!-- ★ Top CTA ★ -->
+            <div style="background:linear-gradient(135deg,rgba(99,102,241,0.12),rgba(59,130,246,0.08));border:1px solid rgba(129,140,248,0.25);border-radius:12px;padding:24px 28px;margin-bottom:35px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;">
+                <div>
+                    <div style="font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:4px;">🎯 Test your regex? Try <span style="color:#818cf8">Regex Tester</span> Free</div>
+                    <div style="font-size:.88rem;color:#a1a1aa;">No sign-up needed · 100% in-browser · Instant results</div>
+                </div>
+                <a href="regex-tester.html" style="background:linear-gradient(135deg,#818cf8,#6366f1);color:#fff;text-decoration:none;padding:10px 26px;border-radius:50px;font-size:.88rem;font-weight:600;white-space:nowrap;box-shadow:0 4px 15px rgba(129,140,248,0.25);transition:transform .2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Open Regex Tester →</a>
+            </div>
+
+            <!-- Featured Image -->
+            <figure class="featured-image">
+                <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=800&auto=format&fit=crop"
+                    alt="Regex Cheat Sheet - Complete Reference Guide" width="800" height="450" loading="eager"
+                    fetchpriority="high">
+                <figcaption>The ultimate regex reference guide - bookmark this page for quick access!</figcaption>
+            </figure>
+
+            <div class="bookmark-banner">
+                <i class="fas fa-star"></i>
+                <p><strong>Pro Tip:</strong> Press <code>Ctrl+D</code> (or <code>Cmd+D</code> on Mac) to bookmark this
+                    page. You'll want quick access to this cheat sheet!</p>
+            </div>
+
+            <details class="toc" open>
+                <summary>📋 Table of Contents</summary>
+                <ul>
+                    <li><a href="#basics">Basic Syntax</a></li>
+                    <li><a href="#metacharacters">Metacharacters</a></li>
+                    <li><a href="#character-classes">Character Classes</a></li>
+                    <li><a href="#quantifiers">Quantifiers</a></li>
+                    <li><a href="#anchors">Anchors & Boundaries</a></li>
+                    <li><a href="#groups">Groups & Capturing</a></li>
+                    <li><a href="#lookahead">Lookahead & Lookbehind</a></li>
+                    <li><a href="#flags">Regex Flags</a></li>
+                    <li><a href="#common-patterns">Common Patterns</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </details>
+
+            <p><strong>Regular Expressions (regex)</strong> are powerful patterns used for matching, searching, and
+                manipulating text. Every developer needs regex skills — from form validation to log parsing to data
+                extraction. This complete cheat sheet contains everything you need to master regex in 2026.</p>
+
+            <p>Whether you're working in JavaScript, Python, Java, PHP, or any other language, the core regex syntax
+                remains the same. Use this reference guide whenever you need to write or debug a regex pattern.</p>
+
+            <!-- Basic Syntax -->
+            <h2 id="basics">Basic Syntax</h2>
+
+            <p>Start with the fundamentals. In regex, most characters match themselves literally.</p>
+
+            <table class="regex-table">
+                <thead>
+                    <tr>
+                        <th>Pattern</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>abc</code></td>
+                        <td>Matches exact characters "abc"</td>
+                        <td class="example">"abc" in "abcdef"</td>
+                    </tr>
+                    <tr>
+                        <td><code>123</code></td>
+                        <td>Matches exact digits "123"</td>
+                        <td class="example">"123" in "test123"</td>
+                    </tr>
+                    <tr>
+                        <td><code>hello world</code></td>
+                        <td>Matches exact phrase with space</td>
+                        <td class="example">"hello world"</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Metacharacters -->
+            <h2 id="metacharacters">Metacharacters (Special Characters)</h2>
+
+            <p>These characters have special meanings in regex. To match them literally, escape with backslash
+                <code>\</code>.</p>
+
+            <table class="regex-table">
+                <thead>
+                    <tr>
+                        <th>Character</th>
+                        <th>Meaning</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>.</code></td>
+                        <td>Any character except newline</td>
+                        <td class="example">a.c → "abc", "a1c", "a-c"</td>
+                    </tr>
+                    <tr>
+                        <td><code>^</code></td>
+                        <td>Start of string</td>
+                        <td class="example">^Hello → "Hello World"</td>
+                    </tr>
+                    <tr>
+                        <td><code>$</code></td>
+                        <td>End of string</td>
+                        <td class="example">World$ → "Hello World"</td>
+                    </tr>
+                    <tr>
+                        <td><code>*</code></td>
+                        <td>Zero or more times</td>
+                        <td class="example">ab*c → "ac", "abc", "abbc"</td>
+                    </tr>
+                    <tr>
+                        <td><code>+</code></td>
+                        <td>One or more times</td>
+                        <td class="example">ab+c → "abc", "abbc" (not "ac")</td>
+                    </tr>
+                    <tr>
+                        <td><code>?</code></td>
+                        <td>Zero or one time (optional)</td>
+                        <td class="example">colou?r → "color", "colour"</td>
+                    </tr>
+                    <tr>
+                        <td><code>|</code></td>
+                        <td>OR operator (alternation)</td>
+                        <td class="example">cat|dog → "cat" or "dog"</td>
+                    </tr>
+                    <tr>
+                        <td><code>\</code></td>
+                        <td>Escape special character</td>
+                        <td class="example">\. → literal "."</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="callout">
+                <i class="fas fa-lightbulb"></i>
+                <div class="callout-content">
+                    <h4>Remember to Escape!</h4>
+                    <p>To match literal <code>.</code> <code>*</code> <code>+</code> <code>?</code> <code>$</code>
+                        <code>^</code> <code>|</code> <code>\</code> <code>[</code> <code>]</code> <code>(</code>
+                        <code>)</code> <code>{</code> <code>}</code>, prefix with backslash: <code>\.</code>
+                        <code>\*</code> etc.</p>
+                </div>
+            </div>
+
+            <!-- Character Classes -->
+            <h2 id="character-classes">Character Classes</h2>
+
+            <p>Define sets of characters to match. Square brackets create custom classes.</p>
+
+            <table class="regex-table">
+                <thead>
+                    <tr>
+                        <th>Pattern</th>
+                        <th>Meaning</th>
+                        <th>Equivalent</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>[abc]</code></td>
+                        <td>Any one of a, b, or c</td>
+                        <td class="example">a|b|c</td>
+                    </tr>
+                    <tr>
+                        <td><code>[^abc]</code></td>
+                        <td>NOT a, b, or c</td>
+                        <td class="example">Any except a, b, c</td>
+                    </tr>
+                    <tr>
+                        <td><code>[a-z]</code></td>
+                        <td>Any lowercase letter</td>
+                        <td class="example">a through z</td>
+                    </tr>
+                    <tr>
+                        <td><code>[A-Z]</code></td>
+                        <td>Any uppercase letter</td>
+                        <td class="example">A through Z</td>
+                    </tr>
+                    <tr>
+                        <td><code>[0-9]</code></td>
+                        <td>Any digit</td>
+                        <td class="example">0 through 9</td>
+                    </tr>
+                    <tr>
+                        <td><code>[a-zA-Z]</code></td>
+                        <td>Any letter (case insensitive)</td>
+                        <td class="example">a-z or A-Z</td>
+                    </tr>
+                    <tr>
+                        <td><code>[a-zA-Z0-9]</code></td>
+                        <td>Any alphanumeric</td>
+                        <td class="example">Letters or digits</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Shorthand Character Classes</h3>
+
+            <table class="regex-table">
+                <thead>
+                    <tr>
+                        <th>Shorthand</th>
+                        <th>Meaning</th>
+                        <th>Equivalent</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>\d</code></td>
+                        <td>Any digit</td>
+                        <td class="example">[0-9]</td>
+                    </tr>
+                    <tr>
+                        <td><code>\D</code></td>
+                        <td>Any non-digit</td>
+                        <td class="example">[^0-9]</td>
+                    </tr>
+                    <tr>
+                        <td><code>\w</code></td>
+                        <td>Word character</td>
+                        <td class="example">[a-zA-Z0-9_]</td>
+                    </tr>
+                    <tr>
+                        <td><code>\W</code></td>
+                        <td>Non-word character</td>
+                        <td class="example">[^a-zA-Z0-9_]</td>
+                    </tr>
+                    <tr>
+                        <td><code>\s</code></td>
+                        <td>Whitespace</td>
+                        <td class="example">[ \t\n\r\f\v]</td>
+                    </tr>
+                    <tr>
+                        <td><code>\S</code></td>
+                        <td>Non-whitespace</td>
+                        <td class="example">[^ \t\n\r\f\v]</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Quantifiers -->
+            <h2 id="quantifiers">Quantifiers</h2>
+
+            <p>Control how many times a pattern should match.</p>
+
+            <table class="regex-table">
+                <thead>
+                    <tr>
+                        <th>Quantifier</th>
+                        <th>Meaning</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>*</code></td>
+                        <td>0 or more</td>
+                        <td class="example">a* → "", "a", "aaa"</td>
+                    </tr>
+                    <tr>
+                        <td><code>+</code></td>
+                        <td>1 or more</td>
+                        <td class="example">a+ → "a", "aaa" (not "")</td>
+                    </tr>
+                    <tr>
+                        <td><code>?</code></td>
+                        <td>0 or 1 (optional)</td>
+                        <td class="example">a? → "", "a"</td>
+                    </tr>
+                    <tr>
+                        <td><code>{n}</code></td>
+                        <td>Exactly n times</td>
+                        <td class="example">a{3} → "aaa"</td>
+                    </tr>
+                    <tr>
+                        <td><code>{n,}</code></td>
+                        <td>n or more times</td>
+                        <td class="example">a{2,} → "aa", "aaa", "aaaa"</td>
+                    </tr>
+                    <tr>
+                        <td><code>{n,m}</code></td>
+                        <td>Between n and m times</td>
+                        <td class="example">a{2,4} → "aa", "aaa", "aaaa"</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Greedy vs Lazy Quantifiers</h3>
+
+            <table class="regex-table">
+                <thead>
+                    <tr>
+                        <th>Greedy</th>
+                        <th>Lazy</th>
+                        <th>Behavior</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>*</code></td>
+                        <td><code>*?</code></td>
+                        <td class="example">Match as few as possible</td>
+                    </tr>
+                    <tr>
+                        <td><code>+</code></td>
+                        <td><code>+?</code></td>
+                        <td class="example">Match minimum needed</td>
+                    </tr>
+                    <tr>
+                        <td><code>?</code></td>
+                        <td><code>??</code></td>
+                        <td class="example">Prefer 0 over 1</td>
+                    </tr>
+                    <tr>
+                        <td><code>{n,m}</code></td>
+                        <td><code>{n,m}?</code></td>
+                        <td class="example">Match n (minimum)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Anchors -->
+            <h2 id="anchors">Anchors & Boundaries</h2>
+
+            <p>Anchors don't match characters — they match positions.</p>
+
+            <table class="regex-table">
+                <thead>
+                    <tr>
+                        <th>Anchor</th>
+                        <th>Meaning</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>^</code></td>
+                        <td>Start of string/line</td>
+                        <td class="example">^Start → "Start here"</td>
+                    </tr>
+                    <tr>
+                        <td><code>$</code></td>
+                        <td>End of string/line</td>
+                        <td class="example">end$ → "The end"</td>
+                    </tr>
+                    <tr>
+                        <td><code>\b</code></td>
+                        <td>Word boundary</td>
+                        <td class="example">\bword\b → whole word only</td>
+                    </tr>
+                    <tr>
+                        <td><code>\B</code></td>
+                        <td>Non-word boundary</td>
+                        <td class="example">\Bword → "sword" (not "word")</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Groups -->
+            <h2 id="groups">Groups & Capturing</h2>
+
+            <p>Parentheses create groups for capturing or applying quantifiers.</p>
+
+            <table class="regex-table">
+                <thead>
+                    <tr>
+                        <th>Pattern</th>
+                        <th>Meaning</th>
+                        <th>Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>(abc)</code></td>
+                        <td>Capturing group</td>
+                        <td class="example">Captures "abc" as $1</td>
+                    </tr>
+                    <tr>
+                        <td><code>(?:abc)</code></td>
+                        <td>Non-capturing group</td>
+                        <td class="example">Groups but doesn't capture</td>
+                    </tr>
+                    <tr>
+                        <td><code>(?&lt;name&gt;abc)</code></td>
+                        <td>Named capturing group</td>
+                        <td class="example">Captures as "name"</td>
+                    </tr>
+                    <tr>
+                        <td><code>\1, \2</code></td>
+                        <td>Backreference</td>
+                        <td class="example">Match same text again</td>
+                    </tr>
+                    <tr>
+                        <td><code>$1, $2</code></td>
+                        <td>Replacement reference</td>
+                        <td class="example">Use captured text in replace</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="callout callout-success">
+                <i class="fas fa-check-circle"></i>
+                <div class="callout-content">
+                    <h4>Example: Swap First & Last Name</h4>
+                    <p>Pattern: <code>(\w+)\s(\w+)</code><br>
+                        Replace: <code>$2, $1</code><br>
+                        "John Smith" → "Smith, John"</p>
+                </div>
+            </div>
+
+            <!-- Lookahead -->
+            <h2 id="lookahead">Lookahead & Lookbehind</h2>
+
+            <p>Assert patterns without including them in the match.</p>
+
+            <table class="regex-table">
+                <thead>
+                    <tr>
+                        <th>Pattern</th>
+                        <th>Name</th>
+                        <th>Meaning</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>(?=...)</code></td>
+                        <td>Positive Lookahead</td>
+                        <td class="example">Must be followed by ...</td>
+                    </tr>
+                    <tr>
+                        <td><code>(?!...)</code></td>
+                        <td>Negative Lookahead</td>
+                        <td class="example">Must NOT be followed by ...</td>
+                    </tr>
+                    <tr>
+                        <td><code>(?<=...)</code></td>
+                        <td>Positive Lookbehind</td>
+                        <td class="example">Must be preceded by ...</td>
+                    </tr>
+                    <tr>
+                        <td><code>(?<!...)</code></td>
+                        <td>Negative Lookbehind</td>
+                        <td class="example">Must NOT be preceded by ...</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Flags -->
+            <h2 id="flags">Regex Flags</h2>
+
+            <p>Flags modify how the pattern matching works.</p>
+
+            <table class="regex-table">
+                <thead>
+                    <tr>
+                        <th>Flag</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>g</code></td>
+                        <td>Global</td>
+                        <td class="example">Find all matches, not just first</td>
+                    </tr>
+                    <tr>
+                        <td><code>i</code></td>
+                        <td>Case Insensitive</td>
+                        <td class="example">/hello/i matches "HELLO"</td>
+                    </tr>
+                    <tr>
+                        <td><code>m</code></td>
+                        <td>Multiline</td>
+                        <td class="example">^ and $ match line start/end</td>
+                    </tr>
+                    <tr>
+                        <td><code>s</code></td>
+                        <td>Dotall</td>
+                        <td class="example">. matches newlines too</td>
+                    </tr>
+                    <tr>
+                        <td><code>u</code></td>
+                        <td>Unicode</td>
+                        <td class="example">Enable full Unicode support</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Common Patterns -->
+            <h2 id="common-patterns">Common Regex Patterns</h2>
+
+            <p>Copy-paste these tested patterns for common use cases:</p>
+
+            <table class="regex-table">
+                <thead>
+                    <tr>
+                        <th>Use Case</th>
+                        <th>Pattern</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Email</strong></td>
+                        <td><code>^[\w.-]+@[\w.-]+\.\w{2,}$</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>URL</strong></td>
+                        <td><code>https?:\/\/[\w.-]+(?:\/[\w.-]*)*\/?</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phone (US)</strong></td>
+                        <td><code>\(?[0-9]{3}\)?[-.\s]?[0-9]{3}[-.\s]?[0-9]{4}</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Date (YYYY-MM-DD)</strong></td>
+                        <td><code>\d{4}-\d{2}-\d{2}</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>IP Address</strong></td>
+                        <td><code>\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>HTML Tag</strong></td>
+                        <td><code>&lt;[^&gt;]+&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hex Color</strong></td>
+                        <td><code>#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Username</strong></td>
+                        <td><code>^[a-zA-Z][a-zA-Z0-9_]{2,15}$</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Strong Password</strong></td>
+                        <td><code>^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Credit Card</strong></td>
+                        <td><code>\b\d{4}[-\s]?\d{4}[-\s]?\d{4}[-\s]?\d{4}\b</code></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Tool Card -->
+            <div class="tool-card">
+                <h3>🧪 Test Your Regex Patterns</h3>
+                <p>Use our free Regex Tester to validate patterns in real-time with instant feedback and match
+                    highlighting.</p>
+                <a href="regex-tester.html" class="cta-btn-primary">Open Regex Tester →</a>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="faq-section" id="faq">
+                <h2>Frequently Asked Questions</h2>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <strong>What is regex used for?</strong>
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p><strong>Regular expressions</strong> are used for: <strong>Form validation</strong> (emails,
+                            phones, passwords), <strong>Search and replace</strong> in text editors, <strong>Data
+                                extraction</strong> from strings, <strong>Log file parsing</strong>, <strong>URL
+                                routing</strong> in web frameworks, <strong>Input sanitization</strong>, and
+                            <strong>Text processing</strong> in ETL pipelines.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <strong>What's the difference between * and + in regex?</strong>
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p><code>*</code> (asterisk) matches <strong>zero or more</strong> occurrences — the pattern is
+                            optional and can repeat. <code>+</code> (plus) matches <strong>one or more</strong>
+                            occurrences — at least one match is required. Example: <code>a*</code> matches "", "a", "aa"
+                            but <code>a+</code> only matches "a", "aa" (not empty string).</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <strong>How do I match any character including newlines?</strong>
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>The dot <code>.</code> matches any character <strong>except</strong> newlines by default. To
+                            match truly any character including newlines, use <code>[\s\S]</code> (whitespace or
+                            non-whitespace = everything), or enable the <code>s</code> (dotall/single-line) flag:
+                            <code>/pattern/s</code>.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <strong>What does the ^ symbol mean inside [^...]?</strong>
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>The caret <code>^</code> has two different meanings: At the <strong>start of a
+                                pattern</strong>, it means "beginning of string". Inside a <strong>character
+                                class</strong> <code>[^...]</code>, it means "NOT these characters" — a negated
+                            character class. <code>[^abc]</code> matches any character except a, b, or c.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <strong>How do I make a regex case insensitive?</strong>
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>Add the <code>i</code> flag to your pattern. In JavaScript: <code>/pattern/i</code>. In
+                            Python: <code>re.compile(pattern, re.IGNORECASE)</code> or <code>re.I</code>. In PHP:
+                            <code>/pattern/i</code>. The pattern will then match both uppercase and lowercase
+                            variations.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <strong>What's the difference between capturing and non-capturing groups?</strong>
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p><strong>Capturing groups</strong> <code>(pattern)</code> save the matched text for later use
+                            via backreferences ($1, $2) or match arrays. <strong>Non-capturing groups</strong>
+                            <code>(?:pattern)</code> group patterns without saving — useful when you need grouping for
+                            quantifiers but don't need the captured value. Non-capturing is slightly faster.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <strong>Why is my regex matching too much (greedy matching)?</strong>
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>Quantifiers like <code>*</code> and <code>+</code> are <strong>greedy</strong> by default —
+                            they match as much as possible. To make them <strong>lazy</strong> (match minimum), add
+                            <code>?</code> after: <code>*?</code> <code>+?</code> <code>??</code>. Example: for
+                            "&lt;div&gt;text&lt;/div&gt;", pattern <code>&lt;.*&gt;</code> matches the whole thing, but
+                            <code>&lt;.*?&gt;</code> matches just "&lt;div&gt;".</p>
+                    </div>
+                </details>
+            </div>
+
+            <p style="text-align:center;margin-top:3rem;color:#525252;font-size:0.85rem;">Code Formatter © 2026.
+                Professional developer tools built with privacy and performance in mind.</p>
+        </article>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+                <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+            </div>
+            <p class="footer-copyright">© 2026 Code Formatter. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Sticky CTA -->
+    <div class="sticky-cta">
+        <span class="sticky-text">Test regex? <span>Try live matching.</span></span>
+        <a href="regex-tester.html" class="cta-btn-primary">Regex Tester ⚡</a>
+    </div>
+
+    <script>
+        // Progress bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+    </script>
+</body>
+
+</html>
