@@ -705,12 +705,18 @@
             </div>
 
             <!-- ★ Top CTA ★ -->
-            <div style="background:linear-gradient(135deg,rgba(99,102,241,0.12),rgba(59,130,246,0.08));border:1px solid rgba(129,140,248,0.25);border-radius:12px;padding:24px 28px;margin-bottom:35px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;">
+            <div
+                style="background:linear-gradient(135deg,rgba(99,102,241,0.12),rgba(59,130,246,0.08));border:1px solid rgba(129,140,248,0.25);border-radius:12px;padding:24px 28px;margin-bottom:35px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;">
                 <div>
-                    <div style="font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:4px;">🌈 Create gradients? Try <span style="color:#818cf8">Gradient Generator</span> Free</div>
-                    <div style="font-size:.88rem;color:#a1a1aa;">No sign-up needed · 100% in-browser · Instant results</div>
+                    <div style="font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:4px;">🌈 Create gradients? Try
+                        <span style="color:#818cf8">Gradient Generator</span> Free</div>
+                    <div style="font-size:.88rem;color:#a1a1aa;">No sign-up needed · 100% in-browser · Instant results
+                    </div>
                 </div>
-                <a href="gradient-generator.html" style="background:linear-gradient(135deg,#818cf8,#6366f1);color:#fff;text-decoration:none;padding:10px 26px;border-radius:50px;font-size:.88rem;font-weight:600;white-space:nowrap;box-shadow:0 4px 15px rgba(129,140,248,0.25);transition:transform .2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Open Gradient Generator →</a>
+                <a href="gradient-generator.html"
+                    style="background:linear-gradient(135deg,#818cf8,#6366f1);color:#fff;text-decoration:none;padding:10px 26px;border-radius:50px;font-size:.88rem;font-weight:600;white-space:nowrap;box-shadow:0 4px 15px rgba(129,140,248,0.25);transition:transform .2s;"
+                    onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Open
+                    Gradient Generator →</a>
             </div>
 
             <!-- Featured Image -->
@@ -950,6 +956,144 @@
             <h3>Duotone Effects</h3>
             <p>Two-color gradients applied as overlays on images for a striking, modern look.</p>
 
+            <h2 id="animation">Animating CSS Gradients</h2>
+
+            <p>CSS doesn't allow direct transition of gradient colors, but there are creative workarounds that give the
+                appearance of animated gradients — widely used in modern UIs like Stripe and Linear.</p>
+
+            <h3>The Background-Position Trick</h3>
+            <p>Create a gradient larger than the element, then animate <code>background-position</code>. This creates a
+                "sliding" gradient effect popular in loading screens and hero banners:</p>
+
+            <div class="code-wrapper">
+                <div class="code-header">Animated Moving Gradient</div>
+                <pre><code><span class="token-keyword">.animated-gradient</span> {
+    <span class="token-prop">background</span>: <span class="token-keyword">linear-gradient</span>(
+        <span class="token-val">270deg</span>,
+        <span class="token-string">#ff6b6b</span>, <span class="token-string">#feca57</span>, <span class="token-string">#48dbfb</span>, <span class="token-string">#ff9ff3</span>
+    );
+    <span class="token-prop">background-size</span>: <span class="token-val">400% 400%</span>;
+    <span class="token-prop">animation</span>: <span class="token-string">gradientShift 8s ease infinite</span>;
+}
+
+<span class="token-keyword">@keyframes</span> gradientShift {
+    <span class="token-val">0%</span>   { <span class="token-prop">background-position</span>: <span class="token-val">0% 50%</span>; }
+    <span class="token-val">50%</span>  { <span class="token-prop">background-position</span>: <span class="token-val">100% 50%</span>; }
+    <span class="token-val">100%</span> { <span class="token-prop">background-position</span>: <span class="token-val">0% 50%</span>; }
+}</code></pre>
+            </div>
+
+            <h3>CSS @property for Native Color Animation</h3>
+            <p>Modern Chrome and Edge support <code>@property</code> which lets you register custom properties as typed
+                values — enabling direct gradient color animation:</p>
+
+            <div class="code-wrapper">
+                <div class="code-header">@property — Native Gradient Animation</div>
+                <pre><code><span class="token-keyword">@property</span> --color-stop-1 {
+    <span class="token-prop">syntax</span>: <span class="token-string">'&lt;color&gt;'</span>;
+    <span class="token-prop">initial-value</span>: <span class="token-string">#ff6b6b</span>;
+    <span class="token-prop">inherits</span>: <span class="token-val">false</span>;
+}
+
+<span class="token-keyword">@property</span> --color-stop-2 {
+    <span class="token-prop">syntax</span>: <span class="token-string">'&lt;color&gt;'</span>;
+    <span class="token-prop">initial-value</span>: <span class="token-string">#4ecdc4</span>;
+    <span class="token-prop">inherits</span>: <span class="token-val">false</span>;
+}
+
+<span class="token-keyword">.animate-gradient</span> {
+    <span class="token-prop">background</span>: <span class="token-keyword">linear-gradient</span>(<span class="token-keyword">var</span>(--color-stop-1), <span class="token-keyword">var</span>(--color-stop-2));
+    <span class="token-prop">transition</span>: --color-stop-1 1s, --color-stop-2 1s;
+}
+
+<span class="token-keyword">.animate-gradient:hover</span> {
+    --color-stop-1: <span class="token-string">#667eea</span>;
+    --color-stop-2: <span class="token-string">#764ba2</span>;
+}</code></pre>
+            </div>
+
+            <h2 id="accessibility">Gradient Accessibility & Contrast</h2>
+
+            <p>Beautiful gradients can become a usability problem if text placed over them doesn't have sufficient
+                contrast. Google's Material Design and WCAG 2.1 both require a <strong>minimum contrast ratio of
+                    4.5:1</strong> for body text against its background.</p>
+
+            <h3>The Problem with Gradients and Text</h3>
+            <p>A gradient that starts dark enough for white text might transition to a light color where white text
+                becomes unreadable. The contrast can change across the element. Best practices:</p>
+
+            <ul>
+                <li><strong>Use a semi-transparent overlay:</strong> Add <code>background: rgba(0,0,0,0.4)</code> on top
+                    of the gradient before placing text</li>
+                <li><strong>Text shadow:</strong> Add <code>text-shadow: 0 1px 3px rgba(0,0,0,0.6)</code> for better
+                    readability</li>
+                <li><strong>Confine gradients to decorative areas:</strong> Keep text on solid color sections, use
+                    gradients only for borders, backgrounds without text, or decorative elements</li>
+                <li><strong>Test with a contrast checker:</strong> Tools like WebAIM's Contrast Checker can verify your
+                    text/background combinations</li>
+            </ul>
+
+            <h2 id="performance">Gradient Performance Tips</h2>
+
+            <p>CSS gradients are rendered by the GPU and are inherently fast. But there are edge cases where they can
+                hurt performance:</p>
+
+            <h3>Avoid Animating Large Gradients</h3>
+            <p>Animating <code>background-position</code> on a full-screen gradient triggers the GPU every frame. For
+                hero sections, consider using a static gradient. Reserve animations for smaller elements like buttons or
+                badges.</p>
+
+            <h3>Use will-change Carefully</h3>
+            <p>Adding <code>will-change: background-position</code> tells the browser to optimize the element for
+                animation. But using it on too many elements can actually hurt performance by consuming excessive GPU
+                memory.</p>
+
+            <h3>Reduce Gradient Complexity in Mobile</h3>
+            <p>Mobile GPUs are less powerful. Use media queries to simplify gradients on smaller screens:</p>
+
+            <div class="code-wrapper">
+                <div class="code-header">Simplified Mobile Gradient</div>
+                <pre><code><span class="token-comment">/* Complex gradient for desktop */</span>
+<span class="token-keyword">.hero</span> {
+    <span class="token-prop">background</span>: <span class="token-keyword">linear-gradient</span>(135deg, <span class="token-string">#667eea 0%</span>, <span class="token-string">#764ba2 30%</span>, <span class="token-string">#f093fb 60%</span>, <span class="token-string">#f5576c 100%</span>);
+}
+
+<span class="token-comment">/* Simplified gradient for mobile */</span>
+<span class="token-keyword">@media (max-width: 768px)</span> {
+    <span class="token-keyword">.hero</span> {
+        <span class="token-prop">background</span>: <span class="token-keyword">linear-gradient</span>(135deg, <span class="token-string">#667eea</span>, <span class="token-string">#764ba2</span>);
+    }
+}</code></pre>
+            </div>
+
+            <h2 id="real-world">Real-World Gradient Examples</h2>
+
+            <p>Here's how major companies use gradients in their brand and UI:</p>
+
+            <ul>
+                <li><strong>Stripe:</strong> Uses subtle multi-color animated gradients in hero sections to convey
+                    "modern fintech" — purples, pinks, and blues</li>
+                <li><strong>Instagram:</strong> Their iconic logo uses a conic-style gradient from yellow-orange to
+                    purple-pink</li>
+                <li><strong>Linear (task management):</strong> Dark glassmorphism UI with subtle purple gradient glows
+                    on cards</li>
+                <li><strong>Vercel:</strong> Minimal white/gray palette with sharp linear gradients for loading states
+                </li>
+                <li><strong>GitHub Copilot:</strong> Blue-to-purple gradient for the AI assistant branding</li>
+            </ul>
+
+            <div class="callout">
+                <i class="fas fa-paint-brush"></i>
+                <div class="callout-content">
+                    <h4>Free Gradient Resources</h4>
+                    <p>Looking for inspiration? Check out <strong>uiGradients.com</strong> for curated gradient
+                        collections, <strong>coolors.co</strong> for color palette generation, and
+                        <strong>css.glass</strong> for glassmorphism combinations. Then use our <a
+                            href="gradient-generator.html" style="color: var(--primary)">Gradient Generator</a> to
+                        instantly create and export the CSS.</p>
+                </div>
+            </div>
+
             <h2 id="faq">Frequently Asked Questions</h2>
 
             <div class="faq-section">
@@ -998,7 +1142,8 @@
                     <div class="faq-answer">
                         <p>Absolutely! Use <code>background-clip: text</code> and
                             <code>-webkit-background-clip: text</code> along with <code>color: transparent</code> to
-                            create stunning gradient text. Works in all modern browsers.</p>
+                            create stunning gradient text. Works in all modern browsers.
+                        </p>
                     </div>
                 </details>
 
@@ -1024,7 +1169,8 @@
                         <p>You can't directly animate gradient colors with CSS transitions. However, you can animate
                             <code>background-position</code> for a shifting effect, or use CSS custom properties with
                             JavaScript for dynamic color changes. Some browsers support <code>@property</code> for
-                            native color animation.</p>
+                            native color animation.
+                        </p>
                     </div>
                 </details>
 

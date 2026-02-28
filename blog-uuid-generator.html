@@ -705,12 +705,19 @@
             </div>
 
             <!-- ★ Top CTA ★ -->
-            <div style="background:linear-gradient(135deg,rgba(99,102,241,0.12),rgba(59,130,246,0.08));border:1px solid rgba(129,140,248,0.25);border-radius:12px;padding:24px 28px;margin-bottom:35px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;">
+            <div
+                style="background:linear-gradient(135deg,rgba(99,102,241,0.12),rgba(59,130,246,0.08));border:1px solid rgba(129,140,248,0.25);border-radius:12px;padding:24px 28px;margin-bottom:35px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;">
                 <div>
-                    <div style="font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:4px;">🆔 Need a UUID? Try <span style="color:#818cf8">UUID Generator</span> Free</div>
-                    <div style="font-size:.88rem;color:#a1a1aa;">No sign-up needed · 100% in-browser · Instant results</div>
+                    <div style="font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:4px;">🆔 Need a UUID? Try
+                        <span style="color:#818cf8">UUID Generator</span> Free
+                    </div>
+                    <div style="font-size:.88rem;color:#a1a1aa;">No sign-up needed · 100% in-browser · Instant results
+                    </div>
                 </div>
-                <a href="uuid-generator.html" style="background:linear-gradient(135deg,#818cf8,#6366f1);color:#fff;text-decoration:none;padding:10px 26px;border-radius:50px;font-size:.88rem;font-weight:600;white-space:nowrap;box-shadow:0 4px 15px rgba(129,140,248,0.25);transition:transform .2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Open UUID Generator →</a>
+                <a href="uuid-generator.html"
+                    style="background:linear-gradient(135deg,#818cf8,#6366f1);color:#fff;text-decoration:none;padding:10px 26px;border-radius:50px;font-size:.88rem;font-weight:600;white-space:nowrap;box-shadow:0 4px 15px rgba(129,140,248,0.25);transition:transform .2s;"
+                    onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Open
+                    UUID Generator →</a>
             </div>
 
             <!-- Featured Image -->
@@ -866,6 +873,7 @@
 );</code></pre>
             </div>
 
+
             <h3>MySQL</h3>
             <div class="code-wrapper">
                 <div class="code-header">MySQL UUID</div>
@@ -926,6 +934,23 @@ String uuidString = uuid.<span class="token-prop">toString()</span>;
 UUID parsed = UUID.<span class="token-prop">fromString</span>(<span class="token-string">"f47ac10b-58cc-4372-a567-0e02b2c3d479"</span>);</code></pre>
             </div>
 
+            <h2 id="collision">UUID Collision Probability Explained</h2>
+
+            <p>One of the most common questions: <strong>"Can two UUIDs ever be the same?"</strong> Technically yes, but
+                practically impossible. UUID v4 has 2^122 random bits (about 5.3 × 10<sup>36</sup> values). Even
+                generating 1 billion UUIDs per second for 85 years gives less than a 1-in-a-billion chance of collision.
+            </p>
+
+            <div class="callout">
+                <i class="fas fa-shield-alt"></i>
+                <div class="callout-content">
+                    <h4>ULID: A Sortable Alternative</h4>
+                    <p>ULID (Universally Unique Lexicographically Sortable Identifier) is gaining popularity as a UUID
+                        alternative, especially for databases. It's 26 characters (vs UUID's 36), timestamp-prefixed for
+                        natural sort order, and just as collision-resistant.</p>
+                </div>
+            </div>
+
             <h2 id="faq">Frequently Asked Questions</h2>
 
             <div class="faq-section">
@@ -963,7 +988,8 @@ UUID parsed = UUID.<span class="token-prop">fromString</span>(<span class="token
                     <div class="faq-answer">
                         <p><strong>Yes.</strong> Our generator uses the Web Crypto API's
                             <code>crypto.randomUUID()</code> and <code>crypto.getRandomValues()</code>, which provide
-                            cryptographically secure random numbers suitable for security-sensitive applications.</p>
+                            cryptographically secure random numbers suitable for security-sensitive applications.
+                        </p>
                     </div>
                 </details>
 
@@ -998,7 +1024,8 @@ UUID parsed = UUID.<span class="token-prop">fromString</span>(<span class="token
                     <div class="faq-answer">
                         <p>Our generator supports: <strong>lowercase</strong> (default), <strong>UPPERCASE</strong>,
                             <strong>{braces}</strong> (Microsoft style), and <strong>no hyphens</strong> (32-character
-                            string). You can also export as JSON arrays or newline-separated lists.</p>
+                            string). You can also export as JSON arrays or newline-separated lists.
+                        </p>
                     </div>
                 </details>
 

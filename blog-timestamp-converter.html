@@ -721,12 +721,18 @@
             </div>
 
             <!-- ★ Top CTA ★ -->
-            <div style="background:linear-gradient(135deg,rgba(99,102,241,0.12),rgba(59,130,246,0.08));border:1px solid rgba(129,140,248,0.25);border-radius:12px;padding:24px 28px;margin-bottom:35px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;">
+            <div
+                style="background:linear-gradient(135deg,rgba(99,102,241,0.12),rgba(59,130,246,0.08));border:1px solid rgba(129,140,248,0.25);border-radius:12px;padding:24px 28px;margin-bottom:35px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;">
                 <div>
-                    <div style="font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:4px;">⏰ Convert timestamps? Try <span style="color:#818cf8">Timestamp Converter</span> Free</div>
-                    <div style="font-size:.88rem;color:#a1a1aa;">No sign-up needed · 100% in-browser · Instant results</div>
+                    <div style="font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:4px;">⏰ Convert timestamps?
+                        Try <span style="color:#818cf8">Timestamp Converter</span> Free</div>
+                    <div style="font-size:.88rem;color:#a1a1aa;">No sign-up needed · 100% in-browser · Instant results
+                    </div>
                 </div>
-                <a href="timestamp-converter.html" style="background:linear-gradient(135deg,#818cf8,#6366f1);color:#fff;text-decoration:none;padding:10px 26px;border-radius:50px;font-size:.88rem;font-weight:600;white-space:nowrap;box-shadow:0 4px 15px rgba(129,140,248,0.25);transition:transform .2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Open Timestamp Converter →</a>
+                <a href="timestamp-converter.html"
+                    style="background:linear-gradient(135deg,#818cf8,#6366f1);color:#fff;text-decoration:none;padding:10px 26px;border-radius:50px;font-size:.88rem;font-weight:600;white-space:nowrap;box-shadow:0 4px 15px rgba(129,140,248,0.25);transition:transform .2s;"
+                    onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Open
+                    Timestamp Converter →</a>
             </div>
 
             <!-- Featured Image -->
@@ -945,7 +951,8 @@ $dt = <span class="token-prop">DateTime</span>::createFromFormat(<span class="to
 
             <h3>2. API Responses</h3>
             <p>Most REST APIs return timestamps in Unix format, often in the <code>created_at</code>,
-                <code>updated_at</code>, or <code>expires_at</code> fields.</p>
+                <code>updated_at</code>, or <code>expires_at</code> fields.
+            </p>
 
             <h3>3. JWT Tokens</h3>
             <p>JSON Web Tokens use Unix timestamps for the <code>exp</code> (expiration), <code>iat</code> (issued at),
@@ -957,6 +964,121 @@ $dt = <span class="token-prop">DateTime</span>::createFromFormat(<span class="to
             <h3>5. Caching</h3>
             <p>Cache expiration times are typically set as Unix timestamps, making it easy to check if content is stale.
             </p>
+
+            <h2 id="iso8601">ISO 8601: The Human-Readable Alternative</h2>
+
+            <p>While Unix timestamps are ideal for programming, <strong>ISO 8601</strong> is the international standard
+                for human-readable date/time representation. You'll see it in APIs that prioritize readability:</p>
+
+            <div class="code-wrapper">
+                <div class="code-header">ISO 8601 Format Examples</div>
+                <pre><code><span class="token-comment"># Same moment in different formats</span>
+
+<span class="token-comment"># Unix timestamp</span>
+<span class="token-val">1738778400</span>
+
+<span class="token-comment"># ISO 8601 (UTC)</span>
+<span class="token-string">2026-02-05T18:00:00Z</span>
+
+<span class="token-comment"># ISO 8601 (with timezone offset)</span>
+<span class="token-string">2026-02-05T23:30:00+05:30</span>  <span class="token-comment">(IST)</span>
+
+<span class="token-comment"># ISO 8601 with milliseconds</span>
+<span class="token-string">2026-02-05T18:00:00.000Z</span>
+
+<span class="token-comment"># RFC 2822 (email format)</span>
+<span class="token-string">Thu, 05 Feb 2026 18:00:00 +0000</span></code></pre>
+            </div>
+
+            <p>The <code>Z</code> suffix means UTC (Zulu time). ISO 8601 is unambiguous and human-readable, making it
+                perfect for API responses, log files that humans will read, and configuration files.</p>
+
+            <h2 id="timestamp-pitfalls">Common Timestamp Pitfalls to Avoid</h2>
+
+            <h3>1. Mixing Seconds and Milliseconds</h3>
+            <p>The most common bug when working with timestamps is accidentally mixing seconds and milliseconds.
+                JavaScript's <code>Date.now()</code> returns milliseconds, while many backend APIs use seconds. Always
+                check the number of digits: 10 = seconds, 13 = milliseconds.</p>
+
+            <div class="code-wrapper">
+                <div class="code-header">Seconds vs Milliseconds Bug</div>
+                <pre><code><span class="token-comment">// ❌ Wrong: treating seconds as milliseconds</span>
+<span class="token-keyword">new</span> <span class="token-prop">Date</span>(<span class="token-val">1738778400</span>)     <span class="token-comment">// January 21, 1970 (!!!)</span>
+
+<span class="token-comment">// ✅ Correct: multiply seconds by 1000</span>
+<span class="token-keyword">new</span> <span class="token-prop">Date</span>(<span class="token-val">1738778400</span> * <span class="token-val">1000</span>) <span class="token-comment">// February 5, 2026 ✓</span>
+
+<span class="token-comment">// Python: fromtimestamp() expects SECONDS</span>
+datetime.<span class="token-prop">fromtimestamp</span>(<span class="token-val">1738778400</span>)    <span class="token-comment">// ✅ Correct</span>
+datetime.<span class="token-prop">fromtimestamp</span>(<span class="token-val">1738778400000</span>) <span class="token-comment">// ❌ Year 57000!</span></code></pre>
+            </div>
+
+            <h3>2. Assuming Server and Client Timezones Match</h3>
+            <p>Never use <code>Date()</code> on a server to display local time—servers often run in UTC. Always store
+                timestamps in UTC and convert at the presentation layer using the user's timezone preference.</p>
+
+            <h3>3. Daylight Saving Time (DST) Gaps</h3>
+            <p>When clocks "spring forward," times between 2:00 AM and 3:00 AM don't exist in that timezone. When clocks
+                "fall back," those times occur twice. Unix timestamps handle this correctly since they're in UTC, but
+                converting to local time requires careful use of timezone-aware libraries.</p>
+
+            <h3>4. Off-by-One Errors in Date Ranges</h3>
+            <p>When filtering records "for today," be careful: "today" means different things in different timezones. A
+                record created at 11 PM UTC on Feb 5 is Feb 6 in Tokyo. Use full day ranges in UTC:
+                <code>WHERE created_at >= 1738800000 AND created_at < 1738886400</code>.</p>
+
+            <h2 id="date-libraries">Date Libraries: A Quick Comparison</h2>
+
+            <p>Working with dates programmatically is complex. Here's a comparison of the most popular JavaScript date
+                libraries:</p>
+
+            <div class="code-wrapper">
+                <div class="code-header">Date Library Comparison</div>
+                <pre><code><span class="token-comment">// Native JavaScript (limited, but no deps)</span>
+<span class="token-keyword">const</span> date = <span class="token-keyword">new</span> <span class="token-prop">Date</span>(<span class="token-val">1738778400</span> * <span class="token-val">1000</span>);
+date.<span class="token-prop">toLocaleDateString</span>(<span class="token-string">'en-US'</span>, { timezone: <span class="token-string">'America/New_York'</span> });
+
+<span class="token-comment">// date-fns (functional, tree-shakeable, 13KB)</span>
+<span class="token-keyword">import</span> { formatDistance, format } <span class="token-keyword">from</span> <span class="token-string">'date-fns'</span>;
+<span class="token-prop">format</span>(<span class="token-keyword">new</span> <span class="token-prop">Date</span>(<span class="token-val">1738778400000</span>), <span class="token-string">'MMM dd, yyyy'</span>); <span class="token-comment">// 'Feb 05, 2026'</span>
+
+<span class="token-comment">// Luxon (timezone support, ~74KB)</span>
+<span class="token-keyword">import</span> { DateTime } <span class="token-keyword">from</span> <span class="token-string">'luxon'</span>;
+DateTime.<span class="token-prop">fromSeconds</span>(<span class="token-val">1738778400</span>)
+  .<span class="token-prop">setZone</span>(<span class="token-string">'America/New_York'</span>)
+  .<span class="token-prop">toFormat</span>(<span class="token-string">'MMM dd, yyyy'</span>);</code></pre>
+            </div>
+
+            <div class="callout">
+                <i class="fas fa-lightbulb"></i>
+                <div class="callout-content">
+                    <h4>Which Library to Choose?</h4>
+                    <p>For simple formatting, use native <code>Intl.DateTimeFormat</code>. For complex date math, use
+                        <strong>date-fns</strong> (smallest bundle). For full timezone support with IANA database, use
+                        <strong>Luxon</strong>. Avoid Moment.js — it's deprecated and has a large bundle size.</p>
+                </div>
+            </div>
+
+            <h2 id="sql-timestamps">Working with Timestamps in SQL</h2>
+
+            <div class="code-wrapper">
+                <div class="code-header">SQL Timestamp Operations</div>
+                <pre><code><span class="token-comment">-- Store current time as Unix timestamp</span>
+<span class="token-keyword">INSERT INTO</span> events (created_at) <span class="token-keyword">VALUES</span> (<span class="token-prop">UNIX_TIMESTAMP()</span>); <span class="token-comment">-- MySQL</span>
+<span class="token-keyword">INSERT INTO</span> events (created_at) <span class="token-keyword">VALUES</span> (<span class="token-prop">EXTRACT(EPOCH FROM NOW())</span>); <span class="token-comment">-- PostgreSQL</span>
+
+<span class="token-comment">-- Convert timestamp to date</span>
+<span class="token-keyword">SELECT</span> <span class="token-prop">FROM_UNIXTIME</span>(<span class="token-val">1738778400</span>); <span class="token-comment">-- MySQL</span>
+<span class="token-keyword">SELECT</span> <span class="token-prop">TO_TIMESTAMP</span>(<span class="token-val">1738778400</span>);  <span class="token-comment">-- PostgreSQL</span>
+
+<span class="token-comment">-- Filter records from last 24 hours</span>
+<span class="token-keyword">SELECT</span> * <span class="token-keyword">FROM</span> orders
+<span class="token-keyword">WHERE</span> created_at > <span class="token-prop">UNIX_TIMESTAMP</span>() - <span class="token-val">86400</span>;
+
+<span class="token-comment">-- Records created today (UTC)</span>
+<span class="token-keyword">SELECT</span> * <span class="token-keyword">FROM</span> orders
+<span class="token-keyword">WHERE</span> <span class="token-prop">DATE</span>(<span class="token-prop">FROM_UNIXTIME</span>(created_at)) = <span class="token-prop">CURDATE()</span>;</code></pre>
+            </div>
 
             <h2 id="faq">Frequently Asked Questions</h2>
 
